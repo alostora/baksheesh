@@ -1,15 +1,13 @@
 <?php
 
-namespace App\Http\Requests;
+namespace Admin\Http\Requests\Company;
 
-use App\Constants\FileModuleType;
 use Illuminate\Foundation\Http\FormRequest;
-use Illuminate\Validation\Rule;
 
-class FileCreateRequest extends FormRequest
+class CompanyCreateRequest extends FormRequest
 {
     /**
-     * Determine if the user is authorized to make this request.
+     * Determine if the company is authorized to make this request.
      */
     public function authorize(): bool
     {
@@ -24,8 +22,8 @@ class FileCreateRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'file' => ['required', 'file'],
-            'type' => ['nullable', 'integer',/*  Rule::in(array_keys(FileModuleType::TYPE_LIST)) */],
+            'name' => ['required', 'string', 'max:255'],
+            'user_id' => ['required', 'uuid', 'exists:users,id'],
         ];
     }
 }

@@ -7,6 +7,7 @@ use App\Http\Controllers\Auth\AuthController;
 use App\Http\Controllers\Auth\EmailVerificationController;
 use App\Http\Controllers\Auth\ProfileController;
 use App\Http\Controllers\Auth\ResetPasswordController;
+use App\Http\Controllers\Company\CompanyController;
 use App\Http\Controllers\FileController;
 use App\Http\Controllers\SystemLookupController;
 use Illuminate\Support\Facades\Route;

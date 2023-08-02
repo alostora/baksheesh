@@ -2,9 +2,6 @@
 
 namespace App\Models;
 
-use Admin\Models\ClientSystem\ClientMemberSystem;
-use Admin\Models\ClientSystem\ClientSystem;
-use App\Constants\HasLookupType\UserAccountType;
 use App\Notifications\ResetPasswordEmail;
 use App\Notifications\VerifyEmail;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
@@ -43,11 +40,7 @@ class User extends Authenticatable implements MustVerifyEmail
 
         'api_token',
 
-        'finger_print',
-
         'status',
-
-        'member_control', //boolean
 
         'country_id',
 
@@ -56,6 +49,8 @@ class User extends Authenticatable implements MustVerifyEmail
         'client_id', //system owner
 
         'file_id',
+
+        'company_id',
 
         'email_verification_code',
 
@@ -71,8 +66,6 @@ class User extends Authenticatable implements MustVerifyEmail
 
         'api_token',
 
-        'finger_print',
-
         'remember_token',
     ];
 
@@ -84,13 +77,6 @@ class User extends Authenticatable implements MustVerifyEmail
     {
         return Attribute::make(
             set: fn ($value) => Hash::make($value),
-        );
-    }
-
-    protected function memberControl(): Attribute
-    {
-        return Attribute::make(
-            get: fn ($value) => isset($this->attributes['client_id']) && $this->attributes['client_id'] == null ? true : $value
         );
     }
 
@@ -124,27 +110,9 @@ class User extends Authenticatable implements MustVerifyEmail
         return $this->belongsTo(User::class, 'client_id', 'id');
     }
 
-    public function clientSystems(): HasMany
-    {
-        return $this->hasMany(ClientSystem::class, 'client_id', 'id');
-    }
-    
-    public function clientMembers(): HasMany
-    {
-        return $this->hasMany(User::class, 'client_id', 'id')
-            ->whereHas('accountType', function ($q) {
-                $q->where('type', UserAccountType::LOOKUP_TYPE)
-                    ->where('code', UserAccountType::CLIENT_SYSTEM_MEMBER['code']);
-            });
-    }
 
-    public function clientMemberSystems(): HasMany
+    public function company(): BelongsTo
     {
-        return $this->hasMany(ClientMemberSystem::class, 'client_member_id', 'id');
-    }
-
-    public function notificationTokens(): HasMany
-    {
-        return $this->hasMany(UserNotificationToken::class, 'user_id', 'id');
+        return $this->belongsTo(User::class, 'client_id', 'id');
     }
 }

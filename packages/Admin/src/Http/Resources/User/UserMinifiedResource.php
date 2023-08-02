@@ -1,28 +1,23 @@
 <?php
 
-namespace App\Http\Resources\Auth;
+namespace Admin\Http\Resources\User;
 
-use Admin\Http\Resources\Country\CountryMinifiedResource;
-use App\Constants\FileModuleType;
-use App\Constants\GeneralBooleanStatus;
-use App\Foundations\File\MainRepo;
-use App\Http\Resources\FileResource;
 use App\Http\Resources\SystemLookupResource;
-use App\Models\Country;
-use App\Models\File;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
 
-class UserResource extends JsonResource
+class UserMinifiedResource extends JsonResource
 {
     /**
      * Transform the resource into an array.
      *
      * @return array<string, mixed>
      */
+
     public function toArray(Request $request): array
     {
         return [
+
             'id' => $this->id,
 
             'name' => $this->name,
@@ -31,12 +26,7 @@ class UserResource extends JsonResource
 
             'phone' => $this->phone,
 
-            'token' => $this->api_token,
-
-
-            'account_type' => new SystemLookupResource($this->accountType),
-
-            'client' => new UserMinifiedResource($this->client),
+            'user_account_typ' => new SystemLookupResource($this->userAccountType),
 
             'created_at' => $this->created_at,
         ];

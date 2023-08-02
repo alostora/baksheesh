@@ -186,6 +186,7 @@ return [
          * Package Service Providers...
         */
 
+        Admin\Providers\RouteServiceProvider::class,
 
         /*
          * Application Service Providers...
