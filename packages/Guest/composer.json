@@ -1,0 +1,15 @@
+{
+    "name": "laravel/guest",
+    "description": "guest",
+    "autoload": {
+        "psr-4": {
+            "Laravel\\Guest\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "yes"
+        }
+    ],
+    "require": {}
+}

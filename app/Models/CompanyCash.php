@@ -6,16 +6,26 @@ use Illuminate\Database\Eloquent\Concerns\HasUuids;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
-use Illuminate\Database\Eloquent\Relations\HasMany;
 
-class Company extends Model
+class CompanyCash extends Model
 {
     use HasFactory, HasUuids;
 
     protected $fillable = [
 
-        'name',
-        'client_id'
+        'client_id',
+
+        'company_id',
+
+        'amount',
+
+        'payer_name',
+
+        'payer_email',
+
+        'payer_phone',
+
+        'notes',
 
     ];
 
@@ -24,13 +34,8 @@ class Company extends Model
         return $this->belongsTo(User::class, 'client_id', 'id');
     }
 
-    public function waiters(): HasMany
+    public function company(): BelongsTo
     {
-        return $this->hasMany(User::class, 'company_id', 'id');
-    }
-
-    public function cash(): HasMany
-    {
-        return $this->hasMany(CompanyCash::class, 'company_id', 'id');
+        return $this->belongsTo(Company::class, 'company_id', 'id');
     }
 }

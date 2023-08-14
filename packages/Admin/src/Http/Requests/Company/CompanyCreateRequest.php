@@ -23,6 +23,7 @@ class CompanyCreateRequest extends FormRequest
     {
         return [
             'name' => ['required', 'string', 'max:255'],
+
             'client_id' => ['required', 'uuid', 'exists:users,id'],
         ];
     }

@@ -25,7 +25,7 @@ class FileCreateRequest extends FormRequest
     {
         return [
             'file' => ['required', 'file'],
-            'type' => ['nullable', 'integer',/*  Rule::in(array_keys(FileModuleType::TYPE_LIST)) */],
+            'type' => ['nullable', 'integer', Rule::in(array_keys(FileModuleType::TYPE_LIST))],
         ];
     }
 }

@@ -33,7 +33,6 @@ class UserResource extends JsonResource
 
             'token' => $this->api_token,
 
-
             'account_type' => new SystemLookupResource($this->accountType),
 
             'client' => new UserMinifiedResource($this->client),

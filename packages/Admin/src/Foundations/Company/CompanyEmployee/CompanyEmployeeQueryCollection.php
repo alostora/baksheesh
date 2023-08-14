@@ -8,10 +8,10 @@ use App\Models\User;
 
 class CompanyEmployeeQueryCollection
 {
-    public static function searchAllCompanEmployees(
+    public static function searchAllCompanyEmployees(
+        $company_id = -1,
         $query_string = -1,
     ) {
-
 
         $lookup_account_type_employee = SystemLookup::where('type', UserAccountType::LOOKUP_TYPE)
             ->where('key', UserAccountType::EMPLOYEE['key'])
@@ -19,7 +19,13 @@ class CompanyEmployeeQueryCollection
 
         return User::where('user_account_type_id', $lookup_account_type_employee->id)
 
-            ->where(function ($q) use ($query_string) {
+            ->where(function ($q) use ($company_id, $query_string) {
+
+                if ($company_id && $company_id != -1) {
+
+                    $q
+                        ->where('company_id', $company_id);
+                }
 
                 if ($query_string && $query_string != -1) {
 

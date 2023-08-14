@@ -14,7 +14,6 @@ use Admin\Http\Resources\Company\CompanyEmployee\CompanyEmployeeResourse;
 use App\Constants\StatusCode;
 use App\Constants\SystemDefault;
 use App\Http\Controllers\Controller;
-use App\Models\Company;
 use App\Models\User;
 use Illuminate\Http\Request;
 
@@ -23,6 +22,7 @@ class CompanyEmployeeController extends Controller
     public function index(Request $request)
     {
         $companies = CompanyEmployeeSearchCollection::searchCompanyEmployees(
+            -1,
             -1,
             $request->get('per_page') ? $request->get('per_page') : SystemDefault::DEFAUL_PAGINATION_COUNT
         );
@@ -33,6 +33,7 @@ class CompanyEmployeeController extends Controller
     public function search(Request $request)
     {
         $companies = CompanyEmployeeSearchCollection::searchCompanyEmployees(
+            $request->get('company_id') ? $request->get('company_id') : -1,
             $request->get('query_string') ? $request->get('query_string') : -1,
             $request->get('per_page') ? $request->get('per_page') : SystemDefault::DEFAUL_PAGINATION_COUNT
         );

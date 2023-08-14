@@ -187,6 +187,7 @@ return [
         */
 
         Admin\Providers\RouteServiceProvider::class,
+        Guest\Providers\RouteServiceProvider::class,
 
         /*
          * Application Service Providers...
