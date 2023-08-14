@@ -15,13 +15,13 @@ class Company extends Model
     protected $fillable = [
 
         'name',
-        'user_id'
+        'client_id'
 
     ];
 
-    public function user(): BelongsTo
+    public function client(): BelongsTo
     {
-        return $this->belongsTo(User::class, 'user_id', 'id');
+        return $this->belongsTo(User::class, 'client_id', 'id');
     }
     
     public function waiters(): HasMany

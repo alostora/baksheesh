@@ -11,7 +11,6 @@ use App\Http\Requests\Auth\RegisterRequest;
 use App\Http\Resources\Auth\UserMinifiedResource;
 use App\Http\Resources\Auth\UserResource;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Artisan;
 
 class AuthController extends Controller
 {

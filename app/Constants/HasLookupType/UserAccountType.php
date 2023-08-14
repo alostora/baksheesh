@@ -10,7 +10,7 @@ class UserAccountType
           1 => self::ROOT,
           2 => self::ADMIN,
           3 => self::CLIENT,
-          4 => self::WAITER,
+          4 => self::EMPLOYEE,
      ];
 
      public const ROOT = [
@@ -36,12 +36,12 @@ class UserAccountType
           'name' => "Client",
           'name_ar' => "عميل",
      ];
-     
-     public const WAITER = [
+
+     public const EMPLOYEE = [
           'code' => 4,
           'key' => 4,
-          'prefix' => "WAITER",
-          'name' => "waiter",
-          'name_ar' => "النادل",
+          'prefix' => "EMPLOYEE",
+          'name' => "Employee",
+          'name_ar' => "موظف",
      ];
 }

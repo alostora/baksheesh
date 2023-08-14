@@ -7,13 +7,20 @@ use App\Models\Company;
 class CompanyQueryCollection
 {
     public static function searchAllCompanies(
-        $query_string = -1,
+        $client_id = -1,
+        $query_string = -1
     ) {
-        return Company::where(function ($q) use ($query_string) {
+        return Company::where(function ($q) use ($query_string, $client_id) {
+
+            if ($client_id && $client_id != -1) {
+
+                $q
+                    ->where('client_id', $client_id);
+            }
 
             if ($query_string && $query_string != -1) {
 
-                return $q
+                $q
                     ->where('name', 'like', '%' . $query_string . '%');
             }
         })

@@ -10,6 +10,7 @@ class CompanyCreateCollection
     public static function createCompany($request)
     {
         $validated = $request->validated();
+
         return Company::create($validated);
     }
 }

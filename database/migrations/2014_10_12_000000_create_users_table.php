@@ -45,6 +45,8 @@ return new class extends Migration
 
             $table->foreignUuid('client_id')->nullable();
 
+            $table->foreignUuid('company_id')->nullable();
+
             $table->foreignUuid('file_id')->nullable();
 
             $table->rememberToken();

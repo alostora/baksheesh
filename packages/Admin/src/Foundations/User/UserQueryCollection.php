@@ -13,7 +13,7 @@ class UserQueryCollection
 
             if ($query_string && $query_string != -1) {
 
-                return $q
+                $q
                     ->where('name', 'like', '%' . $query_string . '%');
             }
         })

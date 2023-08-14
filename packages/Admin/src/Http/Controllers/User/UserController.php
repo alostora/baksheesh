@@ -5,11 +5,11 @@ namespace Admin\Http\Controllers\User;
 use Admin\Foundations\User\UserSearchCollection;
 use Admin\Http\Requests\User\UserCreateRequest;
 use Admin\Http\Requests\User\UserUpdateRequest;
-use Admin\Http\Resources\User\UserMinifiedResource;
-use Admin\Http\Resources\User\UserResource;
 use App\Constants\StatusCode;
 use App\Constants\SystemDefault;
 use App\Http\Controllers\Controller;
+use App\Http\Resources\Auth\UserMinifiedResource;
+use App\Http\Resources\Auth\UserResource;
 use App\Models\User;
 use Illuminate\Http\Request;
 

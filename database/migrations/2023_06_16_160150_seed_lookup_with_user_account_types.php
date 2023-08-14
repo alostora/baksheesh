@@ -44,11 +44,11 @@ return new class extends Migration
             [
                 'id' => Str::uuid()->toString(),
                 'type' => UserAccountType::LOOKUP_TYPE,
-                'code' => UserAccountType::WAITER['code'],
-                'key' => UserAccountType::WAITER['key'],
-                'prefix' => UserAccountType::WAITER['prefix'],
-                'name' => UserAccountType::WAITER['name'],
-                'name_ar' => UserAccountType::WAITER['name_ar'],
+                'code' => UserAccountType::EMPLOYEE['code'],
+                'key' => UserAccountType::EMPLOYEE['key'],
+                'prefix' => UserAccountType::EMPLOYEE['prefix'],
+                'name' => UserAccountType::EMPLOYEE['name'],
+                'name_ar' => UserAccountType::EMPLOYEE['name_ar'],
             ],
 
         );

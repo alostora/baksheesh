@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('companies', function (Blueprint $table) {
             $table->uuid('id')->primary();
             $table->string('name');
-            $table->foreignUuid('user_id')->nullable();
+            $table->foreignUuid('client_id')->nullable();
             $table->timestamps();
             $table->softDeletes();
         });

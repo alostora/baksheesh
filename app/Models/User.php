@@ -46,11 +46,11 @@ class User extends Authenticatable implements MustVerifyEmail
 
         'user_account_type_id', //lookup type
 
-        'client_id', //system owner
-
-        'file_id',
+        'client_id', //company owner
 
         'company_id',
+
+        'file_id',
 
         'email_verification_code',
 
@@ -110,9 +110,8 @@ class User extends Authenticatable implements MustVerifyEmail
         return $this->belongsTo(User::class, 'client_id', 'id');
     }
 
-
     public function company(): BelongsTo
     {
-        return $this->belongsTo(User::class, 'client_id', 'id');
+        return $this->belongsTo(Company::class, 'company_id', 'id');
     }
 }
