@@ -1,10 +1,10 @@
 <?php
 
-namespace Admin\Http\Requests\Company\CompanyEmployee;
+namespace Client\Http\Requests\ClientEmployee;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class CompanyEmployeeCreateRequest extends FormRequest
+class ClientEmployeeCreateRequest extends FormRequest
 {
     /**
      * Determine if the company is authorized to make this request.
@@ -22,7 +22,6 @@ class CompanyEmployeeCreateRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'company_id' => ['required', 'uuid', 'exists:companies,id'],
 
             "name" => ["required", "string", "max:255"],
 

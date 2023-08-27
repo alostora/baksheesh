@@ -7,9 +7,16 @@ use App\Models\User;
 class UserQueryCollection
 {
     public static function searchAllUsers(
-        $query_string = -1,
+        $user_account_type_id = -1,
+        $query_string = -1
     ) {
-        return User::where(function ($q) use ($query_string) {
+        return User::where(function ($q) use ($query_string, $user_account_type_id) {
+
+            if ($user_account_type_id && $user_account_type_id != -1) {
+
+                $q
+                    ->where('user_account_type_id', $user_account_type_id);
+            }
 
             if ($query_string && $query_string != -1) {
 

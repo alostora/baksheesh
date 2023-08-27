@@ -1,10 +1,10 @@
 <?php
 
-namespace Admin\Http\Requests\Company\CompanyEmployee;
+namespace Client\Http\Requests\ClientCompany\ClientCompanyEmployee;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class CompanyEmployeeCreateRequest extends FormRequest
+class ClientCompanyEmployeeCreateRequest extends FormRequest
 {
     /**
      * Determine if the company is authorized to make this request.

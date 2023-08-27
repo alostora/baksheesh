@@ -19,6 +19,7 @@ class UserController extends Controller
     {
         $users = UserSearchCollection::searchUsers(
             -1,
+            -1,
             $request->get('per_page') ? $request->get('per_page') : SystemDefault::DEFAUL_PAGINATION_COUNT
         );
 
@@ -28,6 +29,7 @@ class UserController extends Controller
     public function search(Request $request)
     {
         $users = UserSearchCollection::searchUsers(
+            $request->get('user_account_type_id') ? $request->get('user_account_type_id') : -1,
             $request->get('query_string') ? $request->get('query_string') : -1,
             $request->get('per_page') ? $request->get('per_page') : SystemDefault::DEFAUL_PAGINATION_COUNT
         );

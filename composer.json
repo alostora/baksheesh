@@ -27,7 +27,8 @@
             "Database\\Factories\\": "database/factories/",
             "Database\\Seeders\\": "database/seeders/",
             "Admin\\": "packages/Admin/src/",
-            "Guest\\": "packages/Guest/src/"
+            "Guest\\": "packages/Guest/src/",
+            "Client\\": "packages/Client/src/"
         }
     },
     "autoload-dev": {

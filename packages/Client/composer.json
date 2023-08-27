@@ -1,0 +1,16 @@
+{
+    "name": "laravel/client",
+    "description": "clients",
+    "autoload": {
+        "psr-4": {
+            "Laravel\\Client\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "alostora",
+            "email": "dolsika5762@gmail.com"
+        }
+    ],
+    "require": {}
+}
