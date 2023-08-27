@@ -2,8 +2,8 @@
 
 namespace Client\Http\Controllers;
 
-use Admin\Http\Resources\Company\CompanyMinifiedResourse;
-use Admin\Http\Resources\Company\CompanyResourse;
+use Admin\Http\Resources\Company\CompanyMinifiedResource;
+use Admin\Http\Resources\Company\CompanyResource;
 use App\Constants\StatusCode;
 use App\Constants\SystemDefault;
 use App\Http\Controllers\Controller;
@@ -22,7 +22,7 @@ class ClientCompanyController extends Controller
             $request->get('per_page') ? $request->get('per_page') : SystemDefault::DEFAUL_PAGINATION_COUNT
         );
 
-        return response()->paginated(CompanyMinifiedResourse::collection($companies));
+        return response()->paginated(CompanyMinifiedResource::collection($companies));
     }
 
     public function search(Request $request)
@@ -32,14 +32,14 @@ class ClientCompanyController extends Controller
             $request->get('per_page') ? $request->get('per_page') : SystemDefault::DEFAUL_PAGINATION_COUNT
         );
 
-        return response()->paginated(CompanyMinifiedResourse::collection($companies));
+        return response()->paginated(CompanyMinifiedResource::collection($companies));
     }
 
     public function show(Company $company)
     {
         return response()->success(
             trans('company.company_retrieved_successfully'),
-            new CompanyResourse($company),
+            new CompanyResource($company),
             StatusCode::OK
         );
     }
@@ -54,7 +54,7 @@ class ClientCompanyController extends Controller
 
         return response()->success(
             trans('company.company_created_successfully'),
-            new CompanyResourse($company),
+            new CompanyResource($company),
             StatusCode::OK
         );
     }
@@ -65,7 +65,7 @@ class ClientCompanyController extends Controller
 
         return response()->success(
             trans('company.company_updated_successfully'),
-            new CompanyResourse($company),
+            new CompanyResource($company),
             StatusCode::OK
         );
     }
@@ -76,7 +76,7 @@ class ClientCompanyController extends Controller
 
         return response()->success(
             trans('company.company_deleted_successfully'),
-            new CompanyResourse($company),
+            new CompanyResource($company),
             StatusCode::OK
         );
     }

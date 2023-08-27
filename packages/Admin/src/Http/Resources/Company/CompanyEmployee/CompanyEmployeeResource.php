@@ -2,11 +2,11 @@
 
 namespace Admin\Http\Resources\Company\CompanyEmployee;
 
-use Admin\Http\Resources\Company\CompanyMinifiedResourse;
+use Admin\Http\Resources\Company\CompanyMinifiedResource;
 use App\Http\Resources\SystemLookupResource;
 use Illuminate\Http\Resources\Json\JsonResource;
 
-class CompanyEmployeeResourse extends JsonResource
+class CompanyEmployeeResource extends JsonResource
 {
     /**
      * Transform the resource into an array.
@@ -29,9 +29,9 @@ class CompanyEmployeeResourse extends JsonResource
 
             'account_type' => new SystemLookupResource($this->accountType),
 
-            'client' => new CompanyEmployeeMinifiedResourse($this->client),
+            'client' => new CompanyEmployeeMinifiedResource($this->client),
             
-            'company' => new CompanyMinifiedResourse($this->company),
+            'company' => new CompanyMinifiedResource($this->company),
 
             'created_at' => $this->created_at,
         ];

@@ -2,8 +2,8 @@
 
 namespace Client\Http\Controllers;
 
-use Admin\Http\Resources\Company\CompanyEmployee\CompanyEmployeeMinifiedResourse;
-use Admin\Http\Resources\Company\CompanyEmployee\CompanyEmployeeResourse;
+use Admin\Http\Resources\Company\CompanyEmployee\CompanyEmployeeMinifiedResource;
+use Admin\Http\Resources\Company\CompanyEmployee\CompanyEmployeeResource;
 use App\Constants\StatusCode;
 use App\Constants\SystemDefault;
 use App\Http\Controllers\Controller;
@@ -27,7 +27,7 @@ class ClientCompanyEmployeeController extends Controller
             $request->get('per_page') ? $request->get('per_page') : SystemDefault::DEFAUL_PAGINATION_COUNT
         );
 
-        return response()->paginated(CompanyEmployeeMinifiedResourse::collection($employees));
+        return response()->paginated(CompanyEmployeeMinifiedResource::collection($employees));
     }
 
     public function search(Request $request)
@@ -38,14 +38,14 @@ class ClientCompanyEmployeeController extends Controller
             $request->get('per_page') ? $request->get('per_page') : SystemDefault::DEFAUL_PAGINATION_COUNT
         );
 
-        return response()->paginated(CompanyEmployeeMinifiedResourse::collection($employees));
+        return response()->paginated(CompanyEmployeeMinifiedResource::collection($employees));
     }
 
     public function show(User $user)
     {
         return response()->success(
             trans('company.company_employee_retrieved_successfully'),
-            new CompanyEmployeeResourse($user),
+            new CompanyEmployeeResource($user),
             StatusCode::OK
         );
     }
@@ -57,7 +57,7 @@ class ClientCompanyEmployeeController extends Controller
 
         return response()->success(
             trans('company.company_employee_created_successfully'),
-            new CompanyEmployeeResourse($user),
+            new CompanyEmployeeResource($user),
             StatusCode::OK
         );
     }
@@ -68,7 +68,7 @@ class ClientCompanyEmployeeController extends Controller
 
         return response()->success(
             trans('company.company_employee_updated_successfully'),
-            new CompanyEmployeeResourse($user),
+            new CompanyEmployeeResource($user),
             StatusCode::OK
         );
     }
@@ -79,7 +79,7 @@ class ClientCompanyEmployeeController extends Controller
 
         return response()->success(
             trans('company.company_employee_deleted_successfully'),
-            new CompanyEmployeeResourse($user),
+            new CompanyEmployeeResource($user),
             StatusCode::OK
         );
     }
@@ -90,7 +90,7 @@ class ClientCompanyEmployeeController extends Controller
 
         return response()->success(
             trans('company.company_employee_assigned_successfully'),
-            new CompanyEmployeeResourse($user),
+            new CompanyEmployeeResource($user),
             StatusCode::OK
         );
     }
@@ -101,7 +101,7 @@ class ClientCompanyEmployeeController extends Controller
 
         return response()->success(
             trans('company.company_employee_assigned_successfully'),
-            new CompanyEmployeeResourse($user),
+            new CompanyEmployeeResource($user),
             StatusCode::OK
         );
     }

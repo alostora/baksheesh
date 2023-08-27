@@ -4,7 +4,7 @@ namespace Guest\Http\Resources;
 
 use Illuminate\Http\Resources\Json\JsonResource;
 
-class PayForEmployeeResourse extends JsonResource
+class PayForCompanyResource extends JsonResource
 {
      /**
       * Transform the resource into an array.
@@ -21,8 +21,6 @@ class PayForEmployeeResourse extends JsonResource
                'client_id' => $this->client_id,
 
                'company_id' => $this->company_id,
-
-               'employee_id' => $this->employee_id,
 
                'amount' => $this->amount,
 

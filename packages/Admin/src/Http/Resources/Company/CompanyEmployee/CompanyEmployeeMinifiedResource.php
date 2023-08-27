@@ -2,14 +2,14 @@
 
 namespace Admin\Http\Resources\Company\CompanyEmployee;
 
-use Admin\Http\Resources\Company\CompanyMinifiedResourse;
+use Admin\Http\Resources\Company\CompanyMinifiedResource;
 use App\Constants\FileModuleType;
 use App\Foundations\File\MainRepo;
 use App\Http\Resources\FileResource;
 use App\Models\File;
 use Illuminate\Http\Resources\Json\JsonResource;
 
-class CompanyEmployeeMinifiedResourse extends JsonResource
+class CompanyEmployeeMinifiedResource extends JsonResource
 {
     /**
      * Transform the resource into an array.
@@ -26,7 +26,7 @@ class CompanyEmployeeMinifiedResourse extends JsonResource
             'name' => $this->name,
             'email' => $this->email,
             'phone' => $this->phone,
-            'company' => new CompanyMinifiedResourse($this->company),
+            'company' => new CompanyMinifiedResource($this->company),
             'avatar' => new FileResource(MainRepo::getFile($file)),
             'created_at' => $this->created_at,
         ];

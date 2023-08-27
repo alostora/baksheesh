@@ -8,8 +8,8 @@ use App\Models\CompanyCash;
 use App\Models\EmployeeCash;
 use Guest\Http\Requests\PayForCompanyRequest;
 use Guest\Http\Requests\PayForEmployeeRequest;
-use Guest\Http\Resources\PayForCompanyResourse;
-use Guest\Http\Resources\PayForEmployeeResourse;
+use Guest\Http\Resources\PayForCompanyResource;
+use Guest\Http\Resources\PayForEmployeeResource;
 
 class PaymentController extends Controller
 {
@@ -20,7 +20,7 @@ class PaymentController extends Controller
 
         return response()->success(
             trans('payment.payment_created_successfully'),
-            new PayForEmployeeResourse($employeeCash),
+            new PayForEmployeeResource($employeeCash),
             StatusCode::OK
         );
     }
@@ -31,7 +31,7 @@ class PaymentController extends Controller
 
         return response()->success(
             trans('payment.payment_created_successfully'),
-            new PayForCompanyResourse($companyCash),
+            new PayForCompanyResource($companyCash),
             StatusCode::OK
         );
     }

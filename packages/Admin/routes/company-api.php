@@ -12,6 +12,10 @@ Route::group([
 
 	Route::get('companies/search', [CompanyController::class, 'search']);
 
+	Route::get('client-companies/{user}', [CompanyController::class, 'clientCompanies']);
+
+	Route::get('client-companies/search/{user}', [CompanyController::class, 'searchClientCompanies']);
+
 	Route::get('company/{company}', [CompanyController::class, 'show']);
 
 	Route::post('company', [CompanyController::class, 'store']);
