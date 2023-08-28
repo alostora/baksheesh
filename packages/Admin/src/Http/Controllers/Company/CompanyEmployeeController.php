@@ -99,6 +99,8 @@ class CompanyEmployeeController extends Controller
     {
         $user->company_id = null;
 
+        $user->save();
+
         return response()->success(
             trans('Company.company_employee_assigned_successfully'),
             new CompanyEmployeeResource($user),
