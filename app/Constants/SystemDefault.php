@@ -19,4 +19,6 @@ class SystemDefault
     public const DEFAUL_FIRST_ROWS_COUNT = 4;
     
     public const PROJECT_DEFAULT_IMPLEMENTATION_PERIOD = 30;
+
+    public const DEFAUL_DISCOUNT_PERCENTAGE = 0.06;
 }

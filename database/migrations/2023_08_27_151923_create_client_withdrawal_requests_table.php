@@ -11,25 +11,23 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('employee_cashes', function (Blueprint $table) {
+        Schema::create('client_withdrawal_requests', function (Blueprint $table) {
 
             $table->uuid('id')->primary();
 
             $table->foreignUuid('client_id')->nullable();
 
-            $table->foreignUuid('company_id')->nullable();
-
-            $table->foreignUuid('employee_id')->nullable();
-
             $table->integer('amount')->default(0)->nullable();
 
-            $table->string('payer_name')->nullable();
+            $table->double('discount_percentage')->default(0)->nullable();
 
-            $table->string('payer_email')->nullable();
+            $table->string('status')->nullable();
 
-            $table->string('payer_phone')->nullable();
+            $table->string('refuse_reasone')->nullable();
 
             $table->string('notes')->nullable();
+
+            $table->foreignUuid('action_by_id')->nullable();
 
             $table->timestamps();
 
@@ -42,6 +40,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('employee_cashes');
+        Schema::dropIfExists('client_withdrawal_requests');
     }
 };

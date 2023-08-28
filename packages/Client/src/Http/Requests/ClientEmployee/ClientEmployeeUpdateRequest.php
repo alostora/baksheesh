@@ -42,7 +42,7 @@ class ClientEmployeeUpdateRequest extends FormRequest
 
             "country_id" => [
 
-                "nullable", "uuid", "string",
+                'bail', "nullable", "uuid", "string",
 
                 Rule::exists('countries', 'id')->where('type', CountryType::COUNTRY['code'])
             ],

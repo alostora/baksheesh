@@ -6,16 +6,20 @@ use Illuminate\Database\Eloquent\Concerns\HasUuids;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
-use Illuminate\Database\Eloquent\Relations\HasMany;
 
-class Company extends Model
+class ClientWithdrawalRequest extends Model
 {
     use HasFactory, HasUuids;
 
     protected $fillable = [
 
-        'name',
-        'client_id'
+        'client_id',
+        'amount',
+        'discount_percentage',
+        'status',
+        'refuse_reasone',
+        'notes',
+        'action_by_id',
 
     ];
 
@@ -24,13 +28,13 @@ class Company extends Model
         return $this->belongsTo(User::class, 'client_id', 'id');
     }
 
-    public function employees(): HasMany
+    public function acceptedBy(): BelongsTo
     {
-        return $this->hasMany(User::class, 'company_id', 'id');
+        return $this->belongsTo(User::class, 'action_by_id', 'id');
     }
-
-    public function cash(): HasMany
+    
+    public function withdrawalRequestStatus(): BelongsTo
     {
-        return $this->hasMany(CompanyCash::class, 'company_id', 'id');
+        return $this->belongsTo(SystemLookup::class, 'status', 'id');
     }
 }

@@ -52,7 +52,6 @@ class ClientCompanyEmployeeController extends Controller
 
     public function store(ClientCompanyEmployeeCreateRequest $request)
     {
-
         $user = ClientCompanyEmployeeCreateCollection::createCompanyEmployee($request);
 
         return response()->success(
