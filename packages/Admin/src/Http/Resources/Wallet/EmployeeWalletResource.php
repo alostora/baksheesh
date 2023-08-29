@@ -35,6 +35,8 @@ class EmployeeWalletResource extends JsonResource
             'payer_phone' => $this->payer_phone,
 
             'notes' => $this->notes,
+
+            'created_at' => $this->created_at,
         ];
     }
 }

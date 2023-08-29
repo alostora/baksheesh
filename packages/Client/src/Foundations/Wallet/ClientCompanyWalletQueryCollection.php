@@ -5,7 +5,7 @@ namespace Client\Foundations\Wallet;
 use App\Models\CompanyCash;
 use Carbon\Carbon;
 
-class ClientWithdrawalRequestQueryCollection
+class ClientCompanyWalletQueryCollection
 {
     public static function searchAllCompanyWallets(
         $company_id = -1,
