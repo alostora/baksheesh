@@ -3,11 +3,11 @@
         <div class="col-xs-12">
             <div class="box">
                 <div class="box-header">
-                    <h3 class="box-title col-md-8">@lang('user.page_title_admins')</h3>
+                    <h3 class="box-title col-md-8">@lang('company_employee.page_title')</h3>
                     <div class="col-md-4">
                         <a href="{{url('admin/company-employee/create?company_id='.Request('company_id'))}}" class="btn btn-primary btn-sm" style="height:25px;padding:2px;width:150px">
                             <i class="fa fa-plus"></i>
-                            <span>@lang('general.create')</span>
+                            <span>@lang('company_employee.create')</span>
                         </a>
                     </div>
                 </div>
@@ -15,16 +15,18 @@
                     <table id="example2" class="table table-bordered table-striped">
                         <thead>
                             <tr>
-                                <th>@lang('user.name')</th>
-                                <th>@lang('user.email')</th>
-                                <th>@lang('user.phone')</th>
-                                <th>@lang('general.operations')</th>
+                                <th>#</th>
+                                <th>@lang('company_employee.name')</th>
+                                <th>@lang('company_employee.email')</th>
+                                <th>@lang('company_employee.phone')</th>
+                                <th>@lang('company_employee.operations')</th>
                             </tr>
                         </thead>
                         <tbody>
                             @if(!empty($employees))
                             @foreach ($employees as $key=>$user)
                             <tr>
+                                <td> {{$key+1}} </td>
                                 <td> {{$user->name}} </td>
                                 <td> {{$user->email}} </td>
                                 <td> {{$user->phone}} </td>

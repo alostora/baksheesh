@@ -2,25 +2,30 @@
 
 return [
 
-    'page_title' => 'Users',
+    'page_title' => 'Companies',
+
     'filter' => 'Filter',
+
     'query_string' => 'Query String',
+
     'select' => 'Select',
 
     'name' => 'Name',
-    'email' => 'Email',
-    'password' => 'Password',
-    'phone' => 'Phone',
-    'address' => 'Address',
-    'user_account_type' => 'Account Type',
-    'withdrawal_requests' => 'Withdrawal Requests',
 
+    'client' => 'Client',
+
+    'employees' => 'Employees',
 
     //operatoins
     "operations" => "Operations",
+
     "create" => "Create",
+
     "update" => "Update",
+
     "submit" => "Submit",
+
     "search" => "Search",
+
     "empty" => "Empty",
 ];

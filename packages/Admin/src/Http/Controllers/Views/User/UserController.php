@@ -18,24 +18,32 @@ class UserController extends Controller
 {
     public function index(Request $request)
     {
-        $users = UserSearchCollection::searchUsers(
+        $data['users'] = UserSearchCollection::searchUsers(
             -1,
             -1,
             $request->get('per_page') ? $request->get('per_page') : SystemDefault::DEFAUL_PAGINATION_COUNT
         );
 
-        return view('Admin/User/index', compact('users'));
+        $data['user_account_types'] = SystemLookup::where('type', UserAccountType::LOOKUP_TYPE)
+            ->where('code', '!=', UserAccountType::EMPLOYEE['code'])
+            ->get();
+
+        return view('Admin/User/index', $data);
     }
 
     public function search(Request $request)
     {
-        $users = UserSearchCollection::searchUsers(
+        $data['users'] = UserSearchCollection::searchUsers(
             $request->get('user_account_type_id') ? $request->get('user_account_type_id') : -1,
             $request->get('query_string') ? $request->get('query_string') : -1,
             $request->get('per_page') ? $request->get('per_page') : SystemDefault::DEFAUL_PAGINATION_COUNT
         );
 
-        return view('Admin/User/index', compact('users'));
+        $data['user_account_types'] = SystemLookup::where('type', UserAccountType::LOOKUP_TYPE)
+            ->where('code', '!=', UserAccountType::EMPLOYEE['code'])
+            ->get();
+
+        return view('Admin/User/index', $data);
     }
 
     public function show(User $user)

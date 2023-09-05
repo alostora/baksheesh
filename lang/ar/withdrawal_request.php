@@ -2,7 +2,7 @@
 
 return [
 
-    'page_title' => 'الدول',
+    'page_title' => 'طلبات السحب',
 
     'filter' => 'فلتر',
 
@@ -10,9 +10,9 @@ return [
 
     'select' => 'اختر',
 
-    'name' => 'الاسم',
-
-    'name_ar' => 'الاسم عربي',
+    'client' => 'عميل',
+    'amount' => 'المبلغ',
+    'status' => 'حالة الطلب',
 
     //operatoins
     "operations" => "عمليات",

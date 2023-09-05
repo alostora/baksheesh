@@ -1,30 +1,89 @@
 <section class="content">
     <div class="row">
         <div class="col-xs-12">
+            <!-- filter -->
+            <div class="box box-success">
+                <div class="box-header with-border">
+                    <h3 class="box-title">@lang('company_wallet.filter')</h3>
+
+                    <div class="box-tools pull-right">
+                        <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="box-body">
+                    <form role="form" action="{{url('admin/company-wallets')}}" method="GET">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label>@lang('company_wallet.client')</label>
+                                    <select class="form-control select2" name="client_id" style="width: 100%;">
+                                        <option value="">@lang('company_wallet.select')</option>
+                                        @foreach($clients as $client)
+                                        <?php $selected = Request('client_id') == $client->id ? "selected" : ""; ?>
+                                        <option value="{{$client->id}}" {{$selected}}>{{$client->name}}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label>@lang('company_wallet.company')</label>
+                                    <select class="form-control select2" name="company_id" style="width: 100%;">
+                                        <option value="">@lang('company_wallet.select')</option>
+                                        @foreach($companies as $company)
+                                        <?php $selected = Request('company_id') == $company->id ? "selected" : ""; ?>
+                                        <option value="{{$company->id}}" {{$selected}}>{{$company->name}}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label>@lang('company_wallet.date_from')</label>
+                                    <input type="date" name="date_from" value="{{Request('date_from')}}" class="form-control" style="width: 100%;">
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label>@lang('company_wallet.date_to')</label>
+                                    <input type="date" name="date_to" value="{{Request('date_to')}}" class="form-control" style="width: 100%;">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="box-footer">
+                            <button type="submit" class="btn btn-info pull-right">Search</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
             <div class="box">
                 <div class="box-header">
-                    <h3 class="box-title col-md-8">@lang('wallet.page_title_admins')</h3>
+                    <h3 class="box-title col-md-8">@lang('company_wallet.page_title')</h3>
                     <div class="col-md-4">
-                        
+
                     </div>
                 </div>
                 <div class="box-body">
                     <table id="example2" class="table table-bordered table-striped">
                         <thead>
                             <tr>
-                                <th>@lang('wallet.client')</th>
-                                <th>@lang('wallet.company')</th>
-                                <th>@lang('wallet.amount')</th>
-                                <th>@lang('wallet.payer_name')</th>
-                                <th>@lang('wallet.payer_email')</th>
-                                <th>@lang('wallet.payer_phone')</th>
-                                <th>@lang('wallet.notes')</th>
+                                <th>#</th>
+                                <th>@lang('company_wallet.client')</th>
+                                <th>@lang('company_wallet.company')</th>
+                                <th>@lang('company_wallet.amount')</th>
+                                <th>@lang('company_wallet.payer_name')</th>
+                                <th>@lang('company_wallet.payer_email')</th>
+                                <th>@lang('company_wallet.payer_phone')</th>
+                                <th>@lang('company_wallet.notes')</th>
                             </tr>
                         </thead>
                         <tbody>
                             @if(!empty($wallets))
                             @foreach ($wallets as $key=>$wallet)
                             <tr>
+                                <td> {{$key+1}} </td>
                                 <td> {{$wallet->client->name}} </td>
                                 <td> {{$wallet->company->name}} </td>
                                 <td> {{$wallet->amount}} </td>

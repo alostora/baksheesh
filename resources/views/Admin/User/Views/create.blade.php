@@ -6,7 +6,7 @@
       <!-- general form elements -->
       <div class="box box-primary">
         <div class="box-header with-border">
-          <h3 class="box-title col-md-8">@lang('general.create')</h3>
+          <h3 class="box-title col-md-8">@lang('user.create')</h3>
         </div>
         <!-- /.box-header -->
         <!-- form start -->
@@ -16,7 +16,7 @@
             <div class="row">
               <div class="form-group">
                 <div class="col-md-6">
-                  <label for="user_account_type_id">@lang('user.account_type')</label>
+                  <label for="user_account_type_id">@lang('user.user_account_type')</label>
                   <select class="form-control" name="user_account_type_id" id="user_account_type_id">
                     @foreach ($user_account_types as $account_type)
                     <option value="{{$account_type->id}}">{{$account_type->name}}</option>
@@ -64,7 +64,7 @@
           <!-- /.box-body -->
 
           <div class="box-footer">
-            <button type="submit" class="btn btn-primary">@lang('user.Submit')</button>
+            <button type="submit" class="btn btn-primary">@lang('user.submit')</button>
           </div>
         </form>
       </div>

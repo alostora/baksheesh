@@ -2,7 +2,7 @@
 
 return [
 
-    'page_title' => 'Countries',
+    'page_title' => 'Withdrawal Request',
 
     'filter' => 'Filter',
 
@@ -10,9 +10,9 @@ return [
 
     'select' => 'Select',
 
-    'name' => 'Name',
-
-    'name_ar' => 'Name (AR)',
+    'client' => 'Client',
+    'amount' => 'Amount',
+    'status' => 'Request Status',
 
     //operatoins
     "operations" => "Operations",
@@ -22,8 +22,6 @@ return [
     "update" => "Update",
 
     "submit" => "Submit",
-    
     "search" => "Search",
-
     "empty" => "Empty",
 ];

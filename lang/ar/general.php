@@ -4,6 +4,8 @@ return [
 
      "app_name" => "Tips",
 
-     "online" => "Online"
+     "online" => "Online",
+
+     "dashboard" => "Dashboard"
 
 ];

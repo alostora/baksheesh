@@ -4,18 +4,20 @@ return [
 
      "app_name" => "Tips",
 
-     "online" => "Online",
+     "online" => "متصل",
 
-     "dashboard" => "Dashboard",
+     "home" => "الرئيسية",
 
-     "countries" => "Countries",
+     "dashboard" => "لوحة التحكم",
 
-     "users" => "Users",
+     "countries" => "المدن",
 
-     "companies" => "Companies",
+     "users" => "المستخدمين",
 
-     "company_wallets" => "Company Wallets",
+     "companies" => "الشركات",
 
-     "employee_wallets" => "Employee Wallets",
+     "company_wallets" => "محافظ الشركات",
+
+     "employee_wallets" => "محافظ الموظفين",
 
 ];

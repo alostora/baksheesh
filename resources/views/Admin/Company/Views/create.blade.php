@@ -1,15 +1,11 @@
 <!-- Main content -->
 <section class="content">
   <div class="row">
-    <!-- left column -->
     <div class="col-md-12">
-      <!-- general form elements -->
       <div class="box box-primary">
         <div class="box-header with-border">
-          <h3 class="box-title col-md-8">@lang('general.create')</h3>
+          <h3 class="box-title col-md-8">@lang('company.create')</h3>
         </div>
-        <!-- /.box-header -->
-        <!-- form start -->
         <form role="form" action="{{url('admin/company')}}" method="POST">
           @csrf
           <div class="box-body">
@@ -30,20 +26,11 @@
               </div>
             </div>
           </div>
-          <!-- /.box-body -->
-
           <div class="box-footer">
-            <button type="submit" class="btn btn-primary">@lang('company.Submit')</button>
+            <button type="submit" class="btn btn-primary">@lang('company.submit')</button>
           </div>
         </form>
       </div>
-      <!-- /.box -->
-
-
-
     </div>
-
   </div>
-  <!-- /.row -->
 </section>
-<!-- /.content -->

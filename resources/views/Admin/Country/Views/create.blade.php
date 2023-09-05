@@ -6,7 +6,7 @@
       <!-- general form elements -->
       <div class="box box-primary">
         <div class="box-header with-border">
-          <h3 class="box-title">@lang('general.create')</h3>
+          <h3 class="box-title">@lang('country.create')</h3>
         </div>
         <!-- /.box-header -->
         <!-- form start -->
@@ -27,7 +27,7 @@
           <!-- /.box-body -->
 
           <div class="box-footer">
-            <button type="submit" class="btn btn-primary">@lang('general.submit')</button>
+            <button type="submit" class="btn btn-primary">@lang('country.submit')</button>
           </div>
         </form>
       </div>

@@ -6,7 +6,7 @@
       <!-- general form elements -->
       <div class="box box-primary">
         <div class="box-header with-border">
-          <h3 class="box-title col-md-8">@lang('general.update')</h3>
+          <h3 class="box-title col-md-8">@lang('company.update')</h3>
         </div>
         <!-- /.box-header -->
         <!-- form start -->
@@ -27,7 +27,7 @@
           <!-- /.box-body -->
 
           <div class="box-footer">
-            <button type="submit" class="btn btn-primary">@lang('company.Submit')</button>
+            <button type="submit" class="btn btn-primary">@lang('company.submit')</button>
           </div>
         </form>
       </div>

@@ -6,6 +6,8 @@ return [
 
      "online" => "Online",
 
+     "home" => "Home",
+
      "dashboard" => "Dashboard",
 
      "countries" => "Countries",

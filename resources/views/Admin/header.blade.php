@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -30,96 +31,102 @@
 
   <!-- DataTables -->
   <!-- <link rel="stylesheet" href="{{url('AdminDesign')}}/bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css"> -->
-  
-  
+
+
   <!-- DataTables -->
   <link rel="stylesheet" href="{{url('AdminDesign')}}/lte3/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css">
   <link rel="stylesheet" href="{{url('AdminDesign')}}/lte3/plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
   <link rel="stylesheet" href="{{url('AdminDesign')}}/lte3/plugins/datatables-buttons/css/buttons.bootstrap4.min.css">
 
-  
+
   <!-- Google Font -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
 
-  
+
   <link rel="stylesheet" href="{{url('AdminDesign')}}/myStyle.css">
 
   @if(App::getLocale() == "ar" || App::getLocale() == "")
-    <link rel="stylesheet" href="{{url('AdminDesign')}}/bootstrap/css/bootstrap-rtl.min.css">
-    <link rel="stylesheet" href="{{url('AdminDesign')}}/dist/css1/AdminLTE-rtl.min.css">
-    <link rel="stylesheet" href="{{url('AdminDesign')}}/dist/css1/skins/_all-skins-rtl.min.css">
-    <?php $dir = "rtl" ?>
+  <link rel="stylesheet" href="{{url('AdminDesign')}}/bootstrap/css/bootstrap-rtl.min.css">
+  <link rel="stylesheet" href="{{url('AdminDesign')}}/dist/css1/AdminLTE-rtl.min.css">
+  <link rel="stylesheet" href="{{url('AdminDesign')}}/dist/css1/skins/_all-skins-rtl.min.css">
+  <?php $dir = "rtl" ?>
   @elseif(App::getLocale() == "en")
-    <?php $dir = "ltr" ?> 
+  <?php $dir = "ltr" ?>
   @else
-    <?php $dir = "rtl" ?>  
+  <?php $dir = "rtl" ?>
   @endif
 
   <link href='https://fonts.googleapis.com/css?family=Cairo' rel='stylesheet'>
-    <link rel="stylesheet" href="{{url('AdminDesign/myStyle.css')}}">
+  <link rel="stylesheet" href="{{url('AdminDesign/myStyle.css')}}">
 
-<script src="{{url('AdminDesign/bower_components/ckeditor/ckeditor.js')}}"></script>
-<script src="{{url('AdminDesign/bower_components/jquery/dist/jquery.min.js')}}"></script>
+  <script src="{{url('AdminDesign/bower_components/ckeditor/ckeditor.js')}}"></script>
+  <script src="{{url('AdminDesign/bower_components/jquery/dist/jquery.min.js')}}"></script>
 
 
-<link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
-<script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.8/js/select2.min.js" defer></script>
+  <!-- <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" /> -->
+
+  <link href="{{url('AdminDesign')}}/select2/select2.css" rel="stylesheet" />
+
+  <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.8/js/select2.min.js" defer></script> -->
+
+  <script src="{{url('AdminDesign')}}/select2/select2.min.js" defer></script>
 
 </head>
-<body class="hold-transition skin-blue sidebar-mini" dir={{$dir}} > 
+
+<body class="hold-transition skin-blue sidebar-mini" dir={{$dir}}>
 
   <div class="wrapper">
-    
-      <header class="main-header">
-        <!-- Logo -->
-        <a href="{{url('admin')}}" class="logo">
-          <!-- mini logo for sidebar mini 50x50 pixels -->
-          <span class="logo-mini"><b>A</b>LT</span>
-          <!-- logo for regular state and mobile devices -->
-          <span class="logo-lg"><b> @lang('general.app_name')</span>
+
+    <header class="main-header">
+      <!-- Logo -->
+      <a href="{{url('admin')}}" class="logo">
+        <!-- mini logo for sidebar mini 50x50 pixels -->
+        <span class="logo-mini"><b>A</b>LT</span>
+        <!-- logo for regular state and mobile devices -->
+        <span class="logo-lg"><b> @lang('general.app_name')</span>
+      </a>
+      <!-- Header Navbar: style can be found in header.less -->
+      <nav class="navbar navbar-static-top">
+        <!-- Sidebar toggle button-->
+        <a href="#" class="sidebar-toggle" data-toggle="push-menu" role="button">
+          <span class="sr-only">Toggle navigation</span>
         </a>
-        <!-- Header Navbar: style can be found in header.less -->
-        <nav class="navbar navbar-static-top">
-          <!-- Sidebar toggle button-->
-          <a href="#" class="sidebar-toggle" data-toggle="push-menu" role="button">
-            <span class="sr-only">Toggle navigation</span>
-          </a>
-    
-          <div class="navbar-custom-menu">
-            <ul class="nav navbar-nav">
+
+        <div class="navbar-custom-menu">
+          <ul class="nav navbar-nav">
             {{--
-              
+
               @if(App::getLocale()=='en')
                 <li class="active"><a href="{{url('admin/lang/ar')}}"><i class="fa fa-flag"></i> عربي</a></li>
-              @else
-                <li class="active"><a href="{{url('admin/lang/en')}}"><i class="fa fa-flag-o"></i> en</a></li>
-              @endif
+            @else
+            <li class="active"><a href="{{url('admin/lang/en')}}"><i class="fa fa-flag-o"></i> en</a></li>
+            @endif
 
             --}}
-              <li class="dropdown user user-menu">
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                  <img src="{{url('AdminDesign')}}/dist/img/user2-160x160.jpg" class="user-image" alt="User Image">
-                  <span class="hidden-xs">{{auth()->user()->name}}</span>
-                </a>
-                <ul class="dropdown-menu">
-                  <!-- User image -->
-                  <li class="user-header">
-                    <img src="{{url('AdminDesign')}}/dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
-    
-                    <p>
-                      {{auth()->user()->name}}
-                      <small>Member since {{date("Y-m-d",strtotime(auth()->user()->created_at))}}</small>
-                    </p>
-                  </li>
+            <li class="dropdown user user-menu">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                <img src="{{url('AdminDesign')}}/dist/img/user2-160x160.jpg" class="user-image" alt="User Image">
+                <span class="hidden-xs">{{auth()->user()->name}}</span>
+              </a>
+              <ul class="dropdown-menu">
+                <!-- User image -->
+                <li class="user-header">
+                  <img src="{{url('AdminDesign')}}/dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
 
-                  <li class="user-footer">
-                    <div class="pull-right">
-                      <a href="{{url('admin/logout')}}" class="btn btn-default btn-flat">@lang('general.logout')</a>
-                    </div>
-                  </li>
-                </ul>
-              </li>
-            </ul>
-          </div>
-        </nav>
-      </header>
+                  <p>
+                    {{auth()->user()->name}}
+                    <small>Member since {{date("Y-m-d",strtotime(auth()->user()->created_at))}}</small>
+                  </p>
+                </li>
+
+                <li class="user-footer">
+                  <div class="pull-right">
+                    <a href="{{url('admin/logout')}}" class="btn btn-default btn-flat">@lang('general.logout')</a>
+                  </div>
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+      </nav>
+    </header>
