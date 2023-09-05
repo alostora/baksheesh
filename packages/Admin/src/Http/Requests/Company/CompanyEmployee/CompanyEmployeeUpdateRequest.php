@@ -4,6 +4,7 @@ namespace Admin\Http\Requests\Company\CompanyEmployee;
 
 use App\Constants\HasLookupType\CountryType;
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
 
 class CompanyEmployeeUpdateRequest extends FormRequest
@@ -21,7 +22,7 @@ class CompanyEmployeeUpdateRequest extends FormRequest
      *
      * @return array<string, \Illuminate\Contracts\Validation\Rule|array|string>
      */
-    public function rules(): array
+    public function rules(Request $request): array
     {
         return [
 
@@ -32,13 +33,13 @@ class CompanyEmployeeUpdateRequest extends FormRequest
             "phone" => [
                 "bail", "required", "string", "max:255",
 
-                Rule::unique('users', 'phone')->ignore(auth()->user()->id, 'id')
+                Rule::unique('users', 'phone')->ignore($request->user->id, 'id')
             ],
 
             "email" => [
                 "bail", "required", "string", "max:255",
 
-                Rule::unique('users', 'email')->ignore(auth()->user()->id, 'id')
+                Rule::unique('users', 'email')->ignore($request->user->id, 'id')
             ],
 
             "country_id" => [

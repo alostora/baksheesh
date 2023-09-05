@@ -1,0 +1,65 @@
+<section class="content">
+    <div class="row">
+        <div class="col-xs-12">
+            <div class="box">
+                <div class="box-header">
+                    <h3 class="box-title col-md-8">@lang('user.page_title_admins')</h3>
+                    <div class="col-md-4">
+                        <a href="{{url('admin/user/create')}}" class="btn btn-primary btn-sm" style="height:25px;padding:2px;width:150px">
+                            <i class="fa fa-plus"></i>
+                            <span>@lang('general.create')</span>
+                        </a>
+                    </div>
+                </div>
+                <div class="box-body">
+                    <table id="example2" class="table table-bordered table-striped">
+                        <thead>
+                            <tr>
+                                <th>@lang('user.name')</th>
+                                <th>@lang('user.email')</th>
+                                <th>@lang('user.phone')</th>
+                                <th>@lang('user.withdrawal_requests')</th>
+                                <th>@lang('general.operations')</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @if(!empty($users))
+                            @foreach ($users as $key=>$user)
+                            <tr>
+                                <td> {{$user->name}} </td>
+                                <td> {{$user->email}} </td>
+                                <td> {{$user->phone}} </td>
+                                <td>
+                                    @if($user->accountType && $user->accountType->code == \App\Constants\HasLookupType\UserAccountType::CLIENT['code'])
+                                    <a href="{{url('admin/client-withdrawal-requests/'.$user->id)}}" class="btn btn-success btn-sm">
+                                        <i class="fa fa-info"></i> @lang('user.withdrawal_requests')
+                                    </a>
+                                    @else
+                                    <label class="label label-default">EMPTY</label>
+                                    @endif
+                                </td>
+                                <td>
+                                    <a href="{{url('admin/user/edit/'.$user->id)}}" class="btn btn-success btn-sm">
+                                        <i class="fa fa-edit"></i>
+                                    </a>
+                                    <a href="{{url('admin/user/delete/'.$user->id)}}" class="btn btn-danger btn-sm">
+                                        <i class="fa fa-trash"></i>
+                                    </a>
+                                </td>
+                            </tr>
+                            @endforeach
+                            @endif
+                        </tbody>
+                    </table>
+
+                    <div class="box-footer clearfix">
+                        <ul class="pagination pagination-sm no-margin pull-right">
+                            {{ $users->render( "pagination::bootstrap-4") }}
+                        </ul>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

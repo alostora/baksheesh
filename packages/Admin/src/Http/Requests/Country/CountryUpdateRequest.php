@@ -38,7 +38,7 @@ class CountryUpdateRequest extends FormRequest
                 Rule::unique('countries', 'name_ar')->where('type', CountryType::COUNTRY['code'])->ignore($request->country->id, 'id')
             ],
 
-            "phone_code" => ["required", "string", "max:5"],
+            "phone_code" => ["nullable", "string", "max:5"],
 
             "flag" => ["nullable", "string", "max:255"],
 

@@ -11,11 +11,11 @@ class CompanyEmployeeSearchCollection
         $query_string = -1,
         $per_page = SystemDefault::DEFAUL_PAGINATION_COUNT
     ) {
-        $companies = CompanyEmployeeQueryCollection::searchAllCompanyEmployees(
+        $employees = CompanyEmployeeQueryCollection::searchAllCompanyEmployees(
             $company_id,
             $query_string
         );
 
-        return $companies->paginate($per_page);
+        return $employees->paginate($per_page);
     }
 }

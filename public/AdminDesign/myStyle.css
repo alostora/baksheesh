@@ -1,0 +1,12 @@
+body,b,p,h1,h2,h3,h4,h5,h6,span,a,label,li,input,div,button,input,form{
+    font-family: 'Cairo';
+   
+}
+
+
+
+body,p,label,li,input,div,button,input,form{
+     font-size :13px;
+   
+}
+

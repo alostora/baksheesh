@@ -22,6 +22,12 @@ class RouteServiceProvider extends ServiceProvider
                 ->group($file);
         }
 
+        foreach (glob(base_path('/packages/Admin/admin_routes/*.php')) as $file) {
+            Route::prefix('admin')
+                ->middleware(['web'])
+                ->group($file);
+        }
+
         $this->bindRoutes($router);
     }
 
@@ -38,11 +44,11 @@ class RouteServiceProvider extends ServiceProvider
         $router->bind('city', function ($value) {
             return Country::loadCity($value);
         });
-        
+
         $router->bind('zone', function ($value) {
             return Country::loadZone($value);
         });
-        
+
         $router->bind('district', function ($value) {
             return Country::loadDistrict($value);
         });
