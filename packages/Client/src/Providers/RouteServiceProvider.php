@@ -2,7 +2,6 @@
 
 namespace Client\Providers;
 
-use Illuminate\Routing\Router;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\ServiceProvider;
 
@@ -13,11 +12,17 @@ class RouteServiceProvider extends ServiceProvider
      *
      * @return void
      */
-    public function boot(Router $router)
+    public function boot()
     {
         foreach (glob(base_path('/packages/Client/routes/*.php')) as $file) {
             Route::prefix('api/client')
                 ->middleware(['api'])
+                ->group($file);
+        }
+
+        foreach (glob(base_path('/packages/Client/client_routes/*.php')) as $file) {
+            Route::prefix('client')
+                ->middleware(['web'])
                 ->group($file);
         }
     }

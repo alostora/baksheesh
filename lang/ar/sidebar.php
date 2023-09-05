@@ -20,4 +20,6 @@ return [
 
      "employee_wallets" => "محافظ الموظفين",
 
+     "withdrawal_requests" => "طلبات السحب",
+
 ];

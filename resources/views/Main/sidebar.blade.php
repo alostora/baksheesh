@@ -27,16 +27,18 @@
     <ul class="sidebar-menu" data-widget="tree">
 
       <li class="header"><a href="{{url('admin')}}">@lang('sidebar.home')</a></li>
-      
+
+      @if(in_array(auth()->user()->accountType->code,[\App\Constants\HasLookupType\UserAccountType::ADMIN['code'],\App\Constants\HasLookupType\UserAccountType::ROOT['code']]))
+
       <li class="active treeview">
-        
-      <a href="#">
+
+        <a href="#">
           <i class="fa fa-dashboard"></i> <span>@lang('sidebar.dashboard')</span>
           <span class="pull-right-container">
             <i class="fa fa-angle-left pull-right"></i>
           </span>
         </a>
-      
+
         <ul class="treeview-menu">
 
           <li>
@@ -44,19 +46,19 @@
               <i class="fa fa-circle-o"></i>@lang('sidebar.countries')
             </a>
           </li>
-          
+
           <li>
             <a href="{{url('admin/users')}}">
               <i class="fa fa-circle-o"></i>@lang('sidebar.users')
             </a>
           </li>
-          
+
           <li>
             <a href="{{url('admin/companies')}}">
               <i class="fa fa-circle-o"></i>@lang('sidebar.companies')
             </a>
           </li>
-          
+
           <li>
             <a href="{{url('admin/company-wallets')}}">
               <i class="fa fa-circle-o"></i>@lang('sidebar.company_wallets')
@@ -70,9 +72,46 @@
 
         </ul>
       </li>
+      @elseif(in_array(auth()->user()->accountType->code,[\App\Constants\HasLookupType\UserAccountType::CLIENT['code']]))
+
+      <li class="active treeview">
+
+        <a href="#">
+          <i class="fa fa-dashboard"></i> <span>@lang('sidebar.dashboard')</span>
+          <span class="pull-right-container">
+            <i class="fa fa-angle-left pull-right"></i>
+          </span>
+        </a>
+
+        <ul class="treeview-menu">
+
+          <li>
+            <a href="{{url('client/client-companies')}}">
+              <i class="fa fa-circle-o"></i>@lang('sidebar.companies')
+            </a>
+          </li>
+
+          <li>
+            <a href="{{url('client/company-wallets')}}">
+              <i class="fa fa-circle-o"></i>@lang('sidebar.company_wallets')
+            </a>
+          </li>
+          <li>
+            <a href="{{url('client/employee-wallets')}}">
+              <i class="fa fa-circle-o"></i>@lang('sidebar.employee_wallets')
+            </a>
+          </li>
+          <li>
+            <a href="{{url('client/client-withdrawal-requests')}}">
+              <i class="fa fa-circle-o"></i>@lang('sidebar.withdrawal_requests')
+            </a>
+          </li>
+
+        </ul>
+      </li>
+      @endif
     </ul>
   </section>
-  <!-- /.sidebar -->
 </aside>
 
 <div class="content-wrapper">

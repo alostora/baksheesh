@@ -1,5 +1,5 @@
 
-@include('Admin.header')
-@include('Admin.sidebar')
+@include('Main.header')
+@include('Main.sidebar')
 @include('Admin.CompanyWallet.Views.table')
- @include('Admin.footer')
+ @include('Main.footer')

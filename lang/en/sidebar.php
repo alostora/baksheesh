@@ -20,4 +20,6 @@ return [
 
      "employee_wallets" => "Employee Wallets",
 
+     "withdrawal_requests" => "Withdrawal Requests",
+
 ];
