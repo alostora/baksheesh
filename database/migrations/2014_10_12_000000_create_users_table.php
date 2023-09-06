@@ -27,17 +27,9 @@ return new class extends Migration
 
             $table->string('reset_password_code')->unique()->nullable();
 
-            $table->timestamp('email_verified_at')->nullable();
-
             $table->string('password');
 
             $table->string('api_token')->nullable();
-
-            $table->string('finger_print')->nullable();
-
-            $table->string('status')->nullable();
-
-            $table->boolean('member_control')->default(false);
 
             $table->foreignUuid('country_id')->nullable();
 
@@ -48,6 +40,10 @@ return new class extends Migration
             $table->foreignUuid('company_id')->nullable();
 
             $table->foreignUuid('file_id')->nullable();
+
+            $table->timestamp('email_verified_at')->nullable();
+
+            $table->timestamp('stopped_at')->nullable();
 
             $table->rememberToken();
 

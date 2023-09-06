@@ -12,6 +12,7 @@ use App\Constants\SystemDefault;
 use App\Http\Controllers\Controller;
 use App\Models\Country;
 use App\Models\Country as Governorate;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 
 class GovernorateController extends Controller
@@ -84,10 +85,20 @@ class GovernorateController extends Controller
     {
         $governorate->delete();
 
-        return response()->success(
-            trans('governorate.governorate_deleted_successfully'),
-            new GovernorateMinifiedResource($governorate),
-            StatusCode::OK
-        );
+        return back();
+    }
+
+    public function active(Governorate $governorate)
+    {
+        $governorate->update(['stopped_at' => null]);
+
+        return back();
+    }
+
+    public function inactive(Governorate $governorate)
+    {
+        $governorate->update(['stopped_at' => Carbon::now()]);
+
+        return back();
     }
 }

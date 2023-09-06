@@ -23,4 +23,8 @@ Route::group([
 	Route::patch('company/{company}', [CompanyController::class, 'update']);
 
 	Route::delete('company/{company}', [CompanyController::class, 'destroy']);
+
+     Route::patch('company-active/{company}', [CompanyController::class, 'active']);
+
+     Route::patch('company-inactive/{company}', [CompanyController::class, 'inactive']);
 });

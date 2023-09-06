@@ -22,7 +22,8 @@ class CityMinifiedResource extends JsonResource
             'governorate_id' => $this->governorate_id,
             'name' => $this->name,
             'name_ar' => $this->name_ar,
-            'prefix' => $this->prefix
+            'prefix' => $this->prefix,
+            'stopped_at' => $this->stopped_at,
         ];
     }
 }

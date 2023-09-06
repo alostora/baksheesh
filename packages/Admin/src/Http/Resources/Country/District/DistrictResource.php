@@ -22,6 +22,7 @@ class DistrictResource extends JsonResource
             'id' => $this->id,
             'name' => $this->name,
             'prefix' => $this->prefix,
+            'stopped_at' => $this->stopped_at,
             'country' => new CountryMinifiedResource($this->country),
             'governorate' => new GovernorateMinifiedResource($this->governorate),
             'city' => new CityMinifiedResource($this->city),

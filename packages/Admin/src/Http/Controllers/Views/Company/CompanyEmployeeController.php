@@ -16,6 +16,7 @@ use App\Constants\SystemDefault;
 use App\Http\Controllers\Controller;
 use App\Models\Company;
 use App\Models\User;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 
 class CompanyEmployeeController extends Controller
@@ -115,5 +116,19 @@ class CompanyEmployeeController extends Controller
             new CompanyEmployeeResource($user),
             StatusCode::OK
         );
+    }
+
+    public function active(User $user)
+    {
+        $user->update(['stopped_at' => null]);
+
+        return back();
+    }
+
+    public function inactive(User $user)
+    {
+        $user->update(['stopped_at' => Carbon::now()]);
+
+        return back();
     }
 }

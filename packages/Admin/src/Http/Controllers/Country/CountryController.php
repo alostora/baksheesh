@@ -11,6 +11,7 @@ use App\Constants\StatusCode;
 use App\Constants\SystemDefault;
 use App\Http\Controllers\Controller;
 use App\Models\Country;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 
 class CountryController extends Controller
@@ -72,6 +73,28 @@ class CountryController extends Controller
 
         return response()->success(
             trans('country.country_deleted_successfully'),
+            new CountryMinifiedResource($country),
+            StatusCode::OK
+        );
+    }
+
+    public function active(Country $country)
+    {
+        $country->update(['stopped_at'=> null]);
+
+        return response()->success(
+            trans('country.country_actived_successfully'),
+            new CountryMinifiedResource($country),
+            StatusCode::OK
+        );
+    }
+
+    public function inactive(Country $country)
+    {
+        $country->update(['stopped_at' => Carbon::now()]);
+
+        return response()->success(
+            trans('country.country_inactived_successfully'),
             new CountryMinifiedResource($country),
             StatusCode::OK
         );

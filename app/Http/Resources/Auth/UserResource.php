@@ -38,6 +38,8 @@ class UserResource extends JsonResource
             'client' => new UserMinifiedResource($this->client),
 
             'created_at' => $this->created_at,
+
+            'stopped_at' => $this->stopped_at,
         ];
     }
 }

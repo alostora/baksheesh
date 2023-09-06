@@ -20,6 +20,7 @@ class GovernorateWithCityResource extends JsonResource
             'id' => $this->id,
             'name' => $this->name,
             'prefix' => $this->prefix,
+            'stopped_at' => $this->stopped_at,
             'country' => new CountryMinifiedResource($this->country),
             'cities' => CityMinifiedResource::collection($this->cities),
         ];

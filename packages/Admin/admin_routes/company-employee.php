@@ -27,4 +27,8 @@ Route::group([
 	Route::patch('assigne-company-employee/{user}', [CompanyEmployeeController::class, 'assigneCompanyEmployee']);
 
 	Route::patch('unassigne-company-employee/{user}', [CompanyEmployeeController::class, 'unAssigneCompanyEmployee']);
+
+	Route::any('company-employee-active/{user}', [CompanyEmployeeController::class, 'active']);
+
+	Route::any('company-employee-inactive/{user}', [CompanyEmployeeController::class, 'inactive']);
 });

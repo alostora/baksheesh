@@ -7,16 +7,25 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Company extends Model
 {
-    use HasFactory, HasUuids;
+    use HasFactory, HasUuids, SoftDeletes;
 
     protected $fillable = [
 
         'name',
-        'client_id'
 
+        'client_id',
+
+        'stopped_at',
+
+    ];
+
+    protected $casts = [
+
+        'stopped_at' => 'datetime'
     ];
 
     public function client(): BelongsTo

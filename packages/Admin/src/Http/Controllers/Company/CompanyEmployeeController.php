@@ -15,6 +15,7 @@ use App\Constants\StatusCode;
 use App\Constants\SystemDefault;
 use App\Http\Controllers\Controller;
 use App\Models\User;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 
 class CompanyEmployeeController extends Controller
@@ -44,7 +45,7 @@ class CompanyEmployeeController extends Controller
     public function show(User $user)
     {
         return response()->success(
-            trans('Company.company_employee_retrieved_successfully'),
+            trans('company.company_employee_retrieved_successfully'),
             new CompanyEmployeeResource($user),
             StatusCode::OK
         );
@@ -56,7 +57,7 @@ class CompanyEmployeeController extends Controller
         $user = CompanyEmployeeCreateCollection::createCompanyEmployee($request);
 
         return response()->success(
-            trans('Company.company_employee_created_successfully'),
+            trans('company.company_employee_created_successfully'),
             new CompanyEmployeeResource($user),
             StatusCode::OK
         );
@@ -67,7 +68,7 @@ class CompanyEmployeeController extends Controller
         $user = CompanyEmployeeUpdateCollection::updateCompanyEmployee($request, $user);
 
         return response()->success(
-            trans('Company.company_employee_updated_successfully'),
+            trans('company.company_employee_updated_successfully'),
             new CompanyEmployeeResource($user),
             StatusCode::OK
         );
@@ -78,7 +79,29 @@ class CompanyEmployeeController extends Controller
         $user->delete();
 
         return response()->success(
-            trans('Company.company_employee_deleted_successfully'),
+            trans('company.company_employee_deleted_successfully'),
+            new CompanyEmployeeResource($user),
+            StatusCode::OK
+        );
+    }
+
+    public function active(User $user)
+    {
+        $user->update(['stopped_at' => null]);
+
+        return response()->success(
+            trans('company.company_employee_actived_successfully'),
+            new CompanyEmployeeResource($user),
+            StatusCode::OK
+        );
+    }
+
+    public function inactive(User $user)
+    {
+        $user->update(['stopped_at' => Carbon::now()]);
+
+        return response()->success(
+            trans('company.company_employee_inactived_successfully'),
             new CompanyEmployeeResource($user),
             StatusCode::OK
         );
@@ -89,7 +112,7 @@ class CompanyEmployeeController extends Controller
         $user = AssignCompanyEmployeeCollection::assignCompanyEmployee($request, $user);
 
         return response()->success(
-            trans('Company.company_employee_assigned_successfully'),
+            trans('company.company_employee_assigned_successfully'),
             new CompanyEmployeeResource($user),
             StatusCode::OK
         );
@@ -102,7 +125,7 @@ class CompanyEmployeeController extends Controller
         $user->save();
 
         return response()->success(
-            trans('Company.company_employee_assigned_successfully'),
+            trans('company.company_employee_assigned_successfully'),
             new CompanyEmployeeResource($user),
             StatusCode::OK
         );

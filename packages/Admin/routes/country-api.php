@@ -24,6 +24,10 @@ Route::group([
 
      Route::delete('country/{country}', [CountryController::class, 'destroy']);
 
+     Route::patch('country-active/{country}', [CountryController::class, 'active']);
+
+     Route::patch('country-inactive/{country}', [CountryController::class, 'inactive']);
+
 
      Route::get('governorates/{country}', [GovernorateController::class, 'index']);
 
@@ -38,6 +42,10 @@ Route::group([
      Route::patch('governorate/{governorate}', [GovernorateController::class, 'update']);
 
      Route::delete('governorate/{governorate}', [GovernorateController::class, 'destroy']);
+
+     Route::patch('governorate-active/{governorate}', [GovernorateController::class, 'active']);
+
+     Route::patch('governorate-inactive/{governorate}', [GovernorateController::class, 'inactive']);
 
 
      Route::get('cities/{governorate}', [CityController::class, 'index']);

@@ -12,6 +12,7 @@ use App\Constants\SystemDefault;
 use App\Http\Controllers\Controller;
 use App\Models\Company;
 use App\Models\User;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 
 class CompanyController extends Controller
@@ -63,7 +64,7 @@ class CompanyController extends Controller
     public function show(Company $company)
     {
         return response()->success(
-            trans('Company.Company_retrieved_successfully'),
+            trans('company.company_retrieved_successfully'),
             new CompanyResource($company),
             StatusCode::OK
         );
@@ -74,7 +75,7 @@ class CompanyController extends Controller
         $company = Company::create($request->validated());
 
         return response()->success(
-            trans('Company.Company_created_successfully'),
+            trans('company.company_created_successfully'),
             new CompanyResource($company),
             StatusCode::OK
         );
@@ -85,7 +86,7 @@ class CompanyController extends Controller
         $company->update($request->validated());
 
         return response()->success(
-            trans('Company.Company_updated_successfully'),
+            trans('company.company_updated_successfully'),
             new CompanyResource($company),
             StatusCode::OK
         );
@@ -96,7 +97,29 @@ class CompanyController extends Controller
         $company->delete();
 
         return response()->success(
-            trans('Company.Company_deleted_successfully'),
+            trans('company.company_deleted_successfully'),
+            new CompanyResource($company),
+            StatusCode::OK
+        );
+    }
+
+    public function active(Company $company)
+    {
+        $company->update(['stopped_at' => null]);
+
+        return response()->success(
+            trans('company.company_actived_successfully'),
+            new CompanyResource($company),
+            StatusCode::OK
+        );
+    }
+
+    public function inactive(Company $company)
+    {
+        $company->update(['stopped_at' => Carbon::now()]);
+
+        return response()->success(
+            trans('company.company_inactived_successfully'),
             new CompanyResource($company),
             StatusCode::OK
         );

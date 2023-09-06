@@ -30,6 +30,8 @@ class ClientEmployeeMinifiedResource extends JsonResource
                'account_type' => new SystemLookupResource($this->accountType),
 
                'created_at' => $this->created_at,
+
+               'stopped_at' => $this->stopped_at,
           ];
      }
 }

@@ -20,6 +20,7 @@ class GovernorateMinifiedResource extends JsonResource
             'name' => $this->name,
             'name_ar' => $this->name_ar,
             'prefix' => $this->prefix,
+            'stopped_at' => $this->stopped_at,
         ];
     }
 }

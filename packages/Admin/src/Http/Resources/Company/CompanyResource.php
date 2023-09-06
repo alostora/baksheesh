@@ -19,6 +19,7 @@ class CompanyResource extends JsonResource
             'id' => $this->id,
             'name' => $this->name,
             'client_id' => $this->client_id,
+            'stopped_at' => $this->stopped_at,
         ];
     }
 }

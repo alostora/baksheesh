@@ -27,6 +27,7 @@ class UserMinifiedResource extends JsonResource
             'phone' => $this->phone,
             'avatar' => new FileResource(MainRepo::getFile($file)),
             'created_at' => $this->created_at,
+            'stopped_at' => $this->stopped_at,
         ];
     }
 }

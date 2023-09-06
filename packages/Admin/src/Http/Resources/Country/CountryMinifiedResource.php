@@ -21,6 +21,7 @@ class CountryMinifiedResource extends JsonResource
             'phone_code' => $this->phone_code,
             'flag' => $this->flag,
             'prefix' => $this->prefix,
+            'stopped_at' => $this->stopped_at,
         ];
     }
 }

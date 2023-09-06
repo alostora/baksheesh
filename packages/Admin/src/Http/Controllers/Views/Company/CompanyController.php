@@ -13,6 +13,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Company;
 use App\Models\SystemLookup;
 use App\Models\User;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 
 class CompanyController extends Controller
@@ -95,7 +96,7 @@ class CompanyController extends Controller
 
     public function store(CompanyCreateRequest $request)
     {
-        $company = Company::create($request->validated());
+        Company::create($request->validated());
 
         return redirect(url('admin/companies'));
     }
@@ -123,6 +124,20 @@ class CompanyController extends Controller
     public function destroy(Company $company)
     {
         $company->delete();
+
+        return back();
+    }
+
+    public function active(Company $company)
+    {
+        $company->update(['stopped_at' => null]);
+
+        return back();
+    }
+
+    public function inactive(Company $company)
+    {
+        $company->update(['stopped_at' => Carbon::now()]);
 
         return back();
     }

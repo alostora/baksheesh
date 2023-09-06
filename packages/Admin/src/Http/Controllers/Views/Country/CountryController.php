@@ -11,6 +11,7 @@ use App\Constants\StatusCode;
 use App\Constants\SystemDefault;
 use App\Http\Controllers\Controller;
 use App\Models\Country;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 
 class CountryController extends Controller
@@ -72,6 +73,20 @@ class CountryController extends Controller
     public function destroy(Country $country)
     {
         $country->delete();
+
+        return back();
+    }
+
+    public function active(Country $country)
+    {
+        $country->update(['stopped_at'=> null]);
+
+        return back();
+    }
+
+    public function inactive(Country $country)
+    {
+        $country->update(['stopped_at' => Carbon::now()]);
 
         return back();
     }

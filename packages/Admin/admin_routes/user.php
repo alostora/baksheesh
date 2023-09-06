@@ -23,4 +23,8 @@ Route::group([
 	Route::delete('user/{user}', [UserController::class, 'destroy']);
 
 	Route::any('user/delete/{user}', [UserController::class, 'destroy']);
+
+     Route::any('user-active/{user}', [UserController::class, 'active']);
+
+     Route::any('user-inactive/{user}', [UserController::class, 'inactive']);
 });

@@ -40,8 +40,6 @@ class User extends Authenticatable implements MustVerifyEmail
 
         'api_token',
 
-        'status',
-
         'country_id',
 
         'user_account_type_id', //lookup type
@@ -58,6 +56,8 @@ class User extends Authenticatable implements MustVerifyEmail
 
         'email_verified_at',
 
+        'stopped_at',
+
     ];
 
     protected $hidden = [
@@ -70,7 +70,10 @@ class User extends Authenticatable implements MustVerifyEmail
     ];
 
     protected $casts = [
+
         'email_verified_at' => 'datetime',
+
+        'stopped_at' => 'datetime'
     ];
 
     protected function password(): Attribute

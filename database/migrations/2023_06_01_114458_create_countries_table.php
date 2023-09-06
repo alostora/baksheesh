@@ -39,6 +39,8 @@ return new class extends Migration
 
             $table->foreignUuid('zone_id')->nullable();
 
+            $table->timestamp('stopped_at')->nullable();
+
             $table->timestamps();
 
             $table->softDeletes();

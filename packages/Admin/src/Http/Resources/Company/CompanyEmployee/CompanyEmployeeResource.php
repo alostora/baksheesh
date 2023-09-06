@@ -34,6 +34,8 @@ class CompanyEmployeeResource extends JsonResource
             'company' => new CompanyMinifiedResource($this->company),
 
             'created_at' => $this->created_at,
+            
+            'stopped_at' => $this->stopped_at,
         ];
     }
 }

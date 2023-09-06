@@ -16,12 +16,13 @@ class ZoneMinifiedResource extends JsonResource
     {
         return [
             'id' => $this->id,
-            'country_id' => $this->country_id,
-            'governorate_id' => $this->governorate_id,
-            'city_id' => $this->city_id,
             'name' => $this->name,
             'name_ar' => $this->name_ar,
             'prefix' => $this->prefix,
+            'stopped_at' => $this->stopped_at,
+            'country_id' => $this->country_id,
+            'governorate_id' => $this->governorate_id,
+            'city_id' => $this->city_id,
         ];
     }
 }

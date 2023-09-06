@@ -1,6 +1,6 @@
 <?php
 
-namespace Admin\Http\Controllers\Views\Country;
+namespace Admin\Http\Controllers\Country;
 
 use Admin\Foundations\Country\Governorate\GovernorateCreateCollection;
 use Admin\Foundations\Country\Governorate\GovernorateSearchCollection;
@@ -12,6 +12,7 @@ use App\Constants\SystemDefault;
 use App\Http\Controllers\Controller;
 use App\Models\Country;
 use App\Models\Country as Governorate;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 
 class GovernorateController extends Controller
@@ -86,6 +87,28 @@ class GovernorateController extends Controller
 
         return response()->success(
             trans('governorate.governorate_deleted_successfully'),
+            new GovernorateMinifiedResource($governorate),
+            StatusCode::OK
+        );
+    }
+
+    public function active(Governorate $governorate)
+    {
+        $governorate->update(['stopped_at' => null]);
+
+        return response()->success(
+            trans('governorate.governorate_actived_successfully'),
+            new GovernorateMinifiedResource($governorate),
+            StatusCode::OK
+        );
+    }
+
+    public function inactive(Governorate $governorate)
+    {
+        $governorate->update(['stopped_at' => Carbon::now()]);
+
+        return response()->success(
+            trans('governorate.governorate_inactived_successfully'),
             new GovernorateMinifiedResource($governorate),
             StatusCode::OK
         );

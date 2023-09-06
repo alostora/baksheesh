@@ -19,4 +19,8 @@ Route::group([
 	Route::patch('user/{user}', [UserController::class, 'update']);
 
 	Route::delete('user/{user}', [UserController::class, 'destroy']);
+
+     Route::patch('user-active/{user}', [UserController::class, 'active']);
+
+     Route::patch('user-inactive/{user}', [UserController::class, 'inactive']);
 });

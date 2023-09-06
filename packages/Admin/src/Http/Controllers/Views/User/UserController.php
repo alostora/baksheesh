@@ -12,6 +12,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Resources\Auth\UserResource;
 use App\Models\SystemLookup;
 use App\Models\User;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 
 class UserController extends Controller
@@ -93,6 +94,20 @@ class UserController extends Controller
     public function destroy(User $user)
     {
         $user->delete();
+
+        return back();
+    }
+
+    public function active(User $user)
+    {
+        $user->update(['stopped_at' => null]);
+
+        return back();
+    }
+
+    public function inactive(User $user)
+    {
+        $user->update(['stopped_at' => Carbon::now()]);
 
         return back();
     }

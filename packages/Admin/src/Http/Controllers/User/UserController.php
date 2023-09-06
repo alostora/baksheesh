@@ -11,6 +11,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Resources\Auth\UserMinifiedResource;
 use App\Http\Resources\Auth\UserResource;
 use App\Models\User;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 
 class UserController extends Controller
@@ -74,6 +75,28 @@ class UserController extends Controller
 
         return response()->success(
             trans('user.user_deleted_successfully'),
+            new UserResource($user),
+            StatusCode::OK
+        );
+    }
+
+    public function active(User $user)
+    {
+        $user->update(['stopped_at' => null]);
+
+        return response()->success(
+            trans('user.user_employee_actived_successfully'),
+            new UserResource($user),
+            StatusCode::OK
+        );
+    }
+
+    public function inactive(User $user)
+    {
+        $user->update(['stopped_at' => Carbon::now()]);
+
+        return response()->success(
+            trans('user.user_employee_inactived_successfully'),
             new UserResource($user),
             StatusCode::OK
         );
