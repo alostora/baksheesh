@@ -10,11 +10,13 @@ class CompanySearchCollection
     public static function searchCompanies(
         $client_id = -1,
         $query_string = -1,
+        $archived = -1,
         $per_page = SystemDefault::DEFAUL_PAGINATION_COUNT
     ) {
         $companies = CompanyQueryCollection::searchAllCompanies(
             $client_id,
-            $query_string
+            $query_string,
+            $archived,
         );
 
         return $companies->paginate($per_page);
@@ -23,11 +25,13 @@ class CompanySearchCollection
     public static function searchClientCompanies(
         User $user,
         $query_string = -1,
+        $archived = -1,
         $per_page = SystemDefault::DEFAUL_PAGINATION_COUNT
     ) {
         $companies = CompanyQueryCollection::searchAllClientCompanies(
             $user,
-            $query_string
+            $query_string,
+            $archived
         );
 
         return $companies->paginate($per_page);

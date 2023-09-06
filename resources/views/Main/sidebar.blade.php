@@ -52,6 +52,12 @@
               <i class="fa fa-circle-o"></i>@lang('sidebar.users')
             </a>
           </li>
+          
+          <li>
+            <a href="{{url('admin/clients')}}">
+              <i class="fa fa-circle-o"></i>@lang('sidebar.clients')
+            </a>
+          </li>
 
           <li>
             <a href="{{url('admin/companies')}}">

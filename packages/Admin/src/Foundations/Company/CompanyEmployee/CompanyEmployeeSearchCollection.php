@@ -9,11 +9,13 @@ class CompanyEmployeeSearchCollection
     public static function searchCompanyEmployees(
         $company_id = -1,
         $query_string = -1,
+        $archived = -1,
         $per_page = SystemDefault::DEFAUL_PAGINATION_COUNT
     ) {
         $employees = CompanyEmployeeQueryCollection::searchAllCompanyEmployees(
             $company_id,
-            $query_string
+            $query_string,
+            $archived,
         );
 
         return $employees->paginate($per_page);

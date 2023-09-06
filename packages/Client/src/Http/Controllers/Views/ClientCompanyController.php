@@ -7,6 +7,7 @@ use App\Constants\StatusCode;
 use App\Constants\SystemDefault;
 use App\Http\Controllers\Controller;
 use App\Models\Company;
+use Carbon\Carbon;
 use Client\Foundations\ClientCompany\ClientCompanySearchCollection;
 use Client\Http\Requests\ClientCompany\ClientCompanyCreateRequest;
 use Client\Http\Requests\ClientCompany\ClientCompanyUpdateRequest;
@@ -18,6 +19,7 @@ class ClientCompanyController extends Controller
     {
         $data['companies'] = ClientCompanySearchCollection::searchCompanies(
             -1,
+            -1,
             $request->get('per_page') ? $request->get('per_page') : SystemDefault::DEFAUL_PAGINATION_COUNT
         );
 
@@ -28,6 +30,7 @@ class ClientCompanyController extends Controller
     {
         $data['companies']  = ClientCompanySearchCollection::searchCompanies(
             $request->get('query_string') ? $request->get('query_string') : -1,
+            $request->get('active') ? $request->get('active') : -1,
             $request->get('per_page') ? $request->get('per_page') : SystemDefault::DEFAUL_PAGINATION_COUNT
         );
 
@@ -76,6 +79,20 @@ class ClientCompanyController extends Controller
     public function destroy(Company $company)
     {
         $company->delete();
+
+        return back();
+    }
+
+    public function active(Company $company)
+    {
+        $company->update(['stopped_at' => null]);
+
+        return back();
+    }
+
+    public function inactive(Company $company)
+    {
+        $company->update(['stopped_at' => Carbon::now()]);
 
         return back();
     }

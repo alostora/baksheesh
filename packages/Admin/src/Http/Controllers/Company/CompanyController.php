@@ -22,6 +22,7 @@ class CompanyController extends Controller
         $companies = CompanySearchCollection::searchCompanies(
             -1,
             -1,
+            -1,
             $request->get('per_page') ? $request->get('per_page') : SystemDefault::DEFAUL_PAGINATION_COUNT
         );
 
@@ -33,6 +34,7 @@ class CompanyController extends Controller
         $companies = CompanySearchCollection::searchCompanies(
             $request->get('client_id') ? $request->get('client_id') : -1,
             $request->get('query_string') ? $request->get('query_string') : -1,
+            $request->get('active') ? $request->get('active') : -1,
             $request->get('per_page') ? $request->get('per_page') : SystemDefault::DEFAUL_PAGINATION_COUNT
         );
 

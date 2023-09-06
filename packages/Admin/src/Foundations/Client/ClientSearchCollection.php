@@ -1,19 +1,17 @@
 <?php
 
-namespace Admin\Foundations\User;
+namespace Admin\Foundations\Client;
 
 use App\Constants\SystemDefault;
 
-class UserSearchCollection
+class ClientSearchCollection
 {
     public static function searchUsers(
-        $user_account_type_id = -1,
         $query_string = -1,
         $active = -1,
         $per_page = SystemDefault::DEFAUL_PAGINATION_COUNT
     ) {
-        $users = UserQueryCollection::searchAllUsers(
-            $user_account_type_id,
+        $users = ClientQueryCollection::searchAllUsers(
             $query_string,
             $active,
         );

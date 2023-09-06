@@ -12,8 +12,18 @@
                     </div>
                 </div>
                 <div class="box-body">
-                <form role="form" action="{{url('client/client-companies/search')}}" method="GET">
+                    <form role="form" action="{{url('client/client-companies/search')}}" method="GET">
                         <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label>@lang('user.active')</label>
+                                    <select class="form-control select2" name="active" style="width: 100%;">
+                                        <option value="" {{Request('active') == "" ? "selected" : "";}}>All</option>
+                                        <option value="active" {{Request('active') == "1" ? "selected" : "";}}>Active</option>
+                                        <option value="inactive" {{Request('active') == "0" ? "selected" : "";}}>Inactive</option>
+                                    </select>
+                                </div>
+                            </div>
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label>@lang('company.query_string')</label>
@@ -25,7 +35,7 @@
                             <button type="submit" class="btn btn-info pull-right">Search</button>
                         </div>
                     </form>
-                    </div>
+                </div>
             </div>
 
             <div class="box">
@@ -63,9 +73,17 @@
                                     <a href="{{url('client/client-company/edit/'.$company->id)}}" class="btn btn-success btn-sm">
                                         <i class="fa fa-edit"></i>
                                     </a>
-                                    <a href="{{url('client/client-company/delete/'.$company->id)}}" class="btn btn-danger btn-sm">
-                                        <i class="fa fa-trash"></i>
+
+                                    @if($company->stopped_at == null)
+                                    <a href="{{url('client/client-company-inactive/'.$company->id)}}" class="btn btn-success btn-sm">
+                                        <i class="fa fa-check"></i> current status : active
                                     </a>
+                                    @else
+
+                                    <a href="{{url('client/client-company-active/'.$company->id)}}" class="btn btn-danger btn-sm">
+                                        <i class="fa fa-close"></i> current status : Inactive at {{$company->stopped_at}}
+                                    </a>
+                                    @endif
                                 </td>
                             </tr>
                             @endforeach

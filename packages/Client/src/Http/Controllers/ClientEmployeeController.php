@@ -6,6 +6,7 @@ use App\Constants\StatusCode;
 use App\Constants\SystemDefault;
 use App\Http\Controllers\Controller;
 use App\Models\User;
+use Carbon\Carbon;
 use Client\Foundations\ClientEmployee\ClientEmployeeCreateCollection;
 use Client\Foundations\ClientEmployee\ClientEmployeeSearchCollection;
 use Client\Foundations\ClientEmployee\ClientEmployeeUpdateCollection;
@@ -21,6 +22,7 @@ class ClientEmployeeController extends Controller
     {
         $companies = ClientEmployeeSearchCollection::searchEmployees(
             -1,
+            -1,
             $request->get('per_page') ? $request->get('per_page') : SystemDefault::DEFAUL_PAGINATION_COUNT
         );
 
@@ -31,6 +33,7 @@ class ClientEmployeeController extends Controller
     {
         $companies = ClientEmployeeSearchCollection::searchEmployees(
             $request->get('query_string') ? $request->get('query_string') : -1,
+            $request->get('active') ? $request->get('active') : -1,
             $request->get('per_page') ? $request->get('per_page') : SystemDefault::DEFAUL_PAGINATION_COUNT
         );
 
@@ -74,6 +77,28 @@ class ClientEmployeeController extends Controller
 
         return response()->success(
             trans('client.client_employee_deleted_successfully'),
+            new ClientEmployeeResource($user),
+            StatusCode::OK
+        );
+    }
+
+    public function active(User $user)
+    {
+        $user->update(['stopped_at' => null]);
+
+        return response()->success(
+            trans('client.client_employee_actived_successfully'),
+            new ClientEmployeeResource($user),
+            StatusCode::OK
+        );
+    }
+
+    public function inactive(User $user)
+    {
+        $user->update(['stopped_at' => Carbon::now()]);
+
+        return response()->success(
+            trans('client.client_employee_inactived_successfully'),
             new ClientEmployeeResource($user),
             StatusCode::OK
         );

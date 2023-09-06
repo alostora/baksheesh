@@ -23,4 +23,8 @@ Route::group([
 	Route::delete('client-company/{company}', [ClientCompanyController::class, 'destroy']);
 
 	Route::any('client-company/delete/{company}', [ClientCompanyController::class, 'destroy']);
+
+	Route::any('client-company-active/{company}', [ClientCompanyController::class, 'active']);
+
+	Route::any('client-company-inactive/{company}', [ClientCompanyController::class, 'inactive']);
 });

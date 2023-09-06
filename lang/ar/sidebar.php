@@ -13,6 +13,8 @@ return [
      "countries" => "المدن",
 
      "users" => "المستخدمين",
+     
+     "clients" => "العملاء",
 
      "companies" => "الشركات",
 

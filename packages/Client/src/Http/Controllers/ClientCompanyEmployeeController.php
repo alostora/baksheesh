@@ -8,6 +8,7 @@ use App\Constants\StatusCode;
 use App\Constants\SystemDefault;
 use App\Http\Controllers\Controller;
 use App\Models\User;
+use Carbon\Carbon;
 use Client\Foundations\ClientCompanyEmployee\AssignClientCompanyEmployeeCollection;
 use Client\Foundations\ClientCompanyEmployee\ClientCompanyEmployeeCreateCollection;
 use Client\Foundations\ClientCompanyEmployee\ClientCompanyEmployeeSearchCollection;
@@ -24,6 +25,7 @@ class ClientCompanyEmployeeController extends Controller
         $employees = ClientCompanyEmployeeSearchCollection::searchCompanyEmployees(
             -1,
             -1,
+            -1,
             $request->get('per_page') ? $request->get('per_page') : SystemDefault::DEFAUL_PAGINATION_COUNT
         );
 
@@ -35,6 +37,7 @@ class ClientCompanyEmployeeController extends Controller
         $employees = ClientCompanyEmployeeSearchCollection::searchCompanyEmployees(
             $request->get('company_id') ? $request->get('company_id') : -1,
             $request->get('query_string') ? $request->get('query_string') : -1,
+            $request->get('active') ? $request->get('active') : -1,
             $request->get('per_page') ? $request->get('per_page') : SystemDefault::DEFAUL_PAGINATION_COUNT
         );
 
@@ -102,6 +105,28 @@ class ClientCompanyEmployeeController extends Controller
 
         return response()->success(
             trans('company.company_employee_assigned_successfully'),
+            new CompanyEmployeeResource($user),
+            StatusCode::OK
+        );
+    }
+
+    public function active(User $user)
+    {
+        $user->update(['stopped_at' => null]);
+
+        return response()->success(
+            trans('company.company_employee_actived_successfully'),
+            new CompanyEmployeeResource($user),
+            StatusCode::OK
+        );
+    }
+
+    public function inactive(User $user)
+    {
+        $user->update(['stopped_at' => Carbon::now()]);
+
+        return response()->success(
+            trans('company.company_employee_inactived_successfully'),
             new CompanyEmployeeResource($user),
             StatusCode::OK
         );

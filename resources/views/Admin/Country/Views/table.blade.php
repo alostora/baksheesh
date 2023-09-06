@@ -18,6 +18,16 @@
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="form-group">
+                                    <label>@lang('user.active')</label>
+                                    <select class="form-control select2" name="active" style="width: 100%;">
+                                        <option value="" {{Request('active') == "" ? "selected" : "";}}>All</option>
+                                        <option value="active" {{Request('active') == "1" ? "selected" : "";}}>Active</option>
+                                        <option value="inactive" {{Request('active') == "0" ? "selected" : "";}}>Inactive</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
                                     <label>@lang('country.query_string')</label>
                                     <input type="text" name="query_string" value="{{Request('query_string')}}" placeholder="{{Lang::get('country.query_string')}}" class="form-control" style="width: 100%;">
                                 </div>
@@ -36,7 +46,7 @@
         <div class="col-xs-12">
             <div class="box">
                 <div class="box-header">
-                    <h3 class="box-title col-md-8">@lang('country.page_title_countries')</h3>
+                    <h3 class="box-title col-md-8">@lang('country.page_title')</h3>
                     <div class="col-md-4">
                         <a href="{{url('admin/country/create')}}" class="btn btn-primary btn-sm" style="height:25px;padding:2px;width:150px">
                             <i class="fa fa-plus"></i>
@@ -61,11 +71,19 @@
                                 <td> {{$country->name}} </td>
                                 <td>
                                     <a href="{{url('admin/country/edit/'.$country->id)}}" class="btn btn-success btn-sm">
-                                        <i class="fa fa-edit"></i>
+                                        <i class="fa fa-edit"></i> @lang('country.update')
                                     </a>
-                                    <a href="{{url('admin/country/delete/'.$country->id)}}" class="btn btn-danger btn-sm">
-                                        <i class="fa fa-trash"></i>
+
+                                    @if($country->stopped_at == null)
+                                    <a href="{{url('admin/country-inactive/'.$country->id)}}" class="btn btn-success btn-sm">
+                                        <i class="fa fa-check"></i> current status : active
                                     </a>
+                                    @else
+
+                                    <a href="{{url('admin/country-active/'.$country->id)}}" class="btn btn-danger btn-sm">
+                                        <i class="fa fa-close"></i> current status : Inactive at {{$country->stopped_at}}
+                                    </a>
+                                    @endif
                                 </td>
                             </tr>
                             @endforeach

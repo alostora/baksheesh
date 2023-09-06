@@ -25,4 +25,8 @@ Route::group([
 	Route::delete('client-employee/{user}', [ClientEmployeeController::class, 'destroy']);
 
 	Route::any('client-employee/delete/{user}', [ClientEmployeeController::class, 'destroy']);
+
+	Route::any('client-employee-active/{user}', [ClientEmployeeController::class, 'active']);
+
+	Route::any('client-employee-inactive/{user}', [ClientEmployeeController::class, 'inactive']);
 });

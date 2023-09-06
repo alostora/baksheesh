@@ -8,6 +8,7 @@ use App\Constants\StatusCode;
 use App\Constants\SystemDefault;
 use App\Http\Controllers\Controller;
 use App\Models\Company;
+use Carbon\Carbon;
 use Client\Foundations\ClientCompany\ClientCompanySearchCollection;
 use Client\Http\Requests\ClientCompany\ClientCompanyCreateRequest;
 use Client\Http\Requests\ClientCompany\ClientCompanyUpdateRequest;
@@ -19,6 +20,7 @@ class ClientCompanyController extends Controller
     {
         $companies = ClientCompanySearchCollection::searchCompanies(
             -1,
+            -1,
             $request->get('per_page') ? $request->get('per_page') : SystemDefault::DEFAUL_PAGINATION_COUNT
         );
 
@@ -29,6 +31,7 @@ class ClientCompanyController extends Controller
     {
         $companies = ClientCompanySearchCollection::searchCompanies(
             $request->get('query_string') ? $request->get('query_string') : -1,
+            $request->get('active') ? $request->get('active') : -1,
             $request->get('per_page') ? $request->get('per_page') : SystemDefault::DEFAUL_PAGINATION_COUNT
         );
 
@@ -76,6 +79,28 @@ class ClientCompanyController extends Controller
 
         return response()->success(
             trans('company.company_deleted_successfully'),
+            new CompanyResource($company),
+            StatusCode::OK
+        );
+    }
+    
+    public function active(Company $company)
+    {
+        $company->update(['stopped_at' => null]);
+
+        return response()->success(
+            trans('company.company_actived_successfully'),
+            new CompanyResource($company),
+            StatusCode::OK
+        );
+    }
+
+    public function inactive(Company $company)
+    {
+        $company->update(['stopped_at' => Carbon::now()]);
+
+        return response()->success(
+            trans('company.company_inactived_successfully'),
             new CompanyResource($company),
             StatusCode::OK
         );

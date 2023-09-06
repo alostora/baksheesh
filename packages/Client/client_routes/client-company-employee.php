@@ -24,6 +24,10 @@ Route::group([
 
 	Route::any('client-company-employee/delete/{user}', [ClientCompanyEmployeeController::class, 'destroy']);
 
+	Route::any('client-company-employee-active/{user}', [ClientCompanyEmployeeController::class, 'active']);
+
+	Route::any('client-company-employee-inactive/{user}', [ClientCompanyEmployeeController::class, 'inactive']);
+
 	Route::patch('assigne-client-company-employee/{user}', [ClientCompanyEmployeeController::class, 'assigneCompanyEmployee']);
 
 	Route::patch('unassigne-client-company-employee/{user}', [ClientCompanyEmployeeController::class, 'unAssigneCompanyEmployee']);

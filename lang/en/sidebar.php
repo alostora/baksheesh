@@ -14,6 +14,8 @@ return [
 
      "users" => "Users",
 
+     "clients" => "Clients",
+
      "companies" => "Companies",
 
      "company_wallets" => "Company Wallets",

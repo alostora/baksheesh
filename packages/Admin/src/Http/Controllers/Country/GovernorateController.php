@@ -22,6 +22,7 @@ class GovernorateController extends Controller
         $governorates = GovernorateSearchCollection::searchCountryGovernorates(
             $country,
             -1,
+            -1,
             $request->get('per_page') ?? SystemDefault::DEFAUL_PAGINATION_COUNT
         );
 
@@ -33,6 +34,7 @@ class GovernorateController extends Controller
         $governorates = GovernorateSearchCollection::searchCountryGovernorates(
             $country,
             $request->get('query_string') ?? -1,
+            $request->get('active') ?? -1,
             $request->get('per_page') ?? SystemDefault::DEFAUL_PAGINATION_COUNT
         );
 
@@ -44,6 +46,7 @@ class GovernorateController extends Controller
         $governorates = GovernorateSearchCollection::searchAllGovernorates(
             $request->get('country_id') ?? -1,
             $request->get('query_string') ?? -1,
+            $request->get('active') ?? -1,
             $request->get('per_page') ?? SystemDefault::DEFAUL_PAGINATION_COUNT
         );
 

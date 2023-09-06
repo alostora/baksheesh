@@ -11,6 +11,7 @@ class CompanyEmployeeQueryCollection
     public static function searchAllCompanyEmployees(
         $company_id = -1,
         $query_string = -1,
+        $active = -1,
     ) {
 
         $lookup_account_type_employee = SystemLookup::where('type', UserAccountType::LOOKUP_TYPE)
@@ -19,7 +20,7 @@ class CompanyEmployeeQueryCollection
 
         return User::where('user_account_type_id', $lookup_account_type_employee->id)
 
-            ->where(function ($q) use ($company_id, $query_string) {
+            ->where(function ($q) use ($company_id, $query_string, $active) {
 
                 if ($company_id && $company_id != -1) {
 
@@ -31,6 +32,16 @@ class CompanyEmployeeQueryCollection
 
                     $q
                         ->where('name', 'like', '%' . $query_string . '%');
+                }
+
+                if ($active == 'active') {
+
+                    $q
+                        ->where('stopped_at', null);
+                } elseif ($active == 'inactive') {
+
+                    $q
+                        ->where('stopped_at', '!=', null);
                 }
             })
             ->orderBy('created_at', 'DESC');

@@ -9,9 +9,10 @@ class CompanyQueryCollection
 {
     public static function searchAllCompanies(
         $client_id = -1,
-        $query_string = -1
+        $query_string = -1,
+        $active = -1,
     ) {
-        return Company::where(function ($q) use ($query_string, $client_id) {
+        return Company::where(function ($q) use ($client_id, $query_string, $active) {
 
             if ($client_id && $client_id != -1) {
 
@@ -24,22 +25,43 @@ class CompanyQueryCollection
                 $q
                     ->where('name', 'like', '%' . $query_string . '%');
             }
+
+            if ($active == 'active') {
+
+                $q
+                    ->where('stopped_at', null);
+            } elseif ($active == 'inactive') {
+
+                $q
+                    ->where('stopped_at', '!=', null);
+            }
         })
             ->orderBy('created_at', 'DESC');
     }
 
     public static function searchAllClientCompanies(
         User $user,
-        $query_string = -1
+        $query_string = -1,
+        $active = -1,
     ) {
         return Company::where('client_id', $user->id)
 
-            ->where(function ($q) use ($query_string) {
+            ->where(function ($q) use ($query_string, $active) {
 
                 if ($query_string && $query_string != -1) {
 
                     $q
                         ->where('name', 'like', '%' . $query_string . '%');
+                }
+
+                if ($active == 1) {
+
+                    $q
+                        ->where('stopped_at', '!=', null);
+                } else {
+
+                    $q
+                        ->where('stopped_at', null);
                 }
             })
             ->orderBy('created_at', 'DESC');

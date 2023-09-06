@@ -2,7 +2,9 @@
 
 namespace Admin\Http\Controllers\Views\User;
 
-use Admin\Foundations\User\UserSearchCollection;
+use Admin\Foundations\Client\ClientSearchCollection;
+use Admin\Http\Requests\Client\ClientCreateRequest;
+use Admin\Http\Requests\Client\ClientUpdateRequest;
 use Admin\Http\Requests\User\UserCreateRequest;
 use Admin\Http\Requests\User\UserUpdateRequest;
 use App\Constants\HasLookupType\UserAccountType;
@@ -15,38 +17,28 @@ use App\Models\User;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 
-class UserController extends Controller
+class ClientController extends Controller
 {
     public function index(Request $request)
     {
-        $data['users'] = UserSearchCollection::searchUsers(
-            -1,
+        $data['users'] = ClientSearchCollection::searchUsers(
             -1,
             -1,
             $request->get('per_page') ? $request->get('per_page') : SystemDefault::DEFAUL_PAGINATION_COUNT
         );
 
-        $data['user_account_types'] = SystemLookup::where('type', UserAccountType::LOOKUP_TYPE)
-            ->where('code', '!=', UserAccountType::EMPLOYEE['code'])
-            ->get();
-
-        return view('Admin/User/index', $data);
+        return view('Admin/Client/index', $data);
     }
 
     public function search(Request $request)
     {
-        $data['users'] = UserSearchCollection::searchUsers(
-            $request->get('user_account_type_id') ? $request->get('user_account_type_id') : -1,
+        $data['users'] = ClientSearchCollection::searchUsers(
             $request->get('query_string') ? $request->get('query_string') : -1,
             $request->get('active') ? $request->get('active') : -1,
             $request->get('per_page') ? $request->get('per_page') : SystemDefault::DEFAUL_PAGINATION_COUNT
         );
 
-        $data['user_account_types'] = SystemLookup::where('type', UserAccountType::LOOKUP_TYPE)
-            ->where('code', '!=', UserAccountType::EMPLOYEE['code'])
-            ->get();
-
-        return view('Admin/User/index', $data);
+        return view('Admin/Client/index', $data);
     }
 
     public function show(User $user)
@@ -60,37 +52,37 @@ class UserController extends Controller
 
     public function create()
     {
-        $data['user_account_types'] = SystemLookup::where('type', UserAccountType::LOOKUP_TYPE)
-            ->where('code', '!=', UserAccountType::EMPLOYEE['code'])
-            ->get();
-
-        return view('Admin/User/create', $data);
+        return view('Admin/Client/create');
     }
 
-    public function store(UserCreateRequest $request)
+    public function store(ClientCreateRequest $request)
     {
-        User::create($request->validated());
 
-        return redirect(url('admin/users'));
+        $user_account_type = SystemLookup::where('type', UserAccountType::LOOKUP_TYPE)
+            ->where('code',  UserAccountType::CLIENT['code'])
+            ->first();
+
+        $validated = $request->validated();
+
+        $validated['user_account_type_id'] = $user_account_type->id;
+
+        User::create($validated);
+
+        return redirect(url('admin/clients'));
     }
-
 
     public function edit(User $user)
     {
-        $data['user_account_types'] = SystemLookup::where('type', UserAccountType::LOOKUP_TYPE)
-            ->where('code', '!=', UserAccountType::EMPLOYEE['code'])
-            ->get();
-
         $data['user'] = $user;
 
-        return view('Admin/User/edit', $data);
+        return view('Admin/Client/edit', $data);
     }
 
-    public function update(UserUpdateRequest $request, User $user)
+    public function update(ClientUpdateRequest $request, User $user)
     {
         $user->update($request->validated());
 
-        return redirect(url('admin/users'));
+        return redirect(url('admin/clients'));
     }
 
     public function destroy(User $user)

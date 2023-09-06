@@ -26,6 +26,7 @@ class CompanyEmployeeController extends Controller
         $employees = CompanyEmployeeSearchCollection::searchCompanyEmployees(
             -1,
             -1,
+            -1,
             $request->get('per_page') ? $request->get('per_page') : SystemDefault::DEFAUL_PAGINATION_COUNT
         );
 
@@ -37,6 +38,7 @@ class CompanyEmployeeController extends Controller
         $employees = CompanyEmployeeSearchCollection::searchCompanyEmployees(
             $request->get('company_id') ? $request->get('company_id') : -1,
             $request->get('query_string') ? $request->get('query_string') : -1,
+            $request->get('active') ? $request->get('active') : -1,
             $request->get('per_page') ? $request->get('per_page') : SystemDefault::DEFAUL_PAGINATION_COUNT
         );
 

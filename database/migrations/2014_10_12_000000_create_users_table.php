@@ -29,7 +29,9 @@ return new class extends Migration
 
             $table->string('password');
 
-            $table->string('api_token')->nullable();
+            $table->integer('available_companies_count')->nullable();
+
+            $table->integer('available_employees_count')->nullable();
 
             $table->foreignUuid('country_id')->nullable();
 

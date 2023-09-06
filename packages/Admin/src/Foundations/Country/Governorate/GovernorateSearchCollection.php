@@ -10,11 +10,13 @@ class GovernorateSearchCollection
     public static function searchCountryGovernorates(
         Country $country,
         $query_string = -1,
+        $active = -1,
         $per_page = SystemDefault::DEFAUL_PAGINATION_COUNT
     ) {
         $countries = GovernorateQueryCollection::searchCountryGovernorates(
             $country,
-            $query_string
+            $query_string,
+            $active,
         );
 
         return $countries->paginate($per_page);
@@ -23,11 +25,13 @@ class GovernorateSearchCollection
     public static function searchAllGovernorates(
         $country_id,
         $query_string = -1,
+        $active = -1,
         $per_page = SystemDefault::DEFAUL_PAGINATION_COUNT
     ) {
         $countries = GovernorateQueryCollection::searchAllGovernorates(
             $country_id,
-            $query_string
+            $query_string,
+            $active,
         );
 
         return $countries->paginate($per_page);

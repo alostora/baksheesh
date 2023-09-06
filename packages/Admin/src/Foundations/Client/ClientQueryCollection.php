@@ -1,26 +1,25 @@
 <?php
 
-namespace Client\Foundations\ClientCompanyEmployee;
+namespace Admin\Foundations\Client;
 
+use App\Constants\HasLookupType\UserAccountType;
+use App\Models\SystemLookup;
 use App\Models\User;
 
-class ClientCompanyEmployeeQueryCollection
+class ClientQueryCollection
 {
-    public static function searchAllCompanyEmployees(
-        $company_id = -1,
+    public static function searchAllUsers(
         $query_string = -1,
         $active = -1,
     ) {
 
-        return User::where('client_id', auth()->id())
+        $user_account_type = SystemLookup::where('type', UserAccountType::LOOKUP_TYPE)
+            ->where('code',  UserAccountType::CLIENT['code'])
+            ->first();
 
-            ->where(function ($q) use ($company_id, $query_string, $active) {
+        return User::where('user_account_type_id', $user_account_type->id)
 
-                if ($company_id && $company_id != -1) {
-
-                    $q
-                        ->where('company_id', $company_id);
-                }
+            ->where(function ($q) use ($query_string, $active) {
 
                 if ($query_string && $query_string != -1) {
 

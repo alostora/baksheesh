@@ -8,9 +8,10 @@ class UserQueryCollection
 {
     public static function searchAllUsers(
         $user_account_type_id = -1,
-        $query_string = -1
+        $query_string = -1,
+        $active = -1,
     ) {
-        return User::where(function ($q) use ($query_string, $user_account_type_id) {
+        return User::where(function ($q) use ($user_account_type_id, $query_string, $active) {
 
             if ($user_account_type_id && $user_account_type_id != -1) {
 
@@ -22,6 +23,16 @@ class UserQueryCollection
 
                 $q
                     ->where('name', 'like', '%' . $query_string . '%');
+            }
+
+            if ($active == 'active') {
+
+                $q
+                    ->where('stopped_at', null);
+            } elseif ($active == 'inactive') {
+
+                $q
+                    ->where('stopped_at', '!=', null);
             }
         })
             ->orderBy('created_at', 'DESC');

@@ -2,24 +2,25 @@
 
 namespace Admin\Http\Controllers\User;
 
-use Admin\Foundations\User\UserSearchCollection;
-use Admin\Http\Requests\User\UserCreateRequest;
-use Admin\Http\Requests\User\UserUpdateRequest;
+use Admin\Foundations\Client\ClientSearchCollection;
+use Admin\Http\Requests\Client\ClientCreateRequest;
+use Admin\Http\Requests\Client\ClientUpdateRequest;
+use App\Constants\HasLookupType\UserAccountType;
 use App\Constants\StatusCode;
 use App\Constants\SystemDefault;
 use App\Http\Controllers\Controller;
 use App\Http\Resources\Auth\UserMinifiedResource;
 use App\Http\Resources\Auth\UserResource;
+use App\Models\SystemLookup;
 use App\Models\User;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 
-class UserController extends Controller
+class ClientController extends Controller
 {
     public function index(Request $request)
     {
-        $users = UserSearchCollection::searchUsers(
-            -1,
+        $users = ClientSearchCollection::searchUsers(
             -1,
             -1,
             $request->get('per_page') ? $request->get('per_page') : SystemDefault::DEFAUL_PAGINATION_COUNT
@@ -30,8 +31,7 @@ class UserController extends Controller
 
     public function search(Request $request)
     {
-        $users = UserSearchCollection::searchUsers(
-            $request->get('user_account_type_id') ? $request->get('user_account_type_id') : -1,
+        $users = ClientSearchCollection::searchUsers(
             $request->get('query_string') ? $request->get('query_string') : -1,
             $request->get('active') ? $request->get('active') : -1,
             $request->get('per_page') ? $request->get('per_page') : SystemDefault::DEFAUL_PAGINATION_COUNT
@@ -49,9 +49,18 @@ class UserController extends Controller
         );
     }
 
-    public function store(UserCreateRequest $request)
+    public function store(ClientCreateRequest $request)
     {
-        $user = User::create($request->validated());
+
+        $user_account_type = SystemLookup::where('type', UserAccountType::LOOKUP_TYPE)
+            ->where('code',  UserAccountType::CLIENT['code'])
+            ->first();
+
+        $validated = $request->validated();
+
+        $validated['user_account_type_id'] = $user_account_type->id;
+
+        $user = User::create($validated);
 
         return response()->success(
             trans('user.user_created_successfully'),
@@ -60,7 +69,7 @@ class UserController extends Controller
         );
     }
 
-    public function update(UserUpdateRequest $request, User $user)
+    public function update(ClientUpdateRequest $request, User $user)
     {
         $user->update($request->validated());
 

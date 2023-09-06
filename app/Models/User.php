@@ -40,6 +40,10 @@ class User extends Authenticatable implements MustVerifyEmail
 
         'api_token',
 
+        "available_companies_count",
+
+        "available_employees_count",
+
         'country_id',
 
         'user_account_type_id', //lookup type

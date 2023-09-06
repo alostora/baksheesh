@@ -20,6 +20,7 @@ class CountryController extends Controller
     {
         $countries = CountrySearchCollection::searchCountries(
             -1,
+            -1,
             $request->get('per_page') ?? SystemDefault::DEFAUL_PAGINATION_COUNT
         );
 
@@ -30,6 +31,7 @@ class CountryController extends Controller
     {
         $countries = CountrySearchCollection::searchCountries(
             $request->get('query_string') ? $request->get('query_string') : -1,
+            $request->get('active') ? $request->get('active') : -1,
             $request->get('per_page') ?? SystemDefault::DEFAUL_PAGINATION_COUNT
         );
 

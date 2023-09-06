@@ -19,4 +19,8 @@ Route::group([
 	Route::patch('client-company/{company}', [ClientCompanyController::class, 'update']);
 
 	Route::delete('client-company/{company}', [ClientCompanyController::class, 'destroy']);
+
+	Route::patch('client-company-active/{company}', [ClientCompanyController::class, 'active']);
+
+	Route::patch('client-company-inactive/{company}', [ClientCompanyController::class, 'inactive']);
 });
