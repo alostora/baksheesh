@@ -30,6 +30,8 @@ return [
 
     'notes' => 'Notes',
 
+    'created_at' => 'created_at',
+
     //operatoins
     "operations" => "Operations",
 

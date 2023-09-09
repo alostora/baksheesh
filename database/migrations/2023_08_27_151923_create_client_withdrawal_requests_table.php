@@ -25,9 +25,17 @@ return new class extends Migration
 
             $table->string('refuse_reasone')->nullable();
 
-            $table->string('notes')->nullable();
+            $table->string('admin_notes')->nullable();
+
+            $table->string('client_notes')->nullable();
+
+            $table->string('bank_transfer_number')->nullable();
+
+            $table->string('reference_code')->nullable();
 
             $table->foreignUuid('action_by_id')->nullable();
+
+            $table->timestamp('action_at')->nullable();
 
             $table->timestamps();
 

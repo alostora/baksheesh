@@ -17,10 +17,10 @@
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label>@lang('user.active')</label>
-                                    <select class="form-control select2" name="active" style="width: 100%;">
+                                    <select class="form-control select2" name="active">
                                         <option value="" {{Request('active') == "" ? "selected" : "";}}>All</option>
-                                        <option value="active" {{Request('active') == "1" ? "selected" : "";}}>Active</option>
-                                        <option value="inactive" {{Request('active') == "0" ? "selected" : "";}}>Inactive</option>
+                                        <option value="active" {{Request('active') == "active" ? "selected" : "";}}>Active</option>
+                                        <option value="inactive" {{Request('active') == "inactive" ? "selected" : "";}}>Inactive</option>
                                     </select>
                                 </div>
                             </div>

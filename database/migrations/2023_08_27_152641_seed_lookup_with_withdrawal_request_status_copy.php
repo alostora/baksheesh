@@ -14,33 +14,7 @@ return new class extends Migration
     {
         $models = array(
 
-            [
-                'id' => Str::uuid()->toString(),
-                'type' => WithdrawalRequestStatus::LOOKUP_TYPE,
-                'code' => WithdrawalRequestStatus::PENDING['code'],
-                'key' => WithdrawalRequestStatus::PENDING['key'],
-                'prefix' => WithdrawalRequestStatus::PENDING['prefix'],
-                'name' => WithdrawalRequestStatus::PENDING['name'],
-                'name_ar' => WithdrawalRequestStatus::PENDING['name_ar'],
-            ],
-            [
-                'id' => Str::uuid()->toString(),
-                'type' => WithdrawalRequestStatus::LOOKUP_TYPE,
-                'code' => WithdrawalRequestStatus::ACCEPTED['code'],
-                'key' => WithdrawalRequestStatus::ACCEPTED['key'],
-                'prefix' => WithdrawalRequestStatus::ACCEPTED['prefix'],
-                'name' => WithdrawalRequestStatus::ACCEPTED['name'],
-                'name_ar' => WithdrawalRequestStatus::ACCEPTED['name_ar'],
-            ],
-            [
-                'id' => Str::uuid()->toString(),
-                'type' => WithdrawalRequestStatus::LOOKUP_TYPE,
-                'code' => WithdrawalRequestStatus::REFUSED['code'],
-                'key' => WithdrawalRequestStatus::REFUSED['key'],
-                'prefix' => WithdrawalRequestStatus::REFUSED['prefix'],
-                'name' => WithdrawalRequestStatus::REFUSED['name'],
-                'name_ar' => WithdrawalRequestStatus::REFUSED['name_ar'],
-            ],
+            
             [
                 'id' => Str::uuid()->toString(),
                 'type' => WithdrawalRequestStatus::LOOKUP_TYPE,

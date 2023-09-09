@@ -12,12 +12,12 @@
                     </div>
                 </div>
                 <div class="box-body">
-                    <form role="form" action="{{url('admin/clients/search')}}" method="GET">
+                    <form role="form" action="{{url('admin/inactive-client-report')}}" method="GET">
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label>@lang('user.active')</label>
-                                    <select class="form-control select2" name="active">
+                                    <select class="form-control select2" name="active" style="width: 100%;">
                                         <option value="" {{Request('active') == "" ? "selected" : "";}}>All</option>
                                         <option value="active" {{Request('active') == "active" ? "selected" : "";}}>Active</option>
                                         <option value="inactive" {{Request('active') == "inactive" ? "selected" : "";}}>Inactive</option>
@@ -56,10 +56,12 @@
                             <tr>
                                 <th>#</th>
                                 <th>@lang('client.name')</th>
-                                <th>@lang('client.email')</th>
-                                <th>@lang('client.phone')</th>
-                                <th>@lang('client.withdrawal_requests')</th>
-                                <th>@lang('client.operations')</th>
+                                <th>@lang('client.companies')</th>
+                                <th>@lang('client.employees')</th>
+                                <th>@lang('client.created_at')</th>
+                                <th>@lang('client.stopped_at')</th>
+                                <th>@lang('client.collected_cash')</th>
+                                <th>@lang('client.delivered_cash')</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -68,30 +70,12 @@
                             <tr>
                                 <td> {{$key+1}} </td>
                                 <td> {{$user->name}} </td>
-                                <td> {{$user->email}} </td>
-                                <td> {{$user->phone}} </td>
-                                <td>
-                                    <a href="{{url('admin/client-withdrawal-requests/'.$user->id)}}" class="btn btn-success btn-sm">
-                                        <i class="fa fa-info"></i> @lang('client.withdrawal_requests')
-                                    </a>
-                                </td>
-                                <td>
-                                    <a href="{{url('admin/client/edit/'.$user->id)}}" class="btn btn-success btn-sm">
-                                        <i class="fa fa-edit"></i> @lang('client.update')
-                                    </a>
-                                    @if($user->stopped_at == null)
-                                    <a href="{{url('admin/client-inactive/'.$user->id)}}" class="btn btn-success btn-sm">
-                                        <i class="fa fa-check"></i>
-                                        current status : active
-                                    </a>
-                                    @else
-
-                                    <a href="{{url('admin/client-active/'.$user->id)}}" class="btn btn-danger btn-sm">
-                                        <i class="fa fa-close"></i>
-                                        current status : Inactive at {{$user->stopped_at}}
-                                    </a>
-                                    @endif
-                                </td>
+                                <td> {{$user->companies()->count()}} </td>
+                                <td> {{$user->employees()->count()}} </td>
+                                <td> {{$user->created_at}} </td>
+                                <td> {{$user->stopped_at}} </td>
+                                <td> {{$user->clientEmployeeCash()->sum('amount') + $user->clientCompanyCash()->sum('amount')}} </td>
+                                <td> {{$user->acceptedWithdrawal()->sum('amount')}} </td>
                             </tr>
                             @endforeach
                             @endif

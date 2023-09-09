@@ -10,6 +10,8 @@ class WithdrawalRequestStatus
           1 => self::PENDING,
           2 => self::ACCEPTED,
           3 => self::REFUSED,
+          4 => self::IMPLEMENTED,
+          5 => self::UNEXECUTABLE,
      ];
 
      public const PENDING = [
@@ -34,5 +36,21 @@ class WithdrawalRequestStatus
           'prefix' => 'REFUSED',
           'name' => "Refused",
           'name_ar' => "مرفوض",
+     ];
+
+     public const IMPLEMENTED = [
+          'code' => 4,
+          'key' => "4",
+          'prefix' => 'IMPLEMENTED',
+          'name' => "Implemented",
+          'name_ar' => "تم التنفيذ",
+     ];
+
+     public const UNEXECUTABLE = [
+          'code' => 5,
+          'key' => "5",
+          'prefix' => 'UNEXECUTABLE',
+          'name' => "Unexecutable",
+          'name_ar' => "تعذر التنفيذ",
      ];
 }

@@ -13,7 +13,7 @@ return [
      "countries" => "المدن",
 
      "users" => "المستخدمين",
-     
+
      "clients" => "العملاء",
 
      "companies" => "الشركات",
@@ -22,6 +22,18 @@ return [
 
      "employee_wallets" => "محافظ الموظفين",
 
+     "reports" => "التقارير",
+
+     "company_wallet_report" => " الاكراميات المحصلة للشركات",
+     
+     "employee_wallet_report" => " الاكراميات المحصلة للموظفين",
+
      "withdrawal_requests" => "طلبات السحب",
+
+     "withdrawal_report" => "تقارير عمليات السحب",
+
+     "withdrawal_request_report" => "Withdrawal Request Reports",
+
+     "inactive_client_report" => "Inactive Client Reports",
 
 ];

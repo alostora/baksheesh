@@ -27,7 +27,9 @@ class ClientWithdrawalRequestChangeStatusRequest extends FormRequest
 
             "refuse_reasone" => ["nullable", "string", "max:255"],
 
-            "notes" => ["nullable", "string", "max:255"],
+            "bank_transfer_number" => ["nullable", "string", "max:255"],
+
+            "admin_notes" => ["nullable", "string", "max:255"],
         ];
     }
 }

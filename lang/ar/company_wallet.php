@@ -28,6 +28,8 @@ return [
 
     'notes' => 'ملاحظات',
 
+    'created_at' => 'تاربخ الدفع',
+
 
     //operatoins
     "operations" => "عمليات",

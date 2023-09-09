@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Constants\HasLookupType\WithdrawalRequestStatus;
 use App\Notifications\ResetPasswordEmail;
 use App\Notifications\VerifyEmail;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
@@ -133,8 +134,27 @@ class User extends Authenticatable implements MustVerifyEmail
         return $this->hasMany(Company::class, 'client_id', 'id');
     }
 
-    public function cash(): HasMany
+    public function employeeCash(): HasMany
     {
         return $this->hasMany(EmployeeCash::class, 'employee_id', 'id');
+    }
+    
+    public function clientEmployeeCash(): HasMany
+    {
+        return $this->hasMany(EmployeeCash::class, 'client_id', 'id');
+    }
+    
+    public function clientCompanyCash(): HasMany
+    {
+        return $this->hasMany(CompanyCash::class, 'client_id', 'id');
+    }
+
+    public function acceptedWithdrawal(): HasMany
+    {
+        $accpted_withdrawalRequest = SystemLookup::where('type', WithdrawalRequestStatus::LOOKUP_TYPE)
+            ->where('code', WithdrawalRequestStatus::ACCEPTED['code'])
+            ->first();
+
+        return $this->hasMany(ClientWithdrawalRequest::class, 'client_id', 'id')->where('status', $accpted_withdrawalRequest->id);
     }
 }

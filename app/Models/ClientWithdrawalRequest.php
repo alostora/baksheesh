@@ -18,7 +18,12 @@ class ClientWithdrawalRequest extends Model
         'discount_percentage',
         'status',
         'refuse_reasone',
-        'notes',
+
+        'admin_notes',
+        'client_notes',
+        'bank_transfer_number',
+        'reference_code',
+        'action_at',
         'action_by_id',
 
     ];
@@ -28,11 +33,11 @@ class ClientWithdrawalRequest extends Model
         return $this->belongsTo(User::class, 'client_id', 'id');
     }
 
-    public function acceptedBy(): BelongsTo
+    public function actionBy(): BelongsTo
     {
         return $this->belongsTo(User::class, 'action_by_id', 'id');
     }
-    
+
     public function withdrawalRequestStatus(): BelongsTo
     {
         return $this->belongsTo(SystemLookup::class, 'status', 'id');

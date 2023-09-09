@@ -26,6 +26,14 @@ class ClientWithdrawalRequestResource extends JsonResource
 
                'status' => $this->withdrawalRequestStatus,
 
+               'admin_notes' => $this->admin_notes,
+
+               'client_notes' => $this->client_notes,
+
+               'action_at' => $this->action_at,
+
+               'action_by' => $this->action_by_id,
+
                'created_at' => $this->created_at,
           ];
      }
