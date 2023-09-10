@@ -46,11 +46,8 @@
     <div class="col-lg-4 col-xs-6">
       <div class="small-box bg-danger">
         <div class="inner">
-          <h3>
-            <span style="margin-left: 5%;">{{isset($totalMonthIncom)?$totalMonthIncom:0}}</span>
-
-          </h3>
-          <p>@lang('general.totalMonthIncom')</p>
+          <h3><span style="margin-left: 5%;">{{$current_amount}}</span> </h3>
+          <p>@lang('general.current_amount')</p>
         </div>
         <div class="icon">
           <i class="fa fa-dollar"></i>
