@@ -4,7 +4,7 @@
             <!-- filter -->
             <div class="box box-success">
                 <div class="box-header with-border">
-                    <h3 class="box-title">@lang('withdrawal_request.filter')</h3>
+                    <h3 class="box-title">@lang('filter.filter')</h3>
 
                     <div class="box-tools pull-right">
                         <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
@@ -17,9 +17,9 @@
 
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label>@lang('withdrawal_request.client')</label>
-                                    <select class="form-control select2" name="client_id" style="width: 100%;">
-                                        <option value="">@lang('withdrawal_request.select')</option>
+                                    <label>@lang('filter.clients')</label>
+                                    <select class="form-control select2" name="client_id">
+                                        <option value="">@lang('filter.select')</option>
                                         @foreach($clients as $client)
                                         <?php $selected = Request('client_id') == $client->id ? "selected" : ""; ?>
                                         <option value="{{$client->id}}" {{$selected}}>{{$client->name}}</option>
@@ -30,9 +30,9 @@
 
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label>@lang('withdrawal_request.status')</label>
-                                    <select class="form-control select2" name="status" style="width: 100%;">
-                                        <option value="">@lang('withdrawal_request.select')</option>
+                                    <label>@lang('filter.status')</label>
+                                    <select class="form-control select2" name="status">
+                                        <option value="">@lang('filter.select')</option>
                                         @foreach($withdrawal_request_status as $withdrawal_status)
                                         <?php $selected = Request('status') == $withdrawal_status->id ? "selected" : ""; ?>
                                         <option value="{{$withdrawal_status->id}}" {{$selected}}>{{$withdrawal_status->name}}</option>
@@ -43,26 +43,26 @@
 
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label>@lang('withdrawal_request.query_string')</label>
-                                    <input type="text" name="query_string" value="{{Request('query_string')}}" placeholder="{{Lang::get('withdrawal_request.query_string')}}" class="form-control" style="width: 100%;">
+                                    <label>@lang('filter.query_string')</label>
+                                    <input type="text" name="query_string" value="{{Request('query_string')}}" placeholder="{{Lang::get('filter.query_string')}}" class="form-control">
                                 </div>
                             </div>
 
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label>@lang('employee_wallet.date_from')</label>
-                                    <input type="date" name="date_from" value="{{Request('date_from')}}" class="form-control" style="width: 100%;">
+                                    <label>@lang('filter.date_from')</label>
+                                    <input type="date" name="date_from" value="{{Request('date_from')}}" class="form-control">
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label>@lang('employee_wallet.date_to')</label>
-                                    <input type="date" name="date_to" value="{{Request('date_to')}}" class="form-control" style="width: 100%;">
+                                    <label>@lang('filter.date_to')</label>
+                                    <input type="date" name="date_to" value="{{Request('date_to')}}" class="form-control">
                                 </div>
                             </div>
                         </div>
                         <div class="box-footer">
-                            <button type="submit" class="btn btn-info pull-right">Search</button>
+                            <button type="submit" class="btn btn-info pull-right">@lang('filter.search')</button>
                         </div>
                     </form>
                 </div>

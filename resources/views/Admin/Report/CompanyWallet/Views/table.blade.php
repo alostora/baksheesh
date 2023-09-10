@@ -4,7 +4,7 @@
             <!-- filter -->
             <div class="box box-success">
                 <div class="box-header with-border">
-                    <h3 class="box-title">@lang('company_wallet.filter')</h3>
+                    <h3 class="box-title">@lang('filter.filter')</h3>
 
                     <div class="box-tools pull-right">
                         <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
@@ -16,9 +16,9 @@
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label>@lang('company_wallet.client')</label>
+                                    <label>@lang('filter.clients')</label>
                                     <select class="form-control select2" name="client_id" style="width: 100%;">
-                                        <option value="">@lang('company_wallet.select')</option>
+                                        <option value="">@lang('filter.select')</option>
                                         @foreach($clients as $client)
                                         <?php $selected = Request('client_id') == $client->id ? "selected" : ""; ?>
                                         <option value="{{$client->id}}" {{$selected}}>{{$client->name}}</option>
@@ -28,9 +28,9 @@
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label>@lang('company_wallet.company')</label>
+                                    <label>@lang('filter.companies')</label>
                                     <select class="form-control select2" name="company_id" style="width: 100%;">
-                                        <option value="">@lang('company_wallet.select')</option>
+                                        <option value="">@lang('filter.select')</option>
                                         @foreach($companies as $company)
                                         <?php $selected = Request('company_id') == $company->id ? "selected" : ""; ?>
                                         <option value="{{$company->id}}" {{$selected}}>{{$company->name}}</option>
@@ -40,19 +40,19 @@
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label>@lang('company_wallet.date_from')</label>
+                                    <label>@lang('filter.date_from')</label>
                                     <input type="date" name="date_from" value="{{Request('date_from')}}" class="form-control" style="width: 100%;">
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label>@lang('company_wallet.date_to')</label>
+                                    <label>@lang('filter.date_to')</label>
                                     <input type="date" name="date_to" value="{{Request('date_to')}}" class="form-control" style="width: 100%;">
                                 </div>
                             </div>
                         </div>
                         <div class="box-footer">
-                            <button type="submit" class="btn btn-info pull-right">Search</button>
+                            <button type="submit" class="btn btn-info pull-right">@lang('filter.search')</button>
                         </div>
                     </form>
                 </div>

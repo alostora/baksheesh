@@ -4,7 +4,7 @@
             <!-- filter -->
             <div class="box box-success">
                 <div class="box-header with-border">
-                    <h3 class="box-title">@lang('company.filter')</h3>
+                    <h3 class="box-title">@lang('filter.filter')</h3>
 
                     <div class="box-tools pull-right">
                         <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
@@ -16,8 +16,8 @@
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label>@lang('user.active')</label>
-                                    <select class="form-control select2" name="active" style="width: 100%;">
+                                    <label>@lang('filter.active')</label>
+                                    <select class="form-control select2" name="active">
                                         <option value="" {{Request('active') == "" ? "selected" : "";}}>All</option>
                                         <option value="active" {{Request('active') == "1" ? "selected" : "";}}>Active</option>
                                         <option value="inactive" {{Request('active') == "0" ? "selected" : "";}}>Inactive</option>
@@ -27,9 +27,9 @@
 
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label>@lang('company.client')</label>
-                                    <select class="form-control select2" name="client_id" style="width: 100%;">
-                                        <option value="">@lang('company.select')</option>
+                                    <label>@lang('filter.client')</label>
+                                    <select class="form-control select2" name="client_id">
+                                        <option value="">@lang('filter.select')</option>
                                         @foreach($clients as $client)
                                         <?php $selected = Request('client_id') == $client->id ? "selected" : ""; ?>
                                         <option value="{{$client->id}}" {{$selected}}>{{$client->name}}</option>
@@ -39,13 +39,13 @@
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label>@lang('company.query_string')</label>
-                                    <input type="text" name="query_string" value="{{Request('query_string')}}" placeholder="{{Lang::get('company.query_string')}}" class="form-control" style="width: 100%;">
+                                    <label>@lang('filter.query_string')</label>
+                                    <input type="text" name="query_string" value="{{Request('query_string')}}" placeholder="{{Lang::get('filter.query_string')}}" class="form-control">
                                 </div>
                             </div>
                         </div>
                         <div class="box-footer">
-                            <button type="submit" class="btn btn-info pull-right">Search</button>
+                            <button type="submit" class="btn btn-info pull-right">@lang('filter.search')</button>
                         </div>
                     </form>
                 </div>

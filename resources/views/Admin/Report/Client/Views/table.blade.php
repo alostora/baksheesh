@@ -4,7 +4,7 @@
             <!-- filter -->
             <div class="box box-success">
                 <div class="box-header with-border">
-                    <h3 class="box-title">@lang('client.filter')</h3>
+                    <h3 class="box-title">@lang('filter.filter')</h3>
 
                     <div class="box-tools pull-right">
                         <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
@@ -16,7 +16,7 @@
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label>@lang('user.active')</label>
+                                    <label>@lang('filter.active')</label>
                                     <select class="form-control select2" name="active" style="width: 100%;">
                                         <option value="" {{Request('active') == "" ? "selected" : "";}}>All</option>
                                         <option value="active" {{Request('active') == "active" ? "selected" : "";}}>Active</option>
@@ -27,13 +27,13 @@
 
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label>@lang('client.query_string')</label>
+                                    <label>@lang('filter.query_string')</label>
                                     <input type="text" name="query_string" value="{{Request('query_string')}}" class="form-control" style="width: 100%;">
                                 </div>
                             </div>
                         </div>
                         <div class="box-footer">
-                            <button type="submit" class="btn btn-info pull-right">Search</button>
+                            <button type="submit" class="btn btn-info pull-right">@lang('filter.search')</button>
                         </div>
                     </form>
                 </div>

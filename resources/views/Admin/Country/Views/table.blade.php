@@ -6,7 +6,7 @@
             <!-- filter -->
             <div class="box box-success">
                 <div class="box-header with-border">
-                    <h3 class="box-title">@lang('country.filter')</h3>
+                    <h3 class="box-title">@lang('filter.filter')</h3>
 
                     <div class="box-tools pull-right">
                         <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
@@ -18,8 +18,8 @@
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label>@lang('user.active')</label>
-                                    <select class="form-control select2" name="active" style="width: 100%;">
+                                    <label>@lang('filter.active')</label>
+                                    <select class="form-control select2" name="active">
                                         <option value="" {{Request('active') == "" ? "selected" : "";}}>All</option>
                                         <option value="active" {{Request('active') == "1" ? "selected" : "";}}>Active</option>
                                         <option value="inactive" {{Request('active') == "0" ? "selected" : "";}}>Inactive</option>
@@ -28,13 +28,13 @@
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label>@lang('country.query_string')</label>
-                                    <input type="text" name="query_string" value="{{Request('query_string')}}" placeholder="{{Lang::get('country.query_string')}}" class="form-control" style="width: 100%;">
+                                    <label>@lang('filter.query_string')</label>
+                                    <input type="text" name="query_string" value="{{Request('query_string')}}" placeholder="{{Lang::get('filter.query_string')}}" class="form-control">
                                 </div>
                             </div>
                         </div>
                         <div class="box-footer">
-                            <button type="submit" class="btn btn-info pull-right">@lang('country.search')</button>
+                            <button type="submit" class="btn btn-info pull-right">@lang('filter.search')</button>
                         </div>
                     </form>
                 </div>
