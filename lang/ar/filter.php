@@ -16,4 +16,6 @@ return [
 
      "current_amount" => "المبلغ الحالي",
 
+     "user_account_type" => "نوع الحساب",
+
 ];

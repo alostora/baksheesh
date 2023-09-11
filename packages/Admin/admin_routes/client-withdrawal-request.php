@@ -21,8 +21,4 @@ Route::group([
 	Route::delete('client-withdrawal-request/{clientWithdrawalRequest}', [WithdrawalRequestController::class, 'destroy']);
 
 	Route::patch('client-withdrawal-request-change-status/{clientWithdrawalRequest}', [WithdrawalRequestController::class, 'changeStatus']);
-
-	Route::any('accept-client-withdrawal-request/{clientWithdrawalRequest}', [WithdrawalRequestController::class, 'accept']);
-
-	Route::any('refuse-client-withdrawal-request/{clientWithdrawalRequest}', [WithdrawalRequestController::class, 'refuse']);
 });

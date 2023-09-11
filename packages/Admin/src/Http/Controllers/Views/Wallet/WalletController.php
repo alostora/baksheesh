@@ -4,11 +4,10 @@ namespace Admin\Http\Controllers\Views\Wallet;
 
 use Admin\Foundations\Wallet\CompanyWalletSearchCollection;
 use Admin\Foundations\Wallet\EmployeeWalletSearchCollection;
-use App\Constants\HasLookupType\UserAccountType;
 use App\Constants\SystemDefault;
+use App\Foundations\LookupType\AccountTypeCollection;
 use App\Http\Controllers\Controller;
 use App\Models\Company;
-use App\Models\SystemLookup;
 use App\Models\User;
 use Illuminate\Http\Request;
 
@@ -24,9 +23,7 @@ class WalletController extends Controller
             $request->get('per_page') ? $request->get('per_page') : SystemDefault::DEFAUL_PAGINATION_COUNT
         );
 
-        $client_type = SystemLookup::where('type', UserAccountType::LOOKUP_TYPE)
-            ->where('code',  UserAccountType::CLIENT['code'])
-            ->first();
+        $client_type = AccountTypeCollection::client();
 
         $data['clients'] = User::where('user_account_type_id', $client_type->id)->get();
 
@@ -46,13 +43,9 @@ class WalletController extends Controller
             $request->get('per_page') ? $request->get('per_page') : SystemDefault::DEFAUL_PAGINATION_COUNT
         );
 
-        $client_type = SystemLookup::where('type', UserAccountType::LOOKUP_TYPE)
-            ->where('code',  UserAccountType::CLIENT['code'])
-            ->first();
+        $client_type = AccountTypeCollection::client();
 
-        $employee_type = SystemLookup::where('type', UserAccountType::LOOKUP_TYPE)
-            ->where('code',  UserAccountType::EMPLOYEE['code'])
-            ->first();
+        $employee_type = AccountTypeCollection::employee();
 
         $data['clients'] = User::where('user_account_type_id', $client_type->id)->get();
 

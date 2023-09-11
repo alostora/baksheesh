@@ -12,54 +12,61 @@
                     </div>
                 </div>
                 <div class="box-body">
-                    <form role="form" action="{{url('admin/employee-wallets')}}" method="GET">
+                    <form role="form" action="{{ url('admin/employee-wallets') }}" method="GET">
                         <div class="row">
-                            <div class="col-md-4">
+                            <div class="col-md-6">
                                 <div class="form-group">
                                     <label>@lang('filter.clients')</label>
-                                    <select class="form-control select2" name="client_id" style="width: 100%;">
+                                    <select class="form-control select2" name="client_id" onchange="getEmployees(this.value);getCompanies(this.value)">
                                         <option value="">@lang('filter.select')</option>
-                                        @foreach($clients as $client)
-                                        <?php $selected = Request('client_id') == $client->id ? "selected" : ""; ?>
-                                        <option value="{{$client->id}}" {{$selected}}>{{$client->name}}</option>
+                                        @foreach ($clients as $client)
+                                        <?php $selected = Request('client_id') == $client->id ? 'selected' : ''; ?>
+                                        <option value="{{ $client->id }}" {{ $selected }}>{{ $client->name }}
+                                        </option>
                                         @endforeach
                                     </select>
                                 </div>
                             </div>
-                            <div class="col-md-4">
-                                <div class="form-group">
-                                    <label>@lang('filter.employees')</label>
-                                    <select class="form-control select2" name="employee_id" style="width: 100%;">
-                                        <option value="">@lang('filter.select')</option>
-                                        @foreach($employees as $employee)
-                                        <?php $selected = Request('employee_id') == $employee->id ? "selected" : ""; ?>
-                                        <option value="{{$employee->id}}" {{$selected}}>{{$employee->name}}</option>
-                                        @endforeach
-                                    </select>
-                                </div>
-                            </div>
-                            <div class="col-md-4">
+
+                            <div class="col-md-6">
                                 <div class="form-group">
                                     <label>@lang('filter.companies')</label>
-                                    <select class="form-control select2" name="company_id" style="width: 100%;">
+                                    <select class="form-control select2" name="company_id" id="company_id" onchange="getEmployees('',this.value);">
                                         <option value="">@lang('filter.select')</option>
-                                        @foreach($companies as $company)
-                                        <?php $selected = Request('company_id') == $company->id ? "selected" : ""; ?>
-                                        <option value="{{$company->id}}" {{$selected}}>{{$company->name}}</option>
+                                        @foreach ($companies as $company)
+                                        <?php $selected = Request('company_id') == $company->id ? 'selected' : ''; ?>
+                                        <option value="{{ $company->id }}" {{ $selected }}>{{ $company->name }}
+                                        </option>
                                         @endforeach
                                     </select>
                                 </div>
                             </div>
+
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label>@lang('filter.employees')</label>
+                                    <select class="form-control select2" name="employee_id" id="employee_id">
+                                        <option value="">@lang('filter.select')</option>
+                                        @foreach ($employees as $employee)
+                                        <?php $selected = Request('employee_id') == $employee->id ? 'selected' : ''; ?>
+                                        <option value="{{ $employee->id }}" {{ $selected }}>
+                                            {{ $employee->name }}
+                                        </option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                            </div>
+
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label>@lang('filter.date_from')</label>
-                                    <input type="date" name="date_from" value="{{Request('date_from')}}" class="form-control" style="width: 100%;">
+                                    <input type="date" name="date_from" value="{{ Request('date_from') }}" class="form-control">
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label>@lang('filter.date_to')</label>
-                                    <input type="date" name="date_to" value="{{Request('date_to')}}" class="form-control" style="width: 100%;">
+                                    <input type="date" name="date_to" value="{{ Request('date_to') }}" class="form-control">
                                 </div>
                             </div>
                         </div>
@@ -116,3 +123,61 @@
         </div>
     </div>
 </section>
+
+
+
+<script>
+    function getEmployees(client_id = "", company_id = "") {
+
+        $.ajax({
+
+            url: '{{url("admin/employees?client_id=")}}' + client_id + '&company_id=' + company_id,
+            type: 'GET',
+            data: {},
+            dataType: 'json',
+            success: function(response) {
+
+                let result = response.data;
+
+                $("#employee_id").html(`<option value=''>@lang('filter.select')</option>`)
+
+                for (let i = 0; i < result.length; i++) {
+
+                    $("#employee_id").append(`<option value='${result[i].id}'>${result[i].name}</option>`)
+
+                }
+            },
+            error: function(request, error) {
+                console.log("Request: " + JSON.stringify(request));
+            }
+        });
+    }
+
+    function getCompanies(client_id) {
+
+        $.ajax({
+
+            url: '{{url("admin/companies/all?client_id=")}}' + client_id,
+            type: 'GET',
+            data: {},
+            dataType: 'json',
+            success: function(response) {
+
+                let result = response.data;
+
+                $("#company_id").html(`<option value=''>@lang('filter.select')</option>`)
+
+                for (let i = 0; i < result.length; i++) {
+
+                    $("#company_id").append(`<option value='${result[i].id}'>${result[i].name}</option>`);
+                    console.log(result[i]);
+
+
+                }
+            },
+            error: function(request, error) {
+                console.log("Request: " + JSON.stringify(request));
+            }
+        });
+    }
+</script>

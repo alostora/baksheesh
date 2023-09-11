@@ -7,8 +7,9 @@ use Admin\Foundations\Report\Withdrawal\WithdrawalReportSearchCollection;
 use Admin\Foundations\Wallet\CompanyWalletSearchCollection;
 use Admin\Foundations\Wallet\EmployeeWalletSearchCollection;
 use App\Constants\HasLookupType\UserAccountType;
-use App\Constants\HasLookupType\WithdrawalRequestStatus;
 use App\Constants\SystemDefault;
+use App\Foundations\LookupType\AccountTypeCollection;
+use App\Foundations\LookupType\WithdrawalRequestStatusCollection;
 use App\Http\Controllers\Controller;
 use App\Models\Company;
 use App\Models\SystemLookup;
@@ -27,9 +28,7 @@ class AdminReportController extends Controller
             $request->get('per_page') ? $request->get('per_page') : SystemDefault::DEFAUL_PAGINATION_COUNT
         );
 
-        $client_type = SystemLookup::where('type', UserAccountType::LOOKUP_TYPE)
-            ->where('code',  UserAccountType::CLIENT['code'])
-            ->first();
+        $client_type = AccountTypeCollection::client();
 
         $data['clients'] = User::where('user_account_type_id', $client_type->id)->get();
 
@@ -49,9 +48,7 @@ class AdminReportController extends Controller
             $request->get('per_page') ? $request->get('per_page') : SystemDefault::DEFAUL_PAGINATION_COUNT
         );
 
-        $client_type = SystemLookup::where('type', UserAccountType::LOOKUP_TYPE)
-            ->where('code',  UserAccountType::CLIENT['code'])
-            ->first();
+        $client_type = AccountTypeCollection::client();
 
         $employee_type = SystemLookup::where('type', UserAccountType::LOOKUP_TYPE)
             ->where('code',  UserAccountType::EMPLOYEE['code'])
@@ -79,13 +76,11 @@ class AdminReportController extends Controller
             $request->get('per_page') ? $request->get('per_page') : SystemDefault::DEFAUL_PAGINATION_COUNT
         );
 
-        $client_type = SystemLookup::where('type', UserAccountType::LOOKUP_TYPE)
-            ->where('code',  UserAccountType::CLIENT['code'])
-            ->first();
+        $client_type = AccountTypeCollection::client();
 
         $data['clients'] = User::where('user_account_type_id', $client_type->id)->get();
 
-        $data['withdrawal_request_status'] = SystemLookup::where('type', WithdrawalRequestStatus::LOOKUP_TYPE)->get();
+        $data['withdrawal_request_status'] = WithdrawalRequestStatusCollection::statusList();
 
 
         return view('Admin/Report/WithdrawalRequest/index', $data);

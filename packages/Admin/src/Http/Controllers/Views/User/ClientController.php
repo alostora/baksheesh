@@ -5,14 +5,11 @@ namespace Admin\Http\Controllers\Views\User;
 use Admin\Foundations\Client\ClientSearchCollection;
 use Admin\Http\Requests\Client\ClientCreateRequest;
 use Admin\Http\Requests\Client\ClientUpdateRequest;
-use Admin\Http\Requests\User\UserCreateRequest;
-use Admin\Http\Requests\User\UserUpdateRequest;
-use App\Constants\HasLookupType\UserAccountType;
 use App\Constants\StatusCode;
 use App\Constants\SystemDefault;
+use App\Foundations\LookupType\AccountTypeCollection;
 use App\Http\Controllers\Controller;
 use App\Http\Resources\Auth\UserResource;
-use App\Models\SystemLookup;
 use App\Models\User;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
@@ -57,10 +54,7 @@ class ClientController extends Controller
 
     public function store(ClientCreateRequest $request)
     {
-
-        $user_account_type = SystemLookup::where('type', UserAccountType::LOOKUP_TYPE)
-            ->where('code',  UserAccountType::CLIENT['code'])
-            ->first();
+        $user_account_type = AccountTypeCollection::client();
 
         $validated = $request->validated();
 

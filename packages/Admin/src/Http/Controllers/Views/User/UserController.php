@@ -8,6 +8,7 @@ use Admin\Http\Requests\User\UserUpdateRequest;
 use App\Constants\HasLookupType\UserAccountType;
 use App\Constants\StatusCode;
 use App\Constants\SystemDefault;
+use App\Foundations\LookupType\AccountTypeCollection;
 use App\Http\Controllers\Controller;
 use App\Http\Resources\Auth\UserResource;
 use App\Models\SystemLookup;
@@ -60,9 +61,7 @@ class UserController extends Controller
 
     public function create()
     {
-        $data['user_account_types'] = SystemLookup::where('type', UserAccountType::LOOKUP_TYPE)
-            ->where('code', '!=', UserAccountType::EMPLOYEE['code'])
-            ->get();
+        $data['user_account_types'] = AccountTypeCollection::typeListExceptEmployee();
 
         return view('Admin/User/create', $data);
     }
@@ -77,9 +76,7 @@ class UserController extends Controller
 
     public function edit(User $user)
     {
-        $data['user_account_types'] = SystemLookup::where('type', UserAccountType::LOOKUP_TYPE)
-            ->where('code', '!=', UserAccountType::EMPLOYEE['code'])
-            ->get();
+        $data['user_account_types'] = AccountTypeCollection::typeListExceptEmployee();
 
         $data['user'] = $user;
 

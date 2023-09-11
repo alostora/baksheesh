@@ -14,7 +14,7 @@
                               <div class="col-md-12">
                                    <div class="form-group">
                                         <label>@lang('withdrawal_request.status')</label>
-                                        <select class="form-control select2" name="status" style="width: 100%;" onchange="checkstatusValue(this.value)">
+                                        <select class="form-control select2" name="status" style="width: 100%;" onchange="checkStatusValue(this.value)">
                                              <option value="">@lang('withdrawal_request.select')</option>
                                              @foreach($withdrawal_request_status as $withdrawal_status)
                                              <?php $selected = Request('status') == $withdrawal_status->id ? "selected" : ""; ?>
@@ -54,7 +54,7 @@
 </div>
 
 <script>
-     function checkstatusValue(statusValue) {
+     function checkStatusValue(statusValue) {
 
           $("#refuse_reasone").hide();
           $("#bank_transfer_number").hide();
@@ -66,15 +66,15 @@
                data: {},
                dataType: 'json',
                success: function(response) {
-                    let responseee = response.data;
+                    let result = response.data;
 
-                    for (let i = 0; i < responseee.length; i++) {
-                         if (responseee[i].id == statusValue) {
-                              if (responseee[i].prefix == "REFUSED") {
+                    for (let i = 0; i < result.length; i++) {
+                         if (result[i].id == statusValue) {
+                              if (result[i].prefix == "REFUSED") {
 
                                    $("#refuse_reasone").show();
 
-                              } else if (responseee[i].prefix == "ACCEPTED") {
+                              } else if (result[i].prefix == "ACCEPTED") {
                                    $("#bank_transfer_number").show();
 
                               }

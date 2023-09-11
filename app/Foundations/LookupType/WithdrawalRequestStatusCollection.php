@@ -9,6 +9,12 @@ use App\Models\SystemLookup;
 class WithdrawalRequestStatusCollection
 
 {
+
+     public static function statusList()
+     {
+          return SystemLookup::where('type', WithdrawalRequestStatus::LOOKUP_TYPE)->get();
+     }
+
      public static function pending()
      {
           return SystemLookup::where('type', WithdrawalRequestStatus::LOOKUP_TYPE)

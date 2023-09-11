@@ -63,6 +63,22 @@ class CompanyController extends Controller
         return response()->paginated(CompanyMinifiedResource::collection($companies));
     }
 
+    public function allCompanies(Request $request)
+    {
+        $companies = CompanySearchCollection::searchAllCompanies(
+            $request->get('client_id') ? $request->get('client_id') : -1,
+            $request->get('query_string') ? $request->get('query_string') : -1,
+            $request->get('active') ? $request->get('active') : -1,
+            $request->get('per_page') ? $request->get('per_page') : SystemDefault::DEFAUL_PAGINATION_COUNT
+        );
+
+        return response()->success(
+            trans('company.company_retrieved_successfully'),
+            CompanyMinifiedResource::collection($companies),
+            StatusCode::OK
+        );
+    }
+
     public function show(Company $company)
     {
         return response()->success(

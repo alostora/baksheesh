@@ -23,5 +23,7 @@ return [
      "employees" => "Employees",
 
      "companies" => "Companies",
+     
+     "user_account_type" => "‘ser Account Type",
 
 ];

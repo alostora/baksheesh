@@ -15,7 +15,7 @@ class WithdrawalReportSearchCollection
         $date_to = -1,
         $per_page = SystemDefault::DEFAUL_PAGINATION_COUNT
     ) {
-        $companies = WithdrawalReportQueryCollection::searchAllWithdrawalRequests(
+        $withdrawalReports = WithdrawalReportQueryCollection::searchAllWithdrawalRequests(
             $client_id,
             $status,
             $amount,
@@ -23,6 +23,6 @@ class WithdrawalReportSearchCollection
             $date_to
         );
 
-        return $companies->paginate($per_page);
+        return $withdrawalReports->paginate($per_page);
     }
 }

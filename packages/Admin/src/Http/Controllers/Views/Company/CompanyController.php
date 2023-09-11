@@ -5,13 +5,13 @@ namespace Admin\Http\Controllers\Views\Company;
 use Admin\Foundations\Company\CompanySearchCollection;
 use Admin\Http\Requests\Company\CompanyCreateRequest;
 use Admin\Http\Requests\Company\CompanyUpdateRequest;
+use Admin\Http\Resources\Company\CompanyMinifiedResource;
 use Admin\Http\Resources\Company\CompanyResource;
-use App\Constants\HasLookupType\UserAccountType;
 use App\Constants\StatusCode;
 use App\Constants\SystemDefault;
+use App\Foundations\LookupType\AccountTypeCollection;
 use App\Http\Controllers\Controller;
 use App\Models\Company;
-use App\Models\SystemLookup;
 use App\Models\User;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
@@ -27,9 +27,7 @@ class CompanyController extends Controller
             $request->get('per_page') ? $request->get('per_page') : SystemDefault::DEFAUL_PAGINATION_COUNT
         );
 
-        $client_type = SystemLookup::where('type', UserAccountType::LOOKUP_TYPE)
-            ->where('code',  UserAccountType::CLIENT['code'])
-            ->first();
+        $client_type = AccountTypeCollection::client();
 
         $data['clients'] = User::where('user_account_type_id', $client_type->id)->get();
 
@@ -45,9 +43,7 @@ class CompanyController extends Controller
             $request->get('per_page') ? $request->get('per_page') : SystemDefault::DEFAUL_PAGINATION_COUNT
         );
 
-        $client_type = SystemLookup::where('type', UserAccountType::LOOKUP_TYPE)
-            ->where('code',  UserAccountType::CLIENT['code'])
-            ->first();
+        $client_type = AccountTypeCollection::client();
 
         $data['clients'] = User::where('user_account_type_id', $client_type->id)->get();
 
@@ -78,6 +74,22 @@ class CompanyController extends Controller
         return view('Admin/Company/index', compact('companies'));
     }
 
+    public function allCompanies(Request $request)
+    {
+        $companies = CompanySearchCollection::searchAllCompanies(
+            $request->get('client_id') ? $request->get('client_id') : -1,
+            $request->get('query_string') ? $request->get('query_string') : -1,
+            $request->get('active') ? $request->get('active') : -1,
+            $request->get('per_page') ? $request->get('per_page') : SystemDefault::DEFAUL_PAGINATION_COUNT
+        );
+
+        return response()->success(
+            trans('company.company_retrieved_successfully'),
+            CompanyMinifiedResource::collection($companies),
+            StatusCode::OK
+        );
+    }
+
     public function show(Company $company)
     {
         return response()->success(
@@ -89,9 +101,7 @@ class CompanyController extends Controller
 
     public function create()
     {
-        $client_type = SystemLookup::where('type', UserAccountType::LOOKUP_TYPE)
-            ->where('code',  UserAccountType::CLIENT['code'])
-            ->first();
+        $client_type = AccountTypeCollection::client();
 
         $data['clients'] = User::where('user_account_type_id', $client_type->id)->get();
 
@@ -107,9 +117,7 @@ class CompanyController extends Controller
 
     public function edit(Company $company)
     {
-        $client_type = SystemLookup::where('type', UserAccountType::LOOKUP_TYPE)
-            ->where('code',  UserAccountType::CLIENT['code'])
-            ->first();
+        $client_type = AccountTypeCollection::client();
 
         $data['clients'] = User::where('user_account_type_id', $client_type->id)->get();
 

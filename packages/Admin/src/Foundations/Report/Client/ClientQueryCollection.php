@@ -3,6 +3,7 @@
 namespace Admin\Foundations\Report\Client;
 
 use App\Constants\HasLookupType\UserAccountType;
+use App\Foundations\LookupType\AccountTypeCollection;
 use App\Models\SystemLookup;
 use App\Models\User;
 
@@ -13,9 +14,7 @@ class ClientQueryCollection
         $active = -1,
     ) {
 
-        $user_account_type = SystemLookup::where('type', UserAccountType::LOOKUP_TYPE)
-            ->where('code',  UserAccountType::CLIENT['code'])
-            ->first();
+        $user_account_type = AccountTypeCollection::client();
 
         return User::where('user_account_type_id', $user_account_type->id)
 

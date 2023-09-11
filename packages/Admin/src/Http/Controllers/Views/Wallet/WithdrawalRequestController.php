@@ -5,13 +5,12 @@ namespace Admin\Http\Controllers\Views\Wallet;
 use Admin\Foundations\Report\Withdrawal\WithdrawalReportSearchCollection;
 use Admin\Foundations\Wallet\ClientWithdrawalRequest\ClientWithdrawalRequestSearchCollection;
 use Admin\Http\Requests\ClientWithdrawalRequest\ClientWithdrawalRequestChangeStatusRequest;
-use App\Constants\HasLookupType\UserAccountType;
-use App\Constants\HasLookupType\WithdrawalRequestStatus;
 use App\Constants\StatusCode;
 use App\Constants\SystemDefault;
+use App\Foundations\LookupType\AccountTypeCollection;
+use App\Foundations\LookupType\WithdrawalRequestStatusCollection;
 use App\Http\Controllers\Controller;
 use App\Models\ClientWithdrawalRequest;
-use App\Models\SystemLookup;
 use App\Models\User;
 use Carbon\Carbon;
 use Client\Http\Resources\ClientWithdrawalRequest\ClientWithdrawalRequestResource;
@@ -60,14 +59,11 @@ class WithdrawalRequestController extends Controller
             $request->get('per_page') ? $request->get('per_page') : SystemDefault::DEFAUL_PAGINATION_COUNT
         );
 
-        $client_type = SystemLookup::where('type', UserAccountType::LOOKUP_TYPE)
-            ->where('code',  UserAccountType::CLIENT['code'])
-            ->first();
+        $client_type = AccountTypeCollection::client();
 
         $data['clients'] = User::where('user_account_type_id', $client_type->id)->get();
 
-        $data['withdrawal_request_status'] = SystemLookup::where('type', WithdrawalRequestStatus::LOOKUP_TYPE)->get();
-
+        $data['withdrawal_request_status'] = WithdrawalRequestStatusCollection::statusList();
 
         return view('Admin/AllWithdrawalRequest/index', $data);
     }
@@ -102,50 +98,6 @@ class WithdrawalRequestController extends Controller
         $data['action_at'] = Carbon::now();
 
         $clientWithdrawalRequest->update($validated);
-
-        return back();
-    }
-
-    public function accept(ClientWithdrawalRequest $clientWithdrawalRequest)
-    {
-
-        $data = [];
-
-        $withdrawalStatus =  SystemLookup::where('type', WithdrawalRequestStatus::LOOKUP_TYPE)
-            ->where('code', WithdrawalRequestStatus::ACCEPTED['code'])
-            ->first();
-
-        $data['status'] = $withdrawalStatus->id;
-
-        $data['discount_percentage'] = SystemDefault::DEFAUL_DISCOUNT_PERCENTAGE;
-
-        $data['action_by_id'] = auth()->id();
-
-        $data['action_at'] = Carbon::now();
-
-        $clientWithdrawalRequest->update($data);
-
-        return back();
-    }
-
-    public function refuse(ClientWithdrawalRequest $clientWithdrawalRequest)
-    {
-
-        $data = [];
-
-        $withdrawalStatus =  SystemLookup::where('type', WithdrawalRequestStatus::LOOKUP_TYPE)
-            ->where('code', WithdrawalRequestStatus::REFUSED['code'])
-            ->first();
-
-        $data['status'] = $withdrawalStatus->id;
-
-        $data['discount_percentage'] = SystemDefault::DEFAUL_DISCOUNT_PERCENTAGE;
-
-        $data['action_by_id'] = auth()->id();
-
-        $data['action_at'] = Carbon::now();
-
-        $clientWithdrawalRequest->update($data);
 
         return back();
     }

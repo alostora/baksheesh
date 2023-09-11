@@ -28,7 +28,7 @@
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label>@lang('filter.query_string')</label>
-                                    <input type="text" name="query_string" value="{{Request('query_string')}}" class="form-control" style="width: 100%;">
+                                    <input type="text" name="query_string" value="{{Request('query_string')}}" class="form-control" placeholder="{{Lang::get('filter.query_string')}}">
                                 </div>
                             </div>
                         </div>

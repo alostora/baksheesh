@@ -16,8 +16,8 @@
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label>@lang('filter.client')</label>
-                                    <select class="form-control select2" name="client_id" style="width: 100%;">
+                                    <label>@lang('filter.clients')</label>
+                                    <select class="form-control select2" name="client_id" onchange="getCompanies(this.value)">
                                         <option value="">@lang('filter.select')</option>
                                         @foreach($clients as $client)
                                         <?php $selected = Request('client_id') == $client->id ? "selected" : ""; ?>
@@ -28,8 +28,8 @@
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label>@lang('filter.company')</label>
-                                    <select class="form-control select2" name="company_id" style="width: 100%;">
+                                    <label>@lang('filter.companies')</label>
+                                    <select class="form-control select2" name="company_id" id="company_id">
                                         <option value="">@lang('filter.select')</option>
                                         @foreach($companies as $company)
                                         <?php $selected = Request('company_id') == $company->id ? "selected" : ""; ?>
@@ -41,13 +41,13 @@
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label>@lang('filter.date_from')</label>
-                                    <input type="date" name="date_from" value="{{Request('date_from')}}" class="form-control" style="width: 100%;">
+                                    <input type="date" name="date_from" value="{{Request('date_from')}}" class="form-control">
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label>@lang('filter.date_to')</label>
-                                    <input type="date" name="date_to" value="{{Request('date_to')}}" class="form-control" style="width: 100%;">
+                                    <input type="date" name="date_to" value="{{Request('date_to')}}" class="form-control">
                                 </div>
                             </div>
                         </div>
@@ -108,3 +108,35 @@
         </div>
     </div>
 </section>
+
+
+
+<script>
+    function getCompanies(client_id) {
+
+        $.ajax({
+
+            url: '{{url("admin/companies/all?client_id=")}}' + client_id,
+            type: 'GET',
+            data: {},
+            dataType: 'json',
+            success: function(response) {
+
+                let result = response.data;
+
+                $("#company_id").html(`<option value=''>@lang('filter.select')</option>`)
+
+                for (let i = 0; i < result.length; i++) {
+
+                    $("#company_id").append(`<option value='${result[i].id}'>${result[i].name}</option>`);
+                                    console.log(result[i]);
+
+
+                }
+            },
+            error: function(request, error) {
+                console.log("Request: " + JSON.stringify(request));
+            }
+        });
+    }
+</script>

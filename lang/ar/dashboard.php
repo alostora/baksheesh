@@ -5,6 +5,8 @@ return [
      "app_name" => "Tips",
 
      "online" => "متصل",
+     
+     "logout" => "خروج",
 
      "dashboard" => "لوحة التحكم",
 

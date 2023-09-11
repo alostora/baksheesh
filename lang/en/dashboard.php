@@ -6,6 +6,8 @@ return [
 
      "online" => "Online",
 
+     "logout" => "Logout",
+
      "dashboard" => "Dashboard",
 
      "active_clients" => "Active Clients",

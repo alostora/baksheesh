@@ -9,6 +9,19 @@ use App\Models\SystemLookup;
 class AccountTypeCollection
 
 {
+     public static function typeList()
+     {
+          return SystemLookup::where('type', UserAccountType::LOOKUP_TYPE)
+               ->get();
+     }
+
+     public static function typeListExceptEmployee()
+     {
+          return SystemLookup::where('type', UserAccountType::LOOKUP_TYPE)
+               ->where('code', '!=', UserAccountType::EMPLOYEE['code'])
+               ->get();
+     }
+
      public static function root()
      {
           return SystemLookup::where('type', UserAccountType::LOOKUP_TYPE)

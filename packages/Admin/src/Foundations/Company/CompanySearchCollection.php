@@ -36,4 +36,14 @@ class CompanySearchCollection
 
         return $companies->paginate($per_page);
     }
+
+    public static function searchAllCompanies(
+        $client_id = -1
+    ) {
+        $companies = CompanyQueryCollection::searchAllCompanies(
+            $client_id,
+        );
+
+        return $companies->get();
+    }
 }
