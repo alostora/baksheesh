@@ -53,6 +53,10 @@ class CompanyEmployeeUpdateRequest extends FormRequest
 
             'file_id' => ['bail', 'nullable', 'string', 'uuid', 'exists:files,id'],
 
+            'available_rating_ids' => ['required', 'array', 'max:5'],
+
+            'available_rating_ids.*' => ['required', 'uuid', 'exists:system_lookups,id'],
+
         ];
     }
 }

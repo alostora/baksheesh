@@ -42,4 +42,9 @@ class Company extends Model
     {
         return $this->hasMany(CompanyCash::class, 'company_id', 'id');
     }
+    
+    public function companyAvailableRatings(): HasMany
+    {
+        return $this->hasMany(CompanyAvailableRating::class, 'company_id', 'id');
+    }
 }

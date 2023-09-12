@@ -26,6 +26,8 @@ return [
 
     'withdrawal_requests' => 'Withdrawal Requests',
 
+    'available_rating' => 'Available Rating',
+
     //operatoins
     "operations" => "Operations",
 

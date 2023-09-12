@@ -26,6 +26,8 @@ return [
 
     'withdrawal_requests' => 'طلبات السحب',
 
+    'available_rating' => 'التقييم المتاح',
+
     //operatoins
     "operations" => "عمليات",
 

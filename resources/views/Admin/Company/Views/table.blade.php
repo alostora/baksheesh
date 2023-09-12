@@ -55,7 +55,7 @@
                 <div class="box-header">
                     <h3 class="box-title col-md-8">@lang('company.page_title')</h3>
                     <div class="col-md-4">
-                        <a href="{{url('admin/company-employee/create')}}" class="btn btn-primary btn-sm" style="height:25px;padding:2px;width:150px">
+                        <a href="{{url('admin/company/create')}}" class="btn btn-primary btn-sm" style="height:25px;padding:2px;width:150px">
                             <i class="fa fa-plus"></i>
                             <span>@lang('company.create')</span>
                         </a>

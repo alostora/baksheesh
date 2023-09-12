@@ -14,6 +14,12 @@ return [
     'address' => 'العنوان',
     'account_type' => 'نوع الحساب',
     'withdrawal_requests' => 'طلبات السحب',
+    'companies' => 'الشركات',
+    'employees' => 'الموظفين',
+    "created_at" => "تارخ الانشاء",
+    "stopped_at" => "تارخ الايقاف",
+    "collected_cash" => "الاكراميات المحصلة",
+    "delivered_cash" => "المبالغ المستلمة",
 
 
     //operatoins

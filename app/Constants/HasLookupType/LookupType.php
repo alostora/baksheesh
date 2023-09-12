@@ -6,14 +6,18 @@ class LookupType
 {
     public const LOOKUP_TYPES = [
 
-        1 => "userAccountType",
-        2 => "countryType",
-        3 => "allowedLanguages",
-        4 => "withdrawalRequestStatus",
+        1 => "UserAccountType",
+        2 => "CountryType",
+        3 => "AllowedLanguages",
+        4 => "WithdrawalRequestStatus",
+        5 => "AvailableCompanyRating",
+        6 => "AvailableEmployeeRating",
     ];
 
-    const userAccountType = 1;
-    const countryType = 2;
-    const allowedLanguages = 3;
+    const UserAccountType = 1;
+    const CountryType = 2;
+    const AllowedLanguages = 3;
     const WithdrawalRequestStatus = 4;
+    const AvailableCompanyRating = 5;
+    const AvailableEmployeeRating = 6;
 }

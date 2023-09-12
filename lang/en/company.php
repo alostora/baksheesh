@@ -16,6 +16,8 @@ return [
 
     'employees' => 'Employees',
 
+    'available_rating' => 'Available Rating',
+
     //operatoins
     "operations" => "Operations",
 

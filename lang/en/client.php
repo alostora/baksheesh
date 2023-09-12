@@ -14,6 +14,12 @@ return [
     'address' => 'Address',
     'user_account_type' => 'Account Type',
     'withdrawal_requests' => 'Withdrawal Requests',
+    'companies' => 'Companies',
+    'employees' => 'Employees',
+    "created_at" => "Created At",
+    "stopped_at" => "Stopped At",
+    "collected_cash" => "Collected Cash",
+    "delivered_cash" => "Delivered Cash",
 
 
     //operatoins

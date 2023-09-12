@@ -16,6 +16,8 @@ return [
 
     'employees' => 'موظفون',
 
+    'available_rating' => 'التقييم المتاح',
+
 
     //operatoins
     "operations" => "عمليات",

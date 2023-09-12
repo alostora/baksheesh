@@ -157,4 +157,9 @@ class User extends Authenticatable implements MustVerifyEmail
 
         return $this->hasMany(ClientWithdrawalRequest::class, 'client_id', 'id')->where('status', $accpted_withdrawalRequest->id);
     }
+    
+    public function employeeAvailableRatings(): HasMany
+    {
+        return $this->hasMany(EmployeeAvailableRating::class, 'employee_id', 'id');
+    }
 }
