@@ -9,7 +9,6 @@ use Admin\Foundations\Company\CompanyEmployee\CompanyEmployeeUpdateCollection;
 use Admin\Http\Requests\Company\CompanyEmployee\AssignCompanyEmployeeCreateRequest;
 use Admin\Http\Requests\Company\CompanyEmployee\CompanyEmployeeCreateRequest;
 use Admin\Http\Requests\Company\CompanyEmployee\CompanyEmployeeUpdateRequest;
-use Admin\Http\Resources\Company\CompanyEmployee\CompanyEmployeeMinifiedResource;
 use Admin\Http\Resources\Company\CompanyEmployee\CompanyEmployeeResource;
 use App\Constants\HasLookupType\AvailableEmployeeRating;
 use App\Constants\StatusCode;
@@ -82,7 +81,7 @@ class CompanyEmployeeController extends Controller
         $data['companies'] = Company::get();
 
         $data['employee'] = $user;
-        
+
         $selected_available_rating_ids = $user->EmployeeAvailableRatings()->pluck('available_rating_id');
 
         $data['available_rating'] = SystemLookup::where('type', AvailableEmployeeRating::LOOKUP_TYPE)
