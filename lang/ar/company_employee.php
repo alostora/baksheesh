@@ -28,6 +28,10 @@ return [
 
     'available_rating' => 'التقييم المتاح',
 
+    'demo_link' => 'صفحة الدفع',
+
+    'qr' => 'QR Code',
+
     //operatoins
     "operations" => "عمليات",
 

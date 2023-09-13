@@ -10,12 +10,15 @@ use Guest\Http\Requests\PayForCompanyRequest;
 use Guest\Http\Requests\PayForEmployeeRequest;
 use Guest\Http\Resources\PayForCompanyResource;
 use Guest\Http\Resources\PayForEmployeeResource;
+use Illuminate\Http\Request;
 
 class PaymentController extends Controller
 {
     
-    public function payForEmployee(PayForEmployeeRequest $request)
+    public function payForEmployee(Request $request)
     {
+
+        return $request->all();
         $employeeCash = EmployeeCash::create($request->validated());
 
         return response()->success(

@@ -1,3 +1,6 @@
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrious/4.0.2/qrious.min.js"></script>
+
+
 <section class="content">
     <div class="row">
         <div class="col-xs-12">
@@ -37,6 +40,7 @@
                     </form>
                 </div>
             </div>
+
             <div class="box box-promary">
                 <div class="box-header">
                     <h3 class="box-title col-md-8">@lang('company_employee.page_title')</h3>
@@ -55,6 +59,8 @@
                                 <th>@lang('company_employee.name')</th>
                                 <th>@lang('company_employee.email')</th>
                                 <th>@lang('company_employee.phone')</th>
+                                <th>@lang('company_employee.demo_link')</th>
+                                <th>@lang('company_employee.qr')</th>
                                 <th>@lang('company_employee.operations')</th>
                             </tr>
                         </thead>
@@ -66,6 +72,21 @@
                                 <td> {{$user->name}} </td>
                                 <td> {{$user->email}} </td>
                                 <td> {{$user->phone}} </td>
+                                <td>
+                                    <a href="{{url('pay-for-employee/'.$user->id)}}" target="_blank" class="btn btn-success btn-sm">
+                                        <i class="fa fa-link"></i>
+                                    </a>
+                                </td>
+                                <td>
+                                    <canvas id="{{$user->id}}"></canvas>
+                                    <script type="text/javascript">
+                                        new QRious({
+                                            element: document.getElementById("{{$user->id}}"),
+                                            value: "{{url('pay-for-employee/'.$user->id)}}"
+                                        });
+                                    </script>
+
+                                </td>
                                 <td>
                                     <a href="{{url('admin/company-employee/edit/'.$user->id)}}" class="btn btn-success btn-sm">
                                         <i class="fa fa-edit"></i>

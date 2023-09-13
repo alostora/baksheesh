@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AuthViews\AuthController;
+use App\Http\Controllers\PaymentForEmployeeController;
 use Illuminate\Support\Facades\Route;
 
 
@@ -26,3 +27,6 @@ Route::group([
         Route::any('logout', [AuthController::class, 'logout']);
     });
 });
+
+
+Route::get('pay-for-employee/{user}', [PaymentForEmployeeController::class, 'index']);
