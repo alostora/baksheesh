@@ -13,6 +13,7 @@
                 </div>
                 <div class="box-body">
                     <form role="form" action="{{url('client/client-company-employees/search')}}" method="GET">
+                        <input type="hidden" name="company_id" value="{{Request('company_id')}}">
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="form-group">
@@ -71,14 +72,14 @@
                                         <i class="fa fa-edit"></i>
                                     </a>
 
-                                    @if($company->stopped_at == null)
-                                    <a href="{{url('client/client-company-employee-inactive/'.$company->id)}}" class="btn btn-success btn-sm">
+                                    @if($user->stopped_at == null)
+                                    <a href="{{url('client/client-company-employee-inactive/'.$user->id)}}" class="btn btn-success btn-sm">
                                         <i class="fa fa-check"></i> current status : active
                                     </a>
                                     @else
 
-                                    <a href="{{url('client/client-company-employee-active/'.$company->id)}}" class="btn btn-danger btn-sm">
-                                        <i class="fa fa-close"></i> current status : Inactive at {{$company->stopped_at}}
+                                    <a href="{{url('client/client-company-employee-active/'.$user->id)}}" class="btn btn-danger btn-sm">
+                                        <i class="fa fa-close"></i> current status : Inactive at {{$user->stopped_at}}
                                     </a>
                                     @endif
                                 </td>

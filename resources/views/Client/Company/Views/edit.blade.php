@@ -17,7 +17,6 @@
             <div class="row">
               <div class="form-group">
                 <div class="col-md-6">
-
                   <label for="name">@lang('company.name')</label>
                   <input type="text" class="form-control" name="name" id="name" value="{{$company->name}}">
                 </div>

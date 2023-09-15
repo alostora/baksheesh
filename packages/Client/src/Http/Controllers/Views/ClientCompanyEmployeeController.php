@@ -67,7 +67,7 @@ class ClientCompanyEmployeeController extends Controller
     {
         ClientCompanyEmployeeCreateCollection::createCompanyEmployee($request);
 
-        return redirect(url("admin/company-employees/search?company_id=" . $request->get('company_id')));
+        return redirect(url("client/client-company-employees/search?company_id=" . $request->get('company_id')));
     }
     public function edit(User $user)
     {
@@ -84,7 +84,7 @@ class ClientCompanyEmployeeController extends Controller
     {
         $user = ClientCompanyEmployeeUpdateCollection::updateCompanyEmployee($request, $user);
 
-        return redirect(url("admin/company-employees/search?company_id=" . $request->get('company_id')));
+        return redirect(url("client/client-company-employees/search?company_id=" . $request->get('company_id')));
     }
 
     public function destroy(User $user)

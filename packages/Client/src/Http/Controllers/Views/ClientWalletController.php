@@ -2,8 +2,6 @@
 
 namespace Client\Http\Controllers\Views;
 
-use Admin\Http\Resources\Wallet\EmployeeWalletResource;
-use Admin\Http\Resources\Wallet\CompanyWalletResource;
 use App\Constants\HasLookupType\UserAccountType;
 use App\Constants\SystemDefault;
 use App\Http\Controllers\Controller;
@@ -25,7 +23,7 @@ class ClientWalletController extends Controller
             $request->get('per_page') ? $request->get('per_page') : SystemDefault::DEFAUL_PAGINATION_COUNT
         );
 
-        $data['companies'] = Company::where('client_id', auth()->id())->get();
+        $data['companies'] = Company::where('client_id', auth()->id())->where('stopped_at', null)->get();
 
         return view('Client/CompanyWallet/index', $data);
     }
@@ -46,7 +44,7 @@ class ClientWalletController extends Controller
 
         $data['employees'] = User::where('client_id', auth()->id())->where('user_account_type_id', $employee_type->id)->get();
 
-        $data['companies'] = Company::where('client_id', auth()->id())->get();
+        $data['companies'] = Company::where('client_id', auth()->id())->where('stopped_at', null)->get();
 
         return view('Client/EmployeeWallet/index', $data);
     }
