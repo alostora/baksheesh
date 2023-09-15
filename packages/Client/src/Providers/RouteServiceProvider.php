@@ -22,7 +22,7 @@ class RouteServiceProvider extends ServiceProvider
 
         foreach (glob(base_path('/packages/Client/client_routes/*.php')) as $file) {
             Route::prefix('client')
-                ->middleware(['web'])
+                ->middleware(['web','lang'])
                 ->group($file);
         }
     }

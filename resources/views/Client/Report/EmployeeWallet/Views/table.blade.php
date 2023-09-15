@@ -1,7 +1,6 @@
 <section class="content">
     <div class="row">
         <div class="col-xs-12">
-
             <!-- filter -->
             <div class="box box-success">
                 <div class="box-header with-border">
@@ -80,10 +79,7 @@
                                 <th>@lang('employee_wallet.company')</th>
                                 <th>@lang('employee_wallet.employee')</th>
                                 <th>@lang('employee_wallet.amount')</th>
-                                <th>@lang('employee_wallet.payer_name')</th>
-                                <th>@lang('employee_wallet.payer_email')</th>
-                                <th>@lang('employee_wallet.payer_phone')</th>
-                                <th>@lang('employee_wallet.notes')</th>
+                                <th>@lang('employee_wallet.created_at')</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -95,10 +91,7 @@
                                 <td> {{$wallet->company->name}} </td>
                                 <td> {{$wallet->employee->name}} </td>
                                 <td> {{$wallet->amount}} </td>
-                                <td> {{$wallet->payer_name}} </td>
-                                <td> {{$wallet->payer_email}} </td>
-                                <td> {{$wallet->payer_phone}} </td>
-                                <td> {{$wallet->notes}} </td>
+                                <td> {{$wallet->created_at}} </td>
                             </tr>
                             @endforeach
                             @endif
@@ -116,8 +109,6 @@
         </div>
     </div>
 </section>
-
-
 
 <script>
     function getEmployees(company_id = "") {

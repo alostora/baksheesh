@@ -12,26 +12,13 @@
                     </div>
                 </div>
                 <div class="box-body">
-                    <form role="form" action="{{url('admin/all-client-withdrawal-requests/search')}}" method="GET">
+                    <form role="form" action="{{url('client/withdrawal-request-report')}}" method="GET">
                         <div class="row">
 
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label>@lang('filter.clients')</label>
-                                    <select class="form-control select2" name="client_id" style="width: 100%;">
-                                        <option value="">@lang('filter.select')</option>
-                                        @foreach($clients as $client)
-                                        <?php $selected = Request('client_id') == $client->id ? "selected" : ""; ?>
-                                        <option value="{{$client->id}}" {{$selected}}>{{$client->name}}</option>
-                                        @endforeach
-                                    </select>
-                                </div>
-                            </div>
-
-                            <div class="col-md-6">
-                                <div class="form-group">
                                     <label>@lang('filter.status')</label>
-                                    <select class="form-control select2" name="status" style="width: 100%;">
+                                    <select class="form-control select2" name="status">
                                         <option value="">@lang('filter.select')</option>
                                         @foreach($withdrawal_request_status as $withdrawal_status)
                                         <?php $selected = Request('status') == $withdrawal_status->id ? "selected" : ""; ?>
@@ -40,10 +27,24 @@
                                     </select>
                                 </div>
                             </div>
+
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label>@lang('filter.query_string')</label>
-                                    <input type="text" name="query_string" value="{{Request('query_string')}}" placeholder="{{Lang::get('withdrawal_request.query_string')}}" class="form-control" style="width: 100%;">
+                                    <input type="text" name="query_string" value="{{Request('query_string')}}" placeholder="{{Lang::get('filter.query_string')}}" class="form-control">
+                                </div>
+                            </div>
+
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label>@lang('filter.date_from')</label>
+                                    <input type="date" name="date_from" value="{{Request('date_from')}}" class="form-control">
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label>@lang('filter.date_to')</label>
+                                    <input type="date" name="date_to" value="{{Request('date_to')}}" class="form-control">
                                 </div>
                             </div>
                         </div>
@@ -65,9 +66,14 @@
                         <thead>
                             <tr>
                                 <th>#</th>
+                                <th>@lang('withdrawal_request.reference_code')</th>
                                 <th>@lang('withdrawal_request.client')</th>
                                 <th>@lang('withdrawal_request.amount')</th>
                                 <th>@lang('withdrawal_request.status')</th>
+                                <th>@lang('withdrawal_request.created_at')</th>
+                                <th>@lang('withdrawal_request.action_at')</th>
+                                <th>@lang('withdrawal_request.bank_transfer_number')</th>
+                                <th>@lang('withdrawal_request.admin_notes')</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -81,37 +87,33 @@
                             @elseif($withdrawal_request->withdrawalRequestStatus->code == App\Constants\HasLookupType\WithdrawalRequestStatus::REFUSED['code'])
                             <?php $color = 'orange' ?>
                             @endif
+
                             <tr>
                                 <td> {{$key+1}} </td>
+                                <td> {{$withdrawal_request->id}} </td>
                                 <td> {{$withdrawal_request->client->name}} </td>
                                 <td> {{$withdrawal_request->amount}} </td>
                                 <td>
-                                    <label class="label label-default text-{{$color}}"></label>
-                                    <div class="btn-group">
-                                        <button type="button" data-toggle="modal" data-target="#modal-default" class="btn btn-sm bg-{{$color}}" onclick="changeWithdrawalRequest('{{$withdrawal_request->id}}')">
-                                            {{$withdrawal_request->withdrawalRequestStatus->name}}
-                                        </button>
-                                    </div>
+                                    <label class="label label-default text-{{$color}}">{{$withdrawal_request->withdrawalRequestStatus->name}}</label>
                                 </td>
+                                <td> {{$withdrawal_request->created_at}} </td>
+                                <td> {{$withdrawal_request->action_at}} </td>
+                                <td> {{$withdrawal_request->bank_transfer_number}} </td>
+                                <td> {{$withdrawal_request->admin_notes}} </td>
                             </tr>
                             @endforeach
                             @endif
                         </tbody>
                     </table>
+
                     <div class="box-footer clearfix">
                         <ul class="pagination pagination-sm no-margin pull-right">
                             {{ $withdrawal_requests->render( "pagination::bootstrap-4") }}
                         </ul>
                     </div>
+
                 </div>
             </div>
         </div>
     </div>
 </section>
-
-<script>
-    function changeWithdrawalRequest(withdrawalRequestId) {
-        let url = "{{url('admin/client-withdrawal-request-change-status')}}" + "/" + withdrawalRequestId
-        $("#modal-from").attr('action', url)
-    }
-</script>

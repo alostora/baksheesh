@@ -149,6 +149,37 @@
         </ul>
       </li>
 
+      <li class="active treeview">
+
+        <a href="#">
+          <i class="fa fa-dashboard"></i> <span>@lang('sidebar.reports')</span>
+          <span class="pull-right-container">
+            <i class="fa fa-angle-left pull-right"></i>
+          </span>
+        </a>
+
+        <ul class="treeview-menu">
+
+          <li>
+            <a href="{{url('client/company-wallet-report')}}">
+              <i class="fa fa-circle-o"></i>@lang('sidebar.company_wallet_report')
+            </a>
+          </li>
+          <li>
+            <a href="{{url('client/employee-wallet-report')}}">
+              <i class="fa fa-circle-o"></i>@lang('sidebar.employee_wallet_report')
+            </a>
+          </li>
+
+          <li>
+            <a href="{{url('client/withdrawal-request-report')}}">
+              <i class="fa fa-circle-o"></i>@lang('sidebar.withdrawal_request_report')
+            </a>
+          </li>
+
+        </ul>
+      </li>
+
       @endif
     </ul>
   </section>

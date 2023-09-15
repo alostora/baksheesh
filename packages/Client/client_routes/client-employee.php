@@ -29,4 +29,6 @@ Route::group([
 	Route::any('client-employee-active/{user}', [ClientEmployeeController::class, 'active']);
 
 	Route::any('client-employee-inactive/{user}', [ClientEmployeeController::class, 'inactive']);
+
+	Route::get('employees', [ClientEmployeeController::class, 'clientEmployees']);
 });

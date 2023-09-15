@@ -1,7 +1,6 @@
 <section class="content">
     <div class="row">
         <div class="col-xs-12">
-
             <!-- filter -->
             <div class="box box-success">
                 <div class="box-header with-border">
@@ -13,47 +12,30 @@
                     </div>
                 </div>
                 <div class="box-body">
-                    <form role="form" action="{{ url('client/employee-wallets') }}" method="GET">
+                    <form role="form" action="{{url('client/company-wallet-report')}}" method="GET">
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label>@lang('filter.companies')</label>
-                                    <select class="form-control select2" name="company_id" id="company_id" onchange="getEmployees(this.value);">
+                                    <select class="form-control select2" name="company_id" id="company_id">
                                         <option value="">@lang('filter.select')</option>
-                                        @foreach ($companies as $company)
-                                        <?php $selected = Request('company_id') == $company->id ? 'selected' : ''; ?>
-                                        <option value="{{ $company->id }}" {{ $selected }}>{{ $company->name }}
-                                        </option>
+                                        @foreach($companies as $company)
+                                        <?php $selected = Request('company_id') == $company->id ? "selected" : ""; ?>
+                                        <option value="{{$company->id}}" {{$selected}}>{{$company->name}}</option>
                                         @endforeach
                                     </select>
                                 </div>
                             </div>
-
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <label>@lang('filter.employees')</label>
-                                    <select class="form-control select2" name="employee_id" id="employee_id">
-                                        <option value="">@lang('filter.select')</option>
-                                        @foreach ($employees as $employee)
-                                        <?php $selected = Request('employee_id') == $employee->id ? 'selected' : ''; ?>
-                                        <option value="{{ $employee->id }}" {{ $selected }}>
-                                            {{ $employee->name }}
-                                        </option>
-                                        @endforeach
-                                    </select>
-                                </div>
-                            </div>
-
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label>@lang('filter.date_from')</label>
-                                    <input type="date" name="date_from" value="{{ Request('date_from') }}" class="form-control">
+                                    <input type="date" name="date_from" value="{{Request('date_from')}}" class="form-control">
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label>@lang('filter.date_to')</label>
-                                    <input type="date" name="date_to" value="{{ Request('date_to') }}" class="form-control">
+                                    <input type="date" name="date_to" value="{{Request('date_to')}}" class="form-control">
                                 </div>
                             </div>
                         </div>
@@ -66,7 +48,7 @@
 
             <div class="box">
                 <div class="box-header">
-                    <h3 class="box-title col-md-8">@lang('employee_wallet.page_title')</h3>
+                    <h3 class="box-title col-md-8">@lang('company_wallet.page_title')</h3>
                     <div class="col-md-4">
 
                     </div>
@@ -76,14 +58,10 @@
                         <thead>
                             <tr>
                                 <th>#</th>
-                                <th>@lang('employee_wallet.client')</th>
-                                <th>@lang('employee_wallet.company')</th>
-                                <th>@lang('employee_wallet.employee')</th>
-                                <th>@lang('employee_wallet.amount')</th>
-                                <th>@lang('employee_wallet.payer_name')</th>
-                                <th>@lang('employee_wallet.payer_email')</th>
-                                <th>@lang('employee_wallet.payer_phone')</th>
-                                <th>@lang('employee_wallet.notes')</th>
+                                <th>@lang('company_wallet.client')</th>
+                                <th>@lang('company_wallet.company')</th>
+                                <th>@lang('company_wallet.amount')</th>
+                                <th>@lang('company_wallet.created_at')</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -93,12 +71,8 @@
                                 <td> {{$key+1}} </td>
                                 <td> {{$wallet->client->name}} </td>
                                 <td> {{$wallet->company->name}} </td>
-                                <td> {{$wallet->employee->name}} </td>
                                 <td> {{$wallet->amount}} </td>
-                                <td> {{$wallet->payer_name}} </td>
-                                <td> {{$wallet->payer_email}} </td>
-                                <td> {{$wallet->payer_phone}} </td>
-                                <td> {{$wallet->notes}} </td>
+                                <td> {{$wallet->created_at}} </td>
                             </tr>
                             @endforeach
                             @endif
@@ -118,13 +92,12 @@
 </section>
 
 
-
 <script>
-    function getEmployees(company_id = "") {
+    function getCompanies(client_id) {
 
         $.ajax({
 
-            url: '{{url("client/employees?company_id=")}}' + company_id,
+            url: '{{url("admin/companies/all?client_id=")}}' + client_id,
             type: 'GET',
             data: {},
             dataType: 'json',
@@ -132,11 +105,13 @@
 
                 let result = response.data;
 
-                $("#employee_id").html(`<option value=''>@lang('filter.select')</option>`)
+                $("#company_id").html(`<option value=''>@lang('filter.select')</option>`)
 
                 for (let i = 0; i < result.length; i++) {
 
-                    $("#employee_id").append(`<option value='${result[i].id}'>${result[i].name}</option>`)
+                    $("#company_id").append(`<option value='${result[i].id}'>${result[i].name}</option>`);
+                    console.log(result[i]);
+
 
                 }
             },

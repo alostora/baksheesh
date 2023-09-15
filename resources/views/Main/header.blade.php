@@ -71,6 +71,9 @@
 
   <script src="{{url('AdminDesign')}}/select2/select2.min.js" defer></script>
 
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/qrious/4.0.2/qrious.min.js"></script>
+
+
 </head>
 
 <body class="hold-transition skin-blue sidebar-mini" dir={{$dir}}>

@@ -2,6 +2,7 @@
 
 namespace Client\Http\Controllers\Views;
 
+use Admin\Http\Resources\Company\CompanyEmployee\CompanyEmployeeMinifiedResource;
 use App\Constants\StatusCode;
 use App\Constants\SystemDefault;
 use App\Http\Controllers\Controller;
@@ -10,6 +11,7 @@ use Carbon\Carbon;
 use Client\Foundations\ClientEmployee\ClientEmployeeCreateCollection;
 use Client\Foundations\ClientEmployee\ClientEmployeeSearchCollection;
 use Client\Foundations\ClientEmployee\ClientEmployeeUpdateCollection;
+use Client\Foundations\ClientEmployee\Employee\EmployeeSearchCollection;
 use Client\Http\Requests\ClientEmployee\ClientEmployeeUpdateRequest;
 use Client\Http\Requests\ClientEmployee\ClientEmployeeCreateRequest;
 use Client\Http\Resources\ClientEmployeeMinifiedResource;
@@ -94,5 +96,20 @@ class ClientEmployeeController extends Controller
         $user->update(['stopped_at' => Carbon::now()]);
 
         return back();
+    }
+
+    public function clientEmployees(Request $request)
+    {
+
+        $employees = EmployeeSearchCollection::searchEmployees(
+            $request->get('client_id') ? $request->get('client_id') : -1,
+            $request->get('company_id') ? $request->get('company_id') : -1,
+        );
+
+        return response()->success(
+            trans('employee.employee_retrieved_successfully'),
+            CompanyEmployeeMinifiedResource::collection($employees),
+            StatusCode::OK
+        );
     }
 }

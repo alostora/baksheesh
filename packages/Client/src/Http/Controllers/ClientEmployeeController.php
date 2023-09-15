@@ -2,6 +2,8 @@
 
 namespace Client\Http\Controllers;
 
+use Client\Foundations\ClientEmployee\Employee\EmployeeSearchCollection;
+use Admin\Http\Resources\Company\CompanyEmployee\CompanyEmployeeMinifiedResource;
 use App\Constants\StatusCode;
 use App\Constants\SystemDefault;
 use App\Http\Controllers\Controller;
@@ -100,6 +102,21 @@ class ClientEmployeeController extends Controller
         return response()->success(
             trans('client.client_employee_inactived_successfully'),
             new ClientEmployeeResource($user),
+            StatusCode::OK
+        );
+    }
+
+    public function clientEmployees(Request $request)
+    {
+
+        $employees = EmployeeSearchCollection::searchEmployees(
+            $request->get('client_id') ? $request->get('client_id') : -1,
+            $request->get('company_id') ? $request->get('company_id') : -1,
+        );
+
+        return response()->success(
+            trans('employee.employee_retrieved_successfully'),
+            CompanyEmployeeMinifiedResource::collection($employees),
             StatusCode::OK
         );
     }

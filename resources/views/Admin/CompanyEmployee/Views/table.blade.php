@@ -1,6 +1,3 @@
-<script src="https://cdnjs.cloudflare.com/ajax/libs/qrious/4.0.2/qrious.min.js"></script>
-
-
 <section class="content">
     <div class="row">
         <div class="col-xs-12">

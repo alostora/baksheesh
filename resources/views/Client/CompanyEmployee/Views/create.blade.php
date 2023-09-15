@@ -6,7 +6,7 @@
       <!-- general form elements -->
       <div class="box box-primary">
         <div class="box-header with-border">
-          <h3 class="box-title col-md-8">@lang('general.create')</h3>
+          <h3 class="box-title col-md-8">@lang('company_employee.create')</h3>
         </div>
         <!-- /.box-header -->
         <!-- form start -->
@@ -63,18 +63,13 @@
             </div>
           </div>
           <!-- /.box-body -->
-
           <div class="box-footer">
-            <button type="submit" class="btn btn-primary">@lang('company_employee.Submit')</button>
+            <button type="submit" class="btn btn-primary">@lang('company_employee.submit')</button>
           </div>
         </form>
       </div>
       <!-- /.box -->
-
-
-
     </div>
-
   </div>
   <!-- /.row -->
 </section>
