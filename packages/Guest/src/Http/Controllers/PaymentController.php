@@ -14,8 +14,8 @@ use Illuminate\Http\Request;
 
 class PaymentController extends Controller
 {
-    
-    public function payForEmployee(Request $request)
+
+    public function payForEmployee(PayForEmployeeRequest $request)
     {
 
         return $request->all();
@@ -27,7 +27,7 @@ class PaymentController extends Controller
             StatusCode::OK
         );
     }
-    
+
     public function payForCompany(PayForCompanyRequest $request)
     {
         $companyCash = CompanyCash::create($request->validated());
@@ -38,5 +38,4 @@ class PaymentController extends Controller
             StatusCode::OK
         );
     }
-
 }

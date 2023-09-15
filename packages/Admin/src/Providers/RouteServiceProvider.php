@@ -24,7 +24,7 @@ class RouteServiceProvider extends ServiceProvider
 
         foreach (glob(base_path('/packages/Admin/admin_routes/*.php')) as $file) {
             Route::prefix('admin')
-                ->middleware(['web'])
+                ->middleware(['web','lang'])
                 ->group($file);
         }
 

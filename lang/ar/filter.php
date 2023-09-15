@@ -18,4 +18,6 @@ return [
 
      "user_account_type" => "نوع الحساب",
 
+     "countries" => "المدن",
+
 ];

@@ -2,7 +2,7 @@
 
 return [
 
-    'page_title' => 'Countries',
+    'page_title' => 'Governorates',
 
     'filter' => 'Filter',
 
@@ -10,11 +10,11 @@ return [
 
     'select' => 'Select',
 
+    'country' => 'Country',
+
     'name' => 'Name',
 
     'name_ar' => 'Name (AR)',
-
-    'governorates' => 'Governorates',
 
     //operatoins
     "operations" => "Operations",

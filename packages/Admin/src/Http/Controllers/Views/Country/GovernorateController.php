@@ -7,6 +7,7 @@ use Admin\Foundations\Country\Governorate\GovernorateSearchCollection;
 use Admin\Http\Requests\Country\GovernorateCreateRequest;
 use Admin\Http\Requests\Country\GovernorateUpdateRequest;
 use Admin\Http\Resources\Country\Governorate\GovernorateMinifiedResource;
+use App\Constants\HasLookupType\CountryType;
 use App\Constants\StatusCode;
 use App\Constants\SystemDefault;
 use App\Http\Controllers\Controller;
@@ -26,7 +27,7 @@ class GovernorateController extends Controller
             $request->get('per_page') ?? SystemDefault::DEFAUL_PAGINATION_COUNT
         );
 
-        return response()->paginated(GovernorateMinifiedResource::collection($governorates));
+        return view('Admin/Governorate/index', compact('governorates'));
     }
 
     public function search(Country $country, Request $request)
@@ -38,19 +39,21 @@ class GovernorateController extends Controller
             $request->get('per_page') ?? SystemDefault::DEFAUL_PAGINATION_COUNT
         );
 
-        return response()->paginated(GovernorateMinifiedResource::collection($governorates));
+        return view('Admin/Governorate/index', compact('governorates'));
     }
 
     public function searchAll(Request $request)
     {
-        $governorates = GovernorateSearchCollection::searchAllGovernorates(
+        $data['governorates'] = GovernorateSearchCollection::searchAllGovernorates(
             $request->get('country_id') ?? -1,
             $request->get('query_string') ?? -1,
             $request->get('active') ?? -1,
             $request->get('per_page') ?? SystemDefault::DEFAUL_PAGINATION_COUNT
         );
 
-        return response()->paginated(GovernorateMinifiedResource::collection($governorates));
+        $data['countries'] = Country::where('type', CountryType::COUNTRY['code'])->where('stopped_at', null)->get();
+
+        return view('Admin/Governorate/index', $data);
     }
 
     public function show(Governorate $governorate)
@@ -62,26 +65,29 @@ class GovernorateController extends Controller
         );
     }
 
+    public function create()
+    {
+        $data['countries'] = Country::where('type', CountryType::COUNTRY['code'])->get();
+        return view('Admin/Governorate/create', $data);
+    }
+
     public function store(GovernorateCreateRequest $request)
     {
         $governorate =  GovernorateCreateCollection::createGovernorate($request->validated());
 
-        return response()->success(
-            trans('governorate.governorate_created_successfully'),
-            new GovernorateMinifiedResource($governorate),
-            StatusCode::OK
-        );
+        return redirect(url('admin/governorates/' . $governorate->country_id));
+    }
+
+    public function edit(Governorate $governorate)
+    {
+        return view('Admin/Governorate/edit', compact('governorate'));
     }
 
     public function update(GovernorateUpdateRequest $request, Governorate $governorate)
     {
         $governorate->update($request->validated());
 
-        return response()->success(
-            trans('governorate.governorate_updated_successfully'),
-            new GovernorateMinifiedResource($governorate),
-            StatusCode::OK
-        );
+        return redirect(url('admin/governorates/' . $governorate->country_id));
     }
 
     public function destroy(Governorate $governorate)

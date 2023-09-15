@@ -14,7 +14,7 @@
                     </div>
                 </div>
                 <div class="box-body">
-                    <form role="form" action="{{url('admin/countries/search')}}" method="GET">
+                    <form role="form" action="{{url('admin/governorates-search-all')}}" method="GET">
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="form-group">
@@ -23,6 +23,18 @@
                                         <option value="" {{Request('active') == "" ? "selected" : "";}}>All</option>
                                         <option value="active" {{Request('active') == "active" ? "selected" : "";}}>Active</option>
                                         <option value="inactive" {{Request('active') == "inactive" ? "selected" : "";}}>Inactive</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label>@lang('filter.countries')</label>
+                                    <select class="form-control select2" name="country_id">
+                                        <option value="">@lang('filter.select')</option>
+                                        @foreach($countries as $country)
+                                        <?php $selected = Request('country_id') == $country->id ? "selected" : ""; ?>
+                                        <option value="{{$country->id}}" {{$selected}}>{{$country->name}}</option>
+                                        @endforeach
                                     </select>
                                 </div>
                             </div>
@@ -46,11 +58,11 @@
         <div class="col-xs-12">
             <div class="box">
                 <div class="box-header">
-                    <h3 class="box-title col-md-8">@lang('country.page_title')</h3>
+                    <h3 class="box-title col-md-8">@lang('governorate.page_title')</h3>
                     <div class="col-md-4">
-                        <a href="{{url('admin/country/create')}}" class="btn btn-primary btn-sm" style="height:25px;padding:2px;width:150px">
+                        <a href="{{url('admin/governorate/create?country_id='.Request('country_id'))}}" class="btn btn-primary btn-sm" style="height:25px;padding:2px;width:150px">
                             <i class="fa fa-plus"></i>
-                            <span>@lang('country.create')</span>
+                            <span>@lang('governorate.create')</span>
                         </a>
                     </div>
                 </div>
@@ -59,35 +71,29 @@
                         <thead>
                             <tr>
                                 <th>#</th>
-                                <th>@lang('country.name')</th>
-                                <th>@lang('country.governorates')</th>
-                                <th>@lang('country.operations')</th>
+                                <th>@lang('governorate.name')</th>
+                                <th>@lang('governorate.operations')</th>
                             </tr>
                         </thead>
                         <tbody>
-                            @if(!empty($countries))
-                            @foreach ($countries as $key=>$country)
+                            @if(!empty($governorates))
+                            @foreach ($governorates as $key=>$governorate)
                             <tr>
                                 <td> {{$key+1}} </td>
-                                <td> {{$country->name}} </td>
+                                <td> {{$governorate->name}} </td>
                                 <td>
-                                    <a href="{{url('admin/governorates-search-all/?country_id='.$country->id)}}" class="btn btn-primary btn-sm">
-                                        <i class="fa fa-edit"></i> @lang('country.governorates')
-                                    </a>
-                                </td>
-                                <td>
-                                    <a href="{{url('admin/country/edit/'.$country->id)}}" class="btn btn-success btn-sm">
-                                        <i class="fa fa-edit"></i> @lang('country.update')
+                                    <a href="{{url('admin/governorate/edit/'.$governorate->id)}}" class="btn btn-success btn-sm">
+                                        <i class="fa fa-edit"></i> @lang('governorate.update')
                                     </a>
 
-                                    @if($country->stopped_at == null)
-                                    <a href="{{url('admin/country-inactive/'.$country->id)}}" class="btn btn-success btn-sm">
+                                    @if($governorate->stopped_at == null)
+                                    <a href="{{url('admin/governorate-inactive/'.$governorate->id)}}" class="btn btn-success btn-sm">
                                         <i class="fa fa-check"></i> current status : active
                                     </a>
                                     @else
 
-                                    <a href="{{url('admin/country-active/'.$country->id)}}" class="btn btn-danger btn-sm">
-                                        <i class="fa fa-close"></i> current status : Inactive at {{$country->stopped_at}}
+                                    <a href="{{url('admin/governorate-active/'.$governorate->id)}}" class="btn btn-danger btn-sm">
+                                        <i class="fa fa-close"></i> current status : Inactive at {{$governorate->stopped_at}}
                                     </a>
                                     @endif
                                 </td>
@@ -99,7 +105,7 @@
 
                     <div class="box-footer clearfix">
                         <ul class="pagination pagination-sm no-margin pull-right">
-                            {{ $countries->render( "pagination::bootstrap-4") }}
+                            {{ $governorates->render( "pagination::bootstrap-4") }}
                         </ul>
                     </div>
 

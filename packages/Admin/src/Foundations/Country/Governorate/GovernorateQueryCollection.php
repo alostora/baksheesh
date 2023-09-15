@@ -60,14 +60,14 @@ class GovernorateQueryCollection
                         ->orWhere('prefix', 'like', '%' . $query_string . '%');
                 }
 
-                if ($active == 1) {
-
-                    $q
-                        ->where('stopped_at', '!=', null);
-                } else {
+                if ($active == 'active') {
 
                     $q
                         ->where('stopped_at', null);
+                } elseif ($active == 'inactive') {
+
+                    $q
+                        ->where('stopped_at', '!=', null);
                 }
             })
             ->orderBy('created_at', 'DESC');

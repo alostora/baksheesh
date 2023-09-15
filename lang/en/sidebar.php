@@ -12,6 +12,8 @@ return [
 
      "countries" => "Countries",
 
+     "governorates" => "Governorates",
+
      "users" => "Users",
 
      "clients" => "Clients",

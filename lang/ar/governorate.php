@@ -2,7 +2,7 @@
 
 return [
 
-    'page_title' => 'الدول',
+    'page_title' => 'المدن',
 
     'filter' => 'فلتر',
 
@@ -10,11 +10,11 @@ return [
 
     'select' => 'اختر',
 
+    'country' => 'الدولة',
+
     'name' => 'الاسم',
 
     'name_ar' => 'الاسم عربي',
-
-    'governorates' => 'المحافظات',
 
     //operatoins
     "operations" => "عمليات",
@@ -24,8 +24,6 @@ return [
     "update" => "تعديل",
 
     "submit" => "حفظ",
-
     "search" => "بحث",
-
     "empty" => "فارغ",
 ];

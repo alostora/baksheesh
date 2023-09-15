@@ -41,9 +41,13 @@ Route::group([
 
      Route::get('governorates-search-all', [GovernorateController::class, 'searchAll']);
 
+     Route::get('governorate/create', [GovernorateController::class, 'create']);
+
      Route::post('governorate', [GovernorateController::class, 'store']);
 
      Route::get('governorate/{governorate}', [GovernorateController::class, 'show']);
+
+     Route::get('governorate/edit/{governorate}', [GovernorateController::class, 'edit']);
 
      Route::patch('governorate/{governorate}', [GovernorateController::class, 'update']);
 

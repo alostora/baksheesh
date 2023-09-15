@@ -33,6 +33,12 @@
           </li>
 
           <li>
+            <a href="{{url('admin/governorates-search-all')}}">
+              <i class="fa fa-circle-o"></i>@lang('sidebar.governorates')
+            </a>
+          </li>
+
+          <li>
             <a href="{{url('admin/users')}}">
               <i class="fa fa-circle-o"></i>@lang('sidebar.users')
             </a>
@@ -91,7 +97,7 @@
               <i class="fa fa-circle-o"></i>@lang('sidebar.employee_wallet_report')
             </a>
           </li>
-          
+
           <li>
             <a href="{{url('admin/withdrawal-request-report')}}">
               <i class="fa fa-circle-o"></i>@lang('sidebar.withdrawal_request_report')

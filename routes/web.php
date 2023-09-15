@@ -2,29 +2,40 @@
 
 use App\Http\Controllers\AuthViews\AuthController;
 use App\Http\Controllers\PaymentForEmployeeController;
+use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Route;
-
+use Illuminate\Support\Facades\Session;
 
 Route::group([
-    'prefix' => 'admin',
+    'middleware' => 'lang'
 ], function () {
 
-
-    Route::get('login', [AuthController::class, 'loginView'])->name('login');
-    Route::post('login', [AuthController::class, 'login']);
-
-
+    Route::get('lang/{lang}', function ($lang) {
+        Session::put('locale', $lang);
+        return back();
+    });
 
     Route::group([
-
-        'middleware' => [
-            'auth:sanctum',
-            'is_verified'
-        ]
-
+        'prefix' => 'admin',
     ], function () {
 
-        Route::any('logout', [AuthController::class, 'logout']);
+
+        Route::get('login', [AuthController::class, 'loginView'])->name('login');
+        Route::post('login', [AuthController::class, 'login']);
+
+
+
+        Route::group([
+
+            'middleware' => [
+                'auth:sanctum',
+                'is_verified'
+            ]
+
+        ], function () {
+
+            Route::any('logout', [AuthController::class, 'logout']);
+        });
     });
 });
 

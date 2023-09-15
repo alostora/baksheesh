@@ -85,24 +85,20 @@
         <!-- logo for regular state and mobile devices -->
         <span class="logo-lg"><b> @lang('dashboard.app_name')</span>
       </a>
-      <!-- Header Navbar: style can be found in header.less -->
       <nav class="navbar navbar-static-top">
-        <!-- Sidebar toggle button-->
         <a href="#" class="sidebar-toggle" data-toggle="push-menu" role="button">
           <span class="sr-only">Toggle navigation</span>
         </a>
 
         <div class="navbar-custom-menu">
           <ul class="nav navbar-nav">
-            {{--
 
-              @if(App::getLocale()=='en')
-                <li class="active"><a href="{{url('admin/lang/ar')}}"><i class="fa fa-flag"></i> عربي</a></li>
+            @if(App::getLocale() == 'en')
+            <li class="active"><a href="{{url('lang/ar')}}"> ar <i class="fa fa-flag"></i></a></li>
             @else
-            <li class="active"><a href="{{url('admin/lang/en')}}"><i class="fa fa-flag-o"></i> en</a></li>
+            <li class="active"><a href="{{url('lang/en')}}"><i class="fa fa-flag-o"></i> en </a></li>
             @endif
 
-            --}}
             <li class="dropdown user user-menu">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                 <img src="{{url('AdminDesign')}}/dist/img/user2-160x160.jpg" class="user-image" alt="User Image">

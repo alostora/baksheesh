@@ -10,7 +10,9 @@ return [
 
      "dashboard" => "لوحة التحكم",
 
-     "countries" => "المدن",
+     "countries" => "الدول",
+
+     "governorates" => "المدن",
 
      "users" => "المستخدمين",
 
@@ -32,8 +34,8 @@ return [
 
      "withdrawal_report" => "تقارير عمليات السحب",
 
-     "withdrawal_request_report" => "Withdrawal Request Reports",
+     "withdrawal_request_report" => "تقارير طلبات السحب",
 
-     "inactive_client_report" => "Inactive Client Reports",
+     "inactive_client_report" => "تقارير العملاء الغير نشطين",
 
 ];
