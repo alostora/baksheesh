@@ -55,6 +55,8 @@
                                 <th>#</th>
                                 <th>@lang('company.name')</th>
                                 <th>@lang('company.employees')</th>
+                                <th>@lang('company.demo_link')</th>
+                                <th>@lang('company.qr')</th>
                                 <th>@lang('company.operations')</th>
                             </tr>
                         </thead>
@@ -69,6 +71,23 @@
                                         <i class="fa fa-info"></i> @lang('company.employees')
                                     </a>
                                 </td>
+
+                                <td>
+                                    <a href="{{url('pay-for-company/'.$company->id)}}" target="_blank" class="btn btn-success btn-sm">
+                                        <i class="fa fa-link"></i>
+                                    </a>
+                                </td>
+                                <td>
+                                    <canvas id="{{$company->id}}"></canvas>
+                                    <script type="text/javascript">
+                                        new QRious({
+                                            element: document.getElementById("{{$company->id}}"),
+                                            value: "{{url('pay-for-company/'.$company->id)}}"
+                                        });
+                                    </script>
+
+                                </td>
+
                                 <td>
                                     <a href="{{url('client/client-company/edit/'.$company->id)}}" class="btn btn-success btn-sm">
                                         <i class="fa fa-edit"></i>

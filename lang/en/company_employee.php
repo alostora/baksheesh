@@ -29,7 +29,7 @@ return [
     'available_rating' => 'Available Rating',
 
     'demo_link' => 'Demo Link',
-    
+
     'qr' => 'QR Code',
 
     //operatoins

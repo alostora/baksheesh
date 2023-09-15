@@ -14,4 +14,5 @@ Route::group([
 ], function () {
 
      Route::get('/', [DashboardController::class, 'index']);
+     Route::get('client-profile', [DashboardController::class, 'clientProfile']);
 });

@@ -14,4 +14,12 @@ class DashboardController extends Controller
 
         return view('Admin/dashboard', $data);
     }
+    
+    public function clientProfile()
+    {
+
+        $data = DashboardCollection::dashboardData();
+
+        return view('Client/Profile/profile', $data);
+    }
 }

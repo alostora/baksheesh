@@ -1,4 +1,4 @@
 @include('Main.header')
 @include('Main.sidebar')
-@include('Client.content')
+@include('Client.Profile.personalHomePage')
 @include('Main.footer')

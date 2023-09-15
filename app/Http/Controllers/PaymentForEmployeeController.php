@@ -15,6 +15,6 @@ class PaymentForEmployeeController extends Controller
 
         $data['employee_available_ratings'] = SystemLookup::whereIn('id', $employee_available_ratings)->get();
 
-        return view('Guest/paymentForEmployee',$data);
+        return view('Guest/EmployeePayment/paymentForEmployee',$data);
     }
 }

@@ -1,3 +1,3 @@
 @include('MainFront.header')
-@include('Guest.content')
+@include('Guest.CompanyPayment.createPaymentForCompany')
 @include('MainFront.footer')

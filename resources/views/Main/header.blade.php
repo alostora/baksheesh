@@ -119,6 +119,9 @@
                 </li>
 
                 <li class="user-footer">
+                  <div class="pull-left">
+                    <a href="{{url('client/client-profile')}}" class="btn btn-default btn-flat">Profile</a>
+                  </div>
                   <div class="pull-right">
                     <a href="{{url('admin/logout')}}" class="btn btn-default btn-flat">@lang('dashboard.logout')</a>
                   </div>
