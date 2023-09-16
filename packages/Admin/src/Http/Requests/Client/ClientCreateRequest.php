@@ -2,7 +2,9 @@
 
 namespace Admin\Http\Requests\Client;
 
+use App\Constants\HasLookupType\CountryType;
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
 
 class ClientCreateRequest extends FormRequest
 {
@@ -36,7 +38,22 @@ class ClientCreateRequest extends FormRequest
 
             "available_employees_count" => ["bail", "required", "integer", "max:1000"],
 
+
             "address" => ["bail", "nullable", "string", "max:255"],
+
+            "country_id" => [
+
+                "required", "uuid", "string",
+
+                Rule::exists('countries', 'id')->where('type', CountryType::COUNTRY['code'])
+            ],
+
+            "governorate_id" => [
+
+                "required", "uuid", "string",
+
+                Rule::exists('countries', 'id')->where('type', CountryType::GOVERNORATE['code'])
+            ],
         ];
     }
 }

@@ -20,6 +20,12 @@ return [
     "stopped_at" => "تارخ الايقاف",
     "collected_cash" => "الاكراميات المحصلة",
     "delivered_cash" => "المبالغ المستلمة",
+    "available_companies_count" => "عدد الشركات المتاح",
+    "available_employees_count" => "عدد الموظفون المتاح",
+    "countries" => "الدول",
+    "country" => "الدولة",
+    "governorate" => "المحافظة",
+    "governorates" => "المحافظات",
 
 
     //operatoins

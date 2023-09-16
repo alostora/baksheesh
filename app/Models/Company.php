@@ -19,6 +19,10 @@ class Company extends Model
 
         'client_id',
 
+        'company_field',
+
+        'file_id',
+
         'stopped_at',
 
     ];
@@ -33,6 +37,11 @@ class Company extends Model
         return $this->belongsTo(User::class, 'client_id', 'id');
     }
 
+    public function file(): BelongsTo
+    {
+        return $this->belongsTo(File::class, 'file_id', 'id');
+    }
+
     public function employees(): HasMany
     {
         return $this->hasMany(User::class, 'company_id', 'id');
@@ -42,7 +51,7 @@ class Company extends Model
     {
         return $this->hasMany(CompanyCash::class, 'company_id', 'id');
     }
-    
+
     public function companyAvailableRatings(): HasMany
     {
         return $this->hasMany(CompanyAvailableRating::class, 'company_id', 'id');

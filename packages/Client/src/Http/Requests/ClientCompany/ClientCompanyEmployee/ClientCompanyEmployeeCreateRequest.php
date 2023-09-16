@@ -2,7 +2,9 @@
 
 namespace Client\Http\Requests\ClientCompany\ClientCompanyEmployee;
 
+use App\Constants\HasLookupType\CountryType;
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
 
 class ClientCompanyEmployeeCreateRequest extends FormRequest
 {
@@ -33,6 +35,28 @@ class ClientCompanyEmployeeCreateRequest extends FormRequest
             "password" => ["required", "string", "max:255"],
 
             "address" => ["nullable", "string", "max:255"],
+
+            'available_rating_ids' => ['required', 'array', 'max:5'],
+
+            'available_rating_ids.*' => ['required', 'uuid', 'exists:system_lookups,id'],
+
+            "employee_job_name" => ["required", "string", "max:255"],
+
+            "country_id" => [
+
+                "required", "uuid", "string",
+
+                Rule::exists('countries', 'id')->where('type', CountryType::COUNTRY['code'])
+            ],
+
+            "governorate_id" => [
+
+                "required", "uuid", "string",
+
+                Rule::exists('countries', 'id')->where('type', CountryType::GOVERNORATE['code'])
+            ],
+
+            'file' => ['nullable', 'file'],
         ];
     }
 }

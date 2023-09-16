@@ -5,11 +5,13 @@ namespace Admin\Http\Controllers\Views\User;
 use Admin\Foundations\Client\ClientSearchCollection;
 use Admin\Http\Requests\Client\ClientCreateRequest;
 use Admin\Http\Requests\Client\ClientUpdateRequest;
+use App\Constants\HasLookupType\CountryType;
 use App\Constants\StatusCode;
 use App\Constants\SystemDefault;
 use App\Foundations\LookupType\AccountTypeCollection;
 use App\Http\Controllers\Controller;
 use App\Http\Resources\Auth\UserResource;
+use App\Models\Country;
 use App\Models\User;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
@@ -49,7 +51,11 @@ class ClientController extends Controller
 
     public function create()
     {
-        return view('Admin/Client/create');
+        $data['countries'] = Country::where('type', CountryType::COUNTRY['code'])
+            ->where('stopped_at', null)
+            ->get();
+
+        return view('Admin/Client/create',$data);
     }
 
     public function store(ClientCreateRequest $request)

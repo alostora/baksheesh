@@ -10,10 +10,25 @@
         </div>
         <!-- /.box-header -->
         <!-- form start -->
-        <form role="form" action="{{url('admin/company/'.$company->id)}}" method="post">
+        <form role="form" action="{{url('admin/company/'.$company->id)}}" method="post" enctype="multipart/form-data">
           @csrf
           @method('PATCH')
           <div class="box-body">
+            @if($company->file)
+            <img src="{{ url('uploads/'.$company->file->new_name)}}" style="height:50px;width:50px;border-radius:50%">
+            @endif
+            <div class="row">
+              <div class="col-md-6">
+                <label for="file">@lang('company.file')</label>
+                <input type="file" class="form-control" name="file" id="file">
+              </div>
+
+              <div class="col-md-6">
+                <label for="company_field">@lang('company.company_field')</label>
+                <input type="text" class="form-control" name="company_field" id="company_field" value="{{$company->company_field}}">
+              </div>
+            </div>
+
             <div class="row">
               <div class="form-group">
                 <div class="col-md-6">
@@ -32,7 +47,7 @@
                     @foreach ($available_rating as $available_rating)
                     <option value="{{$available_rating->id}}">{{$available_rating->name}}</option>
                     @endforeach
-                    
+
                     @foreach ($selected_available_rating as $selected_available_rating)
                     <option value="{{$selected_available_rating->id}}" selected>{{$selected_available_rating->name}}</option>
                     @endforeach

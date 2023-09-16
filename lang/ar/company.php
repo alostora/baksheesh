@@ -23,6 +23,10 @@ return [
 
     'qr' => 'QR Code',
 
+    "file" => "صورة",
+
+    "company_field" => "نشاط الشركة",
+
 
     //operatoins
     "operations" => "عمليات",

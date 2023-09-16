@@ -41,6 +41,8 @@ Route::group([
 
      Route::get('governorates-search-all', [GovernorateController::class, 'searchAll']);
 
+     Route::get('country-governorates/{country}', [GovernorateController::class, 'countryGovernorates']);
+
      Route::get('governorate/create', [GovernorateController::class, 'create']);
 
      Route::post('governorate', [GovernorateController::class, 'store']);

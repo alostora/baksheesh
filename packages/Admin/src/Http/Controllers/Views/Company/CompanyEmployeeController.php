@@ -11,10 +11,12 @@ use Admin\Http\Requests\Company\CompanyEmployee\CompanyEmployeeCreateRequest;
 use Admin\Http\Requests\Company\CompanyEmployee\CompanyEmployeeUpdateRequest;
 use Admin\Http\Resources\Company\CompanyEmployee\CompanyEmployeeResource;
 use App\Constants\HasLookupType\AvailableEmployeeRating;
+use App\Constants\HasLookupType\CountryType;
 use App\Constants\StatusCode;
 use App\Constants\SystemDefault;
 use App\Http\Controllers\Controller;
 use App\Models\Company;
+use App\Models\Country;
 use App\Models\SystemLookup;
 use App\Models\User;
 use Carbon\Carbon;
@@ -63,12 +65,15 @@ class CompanyEmployeeController extends Controller
 
         $data['available_rating'] = SystemLookup::where('type', AvailableEmployeeRating::LOOKUP_TYPE)->get();
 
+        $data['countries'] = Country::where('type', CountryType::COUNTRY['code'])
+            ->where('stopped_at', null)
+            ->get();
+
         return view('Admin/CompanyEmployee/create', $data);
     }
 
     public function store(CompanyEmployeeCreateRequest $request)
     {
-
         CompanyEmployeeCreateCollection::createCompanyEmployee($request);
 
         return redirect(url("admin/company-employees/search?company_id=" . $request->get('company_id')));
@@ -90,6 +95,15 @@ class CompanyEmployeeController extends Controller
 
         $data['selected_available_rating'] = SystemLookup::where('type', AvailableEmployeeRating::LOOKUP_TYPE)
             ->whereIn('id', $selected_available_rating_ids)
+            ->get();
+
+        $data['countries'] = Country::where('type', CountryType::COUNTRY['code'])
+            ->where('stopped_at', null)
+            ->get();
+
+        $data['governorates'] = Country::where('country_id', $user->country_id)
+            ->where('type', CountryType::GOVERNORATE['code'])
+            ->where('stopped_at', null)
             ->get();
 
         return view('Admin/CompanyEmployee/edit', $data);

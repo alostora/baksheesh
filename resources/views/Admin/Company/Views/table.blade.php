@@ -66,6 +66,7 @@
                         <thead>
                             <tr>
                                 <th>#</th>
+                                <th>@lang('company_employee.file')</th>
                                 <th>@lang('company.name')</th>
                                 <th>@lang('company.employees')</th>
                                 <th>@lang('company.operations')</th>
@@ -76,6 +77,11 @@
                             @foreach ($companies as $key=>$company)
                             <tr>
                                 <td> {{$key+1}} </td>
+                                <td>
+                                    @if($company->file)
+                                    <img src="{{ url('uploads/'.$company->file->new_name)}}" style="height:50px;width:50px;border-radius:50%">
+                                    @endif
+                                </td>
                                 <td> {{$company->name}} </td>
                                 <td>
                                     <a href="{{url('admin/company-employees/search?company_id='.$company->id)}}" class="btn btn-success btn-sm">

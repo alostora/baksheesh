@@ -2,7 +2,10 @@
 
 namespace Admin\Foundations\Company\CompanyEmployee;
 
+use App\Constants\FileModuleType;
 use App\Constants\HasLookupType\UserAccountType;
+use App\Foundations\File\FileCreateCollection;
+use App\Foundations\LookupType\AccountTypeCollection;
 use App\Models\Company;
 use App\Models\SystemLookup;
 use App\Models\User;
@@ -12,15 +15,20 @@ class CompanyEmployeeCreateCollection
     public static function createCompanyEmployee($request)
     {
 
-        $lookup_account_type_employee = SystemLookup::where('type', UserAccountType::LOOKUP_TYPE)
-            ->where('key', UserAccountType::EMPLOYEE['key'])
-            ->first();
-
         $validated = $request->validated();
 
-        $validated['user_account_type_id'] = $lookup_account_type_employee->id;
+        $validated['user_account_type_id'] = AccountTypeCollection::employee()->id;
 
         $validated['client_id'] = Company::find($validated['company_id'])->client_id;
+
+        if (isset($validated['file'])) {
+
+            $validated['type'] = FileModuleType::USER_PROFILE_AVATAR['key'];
+
+            $validated['file_id'] = FileCreateCollection::createFile($validated)->id;
+
+            unset($validated['type']);
+        }
 
         $user = User::create($validated);
 

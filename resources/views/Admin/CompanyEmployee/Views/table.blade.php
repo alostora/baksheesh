@@ -16,8 +16,8 @@
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label>@lang('filter.active')</label>
-                                    <select class="form-control select2" name="active">
+                                    <label for="active">@lang('filter.active')</label>
+                                    <select class="form-control select2" name="active" id="active">
                                         <option value="" {{Request('active') == "" ? "selected" : "";}}>All</option>
                                         <option value="active" {{Request('active') == "active" ? "selected" : "";}}>Active</option>
                                         <option value="inactive" {{Request('active') == "inactive" ? "selected" : "";}}>Inactive</option>
@@ -26,8 +26,8 @@
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label>@lang('filter.query_string')</label>
-                                    <input type="text" name="query_string" value="{{Request('query_string')}}" placeholder="{{Lang::get('filter.query_string')}}" class="form-control">
+                                    <label for="query_string">@lang('filter.query_string')</label>
+                                    <input type="text" name="query_string" value="{{Request('query_string')}}" placeholder="{{Lang::get('filter.query_string')}}" class="form-control" id="query_string">
                                 </div>
                             </div>
                         </div>
@@ -53,9 +53,13 @@
                         <thead>
                             <tr>
                                 <th>#</th>
+                                <th>@lang('company_employee.file')</th>
                                 <th>@lang('company_employee.name')</th>
                                 <th>@lang('company_employee.email')</th>
                                 <th>@lang('company_employee.phone')</th>
+                                <th>@lang('company_employee.employee_job_name')</th>
+                                <th>@lang('company_employee.country')</th>
+                                <th>@lang('company_employee.governorate')</th>
                                 <th>@lang('company_employee.demo_link')</th>
                                 <th>@lang('company_employee.qr')</th>
                                 <th>@lang('company_employee.operations')</th>
@@ -66,9 +70,17 @@
                             @foreach ($employees as $key=>$user)
                             <tr>
                                 <td> {{$key+1}} </td>
+                                <td>
+                                    @if($user->file)
+                                    <img src="{{ url('uploads/'.$user->file->new_name)}}" style="height:50px;width:50px;border-radius:50%">
+                                    @endif
+                                </td>
                                 <td> {{$user->name}} </td>
                                 <td> {{$user->email}} </td>
                                 <td> {{$user->phone}} </td>
+                                <td> {{$user->employee_job_name}} </td>
+                                <td> {{$user->country ? $user->country->name : ""}} </td>
+                                <td> {{$user->governorate ? $user->governorate->name : ""}} </td>
                                 <td>
                                     <a href="{{url('pay-for-employee/'.$user->id)}}" target="_blank" class="btn btn-success btn-sm">
                                         <i class="fa fa-link"></i>

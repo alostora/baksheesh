@@ -1,18 +1,25 @@
 <?php
 
-namespace Admin\Foundations\Company;
+namespace Client\Foundations\ClientCompany;
 
 use App\Constants\FileModuleType;
 use App\Foundations\File\FileCreateCollection;
+use App\Foundations\File\FileDeleteCollection;
 use App\Models\Company;
+use App\Models\File;
 
-class CompanyCreateCollection
+class CompanyUpdateCollection
 {
-    public static function createCompany($request)
+    public static function updateCompany($request, $company)
     {
         $validated = $request->validated();
 
         if (isset($validated['file'])) {
+
+            if ($company->file_id) {
+
+                FileDeleteCollection::deleteFile(File::find($company->file_id));
+            }
 
             $validated['type'] = FileModuleType::COMPANY_PROFILE['key'];
 
@@ -21,17 +28,18 @@ class CompanyCreateCollection
             unset($validated['type']);
         }
 
-        $company = Company::create($validated);
+        $company->update($validated);
 
         if (isset($validated['available_rating_ids'])) {
-            self::createAvailableRating($validated['available_rating_ids'], $company);
+            self::updateAvailableRating($validated['available_rating_ids'], $company);
         }
 
         return $company;
     }
 
-    public static function createAvailableRating($available_rating_ids, Company $company)
+    public static function updateAvailableRating($available_rating_ids, Company $company)
     {
+        $company->companyAvailableRatings()->delete();
 
         foreach ($available_rating_ids as $available_rating_id) {
             $data[] = [

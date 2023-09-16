@@ -8,7 +8,7 @@ class FileModuleType
      public const TYPE_LIST = [
           0 => self::DEFAULT_USER_AVATAR,
           1 => self::USER_PROFILE_AVATAR,
-          2 => self::SYSTEM_ATTACHMENT,
+          2 => self::COMPANY_PROFILE,
      ];
 
      public const DEFAULT_USER_AVATAR = [
@@ -25,10 +25,10 @@ class FileModuleType
           'name' => 'User avatar'
      ];
      
-     public const SYSTEM_ATTACHMENT = [
+     public const COMPANY_PROFILE = [
           'code' => 2,
           'key' => 2,
-          'prefix' => "SYSTEM_ATTACHMENT",
-          'name' => 'System attachment'
+          'prefix' => "COMPANY_PROFILE",
+          'name' => 'Company profile'
      ];
 }

@@ -1,6 +1,6 @@
 <?php
 
-namespace Admin\Foundations\Company;
+namespace Client\Foundations\ClientCompany;
 
 use App\Constants\FileModuleType;
 use App\Foundations\File\FileCreateCollection;
@@ -20,6 +20,8 @@ class CompanyCreateCollection
 
             unset($validated['type']);
         }
+        
+        $validated['client_id'] = auth()->id();
 
         $company = Company::create($validated);
 

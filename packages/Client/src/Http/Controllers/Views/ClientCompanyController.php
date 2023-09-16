@@ -3,12 +3,16 @@
 namespace Client\Http\Controllers\Views;
 
 use Admin\Http\Resources\Company\CompanyResource;
+use App\Constants\HasLookupType\AvailableCompanyRating;
 use App\Constants\StatusCode;
 use App\Constants\SystemDefault;
 use App\Http\Controllers\Controller;
 use App\Models\Company;
+use App\Models\SystemLookup;
 use Carbon\Carbon;
 use Client\Foundations\ClientCompany\ClientCompanySearchCollection;
+use Client\Foundations\ClientCompany\CompanyCreateCollection;
+use Client\Foundations\ClientCompany\CompanyUpdateCollection;
 use Client\Http\Requests\ClientCompany\ClientCompanyCreateRequest;
 use Client\Http\Requests\ClientCompany\ClientCompanyUpdateRequest;
 use Illuminate\Http\Request;
@@ -48,30 +52,40 @@ class ClientCompanyController extends Controller
 
     public function create()
     {
-        return view('Client/Company/create');
+        $data['available_rating'] = SystemLookup::where('type', AvailableCompanyRating::LOOKUP_TYPE)->get();
+
+        return view('Client/Company/create', $data);
     }
 
     public function store(ClientCompanyCreateRequest $request)
     {
-        $validated = $request->validated();
-
-        $validated['client_id'] = auth()->id();
-
-        Company::create($validated);
+        CompanyCreateCollection::createCompany($request);
 
         return redirect(url('client/client-companies'));
     }
 
     public function edit(Company $company)
     {
+
         $data['company'] = $company;
+
+        $selected_available_rating_ids = $company->companyAvailableRatings()->pluck('available_rating_id');
+
+        $data['available_rating'] = SystemLookup::where('type', AvailableCompanyRating::LOOKUP_TYPE)
+            ->whereNotIn('id', $selected_available_rating_ids)
+            ->get();
+
+        $data['selected_available_rating'] = SystemLookup::where('type', AvailableCompanyRating::LOOKUP_TYPE)
+            ->whereIn('id', $selected_available_rating_ids)
+            ->get();
+
 
         return view('Client/Company/edit', $data);
     }
 
     public function update(ClientCompanyUpdateRequest $request, Company $company)
     {
-        $company->update($request->validated());
+        CompanyUpdateCollection::updateCompany($request,$company);
 
         return redirect(url('client/client-companies'));
     }

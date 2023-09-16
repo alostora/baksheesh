@@ -58,6 +58,8 @@
                                 <th>@lang('client.name')</th>
                                 <th>@lang('client.email')</th>
                                 <th>@lang('client.phone')</th>
+                                <th>@lang('client.country')</th>
+                                <th>@lang('client.governorate')</th>
                                 <th>@lang('client.withdrawal_requests')</th>
                                 <th>@lang('client.operations')</th>
                             </tr>
@@ -70,6 +72,8 @@
                                 <td> {{$user->name}} </td>
                                 <td> {{$user->email}} </td>
                                 <td> {{$user->phone}} </td>
+                                <td> {{$user->country ? $user->country->name : ""}} </td>
+                                <td> {{$user->governorate ? $user->governorate->name : ""}} </td>
                                 <td>
                                     <a href="{{url('admin/client-withdrawal-requests/'.$user->id)}}" class="btn btn-success btn-sm">
                                         <i class="fa fa-info"></i> @lang('client.withdrawal_requests')

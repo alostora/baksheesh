@@ -32,6 +32,18 @@ return [
 
     'qr' => 'QR Code',
 
+    "countries" => "Countries",
+
+    "country" => "Country",
+
+    "governorate" => "Governorate",
+
+    "governorates" => "Governorates",
+
+    "employee_job_name" => "Job Name",
+
+    "file" => "Image",
+
     //operatoins
     "operations" => "Operations",
 

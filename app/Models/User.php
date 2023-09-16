@@ -31,15 +31,13 @@ class User extends Authenticatable implements MustVerifyEmail
 
         'name',
 
+        'phone',
+
         'email',
 
         'password',
 
-        'phone',
-
         'address',
-
-        'api_token',
 
         "available_companies_count",
 
@@ -47,13 +45,19 @@ class User extends Authenticatable implements MustVerifyEmail
 
         'country_id',
 
-        'user_account_type_id', //lookup type
+        'governorate_id',
 
-        'client_id', //company owner
+        "employee_job_name",
+
+        'user_account_type_id',
+
+        'client_id',
 
         'company_id',
 
         'file_id',
+
+        'api_token',
 
         'email_verification_code',
 
@@ -102,6 +106,11 @@ class User extends Authenticatable implements MustVerifyEmail
     {
         return $this->belongsTo(Country::class, 'country_id', 'id');
     }
+    
+    public function governorate(): BelongsTo
+    {
+        return $this->belongsTo(Country::class, 'governorate_id', 'id');
+    }
 
     public function file(): BelongsTo
     {
@@ -138,12 +147,12 @@ class User extends Authenticatable implements MustVerifyEmail
     {
         return $this->hasMany(EmployeeCash::class, 'employee_id', 'id');
     }
-    
+
     public function clientEmployeeCash(): HasMany
     {
         return $this->hasMany(EmployeeCash::class, 'client_id', 'id');
     }
-    
+
     public function clientCompanyCash(): HasMany
     {
         return $this->hasMany(CompanyCash::class, 'client_id', 'id');
@@ -157,7 +166,7 @@ class User extends Authenticatable implements MustVerifyEmail
 
         return $this->hasMany(ClientWithdrawalRequest::class, 'client_id', 'id')->where('status', $accpted_withdrawalRequest->id);
     }
-    
+
     public function employeeAvailableRatings(): HasMany
     {
         return $this->hasMany(EmployeeAvailableRating::class, 'employee_id', 'id');

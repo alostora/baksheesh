@@ -46,13 +46,13 @@ class Country extends Model
 
         'zone_id',
 
-        'stopped_at',
+        'stopped_at,null',
 
     ];
 
     protected $casts = [
 
-        'stopped_at' => 'datetime'
+        'stopped_at,null' => 'datetime'
     ];
 
     protected function name(): Attribute
@@ -103,7 +103,8 @@ class Country extends Model
     public function governorates(): HasMany
     {
         return $this->hasMany(Country::class, 'country_id', 'id')
-            ->where('type', CountryType::GOVERNORATE['code']);
+            ->where('type', CountryType::GOVERNORATE['code'])
+            ->where('stopped_at', null);
     }
 
     public function cities(): HasMany

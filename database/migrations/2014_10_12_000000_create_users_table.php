@@ -23,6 +23,8 @@ return new class extends Migration
 
             $table->string('address')->nullable();
 
+            $table->string('employee_job_name')->nullable();
+
             $table->string('email_verification_code')->unique()->nullable();
 
             $table->string('reset_password_code')->unique()->nullable();
@@ -34,6 +36,8 @@ return new class extends Migration
             $table->integer('available_employees_count')->nullable();
 
             $table->foreignUuid('country_id')->nullable();
+
+            $table->foreignUuid('governorate_id')->nullable();
 
             $table->foreignUuid('user_account_type_id')->nullable();
 

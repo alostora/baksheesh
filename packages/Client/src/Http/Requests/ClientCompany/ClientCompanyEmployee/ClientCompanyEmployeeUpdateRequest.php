@@ -26,7 +26,7 @@ class ClientCompanyEmployeeUpdateRequest extends FormRequest
     {
         return [
 
-            'company_id' => ['required', 'uuid', 'exists:companies,id'],
+            "company_id" => ['required', 'uuid', 'exists:companies,id'],
 
             "name" => ["bail", "required", "string", "max:255"],
 
@@ -41,18 +41,29 @@ class ClientCompanyEmployeeUpdateRequest extends FormRequest
 
                 Rule::unique('users', 'email')->ignore($request->user->id, 'id')
             ],
+            "address" => ["bail", "nullable", "string", "max:255"],
+
+            'available_rating_ids' => ['required', 'array', 'max:5'],
+
+            'available_rating_ids.*' => ['required', 'uuid', 'exists:system_lookups,id'],
+
+            "employee_job_name" => ["required", "string", "max:255"],
 
             "country_id" => [
 
-                "nullable", "uuid", "string",
+                "required", "uuid", "string",
 
                 Rule::exists('countries', 'id')->where('type', CountryType::COUNTRY['code'])
             ],
 
-            "address" => ["bail", "nullable", "string", "max:255"],
+            "governorate_id" => [
 
-            'file_id' => ['bail', 'nullable', 'string', 'uuid', 'exists:files,id'],
+                "required", "uuid", "string",
 
+                Rule::exists('countries', 'id')->where('type', CountryType::GOVERNORATE['code'])
+            ],
+
+            'file' => ['nullable', 'file'],
         ];
     }
 }

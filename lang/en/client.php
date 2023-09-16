@@ -20,6 +20,12 @@ return [
     "stopped_at" => "Stopped At",
     "collected_cash" => "Collected Cash",
     "delivered_cash" => "Delivered Cash",
+    "available_companies_count" => "Available Companies Count",
+    "available_employees_count" => "Available Companies Count",
+    "countries" => "Countries",
+    "country" => "Country",
+    "governorate" => "Governorate",
+    "governorates" => "Governorates",
 
 
     //operatoins

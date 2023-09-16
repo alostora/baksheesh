@@ -31,6 +31,13 @@ return [
     'demo_link' => 'صفحة الدفع',
 
     'qr' => 'QR Code',
+    "countries" => "الدول",
+    "country" => "الدولة",
+    "governorate" => "المحافظة",
+    "governorates" => "المحافظات",
+    "employee_job_name" => "اسم الوظيفة",
+    "file" => "صورة",
+
 
     //operatoins
     "operations" => "عمليات",

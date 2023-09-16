@@ -24,6 +24,10 @@ return [
 
     'qr' => 'QR Code',
 
+    "file" => "Image",
+
+    "company_field" => "Company Field",
+
 
     //operatoins
     "operations" => "Operations",

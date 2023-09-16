@@ -2,7 +2,11 @@
 
 namespace Admin\Foundations\Company\CompanyEmployee;
 
+use App\Constants\FileModuleType;
+use App\Foundations\File\FileCreateCollection;
+use App\Foundations\File\FileDeleteCollection;
 use App\Models\Company;
+use App\Models\File;
 use App\Models\User;
 
 class CompanyEmployeeUpdateCollection
@@ -11,6 +15,20 @@ class CompanyEmployeeUpdateCollection
     {
 
         $validated = $request->validated();
+
+        if (isset($validated['file'])) {
+
+            if ($user->file_id) {
+
+                FileDeleteCollection::deleteFile(File::find($user->file_id));
+            }
+
+            $validated['type'] = FileModuleType::USER_PROFILE_AVATAR['key'];
+
+            $validated['file_id'] = FileCreateCollection::createFile($validated)->id;
+
+            unset($validated['type']);
+        }
 
         $validated['client_id'] = Company::find($validated['company_id'])->client_id;
 
@@ -22,7 +40,7 @@ class CompanyEmployeeUpdateCollection
         }
         return $user;
     }
-    
+
     public static function updateAvailableRating($available_rating_ids, User $user)
     {
         $user->employeeAvailableRatings()->delete();

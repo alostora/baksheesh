@@ -42,20 +42,29 @@ class CompanyEmployeeUpdateRequest extends FormRequest
                 Rule::unique('users', 'email')->ignore($request->user->id, 'id')
             ],
 
-            "country_id" => [
-
-                "nullable", "uuid", "string",
-
-                Rule::exists('countries', 'id')->where('type', CountryType::COUNTRY['code'])
-            ],
-
             "address" => ["bail", "nullable", "string", "max:255"],
-
-            'file_id' => ['bail', 'nullable', 'string', 'uuid', 'exists:files,id'],
 
             'available_rating_ids' => ['required', 'array', 'max:5'],
 
             'available_rating_ids.*' => ['required', 'uuid', 'exists:system_lookups,id'],
+
+            "employee_job_name" => ["required", "string", "max:255"],
+
+            "country_id" => [
+
+                "required", "uuid", "string",
+
+                Rule::exists('countries', 'id')->where('type', CountryType::COUNTRY['code'])
+            ],
+
+            "governorate_id" => [
+
+                "required", "uuid", "string",
+
+                Rule::exists('countries', 'id')->where('type', CountryType::GOVERNORATE['code'])
+            ],
+
+            'file' => ['nullable', 'file'],
 
         ];
     }

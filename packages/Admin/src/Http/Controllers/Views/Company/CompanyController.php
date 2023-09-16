@@ -126,7 +126,6 @@ class CompanyController extends Controller
         $client_type = AccountTypeCollection::client();
 
         $data['clients'] = User::where('user_account_type_id', $client_type->id)->get();
-
         
         $data['company'] = $company;
         

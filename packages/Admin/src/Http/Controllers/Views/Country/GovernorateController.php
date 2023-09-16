@@ -56,6 +56,15 @@ class GovernorateController extends Controller
         return view('Admin/Governorate/index', $data);
     }
 
+    public function countryGovernorates(Country $country)
+    {
+        return response()->success(
+            trans('governorate.governorate_updated_successfully'),
+            GovernorateMinifiedResource::collection($country->governorates),
+            StatusCode::OK
+        );
+    }
+
     public function show(Governorate $governorate)
     {
         return response()->success(
