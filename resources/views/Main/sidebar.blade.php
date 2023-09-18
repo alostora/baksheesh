@@ -11,7 +11,14 @@
     </div>
     <ul class="sidebar-menu" data-widget="tree">
 
-      <li class="header"><a href="{{url('admin')}}">@lang('sidebar.home')</a></li>
+      <li class="header">
+        @if(in_array(auth()->user()->accountType->code,[\App\Constants\HasLookupType\UserAccountType::ADMIN['code'],\App\Constants\HasLookupType\UserAccountType::ROOT['code']]))
+        <a href="{{url('admin')}}">@lang('sidebar.home')</a>
+        @elseif(in_array(auth()->user()->accountType->code,[\App\Constants\HasLookupType\UserAccountType::CLIENT['code']]))
+        <a href="{{url('client')}}">@lang('sidebar.home')</a>
+        @endif
+
+      </li>
 
       @if(in_array(auth()->user()->accountType->code,[\App\Constants\HasLookupType\UserAccountType::ADMIN['code'],\App\Constants\HasLookupType\UserAccountType::ROOT['code']]))
 
@@ -176,13 +183,13 @@
               <i class="fa fa-circle-o"></i>@lang('sidebar.withdrawal_request_report')
             </a>
           </li>
-          
+
           <li>
             <a href="{{url('client/employee-rating-report')}}">
               <i class="fa fa-circle-o"></i>@lang('sidebar.employee_rating_report')
             </a>
           </li>
-          
+
           <li>
             <a href="{{url('client/employee-notes-report')}}">
               <i class="fa fa-circle-o"></i>@lang('sidebar.employee_notes_report')

@@ -4,13 +4,13 @@ namespace Admin\Http\Controllers\Views\User;
 
 use Admin\Foundations\Client\ClientCreateCollection;
 use Admin\Foundations\Client\ClientSearchCollection;
-use Admin\Foundations\Company\CompanyEmployee\CompanyEmployeeCreateCollection;
+use Admin\Foundations\Client\ClientUpdateCollection;
+use Admin\Foundations\Company\CompanyEmployee\CompanyEmployeeUpdateCollection;
 use Admin\Http\Requests\Client\ClientCreateRequest;
 use Admin\Http\Requests\Client\ClientUpdateRequest;
 use App\Constants\HasLookupType\CountryType;
 use App\Constants\StatusCode;
 use App\Constants\SystemDefault;
-use App\Foundations\LookupType\AccountTypeCollection;
 use App\Http\Controllers\Controller;
 use App\Http\Resources\Auth\UserResource;
 use App\Models\Country;
@@ -70,6 +70,15 @@ class ClientController extends Controller
     public function edit(User $user)
     {
         $data['user'] = $user;
+        
+        $data['countries'] = Country::where('type', CountryType::COUNTRY['code'])
+            ->where('stopped_at', null)
+            ->get();
+
+        $data['governorates'] = Country::where('country_id', $user->country_id)
+            ->where('type', CountryType::GOVERNORATE['code'])
+            ->where('stopped_at', null)
+            ->get();
 
         return view('Admin/Client/edit', $data);
     }
@@ -77,6 +86,8 @@ class ClientController extends Controller
     public function update(ClientUpdateRequest $request, User $user)
     {
         $user->update($request->validated());
+
+        ClientUpdateCollection::updateClient($request, $user);
 
         return redirect(url('admin/clients'));
     }
