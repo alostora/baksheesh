@@ -1,15 +1,10 @@
-<!-- Main content -->
 <section class="content">
   <div class="row">
-    <!-- left column -->
     <div class="col-md-12">
-      <!-- general form elements -->
       <div class="box box-primary">
         <div class="box-header with-border">
           <h3 class="box-title col-md-8">@lang('user.update')</h3>
         </div>
-        <!-- /.box-header -->
-        <!-- form start -->
         <form role="form" action="{{url('admin/client/'.$user->id)}}" method="post" enctype="multipart/form-data">
           @csrf
           @method('PATCH')
@@ -103,25 +98,15 @@
                 </div>
               </div>
             </div>
-
           </div>
-          <!-- /.box-body -->
-
           <div class="box-footer">
             <button type="submit" class="btn btn-primary">@lang('user.submit')</button>
           </div>
         </form>
       </div>
-      <!-- /.box -->
-
-
-
     </div>
-
   </div>
-  <!-- /.row -->
 </section>
-<!-- /.content -->
 
 <script>
   function getGovernorate(country_id) {
