@@ -10,10 +10,26 @@
         </div>
         <!-- /.box-header -->
         <!-- form start -->
-        <form role="form" action="{{url('admin/client/'.$user->id)}}" method="post">
+        <form role="form" action="{{url('admin/client/'.$user->id)}}" method="post" enctype="multipart/form-data">
           @csrf
           @method('PATCH')
           <div class="box-body">
+
+            @if($user->file)
+            <img src="{{ url('uploads/'.$user->file->new_name)}}" style="height:50px;width:50px;border-radius:50%">
+            @endif
+
+            <div class="row">
+              <div class="form-group">
+
+                <div class="col-md-6">
+                  <label for="file">@lang('user.file')</label>
+                  <input type="file" class="form-control" name="file" id="file">
+                </div>
+
+              </div>
+            </div>
+
             <div class="row">
               <div class="form-group">
                 <div class="col-md-6">
@@ -27,6 +43,7 @@
                 </div>
               </div>
             </div>
+
             <div class="row">
               <div class="form-group">
                 <div class="col-md-6">

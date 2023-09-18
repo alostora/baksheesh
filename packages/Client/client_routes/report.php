@@ -14,4 +14,8 @@ Route::group([
 
 	Route::get('withdrawal-request-report', [ClientReportController::class, 'withdrawalRequestReport']);
 
+	Route::get('employee-rating-report', [ClientReportController::class, 'employeeRatingReport']);
+
+	Route::get('employee-notes-report', [ClientReportController::class, 'employeeNotesReport']);
+
 });

@@ -26,6 +26,7 @@ return [
     "country" => "الدولة",
     "governorate" => "المحافظة",
     "governorates" => "المحافظات",
+    "file" => "صورة",
 
 
     //operatoins

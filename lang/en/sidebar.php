@@ -38,4 +38,8 @@ return [
 
      "inactive_client_report" => "Inactive Client Reports",
 
+     "employee_rating_report" => "Employee Rating Reports",
+     
+     "employee_notes_report" => "Clients Notes Reports",
+
 ];

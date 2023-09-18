@@ -79,7 +79,7 @@
                                 </td>
 
                                 <td>
-                                    <a href="{{url('pay-for-company/'.$company->id)}}" target="_blank" class="btn btn-success btn-sm">
+                                    <a href="{{url('guest/payment/pay-for-company/'.$company->id)}}" target="_blank" class="btn btn-success btn-sm">
                                         <i class="fa fa-link"></i>
                                     </a>
                                 </td>
@@ -88,7 +88,7 @@
                                     <script type="text/javascript">
                                         new QRious({
                                             element: document.getElementById("{{$company->id}}"),
-                                            value: "{{url('pay-for-company/'.$company->id)}}"
+                                            value: "{{url('guest/payment/pay-for-company/'.$company->id)}}"
                                         });
                                     </script>
 

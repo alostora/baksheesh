@@ -13,7 +13,12 @@
                 <!--  <div class="box-header with-border">
                     <h3 class="box-title">Review Company</h3>
                 </div> -->
-                <form role="form" action="{{url('api/guest/payment/pay-for-company')}}" method="POST">
+                <form role="form" action="{{url('guest/payment/pay-for-company')}}" method="POST">
+                    @csrf
+
+                    <input type="hidden" name="client_id" value="{{Request('company')->client_id}}">
+                    <input type="hidden" name="company_id" value="{{Request('company')->id}}">
+
                     <div class="box-body">
 
                         <div class="form-group">
@@ -35,30 +40,45 @@
                         <div class="form-group">
                             <label>{{$company_available_rating->name}}</label>
                             <div>
-                                <input type="radio" name="{{$company_available_rating->id}}" value="1">
-                                <input type="radio" name="{{$company_available_rating->id}}" value="2">
-                                <input type="radio" name="{{$company_available_rating->id}}" value="3">
-                                <input type="radio" name="{{$company_available_rating->id}}" value="4">
-                                <input type="radio" name="{{$company_available_rating->id}}" value="5">
+                                <input type="radio" name="{{$company_available_rating->id}}" value="1" onclick="postRate(this)">
+                                <input type="radio" name="{{$company_available_rating->id}}" value="2" onclick="postRate(this)">
+                                <input type="radio" name="{{$company_available_rating->id}}" value="3" onclick="postRate(this)">
+                                <input type="radio" name="{{$company_available_rating->id}}" value="4" onclick="postRate(this)">
+                                <input type="radio" name="{{$company_available_rating->id}}" value="5" onclick="postRate(this)">
                             </div>
                         </div>
                         @endforeach
 
                     </div>
-
                     <div class="box-footer">
                         <button type="submit" class="btn btn-primary">Submit</button>
                     </div>
-
                 </form>
             </div>
         </div>
-
-
-
-
-
-
     </div>
-
 </section>
+
+<script>
+    function postRate(value) {
+
+        $.ajax({
+
+            url: '{{url("api/guest/payment/company-rating/".Request("company")->id)}}',
+            type: 'POST',
+            data: {
+                rating_value: value.value,
+                rating_id: value.name,
+            },
+            dataType: 'json',
+            success: function(response) {
+
+                console.log(response);
+
+            },
+            error: function(request, error) {
+                console.log("Request: " + JSON.stringify(request));
+            }
+        });
+    }
+</script>

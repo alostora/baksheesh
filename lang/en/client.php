@@ -26,6 +26,7 @@ return [
     "country" => "Country",
     "governorate" => "Governorate",
     "governorates" => "Governorates",
+    "file" => "Image",
 
 
     //operatoins

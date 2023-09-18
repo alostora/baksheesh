@@ -20,5 +20,12 @@ class RouteServiceProvider extends ServiceProvider
                 ->middleware(['api'])
                 ->group($file);
         }
+
+
+        foreach (glob(base_path('/packages/Guest/guest_routes/*.php')) as $file) {
+            Route::prefix('guest')
+                ->middleware(['web', 'lang'])
+                ->group($file);
+        }
     }
 }

@@ -1,8 +1,6 @@
 <?php
 
 use App\Http\Controllers\AuthViews\AuthController;
-use App\Http\Controllers\PaymentForCompanyController;
-use App\Http\Controllers\PaymentForEmployeeController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Session;
 
@@ -35,8 +33,3 @@ Route::group([
         });
     });
 });
-
-
-Route::get('pay-for-employee/{user}', [PaymentForEmployeeController::class, 'index']);
-
-Route::get('pay-for-company/{company}', [PaymentForCompanyController::class, 'index']);

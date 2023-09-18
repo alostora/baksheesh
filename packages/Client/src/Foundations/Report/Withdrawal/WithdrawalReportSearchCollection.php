@@ -7,7 +7,7 @@ use App\Constants\SystemDefault;
 class WithdrawalReportSearchCollection
 {
 
-    public static function searcAllhWithdrawalRequests(
+    public static function searchAllWithdrawalRequests(
         $status = -1,
         $amount = -1,
         $date_from = -1,

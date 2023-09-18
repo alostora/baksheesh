@@ -5,9 +5,21 @@
         <div class="box-header with-border">
           <h3 class="box-title col-md-8">@lang('client.create')</h3>
         </div>
-        <form role="form" action="{{url('admin/client')}}" method="POST">
+        <form role="form" action="{{url('admin/client')}}" method="POST" enctype="multipart/form-data">
           @csrf
           <div class="box-body">
+
+
+            <div class="row">
+              <div class="form-group">
+                <div class="col-md-6">
+                  <label for="file">@lang('client.file')</label>
+                  <input type="file" class="form-control" name="file" id="file" placeholder="@lang('client.file')">
+                </div>
+              </div>
+            </div>
+
+
             <div class="row">
               <div class="form-group">
                 <div class="col-md-6">

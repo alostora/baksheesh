@@ -5,14 +5,13 @@ namespace Client\Http\Controllers\Views\Report;
 use Client\Foundations\Report\Withdrawal\WithdrawalReportSearchCollection;
 use Client\Foundations\Wallet\ClientCompanyWalletSearchCollection;
 use Client\Foundations\Wallet\ClientEmployeeWalletSearchCollection;
-use App\Constants\HasLookupType\UserAccountType;
 use App\Constants\SystemDefault;
-use App\Foundations\LookupType\AccountTypeCollection;
 use App\Foundations\LookupType\WithdrawalRequestStatusCollection;
 use App\Http\Controllers\Controller;
 use App\Models\Company;
-use App\Models\SystemLookup;
 use App\Models\User;
+use Client\Foundations\Report\EmployeeNotes\EmployeeNotesReportSearchCollection;
+use Client\Foundations\Report\EmployeeRating\EmployeeRatingReportSearchCollection;
 use Illuminate\Http\Request;
 
 class ClientReportController extends Controller
@@ -54,7 +53,7 @@ class ClientReportController extends Controller
 
     public function withdrawalRequestReport(Request $request)
     {
-        $data['withdrawal_requests'] = WithdrawalReportSearchCollection::searcAllhWithdrawalRequests(
+        $data['withdrawal_requests'] = WithdrawalReportSearchCollection::searchAllWithdrawalRequests(
 
             $request->get('status') ? $request->get('status') : -1,
             $request->get('amount') ? $request->get('amount') : -1,
@@ -66,5 +65,33 @@ class ClientReportController extends Controller
         $data['withdrawal_request_status'] = WithdrawalRequestStatusCollection::statusList();
 
         return view('Client/Report/WithdrawalRequest/index', $data);
+    }
+
+    public function employeeRatingReport(Request $request)
+    {
+
+        $data['employee_ratings'] = EmployeeRatingReportSearchCollection::searchAllEmployeeRating(
+
+            $request->get('rating_value') ? $request->get('rating_value') : -1,
+            $request->get('date_from') ? $request->get('date_from') : -1,
+            $request->get('date_to') ? $request->get('date_to') : -1,
+            $request->get('per_page') ? $request->get('per_page') : SystemDefault::DEFAUL_PAGINATION_COUNT
+        );
+
+        return view('Client/Report/EmployeeRating/index', $data);
+    }
+
+    public function employeeNotesReport(Request $request)
+    {
+
+        $data['employee_notes'] = EmployeeNotesReportSearchCollection::searchAllEmployeeNotes(
+
+            $request->get('query_string') ? $request->get('query_string') : -1,
+            $request->get('date_from') ? $request->get('date_from') : -1,
+            $request->get('date_to') ? $request->get('date_to') : -1,
+            $request->get('per_page') ? $request->get('per_page') : SystemDefault::DEFAUL_PAGINATION_COUNT
+        );
+
+        return view('Client/Report/EmployeeNotes/index', $data);
     }
 }

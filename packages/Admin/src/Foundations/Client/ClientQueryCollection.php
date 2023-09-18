@@ -2,9 +2,7 @@
 
 namespace Admin\Foundations\Client;
 
-use App\Constants\HasLookupType\UserAccountType;
 use App\Foundations\LookupType\AccountTypeCollection;
-use App\Models\SystemLookup;
 use App\Models\User;
 
 class ClientQueryCollection

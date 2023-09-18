@@ -54,6 +54,8 @@ class ClientCreateRequest extends FormRequest
 
                 Rule::exists('countries', 'id')->where('type', CountryType::GOVERNORATE['code'])
             ],
+
+            'file' => ['nullable', 'file'],
         ];
     }
 }

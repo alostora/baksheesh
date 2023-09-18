@@ -38,4 +38,8 @@ return [
 
      "inactive_client_report" => "تقارير العملاء الغير نشطين",
 
+     "employee_rating_report" => "تقارير تقييم الموظفين ",
+
+     "employee_notes_report" => "تقارير ملاحظات العملاء ",
+
 ];

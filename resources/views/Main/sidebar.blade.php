@@ -176,6 +176,18 @@
               <i class="fa fa-circle-o"></i>@lang('sidebar.withdrawal_request_report')
             </a>
           </li>
+          
+          <li>
+            <a href="{{url('client/employee-rating-report')}}">
+              <i class="fa fa-circle-o"></i>@lang('sidebar.employee_rating_report')
+            </a>
+          </li>
+          
+          <li>
+            <a href="{{url('client/employee-notes-report')}}">
+              <i class="fa fa-circle-o"></i>@lang('sidebar.employee_notes_report')
+            </a>
+          </li>
 
         </ul>
       </li>

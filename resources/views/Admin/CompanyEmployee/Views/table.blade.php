@@ -82,7 +82,7 @@
                                 <td> {{$user->country ? $user->country->name : ""}} </td>
                                 <td> {{$user->governorate ? $user->governorate->name : ""}} </td>
                                 <td>
-                                    <a href="{{url('pay-for-employee/'.$user->id)}}" target="_blank" class="btn btn-success btn-sm">
+                                    <a href="{{url('guest/payment/pay-for-employee/'.$user->id)}}" target="_blank" class="btn btn-success btn-sm">
                                         <i class="fa fa-link"></i>
                                     </a>
                                 </td>
@@ -91,7 +91,7 @@
                                     <script type="text/javascript">
                                         new QRious({
                                             element: document.getElementById("{{$user->id}}"),
-                                            value: "{{url('pay-for-employee/'.$user->id)}}"
+                                            value: "{{url('guest/payment/pay-for-employee/'.$user->id)}}"
                                         });
                                     </script>
 

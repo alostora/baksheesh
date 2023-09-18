@@ -20,4 +20,6 @@ return [
 
      "countries" => "المدن",
 
+     "rating_value" => "مستوي التقيم",
+
 ];

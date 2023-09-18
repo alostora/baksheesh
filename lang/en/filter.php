@@ -28,4 +28,6 @@ return [
 
      "countries" => "Countries",
 
+     "rating_value" => "Rating Value",
+
 ];

@@ -2,7 +2,9 @@
 
 namespace Admin\Http\Controllers\Views\User;
 
+use Admin\Foundations\Client\ClientCreateCollection;
 use Admin\Foundations\Client\ClientSearchCollection;
+use Admin\Foundations\Company\CompanyEmployee\CompanyEmployeeCreateCollection;
 use Admin\Http\Requests\Client\ClientCreateRequest;
 use Admin\Http\Requests\Client\ClientUpdateRequest;
 use App\Constants\HasLookupType\CountryType;
@@ -55,18 +57,12 @@ class ClientController extends Controller
             ->where('stopped_at', null)
             ->get();
 
-        return view('Admin/Client/create',$data);
+        return view('Admin/Client/create', $data);
     }
 
     public function store(ClientCreateRequest $request)
     {
-        $user_account_type = AccountTypeCollection::client();
-
-        $validated = $request->validated();
-
-        $validated['user_account_type_id'] = $user_account_type->id;
-
-        User::create($validated);
+        ClientCreateCollection::createClient($request);
 
         return redirect(url('admin/clients'));
     }

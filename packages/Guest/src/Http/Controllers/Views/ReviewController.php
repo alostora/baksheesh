@@ -2,40 +2,48 @@
 
 namespace Guest\Http\Controllers\Views;
 
-use App\Constants\StatusCode;
 use App\Http\Controllers\Controller;
+use App\Models\Company;
 use App\Models\CompanyCash;
 use App\Models\EmployeeCash;
+use App\Models\SystemLookup;
+use App\Models\User;
 use Guest\Http\Requests\PayForCompanyRequest;
 use Guest\Http\Requests\PayForEmployeeRequest;
-use Guest\Http\Resources\PayForCompanyResource;
-use Guest\Http\Resources\PayForEmployeeResource;
-use Illuminate\Http\Request;
 
 class ReviewController extends Controller
 {
 
-    public function payForEmployee(PayForEmployeeRequest $request)
-    {
-
-        return $request->all();
-        $employeeCash = EmployeeCash::create($request->validated());
-
-        return response()->success(
-            trans('payment.payment_created_successfully'),
-            new PayForEmployeeResource($employeeCash),
-            StatusCode::OK
-        );
-    }
-
     public function payForCompany(PayForCompanyRequest $request)
     {
-        $companyCash = CompanyCash::create($request->validated());
+        CompanyCash::create($request->validated());
 
-        return response()->success(
-            trans('payment.payment_created_successfully'),
-            new PayForCompanyResource($companyCash),
-            StatusCode::OK
-        );
+        return back();
+    }
+
+    public function payForEmployee(PayForEmployeeRequest $request)
+    {
+        EmployeeCash::create($request->validated());
+
+        return back();
+    }
+
+    
+    public function viewPaymentForEmployee(User $user)
+    {
+        $employee_available_ratings = $user->employeeAvailableRatings()->pluck('available_rating_id');
+
+        $data['employee_available_ratings'] = SystemLookup::whereIn('id', $employee_available_ratings)->get();
+
+        return view('Guest/EmployeePayment/paymentForEmployee', $data);
+    }
+
+    public function viewPaymentForCompany(Company $company)
+    {
+        $company_available_ratings = $company->companyAvailableRatings()->pluck('available_rating_id');
+
+        $data['company_available_ratings'] = SystemLookup::whereIn('id', $company_available_ratings)->get();
+
+        return view('Guest/CompanyPayment/paymentForCompany', $data);
     }
 }

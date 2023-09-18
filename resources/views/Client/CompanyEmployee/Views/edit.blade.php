@@ -9,6 +9,7 @@
           @csrf
           @method('PATCH')
           <div class="box-body">
+
             @if($employee->file)
             <img src="{{ url('uploads/'.$employee->file->new_name)}}" style="height:50px;width:50px;border-radius:50%">
             @endif
