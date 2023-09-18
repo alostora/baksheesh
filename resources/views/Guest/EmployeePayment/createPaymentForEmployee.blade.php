@@ -26,6 +26,11 @@
                             <input type="number" name="amount" class="form-control input-lg" id="amount" placeholder="Enter Amount">
                         </div>
 
+                        <div class="form-group">
+                            <label for="notes">Notes</label>
+                            <textarea class="form-control input-lg" id="notes" placeholder="Enter Notes"></textarea>
+                        </div>
+
                         @foreach($employee_available_ratings as $key=>$employee_available_rating)
                         <div class="form-group">
                             <label>{{$employee_available_rating->name}}</label>
@@ -38,11 +43,6 @@
                             </div>
                         </div>
                         @endforeach
-
-                        <div class="form-group">
-                            <label for="notes">Notes</label>
-                            <textarea class="form-control input-lg" id="notes" placeholder="Enter Notes"></textarea>
-                        </div>
 
                     </div>
 

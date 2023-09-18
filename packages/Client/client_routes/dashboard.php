@@ -1,6 +1,6 @@
 <?php
 
-use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\DashboardClientController;
 use Illuminate\Support\Facades\Route;
 
 
@@ -13,6 +13,5 @@ Route::group([
 
 ], function () {
 
-     Route::get('/', [DashboardController::class, 'index']);
-     Route::get('client-profile', [DashboardController::class, 'clientProfile']);
+     Route::get('/', [DashboardClientController::class, 'index']);
 });

@@ -12,7 +12,7 @@ use Guest\Http\Resources\PayForCompanyResource;
 use Guest\Http\Resources\PayForEmployeeResource;
 use Illuminate\Http\Request;
 
-class PaymentController extends Controller
+class ReviewController extends Controller
 {
 
     public function payForEmployee(PayForEmployeeRequest $request)
