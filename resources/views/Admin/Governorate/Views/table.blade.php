@@ -72,6 +72,7 @@
                             <tr>
                                 <th>#</th>
                                 <th>@lang('governorate.name')</th>
+                                <th>@lang('governorate.country')</th>
                                 <th>@lang('governorate.operations')</th>
                             </tr>
                         </thead>
@@ -81,6 +82,7 @@
                             <tr>
                                 <td> {{$key+1}} </td>
                                 <td> {{$governorate->name}} </td>
+                                <td> {{$governorate->country->name}} </td>
                                 <td>
                                     <a href="{{url('admin/governorate/edit/'.$governorate->id)}}" class="btn btn-success btn-sm">
                                         <i class="fa fa-edit"></i> @lang('governorate.update')
@@ -88,12 +90,12 @@
 
                                     @if($governorate->stopped_at == null)
                                     <a href="{{url('admin/governorate-inactive/'.$governorate->id)}}" class="btn btn-success btn-sm">
-                                        <i class="fa fa-check"></i> current status : active
+                                        <i class="fa fa-check"></i> @lang('general.current_status') : @lang('general.active')
                                     </a>
                                     @else
 
                                     <a href="{{url('admin/governorate-active/'.$governorate->id)}}" class="btn btn-danger btn-sm">
-                                        <i class="fa fa-close"></i> current status : Inactive at {{$governorate->stopped_at}}
+                                        <i class="fa fa-close"></i> @lang('general.current_status') : @lang('general.inactive') - {{$governorate->stopped_at}}
                                     </a>
                                     @endif
                                 </td>

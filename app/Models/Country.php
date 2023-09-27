@@ -46,13 +46,13 @@ class Country extends Model
 
         'zone_id',
 
-        'stopped_at,null',
+        'stopped_at',
 
     ];
 
     protected $casts = [
 
-        'stopped_at,null' => 'datetime'
+        'stopped_at' => 'datetime'
     ];
 
     protected function name(): Attribute

@@ -112,12 +112,12 @@
 
                                     @if($company->stopped_at == null)
                                     <a href="{{url('admin/company-inactive/'.$company->id)}}" class="btn btn-success btn-sm">
-                                        <i class="fa fa-check"></i> current status : active
+                                        <i class="fa fa-check"></i> @lang('general.current_status') : @lang('general.active')
                                     </a>
                                     @else
 
                                     <a href="{{url('admin/company-active/'.$company->id)}}" class="btn btn-danger btn-sm">
-                                        <i class="fa fa-close"></i> current status : Inactive at {{$company->stopped_at}}
+                                        <i class="fa fa-close"></i> @lang('general.current_status') : @lang('general.inactive') - {{$company->stopped_at}}
                                     </a>
                                     @endif
                                 </td>

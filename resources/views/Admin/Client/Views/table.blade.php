@@ -92,13 +92,13 @@
                                     @if($user->stopped_at == null)
                                     <a href="{{url('admin/client-inactive/'.$user->id)}}" class="btn btn-success btn-sm">
                                         <i class="fa fa-check"></i>
-                                        current status : active
+                                        @lang('general.current_status') : @lang('general.active')
                                     </a>
                                     @else
 
                                     <a href="{{url('admin/client-active/'.$user->id)}}" class="btn btn-danger btn-sm">
                                         <i class="fa fa-close"></i>
-                                        current status : Inactive at {{$user->stopped_at}}
+                                        @lang('general.current_status') : @lang('general.inactive') - {{$user->stopped_at}}
                                     </a>
                                     @endif
                                 </td>

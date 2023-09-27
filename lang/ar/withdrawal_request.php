@@ -29,7 +29,7 @@ return [
     'admin_notes' => 'ملاحظات الادمن',
 
     'client_notes' => 'ملاحظات العميل',
-    
+
     'refuse_reasone' => 'سبب الرفض',
 
     //operatoins
@@ -44,4 +44,7 @@ return [
     "search" => "بحث",
 
     "empty" => "فارغ",
+    "current_status" => "الحالة الحالية",
+    "active" => "نشط",
+    "inactive" => "غير نشط",
 ];

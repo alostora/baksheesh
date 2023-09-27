@@ -21,5 +21,8 @@ return [
      "year_income" => "الدخل السنوي",
 
      "current_amount" => "المبلغ الحالي",
+     "current_status" => "الحالة الحالية",
+     "active" => "نشط",
+     "inactive" => "غير نشط",
 
 ];

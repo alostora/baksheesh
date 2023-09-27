@@ -6,6 +6,9 @@ return [
 
      "online" => "Online",
 
-     "dashboard" => "Dashboard"
+     "dashboard" => "Dashboard",
+     "current_status" => "Current Status",
+     "active" => "Active",
+     "inactive" => "Inactive",
 
 ];

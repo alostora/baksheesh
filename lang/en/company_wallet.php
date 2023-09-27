@@ -42,4 +42,7 @@ return [
     "search" => "Search",
 
     "empty" => "Empty",
+    "current_status" => "Current Status",
+    "active" => "Active",
+    "inactive" => "Inactive",
 ];

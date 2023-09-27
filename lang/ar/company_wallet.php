@@ -43,4 +43,7 @@ return [
     "search" => "بحث",
 
     "empty" => "فارغ",
+    "current_status" => "الحالة الحالية",
+    "active" => "نشط",
+    "inactive" => "غير نشط",
 ];
