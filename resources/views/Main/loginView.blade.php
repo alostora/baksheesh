@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -20,56 +21,58 @@
   <link rel="stylesheet" href="{{url('AdminDesign')}}/myStyle.css">
 
   @if(App::getLocale() == "ar" || App::getLocale() == "")
-    <link rel="stylesheet" href="{{url('AdminDesign')}}/bootstrap/css/bootstrap-rtl.min.css">
-    <link rel="stylesheet" href="{{url('AdminDesign')}}/dist/css1/AdminLTE-rtl.min.css">
-    <link rel="stylesheet" href="{{url('AdminDesign')}}/dist/css1/skins/_all-skins-rtl.min.css">
-    <?php $dir = "rtl" ?>
+  <link rel="stylesheet" href="{{url('AdminDesign')}}/bootstrap/css/bootstrap-rtl.min.css">
+  <link rel="stylesheet" href="{{url('AdminDesign')}}/dist/css1/AdminLTE-rtl.min.css">
+  <link rel="stylesheet" href="{{url('AdminDesign')}}/dist/css1/skins/_all-skins-rtl.min.css">
+  <?php $dir = "rtl" ?>
   @elseif(App::getLocale() == "en")
-    <?php $dir = "ltr" ?> 
+  <?php $dir = "ltr" ?>
   @else
-    <?php $dir = "rtl" ?>  
+  <?php $dir = "rtl" ?>
   @endif
   <!-- Google Font -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
 </head>
-<body class="hold-transition login-page" dir="{{$dir}}">
-<div class="login-box">
-  <div class="login-logo">
-    <img src="{{url('adminDesign')}}/logo.png" style="height: 170px;width:200px;">
-  </div>
-  <!-- /.login-logo -->
-  <div class="login-box-body">
-    <p class="login-box-msg">@lang('general.login') @lang('general.dashboard')</p>
 
-    <form action="{{url('admin/login')}}" method="post">
-      @csrf
-      <div class="form-group has-feedback">
-        <input type="email" name="email" class="form-control" placeholder="Email">
-        <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
-      </div>
-      <div class="form-group has-feedback">
-        <input type="password" name="password" class="form-control" placeholder="Password">
-        <span class="glyphicon glyphicon-lock form-control-feedback"></span>
-      </div>
-      <div class="row">
-        <div class="col-xs-4">
-          <button type="submit" class="btn btn-primary btn-block btn-flat">@lang('general.login')</button>
+<body class="hold-transition login-page" dir="{{$dir}}">
+  <div class="login-box">
+    <div class="login-logo">
+      <a href="#"><b>Tipo</b>TLC</a>
+    </div>
+    <!-- /.login-logo -->
+    <div class="login-box-body">
+      <p class="login-box-msg">@lang('login.login') @lang('login.dashboard')</p>
+
+      <form action="{{url('admin/login')}}" method="post">
+        @csrf
+        <div class="form-group has-feedback">
+          <input type="email" name="email" class="form-control" placeholder="@lang('login.email')">
+          <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
         </div>
-      </div>
-    </form>
+        <div class="form-group has-feedback">
+          <input type="password" name="password" class="form-control" placeholder="@lang('login.password')">
+          <span class="glyphicon glyphicon-lock form-control-feedback"></span>
+        </div>
+        <div class="row">
+          <div class="col-xs-4">
+            <button type="submit" class="btn btn-primary btn-block btn-flat">@lang('login.login')</button>
+          </div>
+        </div>
+      </form>
+    </div>
   </div>
-</div>
-<script src="{{url('AdminDesign')}}/bower_components/jquery/dist/jquery.min.js"></script>
-<script src="{{url('AdminDesign')}}/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
-<script src="{{url('AdminDesign')}}/plugins/iCheck/icheck.min.js"></script>
-<script>
-  $(function () {
-    $('input').iCheck({
-      checkboxClass: 'icheckbox_square-blue',
-      radioClass: 'iradio_square-blue',
-      increaseArea: '20%' /* optional */
+  <script src="{{url('AdminDesign')}}/bower_components/jquery/dist/jquery.min.js"></script>
+  <script src="{{url('AdminDesign')}}/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+  <script src="{{url('AdminDesign')}}/plugins/iCheck/icheck.min.js"></script>
+  <script>
+    $(function() {
+      $('input').iCheck({
+        checkboxClass: 'icheckbox_square-blue',
+        radioClass: 'iradio_square-blue',
+        increaseArea: '20%' /* optional */
+      });
     });
-  });
-</script>
+  </script>
 </body>
+
 </html>

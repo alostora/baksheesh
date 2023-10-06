@@ -4,7 +4,7 @@
                <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                          <span aria-hidden="true">×</span></button>
-                    <h4 class="modal-title">Change Withdrawal Request Status</h4>
+                    <h4 class="modal-title">@lang('withdrawal_request.change_withdrawal_request_status')</h4>
                </div>
                <div class="modal-body">
                     <form role="form" id="modal-from" action="" method="POST">
@@ -18,7 +18,7 @@
                                              <option value="">@lang('withdrawal_request.select')</option>
                                              @foreach($withdrawal_request_status as $withdrawal_status)
                                              <?php $selected = Request('status') == $withdrawal_status->id ? "selected" : ""; ?>
-                                             <option value="{{$withdrawal_status->id}}" {{$selected}}>{{$withdrawal_status->name}}</option>
+                                             <option value="{{$withdrawal_status->id}}" {{$selected}}>{{app()->getLocale() == 'ar' ? $withdrawal_status->name_ar : $withdrawal_status->name}}</option>
                                              @endforeach
                                         </select>
                                    </div>
@@ -44,8 +44,8 @@
                               </div>
                          </div>
                          <div class="modal-footer">
-                              <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Close</button>
-                              <button type="submit" class="btn btn-primary">Save changes</button>
+                              <button type="button" class="btn btn-default pull-left" data-dismiss="modal">@lang('withdrawal_request.close')</button>
+                              <button type="submit" class="btn btn-primary">@lang('withdrawal_request.submit')</button>
                          </div>
                     </form>
                </div>

@@ -41,10 +41,17 @@ return [
 
     "submit" => "حفظ",
 
+    "close" => "اغلاق",
+
     "search" => "بحث",
 
     "empty" => "فارغ",
+
     "current_status" => "الحالة الحالية",
+
     "active" => "نشط",
+
     "inactive" => "غير نشط",
+
+    "change_withdrawal_request_status" => "تغير حالة طلب السحب",
 ];

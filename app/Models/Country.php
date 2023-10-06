@@ -55,14 +55,14 @@ class Country extends Model
         'stopped_at' => 'datetime'
     ];
 
-    protected function name(): Attribute
-    {
+    // protected function name(): Attribute
+    // {
 
-        return Attribute::make(
-            //get: fn (string $value) => $this->attributes['name'],
-            get: fn (string $value) =>  app()->getLocale() == "en" ? $this->attributes['name'] : $this->attributes['name_ar'],
-        );
-    }
+    //     return Attribute::make(
+    //         //get: fn (string $value) => $this->attributes['name'],
+    //         get: fn (string $value) =>  app()->getLocale() == "en" ? $this->attributes['name'] : $this->attributes['name_ar'],
+    //     );
+    // }
 
     final static public function loadCountry($id)
     {

@@ -17,10 +17,10 @@
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label>@lang('filter.active')</label>
-                                    <select class="form-control select2" name="active" style="width: 100%;">
-                                        <option value="" {{Request('active') == "" ? "selected" : "";}}>All</option>
-                                        <option value="active" {{Request('active') == "1" ? "selected" : "";}}>Active</option>
-                                        <option value="inactive" {{Request('active') == "0" ? "selected" : "";}}>Inactive</option>
+                                    <select class="form-control select2" name="active">
+                                        <option value="" {{Request('active') == "" ? "selected" : "";}}>@lang('filter.all')</option>
+                                        <option value="active" {{Request('active') == "active" ? "selected" : "";}}>@lang('filter.active')</option>
+                                        <option value="inactive" {{Request('active') == "inactive" ? "selected" : "";}}>@lang('filter.inactive')</option>
                                     </select>
                                 </div>
                             </div>
@@ -32,7 +32,7 @@
                             </div>
                         </div>
                         <div class="box-footer">
-                            <button type="submit" class="btn btn-info pull-right">Search</button>
+                            <button type="submit" class="btn btn-info pull-right">@lang('filter.search')</button>
                         </div>
                     </form>
                 </div>
@@ -83,17 +83,11 @@
                                         <i class="fa fa-link"></i>
                                     </a>
                                 </td>
-                                <td>
-                                    <canvas id="{{$company->id}}"></canvas>
-                                    <script type="text/javascript">
-                                        new QRious({
-                                            element: document.getElementById("{{$company->id}}"),
-                                            value: "{{url('guest/payment/pay-for-company/'.$company->id)}}"
-                                        });
-                                    </script>
+                                <td id="{{$company->id}}" onclick="PrintElem('{{$company->name}}','{{$company->id}}')">
+
+                                    {!! $company->company_qr !!}
 
                                 </td>
-
                                 <td>
                                     <a href="{{url('client/client-company/edit/'.$company->id)}}" class="btn btn-success btn-sm">
                                         <i class="fa fa-edit"></i>
@@ -101,12 +95,12 @@
 
                                     @if($company->stopped_at == null)
                                     <a href="{{url('client/client-company-inactive/'.$company->id)}}" class="btn btn-success btn-sm">
-                                        <i class="fa fa-check"></i> current status : active
+                                        <i class="fa fa-check"></i> @lang('general.current_status') : @lang('general.active')
                                     </a>
                                     @else
 
                                     <a href="{{url('client/client-company-active/'.$company->id)}}" class="btn btn-danger btn-sm">
-                                        <i class="fa fa-close"></i> current status : Inactive at {{$company->stopped_at}}
+                                        <i class="fa fa-close"></i> @lang('general.current_status') : @lang('general.inactive')
                                     </a>
                                     @endif
                                 </td>
@@ -127,3 +121,26 @@
         </div>
     </div>
 </section>
+
+
+<script>
+    function PrintElem(companyName, companyId) {
+
+
+        var mywindow = window.open('', 'PRINT', 'height=400,width=600');
+
+        mywindow.document.write('<html><head><title>' + companyName + '</title>');
+        mywindow.document.write('</head><body >');
+        mywindow.document.write('<h1>' + companyName + '</h1>');
+        mywindow.document.write(document.getElementById(companyId).innerHTML);
+        mywindow.document.write('</body></html>');
+
+        mywindow.document.close(); // necessary for IE >= 10
+        mywindow.focus(); // necessary for IE >= 10*/
+
+        mywindow.print();
+        mywindow.close();
+
+        return true;
+    }
+</script>

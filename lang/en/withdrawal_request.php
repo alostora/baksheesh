@@ -41,10 +41,17 @@ return [
 
     "submit" => "Submit",
 
+    "close" => "Close",
+
     "search" => "Search",
 
     "empty" => "Empty",
+
     "current_status" => "Current Status",
+
     "active" => "Active",
+
     "inactive" => "Inactive",
+
+    "change_withdrawal_request_status" => "Change Withdrawal Request Status",
 ];

@@ -9,7 +9,6 @@
           @csrf
           <div class="box-body">
 
-
             <div class="row">
               <div class="form-group">
                 <div class="col-md-6">
@@ -18,7 +17,6 @@
                 </div>
               </div>
             </div>
-
 
             <div class="row">
               <div class="form-group">
@@ -77,11 +75,11 @@
               <div class="form-group">
                 <div class="col-md-6">
                   <label for="available_companies_count">@lang('client.available_companies_count')</label>
-                  <input type="number" class="form-control" name="available_companies_count" id="available_companies_count" placeholder="@lang('client.available_companies_count')">
+                  <input type="number" class="form-control" name="available_companies_count" id="available_companies_count" value="0">
                 </div>
                 <div class="col-md-6">
                   <label for="available_employees_count">@lang('client.available_employees_count')</label>
-                  <input type="number" class="form-control" name="available_employees_count" id="available_employees_count" placeholder="@lang('client.available_employees_count')">
+                  <input type="number" class="form-control" name="available_employees_count" id="available_employees_count" value="0">
                 </div>
               </div>
             </div>

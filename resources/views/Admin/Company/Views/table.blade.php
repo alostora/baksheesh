@@ -4,7 +4,7 @@
             <!-- filter -->
             <div class="box box-success">
                 <div class="box-header with-border">
-                    <h3 class="box-title">@lang('filter.filter')</h3>
+                    <h3 class="box-title">@lang('filter.filter')</h3> <i class="fa fa-filter"></i>
 
                     <div class="box-tools pull-right">
                         <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
@@ -18,9 +18,9 @@
                                 <div class="form-group">
                                     <label>@lang('filter.active')</label>
                                     <select class="form-control select2" name="active">
-                                        <option value="" {{Request('active') == "" ? "selected" : "";}}>All</option>
-                                        <option value="active" {{Request('active') == "active" ? "selected" : "";}}>Active</option>
-                                        <option value="inactive" {{Request('active') == "inactive" ? "selected" : "";}}>Inactive</option>
+                                        <option value="" {{Request('active') == "" ? "selected" : "";}}>@lang('filter.all')</option>
+                                        <option value="active" {{Request('active') == "active" ? "selected" : "";}}>@lang('filter.active')</option>
+                                        <option value="inactive" {{Request('active') == "inactive" ? "selected" : "";}}>@lang('filter.inactive')</option>
                                     </select>
                                 </div>
                             </div>
@@ -37,6 +37,7 @@
                                     </select>
                                 </div>
                             </div>
+
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label>@lang('filter.query_string')</label>
@@ -95,14 +96,9 @@
                                         <i class="fa fa-link"></i>
                                     </a>
                                 </td>
-                                <td>
-                                    <canvas id="{{$company->id}}"></canvas>
-                                    <script type="text/javascript">
-                                        new QRious({
-                                            element: document.getElementById("{{$company->id}}"),
-                                            value: "{{url('guest/payment/pay-for-company/'.$company->id)}}"
-                                        });
-                                    </script>
+                                <td id="{{$company->id}}" onclick="PrintElem('{{$company->name}}','{{$company->id}}')">
+
+                                    {!! $company->company_qr !!}
 
                                 </td>
                                 <td>
@@ -117,7 +113,7 @@
                                     @else
 
                                     <a href="{{url('admin/company-active/'.$company->id)}}" class="btn btn-danger btn-sm">
-                                        <i class="fa fa-close"></i> @lang('general.current_status') : @lang('general.inactive') - {{$company->stopped_at}}
+                                        <i class="fa fa-close"></i> @lang('general.current_status') : @lang('general.inactive')
                                     </a>
                                     @endif
                                 </td>
@@ -138,3 +134,27 @@
         </div>
     </div>
 </section>
+
+
+
+<script>
+    function PrintElem(companyName, companyId) {
+
+
+        var mywindow = window.open('', 'PRINT', 'height=400,width=600');
+
+        mywindow.document.write('<html><head><title>' + companyName + '</title>');
+        mywindow.document.write('</head><body >');
+        mywindow.document.write('<h1>' + companyName + '</h1>');
+        mywindow.document.write(document.getElementById(companyId).innerHTML);
+        mywindow.document.write('</body></html>');
+
+        mywindow.document.close(); // necessary for IE >= 10
+        mywindow.focus(); // necessary for IE >= 10*/
+
+        mywindow.print();
+        mywindow.close();
+
+        return true;
+    }
+</script>

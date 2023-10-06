@@ -18,10 +18,10 @@
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label>@lang('filter.active')</label>
-                                    <select class="form-control select2" name="active" style="width: 100%;">
-                                        <option value="" {{Request('active') == "" ? "selected" : "";}}>All</option>
-                                        <option value="active" {{Request('active') == "1" ? "selected" : "";}}>Active</option>
-                                        <option value="iactive" {{Request('active') == "0" ? "selected" : "";}}>Inactive</option>
+                                    <select class="form-control select2" name="active">
+                                        <option value="" {{Request('active') == "" ? "selected" : "";}}>@lang('filter.all')</option>
+                                        <option value="active" {{Request('active') == "active" ? "selected" : "";}}>@lang('filter.active')</option>
+                                        <option value="inactive" {{Request('active') == "inactive" ? "selected" : "";}}>@lang('filter.inactive')</option>
                                     </select>
                                 </div>
                             </div>
@@ -86,14 +86,9 @@
                                         <i class="fa fa-link"></i>
                                     </a>
                                 </td>
-                                <td>
-                                    <canvas id="{{$user->id}}"></canvas>
-                                    <script type="text/javascript">
-                                        new QRious({
-                                            element: document.getElementById("{{$user->id}}"),
-                                            value: "{{url('guest/payment/pay-for-employee/'.$user->id)}}"
-                                        });
-                                    </script>
+                                <td id="{{$user->id}}" onclick="PrintElem('{{$user->name}}','{{$user->id}}')">
+
+                                    {!! $user->employee_qr !!}
 
                                 </td>
                                 <td>
@@ -129,3 +124,24 @@
         </div>
     </div>
 </section>
+
+<script>
+    function PrintElem(userName, userId) {
+
+        var mywindow = window.open('', 'PRINT', 'height=400,width=600');
+
+        mywindow.document.write('<html><head><title>' + userName + '</title>');
+        mywindow.document.write('</head><body >');
+        mywindow.document.write('<h1>' + userName + '</h1>');
+        mywindow.document.write(document.getElementById(userId).innerHTML);
+        mywindow.document.write('</body></html>');
+
+        mywindow.document.close(); // necessary for IE >= 10
+        mywindow.focus(); // necessary for IE >= 10*/
+
+        mywindow.print();
+        mywindow.close();
+
+        return true;
+    }
+</script>

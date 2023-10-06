@@ -4,7 +4,7 @@
             <!-- filter -->
             <div class="box box-success">
                 <div class="box-header with-border">
-                    <h3 class="box-title">@lang('filter.filter')</h3>
+                    <h3 class="box-title">@lang('filter.filter')</h3> <i class="fa fa-filter"></i>
 
                     <div class="box-tools pull-right">
                         <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
@@ -13,14 +13,15 @@
                 </div>
                 <div class="box-body">
                     <form role="form" action="{{url('admin/company-employees/search')}}" method="GET">
+                        <input type="hidden" name="company_id" value="{{Request('company_id')}}">
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label for="active">@lang('filter.active')</label>
-                                    <select class="form-control select2" name="active" id="active">
-                                        <option value="" {{Request('active') == "" ? "selected" : "";}}>All</option>
-                                        <option value="active" {{Request('active') == "active" ? "selected" : "";}}>Active</option>
-                                        <option value="inactive" {{Request('active') == "inactive" ? "selected" : "";}}>Inactive</option>
+                                    <label>@lang('filter.active')</label>
+                                    <select class="form-control select2" name="active">
+                                        <option value="" {{Request('active') == "" ? "selected" : "";}}>@lang('filter.all')</option>
+                                        <option value="active" {{Request('active') == "active" ? "selected" : "";}}>@lang('filter.active')</option>
+                                        <option value="inactive" {{Request('active') == "inactive" ? "selected" : "";}}>@lang('filter.inactive')</option>
                                     </select>
                                 </div>
                             </div>
@@ -86,14 +87,9 @@
                                         <i class="fa fa-link"></i>
                                     </a>
                                 </td>
-                                <td>
-                                    <canvas id="{{$user->id}}"></canvas>
-                                    <script type="text/javascript">
-                                        new QRious({
-                                            element: document.getElementById("{{$user->id}}"),
-                                            value: "{{url('guest/payment/pay-for-employee/'.$user->id)}}"
-                                        });
-                                    </script>
+                                <td id="{{$user->id}}" onclick="PrintElem('{{$user->name}}','{{$user->id}}')">
+
+                                    {!! $user->employee_qr !!}
 
                                 </td>
                                 <td>
@@ -103,12 +99,12 @@
 
                                     @if($user->stopped_at == null)
                                     <a href="{{url('admin/company-employee-inactive/'.$user->id)}}" class="btn btn-success btn-sm">
-                                        <i class="fa fa-check"></i> current status : active
+                                        <i class="fa fa-check"></i> @lang('company.current_status') : @lang('company.active')
                                     </a>
                                     @else
 
                                     <a href="{{url('admin/company-employee-active/'.$user->id)}}" class="btn btn-danger btn-sm">
-                                        <i class="fa fa-close"></i> current status : Inactive at {{$user->stopped_at}}
+                                        <i class="fa fa-close"></i> @lang('company.current_status') : @lang('company.inactive')
                                     </a>
                                     @endif
                                 </td>
@@ -129,3 +125,25 @@
         </div>
     </div>
 </section>
+
+
+<script>
+    function PrintElem(userName, userId) {
+
+        var mywindow = window.open('', 'PRINT', 'height=400,width=600');
+
+        mywindow.document.write('<html><head><title>' + userName + '</title>');
+        mywindow.document.write('</head><body >');
+        mywindow.document.write('<h1>' + userName + '</h1>');
+        mywindow.document.write(document.getElementById(userId).innerHTML);
+        mywindow.document.write('</body></html>');
+
+        mywindow.document.close(); // necessary for IE >= 10
+        mywindow.focus(); // necessary for IE >= 10*/
+
+        mywindow.print();
+        mywindow.close();
+
+        return true;
+    }
+</script>

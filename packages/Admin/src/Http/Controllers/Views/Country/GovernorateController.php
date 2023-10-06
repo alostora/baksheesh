@@ -20,26 +20,30 @@ class GovernorateController extends Controller
 {
     public function index(Country $country, Request $request)
     {
-        $governorates = GovernorateSearchCollection::searchCountryGovernorates(
+        $data['governorates'] = GovernorateSearchCollection::searchCountryGovernorates(
             $country,
             -1,
             -1,
             $request->get('per_page') ?? SystemDefault::DEFAUL_PAGINATION_COUNT
         );
 
-        return view('Admin/Governorate/index', compact('governorates'));
+        $data['countries'] = Country::where('type', CountryType::COUNTRY['code'])->where('stopped_at', null)->get();
+
+        return view('Admin/Governorate/index', $data);
     }
 
     public function search(Country $country, Request $request)
     {
-        $governorates = GovernorateSearchCollection::searchCountryGovernorates(
+        $data['governorates'] = GovernorateSearchCollection::searchCountryGovernorates(
             $country,
             $request->get('query_string') ?? -1,
             $request->get('active') ?? -1,
             $request->get('per_page') ?? SystemDefault::DEFAUL_PAGINATION_COUNT
         );
 
-        return view('Admin/Governorate/index', compact('governorates'));
+        $data['countries'] = Country::where('type', CountryType::COUNTRY['code'])->where('stopped_at', null)->get();
+
+        return view('Admin/Governorate/index', $data);
     }
 
     public function searchAll(Request $request)

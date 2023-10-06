@@ -14,8 +14,8 @@
                 <div class="box-body">
                     <form role="form" action="{{ url('admin/employee-wallets') }}" method="GET">
                         <div class="row">
-                            <div class="col-md-6">
-                                <div class="form-group">
+                            <div class="form-group">
+                                <div class="col-md-6">
                                     <label>@lang('filter.clients')</label>
                                     <select class="form-control select2" name="client_id" onchange="getEmployees(this.value);getCompanies(this.value)">
                                         <option value="">@lang('filter.select')</option>
@@ -26,10 +26,8 @@
                                         @endforeach
                                     </select>
                                 </div>
-                            </div>
 
-                            <div class="col-md-6">
-                                <div class="form-group">
+                                <div class="col-md-6">
                                     <label>@lang('filter.companies')</label>
                                     <select class="form-control select2" name="company_id" id="company_id" onchange="getEmployees('',this.value);">
                                         <option value="">@lang('filter.select')</option>
@@ -41,9 +39,11 @@
                                     </select>
                                 </div>
                             </div>
+                        </div>
 
-                            <div class="col-md-6">
-                                <div class="form-group">
+                        <div class="row">
+                            <div class="form-group">
+                                <div class="col-md-6">
                                     <label>@lang('filter.employees')</label>
                                     <select class="form-control select2" name="employee_id" id="employee_id">
                                         <option value="">@lang('filter.select')</option>
@@ -56,15 +56,15 @@
                                     </select>
                                 </div>
                             </div>
+                        </div>
 
-                            <div class="col-md-6">
-                                <div class="form-group">
+                        <div class="row">
+                            <div class="form-group">
+                                <div class="col-md-6">
                                     <label>@lang('filter.date_from')</label>
                                     <input type="date" name="date_from" value="{{ Request('date_from') }}" class="form-control">
                                 </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="form-group">
+                                <div class="col-md-6">
                                     <label>@lang('filter.date_to')</label>
                                     <input type="date" name="date_to" value="{{ Request('date_to') }}" class="form-control">
                                 </div>
@@ -94,8 +94,6 @@
                                 <th>@lang('employee_wallet.employee')</th>
                                 <th>@lang('employee_wallet.amount')</th>
                                 <th>@lang('employee_wallet.payer_name')</th>
-                                <th>@lang('employee_wallet.payer_email')</th>
-                                <th>@lang('employee_wallet.payer_phone')</th>
                                 <th>@lang('employee_wallet.notes')</th>
                             </tr>
                         </thead>
@@ -109,8 +107,6 @@
                                 <td> {{ $wallet->employee->name }} </td>
                                 <td> {{ $wallet->amount }} </td>
                                 <td> {{ $wallet->payer_name }} </td>
-                                <td> {{ $wallet->payer_email }} </td>
-                                <td> {{ $wallet->payer_phone }} </td>
                                 <td> {{ $wallet->notes }} </td>
                             </tr>
                             @endforeach
@@ -132,7 +128,6 @@
 
 
 <script>
-
     function getEmployees(client_id = "", company_id = "") {
 
         $.ajax({

@@ -4,7 +4,7 @@
             <!-- filter -->
             <div class="box box-success">
                 <div class="box-header with-border">
-                    <h3 class="box-title">@lang('filter.filter')</h3>
+                    <h3 class="box-title">@lang('filter.filter')</h3> <i class="fa fa-filter"></i>
 
                     <div class="box-tools pull-right">
                         <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
@@ -35,7 +35,7 @@
                                         <option value="">@lang('filter.select')</option>
                                         @foreach($withdrawal_request_status as $withdrawal_status)
                                         <?php $selected = Request('status') == $withdrawal_status->id ? "selected" : ""; ?>
-                                        <option value="{{$withdrawal_status->id}}" {{$selected}}>{{$withdrawal_status->name}}</option>
+                                        <option value="{{$withdrawal_status->id}}" {{$selected}}>{{app()->getLocale() == 'ar' ? $withdrawal_status->name_ar : $withdrawal_status->name}}</option>
                                         @endforeach
                                     </select>
                                 </div>
@@ -89,7 +89,7 @@
                                     <label class="label label-default text-{{$color}}"></label>
                                     <div class="btn-group">
                                         <button type="button" data-toggle="modal" data-target="#modal-default" class="btn btn-sm bg-{{$color}}" onclick="changeWithdrawalRequest('{{$withdrawal_request->id}}')">
-                                            {{$withdrawal_request->withdrawalRequestStatus->name}}
+                                            {{app()->getLocale() == 'ar' ? $withdrawal_request->withdrawalRequestStatus->name_ar : $withdrawal_request->withdrawalRequestStatus->name}}
                                         </button>
                                     </div>
                                 </td>

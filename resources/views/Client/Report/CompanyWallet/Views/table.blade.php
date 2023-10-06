@@ -14,6 +14,18 @@
                 <div class="box-body">
                     <form role="form" action="{{url('client/company-wallet-report')}}" method="GET">
                         <div class="row">
+                            <div class="form-group">
+                                <div class="col-md-6">
+                                    <label>@lang('filter.date_from')</label>
+                                    <input type="date" name="date_from" value="{{Request('date_from')}}" class="form-control">
+                                </div>
+
+                                <div class="col-md-6">
+                                    <label>@lang('filter.date_to')</label>
+                                    <input type="date" name="date_to" value="{{Request('date_to')}}" class="form-control">
+                                </div>
+                            </div>
+
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label>@lang('filter.companies')</label>
@@ -24,18 +36,6 @@
                                         <option value="{{$company->id}}" {{$selected}}>{{$company->name}}</option>
                                         @endforeach
                                     </select>
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <label>@lang('filter.date_from')</label>
-                                    <input type="date" name="date_from" value="{{Request('date_from')}}" class="form-control">
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <label>@lang('filter.date_to')</label>
-                                    <input type="date" name="date_to" value="{{Request('date_to')}}" class="form-control">
                                 </div>
                             </div>
                         </div>

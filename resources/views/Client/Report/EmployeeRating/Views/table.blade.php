@@ -15,23 +15,22 @@
                     <form role="form" action="{{url('client/employee-rating-report')}}" method="GET">
                         <div class="row">
 
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <label>@lang('filter.rating_value')</label>
-                                    <input type="text" name="rating_value" value="{{Request('rating_value')}}" placeholder="{{Lang::get('filter.rating_value')}}" class="form-control">
+                            <div class="form-group">
+                                <div class="col-md-6">
+                                    <label>@lang('filter.date_from')</label>
+                                    <input type="date" name="date_from" value="{{Request('date_from')}}" class="form-control">
+                                </div>
+
+                                <div class="col-md-6">
+                                    <label>@lang('filter.date_to')</label>
+                                    <input type="date" name="date_to" value="{{Request('date_to')}}" class="form-control">
                                 </div>
                             </div>
 
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label>@lang('filter.date_from')</label>
-                                    <input type="date" name="date_from" value="{{Request('date_from')}}" class="form-control">
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <label>@lang('filter.date_to')</label>
-                                    <input type="date" name="date_to" value="{{Request('date_to')}}" class="form-control">
+                                    <label>@lang('filter.rating_value')</label>
+                                    <input type="text" name="rating_value" value="{{Request('rating_value')}}" placeholder="{{Lang::get('filter.rating_value')}}" class="form-control">
                                 </div>
                             </div>
                         </div>

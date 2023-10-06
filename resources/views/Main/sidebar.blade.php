@@ -52,7 +52,7 @@
           </li>
 
           <li>
-            <a href="{{url('admin/clients')}}">
+            <a href="{{url('admin/clients/search?active=active')}}">
               <i class="fa fa-circle-o"></i>@lang('sidebar.clients')
             </a>
           </li>

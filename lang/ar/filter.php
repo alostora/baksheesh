@@ -2,24 +2,36 @@
 
 return [
 
-     "app_name" => "Tips",
+     "filter" => "فلتر",
 
-     "online" => "متصل",
+     "clients" => "العملاء",
 
-     "dashboard" => "لوحة التحكم",
+     "select" => "اختر",
 
-     "active_clients" => "العملاء النشطون",
-     
-     "active_companies" => "الشركات النشطة",
-     
-     "active_employees" => "الموظفون النشطون",
+     "status" => "الحالة",
 
-     "current_amount" => "المبلغ الحالي",
+     "query_string" => "كلمة البحث",
+
+     "search" => "بحث",
+
+     "date_from" => "تاريخ من",
+
+     "date_to" => "تاريخ الي",
+
+     "employees" => "الموظفون",
+
+     "companies" => "الشركات",
 
      "user_account_type" => "نوع الحساب",
 
-     "countries" => "المدن",
+     "countries" => "الدول",
 
-     "rating_value" => "مستوي التقيم",
+     "rating_value" => "قيمة التقييم",
+
+     "all" => "الكل",
+
+     "active" => "نشط",
+
+     "inactive" => "غير نشط",
 
 ];

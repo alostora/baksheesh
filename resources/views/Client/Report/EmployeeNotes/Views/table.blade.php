@@ -15,23 +15,22 @@
                     <form role="form" action="{{url('client/employee-notes-report')}}" method="GET">
                         <div class="row">
 
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <label>@lang('filter.query_string')</label>
-                                    <input type="text" name="query_string" value="{{Request('query_string')}}" placeholder="{{Lang::get('filter.query_string')}}" class="form-control">
+                            <div class="form-group">
+                                <div class="col-md-6">
+                                    <label>@lang('filter.date_from')</label>
+                                    <input type="date" name="date_from" value="{{Request('date_from')}}" class="form-control">
+                                </div>
+
+                                <div class="col-md-6">
+                                    <label>@lang('filter.date_to')</label>
+                                    <input type="date" name="date_to" value="{{Request('date_to')}}" class="form-control">
                                 </div>
                             </div>
 
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label>@lang('filter.date_from')</label>
-                                    <input type="date" name="date_from" value="{{Request('date_from')}}" class="form-control">
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <label>@lang('filter.date_to')</label>
-                                    <input type="date" name="date_to" value="{{Request('date_to')}}" class="form-control">
+                                    <label>@lang('filter.query_string')</label>
+                                    <input type="text" name="query_string" value="{{Request('query_string')}}" placeholder="{{Lang::get('filter.query_string')}}" class="form-control">
                                 </div>
                             </div>
                         </div>
@@ -54,7 +53,6 @@
                             <tr>
                                 <th>#</th>
                                 <th>@lang('employee_notes.payer_name')</th>
-                                <th>@lang('employee_notes.payer_phone')</th>
                                 <th>@lang('employee_notes.client')</th>
                                 <th>@lang('employee_notes.notes')</th>
                                 <th>@lang('employee_notes.created_at')</th>
@@ -66,7 +64,6 @@
                             <tr>
                                 <td> {{$key+1}} </td>
                                 <td> {{$employee_note->payer_name}} </td>
-                                <td> {{$employee_note->payer_phone}} </td>
                                 <td> {{$employee_note->client->name}} </td>
                                 <td> {{$employee_note->notes}} </td>
                                 <td> {{$employee_note->created_at}} </td>

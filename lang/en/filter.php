@@ -14,8 +14,6 @@ return [
 
      "search" => "Search",
 
-     "active" => "Active",
-
      "date_from" => "Date From",
 
      "date_to" => "Date To",
@@ -24,10 +22,16 @@ return [
 
      "companies" => "Companies",
 
-     "user_account_type" => "‘ser Account Type",
+     "user_account_type" => "User Account Type",
 
      "countries" => "Countries",
 
      "rating_value" => "Rating Value",
+
+     "all" => "All",
+
+     "active" => "Active",
+
+     "inactive" => "Inactive",
 
 ];

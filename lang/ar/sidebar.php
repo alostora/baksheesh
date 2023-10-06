@@ -14,7 +14,7 @@ return [
 
      "governorates" => "المدن",
 
-     "users" => "المستخدمين",
+     "users" => "المستخدمون",
 
      "clients" => "العملاء",
 

@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use SimpleSoftwareIO\QrCode\Facades\QrCode;
 
 class Company extends Model
 {
@@ -31,6 +32,15 @@ class Company extends Model
 
         'stopped_at' => 'datetime'
     ];
+
+    protected $appends = [
+        'company_qr'
+    ];
+
+    public function getCompanyQrAttribute()
+    {
+        return QrCode::size(120)->generate(url('payment/pay-for-company/' . $this->id));
+    }
 
     public function client(): BelongsTo
     {

@@ -15,8 +15,8 @@
                     <form role="form" action="{{url('admin/withdrawal-request-report')}}" method="GET">
                         <div class="row">
 
-                            <div class="col-md-6">
-                                <div class="form-group">
+                            <div class="form-group">
+                                <div class="col-md-6">
                                     <label>@lang('filter.clients')</label>
                                     <select class="form-control select2" name="client_id">
                                         <option value="">@lang('filter.select')</option>
@@ -26,18 +26,28 @@
                                         @endforeach
                                     </select>
                                 </div>
-                            </div>
 
-                            <div class="col-md-6">
-                                <div class="form-group">
+                                <div class="col-md-6">
                                     <label>@lang('filter.status')</label>
                                     <select class="form-control select2" name="status">
                                         <option value="">@lang('filter.select')</option>
                                         @foreach($withdrawal_request_status as $withdrawal_status)
                                         <?php $selected = Request('status') == $withdrawal_status->id ? "selected" : ""; ?>
-                                        <option value="{{$withdrawal_status->id}}" {{$selected}}>{{$withdrawal_status->name}}</option>
+                                        <option value="{{$withdrawal_status->id}}" {{$selected}}>{{app()->getLocale() == 'ar' ?$withdrawal_status->name_ar : $withdrawal_status->name}}</option>
                                         @endforeach
                                     </select>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <div class="col-md-6">
+                                    <label>@lang('filter.date_from')</label>
+                                    <input type="date" name="date_from" value="{{Request('date_from')}}" class="form-control">
+                                </div>
+
+                                <div class="col-md-6">
+                                    <label>@lang('filter.date_to')</label>
+                                    <input type="date" name="date_to" value="{{Request('date_to')}}" class="form-control">
                                 </div>
                             </div>
 
@@ -45,19 +55,6 @@
                                 <div class="form-group">
                                     <label>@lang('filter.query_string')</label>
                                     <input type="text" name="query_string" value="{{Request('query_string')}}" placeholder="{{Lang::get('filter.query_string')}}" class="form-control">
-                                </div>
-                            </div>
-
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <label>@lang('filter.date_from')</label>
-                                    <input type="date" name="date_from" value="{{Request('date_from')}}" class="form-control">
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <label>@lang('filter.date_to')</label>
-                                    <input type="date" name="date_to" value="{{Request('date_to')}}" class="form-control">
                                 </div>
                             </div>
                         </div>
@@ -107,7 +104,7 @@
                                 <td> {{$withdrawal_request->client->name}} </td>
                                 <td> {{$withdrawal_request->amount}} </td>
                                 <td>
-                                    <label class="label label-default text-{{$color}}">{{$withdrawal_request->withdrawalRequestStatus->name}}</label>
+                                    <label class="label bg-{{$color}}">{{$withdrawal_request->withdrawalRequestStatus->name}}</label>
                                 </td>
                                 <td> {{$withdrawal_request->created_at}} </td>
                                 <td> {{$withdrawal_request->action_at}} </td>

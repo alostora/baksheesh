@@ -16,6 +16,7 @@ use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Support\Facades\Hash;
+use SimpleSoftwareIO\QrCode\Facades\QrCode;
 
 class User extends Authenticatable implements MustVerifyEmail
 {
@@ -85,6 +86,15 @@ class User extends Authenticatable implements MustVerifyEmail
         'stopped_at' => 'datetime'
     ];
 
+    protected $appends = [
+        'employee_qr'
+    ];
+
+    public function getEmployeeQrAttribute()
+    {
+        return QrCode::size(120)->generate(url('payment/pay-for-employee/' . $this->id));
+    }
+
     protected function password(): Attribute
     {
         return Attribute::make(
@@ -106,7 +116,7 @@ class User extends Authenticatable implements MustVerifyEmail
     {
         return $this->belongsTo(Country::class, 'country_id', 'id');
     }
-    
+
     public function governorate(): BelongsTo
     {
         return $this->belongsTo(Country::class, 'governorate_id', 'id');
@@ -158,6 +168,11 @@ class User extends Authenticatable implements MustVerifyEmail
         return $this->hasMany(CompanyCash::class, 'client_id', 'id');
     }
 
+    public function withdrawalRequests(): HasMany
+    {
+        return $this->hasMany(ClientWithdrawalRequest::class, 'client_id', 'id');
+    }
+    
     public function acceptedWithdrawal(): HasMany
     {
         $accpted_withdrawalRequest = SystemLookup::where('type', WithdrawalRequestStatus::LOOKUP_TYPE)

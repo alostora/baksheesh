@@ -14,7 +14,7 @@ return [
 
     'name_ar' => 'Name (AR)',
 
-    'governorates' => 'Governorates',
+    'governorates' => 'Cities',
 
     //operatoins
     "operations" => "Operations",
@@ -28,7 +28,10 @@ return [
     "search" => "Search",
 
     "empty" => "Empty",
+
     "current_status" => "Current Status",
+    
     "active" => "Active",
+    
     "inactive" => "Inactive",
 ];

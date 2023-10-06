@@ -14,7 +14,7 @@ return [
 
     'name_ar' => 'الاسم عربي',
 
-    'governorates' => 'المحافظات',
+    'governorates' => 'المدن',
 
     //operatoins
     "operations" => "عمليات",
@@ -28,7 +28,10 @@ return [
     "search" => "بحث",
 
     "empty" => "فارغ",
+
     "current_status" => "الحالة الحالية",
+
     "active" => "نشط",
+
     "inactive" => "غير نشط",
 ];

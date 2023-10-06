@@ -34,12 +34,12 @@
                             <?php $color = 'orange' ?>
                             @endif
 
-                            <tr class="{{'bg-'.$color}}">
+                            <tr>
                                 <td> {{$key+1}} </td>
                                 <td> {{$withdrawal_request->client->name}} </td>
                                 <td> {{$withdrawal_request->amount}} </td>
                                 <td>
-                                    <label class="label label-warning">
+                                    <label class="label bg-{{$color}}">
                                         {{$withdrawal_request->withdrawalRequestStatus->name}}
                                     </label>
                                 </td>

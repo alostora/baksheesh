@@ -33,7 +33,7 @@
 
                         <div class="form-group">
                             <label for="notes">Notes</label>
-                            <textarea class="form-control input-lg" id="notes" placeholder="Enter Notes"></textarea>
+                            <textarea class="form-control input-lg" name="notes" id="notes" placeholder="Enter Notes"></textarea>
                         </div>
 
                         @foreach($employee_available_ratings as $key=>$employee_available_rating)
