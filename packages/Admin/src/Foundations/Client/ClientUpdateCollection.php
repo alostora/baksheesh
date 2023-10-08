@@ -28,9 +28,13 @@ class ClientUpdateCollection
             unset($validated['type']);
         }
 
+        if (empty($validated['password'])) {
+
+            unset($validated['password']);
+        }
+
         $user->update($validated);
 
         return $user;
     }
-
 }

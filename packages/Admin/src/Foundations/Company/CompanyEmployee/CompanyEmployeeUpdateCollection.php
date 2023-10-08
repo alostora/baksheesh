@@ -30,6 +30,11 @@ class CompanyEmployeeUpdateCollection
             unset($validated['type']);
         }
 
+        if (empty($validated['password'])) {
+
+            unset($validated['password']);
+        }
+
         $validated['client_id'] = Company::find($validated['company_id'])->client_id;
 
         $user->update($validated);

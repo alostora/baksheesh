@@ -5,7 +5,6 @@ namespace Admin\Http\Controllers\Views\User;
 use Admin\Foundations\Client\ClientCreateCollection;
 use Admin\Foundations\Client\ClientSearchCollection;
 use Admin\Foundations\Client\ClientUpdateCollection;
-use Admin\Foundations\Company\CompanyEmployee\CompanyEmployeeUpdateCollection;
 use Admin\Http\Requests\Client\ClientCreateRequest;
 use Admin\Http\Requests\Client\ClientUpdateRequest;
 use App\Constants\HasLookupType\CountryType;
@@ -85,8 +84,6 @@ class ClientController extends Controller
 
     public function update(ClientUpdateRequest $request, User $user)
     {
-        $user->update($request->validated());
-
         ClientUpdateCollection::updateClient($request, $user);
 
         return redirect(url('admin/clients'));

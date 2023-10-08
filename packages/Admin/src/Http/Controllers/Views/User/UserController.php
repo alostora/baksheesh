@@ -85,7 +85,14 @@ class UserController extends Controller
 
     public function update(UserUpdateRequest $request, User $user)
     {
-        $user->update($request->validated());
+        $validated = $request->validated();
+
+        if (empty($validated['password'])) {
+
+            unset($validated['password']);
+        }
+
+        $user->update($validated);
 
         return redirect(url('admin/users'));
     }
