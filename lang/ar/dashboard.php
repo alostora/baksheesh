@@ -5,7 +5,7 @@ return [
      "app_name" => "Tips",
 
      "online" => "متصل",
-     
+
      "logout" => "خروج",
 
      "dashboard" => "لوحة التحكم",
@@ -21,8 +21,13 @@ return [
      "year_income" => "الدخل السنوي",
 
      "current_amount" => "المبلغ الحالي",
+
      "current_status" => "الحالة الحالية",
+
      "active" => "نشط",
+
      "inactive" => "غير نشط",
+
+     "profile" => "الملف الشخصي",
 
 ];

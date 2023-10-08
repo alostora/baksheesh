@@ -27,7 +27,16 @@ return [
     "search" => "بحث",
 
     "empty" => "فارغ",
+
     "current_status" => "الحالة الحالية",
+
     "active" => "نشط",
+
     "inactive" => "غير نشط",
+
+    'payer_name' => 'اسم طالب الخدمة',
+
+    'payer_email' => 'بريد طالب الخدمة',
+
+    'payer_phone' => 'هاتف طالب الخدمة',
 ];

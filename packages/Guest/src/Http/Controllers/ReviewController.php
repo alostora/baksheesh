@@ -10,6 +10,8 @@ use App\Models\CompanyRating;
 use App\Models\EmployeeCash;
 use App\Models\EmployeeRating;
 use App\Models\User;
+use Guest\Http\Requests\CompanyRatingRequest;
+use Guest\Http\Requests\EmployeeRatingRequest;
 use Guest\Http\Requests\PayForCompanyRequest;
 use Guest\Http\Requests\PayForEmployeeRequest;
 use Guest\Http\Resources\PayForCompanyResource;
@@ -45,8 +47,16 @@ class ReviewController extends Controller
         );
     }
 
-    public function companyRating(Request $request, Company $company)
+    public function companyRating(CompanyRatingRequest $request, Company $company)
     {
+        $validated = $request->validated();
+
+        $validated['guest_ip'] = $request->ip();
+
+        $validated['client_id'] = $company->client_id;
+
+        $validated['company_id'] = $company->id;
+
 
         $rating = CompanyRating::where([
 
@@ -54,40 +64,16 @@ class ReviewController extends Controller
 
             'company_id' => $company->id,
 
-            'rating_id' => $request->rating_id,
+            'rating_id' => $validated['rating_id'],
 
         ])->first();
 
         if ($rating) {
 
-            $rating->update([
-
-                'guest_ip' => $request->ip(),
-
-                'client_id' => $company->client_id,
-
-                'company_id' => $company->id,
-
-                'rating_id' => $request->rating_id,
-
-                'rating_value' => $request->rating_value,
-
-            ]);
+            $rating->update($validated);
         } else {
 
-            $rating = CompanyRating::create([
-
-                'guest_ip' => $request->ip(),
-
-                'client_id' => $company->client_id,
-
-                'company_id' => $company->id,
-
-                'rating_id' => $request->rating_id,
-
-                'rating_value' => $request->rating_value,
-
-            ]);
+            $rating = CompanyRating::create($validated);
         }
 
         return response()->success(
@@ -97,8 +83,17 @@ class ReviewController extends Controller
         );
     }
 
-    public function employeeRating(Request $request, User $user)
+    public function employeeRating(EmployeeRatingRequest $request, User $user)
     {
+        $validated = $request->validated();
+
+        $validated['guest_ip'] = $request->ip();
+
+        $validated['client_id'] = $user->client_id;
+
+        $validated['company_id'] = $user->company_id;
+
+        $validated['employee_id'] = $user->id;
 
         $rating = EmployeeRating::where([
             'guest_ip' => $request->ip(),
@@ -112,38 +107,10 @@ class ReviewController extends Controller
 
         if ($rating) {
 
-            $rating->update([
-
-                'guest_ip' => $request->ip(),
-
-                'client_id' => $user->client_id,
-
-                'company_id' => $user->company_id,
-
-                'employee_id' => $user->id,
-
-                'rating_id' => $request->rating_id,
-
-                'rating_value' => $request->rating_value,
-
-            ]);
+            $rating->update($validated);
         } else {
 
-            $rating = EmployeeRating::create([
-
-                'guest_ip' => $request->ip(),
-
-                'client_id' => $user->client_id,
-
-                'company_id' => $user->company_id,
-
-                'employee_id' => $user->id,
-
-                'rating_id' => $request->rating_id,
-
-                'rating_value' => $request->rating_value,
-
-            ]);
+            $rating = EmployeeRating::create($validated);
         }
 
         return response()->success(

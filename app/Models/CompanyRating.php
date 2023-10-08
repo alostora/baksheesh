@@ -13,6 +13,12 @@ class CompanyRating extends Model
 
     protected $fillable = [
 
+        'payer_name',
+
+        'payer_email',
+
+        'payer_phone',
+
         'guest_ip',
 
         'client_id',

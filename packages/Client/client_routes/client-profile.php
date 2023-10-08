@@ -15,4 +15,5 @@ Route::group([
 
      Route::get('client-profile', [ProfileController::class, 'index']);
      Route::post('client-update-profile-request', [ProfileController::class, 'updateProfileRequest']);
+     Route::post('client-update-password', [ProfileController::class, 'updatePassword']);
 });

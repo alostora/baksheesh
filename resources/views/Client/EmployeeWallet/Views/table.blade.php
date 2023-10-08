@@ -81,8 +81,6 @@
                                 <th>@lang('employee_wallet.employee')</th>
                                 <th>@lang('employee_wallet.amount')</th>
                                 <th>@lang('employee_wallet.payer_name')</th>
-                                <th>@lang('employee_wallet.payer_email')</th>
-                                <th>@lang('employee_wallet.payer_phone')</th>
                                 <th>@lang('employee_wallet.notes')</th>
                             </tr>
                         </thead>
@@ -96,8 +94,6 @@
                                 <td> {{$wallet->employee->name}} </td>
                                 <td> {{$wallet->amount}} </td>
                                 <td> {{$wallet->payer_name}} </td>
-                                <td> {{$wallet->payer_email}} </td>
-                                <td> {{$wallet->payer_phone}} </td>
                                 <td> {{$wallet->notes}} </td>
                             </tr>
                             @endforeach

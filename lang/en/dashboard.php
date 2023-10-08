@@ -21,4 +21,6 @@ return [
      "year_income" => "Year Income",
 
      "current_amount" => "Current Amount",
+
+     "profile" => "Profile",
 ];

@@ -25,7 +25,16 @@ return [
     "search" => "Search",
 
     "empty" => "Empty",
+
     "current_status" => "Current Status",
+
     "active" => "Active",
+
     "inactive" => "Inactive",
+
+    'payer_name' => 'Payer Name',
+
+    'payer_email' => 'Payer Email',
+
+    'payer_phone' => 'Payer Phone',
 ];

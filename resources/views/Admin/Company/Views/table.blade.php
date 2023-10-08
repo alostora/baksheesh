@@ -67,8 +67,9 @@
                         <thead>
                             <tr>
                                 <th>#</th>
-                                <th>@lang('company_employee.file')</th>
+                                <th>@lang('company.file')</th>
                                 <th>@lang('company.name')</th>
+                                <th>@lang('company.client')</th>
                                 <th>@lang('company.employees')</th>
                                 <th>@lang('company.demo_link')</th>
                                 <th>@lang('company.qr')</th>
@@ -86,6 +87,7 @@
                                     @endif
                                 </td>
                                 <td> {{$company->name}} </td>
+                                <td> {{$company->client->name}} </td>
                                 <td>
                                     <a href="{{url('admin/company-employees/search?company_id='.$company->id)}}" class="btn btn-success btn-sm">
                                         <i class="fa fa-info"></i> @lang('company.employees')

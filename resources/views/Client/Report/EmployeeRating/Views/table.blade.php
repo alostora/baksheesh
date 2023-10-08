@@ -57,6 +57,7 @@
                                 <th>@lang('employee_rating.employee')</th>
                                 <th>@lang('employee_rating.available_rating')</th>
                                 <th>@lang('employee_rating.rating_value')</th>
+                                <th>@lang('employee_rating.payer_name')</th>
                                 <th>@lang('employee_rating.created_at')</th>
                             </tr>
                         </thead>
@@ -70,6 +71,7 @@
                                 <td> {{$employee_rating->employee->name}} </td>
                                 <td> {{$employee_rating->availableRating->name}} </td>
                                 <td> {{$employee_rating->rating_value}} </td>
+                                <td> {{$employee_rating->payer_name}} </td>
                                 <td> {{$employee_rating->created_at}} </td>
                             </tr>
                             @endforeach

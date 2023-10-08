@@ -27,6 +27,12 @@ return new class extends Migration
 
             $table->integer('rating_value')->default(0)->nullable();
 
+            $table->string('payer_name')->nullable();
+
+            $table->string('payer_email')->nullable();
+
+            $table->string('payer_phone')->nullable();
+
             $table->timestamps();
         });
     }

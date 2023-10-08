@@ -119,9 +119,11 @@
                 </li>
 
                 <li class="user-footer">
+                  @if(auth()->user()->accountType == \App\Foundations\LookupType\AccountTypeCollection::client())
                   <div class="pull-left">
-                    <a href="{{url('client/client-profile')}}" class="btn btn-default btn-flat">Profile</a>
+                    <a href="{{url('client/client-profile')}}" class="btn btn-default btn-flat">@lang('dashboard.profile')</a>
                   </div>
+                  @endif
                   <div class="pull-right">
                     <a href="{{url('admin/logout')}}" class="btn btn-default btn-flat">@lang('dashboard.logout')</a>
                   </div>

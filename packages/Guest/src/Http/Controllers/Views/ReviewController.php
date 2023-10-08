@@ -28,12 +28,14 @@ class ReviewController extends Controller
         return back();
     }
 
-    
+
     public function viewPaymentForEmployee(User $user)
     {
         $employee_available_ratings = $user->employeeAvailableRatings()->pluck('available_rating_id');
 
         $data['employee_available_ratings'] = SystemLookup::whereIn('id', $employee_available_ratings)->get();
+
+        $data['employee'] = $user;
 
         return view('Guest/EmployeePayment/paymentForEmployee', $data);
     }
@@ -43,6 +45,8 @@ class ReviewController extends Controller
         $company_available_ratings = $company->companyAvailableRatings()->pluck('available_rating_id');
 
         $data['company_available_ratings'] = SystemLookup::whereIn('id', $company_available_ratings)->get();
+
+        $data['company'] = $company;
 
         return view('Guest/CompanyPayment/paymentForCompany', $data);
     }

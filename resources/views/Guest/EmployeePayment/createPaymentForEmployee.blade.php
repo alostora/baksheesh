@@ -1,7 +1,9 @@
 <section class="content-header">
+    <div class="row">
+        <img src="{{ url('uploads/'.$employee->file->new_name)}}" style="height:250px;width:250px;border-radius:50%">
+    </div>
     <h1>
-        @lang('dashboard.app_name')
-        <small>Employee Review</small>
+        {{$employee->name}}
     </h1>
 </section>
 <section class="content">
@@ -10,6 +12,11 @@
         <div class="col-md-6">
 
             <div class="box box-primary">
+                
+                <div class="box-header with-border">
+                    <h3 class="box-title">Review Employee</h3>
+                </div>
+
                 <form role="form" action="{{url('guest/payment/pay-for-employee')}}" method="POST">
 
                     @csrf
@@ -40,11 +47,11 @@
                         <div class="form-group">
                             <label>{{$employee_available_rating->name}}</label>
                             <div>
-                                <input type="radio" name="{{$employee_available_rating->id}}" value="1" onclick="postRate(this)">
-                                <input type="radio" name="{{$employee_available_rating->id}}" value="2" onclick="postRate(this)">
-                                <input type="radio" name="{{$employee_available_rating->id}}" value="3" onclick="postRate(this)">
-                                <input type="radio" name="{{$employee_available_rating->id}}" value="4" onclick="postRate(this)">
-                                <input type="radio" name="{{$employee_available_rating->id}}" value="5" onclick="postRate(this)">
+                                @for($i = 1; $i <= 5; $i ++) <label>
+                                    <input type="radio" class="{{$key.'__'.$i}}" name="{{$employee_available_rating->id}}" value="{{$i}}" onclick="postRate(this)" style="display:none">
+                                    <i class="fa fa-star fa-lg" id="{{$key.'__'.$i}}" style="font-size: 30px;"></i>
+                                    </label>
+                                    @endfor
                             </div>
                         </div>
                         @endforeach
@@ -63,15 +70,30 @@
 
 
 <script>
-    function postRate(value) {
+    function postRate(element) {
+
+        elementClass = element.className;
+        elementId = elementClass;
+
+        level = elementClass.split("__")[0];
+        value = elementClass.split("__")[1];
+
+        for (var i = 1; i <= value; i++) {
+            $("#" + level + "__" + i).css("color", "yellow");
+        }
+
+        for (var x = (Number(value) + 1); x <= 5; x++) {
+            $("#" + level + "__" + x).css("color", "#333");
+        }
 
         $.ajax({
 
             url: '{{url("api/guest/payment/employee-rating/".Request("user")->id)}}',
             type: 'POST',
             data: {
-                rating_value: value.value,
-                rating_id: value.name,
+                rating_value: element.value,
+                rating_id: element.name,
+                payer_name: document.getElementById("payer_name").value,
             },
             dataType: 'json',
             success: function(response) {
