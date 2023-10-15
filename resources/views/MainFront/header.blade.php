@@ -53,6 +53,9 @@
   @elseif(App::getLocale() == "en")
   <?php $dir = "ltr" ?>
   @else
+  <link rel="stylesheet" href="{{url('AdminDesign')}}/bootstrap/css/bootstrap-rtl.min.css">
+  <link rel="stylesheet" href="{{url('AdminDesign')}}/dist/css1/AdminLTE-rtl.min.css">
+  <link rel="stylesheet" href="{{url('AdminDesign')}}/dist/css1/skins/_all-skins-rtl.min.css">
   <?php $dir = "rtl" ?>
   @endif
 
@@ -75,4 +78,3 @@
 </head>
 
 <body class="hold-transition skin-blue sidebar-mini" dir={{$dir}}>
-

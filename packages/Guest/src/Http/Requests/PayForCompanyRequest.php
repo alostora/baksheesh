@@ -40,7 +40,7 @@ class PayForCompanyRequest extends FormRequest
 
                "company_id" => ["required", "uuid", "string", "exists:companies,id"],
 
-               "amount" => ["bail", "required", "integer", "max:100000"],
+               "amount" => ["bail", "nullable", "integer", "max:100000"],
 
                "payer_name" => ["bail", "nullable", "string", "max:255"],
 

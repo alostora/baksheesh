@@ -51,7 +51,7 @@ class PayForEmployeeRequest extends FormRequest
                     Rule::exists('users', 'id')->where('user_account_type_id', $lookup_account_type_employee->id)
                ],
 
-               "amount" => ["bail", "required", "integer", "max:100000"],
+               "amount" => ["bail", "nullable", "integer", "max:100000"],
 
                "payer_name" => ["bail", "nullable", "string", "max:255"],
 
