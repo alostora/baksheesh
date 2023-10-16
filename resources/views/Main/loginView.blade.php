@@ -37,7 +37,7 @@
 <body class="hold-transition login-page" dir="{{$dir}}">
   <div class="login-box">
     <div class="login-logo">
-      <a href="#"><b>Tipo</b>TLC</a>
+      <a href="#"><b>Tipo</b> - SMART</a>
     </div>
     <!-- /.login-logo -->
     <div class="login-box-body">
