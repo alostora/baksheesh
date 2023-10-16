@@ -92,7 +92,7 @@ class User extends Authenticatable implements MustVerifyEmail
 
     public function getEmployeeQrAttribute()
     {
-        return QrCode::size(120)->generate(url('payment/pay-for-employee/' . $this->id));
+        return QrCode::size(120)->generate(url('guest/payment/pay-for-employee/' . $this->id));
     }
 
     protected function password(): Attribute

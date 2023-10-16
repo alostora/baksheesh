@@ -39,7 +39,7 @@ class Company extends Model
 
     public function getCompanyQrAttribute()
     {
-        return QrCode::size(120)->generate(url('payment/pay-for-company/' . $this->id));
+        return QrCode::size(120)->generate(url('guest/payment/pay-for-company/' . $this->id));
     }
 
     public function client(): BelongsTo
