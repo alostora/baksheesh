@@ -1,10 +1,5 @@
-<div class="bg-logo"></div>
-<div class="logo">
-    <img class="img-logo" src="{{ url('uploads/'.$employee->company->file->new_name)}}" alt="">
-</div>
-
 <section class="content-header">
-    <div class="box" style="border-radius:20%;text-align:center">
+    <div class="box box-primary" style="border-radius:20%;text-align:center">
         <div class="row">
             <img src="{{ url('uploads/'.$employee->file->new_name)}}" style="height:250px;width:250px;border-radius:50%">
         </div>
@@ -25,7 +20,7 @@
 
     <div class="row">
         <div class="col-md-12">
-            <div class="box" style="margin-top: 28px">
+            <div class="box box-primary" style="border-radius:20%;text-align:center">
 
                 <div class="box-header with-border">
                     <h3 class="box-title">تقييم الموظف</h3>
@@ -56,23 +51,18 @@
 
                         <div class="form-group">
                             <label for="notes">أضف تعليق</label>
-                            <textarea class="form-control input-lg" style="background-color: rgba(255, 51, 0, 0.342)" name="notes" id="notes" placeholder="التعليق"></textarea>
+                            <textarea class="form-control input-lg" name="notes" id="notes" placeholder="التعليق"></textarea>
                         </div>
                     </div>
 
-                    <div class="box-footer" style="margin-bottom: 15px;">
-                        <button type="submit" class="btn" style="
-                    float: left;
-                    background-color: rgb(248, 82, 40);
-                    border-radius: 10px;
-                    width: 100px;
-                  ">ارسال</button>
+                    <div class="box-footer">
+                        <button type="submit" class="btn btn-default" style="float: left;background-color:orange">ارسال</button>
                     </div>
 
                 </form>
             </div>
 
-            <div class="box" style="border-radius:20%;text-align:center;margin-top: 28px">
+            <div class="box box-primary" style="border-radius:20%;text-align:center">
 
                 <div class="box-header with-border">
                     <h3 class="box-title">دفع اكرامية</h3>
@@ -90,13 +80,13 @@
 
                         <div class="form-group">
                             <div for="amount" class="col-xs-4">
-                                <button type="button" class="btn margin" style="background-color: rgba(255, 51, 0, 0.342)" onclick="appendAmount(5)">5 ريال</button>
+                                <button type="button" class="btn bg-maroon margin" onclick="appendAmount(5)">5 ريال</button>
                             </div>
                             <div for="amount" class="col-xs-4">
-                                <button type="button" class="btn margin" style="background-color: rgba(255, 51, 0, 0.342)" onclick="appendAmount(10)">10 ريال</button>
+                                <button type="button" class="btn bg-maroon margin" onclick="appendAmount(10)">10 ريال</button>
                             </div>
                             <div for="amount" class="col-xs-4">
-                                <button type="button" class="btn margin" style="background-color: rgba(255, 51, 0, 0.342)" onclick="appendAmount(20)">20 ريال</button>
+                                <button type="button" class="btn bg-maroon margin" onclick="appendAmount(20)">20 ريال</button>
                             </div>
                         </div>
 
@@ -107,18 +97,13 @@
                         <div class="form-group">
                             <label for="amount" class="col-md-4">مبلغ اخر</label>
                             <div class="col-md-4">
-                                <input type="number" name="amount" class="form-control" id="amount" placeholder="المبلغ" style="background-color: rgba(255, 51, 0, 0.342)">
+                                <input type="number" name="amount" class="form-control" id="amount" placeholder="المبلغ">
                             </div>
                         </div>
                     </div>
 
-                    <div class="box-footer" style="margin-bottom: 40px;">
-                        <button type="submit" class="btn" style="
-                    background-color: rgb(248, 82, 40);
-                    border-radius: 10px;
-                    width: 200px;
-                    height: 50px;
-                  ">انتقل الي صفحة الدفع</button>
+                    <div class="box-footer">
+                        <button type="submit" class="btn btn-default" style="float: left;background-color:orange">انتقل الي صفحة الدفع</button>
                     </div>
 
                 </form>
@@ -127,7 +112,6 @@
     </div>
 </section>
 
-<div class="footer-bg"></div>
 
 <script>
     function postRate(element) {

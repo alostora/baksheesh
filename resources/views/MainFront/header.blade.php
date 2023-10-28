@@ -74,7 +74,83 @@
 
   <script src="{{url('AdminDesign')}}/select2/select2.min.js" defer></script>
 
+  <style>
+    .box {
+      text-align: center;
+      align-items: center;
+      border: 2px solid #c05c5cb4;
+      border-radius: 5%;
+      width: 100%;
+      margin-bottom: 10px;
+      box-shadow: 0 3px 4px 0 rgba(0, 0, 0, 0.3),
+        0 6px 20px 0 rgba(0, 0, 0, 0.19);
+      padding: 5px;
+      margin-bottom: 0px;
+    }
 
+    h1 {
+      font-size: 26px;
+      color: #991902de;
+    }
+
+    h4 {
+      color: #991902de;
+      font-size: 22px;
+    }
+
+    .text {
+      font-size: 12px;
+    }
+
+    .avatar {
+      height: 120px;
+      width: 120px;
+      border-radius: 50%;
+      box-shadow: 0 3px 4px 0 rgba(0, 0, 0, 0.3),
+        0 6px 20px 0 rgba(0, 0, 0, 0.35);
+      border: 1px solid rgb(248, 82, 40)
+    }
+
+    .comment {
+      font-size: 16px;
+    }
+
+
+    .bg-logo {
+      background-color: rgb(248, 82, 40);
+      width: 100%;
+      height: 20%;
+      position: absolute;
+      top: 0px;
+      z-index: -1;
+      border-bottom-left-radius: 25%;
+      border-bottom-right-radius: 25%;
+
+    }
+
+    .footer-bg {
+      background-color: rgb(248, 82, 40);
+      width: 100%;
+      height: 15%;
+      position: absolute;
+      bottom: 0px;
+      z-index: -1;
+      border-top-left-radius: 25%;
+      border-top-right-radius: 25%;
+    }
+
+    .logo {
+      text-align: center;
+      justify-content: center;
+      height: auto;
+      padding: 20px;
+    }
+
+    .logo .img-logo {
+      width: 200px;
+      height: 100px
+    }
+  </style>
 </head>
 
-<body class="hold-transition skin-blue sidebar-mini" dir={{$dir}}>
+<body class="hold-transition skin-blue sidebar-mini" style="justify-content: center; position:relative;" dir={{$dir}}>
