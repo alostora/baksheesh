@@ -26,7 +26,7 @@ class CompanyUpdateRequest extends FormRequest
 
             'company_field' => ['required', 'string', 'max:255'],
 
-            'file' => ['nullable', 'image', 'mimes:png'],
+            'file' => ['nullable', 'file'],
 
             'available_rating_ids' => ['required', 'array', 'max:5'],
 
