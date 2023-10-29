@@ -189,6 +189,7 @@ return [
         Admin\Providers\RouteServiceProvider::class,
         Guest\Providers\RouteServiceProvider::class,
         Client\Providers\RouteServiceProvider::class,
+        Guest\Providers\ActiveRecordServiceProvider::class,
 
         /*
          * Application Service Providers...

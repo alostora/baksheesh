@@ -74,18 +74,25 @@
 
   <script src="{{url('AdminDesign')}}/select2/select2.min.js" defer></script>
 
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Kufi+Arabic:wght@100;300;500;600;700;800;900&display=swap" rel="stylesheet">
+
   <style>
+    * {
+      font-family: 'Noto Kufi Arabic', 'sans-serif', !important;
+    }
+
     .box {
       text-align: center;
       align-items: center;
       border: 2px solid #c05c5cb4;
       border-radius: 5%;
       width: 100%;
-      margin-bottom: 10px;
+      margin-bottom: 28px;
       box-shadow: 0 3px 4px 0 rgba(0, 0, 0, 0.3),
         0 6px 20px 0 rgba(0, 0, 0, 0.19);
       padding: 5px;
-      margin-bottom: 0px;
     }
 
     h1 {
@@ -108,7 +115,7 @@
       border-radius: 50%;
       box-shadow: 0 3px 4px 0 rgba(0, 0, 0, 0.3),
         0 6px 20px 0 rgba(0, 0, 0, 0.35);
-      border: 1px solid rgb(248, 82, 40)
+      border: 1px solid #f26c4f
     }
 
     .comment {
@@ -117,7 +124,7 @@
 
 
     .bg-logo {
-      background-color: rgb(248, 82, 40);
+      background-color: #f26c4f;
       width: 100%;
       height: 20%;
       position: absolute;
@@ -129,7 +136,7 @@
     }
 
     .footer-bg {
-      background-color: rgb(248, 82, 40);
+      background-color: #f26c4f;
       width: 100%;
       height: 15%;
       position: absolute;

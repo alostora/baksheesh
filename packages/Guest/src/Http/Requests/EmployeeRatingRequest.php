@@ -25,7 +25,7 @@ class EmployeeRatingRequest extends FormRequest
 
           return [
 
-               "rating_id" => ["required", "uuid", "string", "exists:system_lookups,id"],
+               "rating_id" => ["bail","required", "uuid", "string", "exists:system_lookups,id"],
 
                "rating_value" => ["bail", "required", "integer", "min:1", "max:5"],
 

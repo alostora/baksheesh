@@ -3,6 +3,7 @@
 namespace Guest\Http\Requests;
 
 use App\Constants\HasLookupType\UserAccountType;
+use App\Foundations\LookupType\AccountTypeCollection;
 use App\Models\SystemLookup;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\Rule;
@@ -25,13 +26,9 @@ class PayForEmployeeRequest extends FormRequest
      public function rules(): array
      {
 
-          $lookup_account_type_employee = SystemLookup::where('type', UserAccountType::LOOKUP_TYPE)
-               ->where('key', UserAccountType::EMPLOYEE['key'])
-               ->first();
+          $lookup_account_type_employee = AccountTypeCollection::employee();
 
-          $lookup_account_type_client = SystemLookup::where('type', UserAccountType::LOOKUP_TYPE)
-               ->where('key', UserAccountType::CLIENT['key'])
-               ->first();
+          $lookup_account_type_client = AccountTypeCollection::client();
 
           return [
 

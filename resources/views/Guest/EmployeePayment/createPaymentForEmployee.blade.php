@@ -4,7 +4,7 @@
 </div>
 
 <section class="content-header">
-    <div class="box" style="border-radius:20%;text-align:center">
+    <div class="box">
         <div class="row">
             <img src="{{ url('uploads/'.$employee->file->new_name)}}" style="height:250px;width:250px;border-radius:50%">
         </div>
@@ -25,59 +25,48 @@
 
     <div class="row">
         <div class="col-md-12">
-            <div class="box" style="margin-top: 28px">
+            <div class="box">
 
                 <div class="box-header with-border">
                     <h3 class="box-title">تقييم الموظف</h3>
                 </div>
 
-                <form role="form" action="{{url('guest/payment/pay-for-employee')}}" method="POST">
+                <div class="box-body">
 
-                    @csrf
-
-                    <input type="hidden" name="client_id" value="{{Request('user')->client_id}}">
-                    <input type="hidden" name="company_id" value="{{Request('user')->company_id}}">
-                    <input type="hidden" name="employee_id" value="{{Request('user')->id}}">
-
-                    <div class="box-body">
-
-                        @foreach($employee_available_ratings as $key=>$employee_available_rating)
+                    @foreach($employee_available_ratings as $key=>$employee_available_rating)
+                    <div class="row">
                         <div class="form-group">
-                            <label class="col-xs-6">{{$employee_available_rating->name}}</label>
-                            <div class="col-xs-6">
+                            <label class="col-xs-4 text-sm">{{$employee_available_rating->name}}</label>
+                            <div class="col-xs-8">
                                 @for($i = 1; $i <= 5; $i ++) <label style="margin-bottom: 20px;">
                                     <input type="radio" class="{{$key.'__'.$i}}" name="{{$employee_available_rating->id}}" value="{{$i}}" onclick="postRate(this)" style="display:none">
-                                    <i class="fa fa-star fa-lg" id="{{$key.'__'.$i}}" style="font-size: 30px;"></i>
+                                    <i class="fa fa-star fa-lg" id="{{$key.'__'.$i}}"></i>
                                     </label>
                                     @endfor
                             </div>
                         </div>
-                        @endforeach
-
-                        <div class="form-group">
-                            <label for="notes">أضف تعليق</label>
-                            <textarea class="form-control input-lg" style="background-color: rgba(255, 51, 0, 0.342)" name="notes" id="notes" placeholder="التعليق"></textarea>
-                        </div>
                     </div>
+                    @endforeach
+                </div>
 
-                    <div class="box-footer" style="margin-bottom: 15px;">
-                        <button type="submit" class="btn" style="
-                    float: left;
-                    background-color: rgb(248, 82, 40);
-                    border-radius: 10px;
-                    width: 100px;
-                  ">ارسال</button>
+                <div class="box-body">
+
+                    <div class="form-group">
+                        <label for="notes">أضف تعليق</label>
+                        <textarea class="form-control input-lg" style="background-color: rgba(255, 51, 0, 0.342)" name="notes" id="notes" placeholder="التعليق"></textarea>
                     </div>
+                </div>
 
-                </form>
+                <div class="box-footer" style="margin-bottom: 15px;">
+                    <button onclick="sendEmployeeNote()" class="btn" style="float: left;background-color: rgb(248, 82, 40);border-radius: 10px;width: 100px;">ارسال</button>
+                </div>
+
             </div>
 
-            <div class="box" style="border-radius:20%;text-align:center;margin-top: 28px">
-
+            <div class="box">
                 <div class="box-header with-border">
                     <h3 class="box-title">دفع اكرامية</h3>
                 </div>
-
                 <form role="form" action="{{url('guest/payment/pay-for-employee')}}" method="POST">
 
                     @csrf
@@ -87,7 +76,6 @@
                     <input type="hidden" name="employee_id" value="{{Request('user')->id}}">
 
                     <div class="box-body">
-
                         <div class="form-group">
                             <div for="amount" class="col-xs-4">
                                 <button type="button" class="btn margin" style="background-color: rgba(255, 51, 0, 0.342)" onclick="appendAmount(5)">5 ريال</button>
@@ -118,7 +106,7 @@
                     border-radius: 10px;
                     width: 200px;
                     height: 50px;
-                  ">انتقل الي صفحة الدفع</button>
+                  ">الانتقال الي صفحة الدفع</button>
                     </div>
 
                 </form>
@@ -128,7 +116,10 @@
 </section>
 
 <div class="footer-bg"></div>
-
+<div style="text-align: center;">
+    Powered By tiposmart.com <br>
+    All Right Resereved <i class="fa fa-copyright"></i> 2023
+</div>
 <script>
     function postRate(element) {
 
@@ -153,7 +144,7 @@
             data: {
                 rating_value: element.value,
                 rating_id: element.name,
-                payer_name: document.getElementById("payer_name").value,
+                // payer_name: document.getElementById("payer_name").value,
             },
             dataType: 'json',
             success: function(response) {
@@ -165,6 +156,31 @@
                 console.log("Request: " + JSON.stringify(request));
             }
         });
+    }
+
+    function sendEmployeeNote() {
+
+        $.ajax({
+
+            url: '{{url("api/guest/payment/pay-for-employee")}}',
+            type: 'POST',
+            data: {
+                client_id: "{{Request('user')->client_id}}",
+                company_id: "{{Request('user')->company_id}}",
+                employee_id: "{{Request('user')->id}}",
+                notes: document.getElementById('notes').value,
+            },
+            dataType: 'json',
+            success: function(response) {
+
+                console.log(response);
+
+            },
+            error: function(request, error) {
+                console.log("Request: " + JSON.stringify(request));
+            }
+        });
+
     }
 
     function appendAmount(amount) {

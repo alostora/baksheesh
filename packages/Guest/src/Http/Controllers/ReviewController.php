@@ -23,8 +23,6 @@ class ReviewController extends Controller
 
     public function payForCompany(PayForCompanyRequest $request)
     {
-        return $request->all();
-
         $companyCash = CompanyCash::create($request->validated());
 
         return response()->success(
@@ -36,8 +34,6 @@ class ReviewController extends Controller
 
     public function payForEmployee(PayForEmployeeRequest $request)
     {
-
-        return $request->all();
         $employeeCash = EmployeeCash::create($request->validated());
 
         return response()->success(
@@ -103,7 +99,8 @@ class ReviewController extends Controller
             'rating_id' => $request->rating_id,
 
         ])->first();
-
+        
+        $rating = EmployeeRating::create($validated);
 
         if ($rating) {
 
