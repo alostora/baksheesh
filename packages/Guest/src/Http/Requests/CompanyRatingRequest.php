@@ -25,6 +25,8 @@ class CompanyRatingRequest extends FormRequest
 
           return [
 
+               "guest_key" => ["bail","required"],
+
                "rating_id" => ["required", "uuid", "string", "exists:system_lookups,id"],
 
                "rating_value" => ["bail", "required", "integer", "min:1", "max:5"],

@@ -10,6 +10,7 @@ use App\Models\SystemLookup;
 use App\Models\User;
 use Guest\Http\Requests\PayForCompanyRequest;
 use Guest\Http\Requests\PayForEmployeeRequest;
+use Illuminate\Http\Request;
 
 class ReviewController extends Controller
 {
@@ -28,9 +29,14 @@ class ReviewController extends Controller
         return back();
     }
 
-
-    public function viewPaymentForEmployee(User $user)
+    public function viewPaymentForEmployee(User $user, Request $request)
     {
+
+        if (!$request->session()->has('guest_key')) {
+
+            $request->session()->put('guest_key', str()->random(50));
+        }
+
         $employee_available_ratings = $user->employeeAvailableRatings()->pluck('available_rating_id');
 
         $data['employee_available_ratings'] = SystemLookup::whereIn('id', $employee_available_ratings)->get();
@@ -40,8 +46,14 @@ class ReviewController extends Controller
         return view('Guest/EmployeePayment/paymentForEmployee', $data);
     }
 
-    public function viewPaymentForCompany(Company $company)
+    public function viewPaymentForCompany(Company $company, Request $request)
     {
+
+        if (!$request->session()->has('guest_key')) {
+
+            $request->session()->put('guest_key', str()->random(50));
+        }
+
         $company_available_ratings = $company->companyAvailableRatings()->pluck('available_rating_id');
 
         $data['company_available_ratings'] = SystemLookup::whereIn('id', $company_available_ratings)->get();

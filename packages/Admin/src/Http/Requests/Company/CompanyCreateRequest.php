@@ -29,7 +29,9 @@ class CompanyCreateRequest extends FormRequest
 
             'company_field' => ['required', 'string', 'max:255'],
 
-            'file' => ['nullable', 'file'],
+            'file' => ['nullable', 'image', 'mimes:png'],
+
+            // 'nullable|image|mimes:jpeg,jpg,png,gif',
 
             'available_rating_ids' => ['required', 'array', 'max:5'],
 

@@ -19,7 +19,7 @@ class CompanyRating extends Model
 
         'payer_phone',
 
-        'guest_ip',
+        'guest_key',
 
         'client_id',
 
@@ -46,13 +46,3 @@ class CompanyRating extends Model
         return $this->belongsTo(SystemLookup::class, 'rating_id', 'id');
     }
 }
-
-
-/* 
-
-
-        $table->foreignUuid('employee_id')->nullable();
-
-        $table->integer('rating_value')->default(0)->nullable();
-
-*/

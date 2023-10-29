@@ -6,7 +6,7 @@
 <section class="content-header">
     <div class="box">
         <div class="row">
-            <img src="{{ url('uploads/'.$employee->file->new_name)}}" style="height:250px;width:250px;border-radius:50%">
+            <img src="{{ url('uploads/'.$employee->file->new_name)}}" class="avatar">
         </div>
         <h1>
             {{$employee->name}}
@@ -144,13 +144,11 @@
             data: {
                 rating_value: element.value,
                 rating_id: element.name,
-                // payer_name: document.getElementById("payer_name").value,
+                guest_key: "{{Request()->session()->get('guest_key')}}",
             },
             dataType: 'json',
             success: function(response) {
-
                 console.log(response);
-
             },
             error: function(request, error) {
                 console.log("Request: " + JSON.stringify(request));

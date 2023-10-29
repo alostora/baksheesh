@@ -19,7 +19,7 @@ class EmployeeRating extends Model
 
         'payer_phone',
 
-        'guest_ip',
+        'guest_key',
 
         'client_id',
 

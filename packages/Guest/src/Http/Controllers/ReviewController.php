@@ -47,8 +47,6 @@ class ReviewController extends Controller
     {
         $validated = $request->validated();
 
-        $validated['guest_ip'] = $request->ip();
-
         $validated['client_id'] = $company->client_id;
 
         $validated['company_id'] = $company->id;
@@ -56,7 +54,7 @@ class ReviewController extends Controller
 
         $rating = CompanyRating::where([
 
-            'guest_ip' => $request->ip(),
+            'guest_key' => $validated['guest_key'],
 
             'company_id' => $company->id,
 
@@ -83,8 +81,6 @@ class ReviewController extends Controller
     {
         $validated = $request->validated();
 
-        $validated['guest_ip'] = $request->ip();
-
         $validated['client_id'] = $user->client_id;
 
         $validated['company_id'] = $user->company_id;
@@ -92,15 +88,13 @@ class ReviewController extends Controller
         $validated['employee_id'] = $user->id;
 
         $rating = EmployeeRating::where([
-            'guest_ip' => $request->ip(),
+            'guest_key' => $validated['guest_key'],
 
             'employee_id' => $user->id,
 
             'rating_id' => $request->rating_id,
 
         ])->first();
-        
-        $rating = EmployeeRating::create($validated);
 
         if ($rating) {
 
