@@ -36,7 +36,7 @@
                     @foreach($employee_available_ratings as $key=>$employee_available_rating)
                     <div class="row">
                         <div class="form-group">
-                            <label class="col-xs-4 text-sm">{{$employee_available_rating->name}}</label>
+                            <label class="col-xs-4 text-sm">{{$employee_available_rating->name_ar}}</label>
                             <div class="col-xs-8">
                                 @for($i = 1; $i <= 5; $i ++) <label style="margin-bottom: 20px;">
                                     <input type="radio" class="{{$key.'__'.$i}}" name="{{$employee_available_rating->id}}" value="{{$i}}" onclick="postRate(this)" style="display:none">

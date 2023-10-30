@@ -31,7 +31,7 @@
                     @foreach($company_available_ratings as $key=>$company_available_rating)
                     <div class="row">
                         <div class="form-group">
-                            <label class="col-xs-4 text-sm">{{$company_available_rating->name}}</label>
+                            <label class="col-xs-4 text-sm">{{$company_available_rating->name_ar}}</label>
                             <div class="col-xs-8">
                                 @for($i = 1; $i <= 5; $i ++) <label style="margin-bottom: 20px;">
                                     <input type="radio" class="{{$key.'__'.$i}}" name="{{$company_available_rating->id}}" value="{{$i}}" onclick="postRate(this)" style="display:none">
@@ -46,8 +46,8 @@
 
                 <div class="box-body">
                     <div class="form-group">
-                        <label for="notes">Add Notes</label>
-                        <textarea class="form-control input-lg" name="notes" id="notes" placeholder="Enter Notes" style="background-color: rgba(255, 51, 0, 0.342)"></textarea>
+                        <label for="notes">اضف تعليق</label>
+                        <textarea class="form-control input-lg" name="notes" id="notes" placeholder="اضف تعليق" style="background-color: rgba(255, 51, 0, 0.342)"></textarea>
                     </div>
                 </div>
 
@@ -70,13 +70,13 @@
 
                         <div class="form-group">
                             <div for="amount" class="col-xs-4">
-                                <button type="button" class="btn margin" onclick="appendAmount(5)" style="background-color: rgba(255, 51, 0, 0.342)">5 Ryal</button>
+                                <button type="button" class="btn margin" onclick="appendAmount(5)" style="background-color: rgba(255, 51, 0, 0.342)">5 ريال</button>
                             </div>
                             <div for="amount" class="col-xs-4">
-                                <button type="button" class="btn margin" onclick="appendAmount(10)" style="background-color: rgba(255, 51, 0, 0.342)">10 Ryal</button>
+                                <button type="button" class="btn margin" onclick="appendAmount(10)" style="background-color: rgba(255, 51, 0, 0.342)">10 ريال</button>
                             </div>
                             <div for="amount" class="col-xs-4">
-                                <button type="button" class="btn margin" onclick="appendAmount(20)" style="background-color: rgba(255, 51, 0, 0.342)">20 Ryal</button>
+                                <button type="button" class="btn margin" onclick="appendAmount(20)" style="background-color: rgba(255, 51, 0, 0.342)">20 ريال</button>
                             </div>
                         </div>
 
@@ -85,9 +85,9 @@
                         <br>
 
                         <div class="form-group">
-                            <label for="amount" class="col-md-4">Amount</label>
+                            <label for="amount" class="col-md-4">مبلغ اخر</label>
                             <div class="col-md-4">
-                                <input type="number" name="amount" class="form-control" id="amount" placeholder="Enter Amount" style="background-color: rgba(255, 51, 0, 0.342)">
+                                <input type="number" name="amount" class="form-control" id="amount" placeholder="ادخل المبلغ" style="background-color: rgba(255, 51, 0, 0.342)">
                             </div>
                         </div>
                     </div>

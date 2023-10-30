@@ -40,9 +40,7 @@
 
 
   <!-- Google Font -->
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
-
-
+  <link href='https://fonts.googleapis.com/css?family=Cairo' rel='stylesheet'>
   <link rel="stylesheet" href="{{url('AdminDesign')}}/myStyle.css">
 
   @if(App::getLocale() == "ar" || App::getLocale() == "")
@@ -58,8 +56,6 @@
   <link rel="stylesheet" href="{{url('AdminDesign')}}/dist/css1/skins/_all-skins-rtl.min.css">
   <?php $dir = "rtl" ?>
   @endif
-
-  <link href='https://fonts.googleapis.com/css?family=Cairo' rel='stylesheet'>
   <link rel="stylesheet" href="{{url('AdminDesign/myStyle.css')}}">
 
   <script src="{{url('AdminDesign/bower_components/ckeditor/ckeditor.js')}}"></script>
@@ -130,8 +126,8 @@
       position: absolute;
       top: 0px;
       z-index: -1;
-      border-bottom-left-radius: 25%;
-      border-bottom-right-radius: 25%;
+      border-bottom-left-radius: 5%;
+      border-bottom-right-radius: 5%;
 
     }
 
@@ -142,8 +138,8 @@
       position: absolute;
       bottom: 0px;
       z-index: -1;
-      border-top-left-radius: 25%;
-      border-top-right-radius: 25%;
+      border-top-left-radius: 5%;
+      border-top-right-radius: 5%;
     }
 
     .logo {
