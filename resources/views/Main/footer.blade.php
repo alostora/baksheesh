@@ -36,13 +36,7 @@
 <script src="{{url('AdminDesign')}}/bower_components/fastclick/lib/fastclick.js"></script>
 <!-- AdminLTE App -->
 <script src="{{url('AdminDesign')}}/dist/js/adminlte.min.js"></script>
-<!-- AdminLTE dashboard demo (This is only for demo purposes) -->
-<script src="{{url('AdminDesign')}}/dist/js/pages/dashboard.js"></script>
-<!-- AdminLTE for demo purposes -->
 <script src="{{url('AdminDesign')}}/dist/js/demo.js"></script>
-<!-- DataTables -->
-<!-- <script src="{{url('AdminDesign')}}/bower_components/datatables.net/js/jquery.dataTables.min.js"></script>
-<script src="{{url('AdminDesign')}}/bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js"></script> -->
 
 <!-- DataTables  & Plugins -->
 <script src="{{url('AdminDesign')}}/lte3/plugins/datatables/jquery.dataTables.min.js"></script>

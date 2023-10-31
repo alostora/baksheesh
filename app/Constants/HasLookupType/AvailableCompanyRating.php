@@ -17,31 +17,31 @@ class AvailableCompanyRating
           'code' => 1,
           'key' => 1,
           'prefix' => "CLEANLINEES_LEVEL",
-          'name' => "CleanLiness Level",
-          'name_ar' => "مستوي النظافة",
+          'name' => "CleanLiness",
+          'name_ar' => "النظافة",
      ];
 
      public const SERVICE_LEVEL = [
           'code' => 2,
           'key' => 2,
           'prefix' => "SERVICE_LEVEL",
-          'name' => "Service Level",
-          'name_ar' => "مستوي الخدمة",
+          'name' => "Service",
+          'name_ar' => "الخدمة",
      ];
 
      public const PRICE_LEVEL = [
           'code' => 3,
           'key' => 3,
           'prefix' => "PRICE_LEVEL",
-          'name' => "Price Level",
-          'name_ar' => "مستوي الاسعار",
+          'name' => "Price",
+          'name_ar' => "الاسعار",
      ];
 
      public const PRODUCT_QUALITY_LEVEL = [
           'code' => 4,
           'key' => 4,
           'prefix' => "PRODUCT_QUALITY_LEVEL",
-          'name' => "Product Quality Level",
-          'name_ar' => "مستوي جوده المنتج",
+          'name' => "Product Quality",
+          'name_ar' => "جوده المنتج",
      ];
 }

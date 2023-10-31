@@ -31,6 +31,9 @@ class ReviewController extends Controller
 
     public function viewPaymentForEmployee(User $user, Request $request)
     {
+        if ($user->stopped_at) {
+            return abort(404);
+        }
 
         if (!$request->session()->has('guest_key')) {
 
@@ -48,6 +51,9 @@ class ReviewController extends Controller
 
     public function viewPaymentForCompany(Company $company, Request $request)
     {
+        if ($company->stopped_at) {
+            return abort(404);
+        }
 
         if (!$request->session()->has('guest_key')) {
 

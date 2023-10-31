@@ -12,12 +12,16 @@
             {{$employee->name}}
         </h1>
 
-        <label>
-            <i class="fa fa-star fa-lg" style="font-size: 30px;color:yellow"></i>
-            <i class="fa fa-star fa-lg" style="font-size: 30px;color:yellow"></i>
-            <i class="fa fa-star fa-lg" style="font-size: 30px;color:yellow"></i>
-            <i class="fa fa-star fa-lg" style="font-size: 30px;color:yellow"></i>
-            <i class="fa fa-star fa-lg" style="font-size: 30px;color:yellow"></i>
+        <p>
+            {{$employee->employee_job_name}}
+        </p>
+
+        <label style="border: solid 1px #c05c5cb4; border-radius:10%;padding:3px;">
+            <i class="fa fa-star fa-lg" style="font-size: 30px;color:#e2e202"></i>
+            <i class="fa fa-star fa-lg" style="font-size: 30px;color:#e2e202"></i>
+            <i class="fa fa-star fa-lg" style="font-size: 30px;color:#e2e202"></i>
+            <i class="fa fa-star fa-lg" style="font-size: 30px;color:#e2e202"></i>
+            <i class="fa fa-star fa-lg" style="font-size: 30px;color:#e2e202"></i>
         </label>
     </div>
 </section>
@@ -36,13 +40,15 @@
                     @foreach($employee_available_ratings as $key=>$employee_available_rating)
                     <div class="row">
                         <div class="form-group">
-                            <label class="col-xs-4 text-sm">{{$employee_available_rating->name_ar}}</label>
-                            <div class="col-xs-8">
-                                @for($i = 1; $i <= 5; $i ++) <label style="margin-bottom: 20px;">
-                                    <input type="radio" class="{{$key.'__'.$i}}" name="{{$employee_available_rating->id}}" value="{{$i}}" onclick="postRate(this)" style="display:none">
-                                    <i class="fa fa-star fa-lg" id="{{$key.'__'.$i}}"></i>
-                                    </label>
-                                    @endfor
+                            <label class="col-xs-2 text-sm">{{$employee_available_rating->name_ar}}</label>
+                            <div class="col-xs-10">
+                                <label style="border: solid 1px #c05c5cb4; border-radius:10%;padding:2px;">
+                                    @for($i = 1; $i <= 5; $i ++) <label>
+                                        <input type="radio" class="{{$key.'__'.$i}}" name="{{$employee_available_rating->id}}" value="{{$i}}" onclick="postRate(this)" style="display:none">
+                                        <i class="fa fa-star fa-lg" id="{{$key.'__'.$i}}"></i>
+                                </label>
+                                @endfor
+                                </label>
                             </div>
                         </div>
                     </div>
@@ -113,13 +119,13 @@
             </div>
         </div>
     </div>
+    <div style="text-align: center;">
+        Powered By <a target="_blank" href="https://tiposmart.com">tiposmart.com</a> <br>
+        All Right Resereved <i class="fa fa-copyright"></i> 2023
+    </div>
 </section>
 
 <div class="footer-bg"></div>
-<div style="text-align: center;">
-    Powered By tiposmart.com <br>
-    All Right Resereved <i class="fa fa-copyright"></i> 2023
-</div>
 <script>
     function postRate(element) {
 
@@ -130,7 +136,7 @@
         value = elementClass.split("__")[1];
 
         for (var i = 1; i <= value; i++) {
-            $("#" + level + "__" + i).css("color", "yellow");
+            $("#" + level + "__" + i).css("color", "#e2e202");
         }
 
         for (var x = (Number(value) + 1); x <= 5; x++) {

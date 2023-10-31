@@ -18,39 +18,39 @@ class AvailableEmployeeRating
           'code' => 1,
           'key' => 1,
           'prefix' => "CLEANLINEES_LEVEL",
-          'name' => "CleanLiness Level",
-          'name_ar' => "مستوي النظافة",
+          'name' => "CleanLiness",
+          'name_ar' => "النظافة",
      ];
 
      public const BEHAVIOR_LEVEL = [
           'code' => 2,
           'key' => 2,
           'prefix' => "BEHAVIOR_LEVEL",
-          'name' => "Behavior Level",
-          'name_ar' => "مستوي السلوك",
+          'name' => "Behavior",
+          'name_ar' => "السلوك",
      ];
 
      public const ETHICS_LEVEL = [
           'code' => 3,
           'key' => 3,
           'prefix' => "ETHICS_LEVEL",
-          'name' => "Ethics Level",
-          'name_ar' => "مستوي الاخلاق",
+          'name' => "Ethics",
+          'name_ar' => "الاخلاق",
      ];
 
      public const SERVICE_LEVEL = [
           'code' => 4,
           'key' => 4,
           'prefix' => "SERVICE_LEVEL",
-          'name' => "Service Level",
-          'name_ar' => "مستوي الخدمة",
+          'name' => "Service",
+          'name_ar' => "الخدمة",
      ];
 
      public const PROFESSIONALISM_LEVEL = [
           'code' => 5,
           'key' => 5,
           'prefix' => "PROFESSIONALISM_LEVEL",
-          'name' => "Professionalism Level",
-          'name_ar' => "مستوي الاحترافية",
+          'name' => "Professionalism",
+          'name_ar' => "الاحترافية",
      ];
 }

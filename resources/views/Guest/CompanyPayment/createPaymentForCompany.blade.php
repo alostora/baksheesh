@@ -1,4 +1,7 @@
 <div class="bg-logo"></div>
+<div class="logo">
+    <img class="img-logo" src="{{ url('uploads/'.$company->file->new_name)}}" alt="">
+</div>
 <section class="content-header">
     <div class="box">
         <div class="row">
@@ -9,12 +12,12 @@
             {{$company->name}}
         </h1>
 
-        <label>
-            <i class="fa fa-star fa-lg" style="font-size: 30px;color:yellow"></i>
-            <i class="fa fa-star fa-lg" style="font-size: 30px;color:yellow"></i>
-            <i class="fa fa-star fa-lg" style="font-size: 30px;color:yellow"></i>
-            <i class="fa fa-star fa-lg" style="font-size: 30px;color:yellow"></i>
-            <i class="fa fa-star fa-lg" style="font-size: 30px;color:yellow"></i>
+        <label style="border: solid 1px #c05c5cb4; border-radius:10%;padding:3px;">
+            <i class="fa fa-star fa-lg" style="font-size: 30px;color:#e2e202"></i>
+            <i class="fa fa-star fa-lg" style="font-size: 30px;color:#e2e202"></i>
+            <i class="fa fa-star fa-lg" style="font-size: 30px;color:#e2e202"></i>
+            <i class="fa fa-star fa-lg" style="font-size: 30px;color:#e2e202"></i>
+            <i class="fa fa-star fa-lg" style="font-size: 30px;color:#e2e202"></i>
         </label>
     </div>
 </section>
@@ -33,11 +36,13 @@
                         <div class="form-group">
                             <label class="col-xs-4 text-sm">{{$company_available_rating->name_ar}}</label>
                             <div class="col-xs-8">
-                                @for($i = 1; $i <= 5; $i ++) <label style="margin-bottom: 20px;">
-                                    <input type="radio" class="{{$key.'__'.$i}}" name="{{$company_available_rating->id}}" value="{{$i}}" onclick="postRate(this)" style="display:none">
-                                    <i class="fa fa-star fa-lg" id="{{$key.'__'.$i}}"></i>
-                                    </label>
-                                    @endfor
+                                <label style="border: solid 1px #c05c5cb4; border-radius:10%;padding:2px;">
+                                    @for($i = 1; $i <= 5; $i ++) <label>
+                                        <input type="radio" class="{{$key.'__'.$i}}" name="{{$company_available_rating->id}}" value="{{$i}}" onclick="postRate(this)" style="display:none">
+                                        <i class="fa fa-star fa-lg" id="{{$key.'__'.$i}}"></i>
+                                </label>
+                                @endfor
+                                </label>
                             </div>
                         </div>
                     </div>
@@ -104,13 +109,13 @@
             </div>
         </div>
     </div>
+    <div style="text-align: center;">
+        Powered By <a target="_blank" href="https://tiposmart.com">tiposmart.com</a> <br>
+        All Right Resereved <i class="fa fa-copyright"></i> 2023
+    </div>
 </section>
 
 <div class="footer-bg">
-</div>
-<div style="text-align: center;">
-    Powered By tiposmart.com <br>
-    All Right Resereved <i class="fa fa-copyright"></i> 2023
 </div>
 
 <script>
@@ -123,7 +128,7 @@
         value = elementClass.split("__")[1];
 
         for (var i = 1; i <= value; i++) {
-            $("#" + level + "__" + i).css("color", "yellow");
+            $("#" + level + "__" + i).css("color", "#e2e202");
         }
 
         for (var x = (Number(value) + 1); x <= 5; x++) {
@@ -137,6 +142,7 @@
             data: {
                 rating_value: element.value,
                 rating_id: element.name,
+                guest_key: "{{Request()->session()->get('guest_key')}}",
                 guest_key: "{{Request()->session()->get('guest_key')}}",
             },
             dataType: 'json',

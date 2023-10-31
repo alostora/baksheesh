@@ -75,6 +75,12 @@
   <link href="https://fonts.googleapis.com/css2?family=Noto+Kufi+Arabic:wght@100;300;500;600;700;800;900&display=swap" rel="stylesheet">
 
   <style>
+    .tab-content>.tab-pane:not(.active) {
+      display: block;
+      height: 0;
+      overflow-y: hidden;
+    }
+
     * {
       font-family: 'Noto Kufi Arabic', 'sans-serif', !important;
     }
@@ -96,6 +102,10 @@
       color: #991902de;
     }
 
+    p{
+      color: #991902de;
+      font-size: 22px;
+    }
     h4 {
       color: #991902de;
       font-size: 22px;
@@ -111,7 +121,8 @@
       border-radius: 50%;
       box-shadow: 0 3px 4px 0 rgba(0, 0, 0, 0.3),
         0 6px 20px 0 rgba(0, 0, 0, 0.35);
-      border: 1px solid #f26c4f
+      border: 1px solid #f26c4f;
+      margin-top: 10px;
     }
 
     .comment {
