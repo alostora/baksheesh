@@ -2,6 +2,9 @@
 
 namespace Admin\Http\Resources\Company;
 
+use App\Foundations\File\MainRepo;
+use App\Http\Resources\Auth\UserMinifiedResource;
+use App\Http\Resources\FileResource;
 use Illuminate\Http\Resources\Json\JsonResource;
 
 class CompanyMinifiedResource extends JsonResource
@@ -17,9 +20,14 @@ class CompanyMinifiedResource extends JsonResource
         return [
 
             'id' => $this->id,
+
             'name' => $this->name,
-            'client_id' => $this->client_id,
+
             'stopped_at' => $this->stopped_at,
+
+            'client' => new UserMinifiedResource($this->client),
+
+            'file' => new FileResource(MainRepo::getFile($this->file)),
         ];
     }
 }

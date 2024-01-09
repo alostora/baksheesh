@@ -90,13 +90,13 @@ class Handler extends ExceptionHandler
                 StatusCode::UNAUTHORIZED
             );
         }
-        
+
         if ($exception instanceof ValidationException && $request->wantsJson()) {
 
             return response()->error(
                 $exception->getMessage(),
                 $exception->getMessage(),
-                StatusCode::UNAUTHORIZED
+                StatusCode::UNPROCESSABLE_ENTITY
             );
         }
         return parent::render($request, $exception);

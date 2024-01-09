@@ -1,6 +1,5 @@
 <?php
 
-use Admin\Http\Controllers\Country\CityController;
 use Admin\Http\Controllers\Country\CountryController;
 use Admin\Http\Controllers\Country\GovernorateController;
 use App\Http\Controllers\Auth\AuthController;
@@ -68,12 +67,6 @@ Route::group([
 	Route::get('governorates/search/{country}', [GovernorateController::class, 'search']);
 
 	Route::get('governorate/{governorate}', [GovernorateController::class, 'show']);
-
-	Route::get('cities/{country}', [CityController::class, 'index']);
-
-	Route::get('cities/search/{country}', [CityController::class, 'search']);
-
-	Route::get('city/{city}', [CityController::class, 'show']);
 });
 
 

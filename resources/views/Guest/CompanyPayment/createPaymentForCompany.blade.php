@@ -143,7 +143,6 @@
                 rating_value: element.value,
                 rating_id: element.name,
                 guest_key: "{{Request()->session()->get('guest_key')}}",
-                guest_key: "{{Request()->session()->get('guest_key')}}",
             },
             dataType: 'json',
             success: function(response) {

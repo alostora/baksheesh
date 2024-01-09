@@ -44,7 +44,7 @@ class UserController extends Controller
     {
         return response()->success(
             trans('user.user_retrieved_successfully'),
-            new UserResource($user),
+            new UserMinifiedResource($user),
             StatusCode::OK
         );
     }

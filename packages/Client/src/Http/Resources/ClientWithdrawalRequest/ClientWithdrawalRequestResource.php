@@ -2,6 +2,7 @@
 
 namespace Client\Http\Resources\ClientWithdrawalRequest;
 
+use App\Http\Resources\Auth\UserMinifiedResource;
 use Illuminate\Http\Resources\Json\JsonResource;
 
 class ClientWithdrawalRequestResource extends JsonResource
@@ -18,8 +19,6 @@ class ClientWithdrawalRequestResource extends JsonResource
 
                'id' => $this->id,
 
-               'client_id' => $this->client_id,
-
                'amount' => $this->amount,
 
                'discount_percentage' => $this->discount_percentage,
@@ -30,11 +29,15 @@ class ClientWithdrawalRequestResource extends JsonResource
 
                'client_notes' => $this->client_notes,
 
+               'bank_transfer_number' => $this->bank_transfer_number,
+
                'action_at' => $this->action_at,
 
                'action_by' => $this->action_by_id,
 
                'created_at' => $this->created_at,
+
+               'client' => new UserMinifiedResource($this->client),
           ];
      }
 }

@@ -16,7 +16,6 @@ use Guest\Http\Requests\PayForCompanyRequest;
 use Guest\Http\Requests\PayForEmployeeRequest;
 use Guest\Http\Resources\PayForCompanyResource;
 use Guest\Http\Resources\PayForEmployeeResource;
-use Illuminate\Http\Request;
 
 class ReviewController extends Controller
 {

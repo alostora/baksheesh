@@ -3,6 +3,7 @@
 namespace App\Http\Resources\Auth;
 
 use Admin\Http\Resources\Country\CountryMinifiedResource;
+use Admin\Http\Resources\Country\Governorate\GovernorateMinifiedResource;
 use App\Constants\FileModuleType;
 use App\Constants\GeneralBooleanStatus;
 use App\Foundations\File\MainRepo;
@@ -22,6 +23,8 @@ class UserResource extends JsonResource
      */
     public function toArray(Request $request): array
     {
+        $file = $this->file ? $this->file : File::where('type', FileModuleType::DEFAULT_USER_AVATAR['key'])->first();
+
         return [
             'id' => $this->id,
 
@@ -33,13 +36,21 @@ class UserResource extends JsonResource
 
             'token' => $this->api_token,
 
-            'account_type' => new SystemLookupResource($this->accountType),
+            'available_companies_count' => $this->api_available_companies_count,
 
-            'client' => new UserMinifiedResource($this->client),
+            'available_employees_count' => $this->api_available_employees_count,
 
             'created_at' => $this->created_at,
 
             'stopped_at' => $this->stopped_at,
+
+            'avatar' => new FileResource(MainRepo::getFile($file)),
+
+            'account_type' => new SystemLookupResource($this->accountType),
+
+            'country' => new CountryMinifiedResource($this->country),
+
+            'governorate' => new GovernorateMinifiedResource($this->governorate),
         ];
     }
 }

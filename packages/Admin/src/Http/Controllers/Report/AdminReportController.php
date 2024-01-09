@@ -47,8 +47,8 @@ class AdminReportController extends Controller
 
     public function withdrawalRequestReport(Request $request)
     {
-        $delivered_cash = WithdrawalReportSearchCollection::searchWithdrawal(
-            
+        $delivered_cash = WithdrawalReportSearchCollection::searcAllhWithdrawalRequests(
+
             $request->get('client_id') ? $request->get('client_id') : -1,
             $request->get('status') ? $request->get('status') : -1,
             $request->get('amount') ? $request->get('amount') : -1,
@@ -59,7 +59,7 @@ class AdminReportController extends Controller
 
         return response()->paginated(ClientWithdrawalRequestResource::collection($delivered_cash));
     }
-    
+
     public function inactiveClientReport(Request $request)
     {
         $clients = ClientSearchCollection::searchUsers(
