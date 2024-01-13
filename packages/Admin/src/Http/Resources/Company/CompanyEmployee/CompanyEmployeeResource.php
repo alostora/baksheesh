@@ -2,11 +2,13 @@
 
 namespace Admin\Http\Resources\Company\CompanyEmployee;
 
+use Admin\Http\Resources\Company\CompanyEmployee\EmployeeAvailableRating\EmployeeAvailableRatingMinifiedResource;
 use Admin\Http\Resources\Company\CompanyMinifiedResource;
 use Admin\Http\Resources\Country\CountryMinifiedResource;
 use Admin\Http\Resources\Country\Governorate\GovernorateMinifiedResource;
 use App\Constants\FileModuleType;
 use App\Foundations\File\MainRepo;
+use App\Http\Resources\Auth\UserMinifiedResource;
 use App\Http\Resources\FileResource;
 use App\Http\Resources\SystemLookupResource;
 use App\Models\File;
@@ -50,11 +52,14 @@ class CompanyEmployeeResource extends JsonResource
 
             'account_type' => new SystemLookupResource($this->accountType),
 
-            'client' => new CompanyEmployeeMinifiedResource($this->client),
+            'client' => new UserMinifiedResource($this->client),
 
             'country' => new CountryMinifiedResource($this->country),
 
             'governorate' => new GovernorateMinifiedResource($this->governorate),
+
+            'employee_available_ratings' => EmployeeAvailableRatingMinifiedResource::collection($this->employeeAvailableRatings),
+
         ];
     }
 }

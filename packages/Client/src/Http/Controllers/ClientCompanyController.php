@@ -10,8 +10,8 @@ use App\Http\Controllers\Controller;
 use App\Models\Company;
 use Carbon\Carbon;
 use Client\Foundations\ClientCompany\ClientCompanySearchCollection;
-use Client\Http\Requests\ClientCompany\ClientCompanyCreateRequest;
-use Client\Http\Requests\ClientCompany\ClientCompanyUpdateRequest;
+use Client\Http\Requests\ClientCompany\ClientCompanyCreateApiRequest;
+use Client\Http\Requests\ClientCompany\ClientCompanyUpdateApiRequest;
 use Illuminate\Http\Request;
 
 class ClientCompanyController extends Controller
@@ -47,7 +47,7 @@ class ClientCompanyController extends Controller
         );
     }
 
-    public function store(ClientCompanyCreateRequest $request)
+    public function store(ClientCompanyCreateApiRequest $request)
     {
         $validated = $request->validated();
 
@@ -62,7 +62,7 @@ class ClientCompanyController extends Controller
         );
     }
 
-    public function update(ClientCompanyUpdateRequest $request, Company $company)
+    public function update(ClientCompanyUpdateApiRequest $request, Company $company)
     {
         $company->update($request->validated());
 
@@ -83,7 +83,7 @@ class ClientCompanyController extends Controller
             StatusCode::OK
         );
     }
-    
+
     public function active(Company $company)
     {
         $company->update(['stopped_at' => null]);

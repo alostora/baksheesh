@@ -1,12 +1,12 @@
 <?php
 
-namespace Client\Http\Requests\ClientCompany\ClientCompanyEmployee;
+namespace Admin\Http\Requests\Company\CompanyEmployee;
 
 use App\Constants\HasLookupType\CountryType;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\Rule;
 
-class ClientCompanyEmployeeCreateRequest extends FormRequest
+class CompanyEmployeeCreateApiRequest extends FormRequest
 {
     /**
      * Determine if the company is authorized to make this request.

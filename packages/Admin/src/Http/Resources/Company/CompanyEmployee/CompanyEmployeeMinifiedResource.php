@@ -2,6 +2,7 @@
 
 namespace Admin\Http\Resources\Company\CompanyEmployee;
 
+use Admin\Http\Resources\Company\CompanyEmployee\EmployeeAvailableRating\EmployeeAvailableRatingMinifiedResource;
 use Admin\Http\Resources\Company\CompanyMinifiedResource;
 use Admin\Http\Resources\Country\CountryMinifiedResource;
 use Admin\Http\Resources\Country\Governorate\GovernorateMinifiedResource;
@@ -40,7 +41,7 @@ class CompanyEmployeeMinifiedResource extends JsonResource
 
             'employee_job_name' => $this->employee_job_name,
 
-            'company' => new CompanyMinifiedResource($this->company),
+            'company_id' => $this->company_id,
 
             'avatar' => new FileResource(MainRepo::getFile($file)),
 
@@ -51,6 +52,9 @@ class CompanyEmployeeMinifiedResource extends JsonResource
             'country' => new CountryMinifiedResource($this->country),
 
             'governorate' => new GovernorateMinifiedResource($this->governorate),
+
+            'employee_available_ratings' => EmployeeAvailableRatingMinifiedResource::collection($this->employeeAvailableRatings),
+
         ];
     }
 }

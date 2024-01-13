@@ -6,7 +6,7 @@ use App\Constants\HasLookupType\CountryType;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\Rule;
 
-class ClientCompanyEmployeeCreateRequest extends FormRequest
+class ClientCompanyEmployeeCreateApiRequest extends FormRequest
 {
     /**
      * Determine if the company is authorized to make this request.

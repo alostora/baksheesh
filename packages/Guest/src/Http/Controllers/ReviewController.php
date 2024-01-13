@@ -10,6 +10,7 @@ use App\Models\CompanyRating;
 use App\Models\EmployeeCash;
 use App\Models\EmployeeRating;
 use App\Models\User;
+use Guest\Foundations\PaymentCollection;
 use Guest\Http\Requests\CompanyRatingRequest;
 use Guest\Http\Requests\EmployeeRatingRequest;
 use Guest\Http\Requests\PayForCompanyRequest;
@@ -22,7 +23,14 @@ class ReviewController extends Controller
 
     public function payForCompany(PayForCompanyRequest $request)
     {
-        $companyCash = CompanyCash::create($request->validated());
+        $validated = $request->validated();
+
+        if (isset($validated['amount']) && $validated['amount'] != null) {
+
+            PaymentCollection::pay($request);
+        }
+
+        $companyCash = CompanyCash::create($validated);
 
         return response()->success(
             trans('payment.payment_created_successfully'),
@@ -33,7 +41,15 @@ class ReviewController extends Controller
 
     public function payForEmployee(PayForEmployeeRequest $request)
     {
-        $employeeCash = EmployeeCash::create($request->validated());
+
+        $validated = $request->validated();
+
+        if (isset($validated['amount']) && $validated['amount'] != null) {
+
+            PaymentCollection::pay($request);
+        }
+
+        $employeeCash = EmployeeCash::create($validated);
 
         return response()->success(
             trans('payment.payment_created_successfully'),
@@ -110,3 +126,11 @@ class ReviewController extends Controller
         );
     }
 }
+
+
+/*
+
+
+
+
+*/

@@ -1,9 +1,7 @@
 <?php
 
-namespace Client\Foundations\ClientCompany;
+namespace Admin\Foundations\Company;
 
-use App\Constants\FileModuleType;
-use App\Foundations\File\FileCreateCollection;
 use App\Models\Company;
 
 class CompanyCreateApiCollection
@@ -11,8 +9,6 @@ class CompanyCreateApiCollection
     public static function createCompany($request)
     {
         $validated = $request->validated();
-
-        $validated['client_id'] = auth()->id();
 
         $company = Company::create($validated);
 
@@ -33,7 +29,6 @@ class CompanyCreateApiCollection
                 "available_rating_id" => $available_rating_id,
             ];
         }
-
         $company->companyAvailableRatings()->createMany($data);
     }
 }

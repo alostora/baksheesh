@@ -1,15 +1,16 @@
 <?php
 
-namespace Client\Http\Requests\ClientCompany\ClientCompanyEmployee;
+namespace Admin\Http\Requests\Company\CompanyEmployee;
 
 use App\Constants\HasLookupType\CountryType;
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
 
-class ClientCompanyEmployeeCreateRequest extends FormRequest
+class CompanyEmployeeUpdateApiRequest extends FormRequest
 {
     /**
-     * Determine if the company is authorized to make this request.
+     * Determine if the user is authorized to make this request.
      */
     public function authorize(): bool
     {
@@ -21,20 +22,27 @@ class ClientCompanyEmployeeCreateRequest extends FormRequest
      *
      * @return array<string, \Illuminate\Contracts\Validation\Rule|array|string>
      */
-    public function rules(): array
+    public function rules(Request $request): array
     {
         return [
+
             'company_id' => ['required', 'uuid', 'exists:companies,id'],
 
-            "name" => ["required", "string", "max:255"],
+            "name" => ["bail", "required", "string", "max:255"],
 
-            "email" => ["required", "email", "unique:users,email", "max:255"],
+            "phone" => [
+                "bail", "required", "string", "max:255",
 
-            "phone" => ["required", "string", "unique:users,phone", "max:255"],
+                Rule::unique('users', 'phone')->ignore($request->user->id, 'id')
+            ],
 
-            "password" => ["required", "string", "max:255"],
+            "email" => [
+                "bail", "required", "string", "max:255",
 
-            "address" => ["nullable", "string", "max:255"],
+                Rule::unique('users', 'email')->ignore($request->user->id, 'id')
+            ],
+
+            "address" => ["bail", "nullable", "string", "max:255"],
 
             'available_rating_ids' => ['required', 'array', 'max:5'],
 
@@ -57,6 +65,7 @@ class ClientCompanyEmployeeCreateRequest extends FormRequest
             ],
 
             'file_id' => ['nullable', 'uuid', 'exists:files,id'],
+
         ];
     }
 }

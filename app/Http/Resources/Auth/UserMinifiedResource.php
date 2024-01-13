@@ -33,9 +33,9 @@ class UserMinifiedResource extends JsonResource
 
             'phone' => $this->phone,
 
-            'available_companies_count' => $this->api_available_companies_count,
+            'available_companies_count' => $this->available_companies_count,
 
-            'available_employees_count' => $this->api_available_employees_count,
+            'available_employees_count' => $this->available_employees_count,
 
             'collected_cash' => $this->clientEmployeeCash()->sum('amount') + $this->clientCompanyCash()->sum('amount'),
 

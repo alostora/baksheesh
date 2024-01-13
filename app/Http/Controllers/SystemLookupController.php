@@ -15,10 +15,9 @@ class SystemLookupController extends Controller
 
         return response()->paginated(SystemLookupResource::collection($system_lookups));
     }
-    
+
     public function lookupTypes()
     {
-
         return response()->success(
             trans('api.system_lookup_types_retrieved_successfully'),
             LookupType::LOOKUP_TYPES,

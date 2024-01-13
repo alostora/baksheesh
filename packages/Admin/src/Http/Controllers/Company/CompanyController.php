@@ -2,15 +2,19 @@
 
 namespace Admin\Http\Controllers\Company;
 
+use Admin\Foundations\Company\CompanyCreateApiCollection;
 use Admin\Foundations\Company\CompanySearchCollection;
-use Admin\Http\Requests\Company\CompanyCreateRequest;
-use Admin\Http\Requests\Company\CompanyUpdateRequest;
+use Admin\Foundations\Company\CompanyUpdateApiCollection;
+use Admin\Http\Requests\Company\CompanyCreateApiRequest;
+use Admin\Http\Requests\Company\CompanyUpdateApiRequest;
 use Admin\Http\Resources\Company\CompanyMinifiedResource;
 use Admin\Http\Resources\Company\CompanyResource;
 use App\Constants\StatusCode;
 use App\Constants\SystemDefault;
+use App\Foundations\File\FileDeleteCollection;
 use App\Http\Controllers\Controller;
 use App\Models\Company;
+use App\Models\File;
 use App\Models\User;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
@@ -88,9 +92,9 @@ class CompanyController extends Controller
         );
     }
 
-    public function store(CompanyCreateRequest $request)
+    public function store(CompanyCreateApiRequest $request)
     {
-        $company = Company::create($request->validated());
+        $company = CompanyCreateApiCollection::createCompany($request);
 
         return response()->success(
             trans('company.company_created_successfully'),
@@ -99,9 +103,9 @@ class CompanyController extends Controller
         );
     }
 
-    public function update(CompanyUpdateRequest $request, Company $company)
+    public function update(CompanyUpdateApiRequest $request, Company $company)
     {
-        $company->update($request->validated());
+        CompanyUpdateApiCollection::updateCompany($request, $company);
 
         return response()->success(
             trans('company.company_updated_successfully'),
@@ -112,6 +116,8 @@ class CompanyController extends Controller
 
     public function destroy(Company $company)
     {
+        FileDeleteCollection::deleteFile(File::find($company->file_id));
+
         $company->delete();
 
         return response()->success(

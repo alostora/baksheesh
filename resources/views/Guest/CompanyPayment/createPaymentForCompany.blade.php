@@ -104,6 +104,11 @@
                     width: 200px;
                     height: 50px;
                   ">الانتقال الي صفحة الدفع</button>
+
+                        <button type="button" class="btn btn-default" data-toggle="modal" data-target="#modal-default">
+                            Launch Default Modal
+                        </button>
+
                     </div>
                 </form>
             </div>
@@ -117,6 +122,66 @@
 
 <div class="footer-bg">
 </div>
+
+
+
+<div class="modal fade" id="modal-default">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">Default Modal</h4>
+            </div>
+            <div class="modal-body">
+
+
+                <script src="https://secure.clickpay.com.sa/payment/js/paylib.js"></script>
+
+                <form action="{{url('api/tipo-payed?amount=200')}}" id="payform" method="post">
+                    <span id="paymentErrors"></span>
+                    <div class="row">
+                        <label>Card Number</label>
+                        <input type="text" data-paylib="number" size="20">
+                    </div>
+                    <div class="row">
+                        <label>Expiry Date (MM/YYYY)</label>
+                        <input type="text" data-paylib="expmonth" size="2">
+                        <input type="text" data-paylib="expyear" size="4">
+                    </div>
+                    <div class="row">
+                        <label>Security Code</label>
+                        <input type="text" data-paylib="cvv" size="4">
+                    </div>
+                    <input type="submit" value="Place order">
+                </form>
+
+                <script type="text/javascript">
+                    var myform = document.getElementById('payform');
+                    paylib.inlineForm({
+                        'key': 'C2KMDG-HTKK6H-K92GVT-RDTQ9T',
+                        'form': myform,
+                        'autoSubmit': true,
+                        'callback': function(response) {
+                            document.getElementById('paymentErrors').innerHTML = '';
+                            if (response.error) {
+                                paylib.handleError(document.getElementById('paymentErrors'), response);
+                            }
+                        }
+                    });
+                </script>
+
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+        <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+</div>
+
 
 <script>
     function postRate(element) {

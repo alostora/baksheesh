@@ -2,6 +2,7 @@
 
 namespace Admin\Http\Resources\Company;
 
+use Admin\Http\Resources\Company\CompanyAvailableRating\CompanyAvailableRatingMinifiedResource;
 use App\Foundations\File\MainRepo;
 use App\Http\Resources\Auth\UserMinifiedResource;
 use App\Http\Resources\FileResource;
@@ -28,6 +29,8 @@ class CompanyMinifiedResource extends JsonResource
             'client' => new UserMinifiedResource($this->client),
 
             'file' => new FileResource(MainRepo::getFile($this->file)),
+
+            'company_available_ratings' => CompanyAvailableRatingMinifiedResource::collection($this->companyAvailableRatings),
         ];
     }
 }

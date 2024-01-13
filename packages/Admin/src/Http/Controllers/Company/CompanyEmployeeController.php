@@ -3,11 +3,15 @@
 namespace Admin\Http\Controllers\Company;
 
 use Admin\Foundations\Company\CompanyEmployee\AssignCompanyEmployeeCollection;
+use Admin\Foundations\Company\CompanyEmployee\CompanyEmployeeCreateApiCollection;
 use Admin\Foundations\Company\CompanyEmployee\CompanyEmployeeCreateCollection;
 use Admin\Foundations\Company\CompanyEmployee\CompanyEmployeeSearchCollection;
+use Admin\Foundations\Company\CompanyEmployee\CompanyEmployeeUpdateApiCollection;
 use Admin\Foundations\Company\CompanyEmployee\CompanyEmployeeUpdateCollection;
 use Admin\Http\Requests\Company\CompanyEmployee\AssignCompanyEmployeeCreateRequest;
+use Admin\Http\Requests\Company\CompanyEmployee\CompanyEmployeeCreateApiRequest;
 use Admin\Http\Requests\Company\CompanyEmployee\CompanyEmployeeCreateRequest;
+use Admin\Http\Requests\Company\CompanyEmployee\CompanyEmployeeUpdateApiRequest;
 use Admin\Http\Requests\Company\CompanyEmployee\CompanyEmployeeUpdateRequest;
 use Admin\Http\Resources\Company\CompanyEmployee\CompanyEmployeeMinifiedResource;
 use Admin\Http\Resources\Company\CompanyEmployee\CompanyEmployeeResource;
@@ -53,10 +57,10 @@ class CompanyEmployeeController extends Controller
         );
     }
 
-    public function store(CompanyEmployeeCreateRequest $request)
+    public function store(CompanyEmployeeCreateApiRequest $request)
     {
 
-        $user = CompanyEmployeeCreateCollection::createCompanyEmployee($request);
+        $user = CompanyEmployeeCreateApiCollection::createCompanyEmployee($request);
 
         return response()->success(
             trans('company.company_employee_created_successfully'),
@@ -65,9 +69,9 @@ class CompanyEmployeeController extends Controller
         );
     }
 
-    public function update(CompanyEmployeeUpdateRequest $request, User $user)
+    public function update(CompanyEmployeeUpdateApiRequest $request, User $user)
     {
-        $user = CompanyEmployeeUpdateCollection::updateCompanyEmployee($request, $user);
+        $user = CompanyEmployeeUpdateApiCollection::updateCompanyEmployee($request, $user);
 
         return response()->success(
             trans('company.company_employee_updated_successfully'),
