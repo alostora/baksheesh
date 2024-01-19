@@ -24,6 +24,8 @@ class CompanyMinifiedResource extends JsonResource
 
             'name' => $this->name,
 
+            'company_field' => $this->company_field,
+
             'stopped_at' => $this->stopped_at,
 
             'client' => new UserMinifiedResource($this->client),

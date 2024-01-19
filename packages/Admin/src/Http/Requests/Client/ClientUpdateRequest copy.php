@@ -4,9 +4,10 @@ namespace Admin\Http\Requests\Client;
 
 use App\Constants\HasLookupType\CountryType;
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
 
-class ClientCreateApiRequest extends FormRequest
+class ClientUpdateRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -21,26 +22,32 @@ class ClientCreateApiRequest extends FormRequest
      *
      * @return array<string, \Illuminate\Contracts\Validation\Rule|array|string>
      */
-    public function rules(): array
+    public function rules(Request $request): array
     {
         return [
 
+            "name" => ["nullable", "string", "max:255"],
 
-            "name" => ["bail", "required", "string", "max:255"],
+            "phone" => [
+                "nullable", "string", "max:255",
 
-            "email" => ["bail", "required", "email", "unique:users,email", "max:255"],
+                Rule::unique('users', 'phone')->ignore($request->user->id, 'id')
+            ],
 
-            "phone" => ["bail", "required", "string", "unique:users,phone", "max:255"],
+            "email" => [
+                "nullable", "string", "max:255",
 
-            "password" => ["bail", "required", "string", "max:255"],
+                Rule::unique('users', 'email')->ignore($request->user->id, 'id')
+            ],
+
+            "password" => ["nullable", "string", "max:255"],
 
             "available_companies_count" => ["bail", "required", "integer", "max:1000"],
 
             "available_employees_count" => ["bail", "required", "integer", "max:1000"],
 
-
-            "address" => ["bail", "nullable", "string", "max:255"],
-
+            "address" => ["nullable", "string", "max:255"],
+            
             "country_id" => [
 
                 "required", "uuid", "string",
@@ -55,7 +62,7 @@ class ClientCreateApiRequest extends FormRequest
                 Rule::exists('countries', 'id')->where('type', CountryType::GOVERNORATE['code'])
             ],
 
-            'file_id' => ['nullable',  'uuid', 'exists:files,id'],
+            'file' => ['nullable', 'file'],
         ];
     }
 }

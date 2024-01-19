@@ -2,6 +2,7 @@
 
 namespace Admin\Http\Resources\Country\Governorate;
 
+use Admin\Http\Resources\Country\CountryMinifiedResource;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
 
@@ -21,6 +22,7 @@ class GovernorateMinifiedResource extends JsonResource
             'name_ar' => $this->name_ar,
             'prefix' => $this->prefix,
             'stopped_at' => $this->stopped_at,
+            'country' => new CountryMinifiedResource($this->country),
         ];
     }
 }

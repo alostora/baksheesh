@@ -5,6 +5,7 @@ namespace Admin\Http\Controllers\User;
 use Admin\Foundations\User\UserSearchCollection;
 use Admin\Http\Requests\User\UserCreateRequest;
 use Admin\Http\Requests\User\UserUpdateRequest;
+use Admin\Http\Resources\Company\CompanyEmployee\CompanyEmployeeResource;
 use App\Constants\StatusCode;
 use App\Constants\SystemDefault;
 use App\Http\Controllers\Controller;
@@ -44,7 +45,7 @@ class UserController extends Controller
     {
         return response()->success(
             trans('user.user_retrieved_successfully'),
-            new UserMinifiedResource($user),
+            new CompanyEmployeeResource($user),
             StatusCode::OK
         );
     }

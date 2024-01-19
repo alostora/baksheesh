@@ -6,7 +6,7 @@ use App\Constants\HasLookupType\CountryType;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\Rule;
 
-class ClientCreateApiRequest extends FormRequest
+class ClientCreateRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -55,7 +55,7 @@ class ClientCreateApiRequest extends FormRequest
                 Rule::exists('countries', 'id')->where('type', CountryType::GOVERNORATE['code'])
             ],
 
-            'file_id' => ['nullable',  'uuid', 'exists:files,id'],
+            'file' => ['nullable', 'file'],
         ];
     }
 }

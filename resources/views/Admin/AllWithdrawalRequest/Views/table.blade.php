@@ -71,6 +71,7 @@
                             </tr>
                         </thead>
                         <tbody>
+                            <?php $color = '' ?>
                             @if(!empty($withdrawal_requests))
                             @foreach ($withdrawal_requests as $key=>$withdrawal_request)
 

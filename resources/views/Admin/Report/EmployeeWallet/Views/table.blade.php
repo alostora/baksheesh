@@ -101,11 +101,11 @@
                             @foreach ($wallets as $key=>$wallet)
                             <tr>
                                 <td> {{$key+1}} </td>
-                                <td> {{$wallet->client->name}} </td>
-                                <td> {{$wallet->company->name}} </td>
-                                <td> {{$wallet->employee->name}} </td>
-                                <td> {{$wallet->amount}} </td>
-                                <td> {{$wallet->created_at}} </td>
+                                <td> {{$wallet->client ? $wallet->client->name : ''}} </td>
+                                <td> {{$wallet->company ? $wallet->company->name : ''}} </td>
+                                <td> {{$wallet->employee ? $wallet->employee->name : ''}} </td>
+                                <td> {{$wallet->client ? $wallet->amount : ''}} </td>
+                                <td> {{$wallet->client ? $wallet->created_at : ''}} </td>
                             </tr>
                             @endforeach
                             @endif

@@ -51,7 +51,6 @@ class ClientController extends Controller
 
     public function store(ClientCreateRequest $request)
     {
-
         $user_account_type = SystemLookup::where('type', UserAccountType::LOOKUP_TYPE)
             ->where('code',  UserAccountType::CLIENT['code'])
             ->first();

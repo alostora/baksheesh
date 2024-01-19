@@ -47,48 +47,4 @@ Route::group([
 
      Route::patch('governorate-inactive/{governorate}', [GovernorateController::class, 'inactive']);
 
-
-     Route::get('cities/{governorate}', [CityController::class, 'index']);
-
-     Route::get('cities/search/{governorate}', [CityController::class, 'search']);
-
-     Route::get('cities-search-all', [CityController::class, 'searchAll']);
-
-     Route::post('city', [CityController::class, 'store']);
-
-     Route::get('city/{city}', [CityController::class, 'show']);
-
-     Route::patch('city/{city}', [CityController::class, 'update']);
-
-     Route::delete('city/{city}', [CityController::class, 'destroy']);
-
-
-     Route::get('zones/{city}', [ZoneController::class, 'index']);
-
-     Route::get('zones/search/{city}', [ZoneController::class, 'search']);
-
-     Route::get('zones-search-all', [ZoneController::class, 'searchAll']);
-
-     Route::post('zone', [ZoneController::class, 'store']);
-
-     Route::get('zone/{zone}', [ZoneController::class, 'show']);
-
-     Route::patch('zone/{zone}', [ZoneController::class, 'update']);
-
-     Route::delete('zone/{zone}', [ZoneController::class, 'destroy']);
-
-
-     Route::get('districts/{zone}', [DistrictController::class, 'index']);
-
-     Route::get('districts/search/{zone}', [DistrictController::class, 'search']);
-
-     Route::get('districts-search-all', [DistrictController::class, 'searchAll']);
-
-     Route::post('district', [DistrictController::class, 'store']);
-
-     Route::get('district/{district}', [DistrictController::class, 'show']);
-
-     Route::patch('district/{district}', [DistrictController::class, 'update']);
-
-     Route::delete('district/{district}', [DistrictController::class, 'destroy']);
 });
