@@ -21,6 +21,7 @@
                         </thead>
                         <tbody>
                             @if(!empty($withdrawal_requests))
+                            <?php $color = '' ?>
                             @foreach ($withdrawal_requests as $key=>$withdrawal_request)
 
                             @if($withdrawal_request->withdrawalRequestStatus->code == App\Constants\HasLookupType\WithdrawalRequestStatus::PENDING['code'])

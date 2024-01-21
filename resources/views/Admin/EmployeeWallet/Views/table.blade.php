@@ -104,7 +104,7 @@
                                 <td> {{ $key + 1 }} </td>
                                 <td> {{ $wallet->client->name }} </td>
                                 <td> {{ $wallet->company->name }} </td>
-                                <td> {{ $wallet->employee->name }} </td>
+                                <td> {{ $wallet->employee ? $wallet->employee->name : $wallet->employee_id }} </td>
                                 <td> {{ $wallet->amount }} </td>
                                 <td> {{ $wallet->payer_name }} </td>
                                 <td> {{ $wallet->notes }} </td>

@@ -1,15 +1,19 @@
 <div class="bg-logo"></div>
 <div class="logo">
-    <img class="img-logo" src="{{ url('uploads/'.$company->file->new_name)}}" alt="">
+    @if($employee->file)
+    <img class="img-logo" src="{{ url('uploads/'.$employee->file->new_name)}}" alt="">
+    @endif
 </div>
 <section class="content-header">
     <div class="box">
         <div class="row">
-            <img src="{{ url('uploads/'.$company->file->new_name)}}" class="avatar">
+            @if($employee->file)
+            <img src="{{ url('uploads/'.$employee->file->new_name)}}" class="avatar">
+            @endif
         </div>
 
         <h1 style="margin: 5px 0px 15px 0px;">
-            {{$company->name}}
+            {{$employee->name}}
         </h1>
 
         <label style="border: solid 1px #c05c5cb4; border-radius:10%;padding:3px;">
@@ -27,18 +31,18 @@
         <div class="col-md-12">
             <div class="box">
                 <div class="box-header with-border">
-                    <h3 class="box-title">تقييم الشركة</h3>
+                    <h3 class="box-title">تقييم الموظف</h3>
                 </div>
 
                 <div class="box-body">
-                    @foreach($company_available_ratings as $key=>$company_available_rating)
+                    @foreach($employee_available_ratings as $key=>$employee_available_rating)
                     <div class="row">
                         <div class="form-group">
-                            <label class="col-xs-4 text-sm">{{$company_available_rating->name_ar}}</label>
+                            <label class="col-xs-4 text-sm">{{$employee_available_rating->name_ar}}</label>
                             <div class="col-xs-8">
                                 <label style="border: solid 1px #c05c5cb4; border-radius:10%;padding:2px;">
                                     @for($i = 1; $i <= 5; $i ++) <label>
-                                        <input type="radio" class="{{$key.'__'.$i}}" name="{{$company_available_rating->id}}" value="{{$i}}" onclick="postRate(this)" style="display:none">
+                                        <input type="radio" class="{{$key.'__'.$i}}" name="{{$employee_available_rating->id}}" value="{{$i}}" onclick="postRate(this)" style="display:none">
                                         <i class="fa fa-star fa-lg" id="{{$key.'__'.$i}}"></i>
                                 </label>
                                 @endfor
@@ -57,7 +61,7 @@
                 </div>
 
                 <div class="box-footer" style="margin-bottom: 15px;">
-                    <button onclick="sendCompanyNote()" class="btn" style="float: left;background-color: rgb(248, 82, 40);border-radius: 10px;width: 100px;">ارسال</button>
+                    <button onclick="sendEmployeeNote()" class="btn" style="float: left;background-color: rgb(248, 82, 40);border-radius: 10px;width: 100px;">ارسال</button>
                 </div>
             </div>
 
@@ -68,8 +72,8 @@
                 <form role="form" action="{{url('guest/payment/pay-for-company')}}" method="POST">
                     @csrf
 
-                    <input type="hidden" name="client_id" value="{{Request('company')->client_id}}">
-                    <input type="hidden" name="company_id" value="{{Request('company')->id}}">
+                    <input type="hidden" name="client_id" value="{{Request('user')->client_id}}">
+                    <input type="hidden" name="company_id" value="{{Request('user')->company_id}}">
 
                     <div class="box-body">
 
@@ -204,7 +208,7 @@
 
         $.ajax({
 
-            url: '{{url("api/guest/payment/company-rating/".Request("company")->id)}}',
+            url: '{{url("api/guest/payment/employee-rating/".Request("user")->id)}}',
             type: 'POST',
             data: {
                 rating_value: element.value,

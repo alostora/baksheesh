@@ -1,11 +1,15 @@
 <div class="bg-logo"></div>
 <div class="logo">
+    @if($company->file)
     <img class="img-logo" src="{{ url('uploads/'.$company->file->new_name)}}" alt="">
+    @endif
 </div>
 <section class="content-header">
     <div class="box">
         <div class="row">
+            @if($company->file)
             <img src="{{ url('uploads/'.$company->file->new_name)}}" class="avatar">
+            @endif
         </div>
 
         <h1 style="margin: 5px 0px 15px 0px;">
