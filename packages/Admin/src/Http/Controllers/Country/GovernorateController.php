@@ -23,7 +23,13 @@ class GovernorateController extends Controller
             $country,
             -1,
             -1,
-            $request->get('per_page') ?? SystemDefault::DEFAUL_PAGINATION_COUNT
+            $request->get('per_page') ?? 1000
+        );
+
+        return response()->success(
+            trans('governorate.governorate_retrieved_successfully'),
+            GovernorateMinifiedResource::collection($governorates),
+            StatusCode::OK
         );
 
         return response()->paginated(GovernorateMinifiedResource::collection($governorates));
@@ -35,7 +41,13 @@ class GovernorateController extends Controller
             $country,
             $request->get('query_string') ?? -1,
             $request->get('active') ?? -1,
-            $request->get('per_page') ?? SystemDefault::DEFAUL_PAGINATION_COUNT
+            $request->get('per_page') ?? 1000
+        );
+
+        return response()->success(
+            trans('governorate.governorate_retrieved_successfully'),
+            GovernorateMinifiedResource::collection($governorates),
+            StatusCode::OK
         );
 
         return response()->paginated(GovernorateMinifiedResource::collection($governorates));
@@ -47,7 +59,13 @@ class GovernorateController extends Controller
             $request->get('country_id') ?? -1,
             $request->get('query_string') ?? -1,
             $request->get('active') ?? -1,
-            $request->get('per_page') ?? SystemDefault::DEFAUL_PAGINATION_COUNT
+            $request->get('per_page') ?? 1000
+        );
+
+        return response()->success(
+            trans('governorate.governorate_retrieved_successfully'),
+            GovernorateMinifiedResource::collection($governorates),
+            StatusCode::OK
         );
 
         return response()->paginated(GovernorateMinifiedResource::collection($governorates));

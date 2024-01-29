@@ -4,6 +4,7 @@ namespace Client\Http\Resources\ClientWithdrawalRequest;
 
 use App\Http\Resources\Auth\UserMinifiedResource;
 use Illuminate\Http\Resources\Json\JsonResource;
+use Illuminate\Support\Facades\Lang;
 
 class ClientWithdrawalRequestMinifiedResource extends JsonResource
 {
@@ -19,7 +20,7 @@ class ClientWithdrawalRequestMinifiedResource extends JsonResource
 
             'id' => $this->id,
 
-            'amount' => $this->amount,
+            'amount' => $this->amount . ' ' . Lang::get('employee_wallet.SAR'),
 
             'status' => $this->withdrawalRequestStatus,
 

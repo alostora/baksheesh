@@ -53,15 +53,12 @@
                         <thead>
                             <tr>
                                 <th>#</th>
+                                <th>@lang('company_employee.qr')</th>
                                 <th>@lang('company_employee.file')</th>
                                 <th>@lang('company_employee.name')</th>
-                                <th>@lang('company_employee.email')</th>
                                 <th>@lang('company_employee.phone')</th>
                                 <th>@lang('company_employee.employee_job_name')</th>
                                 <th>@lang('company_employee.country')</th>
-                                <th>@lang('company_employee.governorate')</th>
-                                <th>@lang('company_employee.demo_link')</th>
-                                <th>@lang('company_employee.qr')</th>
                                 <th>@lang('company_employee.operations')</th>
                             </tr>
                         </thead>
@@ -70,28 +67,26 @@
                             @foreach ($employees as $key=>$user)
                             <tr>
                                 <td> {{$key+1}} </td>
+                                <td onclick="PrintElem('{{$user->name}}','{{$user->id}}')">
+                                    <div id="{{$user->id}}">
+                                        {!! $user->employee_qr !!}
+                                    </div>
+                                </td>
                                 <td>
                                     @if($user->file)
                                     <img src="{{ url('uploads/'.$user->file->new_name)}}" style="height:50px;width:50px;border-radius:50%">
                                     @endif
                                 </td>
                                 <td> {{$user->name}} </td>
-                                <td> {{$user->email}} </td>
                                 <td> {{$user->phone}} </td>
                                 <td> {{$user->employee_job_name}} </td>
                                 <td> {{$user->country ? $user->country->name : ""}} </td>
-                                <td> {{$user->governorate ? $user->governorate->name : ""}} </td>
                                 <td>
+
                                     <a href="{{url('guest/payment/pay-for-employee/'.$user->id)}}" target="_blank" class="btn btn-success btn-sm">
                                         <i class="fa fa-link"></i>
                                     </a>
-                                </td>
-                                <td id="{{$user->id}}" onclick="PrintElem('{{$user->name}}','{{$user->id}}')">
 
-                                    {!! $user->employee_qr !!}
-
-                                </td>
-                                <td>
                                     <a href="{{url('client/client-company-employee/edit/'.$user->id)}}" class="btn btn-success btn-sm">
                                         <i class="fa fa-edit"></i>
                                     </a>
@@ -136,11 +131,7 @@
         mywindow.document.write(document.getElementById(userId).innerHTML);
         mywindow.document.write('</body></html>');
 
-        mywindow.document.close(); // necessary for IE >= 10
-        mywindow.focus(); // necessary for IE >= 10*/
-
         mywindow.print();
-        mywindow.close();
 
         return true;
     }

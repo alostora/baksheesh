@@ -50,6 +50,12 @@ class Country extends Model
 
     ];
 
+    protected function createdAt(): Attribute
+    {
+        return Attribute::make(
+            get: fn (string $value) => date('Y-m-d', strtotime($value)),
+        );
+    }
     protected $casts = [
 
         'stopped_at' => 'datetime'

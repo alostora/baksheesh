@@ -60,8 +60,8 @@
                                 <th>@lang('client.email')</th>
                                 <th>@lang('client.phone')</th>
                                 <th>@lang('client.country')</th>
-                                <th>@lang('client.governorate')</th>
-                                <th>@lang('client.withdrawal_requests')</th>
+                                <th>@lang('client.available_companies_count')</th>
+                                <th>@lang('client.available_employees_count')</th>
                                 <th>@lang('client.operations')</th>
                             </tr>
                         </thead>
@@ -79,23 +79,28 @@
                                 <td> {{$user->email}} </td>
                                 <td> {{$user->phone}} </td>
                                 <td> {{$user->country ? $user->country->name : ""}} </td>
-                                <td> {{$user->governorate ? $user->governorate->name : ""}} </td>
+                                <td> {{$user->available_companies_count}} </td>
+                                <td> {{$user->available_employees_count}} </td>
                                 <td>
-                                    <a href="{{url('admin/client-withdrawal-requests/'.$user->id)}}" class="btn btn-success btn-sm">
+
+                                    <a href="{{url('admin/companies/search?client_id='.$user->id)}}" class="btn btn-success btn-sm">
+                                        <i class="fa fa-info"></i> @lang('client.companies') : ( {{$user->companies->count()}} )
+                                    </a>
+
+                                    <a href="{{url('admin/all-client-withdrawal-requests/search?client_id='.$user->id)}}" class="btn btn-success btn-sm">
                                         <i class="fa fa-info"></i> @lang('client.withdrawal_requests')
                                     </a>
-                                </td>
-                                <td>
+
                                     <a href="{{url('admin/client/edit/'.$user->id)}}" class="btn btn-success btn-sm">
                                         <i class="fa fa-edit"></i> @lang('client.update')
                                     </a>
+
                                     @if($user->stopped_at == null)
                                     <a href="{{url('admin/client-inactive/'.$user->id)}}" class="btn btn-success btn-sm">
                                         <i class="fa fa-check"></i>
                                         @lang('general.current_status') : @lang('general.active')
                                     </a>
                                     @else
-
                                     <a href="{{url('admin/client-active/'.$user->id)}}" class="btn btn-danger btn-sm">
                                         <i class="fa fa-close"></i>
                                         @lang('general.current_status') : @lang('general.inactive')

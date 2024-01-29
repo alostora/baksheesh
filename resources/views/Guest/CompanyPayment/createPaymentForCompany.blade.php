@@ -1,190 +1,113 @@
-<div class="bg-logo"></div>
-<div class="logo">
+<div class="logo_bg">
     @if($company->file)
-    <img class="img-logo" src="{{ url('uploads/'.$company->file->new_name)}}" alt="">
+    <img class="img-logo" src="{{ url('uploads/'.$company->file->new_name)}}" alt="" height="150px;width:150px">
     @endif
+
 </div>
-<section class="content-header">
-    <div class="box">
-        <div class="row">
-            @if($company->file)
-            <img src="{{ url('uploads/'.$company->file->new_name)}}" class="avatar">
-            @endif
-        </div>
 
-        <h1 style="margin: 5px 0px 15px 0px;">
-            {{$company->name}}
-        </h1>
+<div class="employee_bg">
 
-        <label style="border: solid 1px #c05c5cb4; border-radius:10%;padding:3px;">
-            <i class="fa fa-star fa-lg" style="font-size: 30px;color:#e2e202"></i>
-            <i class="fa fa-star fa-lg" style="font-size: 30px;color:#e2e202"></i>
-            <i class="fa fa-star fa-lg" style="font-size: 30px;color:#e2e202"></i>
-            <i class="fa fa-star fa-lg" style="font-size: 30px;color:#e2e202"></i>
-            <i class="fa fa-star fa-lg" style="font-size: 30px;color:#e2e202"></i>
-        </label>
+    <img class="employee_img" src="{{ url('uploads/'.$company->file->new_name)}}" alt="">
+    <div class="back_employee_img">
+        <h1 class="name_employee">{{$company->name}}</h1>
+        <h3 class="job_name">{{$company->company_field}}</h3>
     </div>
-</section>
-<section class="content">
 
-    <div class="row">
-        <div class="col-md-12">
-            <div class="box">
-                <div class="box-header with-border">
-                    <h3 class="box-title">تقييم الشركة</h3>
-                </div>
+    <div class="icons">
+        <i class="fas fa-regular fa-star" style="font-size:16px;color:#f7ef31; "></i>
+        <i class="fas fa-regular fa-star" style="font-size:16px;color:#f7ef31; "></i>
+        <i class="fas fa-regular fa-star" style="font-size:16px;color:#f7ef31; "></i>
+        <i class="fas fa-regular fa-star" style="font-size:16px;color:#f7ef31; "></i>
+        <i class="fas fa-regular fa-star" style="font-size:16px;color:#f7ef31; "></i>
+    </div>
+</div>
 
-                <div class="box-body">
-                    @foreach($company_available_ratings as $key=>$company_available_rating)
-                    <div class="row">
-                        <div class="form-group">
-                            <label class="col-xs-4 text-sm">{{$company_available_rating->name_ar}}</label>
-                            <div class="col-xs-8">
-                                <label style="border: solid 1px #c05c5cb4; border-radius:10%;padding:2px;">
-                                    @for($i = 1; $i <= 5; $i ++) <label>
-                                        <input type="radio" class="{{$key.'__'.$i}}" name="{{$company_available_rating->id}}" value="{{$i}}" onclick="postRate(this)" style="display:none">
-                                        <i class="fa fa-star fa-lg" id="{{$key.'__'.$i}}"></i>
-                                </label>
-                                @endfor
-                                </label>
-                            </div>
-                        </div>
-                    </div>
+<h1 class="text_rating_employee">تقييم الشركة</h1>
+
+<div class="bg_rating_employee">
+    <div class="box-body">
+        @foreach($company_available_ratings as $key=>$company_available_rating)
+        <div class="rating_1">
+            <div style="display:flex;margin-right:40px;margin-top:10px;padding-left:10px;">
+                <label>
+                    @foreach([1,2] as $i)
+
+                    <?php $image = $i == 1 ? 'Happy' : 'Sad' ?>
+
+                    <input type="radio" class="{{$key.'__'.$i}}" name="{{$company_available_rating->id}}" value="{{$i}}" onclick="postRate(this)" style="display:none">
+                    <img src="{{url('guest/images/'.$image.'.png')}}" alt="" style="padding:5px; width:80px;height:80;border:1px solid #fff61a; " id="{{$key.'__'.$i}}" />
+
                     @endforeach
-                </div>
+                </label>
 
-                <div class="box-body">
-                    <div class="form-group">
-                        <label for="notes">اضف تعليق</label>
-                        <textarea class="form-control input-lg" name="notes" id="notes" placeholder="اضف تعليق" style="background-color: rgba(255, 51, 0, 0.342)"></textarea>
-                    </div>
-                </div>
-
-                <div class="box-footer" style="margin-bottom: 15px;">
-                    <button onclick="sendCompanyNote()" class="btn" style="float: left;background-color: rgb(248, 82, 40);border-radius: 10px;width: 100px;">ارسال</button>
-                </div>
             </div>
+            <h3 class="rate_name">{{$company_available_rating->name_ar}}</h3>
+        </div>
+        @endforeach
+    </div>
+</div>
 
-            <div class="box">
-                <div class="box-header with-border">
-                    <h3 class="box-title">دفع اكرامية</h3>
-                </div>
-                <form role="form" action="{{url('guest/payment/pay-for-company')}}" method="POST">
-                    @csrf
 
-                    <input type="hidden" name="client_id" value="{{Request('company')->client_id}}">
-                    <input type="hidden" name="company_id" value="{{Request('company')->id}}">
+<h1 class="text_rating_employee"> أضف تعليق</h1>
+<div class="text">
+    <textarea name="notes" id="notes" style="text-align: right;padding:50px"></textarea>
+</div>
+<button class="btn" onclick="sendCompanyNote()">ارسال</button>
 
-                    <div class="box-body">
 
-                        <div class="form-group">
-                            <div for="amount" class="col-xs-4">
-                                <button type="button" class="btn margin" onclick="appendAmount(5)" style="background-color: rgba(255, 51, 0, 0.342)">5 ريال</button>
-                            </div>
-                            <div for="amount" class="col-xs-4">
-                                <button type="button" class="btn margin" onclick="appendAmount(10)" style="background-color: rgba(255, 51, 0, 0.342)">10 ريال</button>
-                            </div>
-                            <div for="amount" class="col-xs-4">
-                                <button type="button" class="btn margin" onclick="appendAmount(20)" style="background-color: rgba(255, 51, 0, 0.342)">20 ريال</button>
-                            </div>
-                        </div>
 
-                        <br>
-                        <br>
-                        <br>
+<h1 class="text_rating_employee" style="margin-top:80px;"> دفع اكرامية</h1>
 
-                        <div class="form-group">
-                            <label for="amount" class="col-md-4">مبلغ اخر</label>
-                            <div class="col-md-4">
-                                <input type="number" name="amount" class="form-control" id="amount" placeholder="ادخل المبلغ" style="background-color: rgba(255, 51, 0, 0.342)">
-                            </div>
-                        </div>
-                    </div>
+<form role="form" action="{{url('guest/payment/pay-for-company')}}" method="POST" class="paying">
+    <input type="hidden" name="client_id" value="{{Request('company')->client_id}}">
+    <input type="hidden" name="company_id" value="{{Request('company')->id}}">
+    @csrf
+    <div>
+        <div class="payingButton">
+            <button type="button" onclick="appendAmount(15)" dir="rtl">15 ريال</button>
+            <button type="button" onclick="appendAmount(10)" dir="rtl">10 ريال</button>
+            <button type="button" onclick="appendAmount(5)" dir="rtl">5 ريال</button>
 
-                    <div class="box-footer" style="margin-bottom: 40px;">
-                        <button type="submit" class="btn" style="
-                    background-color: rgb(248, 82, 40);
-                    border-radius: 10px;
-                    width: 200px;
-                    height: 50px;
-                  ">الانتقال الي صفحة الدفع</button>
+        </div>
+        <br>
+        <br>
 
-                        <button type="button" class="btn btn-default" data-toggle="modal" data-target="#modal-default">
-                            Launch Default Modal
-                        </button>
+        <div>
+            <label for="amount" class="col-md-4">مبلغ اخر</label>
+            <input type="number" name="amount" id="amount" placeholder="ادخل المبلغ" style="background-color: #14bbd8">
+        </div>
 
-                    </div>
-                </form>
+        <div class="apple_pay">
+            <button>
+                <i class="fa-brands fa-apple" style="font-size: 30px;color:#14bbd8;"></i>
+                Apple Pay
+            </button>
+        </div>
+
+        <div class="visa">
+            <div class="input_visa">
+                <input type="text" placeholder="Card Number" style="width:40%;height:50px;border-radius:5px;display:flex;text-align:center;font-size: 14px;transform: scale(1.1);  border: 1px solid blue;">
+                <input type="text" placeholder="MM/YY" style="width:25%;height:50px;border-radius:5px;display:flex;text-align:center;font-size: 14px;transform: scale(1.1);  border: 1px solid blue;">
+                <input type="text" placeholder="CVV" style="width:20%;height:50px;border-radius:5px;display:flex;text-align:center;font-size: 14px;transform: scale(1.1);  border: 1px solid blue;">
+            </div>
+            <div class="input_visa_logo">
+                <img src="{{url('guest/images/')}}/visa-dark-large.svg" alt="" style="width: 20%;height:auto;">
+                <img src="{{url('guest/images/')}}/mastercard-dark-large.svg" alt="" style="width: 20%;height:auto;">
+                <img src="{{url('guest/images/')}}/americanexpress-dark-large.svg" alt="" style="width: 20%;height:auto;">
             </div>
         </div>
+        <button class="pay_btn" type="submit">ادفع</button>
     </div>
-    <div style="text-align: center;">
-        Powered By <a target="_blank" href="https://tiposmart.com">tiposmart.com</a> <br>
-        All Right Resereved <i class="fa fa-copyright"></i> 2023
-    </div>
-</section>
+</form>
+<div style="display:flex;flex-direction:row;letter-spacing: 2p;margin-top:20px;">
 
-<div class="footer-bg">
+    <p style="font-size:18px;color:#fff;font-weight: 200;">Powered by </p>
+    <a href="{{url('/')}}" style="font-size:18px;text-decoration: none;color:#fff61a"> Tiposmart.com</a>
 </div>
 
 
 
-<div class="modal fade" id="modal-default">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span></button>
-                <h4 class="modal-title">Default Modal</h4>
-            </div>
-            <div class="modal-body">
 
-
-                <script src="https://secure.clickpay.com.sa/payment/js/paylib.js"></script>
-
-                <form action="{{url('api/tipo-payed?amount=200')}}" id="payform" method="post">
-                    <span id="paymentErrors"></span>
-                    <div class="row">
-                        <label>Card Number</label>
-                        <input type="text" data-paylib="number" size="20">
-                    </div>
-                    <div class="row">
-                        <label>Expiry Date (MM/YYYY)</label>
-                        <input type="text" data-paylib="expmonth" size="2">
-                        <input type="text" data-paylib="expyear" size="4">
-                    </div>
-                    <div class="row">
-                        <label>Security Code</label>
-                        <input type="text" data-paylib="cvv" size="4">
-                    </div>
-                    <input type="submit" value="Place order">
-                </form>
-
-                <script type="text/javascript">
-                    var myform = document.getElementById('payform');
-                    paylib.inlineForm({
-                        'key': 'C2KMDG-HTKK6H-K92GVT-RDTQ9T',
-                        'form': myform,
-                        'autoSubmit': true,
-                        'callback': function(response) {
-                            document.getElementById('paymentErrors').innerHTML = '';
-                            if (response.error) {
-                                paylib.handleError(document.getElementById('paymentErrors'), response);
-                            }
-                        }
-                    });
-                </script>
-
-
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Close</button>
-            </div>
-        </div>
-        <!-- /.modal-content -->
-    </div>
-    <!-- /.modal-dialog -->
-</div>
 
 
 <script>

@@ -1,6 +1,6 @@
 <?php
 
-use Guest\Http\Controllers\ReviewController;
+use Guest\Http\Controllers\Views\ReviewController;
 use Illuminate\Support\Facades\Route;
 
 

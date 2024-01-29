@@ -24,6 +24,8 @@ class CityMinifiedResource extends JsonResource
             'name_ar' => $this->name_ar,
             'prefix' => $this->prefix,
             'stopped_at' => $this->stopped_at,
+            'active' => $this->stopped_at ? false: true,
+
         ];
     }
 }

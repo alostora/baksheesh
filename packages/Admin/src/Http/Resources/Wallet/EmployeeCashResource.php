@@ -5,6 +5,7 @@ namespace Admin\Http\Resources\Wallet;
 use Admin\Http\Resources\Company\CompanyMinifiedResource;
 use App\Http\Resources\Auth\UserMinifiedResource;
 use Illuminate\Http\Resources\Json\JsonResource;
+use Illuminate\Support\Facades\Lang;
 
 class EmployeeCashResource extends JsonResource
 {
@@ -26,7 +27,7 @@ class EmployeeCashResource extends JsonResource
 
             'employee' => new UserMinifiedResource($this->employee),
 
-            'amount' => $this->amount,
+            'amount' => $this->amount . ' ' .  Lang::get('employee_wallet.SAR'),
 
             'payer_name' => $this->payer_name,
 

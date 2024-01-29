@@ -11,6 +11,7 @@ class CountrySearchCollection
         $active = -1,
         $per_page = SystemDefault::DEFAUL_PAGINATION_COUNT
     ) {
+
         $countries = CountryQueryCollection::searchAllCountries(
             $query_string,
             $active,

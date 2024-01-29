@@ -2,6 +2,7 @@
 
 namespace Admin\Foundations\User;
 
+use App\Foundations\LookupType\AccountTypeCollection;
 use App\Models\User;
 
 class UserQueryCollection
@@ -17,6 +18,10 @@ class UserQueryCollection
 
                 $q
                     ->where('user_account_type_id', $user_account_type_id);
+            } else {
+                $q
+                    ->where('user_account_type_id', AccountTypeCollection::admin()->id)
+                    ->orWhere('user_account_type_id', AccountTypeCollection::root()->id);
             }
 
             if ($query_string && $query_string != -1) {

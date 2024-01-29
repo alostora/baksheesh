@@ -69,7 +69,7 @@ class ClientController extends Controller
     public function edit(User $user)
     {
         $data['user'] = $user;
-        
+
         $data['countries'] = Country::where('type', CountryType::COUNTRY['code'])
             ->where('stopped_at', null)
             ->get();

@@ -92,7 +92,14 @@ class User extends Authenticatable implements MustVerifyEmail
 
     public function getEmployeeQrAttribute()
     {
-        return QrCode::size(120)->generate(url('guest/payment/pay-for-employee/' . $this->id));
+        return QrCode::size(100)->generate(url('guest/payment/pay-for-employee/' . $this->id));
+    }
+
+    protected function createdAt(): Attribute
+    {
+        return Attribute::make(
+            get: fn (string $value) => date('Y-m-d', strtotime($value)),
+        );
     }
 
     protected function password(): Attribute
@@ -172,7 +179,7 @@ class User extends Authenticatable implements MustVerifyEmail
     {
         return $this->hasMany(ClientWithdrawalRequest::class, 'client_id', 'id');
     }
-    
+
     public function acceptedWithdrawal(): HasMany
     {
         $accpted_withdrawalRequest = SystemLookup::where('type', WithdrawalRequestStatus::LOOKUP_TYPE)

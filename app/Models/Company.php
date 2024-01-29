@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Concerns\HasUuids;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -28,6 +29,13 @@ class Company extends Model
 
     ];
 
+    protected function createdAt(): Attribute
+    {
+        return Attribute::make(
+            get: fn (string $value) => date('Y-m-d', strtotime($value)),
+        );
+    }
+
     protected $casts = [
 
         'stopped_at' => 'datetime'
@@ -39,7 +47,7 @@ class Company extends Model
 
     public function getCompanyQrAttribute()
     {
-        return QrCode::size(120)->generate(url('guest/payment/pay-for-company/' . $this->id));
+        return QrCode::size(100)->generate(url('guest/payment/pay-for-company/' . $this->id));
     }
 
     public function client(): BelongsTo

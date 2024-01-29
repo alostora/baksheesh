@@ -39,6 +39,8 @@ class CompanyEmployeeMinifiedResource extends JsonResource
 
             'stopped_at' => $this->stopped_at,
 
+            'active' => $this->stopped_at ? false: true,
+
             'employee_job_name' => $this->employee_job_name,
 
             'company_id' => $this->company_id,

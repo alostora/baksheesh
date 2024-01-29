@@ -27,9 +27,7 @@ class UserController extends Controller
             $request->get('per_page') ? $request->get('per_page') : SystemDefault::DEFAUL_PAGINATION_COUNT
         );
 
-        $data['user_account_types'] = SystemLookup::where('type', UserAccountType::LOOKUP_TYPE)
-            ->where('code', '!=', UserAccountType::EMPLOYEE['code'])
-            ->get();
+        $data['user_account_types'] = AccountTypeCollection::typeListExceptEmployeeAndClient();
 
         return view('Admin/User/index', $data);
     }
@@ -43,9 +41,7 @@ class UserController extends Controller
             $request->get('per_page') ? $request->get('per_page') : SystemDefault::DEFAUL_PAGINATION_COUNT
         );
 
-        $data['user_account_types'] = SystemLookup::where('type', UserAccountType::LOOKUP_TYPE)
-            ->where('code', '!=', UserAccountType::EMPLOYEE['code'])
-            ->get();
+        $data['user_account_types'] = AccountTypeCollection::typeListExceptEmployeeAndClient();
 
         return view('Admin/User/index', $data);
     }
@@ -61,7 +57,7 @@ class UserController extends Controller
 
     public function create()
     {
-        $data['user_account_types'] = AccountTypeCollection::typeListExceptEmployee();
+        $data['user_account_types'] = AccountTypeCollection::typeListExceptEmployeeAndClient();
 
         return view('Admin/User/create', $data);
     }
@@ -76,8 +72,7 @@ class UserController extends Controller
 
     public function edit(User $user)
     {
-        $data['user_account_types'] = AccountTypeCollection::typeListExceptEmployee();
-
+        $data['user_account_types'] = AccountTypeCollection::typeListExceptEmployeeAndClient();
         $data['user'] = $user;
 
         return view('Admin/User/edit', $data);

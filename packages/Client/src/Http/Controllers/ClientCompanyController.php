@@ -6,8 +6,10 @@ use Admin\Http\Resources\Company\CompanyMinifiedResource;
 use Admin\Http\Resources\Company\CompanyResource;
 use App\Constants\StatusCode;
 use App\Constants\SystemDefault;
+use App\Foundations\File\FileDeleteCollection;
 use App\Http\Controllers\Controller;
 use App\Models\Company;
+use App\Models\File;
 use Carbon\Carbon;
 use Client\Foundations\ClientCompany\ClientCompanySearchCollection;
 use Client\Http\Requests\ClientCompany\ClientCompanyCreateApiRequest;
@@ -75,6 +77,13 @@ class ClientCompanyController extends Controller
 
     public function destroy(Company $company)
     {
+
+        if ($company->file_id) {
+
+            $file = File::find($company->file_id);
+
+            FileDeleteCollection::deleteFile($file);
+        }
         $company->delete();
 
         return response()->success(

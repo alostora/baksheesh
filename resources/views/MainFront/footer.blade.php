@@ -1,4 +1,3 @@
-  
 <!-- ./wrapper -->
 
 <!-- jQuery 3 -->
@@ -7,7 +6,7 @@
 <script src="{{url('AdminDesign')}}/bower_components/jquery-ui/jquery-ui.min.js"></script>
 <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
 <script>
-  $.widget.bridge('uibutton', $.ui.button);
+    $.widget.bridge('uibutton', $.ui.button);
 </script>
 <!-- Bootstrap 3.3.7 -->
 <script src="{{url('AdminDesign')}}/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
@@ -22,6 +21,7 @@
 <!-- jQuery Knob Chart -->
 <script src="{{url('AdminDesign')}}/bower_components/jquery-knob/dist/jquery.knob.min.js"></script>
 <!-- daterangepicker -->
+<script src="{{url('AdminDesign')}}/bower_components/jquery-slimscroll/jquery.slimscroll.min.js"></script>
 <script src="{{url('AdminDesign')}}/bower_components/moment/min/moment.min.js"></script>
 <script src="{{url('AdminDesign')}}/bower_components/bootstrap-daterangepicker/daterangepicker.js"></script>
 <!-- datepicker -->
@@ -29,7 +29,6 @@
 <!-- Bootstrap WYSIHTML5 -->
 <script src="{{url('AdminDesign')}}/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.all.min.js"></script>
 <!-- Slimscroll -->
-<script src="{{url('AdminDesign')}}/bower_components/jquery-slimscroll/jquery.slimscroll.min.js"></script>
 <!-- FastClick -->
 <script src="{{url('AdminDesign')}}/bower_components/fastclick/lib/fastclick.js"></script>
 <!-- AdminLTE App -->
@@ -38,5 +37,9 @@
 <!-- AdminLTE for demo purposes -->
 <script src="{{url('AdminDesign')}}/dist/js/demo.js"></script>
 
+
+
+
 </body>
+
 </html>

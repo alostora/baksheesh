@@ -15,10 +15,11 @@ class AccountTypeCollection
                ->get();
      }
 
-     public static function typeListExceptEmployee()
+     public static function typeListExceptEmployeeAndClient()
      {
           return SystemLookup::where('type', UserAccountType::LOOKUP_TYPE)
                ->where('code', '!=', UserAccountType::EMPLOYEE['code'])
+               ->where('code', '!=', UserAccountType::CLIENT['code'])
                ->get();
      }
 

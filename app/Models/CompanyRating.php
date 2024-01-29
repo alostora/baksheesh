@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Concerns\HasUuids;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -31,6 +32,13 @@ class CompanyRating extends Model
 
     ];
 
+    protected function createdAt(): Attribute
+    {
+        return Attribute::make(
+            get: fn (string $value) => date('Y-m-d', strtotime($value)),
+        );
+    }
+
     public function client(): BelongsTo
     {
         return $this->belongsTo(User::class, 'client_id', 'id');
@@ -40,7 +48,7 @@ class CompanyRating extends Model
     {
         return $this->belongsTo(Company::class, 'company_id', 'id');
     }
-    
+
     public function availableRating(): BelongsTo
     {
         return $this->belongsTo(SystemLookup::class, 'rating_id', 'id');

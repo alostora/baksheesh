@@ -9,46 +9,46 @@ use Illuminate\Validation\Rule;
 
 class PayForCompanyRequest extends FormRequest
 {
-     /**
-      * Determine if the user is authorized to make this request.
-      */
-     public function authorize(): bool
-     {
-          return true;
-     }
+    /**
+     * Determine if the user is authorized to make this request.
+     */
+    public function authorize(): bool
+    {
+        return true;
+    }
 
-     /**
-      * Get the validation rules that apply to the request.
-      *
-      * @return array<string, \Illuminate\Contracts\Validation\Rule|array|string>
-      */
-     public function rules(): array
-     {
+    /**
+     * Get the validation rules that apply to the request.
+     *
+     * @return array<string, \Illuminate\Contracts\Validation\Rule|array|string>
+     */
+    public function rules(): array
+    {
 
-          $lookup_account_type_client = SystemLookup::where('type', UserAccountType::LOOKUP_TYPE)
-               ->where('key', UserAccountType::CLIENT['key'])
-               ->first();
+        $lookup_account_type_client = SystemLookup::where('type', UserAccountType::LOOKUP_TYPE)
+            ->where('key', UserAccountType::CLIENT['key'])
+            ->first();
 
-          return [
+        return [
 
-               "client_id" => [
+            "client_id" => [
 
-                    "required", "uuid", "string",
+                "required", "uuid", "string",
 
-                    Rule::exists('users', 'id')->where('user_account_type_id', $lookup_account_type_client->id)
-               ],
+                Rule::exists('users', 'id')->where('user_account_type_id', $lookup_account_type_client->id)
+            ],
 
-               "company_id" => ["required", "uuid", "string", "exists:companies,id"],
+            "company_id" => ["required", "uuid", "string", "exists:companies,id"],
 
-               "amount" => ["bail", "nullable", "integer", "max:100000"],
+            "amount" => ["bail", "nullable", "integer", "max:100000"],
 
-               "payer_name" => ["bail", "nullable", "string", "max:255"],
+            "payer_name" => ["bail", "nullable", "string", "max:255"],
 
-               "payer_email" => ["bail", "nullable", "email", "unique:users,email", "max:255"],
+            "payer_email" => ["bail", "nullable", "email", "unique:users,email", "max:255"],
 
-               "payer_phone" => ["bail", "nullable", "string", "unique:users,phone", "max:255"],
+            "payer_phone" => ["bail", "nullable", "string", "unique:users,phone", "max:255"],
 
-               "notes" => ["bail", "nullable", "string", "unique:users,phone", "max:255"],
-          ];
-     }
+            "notes" => ["bail", "nullable", "string", "unique:users,phone", "max:255"],
+        ];
+    }
 }

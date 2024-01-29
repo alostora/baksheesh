@@ -13,7 +13,9 @@ class ClientEmployeeWalletQueryCollection
         $date_from = -1,
         $date_to = -1,
     ) {
-        return EmployeeCash::where('client_id', auth()->id())
+        return EmployeeCash::where('amount', '>', 0)
+
+            ->where('client_id', auth()->id())
 
             ->where(function ($q) use ($company_id, $employee_id, $date_from, $date_to) {
 

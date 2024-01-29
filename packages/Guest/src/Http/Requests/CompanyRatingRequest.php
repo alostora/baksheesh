@@ -29,7 +29,7 @@ class CompanyRatingRequest extends FormRequest
 
                "rating_id" => ["required", "uuid", "string", "exists:system_lookups,id"],
 
-               "rating_value" => ["bail", "required", "integer", "min:1", "max:5"],
+               "rating_value" => ["bail", "required", "integer", "min:1", "max:2"],
 
                "payer_name" => ["bail", "nullable", "string", "max:255"],
 

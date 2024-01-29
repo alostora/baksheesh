@@ -2,6 +2,7 @@
 
 namespace App\Http\Resources;
 
+use App\Constants\HasLookupType\AllowedLanguages;
 use App\Constants\HasLookupType\LookupType;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
@@ -29,7 +30,7 @@ class SystemLookupResource extends JsonResource
             'code' => $this->code,
             'key' => $this->key,
             'prefix' => $this->prefix,
-            'name' => $this->name,
+            'name' =>  app()->getLocale() == AllowedLanguages::ARABIC['key'] ? $this->name_ar : $this->name,
             'name_ar' => $this->name_ar,
         ];
     }

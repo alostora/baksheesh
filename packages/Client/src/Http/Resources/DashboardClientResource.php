@@ -3,6 +3,7 @@
 namespace Client\Http\Resources;
 
 use Illuminate\Http\Resources\Json\JsonResource;
+use Illuminate\Support\Facades\Lang;
 
 class DashboardClientResource extends JsonResource
 {
@@ -20,11 +21,11 @@ class DashboardClientResource extends JsonResource
 
             'count_active_companies' => $this['count_active_companies'],
 
-            'month_income' => $this['month_income'],
+            'month_income' => $this['month_income'] . ' '  . Lang::get('employee_wallet.SAR'),
 
-            'year_income' => $this['year_income'],
+            'year_income' => $this['year_income'] . ' '  . Lang::get('employee_wallet.SAR'),
 
-            'current_amount' => $this['current_amount'],
+            'current_amount' => $this['current_amount'] . ' '  . Lang::get('employee_wallet.SAR'),
         ];
     }
 }

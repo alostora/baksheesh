@@ -101,14 +101,14 @@
 
                             <tr>
                                 <td> {{$key+1}} </td>
-                                <td> {{$withdrawal_request->id}} </td>
+                                <td> {{substr($withdrawal_request->id, 0, 7)}} </td>
                                 <td> {{$withdrawal_request->client->name}} </td>
                                 <td> {{$withdrawal_request->amount}} </td>
                                 <td>
                                     <label class="label bg-{{$color}}">{{$withdrawal_request->withdrawalRequestStatus->name}}</label>
                                 </td>
                                 <td> {{$withdrawal_request->created_at}} </td>
-                                <td> {{$withdrawal_request->action_at}} </td>
+                                <td> {{$withdrawal_request->updated_at}} </td>
                                 <td> {{$withdrawal_request->bank_transfer_number}} </td>
                                 <td> {{$withdrawal_request->admin_notes}} </td>
                             </tr>

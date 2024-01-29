@@ -21,6 +21,8 @@ class GovernorateWithCityResource extends JsonResource
             'name' => $this->name,
             'prefix' => $this->prefix,
             'stopped_at' => $this->stopped_at,
+'active' => $this->stopped_at ? false: true,
+
             'country' => new CountryMinifiedResource($this->country),
             'cities' => CityMinifiedResource::collection($this->cities),
         ];

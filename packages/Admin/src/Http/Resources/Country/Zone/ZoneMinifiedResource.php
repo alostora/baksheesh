@@ -20,6 +20,8 @@ class ZoneMinifiedResource extends JsonResource
             'name_ar' => $this->name_ar,
             'prefix' => $this->prefix,
             'stopped_at' => $this->stopped_at,
+'active' => $this->stopped_at ? false: true,
+
             'country_id' => $this->country_id,
             'governorate_id' => $this->governorate_id,
             'city_id' => $this->city_id,

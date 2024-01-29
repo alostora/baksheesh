@@ -20,6 +20,8 @@ return [
 
     'amount' => 'مبلغ',
 
+    'total_amount' => 'المبلغ الاجمالي',
+
     'payer_name' => 'اسم طالب الخدمة',
 
     'payer_email' => 'بريد طالب الخدمة',
@@ -29,6 +31,8 @@ return [
     'notes' => 'ملاحظات',
 
     'created_at' => 'تاربخ الدفع',
+
+    'SAR' => 'ريال',
 
 
     //operatoins

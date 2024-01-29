@@ -68,6 +68,7 @@
                                 <th>@lang('withdrawal_request.client')</th>
                                 <th>@lang('withdrawal_request.amount')</th>
                                 <th>@lang('withdrawal_request.status')</th>
+                                <th>@lang('withdrawal_request.operations')</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -93,6 +94,11 @@
                                             {{app()->getLocale() == 'ar' ? $withdrawal_request->withdrawalRequestStatus->name_ar : $withdrawal_request->withdrawalRequestStatus->name}}
                                         </button>
                                     </div>
+                                </td>
+                                <td>
+                                    <a href="{{url('admin/client-withdrawal-request/delete/'.$withdrawal_request->id)}}" class="btn btn-danger btn-sm">
+                                        <i class="fa fa-trash"></i>
+                                    </a>
                                 </td>
                             </tr>
                             @endforeach

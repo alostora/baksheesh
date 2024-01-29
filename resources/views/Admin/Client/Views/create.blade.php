@@ -55,15 +55,7 @@
                   <label for="phone">@lang('client.phone')</label>
                   <input type="text" class="form-control" name="phone" id="phone" placeholder="@lang('client.phone')">
                 </div>
-                <div class="col-md-6">
-                  <label for="address">@lang('client.address')</label>
-                  <input type="text" class="form-control" name="address" id="address" placeholder="@lang('client.address')">
-                </div>
-              </div>
-            </div>
-
-            <div class="row">
-              <div class="form-group">
+              
                 <div class="col-md-6">
                   <label for="password">@lang('client.password')</label>
                   <input type="password" class="form-control" name="password" id="password" placeholder="@lang('client.password')">

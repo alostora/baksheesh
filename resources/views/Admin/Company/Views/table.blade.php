@@ -67,12 +67,10 @@
                         <thead>
                             <tr>
                                 <th>#</th>
+                                <th>@lang('company.qr')</th>
                                 <th>@lang('company.file')</th>
                                 <th>@lang('company.name')</th>
                                 <th>@lang('company.client')</th>
-                                <th>@lang('company.employees')</th>
-                                <th>@lang('company.demo_link')</th>
-                                <th>@lang('company.qr')</th>
                                 <th>@lang('company.operations')</th>
                             </tr>
                         </thead>
@@ -81,29 +79,28 @@
                             @foreach ($companies as $key=>$company)
                             <tr>
                                 <td> {{$key+1}} </td>
+                                <td onclick="PrintElem('{{$company->name}}','{{$company->id}}')">
+                                    <div id="{{$company->id}}">
+
+                                        {!! $company->company_qr !!}
+                                    </div>
+                                </td>
                                 <td>
                                     @if($company->file)
-                                    <img src="{{ url('uploads/'.$company->file->new_name)}}" style="height:50px;width:50px;border-radius:50%">
+                                    <img src="{{ url('uploads/'.$company->file->new_name)}}" style="height:40px;width:40px;border-radius:50%">
                                     @endif
                                 </td>
                                 <td> {{$company->name}} </td>
                                 <td> {{$company->client->name}} </td>
                                 <td>
                                     <a href="{{url('admin/company-employees/search?company_id='.$company->id)}}" class="btn btn-success btn-sm">
-                                        <i class="fa fa-info"></i> @lang('company.employees')
+                                        <i class="fa fa-info"></i> @lang('company.employees') : ( {{$company->employees->count()}} )
                                     </a>
-                                </td>
-                                <td>
+
                                     <a href="{{url('guest/payment/pay-for-company/'.$company->id)}}" target="_blank" class="btn btn-success btn-sm">
                                         <i class="fa fa-link"></i>
                                     </a>
-                                </td>
-                                <td id="{{$company->id}}" onclick="PrintElem('{{$company->name}}','{{$company->id}}')">
 
-                                    {!! $company->company_qr !!}
-
-                                </td>
-                                <td>
                                     <a href="{{url('admin/company/edit/'.$company->id)}}" class="btn btn-success btn-sm">
                                         <i class="fa fa-edit"></i>
                                     </a>
@@ -124,13 +121,11 @@
                             @endif
                         </tbody>
                     </table>
-
                     <div class="box-footer clearfix">
                         <ul class="pagination pagination-sm no-margin pull-right">
                             {{ $companies->render( "pagination::bootstrap-4") }}
                         </ul>
                     </div>
-
                 </div>
             </div>
         </div>
@@ -143,7 +138,7 @@
     function PrintElem(companyName, companyId) {
 
 
-        var mywindow = window.open('', 'PRINT', 'height=400,width=600');
+        var mywindow = window.open('', 'PRINT', );
 
         mywindow.document.write('<html><head><title>' + companyName + '</title>');
         mywindow.document.write('</head><body >');
@@ -155,7 +150,6 @@
         mywindow.focus(); // necessary for IE >= 10*/
 
         mywindow.print();
-        mywindow.close();
 
         return true;
     }

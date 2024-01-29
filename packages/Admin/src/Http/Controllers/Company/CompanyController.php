@@ -50,6 +50,7 @@ class CompanyController extends Controller
         $companies = CompanySearchCollection::searchClientCompanies(
             $user,
             -1,
+            -1,
             $request->get('per_page') ? $request->get('per_page') : SystemDefault::DEFAUL_PAGINATION_COUNT
         );
 
@@ -61,6 +62,7 @@ class CompanyController extends Controller
         $companies = CompanySearchCollection::searchClientCompanies(
             $user,
             $request->get('query_string') ? $request->get('query_string') : -1,
+            $request->get('active') ? $request->get('active') : -1,
             $request->get('per_page') ? $request->get('per_page') : SystemDefault::DEFAUL_PAGINATION_COUNT
         );
 
@@ -116,7 +118,13 @@ class CompanyController extends Controller
 
     public function destroy(Company $company)
     {
-        FileDeleteCollection::deleteFile(File::find($company->file_id));
+
+        if ($company->file_id) {
+
+            $file = File::find($company->file_id);
+
+            FileDeleteCollection::deleteFile($file);
+        }
 
         $company->delete();
 

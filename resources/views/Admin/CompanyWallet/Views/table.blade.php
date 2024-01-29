@@ -62,7 +62,7 @@
                 <div class="box-header">
                     <h3 class="box-title col-md-8">@lang('company_wallet.page_title')</h3>
                     <div class="col-md-4">
-
+                        @lang('company_wallet.total_amount') : {{$wallets->sum('amount')}}
                     </div>
                 </div>
                 <div class="box-body">
@@ -73,8 +73,6 @@
                                 <th>@lang('company_wallet.client')</th>
                                 <th>@lang('company_wallet.company')</th>
                                 <th>@lang('company_wallet.amount')</th>
-                                <th>@lang('company_wallet.payer_name')</th>
-                                <th>@lang('company_wallet.notes')</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -85,8 +83,6 @@
                                 <td> {{$wallet->client->name}} </td>
                                 <td> {{$wallet->company->name}} </td>
                                 <td> {{$wallet->amount}} </td>
-                                <td> {{$wallet->payer_name}} </td>
-                                <td> {{$wallet->notes}} </td>
                             </tr>
                             @endforeach
                             @endif
@@ -104,8 +100,6 @@
         </div>
     </div>
 </section>
-
-
 
 <script>
     function getCompanies(client_id) {
@@ -125,7 +119,7 @@
                 for (let i = 0; i < result.length; i++) {
 
                     $("#company_id").append(`<option value='${result[i].id}'>${result[i].name}</option>`);
-                                    console.log(result[i]);
+                    console.log(result[i]);
 
 
                 }

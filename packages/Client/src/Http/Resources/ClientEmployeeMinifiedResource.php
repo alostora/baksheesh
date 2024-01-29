@@ -7,31 +7,33 @@ use Illuminate\Http\Resources\Json\JsonResource;
 
 class ClientEmployeeMinifiedResource extends JsonResource
 {
-     /**
-      * Transform the resource into an array.
-      *
-      * @param  \Illuminate\Http\Request  $request
-      * @return array|\Illuminate\Contracts\Support\Arrayable|\JsonSerializable
-      */
-     public function toArray($request)
-     {
-          return [
+    /**
+     * Transform the resource into an array.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return array|\Illuminate\Contracts\Support\Arrayable|\JsonSerializable
+     */
+    public function toArray($request)
+    {
+        return [
 
-               'id' => $this->id,
+            'id' => $this->id,
 
-               'client_id' => $this->client_id,
+            'client_id' => $this->client_id,
 
-               'name' => $this->name,
+            'name' => $this->name,
 
-               'email' => $this->email,
+            'email' => $this->email,
 
-               'phone' => $this->phone,
+            'phone' => $this->phone,
 
-               'account_type' => new SystemLookupResource($this->accountType),
+            'account_type' => new SystemLookupResource($this->accountType),
 
-               'created_at' => $this->created_at,
+            'created_at' => $this->created_at,
 
-               'stopped_at' => $this->stopped_at,
-          ];
-     }
+            'stopped_at' => $this->stopped_at,
+
+            'active' => $this->stopped_at ? false : true,
+        ];
+    }
 }

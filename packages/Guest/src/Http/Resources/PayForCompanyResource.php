@@ -3,6 +3,7 @@
 namespace Guest\Http\Resources;
 
 use Illuminate\Http\Resources\Json\JsonResource;
+use Illuminate\Support\Facades\Lang;
 
 class PayForCompanyResource extends JsonResource
 {
@@ -22,7 +23,7 @@ class PayForCompanyResource extends JsonResource
 
                'company_id' => $this->company_id,
 
-               'amount' => $this->amount,
+               'amount' => $this->amount .Lang::get('employee_wallet.SAR'),
 
                'payer_name' => $this->payer_name,
 

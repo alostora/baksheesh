@@ -44,12 +44,17 @@
                                     </label>
                                 </td>
                                 <td>
-                                    <a href="{{url('client/client-withdrawal-request/edit/'.$withdrawal_request->id)}}" class="btn btn-success btn-sm">
-                                        <i class="fa fa-trash"></i>
+                                    {{--
+                                        <a href="{{url('client/client-withdrawal-request/edit/'.$withdrawal_request->id)}}" class="btn btn-success btn-sm">
+                                    <i class="fa fa-trash"></i>
                                     </a>
+
+                                    --}}
+                                    @if($withdrawal_request->withdrawalRequestStatus->code === \App\Constants\HasLookupType\WithdrawalRequestStatus::PENDING['code'])
                                     <a href="{{url('client/client-withdrawal-request/delete/'.$withdrawal_request->id)}}" class="btn btn-danger btn-sm">
                                         <i class="fa fa-trash"></i>
                                     </a>
+                                    @endif
                                 </td>
                             </tr>
                             @endforeach

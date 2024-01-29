@@ -20,6 +20,8 @@ return [
 
     'amount' => 'Amount',
 
+    'total_amount' => 'Total amount',
+
     'payer_name' => 'Payer Name',
 
     'payer_email' => 'Payer Email',
@@ -29,6 +31,8 @@ return [
     'notes' => 'Notes',
 
     'created_at' => 'created_at',
+
+    'SAR' => 'SAR',
 
     //operatoins
     "operations" => "Operations",

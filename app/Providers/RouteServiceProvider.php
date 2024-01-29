@@ -28,7 +28,7 @@ class RouteServiceProvider extends ServiceProvider
         $this->configureRateLimiting();
 
         $this->routes(function () {
-            Route::middleware(['api'])
+            Route::middleware(['api', 'language'])
                 ->prefix('api')
                 ->group(base_path('routes/api.php'));
 
@@ -39,15 +39,15 @@ class RouteServiceProvider extends ServiceProvider
         Route::bind('country', function ($value) {
             return Country::loadCountry($value);
         });
-        
+
         Route::bind('governorate', function ($value) {
             return Country::loadGovernorate($value);
         });
-        
+
         Route::bind('city', function ($value) {
             return Country::loadCity($value);
         });
-        
+
         Route::bind('zone', function ($value) {
             return Country::loadZone($value);
         });

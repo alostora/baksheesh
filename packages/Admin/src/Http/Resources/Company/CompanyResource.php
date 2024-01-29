@@ -31,6 +31,8 @@ class CompanyResource extends JsonResource
 
             'stopped_at' => $this->stopped_at,
 
+            'active' => $this->stopped_at ? false: true,
+
             'client' => new UserMinifiedResource($this->client),
 
             'file' => new FileResource(MainRepo::getFile($this->file)),

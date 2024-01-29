@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Concerns\HasUuids;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -30,6 +31,15 @@ class SystemLookup extends Model
         'code',
 
     ];
+
+
+    protected function name(): Attribute
+    {
+        return Attribute::make(
+            get: fn (string $value) =>  app()->getLocale() == "en" ? $this->attributes['name'] : $this->attributes['name_ar'],
+        );
+    }
+
 
     final static public function findByType($type)
     {

@@ -1,5 +1,5 @@
 </div>
-  <div class="control-sidebar-bg"></div>
+<div class="control-sidebar-bg"></div>
 </div>
 <!-- ./wrapper -->
 
@@ -9,11 +9,12 @@
 <script src="{{url('AdminDesign')}}/bower_components/jquery-ui/jquery-ui.min.js"></script>
 <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
 <script>
-  $.widget.bridge('uibutton', $.ui.button);
+    $.widget.bridge('uibutton', $.ui.button);
 </script>
 <!-- Bootstrap 3.3.7 -->
 <script src="{{url('AdminDesign')}}/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
 <!-- Morris.js charts -->
+
 <script src="{{url('AdminDesign')}}/bower_components/raphael/raphael.min.js"></script>
 <script src="{{url('AdminDesign')}}/bower_components/morris.js/morris.min.js"></script>
 <!-- Sparkline -->
@@ -52,51 +53,84 @@
 <script src="{{url('AdminDesign')}}/lte3/plugins/datatables-buttons/js/buttons.print.min.js"></script>
 <script src="{{url('AdminDesign')}}/lte3/plugins/datatables-buttons/js/buttons.colVis.min.js"></script>
 
-<script>
-  $(function () {
-    // $('#example1').DataTable()
-    // $('#example1').DataTable({
-    //   'paging'      : true,
-    //   'lengthChange': true,
-    //   'searching'   : true,
-    //   'ordering'    : true,
-    //   'info'        : true,
-    //   'autoWidth'   : true,
-    // })
-  })
 
-  $(function () {
-    //Initialize Select2 Elements
-    $('.select2').select2()
-  })
+<script>
+    $(function() {
+        // $('#example1').DataTable()
+        // $('#example1').DataTable({
+        //   'paging'      : true,
+        //   'lengthChange': true,
+        //   'searching'   : true,
+        //   'ordering'    : true,
+        //   'info'        : true,
+        //   'autoWidth'   : true,
+        // })
+    })
+
+    $(function() {
+        //Initialize Select2 Elements
+        $('.select2').select2()
+    })
 </script>
 
 <script>
-  $(function () {
-    $("#example1").DataTable({
-      "responsive": true, "lengthChange": true, "autoWidth": false,
-      "buttons": [/* "copy" */,/*  "csv", */ "excel",/*  "pdf", */ "print",/*  "colvis" */]
-    }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
-    
-    $("#example2").DataTable({
-      "responsive": true,
-      "lengthChange": false,
-      "autoWidth": false,
-      "searching":true,
-      "bPaginate" : false,
-      "bSort" : true,
-      "buttons": [/* "copy" */,/*  "csv", */ "excel",/*  "pdf", */ "print",/*  "colvis" */]
-    }).buttons().container().appendTo('#example2_wrapper .col-md-6:eq(0)');
-    // $('#example2').DataTable({
-    //   "paging": true,
-    //   "lengthChange": false,
-    //   "searching": false,
-    //   "ordering": true,
-    //   "info": true,
-    //   "autoWidth": false,
-    //   "responsive": true,
-    // });
-  });
+    $(function() {
+        $("#example1").DataTable({
+            "responsive": true,
+            "lengthChange": true,
+            "autoWidth": false,
+            "buttons": [ /* "copy" */ , /*  "csv", */ "excel", /*  "pdf", */ "print", /*  "colvis" */ ]
+        }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
+
+        $("#example2").DataTable({
+            "responsive": true,
+            "lengthChange": false,
+            "autoWidth": false,
+            "searching": true,
+            "bPaginate": false,
+            "bSort": true,
+            "buttons": [ /* "copy" */ , /*  "csv", */ "excel", /*  "pdf", */ "print", /*  "colvis" */ ]
+        }).buttons().container().appendTo('#example2_wrapper .col-md-6:eq(0)');
+        // $('#example2').DataTable({
+        //   "paging": true,
+        //   "lengthChange": false,
+        //   "searching": false,
+        //   "ordering": true,
+        //   "info": true,
+        //   "autoWidth": false,
+        //   "responsive": true,
+        // });
+    });
+</script>
+
+
+<script>
+    (function() {
+
+       /*  $('.skin-blue').attr("style", "background-color:#44b783")
+        $('.main-header').attr("style", "background-color:#44b783")
+        $('.navbar').attr("style", "background-color:#44b783")
+        $('.logo').attr("style", "background-color:#44b783")
+        $('.sidebar-toggle').attr("style", "background-color:#44b783")
+
+
+        $('.wrapper').attr("style", "background-color:#44b783")
+        $('.main-sidebar').attr("style", "background-color:#44b783")
+        $('.left-side').attr("style", "background-color:#44b783")
+        $('.sidebar').attr("style", "background-color:#44b783")
+        $('.sidebar-menu').attr("style", "background-color:#44b783")
+        $('.tree').attr("style", "background-color:#44b783")
+        $('.treeview-menu').attr("style", "background-color:#44b783")
+        $('.active').attr("style", "background-color:#44b783")
+        $('.treeview').attr("style", "background-color:#44b783")
+        $('.sidebar-menu>li.active>a').attr("style", "background-color:#44b783")
+        $('.sidebar-menu>li.header').attr("style", "background-color:#44b783")
+        $('.sidebar-menu>li.header>a').attr("style", "background-color:#44b783")
+        $('.treeview-menu>li>a').attr("style", "color:#fff") */
+
+
+    })();
 </script>
 </body>
+
 </html>

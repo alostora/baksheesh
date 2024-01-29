@@ -21,7 +21,13 @@ class CountryController extends Controller
         $countries = CountrySearchCollection::searchCountries(
             -1,
             -1,
-            $request->get('per_page') ?? SystemDefault::DEFAUL_PAGINATION_COUNT
+            $request->get('per_page') ?? 1000
+        );
+
+        return response()->success(
+            trans('country.country_retrived_successfully'),
+            CountryMinifiedResource::collection($countries),
+            StatusCode::OK
         );
 
         return response()->paginated(CountryMinifiedResource::collection($countries));
@@ -32,7 +38,13 @@ class CountryController extends Controller
         $countries = CountrySearchCollection::searchCountries(
             $request->get('query_string') ? $request->get('query_string') : -1,
             $request->get('active') ? $request->get('active') : -1,
-            $request->get('per_page') ?? SystemDefault::DEFAUL_PAGINATION_COUNT
+            $request->get('per_page') ?? 1000
+        );
+
+        return response()->success(
+            trans('country.country_retrived_successfully'),
+            CountryMinifiedResource::collection($countries),
+            StatusCode::OK
         );
 
         return response()->paginated(CountryMinifiedResource::collection($countries));
@@ -71,6 +83,7 @@ class CountryController extends Controller
 
     public function destroy(Country $country)
     {
+        $country->governorates()->delete();
         $country->delete();
 
         return response()->success(
@@ -82,7 +95,7 @@ class CountryController extends Controller
 
     public function active(Country $country)
     {
-        $country->update(['stopped_at'=> null]);
+        $country->update(['stopped_at' => null]);
 
         return response()->success(
             trans('country.country_actived_successfully'),

@@ -45,6 +45,8 @@ class UserMinifiedResource extends JsonResource
 
             'stopped_at' => $this->stopped_at,
 
+            'active' => $this->stopped_at ? false: true,
+
             'avatar' => new FileResource(MainRepo::getFile($file)),
 
             'account_type' => new SystemLookupResource($this->accountType),

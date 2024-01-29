@@ -22,6 +22,8 @@ class CountryWithGovernorateResource extends JsonResource
             'flag' => $this->flag,
             'prefix' => $this->prefix,
             'stopped_at' => $this->stopped_at,
+'active' => $this->stopped_at ? false: true,
+
             'governorates' => GovernorateMinifiedResource::collection($this->governorates),
         ];
     }
