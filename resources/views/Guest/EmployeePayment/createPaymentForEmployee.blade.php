@@ -72,7 +72,7 @@
         <br>
         <br>
 
-        <div>
+        <div style="display: none;">
             <label for="amount" class="col-md-4">مبلغ اخر</label>
             <input type="number" name="amount" id="amount" placeholder="ادخل المبلغ" style="background-color: #14bbd8">
         </div>

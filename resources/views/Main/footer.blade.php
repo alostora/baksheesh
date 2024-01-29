@@ -107,26 +107,16 @@
 <script>
     (function() {
 
-       /*  $('.skin-blue').attr("style", "background-color:#44b783")
-        $('.main-header').attr("style", "background-color:#44b783")
-        $('.navbar').attr("style", "background-color:#44b783")
-        $('.logo').attr("style", "background-color:#44b783")
-        $('.sidebar-toggle').attr("style", "background-color:#44b783")
+        $('.skin-blue').attr("style", "background-color:#77cfb7")
+        $('.main-header').attr("style", "background-color:#77cfb7")
+        $('.navbar').attr("style", "background-color:#77cfb7")
+        $('.logo').attr("style", "background-color:#77cfb7")
 
+        $('.wrapper').attr("style", "background-color:#404e67")
+        $('.main-sidebar').attr("style", "background-color:#19253a")
 
-        $('.wrapper').attr("style", "background-color:#44b783")
-        $('.main-sidebar').attr("style", "background-color:#44b783")
-        $('.left-side').attr("style", "background-color:#44b783")
-        $('.sidebar').attr("style", "background-color:#44b783")
-        $('.sidebar-menu').attr("style", "background-color:#44b783")
-        $('.tree').attr("style", "background-color:#44b783")
-        $('.treeview-menu').attr("style", "background-color:#44b783")
-        $('.active').attr("style", "background-color:#44b783")
-        $('.treeview').attr("style", "background-color:#44b783")
-        $('.sidebar-menu>li.active>a').attr("style", "background-color:#44b783")
-        $('.sidebar-menu>li.header').attr("style", "background-color:#44b783")
-        $('.sidebar-menu>li.header>a').attr("style", "background-color:#44b783")
-        $('.treeview-menu>li>a').attr("style", "color:#fff") */
+        $('.treeview-menu>li>a').attr("style", "color:#3ba78a")
+        $('.sidebar-menu>li.active>a').attr("style", "color:#37f8c5")
 
 
     })();

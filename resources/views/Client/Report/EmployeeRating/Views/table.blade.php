@@ -70,7 +70,9 @@
                                 <td> {{$employee_rating->company->name}} </td>
                                 <td> {{$employee_rating->employee->name}} </td>
                                 <td> {{$employee_rating->availableRating->name}} </td>
-                                <td> {{$employee_rating->rating_value}} </td>
+                                <td>
+                                    {!! $employee_rating->rating_value === 1 ? '<label class="label label-danger" style="font-size:12px">bad</label>' : '<label class="label label-success" style="font-size:12px">good</label>' !!}
+                                </td>
                                 <td> {{$employee_rating->payer_name}} </td>
                                 <td> {{$employee_rating->created_at}} </td>
                             </tr>

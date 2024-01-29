@@ -8,17 +8,17 @@
                 <img src="{{url('AdminDesign')}}/dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
             </div>
             <div class="pull-left info">
-                <p>{{auth()->user()->name}}</p>
-                <a href="#"><i class="fa fa-circle text-success"></i>@lang('sidebar.online')</a>
+                <p style="color:#37f8c5">{{auth()->user()->name}}</p>
+                <a href="#" style="color:#37f8c5"><i class="fa fa-circle text-success"></i>@lang('sidebar.online')</a>
             </div>
         </div>
         <ul class="sidebar-menu" data-widget="tree">
 
             <li class="header">
                 @if(in_array(auth()->user()->accountType->code,[\App\Constants\HasLookupType\UserAccountType::ADMIN['code'],\App\Constants\HasLookupType\UserAccountType::ROOT['code']]))
-                <a href="{{url('admin')}}">@lang('sidebar.home')</a>
+                <a href="{{url('admin')}}" style="color:#37f8c5">@lang('sidebar.home')</a>
                 @elseif(in_array(auth()->user()->accountType->code,[\App\Constants\HasLookupType\UserAccountType::CLIENT['code']]))
-                <a href="{{url('client')}}">@lang('sidebar.home')</a>
+                <a href="{{url('client')}}" style="color:#37f8c5">@lang('sidebar.home')</a>
                 @endif
 
             </li>
