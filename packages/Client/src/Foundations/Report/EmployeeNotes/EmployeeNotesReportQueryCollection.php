@@ -20,6 +20,9 @@ class EmployeeNotesReportQueryCollection
 
                     $q
                         ->where('notes', 'like', '%' . $query_string . '%');
+                } else {
+                    $q
+                        ->where('notes', '!=', null);
                 }
 
                 if ($date_from && $date_from != -1 && $date_to && $date_to != -1) {

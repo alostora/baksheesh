@@ -1,118 +1,110 @@
-<main class="bg">
+<div class="logo_bg">
+    @if($employee->file)
+    <img class="img-logo" src="{{ url('uploads/'.$employee->company->file->new_name)}}" alt="" height="150px;width:150px">
+    @endif
+</div>
 
-    <div class="logo_bg">
-        @if($employee->file)
-        <img class="img-logo" src="{{ url('uploads/'.$employee->company->file->new_name)}}" alt="" height="150px;width:150px">
-        @endif
+<div class="employee_bg">
 
+    <img class="employee_img" src="{{ url('uploads/'.$employee->file->new_name)}}" alt="">
+    <div class="back_employee_img">
+        <h1 class="name_employee">{{$employee->name}}</h1>
+        <h3 class="job_name">{{$employee->employee_job_name}}</h3>
     </div>
 
-    <div class="employee_bg">
+    <div class="icons">
+        <i class="fas fa-regular fa-star" style="font-size:16px;color:#f7ef31; "></i>
+        <i class="fas fa-regular fa-star" style="font-size:16px;color:#f7ef31; "></i>
+        <i class="fas fa-regular fa-star" style="font-size:16px;color:#f7ef31; "></i>
+        <i class="fas fa-regular fa-star" style="font-size:16px;color:#f7ef31; "></i>
+        <i class="fas fa-regular fa-star" style="font-size:16px;color:#f7ef31; "></i>
+    </div>
+</div>
 
-        <img class="employee_img" src="{{ url('uploads/'.$employee->file->new_name)}}" alt="">
-        <div class="back_employee_img">
-            <h1 class="name_employee">{{$employee->name}}</h1>
-            <h3 class="job_name">{{$employee->employee_job_name}}</h3>
+<h1 class="text_rating_employee">تقييم الموظف</h1>
+
+<div class="bg_rating_employee">
+    <div class="box-body">
+        @foreach($employee_available_ratings as $key=>$employee_available_rating)
+        <div class="rating_1">
+            <div style="display:flex;margin-right:40px;margin-top:10px;padding-left:10px;">
+                <label>
+                    @foreach([1,2] as $i)
+
+                    <?php $image = $i == 1 ? 'Happy' : 'Sad' ?>
+
+                    <input type="radio" class="{{$key.'__'.$i}}" name="{{$employee_available_rating->id}}" value="{{$i}}" onclick="postRate(this)" style="display:none">
+                    <img src="{{url('guest/images/'.$image.'.png')}}" style="font-size:50px;color:#fff; padding:5px; width:70px;height:70px; border-radius:100px;" id="{{$key.'__'.$i}}" />
+
+                    @endforeach
+                </label>
+
+            </div>
+            <h3 class="rate_name">{{$employee_available_rating->name_ar}}</h3>
+        </div>
+        @endforeach
+    </div>
+</div>
+
+
+<h1 class="text_rating_employee"> أضف تعليق</h1>
+<div class="text">
+    <textarea name="notes" id="notes" style="text-align: right;padding:50px"></textarea>
+</div>
+<button class="btn" onclick="sendEmployeeNote()">ارسال</button>
+
+
+
+<h1 class="text_rating_employee" style="margin-top:70px;"> دفع اكرامية</h1>
+<form role="form" action="{{url('guest/payment/pay-for-employee')}}" method="POST" class="paying">
+    <input type="hidden" name="client_id" value="{{Request('user')->client_id}}">
+    <input type="hidden" name="company_id" value="{{Request('user')->company_id}}">
+    <input type="hidden" name="employee_id" value="{{Request('user')->id}}">
+    @csrf
+    <div>
+        <div class="payingButton">
+            <button type="button" onclick="appendAmount(15)" dir="rtl">15 ريال</button>
+            <button type="button" onclick="appendAmount(10)" dir="rtl">10 ريال</button>
+            <button type="button" onclick="appendAmount(5)" dir="rtl">5 ريال</button>
+
         </div>
 
-        <div class="icons">
-            <i class="fas fa-regular fa-star" style="font-size:16px;color:#f7ef31; "></i>
-            <i class="fas fa-regular fa-star" style="font-size:16px;color:#f7ef31; "></i>
-            <i class="fas fa-regular fa-star" style="font-size:16px;color:#f7ef31; "></i>
-            <i class="fas fa-regular fa-star" style="font-size:16px;color:#f7ef31; "></i>
-            <i class="fas fa-regular fa-star" style="font-size:16px;color:#f7ef31; "></i>
+        <br>
+        <br>
+
+        <div>
+            <label for="amount" class="col-md-4">مبلغ اخر</label>
+            <input type="number" name="amount" id="amount" placeholder="ادخل المبلغ" style="background-color: #14bbd8">
         </div>
-    </div>
 
-    <h1 class="text_rating_employee">تقييم الموظف</h1>
-
-    <div class="bg_rating_employee">
-        <div class="box-body">
-            @foreach($employee_available_ratings as $key=>$employee_available_rating)
-            <div class="rating_1">
-                <div style="  display: flex;margin-right:40px;margin-top:10px;padding-left:10px;">
-                    <label>
-                        @foreach([1,2] as $i)
-
-                        <?php $image = $i == 1 ? 'smile' : 'sad' ?>
-
-                        <input type="radio" class="{{$key.'__'.$i}}" name="{{$employee_available_rating->id}}" value="{{$i}}" onclick="postRate(this)" style="display:none">
-                        <img src="{{url('guest/images/'.$image.'.png')}}" alt="" style="font-size:50px;color:#fff; padding:5px; width:70px;height:70px; border-radius:100px; " id="{{$key.'__'.$i}}" />
-
-                        @endforeach
-                    </label>
-
-                </div>
-                <h3 class="rate_name">{{$employee_available_rating->name_ar}}</h3>
-            </div>
-            @endforeach
+        <div class="apple_pay">
+            <button>
+                <i class="fa-brands fa-apple" style="font-size: 30px;color:#14bbd8;"></i>
+                Apple Pay
+            </button>
         </div>
-    </div>
 
 
-    <h1 class="text_rating_employee"> أضف تعليق</h1>
-    <div class="text">
-        <textarea name="notes" id="notes" placeholder="اكتب تعليقا مناسبا"></textarea>
-    </div>
-    <button class="btn" onclick="sendEmployeeNote()">ارسال</button>
-
-
-
-    <h1 class="text_rating_employee" style="margin-top:70px;"> دفع اكرامية</h1>
-    <form role="form" action="{{url('guest/payment/pay-for-employee')}}" method="POST">
-        <input type="hidden" name="client_id" value="{{Request('user')->client_id}}">
-        <input type="hidden" name="company_id" value="{{Request('user')->company_id}}">
-        <input type="hidden" name="employee_id" value="{{Request('user')->id}}">
-        @csrf
-        <div class="paying">
-            <div class="payingButton">
-                <button type="button" onclick="appendAmount(15)" dir="rtl">15 ريال</button>
-                <button type="button" onclick="appendAmount(10)" dir="rtl">10 ريال</button>
-                <button type="button" onclick="appendAmount(5)" dir="rtl">5 ريال</button>
-
+        <div class="visa">
+            <div class="input_visa">
+                <input type="text" placeholder="Card Number" style="width:40%;height:50px;border-radius:5px;display:flex;text-align:center;font-size: 14px;transform: scale(1.1);  border: 1px solid blue;">
+                <input type="text" placeholder="MM/YY" style="width:25%;height:50px;border-radius:5px;display:flex;text-align:center;font-size: 14px;transform: scale(1.1);  border: 1px solid blue;">
+                <input type="text" placeholder="CVV" style="width:20%;height:50px;border-radius:5px;display:flex;text-align:center;font-size: 14px;transform: scale(1.1);  border: 1px solid blue;">
             </div>
-
-            <br>
-            <br>
-            <br>
-
-            <div class="form-group">
-                <label for="amount" class="col-md-4">مبلغ اخر</label>
-                <div class="col-md-4">
-                    <input type="number" name="amount" class="form-control" id="amount" placeholder="ادخل المبلغ" style="background-color: #14bbd8">
-                </div>
-            </div>
-            <div class="apple_pay">
-                <button>
-                    <i class="fa-brands fa-apple" style="font-size:40px;margin-right:50px;color:#14bbd8"></i>
-                    Apple Pay
-                </button>
-            </div>
-            <div class="visa">
-                <div class="input_visa">
-                    <input type="text" placeholder="Card Number" style="width:40%;height:50px;border-radius:5px;display:flex;text-align:center;font-size: 20px;">
-                    <input type="text" placeholder="MM/YY" style="width:25%;height:50px;border-radius:5px;display:flex;text-align:center;font-size: 20px;">
-                    <input type="text" placeholder="CVV" style="width:20%;height:50px;border-radius:5px;display:flex;text-align:center;font-size: 20px;">
-                </div>
-                <div class="input_visa">
-                    <img src="./images/visa.png" alt="" style="width: 20%;">
-                    <img src="./images/master.png" alt="" style="width: 20%;">
-                    <img src="./images/visa.png" alt="" style="width: 20%;">
-                </div>
-                <button class="pay_btn">ادفع</button>
-
+            <div class="input_visa_logo">
+                <img src="{{url('guest/images/')}}/visa-dark-large.svg" alt="" style="width: 20%;height:auto;">
+                <img src="{{url('guest/images/')}}/mastercard-dark-large.svg" alt="" style="width: 20%;height:auto;">
+                <img src="{{url('guest/images/')}}/americanexpress-dark-large.svg" alt="" style="width: 20%;height:auto;">
             </div>
         </div>
-    </form>
-    <div style="display:flex;flex-direction:row;">
-        <span style="font-size:16px;color:#fff;font-weight: 200;">Powered by </span>
-        <dev></dev>
-        <a href="url" style="font-size:16px;text-decoration: none;color:#f7ef31">Tiposmart.com</a>
+        <button class="pay_btn" type="submit">ادفع</button>
     </div>
+</form>
+<div style="display:flex;flex-direction:row;letter-spacing: 2p;margin-top:20px;">
 
-</main>
-
-
+    <p style="font-size:18px;color:#fff;font-weight: 200;">Powered by </p>
+    <a href="{{url('/')}}" style="font-size:18px;text-decoration: none;color:#fff61a"> Tiposmart.com</a>
+</div>
 
 
 <script>

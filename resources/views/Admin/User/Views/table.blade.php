@@ -95,7 +95,6 @@
                                 <th>@lang('user.name')</th>
                                 <th>@lang('user.email')</th>
                                 <th>@lang('user.phone')</th>
-                                <th>@lang('user.withdrawal_requests')</th>
                                 <th>@lang('user.account_type')</th>
                                 <th>@lang('user.operations')</th>
                             </tr>
@@ -108,18 +107,6 @@
                                 <td> {{$user->name}} </td>
                                 <td> {{$user->email}} </td>
                                 <td> {{$user->phone}} </td>
-                                <td>
-                                    @if(
-                                    $user->accountType && $user->accountType->code == \App\Constants\HasLookupType\UserAccountType::CLIENT['code'] &&
-                                    count($user->withdrawalRequests)
-                                    )
-                                    <a href="{{url('admin/client-withdrawal-requests/'.$user->id)}}" class="btn btn-success btn-sm">
-                                        <i class="fa fa-info"></i> @lang('user.withdrawal_requests')
-                                    </a>
-                                    @else
-                                    <label class="label label-default">@lang('user.empty')</label>
-                                    @endif
-                                </td>
                                 <td> {{$user->accountType ? $user->accountType->name : ''}} </td>
                                 <td>
                                     <a href="{{url('admin/user/edit/'.$user->id)}}" class="btn btn-success btn-sm">

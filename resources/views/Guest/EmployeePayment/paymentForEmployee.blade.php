@@ -12,19 +12,24 @@
     <script src="https://kit.fontawesome.com/yourcode.js" crossorigin="anonymous"></script>
     <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@200;300;400;500;700;700;800;900;1000&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="{{url('guest/payment-style.css')}}">
+    <link rel="stylesheet" href="{{url('guest/style.css')}}">
     <title>Tipo smart</title>
+    <script src="{{url('AdminDesign/bower_components/jquery/dist/jquery.min.js')}}"></script>
 </head>
 
 <body>
-@include('MainFront.header')
+    <main class="bg">
 
 
-    @include('Guest.EmployeePayment.createPaymentForEmployee')
-
-@include('MainFront.footer')
+        @include('Guest.EmployeePayment.createPaymentForEmployee')
 
 
+        <script src="{{url('AdminDesign')}}/bower_components/jquery-sparkline/dist/jquery.sparkline.min.js"></script>
+        <script src="{{url('AdminDesign')}}/plugins/jvectormap/jquery-jvectormap-1.2.2.min.js"></script>
+        <script src="{{url('AdminDesign')}}/plugins/jvectormap/jquery-jvectormap-world-mill-en.js"></script>
+        <script src="{{url('AdminDesign')}}/bower_components/jquery-knob/dist/jquery.knob.min.js"></script>
+        <script src="{{url('AdminDesign')}}/bower_components/jquery-slimscroll/jquery.slimscroll.min.js"></script>
+    </main>
 </body>
 
 </html>

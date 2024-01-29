@@ -2,7 +2,6 @@
     @if($company->file)
     <img class="img-logo" src="{{ url('uploads/'.$company->file->new_name)}}" alt="" height="150px;width:150px">
     @endif
-
 </div>
 
 <div class="employee_bg">
@@ -35,7 +34,7 @@
                     <?php $image = $i == 1 ? 'Happy' : 'Sad' ?>
 
                     <input type="radio" class="{{$key.'__'.$i}}" name="{{$company_available_rating->id}}" value="{{$i}}" onclick="postRate(this)" style="display:none">
-                    <img src="{{url('guest/images/'.$image.'.png')}}" alt="" style="padding:5px; width:80px;height:80;border:1px solid #fff61a; " id="{{$key.'__'.$i}}" />
+                    <img src="{{url('guest/images/'.$image.'.png')}}" style="font-size:50px;color:#fff; padding:5px; width:70px;height:70px; border-radius:100px; " id="{{$key.'__'.$i}}" />
 
                     @endforeach
                 </label>
@@ -104,9 +103,6 @@
     <p style="font-size:18px;color:#fff;font-weight: 200;">Powered by </p>
     <a href="{{url('/')}}" style="font-size:18px;text-decoration: none;color:#fff61a"> Tiposmart.com</a>
 </div>
-
-
-
 
 
 

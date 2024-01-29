@@ -59,13 +59,26 @@
 
                     </div>
                 </div>
+
+                <div class="box">
+                    <div class="box-body">
+                        <div class="col-sm-4 col-md-2">
+                            <div class="color-palette-set">
+                                <div class="bg-green disabled color-palette">
+                                    <span>
+                                        @lang('sidebar.withdrawal_requests') : {{$withdrawal_requests ? $withdrawal_requests->count() : 0}}
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
                 <div class="box-body">
                     <table id="example2" class="table table-bordered table-striped">
                         <thead>
                             <tr>
                                 <th>#</th>
                                 <th>@lang('withdrawal_request.reference_code')</th>
-                                <th>@lang('withdrawal_request.client')</th>
                                 <th>@lang('withdrawal_request.amount')</th>
                                 <th>@lang('withdrawal_request.status')</th>
                                 <th>@lang('withdrawal_request.created_at')</th>
@@ -88,14 +101,13 @@
 
                             <tr>
                                 <td> {{$key+1}} </td>
-                                <td> {{$withdrawal_request->id}} </td>
-                                <td> {{$withdrawal_request->client->name}} </td>
+                                <td> {{substr($withdrawal_request->id, 0, 7)}} </td>
                                 <td> {{$withdrawal_request->amount}} </td>
                                 <td>
                                     <label class="label bg-{{$color}}">{{$withdrawal_request->withdrawalRequestStatus->name}}</label>
                                 </td>
                                 <td> {{$withdrawal_request->created_at}} </td>
-                                <td> {{$withdrawal_request->action_at}} </td>
+                                <td> {{$withdrawal_request->updated_at}} </td>
                                 <td> {{$withdrawal_request->bank_transfer_number}} </td>
                                 <td> {{$withdrawal_request->admin_notes}} </td>
                             </tr>

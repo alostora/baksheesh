@@ -4,6 +4,7 @@ namespace Client\Http\Controllers\Views;
 
 use App\Constants\StatusCode;
 use App\Constants\SystemDefault;
+use App\Foundations\LookupType\WithdrawalRequestStatusCollection;
 use App\Http\Controllers\Controller;
 use App\Models\ClientWithdrawalRequest;
 use Client\Foundations\ClientWithdrawalRequest\ClientWithdrawalRequestCreateCollection;
@@ -26,6 +27,8 @@ class ClientWithdrawalRequestController extends Controller
             $request->get('per_page') ? $request->get('per_page') : SystemDefault::DEFAUL_PAGINATION_COUNT
         );
 
+        $data['withdrawal_request_status'] = WithdrawalRequestStatusCollection::statusList();
+
         return view('Client/ClientWithdrawalRequest/index', $data);
     }
 
@@ -38,6 +41,8 @@ class ClientWithdrawalRequestController extends Controller
             $request->get('date_to') ? $request->get('date_to') : -1,
             $request->get('per_page') ? $request->get('per_page') : SystemDefault::DEFAUL_PAGINATION_COUNT
         );
+
+        $data['withdrawal_request_status'] = WithdrawalRequestStatusCollection::statusList();
 
         return view('Client/ClientWithdrawalRequest/index', $data);
     }
