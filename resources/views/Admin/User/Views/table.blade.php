@@ -64,6 +64,29 @@
                     </div>
                 </div>
 
+                <div class="box">
+                    <div class="box-body">
+                        <div class="col-sm-4 col-md-2">
+                            <div class="color-palette-set">
+                                <div class="bg-red disabled color-palette">
+                                    <span>
+                                        @lang('user.inactive') : {{$users ? $users->where('stopped_at','!=',null)->count() : 0}}
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-4 col-md-2">
+                            <div class="color-palette-set">
+                                <div class="bg-green disabled color-palette">
+                                    <span>
+                                        @lang('user.active') : {{$users ? $users->where('stopped_at',null)->count() : 0}}
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
                 <div class="box-body">
                     <table id="example2" class="table table-bordered table-striped">
                         <thead>
