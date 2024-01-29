@@ -9,7 +9,7 @@ use App\Models\User;
 
 class SideBarCollection
 {
-    public static function sideBarInfo()
+    public static function adminSideBarInfo()
     {
         $adminIds =  SystemLookup::where('type', UserAccountType::LOOKUP_TYPE)
             ->where('code', '!=', UserAccountType::EMPLOYEE['code'])
@@ -29,6 +29,24 @@ class SideBarCollection
             ->count();
 
         $data['companies_count'] = Company::where('stopped_at', null)
+            ->count();
+
+        return $data;
+    }
+
+    public static function clientSideBarInfo()
+    {
+        $employeeId =  SystemLookup::where('type', UserAccountType::LOOKUP_TYPE)
+            ->where('code', UserAccountType::EMPLOYEE['code'])
+            ->first()->id;
+
+        $data['employees_count'] = User::where('client_id', auth()->id())
+            ->where('user_account_type_id', $employeeId)
+            ->where('stopped_at', null)
+            ->count();
+
+        $data['companies_count'] = Company::where('client_id', auth()->id())
+            ->where('stopped_at', null)
             ->count();
 
         return $data;

@@ -82,7 +82,6 @@
                             {{ $wallets->render( "pagination::bootstrap-4") }}
                         </ul>
                     </div>
-
                 </div>
             </div>
         </div>

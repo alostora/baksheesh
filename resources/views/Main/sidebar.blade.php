@@ -1,9 +1,6 @@
 <aside class="main-sidebar">
 
 
-    <?php
-    $info = \App\Foundations\SideBar\SideBarCollection::sideBarInfo();
-    ?>
 
     <section class="sidebar">
         <div class="user-panel">
@@ -27,6 +24,10 @@
             </li>
 
             @if(in_array(auth()->user()->accountType->code,[\App\Constants\HasLookupType\UserAccountType::ADMIN['code'],\App\Constants\HasLookupType\UserAccountType::ROOT['code']]))
+
+            <?php
+            $info = \App\Foundations\SideBar\SideBarCollection::adminSideBarInfo();
+            ?>
 
             <li class="active treeview">
 
@@ -136,6 +137,12 @@
 
             @elseif(in_array(auth()->user()->accountType->code,[\App\Constants\HasLookupType\UserAccountType::CLIENT['code']]))
 
+
+            <?php
+            $info = \App\Foundations\SideBar\SideBarCollection::clientSideBarInfo();
+            ?>
+
+
             <li class="active treeview">
 
                 <a href="#">
@@ -150,6 +157,17 @@
                     <li>
                         <a href="{{url('client/client-companies')}}">
                             <i class="fa fa-circle-o"></i>@lang('sidebar.companies')
+                            <span class="pull-right-container">
+                                <small class="label pull-right bg-primary">{{$info['companies_count']}}</small>
+                            </span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{{url('client/client-company-employees/search')}}">
+                            <i class="fa fa-circle-o"></i>@lang('sidebar.employees')
+                            <span class="pull-right-container">
+                                <small class="label pull-right bg-green">{{$info['employees_count']}}</small>
+                            </span>
                         </a>
                     </li>
 

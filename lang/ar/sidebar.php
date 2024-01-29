@@ -27,7 +27,7 @@ return [
      "reports" => "التقارير",
 
      "company_wallet_report" => " الاكراميات المحصلة للشركات",
-     
+
      "employee_wallet_report" => " الاكراميات المحصلة للموظفين",
 
      "withdrawal_requests" => "طلبات السحب",
@@ -41,5 +41,7 @@ return [
      "employee_rating_report" => "تقارير تقييم الموظفين ",
 
      "employee_notes_report" => "تقارير ملاحظات العملاء ",
+     
+     "employees" => "الموظفون ",
 
 ];
