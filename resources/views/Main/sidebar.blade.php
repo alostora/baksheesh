@@ -14,14 +14,14 @@
         </div> -->
         <ul class="sidebar-menu" data-widget="tree">
 
-            <!-- <li class="header">
+            <li class="header">
                 @if(in_array(auth()->user()->accountType->code,[\App\Constants\HasLookupType\UserAccountType::ADMIN['code'],\App\Constants\HasLookupType\UserAccountType::ROOT['code']]))
                 <a href="{{url('admin')}}">@lang('sidebar.home')</a>
                 @elseif(in_array(auth()->user()->accountType->code,[\App\Constants\HasLookupType\UserAccountType::CLIENT['code']]))
                 <a href="{{url('client')}}">@lang('sidebar.home')</a>
                 @endif
 
-            </li> -->
+            </li>
 
             @if(in_array(auth()->user()->accountType->code,[\App\Constants\HasLookupType\UserAccountType::ADMIN['code'],\App\Constants\HasLookupType\UserAccountType::ROOT['code']]))
 
