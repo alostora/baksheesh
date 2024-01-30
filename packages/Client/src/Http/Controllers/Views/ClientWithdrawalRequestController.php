@@ -19,30 +19,26 @@ class ClientWithdrawalRequestController extends Controller
 
     public function index(Request $request)
     {
-        $data['withdrawal_requests'] = ClientWithdrawalRequestSearchCollection::searchWithdrawalRequests(
+        $data = ClientWithdrawalRequestSearchCollection::searchWithdrawalRequests(
             -1,
             -1,
             -1,
             -1,
             $request->get('per_page') ? $request->get('per_page') : SystemDefault::DEFAUL_PAGINATION_COUNT
         );
-
-        $data['withdrawal_request_status'] = WithdrawalRequestStatusCollection::statusList();
 
         return view('Client/ClientWithdrawalRequest/index', $data);
     }
 
     public function search(Request $request)
     {
-        $data['withdrawal_requests'] = ClientWithdrawalRequestSearchCollection::searchWithdrawalRequests(
+        $data = ClientWithdrawalRequestSearchCollection::searchWithdrawalRequests(
             $request->get('status') ? $request->get('status') : -1,
             $request->get('amount') ? $request->get('amount') : -1,
             $request->get('date_from') ? $request->get('date_from') : -1,
             $request->get('date_to') ? $request->get('date_to') : -1,
             $request->get('per_page') ? $request->get('per_page') : SystemDefault::DEFAUL_PAGINATION_COUNT
         );
-
-        $data['withdrawal_request_status'] = WithdrawalRequestStatusCollection::statusList();
 
         return view('Client/ClientWithdrawalRequest/index', $data);
     }

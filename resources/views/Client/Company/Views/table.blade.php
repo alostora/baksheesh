@@ -100,6 +100,11 @@
                                 <td> {{$company->name}} </td>
                                 <td>
 
+
+                                    <a href="{{url('client/company-wallets?company_id='.$company->id)}}" class="btn btn-success btn-sm">
+                                        <i class="fa fa-info"></i> @lang('general.wallet') : ( {{$company->cash->sum('amount')}} )
+                                    </a>
+
                                     <a href="{{url('client/client-company-employees/search?company_id='.$company->id)}}" class="btn btn-success btn-sm">
                                         <i class="fa fa-info"></i> @lang('company.employees') : ( {{$company->employees->count()}} )
                                     </a>

@@ -54,4 +54,11 @@ return [
     "inactive" => "غير نشط",
 
     "change_withdrawal_request_status" => "تغير حالة طلب السحب",
+
+    "total" => "الاجمالي",
+    "pending" => "انتظار",
+    "accepted" => "تمت الموافقه",
+    "implemented" => "implemented",
+    "refused" => "مرفوض",
+    "unexecutable" => "تعذر التنفيذ",
 ];

@@ -3,6 +3,8 @@
 namespace Admin\Foundations\Company;
 
 use App\Constants\SystemDefault;
+use App\Foundations\LookupType\AccountTypeCollection;
+use App\Models\Company;
 use App\Models\User;
 
 class CompanySearchCollection
@@ -13,13 +15,21 @@ class CompanySearchCollection
         $active = -1,
         $per_page = SystemDefault::DEFAUL_PAGINATION_COUNT
     ) {
-        $companies = CompanyQueryCollection::searchAllCompanies(
+        $data['companies'] = CompanyQueryCollection::searchAllCompanies(
             $client_id,
             $query_string,
             $active,
-        );
+        )->paginate($per_page);
 
-        return $companies->paginate($per_page);
+        $data['count_active'] = Company::where('stopped_at', null)->count();
+
+        $data['count_inactive'] = Company::where('stopped_at', '!=', null)->count();
+
+        $client_type = AccountTypeCollection::client();
+
+        $data['clients'] = User::where('user_account_type_id', $client_type->id)->get();
+
+        return $data;
     }
 
     public static function searchClientCompanies(
@@ -28,13 +38,21 @@ class CompanySearchCollection
         $active = -1,
         $per_page = SystemDefault::DEFAUL_PAGINATION_COUNT
     ) {
-        $companies = CompanyQueryCollection::searchAllClientCompanies(
+        $data['companies'] = CompanyQueryCollection::searchAllClientCompanies(
             $user,
             $query_string,
             $active
-        );
+        )->paginate($per_page);
 
-        return $companies->paginate($per_page);
+        $data['count_active'] = Company::where('stopped_at', null)->count();
+
+        $data['count_inactive'] = Company::where('stopped_at', '!=', null)->count();
+
+        $client_type = AccountTypeCollection::client();
+
+        $data['clients'] = User::where('user_account_type_id', $client_type->id)->get();
+
+        return $data;
     }
 
     public static function searchAllCompanies(

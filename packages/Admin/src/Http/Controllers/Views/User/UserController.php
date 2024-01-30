@@ -5,13 +5,11 @@ namespace Admin\Http\Controllers\Views\User;
 use Admin\Foundations\User\UserSearchCollection;
 use Admin\Http\Requests\User\UserCreateRequest;
 use Admin\Http\Requests\User\UserUpdateRequest;
-use App\Constants\HasLookupType\UserAccountType;
 use App\Constants\StatusCode;
 use App\Constants\SystemDefault;
 use App\Foundations\LookupType\AccountTypeCollection;
 use App\Http\Controllers\Controller;
 use App\Http\Resources\Auth\UserResource;
-use App\Models\SystemLookup;
 use App\Models\User;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
@@ -20,28 +18,24 @@ class UserController extends Controller
 {
     public function index(Request $request)
     {
-        $data['users'] = UserSearchCollection::searchUsers(
+        $data = UserSearchCollection::searchUsers(
             -1,
             -1,
             -1,
             $request->get('per_page') ? $request->get('per_page') : SystemDefault::DEFAUL_PAGINATION_COUNT
         );
-
-        $data['user_account_types'] = AccountTypeCollection::typeListExceptEmployeeAndClient();
 
         return view('Admin/User/index', $data);
     }
 
     public function search(Request $request)
     {
-        $data['users'] = UserSearchCollection::searchUsers(
+        $data = UserSearchCollection::searchUsers(
             $request->get('user_account_type_id') ? $request->get('user_account_type_id') : -1,
             $request->get('query_string') ? $request->get('query_string') : -1,
             $request->get('active') ? $request->get('active') : -1,
             $request->get('per_page') ? $request->get('per_page') : SystemDefault::DEFAUL_PAGINATION_COUNT
         );
-
-        $data['user_account_types'] = AccountTypeCollection::typeListExceptEmployeeAndClient();
 
         return view('Admin/User/index', $data);
     }

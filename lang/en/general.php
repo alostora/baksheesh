@@ -2,13 +2,20 @@
 
 return [
 
-     "app_name" => "Tips",
+    "app_name" => "Tips",
 
-     "online" => "Online",
+    "online" => "Online",
 
-     "dashboard" => "Dashboard",
-     "current_status" => "Current Status",
-     "active" => "Active",
-     "inactive" => "Inactive",
+    "dashboard" => "Dashboard",
+
+    "current_status" => "Current Status",
+
+    "active" => "Active",
+
+    "inactive" => "Inactive",
+
+    "total" => "Total",
+
+    "wallet" => "Wallet",
 
 ];

@@ -9,17 +9,59 @@
                     </div>
                 </div>
 
+
                 <div class="box">
                     <div class="box-body">
                         <div class="col-sm-4 col-md-2">
                             <div class="color-palette-set">
-                                <div class="bg-green disabled color-palette">
+                                <div class="bg-info disabled color-palette">
                                     <span>
-                                        @lang('sidebar.withdrawal_requests') : {{$withdrawal_requests ? $withdrawal_requests->count() : 0}}
+                                        @lang('withdrawal_request.total') : {{$count_all}}
                                     </span>
                                 </div>
                             </div>
                         </div>
+
+                        <div class="col-sm-4 col-md-2">
+                            <div class="color-palette-set">
+                                <div class="bg-blue disabled color-palette">
+                                    <span>
+                                        @lang('withdrawal_request.pending') : {{$count_pending}}
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-sm-4 col-md-2">
+                            <div class="color-palette-set">
+                                <div class="bg-green disabled color-palette">
+                                    <span>
+                                        @lang('withdrawal_request.accepted') : {{$count_accepted}}
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-sm-4 col-md-2">
+                            <div class="color-palette-set">
+                                <div class="bg-yellow disabled color-palette">
+                                    <span>
+                                        @lang('withdrawal_request.refused') : {{$count_refused}}
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-sm-4 col-md-2">
+                            <div class="color-palette-set">
+                                <div class="bg-default disabled color-palette">
+                                    <span>
+                                        @lang('withdrawal_request.unexecutable') : {{$count_unexecutable}}
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+
                     </div>
                 </div>
                 <div class="box-body">
@@ -34,34 +76,34 @@
                             </tr>
                         </thead>
                         <tbody>
-                            @if(!empty($withdrawal_requests))
+                            @if(!empty($withdrawalRequests))
                             <?php $color = '' ?>
-                            @foreach ($withdrawal_requests as $key=>$withdrawal_request)
+                            @foreach ($withdrawalRequests as $key=>$withdrawalRequest)
 
-                            @if($withdrawal_request->withdrawalRequestStatus->code == App\Constants\HasLookupType\WithdrawalRequestStatus::PENDING['code'])
+                            @if($withdrawalRequest->withdrawalRequestStatus->code == App\Constants\HasLookupType\WithdrawalRequestStatus::PENDING['code'])
                             <?php $color = 'blue' ?>
-                            @elseif($withdrawal_request->withdrawalRequestStatus->code == App\Constants\HasLookupType\WithdrawalRequestStatus::ACCEPTED['code'])
+                            @elseif($withdrawalRequest->withdrawalRequestStatus->code == App\Constants\HasLookupType\WithdrawalRequestStatus::ACCEPTED['code'])
                             <?php $color = 'green' ?>
-                            @elseif($withdrawal_request->withdrawalRequestStatus->code == App\Constants\HasLookupType\WithdrawalRequestStatus::REFUSED['code'])
+                            @elseif($withdrawalRequest->withdrawalRequestStatus->code == App\Constants\HasLookupType\WithdrawalRequestStatus::REFUSED['code'])
                             <?php $color = 'orange' ?>
                             @endif
 
                             <tr class="{{'bg-'.$color}}">
                                 <td> {{$key+1}} </td>
-                                <td> {{$withdrawal_request->client->name}} </td>
-                                <td> {{$withdrawal_request->amount}} </td>
+                                <td> {{$withdrawalRequest->client->name}} </td>
+                                <td> {{$withdrawalRequest->amount}} </td>
                                 <td>
-                                    <label class="label label-default text-{{$color}}">{{$withdrawal_request->withdrawalRequestStatus->name}}</label>
-                                    <a href="{{url('admin/accept-client-withdrawal-request/'.$withdrawal_request->id)}}" class="btn btn-success btn-sm">
+                                    <label class="label label-default text-{{$color}}">{{$withdrawalRequest->withdrawalRequestStatus->name}}</label>
+                                    <a href="{{url('admin/accept-client-withdrawal-request/'.$withdrawalRequest->id)}}" class="btn btn-success btn-sm">
                                         <i class="fa fa-check"></i>
                                     </a>
 
-                                    <a href="{{url('admin/refuse-client-withdrawal-request/'.$withdrawal_request->id)}}" class="btn btn-warning btn-sm">
+                                    <a href="{{url('admin/refuse-client-withdrawal-request/'.$withdrawalRequest->id)}}" class="btn btn-warning btn-sm">
                                         <i class="fa fa-close"></i>
                                     </a>
                                 </td>
                                 <td>
-                                    <a href="{{url('admin/client-withdrawal-request/delete/'.$withdrawal_request->id)}}" class="btn btn-danger btn-sm">
+                                    <a href="{{url('admin/client-withdrawal-request/delete/'.$withdrawalRequest->id)}}" class="btn btn-danger btn-sm">
                                         <i class="fa fa-trash"></i>
                                     </a>
                                 </td>
@@ -73,7 +115,7 @@
 
                     <div class="box-footer clearfix">
                         <ul class="pagination pagination-sm no-margin pull-right">
-                            {{ $withdrawal_requests->render( "pagination::bootstrap-4") }}
+                            {{ $withdrawalRequests->render( "pagination::bootstrap-4") }}
                         </ul>
                     </div>
 

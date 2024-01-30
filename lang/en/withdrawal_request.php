@@ -54,4 +54,11 @@ return [
     "inactive" => "Inactive",
 
     "change_withdrawal_request_status" => "Change Withdrawal Request Status",
+
+    "total" => "Total",
+    "pending" => "Pending",
+    "accepted" => "Accepted",
+    "implemented" => "Implemented",
+    "refused" => "Refused",
+    "unexecutable" => "Unexecutable",
 ];

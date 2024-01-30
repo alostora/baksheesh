@@ -13,7 +13,7 @@
                 </div>
                 <div class="box-body">
                     <form role="form" action="{{url('client/client-company-employees/search')}}" method="GET">
-                        <input type="hidden" name="company_id" value="{{Request('company_id')}}">
+                    <input type="hidden" name="company_id" value="{{Request('company_id')}}">
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="form-group">
@@ -27,8 +27,25 @@
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label>@lang('filter.query_string')</label>
-                                    <input type="text" name="query_string" value="{{Request('query_string')}}" placeholder="{{Lang::get('company.query_string')}}" class="form-control" style="width: 100%;">
+                                    <label for="query_string">@lang('filter.query_string')</label>
+                                    <input type="text" name="query_string" value="{{Request('query_string')}}" placeholder="{{Lang::get('filter.query_string')}}" class="form-control" id="query_string">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="form-group">
+
+                                <div class="col-md-6">
+                                    <label>@lang('filter.companies')</label>
+                                    <select class="form-control select2" name="company_id" id="company_id" onchange="getEmployees('',this.value);">
+                                        <option value="">@lang('filter.select')</option>
+                                        @foreach ($companies as $company)
+                                        <?php $selected = Request('company_id') == $company->id ? 'selected' : ''; ?>
+                                        <option value="{{ $company->id }}" {{ $selected }}>{{ $company->name }}
+                                        </option>
+                                        @endforeach
+                                    </select>
                                 </div>
                             </div>
                         </div>
@@ -106,6 +123,9 @@
                                 <td> {{$user->employee_job_name}} </td>
                                 <td> {{$user->country ? $user->country->name : ""}} </td>
                                 <td>
+                                    <a href="{{url('client/employee-wallets?company_id='.$user->company_id.'&employee_id='.$user->id)}}" class="btn btn-success btn-sm">
+                                        <i class="fa fa-info"></i> @lang('general.wallet') : ( {{$user->employeeCash->sum('amount')}} )
+                                    </a>
 
                                     <a href="{{url('guest/payment/pay-for-employee/'.$user->id)}}" target="_blank" class="btn btn-success btn-sm">
                                         <i class="fa fa-link"></i>

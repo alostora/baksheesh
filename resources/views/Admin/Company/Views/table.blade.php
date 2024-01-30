@@ -67,9 +67,9 @@
                     <div class="box-body">
                         <div class="col-sm-4 col-md-2">
                             <div class="color-palette-set">
-                                <div class="bg-red disabled color-palette">
+                                <div class="bg-blue disabled color-palette">
                                     <span>
-                                        @lang('company.inactive') : {{$companies ? $companies->where('stopped_at','!=',null)->count() : 0}}
+                                        @lang('general.total') : {{$count_inactive + $count_active}}
                                     </span>
                                 </div>
                             </div>
@@ -78,13 +78,24 @@
                             <div class="color-palette-set">
                                 <div class="bg-green disabled color-palette">
                                     <span>
-                                        @lang('company.active') : {{$companies ? $companies->where('stopped_at',null)->count() : 0}}
+                                        @lang('general.active') : {{$count_active}}
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-sm-4 col-md-2">
+                            <div class="color-palette-set">
+                                <div class="bg-red disabled color-palette">
+                                    <span>
+                                        @lang('general.inactive') : {{$count_inactive}}
                                     </span>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
+
                 <div class="box-body">
                     <table id="example2" class="table table-bordered table-striped">
                         <thead>
@@ -116,6 +127,10 @@
                                 <td> {{$company->name}} </td>
                                 <td> {{$company->client->name}} </td>
                                 <td>
+                                    <a href="{{url('admin/company-wallets?company_id='.$company->id.'&client_id='.$company->client_id)}}" class="btn btn-success btn-sm">
+                                        <i class="fa fa-info"></i> @lang('general.wallet') : ( {{$company->cash->sum('amount')}} )
+                                    </a>
+
                                     <a href="{{url('admin/company-employees/search?company_id='.$company->id)}}" class="btn btn-success btn-sm">
                                         <i class="fa fa-info"></i> @lang('company.employees') : ( {{$company->employees->count()}} )
                                     </a>
@@ -160,7 +175,6 @@
 <script>
     function PrintElem(companyName, companyId) {
 
-
         var mywindow = window.open('', 'PRINT', );
 
         mywindow.document.write('<html><head><title>' + companyName + '</title>');
@@ -169,7 +183,6 @@
         mywindow.document.write(document.getElementById(companyId).innerHTML);
         mywindow.document.write('</body></html>');
 
-        mywindow.document.close(); // necessary for IE >= 10
         mywindow.focus(); // necessary for IE >= 10*/
 
         mywindow.print();

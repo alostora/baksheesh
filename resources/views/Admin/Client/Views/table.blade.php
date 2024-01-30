@@ -53,9 +53,9 @@
                     <div class="box-body">
                         <div class="col-sm-4 col-md-2">
                             <div class="color-palette-set">
-                                <div class="bg-red disabled color-palette">
+                                <div class="bg-blue disabled color-palette">
                                     <span>
-                                        @lang('client.inactive') : {{$users ? $users->where('stopped_at','!=',null)->count() : 0}}
+                                        @lang('general.total') : {{$count_inactive + $count_active}}
                                     </span>
                                 </div>
                             </div>
@@ -64,7 +64,17 @@
                             <div class="color-palette-set">
                                 <div class="bg-green disabled color-palette">
                                     <span>
-                                        @lang('client.active') : {{$users ? $users->where('stopped_at',null)->count() : 0}}
+                                        @lang('client.active') : {{$count_active}}
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-sm-4 col-md-2">
+                            <div class="color-palette-set">
+                                <div class="bg-red disabled color-palette">
+                                    <span>
+                                        @lang('client.inactive') : {{$count_inactive}}
                                     </span>
                                 </div>
                             </div>

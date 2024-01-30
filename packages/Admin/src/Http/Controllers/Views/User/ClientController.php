@@ -21,7 +21,7 @@ class ClientController extends Controller
 {
     public function index(Request $request)
     {
-        $data['users'] = ClientSearchCollection::searchUsers(
+        $data = ClientSearchCollection::searchUsers(
             -1,
             -1,
             $request->get('per_page') ? $request->get('per_page') : SystemDefault::DEFAUL_PAGINATION_COUNT
@@ -32,7 +32,7 @@ class ClientController extends Controller
 
     public function search(Request $request)
     {
-        $data['users'] = ClientSearchCollection::searchUsers(
+        $data = ClientSearchCollection::searchUsers(
             $request->get('query_string') ? $request->get('query_string') : -1,
             $request->get('active') ? $request->get('active') : -1,
             $request->get('per_page') ? $request->get('per_page') : SystemDefault::DEFAUL_PAGINATION_COUNT

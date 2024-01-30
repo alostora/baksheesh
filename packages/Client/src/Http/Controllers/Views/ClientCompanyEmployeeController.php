@@ -27,26 +27,26 @@ class ClientCompanyEmployeeController extends Controller
 {
     public function index(Request $request)
     {
-        $employees = ClientCompanyEmployeeSearchCollection::searchCompanyEmployees(
+        $data = ClientCompanyEmployeeSearchCollection::searchCompanyEmployees(
             -1,
             -1,
             -1,
             $request->get('per_page') ? $request->get('per_page') : SystemDefault::DEFAUL_PAGINATION_COUNT
         );
 
-        return view('Client/CompanyEmployee/index', compact('employees'));
+        return view('Client/CompanyEmployee/index', $data);
     }
 
     public function search(Request $request)
     {
-        $employees = ClientCompanyEmployeeSearchCollection::searchCompanyEmployees(
+        $data = ClientCompanyEmployeeSearchCollection::searchCompanyEmployees(
             $request->get('company_id') ? $request->get('company_id') : -1,
             $request->get('query_string') ? $request->get('query_string') : -1,
             $request->get('active') ? $request->get('active') : -1,
             $request->get('per_page') ? $request->get('per_page') : SystemDefault::DEFAUL_PAGINATION_COUNT
         );
 
-        return view('Client/CompanyEmployee/index', compact('employees'));
+        return view('Client/CompanyEmployee/index', $data);
     }
 
     public function show(User $user)
