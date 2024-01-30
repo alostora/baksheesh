@@ -82,14 +82,14 @@
 
     <header class="main-header">
       <!-- Logo -->
-      <a href="#" class="logo">
+      <a href="{{url('admin')}}" class="logo">
         <!-- mini logo for sidebar mini 50x50 pixels -->
-        <span class="logo-mini"><b>A</b>LT</span>
+        <span class="logo-mini"><img src="{{url('AdminDesign')}}/logo_tipo.png" style="width:40px"></span>
         <!-- logo for regular state and mobile devices -->
-        <span class="logo-lg"><b> @lang('dashboard.app_name')</span>
+        <span class="logo-lg"><img src="{{url('AdminDesign')}}/logo_tipo.png" style="width:50px"></span>
       </a>
       <nav class="navbar navbar-static-top">
-        <a href="#" class="sidebar-toggle" data-toggle="push-menu" role="button">
+        <a href="#" class="fa  fa-exchange" data-toggle="push-menu" role="button">
           <span class="sr-only">Toggle navigation</span>
         </a>
 
@@ -97,9 +97,9 @@
           <ul class="nav navbar-nav">
 
             @if(App::getLocale() == 'en')
-            <li class="active"><a href="{{url('lang/ar')}}"> ar <i class="fa fa-flag"></i></a></li>
+            <li class="active"><a href="{{url('lang/ar')}}"> ar</a></li>
             @else
-            <li class="active"><a href="{{url('lang/en')}}"><i class="fa fa-flag-o"></i> en </a></li>
+            <li class="active"><a href="{{url('lang/en')}}"> en </a></li>
             @endif
 
             <li class="dropdown user user-menu">
