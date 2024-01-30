@@ -2,7 +2,9 @@
 
 namespace Admin\Foundations\Country;
 
+use App\Constants\HasLookupType\CountryType;
 use App\Constants\SystemDefault;
+use App\Models\Country;
 
 class CountrySearchCollection
 {
@@ -12,11 +14,15 @@ class CountrySearchCollection
         $per_page = SystemDefault::DEFAUL_PAGINATION_COUNT
     ) {
 
-        $countries = CountryQueryCollection::searchAllCountries(
+        $data['countries'] = CountryQueryCollection::searchAllCountries(
             $query_string,
             $active,
-        );
+        )->paginate($per_page);
 
-        return $countries->paginate($per_page);
+        $data['count_active'] = Country::where('type', CountryType::COUNTRY['code'])->where('stopped_at', null)->count();
+
+        $data['count_inactive'] = Country::where('type', CountryType::COUNTRY['code'])->where('stopped_at', '!=', null)->count();
+
+        return $data;
     }
 }

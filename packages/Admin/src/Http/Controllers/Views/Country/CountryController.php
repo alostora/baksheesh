@@ -18,24 +18,24 @@ class CountryController extends Controller
 {
     public function index(Request $request)
     {
-        $countries = CountrySearchCollection::searchCountries(
+        $data = CountrySearchCollection::searchCountries(
             -1,
             -1,
             $request->get('per_page') ?? SystemDefault::DEFAUL_PAGINATION_COUNT
         );
 
-        return view('Admin/Country/index', compact('countries'));
+        return view('Admin/Country/index', $data);
     }
 
     public function search(Request $request)
     {
-        $countries = CountrySearchCollection::searchCountries(
+        $data = CountrySearchCollection::searchCountries(
             $request->get('query_string') ? $request->get('query_string') : -1,
             $request->get('active') ? $request->get('active') : -1,
             $request->get('per_page') ?? SystemDefault::DEFAUL_PAGINATION_COUNT
         );
 
-        return view('Admin/Country/index', compact('countries'));
+        return view('Admin/Country/index', $data);
     }
 
     public function show(Country $country)

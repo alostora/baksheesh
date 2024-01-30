@@ -20,42 +20,36 @@ class GovernorateController extends Controller
 {
     public function index(Country $country, Request $request)
     {
-        $data['governorates'] = GovernorateSearchCollection::searchCountryGovernorates(
+        $data = GovernorateSearchCollection::searchCountryGovernorates(
             $country,
             -1,
             -1,
             $request->get('per_page') ?? SystemDefault::DEFAUL_PAGINATION_COUNT
         );
-
-        $data['countries'] = Country::where('type', CountryType::COUNTRY['code'])->where('stopped_at', null)->get();
 
         return view('Admin/Governorate/index', $data);
     }
 
     public function search(Country $country, Request $request)
     {
-        $data['governorates'] = GovernorateSearchCollection::searchCountryGovernorates(
+        $data = GovernorateSearchCollection::searchCountryGovernorates(
             $country,
             $request->get('query_string') ?? -1,
             $request->get('active') ?? -1,
             $request->get('per_page') ?? SystemDefault::DEFAUL_PAGINATION_COUNT
         );
 
-        $data['countries'] = Country::where('type', CountryType::COUNTRY['code'])->where('stopped_at', null)->get();
-
         return view('Admin/Governorate/index', $data);
     }
 
     public function searchAll(Request $request)
     {
-        $data['governorates'] = GovernorateSearchCollection::searchAllGovernorates(
+        $data = GovernorateSearchCollection::searchAllGovernorates(
             $request->get('country_id') ?? -1,
             $request->get('query_string') ?? -1,
             $request->get('active') ?? -1,
             $request->get('per_page') ?? SystemDefault::DEFAUL_PAGINATION_COUNT
         );
-
-        $data['countries'] = Country::where('type', CountryType::COUNTRY['code'])->where('stopped_at', null)->get();
 
         return view('Admin/Governorate/index', $data);
     }
