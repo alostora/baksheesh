@@ -24,32 +24,24 @@ class CompanyController extends Controller
 {
     public function index(Request $request)
     {
-        $data['companies'] = CompanySearchCollection::searchCompanies(
+        $data = CompanySearchCollection::searchCompanies(
             -1,
             -1,
             -1,
             $request->get('per_page') ? $request->get('per_page') : SystemDefault::DEFAUL_PAGINATION_COUNT
         );
-
-        $client_type = AccountTypeCollection::client();
-
-        $data['clients'] = User::where('user_account_type_id', $client_type->id)->get();
 
         return view('Admin/Company/index', $data);
     }
 
     public function search(Request $request)
     {
-        $data['companies'] = CompanySearchCollection::searchCompanies(
+        $data = CompanySearchCollection::searchCompanies(
             $request->get('client_id') ? $request->get('client_id') : -1,
             $request->get('query_string') ? $request->get('query_string') : -1,
             $request->get('active') ? $request->get('active') : -1,
             $request->get('per_page') ? $request->get('per_page') : SystemDefault::DEFAUL_PAGINATION_COUNT
         );
-
-        $client_type = AccountTypeCollection::client();
-
-        $data['clients'] = User::where('user_account_type_id', $client_type->id)->get();
 
         return view('Admin/Company/index', $data);
     }
@@ -126,9 +118,9 @@ class CompanyController extends Controller
         $client_type = AccountTypeCollection::client();
 
         $data['clients'] = User::where('user_account_type_id', $client_type->id)->get();
-        
+
         $data['company'] = $company;
-        
+
         $selected_available_rating_ids = $company->companyAvailableRatings()->pluck('available_rating_id');
 
         $data['available_rating'] = SystemLookup::where('type', AvailableCompanyRating::LOOKUP_TYPE)

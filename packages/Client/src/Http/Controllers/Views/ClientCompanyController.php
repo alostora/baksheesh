@@ -21,7 +21,7 @@ class ClientCompanyController extends Controller
 {
     public function index(Request $request)
     {
-        $data['companies'] = ClientCompanySearchCollection::searchCompanies(
+        $data = ClientCompanySearchCollection::searchCompanies(
             -1,
             -1,
             $request->get('per_page') ? $request->get('per_page') : SystemDefault::DEFAUL_PAGINATION_COUNT
@@ -85,7 +85,7 @@ class ClientCompanyController extends Controller
 
     public function update(ClientCompanyUpdateRequest $request, Company $company)
     {
-        CompanyUpdateCollection::updateCompany($request,$company);
+        CompanyUpdateCollection::updateCompany($request, $company);
 
         return redirect(url('client/client-companies'));
     }

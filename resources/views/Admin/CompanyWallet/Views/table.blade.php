@@ -61,8 +61,19 @@
             <div class="box">
                 <div class="box-header">
                     <h3 class="box-title col-md-8">@lang('company_wallet.page_title')</h3>
-                    <div class="col-md-4">
-                        @lang('company_wallet.total_amount') : {{$wallets->sum('amount')}}
+                </div>
+
+                <div class="box">
+                    <div class="box-body">
+                        <div class="col-sm-4 col-md-2">
+                            <div class="color-palette-set">
+                                <div class="bg-blue disabled color-palette">
+                                    <span>
+                                        @lang('general.total') : {{$count_total}}
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
                 <div class="box-body">
@@ -120,8 +131,6 @@
 
                     $("#company_id").append(`<option value='${result[i].id}'>${result[i].name}</option>`);
                     console.log(result[i]);
-
-
                 }
             },
             error: function(request, error) {

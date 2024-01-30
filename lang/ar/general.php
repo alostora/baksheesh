@@ -2,13 +2,20 @@
 
 return [
 
-     "app_name" => "Tips",
+    "app_name" => "Tips",
 
-     "online" => "Online",
+    "online" => "Online",
 
-     "dashboard" => "Dashboard",
-     "current_status" => "الحالة الحالية",
-     "active" => "نشط",
-     "inactive" => "غير نشط",
+    "dashboard" => "Dashboard",
+
+    "current_status" => "الحالة الحالية",
+
+    "active" => "نشط",
+
+    "inactive" => "غير نشط",
+
+    "total" => "الاجمالي",
+
+    "wallet" => "المحفظه",
 
 ];

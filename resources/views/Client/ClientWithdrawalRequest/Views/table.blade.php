@@ -63,17 +63,59 @@
                     </div>
                 </div>
 
+
                 <div class="box">
                     <div class="box-body">
                         <div class="col-sm-4 col-md-2">
                             <div class="color-palette-set">
-                                <div class="bg-green disabled color-palette">
+                                <div class="bg-info disabled color-palette">
                                     <span>
-                                        @lang('sidebar.withdrawal_requests') : {{$withdrawal_requests ? $withdrawal_requests->count() : 0}}
+                                        @lang('withdrawal_request.total') : {{$count_all}}
                                     </span>
                                 </div>
                             </div>
                         </div>
+
+                        <div class="col-sm-4 col-md-2">
+                            <div class="color-palette-set">
+                                <div class="bg-blue disabled color-palette">
+                                    <span>
+                                        @lang('withdrawal_request.pending') : {{$count_pending}}
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-sm-4 col-md-2">
+                            <div class="color-palette-set">
+                                <div class="bg-green disabled color-palette">
+                                    <span>
+                                        @lang('withdrawal_request.accepted') : {{$count_accepted}}
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-sm-4 col-md-2">
+                            <div class="color-palette-set">
+                                <div class="bg-yellow disabled color-palette">
+                                    <span>
+                                        @lang('withdrawal_request.refused') : {{$count_refused}}
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-sm-4 col-md-2">
+                            <div class="color-palette-set">
+                                <div class="bg-default disabled color-palette">
+                                    <span>
+                                        @lang('withdrawal_request.unexecutable') : {{$count_unexecutable}}
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+
                     </div>
                 </div>
 
@@ -89,35 +131,35 @@
                             </tr>
                         </thead>
                         <tbody>
-                            @if(!empty($withdrawal_requests))
-                            @foreach ($withdrawal_requests as $key=>$withdrawal_request)
+                            @if(!empty($withdrawalRequests))
+                            @foreach ($withdrawalRequests as $key=>$withdrawalRequest)
 
-                            @if($withdrawal_request->withdrawalRequestStatus->code == App\Constants\HasLookupType\WithdrawalRequestStatus::PENDING['code'])
+                            @if($withdrawalRequest->withdrawalRequestStatus->code == App\Constants\HasLookupType\WithdrawalRequestStatus::PENDING['code'])
                             <?php $color = 'blue' ?>
-                            @elseif($withdrawal_request->withdrawalRequestStatus->code == App\Constants\HasLookupType\WithdrawalRequestStatus::ACCEPTED['code'])
+                            @elseif($withdrawalRequest->withdrawalRequestStatus->code == App\Constants\HasLookupType\WithdrawalRequestStatus::ACCEPTED['code'])
                             <?php $color = 'green' ?>
-                            @elseif($withdrawal_request->withdrawalRequestStatus->code == App\Constants\HasLookupType\WithdrawalRequestStatus::REFUSED['code'])
+                            @elseif($withdrawalRequest->withdrawalRequestStatus->code == App\Constants\HasLookupType\WithdrawalRequestStatus::REFUSED['code'])
                             <?php $color = 'orange' ?>
                             @endif
 
                             <tr>
                                 <td> {{$key+1}} </td>
-                                <td> {{$withdrawal_request->client->name}} </td>
-                                <td> {{$withdrawal_request->amount}} </td>
+                                <td> {{$withdrawalRequest->client->name}} </td>
+                                <td> {{$withdrawalRequest->amount}} </td>
                                 <td>
                                     <label class="label bg-{{$color}}">
-                                        {{$withdrawal_request->withdrawalRequestStatus->name}}
+                                        {{$withdrawalRequest->withdrawalRequestStatus->name}}
                                     </label>
                                 </td>
                                 <td>
                                     {{--
-                                        <a href="{{url('client/client-withdrawal-request/edit/'.$withdrawal_request->id)}}" class="btn btn-success btn-sm">
+                                        <a href="{{url('client/client-withdrawal-request/edit/'.$withdrawalRequest->id)}}" class="btn btn-success btn-sm">
                                     <i class="fa fa-trash"></i>
                                     </a>
 
                                     --}}
-                                    @if($withdrawal_request->withdrawalRequestStatus->code === \App\Constants\HasLookupType\WithdrawalRequestStatus::PENDING['code'])
-                                    <a href="{{url('client/client-withdrawal-request/delete/'.$withdrawal_request->id)}}" class="btn btn-danger btn-sm">
+                                    @if($withdrawalRequest->withdrawalRequestStatus->code === \App\Constants\HasLookupType\WithdrawalRequestStatus::PENDING['code'])
+                                    <a href="{{url('client/client-withdrawal-request/delete/'.$withdrawalRequest->id)}}" class="btn btn-danger btn-sm">
                                         <i class="fa fa-trash"></i>
                                     </a>
                                     @endif
@@ -130,7 +172,7 @@
 
                     <div class="box-footer clearfix">
                         <ul class="pagination pagination-sm no-margin pull-right">
-                            {{ $withdrawal_requests->render( "pagination::bootstrap-4") }}
+                            {{ $withdrawalRequests->render( "pagination::bootstrap-4") }}
                         </ul>
                     </div>
 

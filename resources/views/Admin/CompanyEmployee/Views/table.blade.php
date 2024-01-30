@@ -32,10 +32,40 @@
                                 </div>
                             </div>
                         </div>
+
+                        <div class="row">
+                            <div class="form-group">
+                                <div class="col-md-6">
+                                    <label>@lang('filter.clients')</label>
+                                    <select class="form-control select2" name="client_id" onchange="getEmployees(this.value);getCompanies(this.value)">
+                                        <option value="">@lang('filter.select')</option>
+                                        @foreach ($clients as $client)
+                                        <?php $selected = Request('client_id') == $client->id ? 'selected' : ''; ?>
+                                        <option value="{{ $client->id }}" {{ $selected }}>{{ $client->name }}
+                                        </option>
+                                        @endforeach
+                                    </select>
+                                </div>
+
+                                <div class="col-md-6">
+                                    <label>@lang('filter.companies')</label>
+                                    <select class="form-control select2" name="company_id" id="company_id" onchange="getEmployees('',this.value);">
+                                        <option value="">@lang('filter.select')</option>
+                                        @foreach ($companies as $company)
+                                        <?php $selected = Request('company_id') == $company->id ? 'selected' : ''; ?>
+                                        <option value="{{ $company->id }}" {{ $selected }}>{{ $company->name }}
+                                        </option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+
                         <div class="box-footer">
                             <button type="submit" class="btn btn-info pull-right">@lang('filter.search')</button>
                         </div>
                     </form>
+
                 </div>
             </div>
 
@@ -56,7 +86,7 @@
                             <div class="color-palette-set">
                                 <div class="bg-red disabled color-palette">
                                     <span>
-                                        @lang('company_employee.inactive') : {{$employees ? $employees->where('stopped_at','!=',null)->count() : 0}}
+                                        @lang('company_employee.inactive') : {{$count_inactive}}
                                     </span>
                                 </div>
                             </div>
@@ -65,7 +95,7 @@
                             <div class="color-palette-set">
                                 <div class="bg-green disabled color-palette">
                                     <span>
-                                        @lang('company_employee.active') : {{$employees ? $employees->where('stopped_at',null)->count() : 0}}
+                                        @lang('company_employee.active') : {{$count_active}}
                                     </span>
                                 </div>
                             </div>
@@ -96,7 +126,6 @@
                                     <div id="{{$user->id}}">
                                         {!! $user->employee_qr !!}
                                     </div>
-
                                 </td>
                                 <td>
                                     @if($user->file)
@@ -108,6 +137,10 @@
                                 <td> {{$user->employee_job_name}} </td>
                                 <td> {{$user->country ? $user->country->name : ""}} </td>
                                 <td>
+                                    <a href="{{url('admin/employee-wallets?client_id='.$user->client_id.'&company_id='.$user->company_id)}}" class="btn btn-success btn-sm">
+                                        <i class="fa fa-info"></i> @lang('general.wallet') : ( {{$user->employeeCash->sum('amount')}} )
+                                    </a>
+
                                     <a href="{{url('guest/payment/pay-for-employee/'.$user->id)}}" target="_blank" class="btn btn-success btn-sm">
                                         <i class="fa fa-link"></i>
                                     </a>
@@ -156,7 +189,6 @@
         mywindow.document.write(document.getElementById(userId).innerHTML);
         mywindow.document.write('</body></html>');
 
-        mywindow.document.close(); // necessary for IE >= 10
         mywindow.focus(); // necessary for IE >= 10*/
 
         mywindow.print();

@@ -22,7 +22,7 @@ class WithdrawalRequestController extends Controller
     public function index(Request $request, User $user)
     {
 
-        $withdrawal_requests = ClientWithdrawalRequestSearchCollection::searchWithdrawalRequests(
+        $data = ClientWithdrawalRequestSearchCollection::searchWithdrawalRequests(
             $user,
             -1,
             -1,
@@ -31,12 +31,12 @@ class WithdrawalRequestController extends Controller
             $request->get('per_page') ? $request->get('per_page') : SystemDefault::DEFAUL_PAGINATION_COUNT
         );
 
-        return view('Admin/ClientWithdrawalRequest/index', compact('withdrawal_requests'));
+        return view('Admin/ClientWithdrawalRequest/index', $data);
     }
 
     public function search(Request $request, User $user)
     {
-        $withdrawalRequests = ClientWithdrawalRequestSearchCollection::searchWithdrawalRequests(
+        $data = ClientWithdrawalRequestSearchCollection::searchWithdrawalRequests(
             $user,
             $request->get('status') ? $request->get('status') : -1,
             $request->get('amount') ? $request->get('amount') : -1,
@@ -45,12 +45,12 @@ class WithdrawalRequestController extends Controller
             $request->get('per_page') ? $request->get('per_page') : SystemDefault::DEFAUL_PAGINATION_COUNT
         );
 
-        return view('Admin/ClientWithdrawalRequest/index', compact('withdrawalRequests'));
+        return view('Admin/ClientWithdrawalRequest/index', $data);
     }
 
     public function searchAllWithdrawalRequests(Request $request)
     {
-        $data['withdrawal_requests'] = WithdrawalReportSearchCollection::searcAllhWithdrawalRequests(
+        $data = WithdrawalReportSearchCollection::searcAllhWithdrawalRequests(
             $request->get('client_id') ? $request->get('client_id') : -1,
             $request->get('status') ? $request->get('status') : -1,
             $request->get('amount') ? $request->get('amount') : -1,
@@ -58,12 +58,6 @@ class WithdrawalRequestController extends Controller
             $request->get('date_to') ? $request->get('date_to') : -1,
             $request->get('per_page') ? $request->get('per_page') : SystemDefault::DEFAUL_PAGINATION_COUNT
         );
-
-        $client_type = AccountTypeCollection::client();
-
-        $data['clients'] = User::where('user_account_type_id', $client_type->id)->get();
-
-        $data['withdrawal_request_status'] = WithdrawalRequestStatusCollection::statusList();
 
         return view('Admin/AllWithdrawalRequest/index', $data);
     }

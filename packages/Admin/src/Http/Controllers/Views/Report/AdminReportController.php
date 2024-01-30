@@ -20,7 +20,7 @@ class AdminReportController extends Controller
 {
     public function companyWalletReport(Request $request)
     {
-        $data['wallets'] = CompanyWalletSearchCollection::searchCompanyWallets(
+        $data = CompanyWalletSearchCollection::searchCompanyWallets(
             $request->get('client_id') ? $request->get('client_id') : -1,
             $request->get('company_id') ? $request->get('company_id') : -1,
             $request->get('date_from') ? $request->get('date_from') : -1,
@@ -28,18 +28,12 @@ class AdminReportController extends Controller
             $request->get('per_page') ? $request->get('per_page') : SystemDefault::DEFAUL_PAGINATION_COUNT
         );
 
-        $client_type = AccountTypeCollection::client();
-
-        $data['clients'] = User::where('user_account_type_id', $client_type->id)->get();
-
-        $data['companies'] = Company::get();
-
         return view('Admin/Report/CompanyWallet/index', $data);
     }
 
     public function employeeWalletReport(Request $request)
     {
-        $data['wallets'] = EmployeeWalletSearchCollection::searchEmployeeWallets(
+        $data = EmployeeWalletSearchCollection::searchEmployeeWallets(
             $request->get('client_id') ? $request->get('client_id') : -1,
             $request->get('company_id') ? $request->get('company_id') : -1,
             $request->get('employee_id') ? $request->get('employee_id') : -1,
@@ -48,17 +42,6 @@ class AdminReportController extends Controller
             $request->get('per_page') ? $request->get('per_page') : SystemDefault::DEFAUL_PAGINATION_COUNT
         );
 
-        $client_type = AccountTypeCollection::client();
-
-        $employee_type = SystemLookup::where('type', UserAccountType::LOOKUP_TYPE)
-            ->where('code',  UserAccountType::EMPLOYEE['code'])
-            ->first();
-
-        $data['clients'] = User::where('user_account_type_id', $client_type->id)->get();
-
-        $data['employees'] = User::where('user_account_type_id', $employee_type->id)->get();
-
-        $data['companies'] = Company::get();
 
         return view('Admin/Report/EmployeeWallet/index', $data);
     }
@@ -66,7 +49,7 @@ class AdminReportController extends Controller
 
     public function withdrawalRequestReport(Request $request)
     {
-        $data['withdrawal_requests'] = WithdrawalReportSearchCollection::searcAllhWithdrawalRequests(
+        $data = WithdrawalReportSearchCollection::searcAllhWithdrawalRequests(
 
             $request->get('client_id') ? $request->get('client_id') : -1,
             $request->get('status') ? $request->get('status') : -1,
@@ -75,13 +58,6 @@ class AdminReportController extends Controller
             $request->get('date_to') ? $request->get('date_to') : -1,
             $request->get('per_page') ? $request->get('per_page') : SystemDefault::DEFAUL_PAGINATION_COUNT
         );
-
-        $client_type = AccountTypeCollection::client();
-
-        $data['clients'] = User::where('user_account_type_id', $client_type->id)->get();
-
-        $data['withdrawal_request_status'] = WithdrawalRequestStatusCollection::statusList();
-
 
         return view('Admin/Report/WithdrawalRequest/index', $data);
     }

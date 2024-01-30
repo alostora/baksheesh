@@ -3,6 +3,8 @@
 namespace Admin\Foundations\User;
 
 use App\Constants\SystemDefault;
+use App\Foundations\LookupType\AccountTypeCollection;
+use App\Models\User;
 
 class UserSearchCollection
 {
@@ -12,12 +14,27 @@ class UserSearchCollection
         $active = -1,
         $per_page = SystemDefault::DEFAUL_PAGINATION_COUNT
     ) {
-        $users = UserQueryCollection::searchAllUsers(
+
+        $data['users'] = UserQueryCollection::searchAllUsers(
             $user_account_type_id,
             $query_string,
             $active,
-        );
+        )->paginate($per_page);
 
-        return $users->paginate($per_page);
+        $data['user_account_types'] = AccountTypeCollection::typeListExceptEmployeeAndClient();
+
+        $data['count_active'] = User::where('stopped_at', null)
+            ->whereIn('user_account_type_id', [
+                AccountTypeCollection::admin()->id,
+                AccountTypeCollection::root()->id
+            ])->count();
+
+        $data['count_inactive'] = User::where('stopped_at', '!=', null)
+            ->whereIn('user_account_type_id', [
+                AccountTypeCollection::admin()->id,
+                AccountTypeCollection::root()->id
+            ])->count();
+
+        return $data;
     }
 }
