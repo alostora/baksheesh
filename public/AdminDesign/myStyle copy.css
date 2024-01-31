@@ -240,6 +240,17 @@ header {
 .navbar-nav>.user-menu .user-image{
   border-radius: 3px;
 }
+.hidden-xs {
+  margin-left: 5px;
+  margin-right: 5px;
+
+}
+
+
+.dropdown {
+  margin-right: 13px;
+
+}
 
 
 /* content */

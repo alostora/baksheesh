@@ -97,9 +97,9 @@
           <ul class="nav navbar-nav">
 
             @if(App::getLocale() == 'en')
-            <li class="active lang"><a href="{{url('lang/ar')}}"> ar</a></li>
+            <li class=" lang"><a href="{{url('lang/ar')}}"> AR</a></li>
             @else
-            <li class="active lang"><a href="{{url('lang/en')}}"> en </a></li>
+            <li class=" lang"><a href="{{url('lang/en')}}"> EN </a></li>
             @endif
 
             <li class="dropdown user user-menu">
