@@ -32,30 +32,24 @@
             <li class="active treeview">
 
                 <a href="#">
-                    <i class="fa  fa-th-large"></i> <span>@lang('sidebar.dashboard')</span>
+                    <i class="fa fa-th-large"></i> <span>@lang('sidebar.dashboard')</span>
                     <span class="pull-right-container">
                         <i class="fa fa-angle-left pull-right"></i>
                     </span>
                 </a>
 
                 <ul class="treeview-menu">
-
                     <li>
-                      
-                        <a href="{{url('admin/countries')}}" >
-                
-                
-                  
-                        <i class="fa fa-flag"></i>@lang('sidebar.countries')
+                        <a href="{{url('admin/countries')}}">
+
+                            <i class="fa fa-flag"></i>@lang('sidebar.countries')
                         </a>
                     </li>
-
                     <li>
                         <a href="{{url('admin/governorates-search-all')}}">
                             <i class="fa fa-map"></i>@lang('sidebar.governorates')
                         </a>
                     </li>
-
                     <li>
                         <a href="{{url('admin/users')}}">
                             <i class="fa  fa-users"></i>@lang('sidebar.users')
@@ -64,7 +58,6 @@
                             </span>
                         </a>
                     </li>
-
                     <li>
                         <a href="{{url('admin/clients/search?active=active')}}">
                             <i class="fa  fa-user-plus"></i>@lang('sidebar.clients')
@@ -72,9 +65,7 @@
                                 <small class="label pull-right bg-primary">{{$info['clients_count']}}</small>
                             </span>
                         </a>
-
                     </li>
-
                     <li>
                         <a href="{{url('admin/companies')}}">
                             <i class="fa fa-building"></i>@lang('sidebar.companies')
@@ -89,7 +80,6 @@
                             <i class="fa fa-list-ol"></i>@lang('sidebar.withdrawal_requests')
                         </a>
                     </li>
-
                     <li>
                         <a href="{{url('admin/company-wallets')}}">
                             <i class="fa fa-credit-card"></i>@lang('sidebar.company_wallets')
@@ -100,21 +90,19 @@
                             <i class="fa  fa-cc-visa"></i>@lang('sidebar.employee_wallets')
                         </a>
                     </li>
-
                 </ul>
             </li>
 
             <li class="active treeview">
 
                 <a href="#">
-                    <i class="fa  fa-pie-chart"></i> <span>@lang('sidebar.reports')</span>
+                    <i class="fa fa-pie-chart"></i> <span>@lang('sidebar.reports')</span>
                     <span class="pull-right-container">
                         <i class="fa fa-angle-left pull-right"></i>
                     </span>
                 </a>
 
                 <ul class="treeview-menu">
-
                     <li>
                         <a href="{{url('admin/company-wallet-report')}}">
                             <i class="fa fa-line-chart"></i>@lang('sidebar.company_wallet_report')
@@ -146,16 +134,13 @@
             $info = \App\Foundations\SideBar\SideBarCollection::clientSideBarInfo();
             ?>
 
-
-            <li class="active treeview">
-
-                <ac href="#">
-                    <i class="fa fa-dashboard"></i> <span>@lang('sidebar.dashboard')</span>
+            <li class="treeview">
+                <a href="#">
+                    <i class="fa fa-th-large"></i> <span>@lang('sidebar.dashboard')</span>
                     <span class="pull-right-container">
                         <i class="fa fa-angle-left pull-right"></i>
                     </span>
-                </ac>
-
+                </a>
                 <ul class="treeview-menu">
 
                     <li>
@@ -197,7 +182,7 @@
             <li class="active treeview">
 
                 <a href="#">
-                    <i class="fa fa-dashboard"></i> <span>@lang('sidebar.reports')</span>
+                    <i class="fa fa-pie-chart"></i> <span>@lang('sidebar.reports')</span>
                     <span class="pull-right-container">
                         <i class="fa fa-angle-left pull-right"></i>
                     </span>
