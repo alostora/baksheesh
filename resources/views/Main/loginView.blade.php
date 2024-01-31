@@ -18,7 +18,9 @@
   <!-- iCheck -->
   <link rel="stylesheet" href="{{url('AdminDesign')}}/plugins/iCheck/square/blue.css">
 
-  <link rel="stylesheet" href="{{url('AdminDesign')}}/myStyle.css">
+  <link href='https://fonts.googleapis.com/css?family=Cairo' rel='stylesheet'>
+  <!-- <link rel="stylesheet" href="{{url('AdminDesign')}}/myStyle.css"> -->
+  <link rel="stylesheet" href="{{url('AdminDesign')}}/login_design.css">
 
   @if(App::getLocale() == "ar" || App::getLocale() == "")
   <link rel="stylesheet" href="{{url('AdminDesign')}}/bootstrap/css/bootstrap-rtl.min.css">
@@ -36,11 +38,15 @@
 
 <body class="hold-transition login-page" dir="{{$dir}}">
   <div class="login-box">
-    <div class="login-logo">
+    <!-- <div class="login-logo">
       <a href="#"><b>Tipo</b> - SMART</a>
-    </div>
+    </div> -->
     <!-- /.login-logo -->
+
     <div class="login-box-body">
+
+<img src="{{url('guest')}}/images/logo_tipo.png" class="login_logo" />
+
       <p class="login-box-msg">@lang('login.login') @lang('login.dashboard')</p>
 
       <form action="{{url('admin/login')}}" method="post">

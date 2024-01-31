@@ -1,0 +1,60 @@
+body,b,p,h1,h2,h3,h4,h5,h6,span,a,label,li,input,div,button,input,form{
+  font-family: 'Cairo';
+ 
+}
+
+body{
+  background-color: #fff !important;
+}
+
+.login-box-body{
+  top: 5px;
+  margin-bottom:0 !important;
+  height:70vh !important;
+  border: 2px solid #1fbdd9 !important;
+  display:flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  border-radius: 20px;
+  padding:10px;   
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+
+}
+.login_logo{
+  width:50%;
+}
+.login-box-body p{
+font-size: 20px;
+padding: 50px;
+font-weight: 700;
+}
+
+.has-feedback .form-control {
+  padding-left: 114.5px !important;
+  background-color: #fff !important;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+
+}
+.login-box-body .form-control-feedback, .register-box-body .form-control-feedback {
+  color: #1fbdd9 !important ;
+}
+
+
+
+.btn-primary {
+    color: #1a1919 !important;
+    background-color: #1fbdd9 !important;
+    border-color: #f7ef36 !important;
+    border-radius: 5px  !important;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19) !important;
+font-weight: 500px !important;
+
+}
+.btn-primary:hover {
+    color: #fff !important;
+    background-color: #0a5563 !important;
+    border:none !important;
+    border-radius: 5px  !important;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19) !important;
+}
