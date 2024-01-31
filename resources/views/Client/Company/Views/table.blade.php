@@ -2,7 +2,7 @@
     <div class="row">
         <div class="col-xs-12">
             <!-- filter -->
-            <div class="box box-success">
+            <div class="box box-warning">
 
                 <div class="box-body">
                     <form role="form" action="{{url('client/client-companies/search')}}" method="GET">
@@ -51,9 +51,9 @@
                     <div class="box-body">
                         <div class="col-sm-4 col-md-2">
                             <div class="color-palette-set">
-                                <div class="bg-red disabled color-palette">
+                                <div class="bg-blue disabled color-palette">
                                     <span>
-                                        @lang('company.inactive') : {{$companies ? $companies->where('stopped_at','!=',null)->count() : 0}}
+                                        @lang('company.active') : {{$count_active + $count_inactive}}
                                     </span>
                                 </div>
                             </div>
@@ -62,13 +62,23 @@
                             <div class="color-palette-set">
                                 <div class="bg-green disabled color-palette">
                                     <span>
-                                        @lang('company.active') : {{$companies ? $companies->where('stopped_at',null)->count() : 0}}
+                                        @lang('company.active') : {{$count_active}}
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-4 col-md-2">
+                            <div class="color-palette-set">
+                                <div class="bg-red disabled color-palette">
+                                    <span>
+                                        @lang('company.inactive') : {{$count_inactive}}
                                     </span>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
+
                 <div class="box-body">
                     <table id="example2" class="table table-bordered table-striped">
                         <thead>

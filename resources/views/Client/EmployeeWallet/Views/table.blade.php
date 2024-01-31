@@ -3,21 +3,12 @@
         <div class="col-xs-12">
 
             <!-- filter -->
-            <div class="box box-success">
-                <div class="box-header with-border">
-                    <h3 class="box-title">@lang('filter.filter')</h3>
-
-                    <div class="box-tools pull-right">
-                        <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
-                        </button>
-                    </div>
-                </div>
+            <div class="box box-warning">
                 <div class="box-body">
                     <form role="form" action="{{ url('client/employee-wallets') }}" method="GET">
                         <div class="row">
                             <div class="col-md-6">
-                                <div class="form-group">
-                                    <label>@lang('filter.companies')</label>
+                                <div class="input-group margin">
                                     <select class="form-control select2" name="company_id" id="company_id" onchange="getEmployees(this.value);">
                                         <option value="">@lang('filter.select')</option>
                                         @foreach ($companies as $company)
@@ -26,12 +17,16 @@
                                         </option>
                                         @endforeach
                                     </select>
+                                    <span class="input-group-btn">
+                                        <button type="submit" name="search" id="search-btn" class="btn btn-flat bg-orange">
+                                            <i class="fa fa-search"></i>
+                                        </button>
+                                    </span>
                                 </div>
                             </div>
 
                             <div class="col-md-6">
-                                <div class="form-group">
-                                    <label>@lang('filter.employees')</label>
+                                <div class="input-group margin">
                                     <select class="form-control select2" name="employee_id" id="employee_id">
                                         <option value="">@lang('filter.select')</option>
                                         @foreach ($employees as $employee)
@@ -41,24 +36,34 @@
                                         </option>
                                         @endforeach
                                     </select>
+                                    <span class="input-group-btn">
+                                        <button type="submit" name="search" id="search-btn" class="btn btn-flat bg-orange">
+                                            <i class="fa fa-search"></i>
+                                        </button>
+                                    </span>
                                 </div>
                             </div>
 
                             <div class="col-md-6">
-                                <div class="form-group">
-                                    <label>@lang('filter.date_from')</label>
+                                <div class="input-group margin">
                                     <input type="date" name="date_from" value="{{ Request('date_from') }}" class="form-control">
+                                    <span class="input-group-btn">
+                                        <button type="submit" name="search" id="search-btn" class="btn btn-flat bg-orange">
+                                            <i class="fa fa-search"></i>
+                                        </button>
+                                    </span>
                                 </div>
                             </div>
                             <div class="col-md-6">
-                                <div class="form-group">
-                                    <label>@lang('filter.date_to')</label>
+                                <div class="input-group margin">
                                     <input type="date" name="date_to" value="{{ Request('date_to') }}" class="form-control">
+                                    <span class="input-group-btn">
+                                        <button type="submit" name="search" id="search-btn" class="btn btn-flat bg-orange">
+                                            <i class="fa fa-search"></i>
+                                        </button>
+                                    </span>
                                 </div>
                             </div>
-                        </div>
-                        <div class="box-footer">
-                            <button type="submit" class="btn btn-info pull-right">@lang('filter.search')</button>
                         </div>
                     </form>
                 </div>
@@ -82,7 +87,7 @@
                         </div>
                     </div>
                 </div>
-                
+
                 <div class="box-body">
                     <table id="example2" class="table table-bordered table-striped">
                         <thead>

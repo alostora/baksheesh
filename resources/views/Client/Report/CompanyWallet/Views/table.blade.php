@@ -2,51 +2,51 @@
     <div class="row">
         <div class="col-xs-12">
             <!-- filter -->
-            <div class="box box-success">
-                <div class="box-header with-border">
-                    <h3 class="box-title">@lang('filter.filter')</h3>
-
-                    <div class="box-tools pull-right">
-                        <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
-                        </button>
-                    </div>
-                </div>
+            <div class="box box-warning">
                 <div class="box-body">
                     <form role="form" action="{{url('client/company-wallet-report')}}" method="GET">
-                        <div class="row">
-                            <div class="form-group">
-                                <div class="col-md-6">
-                                    <label>@lang('filter.date_from')</label>
-                                    <input type="date" name="date_from" value="{{Request('date_from')}}" class="form-control">
-                                </div>
-
-                                <div class="col-md-6">
-                                    <label>@lang('filter.date_to')</label>
-                                    <input type="date" name="date_to" value="{{Request('date_to')}}" class="form-control">
-                                </div>
-                            </div>
-
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <label>@lang('filter.companies')</label>
-                                    <select class="form-control select2" name="company_id" id="company_id">
-                                        <option value="">@lang('filter.select')</option>
-                                        @foreach($companies as $company)
-                                        <?php $selected = Request('company_id') == $company->id ? "selected" : ""; ?>
-                                        <option value="{{$company->id}}" {{$selected}}>{{$company->name}}</option>
-                                        @endforeach
-                                    </select>
-                                </div>
+                        <div class="col-md-6">
+                            <div class="input-group margin">
+                                <input type="date" name="date_from" value="{{Request('date_from')}}" class="form-control">
+                                <span class="input-group-btn">
+                                    <button type="submit" name="search" id="search-btn" class="btn btn-flat bg-orange">
+                                        <i class="fa fa-search"></i>
+                                    </button>
+                                </span>
                             </div>
                         </div>
-                        <div class="box-footer">
-                            <button type="submit" class="btn btn-info pull-right">@lang('filter.search')</button>
+                        <div class="col-md-6">
+                            <div class="input-group margin">
+                                <input type="date" name="date_to" value="{{Request('date_to')}}" class="form-control">
+                                <span class="input-group-btn">
+                                    <button type="submit" name="search" id="search-btn" class="btn btn-flat bg-orange">
+                                        <i class="fa fa-search"></i>
+                                    </button>
+                                </span>
+                            </div>
+                        </div>
+
+                        <div class="col-md-6">
+                            <div class="input-group margin">
+                                <select class="form-control select2" name="company_id" id="company_id">
+                                    <option value="">@lang('filter.companies')</option>
+                                    @foreach($companies as $company)
+                                    <?php $selected = Request('company_id') == $company->id ? "selected" : ""; ?>
+                                    <option value="{{$company->id}}" {{$selected}}>{{$company->name}}</option>
+                                    @endforeach
+                                </select>
+                                <span class="input-group-btn">
+                                    <button type="submit" name="search" id="search-btn" class="btn btn-flat bg-orange">
+                                        <i class="fa fa-search"></i>
+                                    </button>
+                                </span>
+                            </div>
                         </div>
                     </form>
                 </div>
             </div>
 
-            <div class="box">
+            <div class="box box-info">
                 <div class="box-header">
                     <h3 class="box-title col-md-8">@lang('company_wallet.page_title')</h3>
                 </div>
@@ -64,7 +64,7 @@
                         </div>
                     </div>
                 </div>
-                
+
                 <div class="box-body">
                     <table id="example2" class="table table-bordered table-striped">
                         <thead>

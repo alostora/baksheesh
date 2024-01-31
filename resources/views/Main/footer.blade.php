@@ -53,7 +53,7 @@
 <script src="{{url('AdminDesign')}}/lte3/plugins/datatables-buttons/js/buttons.print.min.js"></script>
 <script src="{{url('AdminDesign')}}/lte3/plugins/datatables-buttons/js/buttons.colVis.min.js"></script>
 
-
+<script src="https://kit.fontawesome.com/6f04acab37.js" crossorigin="anonymous"></script>
 <script>
     $(function() {
         // $('#example1').DataTable()

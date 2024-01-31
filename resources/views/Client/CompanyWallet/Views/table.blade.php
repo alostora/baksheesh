@@ -3,20 +3,12 @@
         <div class="col-xs-12">
             <!-- filter -->
             <div class="box box-success">
-                <div class="box-header with-border">
-                    <h3 class="box-title">@lang('company_wallet.filter')</h3>
 
-                    <div class="box-tools pull-right">
-                        <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
-                        </button>
-                    </div>
-                </div>
                 <div class="box-body">
                     <form role="form" action="{{url('client/company-wallets')}}" method="GET">
                         <div class="row">
                             <div class="col-md-6">
-                                <div class="form-group">
-                                    <label>@lang('company_wallet.company')</label>
+                                <div class="input-group margin">
                                     <select class="form-control select2" name="company_id" style="width: 100%;">
                                         <option value="">@lang('company_wallet.select')</option>
                                         @foreach($companies as $company)
@@ -24,23 +16,33 @@
                                         <option value="{{$company->id}}" {{$selected}}>{{$company->name}}</option>
                                         @endforeach
                                     </select>
+                                    <span class="input-group-btn">
+                                        <button type="submit" name="search" id="search-btn" class="btn btn-flat bg-orange">
+                                            <i class="fa fa-search"></i>
+                                        </button>
+                                    </span>
                                 </div>
                             </div>
                             <div class="col-md-6">
-                                <div class="form-group">
-                                    <label>@lang('company_wallet.date_from')</label>
+                                <div class="input-group margin">
                                     <input type="date" name="date_from" value="{{Request('date_from')}}" class="form-control" style="width: 100%;">
+                                    <span class="input-group-btn">
+                                        <button type="submit" name="search" id="search-btn" class="btn btn-flat bg-orange">
+                                            <i class="fa fa-search"></i>
+                                        </button>
+                                    </span>
                                 </div>
                             </div>
                             <div class="col-md-6">
-                                <div class="form-group">
-                                    <label>@lang('company_wallet.date_to')</label>
+                                <div class="input-group margin">
                                     <input type="date" name="date_to" value="{{Request('date_to')}}" class="form-control" style="width: 100%;">
+                                    <span class="input-group-btn">
+                                        <button type="submit" name="search" id="search-btn" class="btn btn-flat bg-orange">
+                                            <i class="fa fa-search"></i>
+                                        </button>
+                                    </span>
                                 </div>
                             </div>
-                        </div>
-                        <div class="box-footer">
-                            <button type="submit" class="btn btn-info pull-right">Search</button>
                         </div>
                     </form>
                 </div>
