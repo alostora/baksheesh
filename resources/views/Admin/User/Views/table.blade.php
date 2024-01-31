@@ -2,7 +2,7 @@
     <div class="row">
         <div class="col-xs-12">
             <!-- filter -->
-            <div class="box box-success">
+            <div class="box box-warning">
                 <div class="box-body">
                     <form role="form" action="{{url('admin/users/search')}}" method="GET">
                         <div class="row">
@@ -51,7 +51,7 @@
                 </div>
             </div>
 
-            <div class="box box-primary">
+            <div class="box box-info">
                 <div class="box-header">
                     <h3 class="box-title col-md-8">@lang('user.page_title')</h3>
                     <div class="col-md-4">
@@ -118,7 +118,7 @@
                                 <td> {{$user->accountType ? $user->accountType->name : ''}} </td>
                                 <td>
                                     <a href="{{url('admin/user/edit/'.$user->id)}}" class="btn btn-info btn-sm">
-                                        <i class="fa fa-edit"></i> @lang('user.update')
+                                        <i class="fa fa-edit"></i>
                                     </a>
                                     @if($user->stopped_at == null)
                                     <a href="{{url('admin/user-inactive/'.$user->id)}}" class="btn btn-success btn-sm">

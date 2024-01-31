@@ -1,6 +1,7 @@
 <section class="content">
     <div class="row">
         <div class="col-xs-12">
+
             <!-- filter -->
             <div class="box box-warning">
                 <div class="box-body">
@@ -41,6 +42,27 @@
                                         <option value="{{$client->id}}" {{$selected}}>{{$client->name}}</option>
                                         @endforeach
                                     </select>
+                                    <span class="input-group-btn">
+                                        <button type="submit" name="search" id="search-btn" class="btn btn-flat bg-orange">
+                                            <i class="fa fa-search"></i>
+                                        </button>
+                                    </span>
+                                </div>
+                            </div>
+
+                            <div class="col-md-6">
+                                <div class="input-group margin">
+                                    <input type="date" name="date_from" value="{{ Request('date_from') }}" class="form-control">
+                                    <span class="input-group-btn">
+                                        <button type="submit" name="search" id="search-btn" class="btn btn-flat bg-orange">
+                                            <i class="fa fa-search"></i>
+                                        </button>
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="input-group margin">
+                                    <input type="date" name="date_to" value="{{ Request('date_to') }}" class="form-control">
                                     <span class="input-group-btn">
                                         <button type="submit" name="search" id="search-btn" class="btn btn-flat bg-orange">
                                             <i class="fa fa-search"></i>
