@@ -1,8 +1,8 @@
 <section class="content">
-
-
     <div class="box box-info">
+        <!-- filter -->
         @include('Admin/TableFilter/country')
+
         <div class="box-header">
             <h3 class="box-title col-md-8">@lang('country.page_title')</h3>
             <div class="col-md-4">
@@ -13,7 +13,7 @@
             </div>
         </div>
 
-        <div class="box">
+        <div class="box box-success">
             <div class="box-body">
                 <div class="col-sm-4 col-md-2">
                     <div class="color-palette-set">
