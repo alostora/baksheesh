@@ -1,6 +1,6 @@
 body,b,p,h1,h2,h3,h4,h5,h6,span,a,label,li,input,div,button,input,form{
     font-family: 'Cairo';
-   
+
 }
 
 
@@ -8,7 +8,7 @@ body,b,p,h1,h2,h3,h4,h5,h6,span,a,label,li,input,div,button,input,form{
 
 /* body,p,label,li,input,div,button,input,form{
      font-size :13px;
-   
+
 } */
 body{
   height:100vh !important;
@@ -45,7 +45,7 @@ body{
 .user-panel p{
   font-size:20px !important;
   font-weight: 500 !important;
-  
+
 }
 .user-panel a{
   font-size:12px !important;
@@ -135,7 +135,7 @@ min-height: 40px;
 background-color: #fff;
 min-height: 40px;
   font-size: 14px !important;
-  color:#1b1b1b98 !important; 
+  color:#1b1b1b98 !important;
 }
 .treeview .treeview-menu  li a:hover{
   /* border:1px solid#ff0080 !important; */
@@ -236,7 +236,7 @@ header {
 .navbar{
   background-color: #fff !important  ;
   box-shadow: 0 1px 3px 0 rgba(65, 65, 65, 0.1), 0 2px 8px 0 rgba(0, 0, 0, 0.19);
-  
+
 }
 .logo{
   background-color: #fff !important  ;

@@ -1,4 +1,7 @@
 <section class="content-header">
+    <br>
+    <br>
+    <br>
     <h1>
         @lang('dashboard.app_name')
         <small>@lang('dashboard.dashboard')</small>
