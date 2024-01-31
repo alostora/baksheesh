@@ -13,7 +13,7 @@
     <div class="col-md-4 col-sm-6 col-xs-12">
       <div class="info-box">
 
-        <span class="info-box-icon bg-green"><i  class="ion ion-ios-people" styl></i></span>
+        <span class="info-box-icon bg-green"><i  class="ion ion-ios-people" style="color:#8939dd"></i></span>
         <br>
 
 
@@ -30,7 +30,7 @@
     <div class="col-md-4 col-sm-6 col-xs-12">
       <div class="info-box">
 
-        <span class="info-box-icon bg-warning"><i class="fa fa-building-o"></i></span>
+        <span class="info-box-icon bg-warning"><i class="fa fa-building-o" style="color:rgb(0, 197, 187)"></i></span>
         <br>
 
         <div class="info-box-content">
@@ -46,7 +46,7 @@
     <div class="col-md-4 col-sm-6 col-xs-12">
       <div class="info-box">
 
-        <span class="info-box-icon bg-primary"><i class="ion ion-person-stalker"></i></span>
+        <span class="info-box-icon bg-primary"><i class="ion ion-person-stalker" style="color:#0fa742"></i></span>
         <br>
         <div class="info-box-content">
           <span class="info-box-text">@lang('dashboard.active_employees')</span>
@@ -60,7 +60,7 @@
 
     <div class="col-md-4 col-sm-6 col-xs-12">
       <div class="info-box">
-        <span class="info-box-icon" style="background-color: #8d4c43;"><i class="fa  fa-file-text-o"></i></span>
+        <span class="info-box-icon" style="background-color: #8d4c43;"><i class="fa-solid fa-file-invoice" style="color:rgb(206 218 0)"></i></span>
         <br>
         <div class="info-box-content">
           <span class="info-box-text">@lang('dashboard.month_income')</span>
@@ -73,7 +73,7 @@
 
     <div class="col-md-4 col-sm-6 col-xs-12">
       <div class="info-box">
-        <span class="info-box-icon bg-red"><i class="fa fa-file-zip-o "></i></span>
+        <span class="info-box-icon bg-red"><i class="fa fa-file-zip-o " style="color:rgb(0 116 168)"></i></span>
         <br>
         <div class="info-box-content">
           <span class="info-box-text">@lang('dashboard.year_income')</span>
@@ -86,7 +86,7 @@
 
     <div class="col-md-4 col-sm-6 col-xs-12">
       <div class="info-box">
-        <span class="info-box-icon" style="background-color: #4e9d79;"><i class="fa fa-dollar"></i></span>
+        <span class="info-box-icon" style="background-color: #4e9d79;"><i class="fa-solid fa-sack-dollar" style="color:rgb(243 156 18);"></i></span>
         <br>
         <div class="info-box-content">
           <span class="info-box-text">@lang('dashboard.current_amount')</span>

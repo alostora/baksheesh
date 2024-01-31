@@ -9,16 +9,37 @@
  .content .info-box{
   /* border: 2px solid red; */
    border-radius:5px;  
-  /* background-image: linear-gradient(#ebebeb, #ffffff, #ebebeb); */
+   border-top-right-radius:20px;  
+   border-top-left-radius:20px;  
+margin-top: 10px;
+  background-image: linear-gradient(#fff, #fff, rgb(72, 220, 247, .4));
 
    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-   min-height: 180px;
+   min-height: 150px;
    display:flex !important;
    align-items: center !important;
    text-align: center !important;
    flex-direction: column !important;
    padding-top: 20px;
    padding-bottom: 20px;
+   transition:0.5s;
+ }
+ .content .info-box:hover{
+  /* border: 2px solid red; */
+   border-radius:5px;  
+   border-top-right-radius:20px;  
+   border-top-left-radius:20px;  
+  background-image: linear-gradient(#fff, rgb(72, 220, 247, .5), rgb(72, 220, 247, 0.8));
+   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+   min-height: 150px;
+   display:flex !important;
+   align-items: center !important;
+   text-align: center !important;
+   flex-direction: column !important;
+   padding-top: 20px;
+   padding-bottom: 20px;
+cursor: pointer;
+   scale: calc(1.1);
  }
  .info-box-content{
   margin: 0 !important;
@@ -27,20 +48,20 @@
  .info-box-icon{
   background-color: #ffffff00 !important;
   color:rgb(0, 197, 187) !important;
-  font-size: 70px;
+  font-size: 100px;
 
 
  }
 
 .info-box-text {
-  font-size: 16px;
-  font-weight: 700;
+  font-size: 14px;
+  font-weight: 600;
   color:rgb(0, 104, 104)
 }
 .info-box-number{
   font-size: 35px;
   font-weight: 600;
-  color:rgb(0, 209, 28);
+  color:rgb(0, 88, 12);
   border-radius: 5px;
 }
 
