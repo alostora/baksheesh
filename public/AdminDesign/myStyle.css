@@ -262,10 +262,13 @@ header {
 
 
 
-
 /* content */
 .content{
   padding-top: 80px;
+}
+
+.box {
+    padding: 10px !important;
 }
 
 

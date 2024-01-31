@@ -1,10 +1,8 @@
 <section class="content">
 
 
-@include('Admin/TableFilter/country')
-
-
     <div class="box box-info">
+        @include('Admin/TableFilter/country')
         <div class="box-header">
             <h3 class="box-title col-md-8">@lang('country.page_title')</h3>
             <div class="col-md-4">
