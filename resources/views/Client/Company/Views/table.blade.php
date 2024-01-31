@@ -3,36 +3,34 @@
         <div class="col-xs-12">
             <!-- filter -->
             <div class="box box-success">
-                <div class="box-header with-border">
-                    <h3 class="box-title">@lang('filter.filter')</h3>
 
-                    <div class="box-tools pull-right">
-                        <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
-                        </button>
-                    </div>
-                </div>
                 <div class="box-body">
                     <form role="form" action="{{url('client/client-companies/search')}}" method="GET">
                         <div class="row">
                             <div class="col-md-6">
-                                <div class="form-group">
-                                    <label>@lang('filter.active')</label>
+                                <div class="input-group margin">
                                     <select class="form-control select2" name="active">
                                         <option value="" {{Request('active') == "" ? "selected" : "";}}>@lang('filter.all')</option>
                                         <option value="active" {{Request('active') == "active" ? "selected" : "";}}>@lang('filter.active')</option>
                                         <option value="inactive" {{Request('active') == "inactive" ? "selected" : "";}}>@lang('filter.inactive')</option>
                                     </select>
+                                    <span class="input-group-btn">
+                                        <button type="submit" name="search" id="search-btn" class="btn btn-flat bg-orange">
+                                            <i class="fa fa-search"></i>
+                                        </button>
+                                    </span>
                                 </div>
                             </div>
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <label>@lang('filter.query_string')</label>
-                                    <input type="text" name="query_string" value="{{Request('query_string')}}" placeholder="{{Lang::get('filter.query_string')}}" class="form-control" style="width: 100%;">
+                            <div class="col-sm-4 col-md-4">
+                                <div class="input-group margin">
+                                    <input type="text" class="form-control" name="query_string" value="{{Request('query_string')}}" placeholder="{{Lang::get('filter.query_string')}}">
+                                    <span class="input-group-btn">
+                                        <button type="submit" name="search" id="search-btn" class="btn btn-flat bg-orange">
+                                            <i class="fa fa-search"></i>
+                                        </button>
+                                    </span>
                                 </div>
                             </div>
-                        </div>
-                        <div class="box-footer">
-                            <button type="submit" class="btn btn-info pull-right">@lang('filter.search')</button>
                         </div>
                     </form>
                 </div>
