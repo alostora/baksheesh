@@ -2,58 +2,58 @@
     <div class="row">
         <div class="col-xs-12">
             <!-- filter -->
-            <div class="box box-success">
-                <div class="box-header with-border">
-                    <h3 class="box-title">@lang('filter.filter')</h3> <i class="fa fa-filter"></i>
-
-                    <div class="box-tools pull-right">
-                        <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
-                        </button>
-                    </div>
-                </div>
+            <div class="box box-warning">
                 <div class="box-body">
                     <form role="form" action="{{url('admin/all-client-withdrawal-requests/search')}}" method="GET">
                         <div class="row">
-
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <label>@lang('filter.clients')</label>
-                                    <select class="form-control select2" name="client_id" style="width: 100%;">
-                                        <option value="">@lang('filter.select')</option>
-                                        @foreach($clients as $client)
-                                        <?php $selected = Request('client_id') == $client->id ? "selected" : ""; ?>
-                                        <option value="{{$client->id}}" {{$selected}}>{{$client->name}}</option>
-                                        @endforeach
-                                    </select>
+                            <div class="col-sm-4 col-md-4">
+                                <div class="input-group margin">
+                                    <input type="text" class="form-control" name="query_string" value="{{Request('query_string')}}" placeholder="{{Lang::get('filter.query_string')}}">
+                                    <span class="input-group-btn">
+                                        <button type="submit" name="search" id="search-btn" class="btn btn-flat bg-orange">
+                                            <i class="fa fa-search"></i>
+                                        </button>
+                                    </span>
                                 </div>
                             </div>
-
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <label>@lang('filter.status')</label>
+                            <div class="col-sm-4 col-md-4">
+                                <div class="input-group margin">
                                     <select class="form-control select2" name="status" style="width: 100%;">
-                                        <option value="">@lang('filter.select')</option>
+                                        <option value="">@lang('filter.status')</option>
                                         @foreach($withdrawal_request_status as $withdrawal_status)
                                         <?php $selected = Request('status') == $withdrawal_status->id ? "selected" : ""; ?>
                                         <option value="{{$withdrawal_status->id}}" {{$selected}}>{{app()->getLocale() == 'ar' ? $withdrawal_status->name_ar : $withdrawal_status->name}}</option>
                                         @endforeach
                                     </select>
+                                    <span class="input-group-btn">
+                                        <button type="submit" name="search" id="search-btn" class="btn btn-flat bg-orange">
+                                            <i class="fa fa-search"></i>
+                                        </button>
+                                    </span>
                                 </div>
                             </div>
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <label>@lang('filter.query_string')</label>
-                                    <input type="text" name="query_string" value="{{Request('query_string')}}" placeholder="{{Lang::get('withdrawal_request.query_string')}}" class="form-control" style="width: 100%;">
+                            <div class="col-sm-4 col-md-4">
+                                <div class="input-group margin">
+                                    <select class="form-control select2" name="client_id">
+                                        <option value="">@lang('filter.clients')</option>
+                                        @foreach($clients as $client)
+                                        <?php $selected = Request('client_id') == $client->id ? "selected" : ""; ?>
+                                        <option value="{{$client->id}}" {{$selected}}>{{$client->name}}</option>
+                                        @endforeach
+                                    </select>
+                                    <span class="input-group-btn">
+                                        <button type="submit" name="search" id="search-btn" class="btn btn-flat bg-orange">
+                                            <i class="fa fa-search"></i>
+                                        </button>
+                                    </span>
                                 </div>
                             </div>
-                        </div>
-                        <div class="box-footer">
-                            <button type="submit" class="btn btn-info pull-right">@lang('filter.search')</button>
                         </div>
                     </form>
                 </div>
             </div>
-            <div class="box">
+
+            <div class="box box-info">
                 <div class="box-header">
                     <h3 class="box-title col-md-8">@lang('withdrawal_request.page_title')</h3>
                 </div>
@@ -112,6 +112,7 @@
 
                     </div>
                 </div>
+
                 <div class="box-body">
                     <table id="example2" class="table table-bordered table-striped">
                         <thead>
@@ -148,9 +149,11 @@
                                     </div>
                                 </td>
                                 <td>
+                                    @if($withdrawalRequest->withdrawalRequestStatus->code == App\Constants\HasLookupType\WithdrawalRequestStatus::PENDING['code'])
                                     <a href="{{url('admin/client-withdrawal-request/delete/'.$withdrawalRequest->id)}}" class="btn btn-danger btn-sm">
                                         <i class="fa fa-trash"></i>
                                     </a>
+                                    @endif
                                 </td>
                             </tr>
                             @endforeach

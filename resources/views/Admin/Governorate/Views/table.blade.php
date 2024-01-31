@@ -61,7 +61,7 @@
 
     <div class="row">
         <div class="col-xs-12">
-            <div class="box">
+            <div class="box box-info">
                 <div class="box-header">
                     <h3 class="box-title col-md-8">@lang('governorate.page_title')</h3>
                     <div class="col-md-4">

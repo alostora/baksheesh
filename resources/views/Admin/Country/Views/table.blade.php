@@ -2,13 +2,10 @@
 
     <div class="row">
         <div class="col-xs-12">
-
             <!-- filter -->
             <div class="box box-warning">
                 <div class="box-body">
-
                     <form role="form" action="{{url('admin/countries/search')}}" method="GET">
-
                         <div class="row">
                             <div class="col-sm-6 col-md-6">
                                 <div class="input-group margin">
@@ -37,13 +34,12 @@
                         </div>
                     </form>
                 </div>
-
             </div>
         </div>
     </div>
 
     <div class="col-xs-12">
-        <div class="box">
+        <div class="box box-info">
             <div class="box-header">
                 <h3 class="box-title col-md-8">@lang('country.page_title')</h3>
                 <div class="col-md-4">
