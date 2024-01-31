@@ -42,10 +42,10 @@
       <a href="#"><b>Tipo</b> - SMART</a>
     </div> -->
     <!-- /.login-logo -->
-    <img src="{{url('guest')}}/images/logo_tipo.png" class="login_logo" />
 
     <div class="login-box-body">
 
+    <img src="{{url('guest')}}/images/logo_tipo.png" class="login_logo" />
 
       <p class="login-box-msg">@lang('login.login') @lang('login.dashboard')</p>
 
