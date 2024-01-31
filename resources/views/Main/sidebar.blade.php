@@ -134,7 +134,7 @@
             $info = \App\Foundations\SideBar\SideBarCollection::clientSideBarInfo();
             ?>
 
-            <li class="treeview">
+            <li class="active treeview">
                 <a href="#">
                     <i class="fa fa-th-large"></i> <span>@lang('sidebar.dashboard')</span>
                     <span class="pull-right-container">
