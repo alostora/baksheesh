@@ -4,12 +4,17 @@ body,b,p,h1,h2,h3,h4,h5,h6,span,a,label,li,input,div,button,input,form{
 }
 
 body{
-  background-color: #ffee00 !important;
-}
+  background-color: #ffffff !important;
 
+}
+.hold-transition{
+  justify-content: center !important;
+  align-items: center !important;
+  text-align: center !important;
+  
+}
 .login-box-body{
-  top: 5px;
-  margin-bottom:0 !important;
+  margin-top:50px !important;
   display:flex;
   justify-content: center;
   align-items: center;
@@ -17,11 +22,12 @@ body{
   border-radius: 20px;
   padding:8px;   
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-  height:auto;
-
+  row-gap: 20px !important;
 }
 .login_logo{
   width:35%;
+  padding:10px;
+  margin-top: 50px;
 }
 .login-box-body p{
 font-size: 20px;
