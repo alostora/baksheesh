@@ -58,6 +58,7 @@
 
     <link href='https://fonts.googleapis.com/css?family=Cairo' rel='stylesheet'>
     <link rel="stylesheet" href="{{url('AdminDesign/myStyle.css')}}">
+    <link rel="stylesheet" href="{{url('AdminDesign/home_page_design.css')}}">
 
     <script src="{{url('AdminDesign/bower_components/ckeditor/ckeditor.js')}}"></script>
     <script src="{{url('AdminDesign/bower_components/jquery/dist/jquery.min.js')}}"></script>
