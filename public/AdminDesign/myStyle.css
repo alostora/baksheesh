@@ -172,26 +172,23 @@ font-weight: 500;
   margin-top: 10px;
   margin:5px;
   padding:8px;
-  color: #002fff;
+  color: #ffffff;
   scale: calc(1.1);
   text-decoration: none;
-  background-color: #fff;
+  background-color: #21beda;
   border-radius: 10px;
   opacity: 1;
 }
 
-.lang{
+.lang a{
+  color:#000 !important;
+  font-weight: 500;
+}
+.lang a:hover{
   background-color: #21beda !important;
-  color:#000000 !important;
-  font-weight: 400;
+  color:#fff !important;
+  font-weight: 800;
 }
-
-.hidden-xs {
-  color:#000000
-}
-
-
-
 
 
 
@@ -250,8 +247,24 @@ header {
   border-radius: 3px;
 }
 
+.hidden-xs {
+  color:#000;
+  margin-left: 5px;
+  margin-right: 5px;
+
+}
+
+
+.dropdown {
+  margin-right: 13px;
+
+}
+
+
+
 
 /* content */
 .content{
   padding-top: 80px;
 }
+
