@@ -29,6 +29,8 @@ class DashboardCollection
 
         $data['current_amount'] = self::currentAmount();
 
+        $data['mounth_income_chart'] = self::mounthIncomeChart();
+
         return $data;
     }
 
@@ -80,5 +82,17 @@ class DashboardCollection
         $employee_cash = EmployeeCash::sum('amount');
 
         return ($company_cash + $employee_cash) - $delivered_withdrawal;
+    }
+
+    public static function mounthIncomeChart()
+    {
+
+
+        return CompanyCash::get()->groupBy('created_at');
+
+        // ->groupBy(function($date) {
+        //     return Carbon::parse($date->created_at)->format('M'); // grouping by years
+        //     //return Carbon::parse($date->created_at)->format('m'); // grouping by months
+        // });
     }
 }

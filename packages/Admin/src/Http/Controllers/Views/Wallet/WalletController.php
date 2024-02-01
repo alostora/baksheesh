@@ -5,10 +5,7 @@ namespace Admin\Http\Controllers\Views\Wallet;
 use Admin\Foundations\Wallet\CompanyWalletSearchCollection;
 use Admin\Foundations\Wallet\EmployeeWalletSearchCollection;
 use App\Constants\SystemDefault;
-use App\Foundations\LookupType\AccountTypeCollection;
 use App\Http\Controllers\Controller;
-use App\Models\Company;
-use App\Models\User;
 use Illuminate\Http\Request;
 
 class WalletController extends Controller

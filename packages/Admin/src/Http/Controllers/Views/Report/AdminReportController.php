@@ -6,14 +6,8 @@ use Admin\Foundations\Report\Client\ClientSearchCollection;
 use Admin\Foundations\Report\Withdrawal\WithdrawalReportSearchCollection;
 use Admin\Foundations\Wallet\CompanyWalletSearchCollection;
 use Admin\Foundations\Wallet\EmployeeWalletSearchCollection;
-use App\Constants\HasLookupType\UserAccountType;
 use App\Constants\SystemDefault;
-use App\Foundations\LookupType\AccountTypeCollection;
-use App\Foundations\LookupType\WithdrawalRequestStatusCollection;
 use App\Http\Controllers\Controller;
-use App\Models\Company;
-use App\Models\SystemLookup;
-use App\Models\User;
 use Illuminate\Http\Request;
 
 class AdminReportController extends Controller

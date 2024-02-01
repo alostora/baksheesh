@@ -7,8 +7,6 @@ use Admin\Foundations\Wallet\ClientWithdrawalRequest\ClientWithdrawalRequestSear
 use Admin\Http\Requests\ClientWithdrawalRequest\ClientWithdrawalRequestChangeStatusRequest;
 use App\Constants\StatusCode;
 use App\Constants\SystemDefault;
-use App\Foundations\LookupType\AccountTypeCollection;
-use App\Foundations\LookupType\WithdrawalRequestStatusCollection;
 use App\Http\Controllers\Controller;
 use App\Models\ClientWithdrawalRequest;
 use App\Models\User;
