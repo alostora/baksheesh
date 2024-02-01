@@ -68,7 +68,7 @@
                     </li>
                     <li>
                         <a href="{{url('admin/companies')}}">
-                            <i class="fa fa-building"></i>@lang('sidebar.companies')
+                            <i class="fa fa-bank"></i>@lang('sidebar.companies')
                             <span class="pull-right-container">
                                 <small class="label pull-right bg-green">{{$info['companies_count']}}</small>
                             </span>
@@ -87,7 +87,7 @@
                     </li>
                     <li>
                         <a href="{{url('admin/employee-wallets')}}">
-                            <i class="fa  fa-cc-visa"></i>@lang('sidebar.employee_wallets')
+                            <i class="fa  fa-credit-card"></i>@lang('sidebar.employee_wallets')
                         </a>
                     </li>
                 </ul>
@@ -145,7 +145,7 @@
 
                     <li>
                         <a href="{{url('client/client-companies')}}">
-                            <i class="fa fa-circle-o"></i>@lang('sidebar.companies')
+                            <i class="fa fa-bank"></i>@lang('sidebar.companies')
                             <span class="pull-right-container">
                                 <small class="label pull-right bg-primary">{{$info['companies_count']}}</small>
                             </span>
@@ -153,7 +153,7 @@
                     </li>
                     <li>
                         <a href="{{url('client/client-company-employees/search')}}">
-                            <i class="fa fa-circle-o"></i>@lang('sidebar.employees')
+                            <i class="ion ion-person-stalker"></i>@lang('sidebar.employees')
                             <span class="pull-right-container">
                                 <small class="label pull-right bg-green">{{$info['employees_count']}}</small>
                             </span>
@@ -162,17 +162,17 @@
 
                     <li>
                         <a href="{{url('client/company-wallets')}}">
-                            <i class="fa fa-circle-o"></i>@lang('sidebar.company_wallets')
+                            <i class="fa fa-credit-card"></i>@lang('sidebar.company_wallets')
                         </a>
                     </li>
                     <li>
                         <a href="{{url('client/employee-wallets')}}">
-                            <i class="fa fa-circle-o"></i>@lang('sidebar.employee_wallets')
+                            <i class="fa fa-credit-card"></i>@lang('sidebar.employee_wallets')
                         </a>
                     </li>
                     <li>
                         <a href="{{url('client/client-withdrawal-requests')}}">
-                            <i class="fa fa-circle-o"></i>@lang('sidebar.withdrawal_requests')
+                            <i class="fa fa-list-ol"></i>@lang('sidebar.withdrawal_requests')
                         </a>
                     </li>
 
@@ -192,30 +192,30 @@
 
                     <li>
                         <a href="{{url('client/company-wallet-report')}}">
-                            <i class="fa fa-circle-o"></i>@lang('sidebar.company_wallet_report')
+                            <i class="fa fa-line-chart"></i>@lang('sidebar.company_wallet_report')
                         </a>
                     </li>
                     <li>
                         <a href="{{url('client/employee-wallet-report')}}">
-                            <i class="fa fa-circle-o"></i>@lang('sidebar.employee_wallet_report')
+                            <i class="fa fa-bar-chart"></i>@lang('sidebar.employee_wallet_report')
                         </a>
                     </li>
 
                     <li>
                         <a href="{{url('client/withdrawal-request-report')}}">
-                            <i class="fa fa-circle-o"></i>@lang('sidebar.withdrawal_request_report')
+                            <i class="fa fa-file-text-o"></i>@lang('sidebar.withdrawal_request_report')
                         </a>
                     </li>
 
                     <li>
                         <a href="{{url('client/employee-rating-report')}}">
-                            <i class="fa fa-circle-o"></i>@lang('sidebar.employee_rating_report')
+                            <i class="fa fa-regular fa-star"></i>@lang('sidebar.employee_rating_report')
                         </a>
                     </li>
 
                     <li>
                         <a href="{{url('client/employee-notes-report')}}">
-                            <i class="fa fa-circle-o"></i>@lang('sidebar.employee_notes_report')
+                            <i class="fa fa-solid fa-clipboard"></i>@lang('sidebar.employee_notes_report')
                         </a>
                     </li>
 

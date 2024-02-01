@@ -15,14 +15,16 @@
 
                 <span class="info-box-icon bg-green"><i class="ion ion-ios-people" style="color:#8939dd"></i></span>
                 <br>
+              
 
 
                 <div class="info-box-content">
+                  
                     <span class="info-box-text">@lang('dashboard.active_clients')</span>
                     <br>
                     <br>
 
-                    <span class="info-box-number">{{$count_active_clients}}<small></small></span>
+                    <span class="info-box-number" style=" background-color:#8939dd ">{{$count_active_clients}}<small></small></span>
                 </div>
             </div>
         </div>
@@ -30,7 +32,7 @@
         <div class="col-md-4 col-sm-6 col-xs-12">
             <div class="info-box">
 
-                <span class="info-box-icon bg-warning"><i class="fa fa-building-o" style="color:rgb(0, 197, 187)"></i></span>
+                <span class="info-box-icon bg-warning"><i class="  fa fa-bank" style="color:rgb(176 1 143)"></i></span>
                 <br>
 
                 <div class="info-box-content">
@@ -38,7 +40,7 @@
                     <br>
                     <br>
 
-                    <span class="info-box-number">{{$count_active_companies}}<small></small></span>
+                    <span class="info-box-number" style=" background-color:rgb(176 1 143)  ">{{$count_active_companies}}<small></small></span>
                 </div>
             </div>
         </div>
@@ -52,7 +54,7 @@
                     <span class="info-box-text">@lang('dashboard.active_employees')</span>
                     <br>
                     <br>
-                    <span class="info-box-number">{{$count_active_employees}}<small></small></span>
+                    <span class="info-box-number" style="background-color:#0fa742">{{$count_active_employees}}<small></small></span>
                 </div>
             </div>
         </div>
@@ -60,26 +62,26 @@
 
         <div class="col-md-4 col-sm-6 col-xs-12">
             <div class="info-box">
-                <span class="info-box-icon" style="background-color: #8d4c43;"><i class="fa-solid fa-file-invoice" style="color:rgb(206 218 0)"></i></span>
+                <span class="info-box-icon" style="background-color: #8d4c43;"><i class="fa fa-line-chart" style="color:rgb(206 218 0)"></i></span>
                 <br>
                 <div class="info-box-content">
                     <span class="info-box-text">@lang('dashboard.month_income')</span>
                     <br>
                     <br>
-                    <span class="info-box-number">{{$month_income}}<small></small></span>
+                    <span class="info-box-number" style="background-color:rgb(206 218 0)">{{$month_income}}<small></small></span>
                 </div>
             </div>
         </div>
 
         <div class="col-md-4 col-sm-6 col-xs-12">
             <div class="info-box">
-                <span class="info-box-icon bg-red"><i class="fa fa-file-zip-o " style="color:rgb(0 116 168)"></i></span>
+                <span class="info-box-icon bg-red"><i class="fa fa-bar-chart" style="color:rgb(0 116 168)"></i></span>
                 <br>
                 <div class="info-box-content">
                     <span class="info-box-text">@lang('dashboard.year_income')</span>
                     <br>
                     <br>
-                    <span class="info-box-number">{{$year_income}}<small></small></span>
+                    <span class="info-box-number" style="background-color:rgb(0 116 168)">{{$year_income}}<small></small></span>
                 </div>
             </div>
         </div>
@@ -92,7 +94,7 @@
                     <span class="info-box-text">@lang('dashboard.current_amount')</span>
                     <br>
                     <br>
-                    <span class="info-box-number">{{$current_amount}}<small></small></span>
+                    <span class="info-box-number" style="background-color:rgb(243 156 18)">{{$current_amount}}<small></small></span>
                 </div>
             </div>
         </div>
