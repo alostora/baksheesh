@@ -88,13 +88,13 @@ transition: 0.5s;
 
 .fa-th-large{
   font-size: large;
-margin:5px !important;
+/* margin:5px !important; */
 opacity: 0.8 !important;
 color: #047386;
 }
 .fa-pie-chart{
   font-size: large;
-margin:5px !important;
+/* margin:5px !important; */
 /* opacity: 0.8 !important; */
 color: #047386;
 }

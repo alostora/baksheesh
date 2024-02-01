@@ -91,12 +91,12 @@ color:#f7ef31;
 } */
 .fa-th-large{
   font-size: large;
-margin:5px !important;
+/* margin:5px !important; */
 opacity: 0.8 !important;
 }
 .fa-pie-chart{
   font-size: large;
-margin:5px !important;
+/* margin:5px !important; */
 /* opacity: 0.8 !important; */
 }
 .active span {
