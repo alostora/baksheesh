@@ -83,15 +83,20 @@
 .box-danger {
     border-radius: 5px;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-    margin-top: 20px;
+    /* margin-top: 20px; */
     transition: 0.5s;
 }
-.box-primary:hover,
-.box-info:hover,
-.box-danger:hover {
+.charts .box-primary:hover,
+.charts .box-info:hover,
+.charts .box-danger:hover {
     border-radius: 5px;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-    margin-top: 20px;
+    /* margin-top: 20px; */
     transition: 0.5s;
     scale: calc(1.05);
 }
+.box-primary,
+.box-info,
+ .box-danger{
+  padding:10px;
+ }
