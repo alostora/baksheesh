@@ -12,7 +12,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('employee_available_ratings', function (Blueprint $table) {
-            
+
             $table->uuid('id')->primary();
 
             $table->foreignUuid('client_id')->nullable();
@@ -21,7 +21,11 @@ return new class extends Migration
 
             $table->foreignUuid('employee_id')->nullable();
 
-            $table->foreignUuid('available_rating_id')->nullable();
+            $table->string('name')->nullable();
+
+            $table->string('name_ar')->nullable();
+
+            $table->string('stopped_at')->nullable();
 
             $table->timestamps();
 

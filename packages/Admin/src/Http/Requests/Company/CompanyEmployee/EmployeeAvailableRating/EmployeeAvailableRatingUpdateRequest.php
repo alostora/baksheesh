@@ -1,10 +1,10 @@
 <?php
 
-namespace Admin\Http\Requests\Company;
+namespace Admin\Http\Requests\Company\CompanyEmployee\EmployeeAvailableRating;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class CompanyUpdateRequest extends FormRequest
+class EmployeeAvailableRatingUpdateRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -22,11 +22,11 @@ class CompanyUpdateRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'name' => ['required', 'string', 'max:255'],
 
-            'company_field' => ['required', 'string', 'max:255'],
+            "name" => ["required", "string", "max:255"],
 
-            'file' => ['nullable', 'file']
+            "name_ar" => ["required", "string", "max:255"],
+
         ];
     }
 }

@@ -1,13 +1,13 @@
 <?php
 
-namespace Admin\Http\Requests\Company;
+namespace Admin\Http\Requests\Company\CompanyAvailableRating;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class CompanyUpdateRequest extends FormRequest
+class CompanyAvailableRatingCreateRequest extends FormRequest
 {
     /**
-     * Determine if the user is authorized to make this request.
+     * Determine if the company is authorized to make this request.
      */
     public function authorize(): bool
     {
@@ -22,11 +22,11 @@ class CompanyUpdateRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'name' => ['required', 'string', 'max:255'],
+            'company_id' => ['required', 'uuid', 'exists:companies,id'],
 
-            'company_field' => ['required', 'string', 'max:255'],
+            "name" => ["required", "string", "max:255"],
 
-            'file' => ['nullable', 'file']
+            "name_ar" => ["required", "string", "max:255"],
         ];
     }
 }

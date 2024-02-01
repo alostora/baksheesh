@@ -19,7 +19,11 @@ return new class extends Migration
 
             $table->foreignUuid('company_id')->nullable();
 
-            $table->foreignUuid('available_rating_id')->nullable();
+            $table->string('name')->nullable();
+
+            $table->string('name_ar')->nullable();
+
+            $table->string('stopped_at')->nullable();
 
             $table->timestamps();
 
@@ -29,9 +33,9 @@ return new class extends Migration
 
 
     /**
-     * 
-     * 
-     * 
+     *
+     *
+     *
      * Reverse the migrations.
      */
     public function down(): void

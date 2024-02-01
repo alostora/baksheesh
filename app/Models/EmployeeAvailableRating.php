@@ -21,7 +21,11 @@ class EmployeeAvailableRating extends Model
 
         'employee_id',
 
-        'available_rating_id',
+        'name',
+
+        'name_ar',
+
+        'stopped_at',
 
     ];
 
@@ -39,16 +43,11 @@ class EmployeeAvailableRating extends Model
 
     public function company(): BelongsTo
     {
-        return $this->belongsTo(User::class, 'company_id', 'id');
+        return $this->belongsTo(Company::class, 'company_id', 'id');
     }
 
     public function employee(): BelongsTo
     {
         return $this->belongsTo(User::class, 'employee_id', 'id');
-    }
-
-    public function availableRating(): BelongsTo
-    {
-        return $this->belongsTo(SystemLookup::class, 'available_rating_id', 'id');
     }
 }

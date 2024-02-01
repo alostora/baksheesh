@@ -19,7 +19,11 @@ class CompanyAvailableRating extends Model
 
         'company_id',
 
-        'available_rating_id',
+        'name',
+
+        'name_ar',
+
+        'stopped_at',
 
     ];
 
@@ -37,11 +41,6 @@ class CompanyAvailableRating extends Model
 
     public function company(): BelongsTo
     {
-        return $this->belongsTo(User::class, 'company_id', 'id');
-    }
-
-    public function availableRating(): BelongsTo
-    {
-        return $this->belongsTo(SystemLookup::class, 'available_rating_id', 'id');
+        return $this->belongsTo(Company::class, 'company_id', 'id');
     }
 }
