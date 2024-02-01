@@ -6,7 +6,7 @@
 
 <div class="employee_bg">
 
-    <img class="employee_img" src="{{ url('uploads/'.$employee->file->new_name)}}" alt="">
+    <img class="employee_img" src="{{ url('uploads/'.$employee->file->new_name:'')}}" alt="">
     <div class="back_employee_img">
         <h1 class="name_employee">{{$employee->name}}</h1>
         <h3 class="job_name">{{$employee->employee_job_name}}</h3>
@@ -66,24 +66,19 @@
             <button type="button" onclick="appendAmount(15)" dir="rtl">15 ريال</button>
             <button type="button" onclick="appendAmount(10)" dir="rtl">10 ريال</button>
             <button type="button" onclick="appendAmount(5)" dir="rtl">5 ريال</button>
-
         </div>
-
         <br>
         <br>
-
         <div class="anotherPriceBox" style="display: none;">
             <label for="amount" class="col-md-4">مبلغ اخر</label>
-            <input  class="anotherPrice" type="number" name="amount" id="amount" placeholder="ادخل المبلغ" style="background-color: #14bbd8">
+            <input class="anotherPrice" type="number" name="amount" id="amount" placeholder="ادخل المبلغ" style="background-color: #14bbd8">
         </div>
-
         <div class="apple_pay">
             <button>
                 <i class="fa-brands fa-apple" style="font-size: 30px;color:#14bbd8;"></i>
                 Apple Pay
             </button>
         </div>
-
 
         <div class="visa">
             <div class="input_visa">

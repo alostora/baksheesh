@@ -6,21 +6,12 @@ use App\Constants\FileModuleType;
 use App\Foundations\File\FileCreateCollection;
 use App\Models\Company;
 
-class CompanyCreateCollection
+class CompanyCreateApiCollection
 {
     public static function createCompany($request)
     {
         $validated = $request->validated();
 
-        if (isset($validated['file'])) {
-
-            $validated['type'] = FileModuleType::COMPANY_PROFILE['key'];
-
-            $validated['file_id'] = FileCreateCollection::createFile($validated)->id;
-
-            unset($validated['type']);
-        }
-        
         $validated['client_id'] = auth()->id();
 
         $company = Company::create($validated);
@@ -42,6 +33,7 @@ class CompanyCreateCollection
                 "available_rating_id" => $available_rating_id,
             ];
         }
+
         $company->companyAvailableRatings()->createMany($data);
     }
 }

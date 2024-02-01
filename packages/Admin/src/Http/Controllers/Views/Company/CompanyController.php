@@ -121,22 +121,12 @@ class CompanyController extends Controller
 
         $data['company'] = $company;
 
-        $selected_available_rating_ids = $company->companyAvailableRatings()->pluck('available_rating_id');
-
-        $data['available_rating'] = SystemLookup::where('type', AvailableCompanyRating::LOOKUP_TYPE)
-            ->whereNotIn('id', $selected_available_rating_ids)
-            ->get();
-
-        $data['selected_available_rating'] = SystemLookup::where('type', AvailableCompanyRating::LOOKUP_TYPE)
-            ->whereIn('id', $selected_available_rating_ids)
-            ->get();
-
         return view('Admin/Company/edit', $data);
     }
 
     public function update(CompanyUpdateRequest $request, Company $company)
     {
-        CompanyUpdateCollection::updateCompany($request,$company);
+        CompanyUpdateCollection::updateCompany($request, $company);
 
         return redirect(url('admin/companies'));
     }

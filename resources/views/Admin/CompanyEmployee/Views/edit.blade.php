@@ -97,24 +97,6 @@
                 </div>
               </div>
             </div>
-
-            <div class="row">
-              <div class="form-group">
-                <div class="col-md-6">
-                  <label for="available_rating_ids">@lang('company_employee.available_rating')</label>
-                  <select class="form-control select2" multiple="multiple" name="available_rating_ids[]" id="available_rating_ids">
-                    @foreach ($available_rating as $available_rating)
-                    <option value="{{$available_rating->id}}">{{$available_rating->name}}</option>
-                    @endforeach
-
-                    @foreach ($selected_available_rating as $selected_available_rating)
-                    <option value="{{$selected_available_rating->id}}" selected>{{$selected_available_rating->name}}</option>
-                    @endforeach
-                  </select>
-                </div>
-              </div>
-            </div>
-
           </div>
       </div>
       <div class="box-footer">

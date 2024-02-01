@@ -65,8 +65,6 @@ class CompanyEmployeeController extends Controller
 
         $data['companies'] = Company::get();
 
-        $data['available_rating'] = SystemLookup::where('type', AvailableEmployeeRating::LOOKUP_TYPE)->get();
-
         $data['countries'] = Country::where('type', CountryType::COUNTRY['code'])
             ->where('stopped_at', null)
             ->get();
@@ -88,16 +86,6 @@ class CompanyEmployeeController extends Controller
         $data['companies'] = Company::get();
 
         $data['employee'] = $user;
-
-        $selected_available_rating_ids = $user->EmployeeAvailableRatings()->pluck('available_rating_id');
-
-        $data['available_rating'] = SystemLookup::where('type', AvailableEmployeeRating::LOOKUP_TYPE)
-            ->whereNotIn('id', $selected_available_rating_ids)
-            ->get();
-
-        $data['selected_available_rating'] = SystemLookup::where('type', AvailableEmployeeRating::LOOKUP_TYPE)
-            ->whereIn('id', $selected_available_rating_ids)
-            ->get();
 
         $data['countries'] = Country::where('type', CountryType::COUNTRY['code'])
             ->where('stopped_at', null)

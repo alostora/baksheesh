@@ -59,6 +59,7 @@ class ClientCompanyController extends Controller
 
     public function store(ClientCompanyCreateRequest $request)
     {
+
         CompanyCreateCollection::createCompany($request);
 
         return redirect(url('client/client-companies'));
