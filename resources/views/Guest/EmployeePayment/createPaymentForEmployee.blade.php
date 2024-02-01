@@ -72,9 +72,9 @@
         <br>
         <br>
 
-        <div style="display: none;">
+        <div class="anotherPriceBox" style="display: none;">
             <label for="amount" class="col-md-4">مبلغ اخر</label>
-            <input type="number" name="amount" id="amount" placeholder="ادخل المبلغ" style="background-color: #14bbd8">
+            <input  class="anotherPrice" type="number" name="amount" id="amount" placeholder="ادخل المبلغ" style="background-color: #14bbd8">
         </div>
 
         <div class="apple_pay">

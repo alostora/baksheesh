@@ -354,6 +354,35 @@ border: 3px solid #fff61a;
 
 
 
+.anotherPriceBox{
+  justify-content: center;
+  text-align: center;
+  font-size: large;
+  font-weight: 900;
+  margin-top: 40px;
+  column-gap: 20px;
+  color:grey;
+}
+
+
+.anotherPrice {
+  width: 50%;
+  border-radius: 20px;
+  min-height: 50px !important;
+  text-align: center;
+  font-size: medium ;
+  font-weight: 800 !important;
+  color:grey;
+  border:3px solid #f7e331;
+  
+}
+
+
+
+.anotherPrice:focus{
+  outline: none;
+  border-color: #14bbd8;
+}
 
 
 
