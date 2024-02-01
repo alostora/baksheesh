@@ -22,13 +22,8 @@ form {
 body {
     background-color: #ffffff !important;
 }
-.hold-transition {
-    justify-content: center !important;
-    align-items: center !important;
-    text-align: center !important;
-}
+
 .login-box-body {
-    margin-top: 50px !important;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -68,26 +63,26 @@ body {
 }
 .login-box-body .form-control-feedback,
 .register-box-body .form-control-feedback {
-    color: #1fbdd9 !important ;
+    color:  #0a5563  !important ;
     font-size: 20px;
     top:7px;
 }
 
 .btn-primary {
-  border: none !important;
-    /* color: #dbd402 !important; */
-    background-color: #1fbdd9 !important;
-    margin: 0 !important;
-    border-radius: 5px !important;
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19) !important;
-    font-weight: 300 !important;
-    font-size: medium !important;
-    margin-top: 20px !important;
-}
-.btn-primary:hover {
-  border: none !important;
+    min-width:300px !important;
+    border: none !important;
     color: #fff !important;
     background-color: #0a5563 !important;
+    border: none !important;
+    border-radius: 5px !important;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19) !important;
+    font-size: large !important;
+    font-weight: 500 !important;}
+
+.btn-primary:hover {
+  border: none !important;
+    color:#0a5563  !important;
+    background-color: #f7ef31 !important;
     border: none !important;
     border-radius: 5px !important;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19) !important;

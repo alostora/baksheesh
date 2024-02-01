@@ -42,22 +42,22 @@
       <a href="#"><b>Tipo</b> - SMART</a>
     </div> -->
     <!-- /.login-logo -->
+  
 
     <div class="login-box-body">
 
     <img src="{{url('guest')}}/images/logo_tipo.png" class="login_logo" />
-
       <p class="login-box-msg">@lang('login.login') @lang('login.dashboard')</p>
 
       <form action="{{url('admin/login')}}" method="post">
         @csrf
         <div class="form-group has-feedback">
           <input type="email" name="email" class="form-control" placeholder="@lang('login.email')">
-          <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
+          <span class="fa fa-solid fa-envelope form-control-feedback"></span>
         </div>
         <div class="form-group has-feedback">
           <input type="password" name="password" class="form-control" placeholder="@lang('login.password')">
-          <span class="glyphicon glyphicon-lock form-control-feedback"></span>
+          <span class="fa fa-solid fa-lock form-control-feedback"></span>
         </div>
         <div class="row">
           <div class="col-xs-4">
