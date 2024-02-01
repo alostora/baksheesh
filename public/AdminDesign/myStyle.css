@@ -79,7 +79,7 @@ transition: 0.5s;
   font-size: 20px;
   font-weight: 600;
   text-decoration: none;
-  scale: calc(1.2) !important;
+  scale: calc(1.05) !important;
   letter-spacing: 2px;
   border-radius: 5px;
 
@@ -95,8 +95,19 @@ color: #047386;
 .fa-pie-chart{
   font-size: large;
 /* margin:5px !important; */
-/* opacity: 0.8 !important; */
+opacity: 0.8 !important;
 color: #047386;
+}
+.level-two span {
+text-decoration: none !important;
+}
+.level-two .treeview .ion-ios-people{
+  font-size: medium;
+}
+.level-two .treeview i {
+  font-size: medium;
+  color:#047386;
+
 }
 .active span {
 /* opacity: 0.8; */
@@ -104,9 +115,11 @@ font-size: 14px;
 font-weight: 700;
 text-transform: capitalize;
 color: #047386;
+text-decoration: none !important;
 }
 .treeview a{
   background-color: #fff;
+  text-decoration: none !important;
 
 }
 
@@ -114,14 +127,14 @@ color: #047386;
   background-color:#fff !important;
   /* border: none !important; */
   /* padding:10px !important; */
-  display: flex;
+  /* display: flex; */
 
 }
 .treeview .treeview-menu {
   /* border:1px solid#ff0080 !important; */
 background-color: #fff;
-min-height: auto;
-min-width:auto;
+/* min-height: auto;
+min-width:auto; */
   font-size: 18px !important;
 }
 .treeview .treeview-menu  li{
@@ -141,7 +154,7 @@ min-height: 40px;
   /* border:1px solid#ff0080 !important; */
 background-color: #21beda;
 color:#ffffff !important;
-width:auto;
+/* width:auto; */
 font-weight: 500;
 }
 
@@ -267,18 +280,9 @@ header {
   padding: 10px !important;
 }
 
-.content-header h1{
-  font-size:30px;
-  font-weight: 700;
-  color: #21beda !important;
-}
-.content-header h1 small{
-  font-size:18px;
-  font-weight:500;
-  color: #047488 !important;
-}
 
 .content {padding-top: 75px;}
+
 @media only screen and (max-width: 769px) {
   .content-header{
     margin-top: 50px;

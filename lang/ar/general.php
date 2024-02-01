@@ -2,7 +2,7 @@
 
 return [
 
-    "app_name" => "Tips",
+    "app_name" => "Tipo Smart",
 
     "online" => "Online",
 

@@ -6,6 +6,35 @@
 
 } */
 
+ .hed_title{
+background-color: #047488;
+display: flex;
+width:40%;
+height: 40px ;
+border-radius: 5px;
+justify-content: center;
+text-align: center;
+align-items: center;
+}
+
+.content-header h1{
+  font-size:large;
+  font-weight: 600;
+  color: #fff61a !important;
+}
+
+
+.content-header h1 small{
+  font-size:18px;
+  font-weight:500;
+  color: #047488 !important;
+
+
+}
+
+
+
+
 .content .info-box {
     border-radius: 10px;
 
@@ -99,4 +128,10 @@
 .box-info,
  .box-danger{
   padding:10px;
+ }
+
+ @media only screen and (max-width: 769px) {
+  .box-info{
+    margin-top: 50px;
+  }
  }

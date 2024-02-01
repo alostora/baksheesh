@@ -2,7 +2,7 @@
 
 return [
 
-     "app_name" => "Tips",
+     "app_name" => "Tipo Smart",
 
      "online" => "متصل",
 
@@ -16,9 +16,9 @@ return [
 
      "active_employees" => "الموظفون النشطون",
 
-     "month_income" => "الدخل الشهري",
+     "month_income" => "اجمالي الدخل الشهري",
 
-     "year_income" => "الدخل السنوي",
+     "year_income" => "اجمالي الدخل السنوي",
 
      "current_amount" => "المبلغ الحالي",
 
