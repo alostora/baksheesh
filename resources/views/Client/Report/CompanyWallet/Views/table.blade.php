@@ -4,7 +4,7 @@
     <div class="box box-info">
 
         @include('Client/TableFilter/company_wallet')
-        
+
         <div class="box-header">
             <h3 class="box-title col-md-8">@lang('company_wallet.page_title')</h3>
         </div>
@@ -39,8 +39,8 @@
                     @foreach ($wallets as $key=>$wallet)
                     <tr>
                         <td> {{$key+1}} </td>
-                        <td> {{$wallet->client->name}} </td>
-                        <td> {{$wallet->company->name}} </td>
+                        <td> {{$wallet->client ? $wallet->client->name : ''}} </td>
+                        <td> {{$wallet->company ? $wallet->company->name : ''}} </td>
                         <td> {{$wallet->amount}} </td>
                         <td> {{$wallet->created_at}} </td>
                     </tr>

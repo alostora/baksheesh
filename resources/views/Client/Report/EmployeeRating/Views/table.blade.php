@@ -29,10 +29,10 @@
                     @foreach ($employee_ratings as $key=>$employee_rating)
                     <tr>
                         <td> {{$key+1}} </td>
-                        <td> {{$employee_rating->client->name}} </td>
-                        <td> {{$employee_rating->company->name}} </td>
-                        <td> {{$employee_rating->employee->name}} </td>
-                        <td> {{$employee_rating->availableRating->name}} </td>
+                        <td> {{$employee_rating->client ? $employee_rating->client->name : ''}} </td>
+                        <td> {{$employee_rating->company ? $employee_rating->company->name : ''}} </td>
+                        <td> {{$employee_rating->employee ? $employee_rating->employee->name : ''}} </td>
+                        <td> {{$employee_rating->availableRating ? $employee_rating->availableRating->name : ''}} </td>
                         <td>
                             {!! $employee_rating->rating_value === 1 ? '<label class="label label-danger" style="font-size:12px">bad</label>' : '<label class="label label-success" style="font-size:12px">good</label>' !!}
                         </td>

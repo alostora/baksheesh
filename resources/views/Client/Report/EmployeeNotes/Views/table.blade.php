@@ -23,7 +23,7 @@
                     <tr>
                         <td> {{$key+1}} </td>
                         <td> {{$employee_note->payer_name}} </td>
-                        <td> {{$employee_note->client->name}} </td>
+                        <td> {{$employee_note->client?$employee_note->client->name : ''}} </td>
                         <td> {{$employee_note->notes}} </td>
                         <td> {{$employee_note->created_at}} </td>
                     </tr>
