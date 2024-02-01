@@ -263,12 +263,27 @@ header {
 
 
 /* content */
-.content{
-  padding-top: 80px;
-}
-
 .box {
-    padding: 10px !important;
+  padding: 10px !important;
 }
 
+.content-header h1{
+  font-size:30px;
+  font-weight: 700;
+  color: #21beda !important;
+}
+.content-header h1 small{
+  font-size:18px;
+  font-weight:500;
+  color: #047488 !important;
+}
 
+.content {padding-top: 75px;}
+@media only screen and (max-width: 769px) {
+  .content-header{
+    margin-top: 50px;
+  }
+
+
+}
+  
