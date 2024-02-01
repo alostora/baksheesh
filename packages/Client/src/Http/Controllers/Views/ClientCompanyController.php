@@ -32,7 +32,7 @@ class ClientCompanyController extends Controller
 
     public function search(Request $request)
     {
-        $data['companies']  = ClientCompanySearchCollection::searchCompanies(
+        $data = ClientCompanySearchCollection::searchCompanies(
             $request->get('query_string') ? $request->get('query_string') : -1,
             $request->get('active') ? $request->get('active') : -1,
             $request->get('per_page') ? $request->get('per_page') : SystemDefault::DEFAUL_PAGINATION_COUNT

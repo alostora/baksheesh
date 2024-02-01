@@ -21,9 +21,9 @@ class ClientCompanyEmployeeSearchCollection
             $active,
         )->paginate($per_page);
 
-        $data['companies'] = Company::get();
+        $data['companies'] = Company::where('client_id', auth()->id())->get();
 
-        $data['count_active'] =  User::where('user_account_type_id', AccountTypeCollection::employee()->id)
+        $data['count_active'] =  User::where('client_id', auth()->id())->where('user_account_type_id', AccountTypeCollection::employee()->id)
 
             ->where(function ($q) use ($company_id) {
 
@@ -34,7 +34,7 @@ class ClientCompanyEmployeeSearchCollection
                 }
             })->where('stopped_at', null)->count();
 
-        $data['count_inactive'] = User::where('user_account_type_id', AccountTypeCollection::employee()->id)
+        $data['count_inactive'] = User::where('client_id', auth()->id())->where('user_account_type_id', AccountTypeCollection::employee()->id)
 
             ->where(function ($q) use ($company_id) {
 
@@ -45,6 +45,6 @@ class ClientCompanyEmployeeSearchCollection
                 }
             })->where('stopped_at', '!=', null)->count();
 
-            return $data;
+        return $data;
     }
 }

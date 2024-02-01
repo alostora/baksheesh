@@ -55,7 +55,7 @@ class ClientReportController extends Controller
     public function employeeRatingReport(Request $request)
     {
 
-        $data['employee_ratings'] = EmployeeRatingReportSearchCollection::searchAllEmployeeRating(
+        $data = EmployeeRatingReportSearchCollection::searchAllEmployeeRating(
 
             $request->get('rating_value') ? $request->get('rating_value') : -1,
             $request->get('date_from') ? $request->get('date_from') : -1,
@@ -69,7 +69,7 @@ class ClientReportController extends Controller
     public function employeeNotesReport(Request $request)
     {
 
-        $data['employee_notes'] = EmployeeNotesReportSearchCollection::searchAllEmployeeNotes(
+        $data = EmployeeNotesReportSearchCollection::searchAllEmployeeNotes(
 
             $request->get('query_string') ? $request->get('query_string') : -1,
             $request->get('date_from') ? $request->get('date_from') : -1,
