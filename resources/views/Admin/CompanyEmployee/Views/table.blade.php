@@ -121,7 +121,7 @@
 <script>
     function PrintElem(userName, userId) {
 
-        var mywindow = window.open('', 'PRINT', 'height=400,width=600');
+        var mywindow = window.open(" ", "PRINT");
 
         mywindow.document.write('<html><head><title>' + userName + '</title>');
         mywindow.document.write('</head><body >');
@@ -129,10 +129,9 @@
         mywindow.document.write(document.getElementById(userId).innerHTML);
         mywindow.document.write('</body></html>');
 
-        mywindow.focus(); // necessary for IE >= 10*/
+        // mywindow.focus(); // necessary for IE >= 10*/
+
 
         mywindow.print();
-
-        return true;
     }
 </script>
