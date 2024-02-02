@@ -20,7 +20,7 @@ class CompanyCreateCollection
 
             unset($validated['type']);
         }
-        
+
         $validated['client_id'] = auth()->id();
 
         $company = Company::create($validated);
@@ -42,6 +42,6 @@ class CompanyCreateCollection
                 "available_rating_id" => $available_rating_id,
             ];
         }
-        $company->companyAvailableRatings()->createMany($data);
+        $company->ratingForGuest()->createMany($data);
     }
 }

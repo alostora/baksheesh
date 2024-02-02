@@ -38,7 +38,7 @@ class ClientCompanyEmployeeCreateRequest extends FormRequest
 
             'available_rating_ids' => ['required', 'array', 'max:5'],
 
-            'available_rating_ids.*' => ['required', 'uuid', 'exists:system_lookups,id'],
+            'available_rating_ids.*' => ['required', 'uuid', 'exists:employee_available_ratings,id'],
 
             "employee_job_name" => ["required", "string", "max:255"],
 

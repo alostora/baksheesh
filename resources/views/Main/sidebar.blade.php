@@ -227,20 +227,20 @@
                                     </div>
                                 </a>
                             </li>
+                            <!-- employees -->
+                            <li>
+                                <a href="{{url('client/client-company-employees/search')}}">
+                                    <div class="col-md-12">
+                                        <i class="ion ion-person-stalker"></i>@lang('sidebar.employees')
+                                        <span class="pull-right-container">
+                                            <small class="label pull-right bg-green">{{$info['employees_count']}}</small>
+                                        </span>
+                                    </div>
+                                </a>
+                            </li>
                         </ul>
                     </li>
 
-                    <!-- employees -->
-                    <li>
-                        <a href="{{url('client/client-company-employees/search')}}">
-                            <div class="col-md-12">
-                                <i class="ion ion-person-stalker"></i>@lang('sidebar.employees')
-                                <span class="pull-right-container">
-                                    <small class="label pull-right bg-green">{{$info['employees_count']}}</small>
-                                </span>
-                            </div>
-                        </a>
-                    </li>
 
                     <li>
                         <a href="{{url('client/company-wallets')}}">

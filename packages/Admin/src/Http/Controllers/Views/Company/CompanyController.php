@@ -19,6 +19,7 @@ use App\Models\SystemLookup;
 use App\Models\User;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Lang;
 use Illuminate\Support\Facades\Session;
 
 class CompanyController extends Controller
@@ -102,8 +103,6 @@ class CompanyController extends Controller
 
         $data['clients'] = User::where('user_account_type_id', $client_type->id)->get();
 
-        $data['available_rating'] = SystemLookup::where('type', AvailableCompanyRating::LOOKUP_TYPE)->get();
-
         return view('Admin/Company/create', $data);
     }
 
@@ -112,6 +111,7 @@ class CompanyController extends Controller
         $company = CompanyCreateCollection::createCompany($request);
 
         if ($company) {
+
             return redirect(url('admin/companies'));
         } else {
             Session::flash('message', 'This is a message!');

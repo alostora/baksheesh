@@ -70,8 +70,17 @@ class Company extends Model
         return $this->hasMany(CompanyCash::class, 'company_id', 'id');
     }
 
+
+    //for select inside client create company
     public function companyAvailableRatings(): HasMany
     {
-        return $this->hasMany(CompanyAvailableRating::class, 'company_id', 'id');
+        return $this->hasMany(CompanyAvailableRating::class, 'client_id', 'id');
+    }
+
+    //for select inside guest payment
+    public function ratingForGuest(): HasMany
+    {
+        return $this->hasMany(RatingForGuest::class, 'company_id', 'id')
+            ->where('stopped_at', null);
     }
 }

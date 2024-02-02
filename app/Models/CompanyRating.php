@@ -49,8 +49,8 @@ class CompanyRating extends Model
         return $this->belongsTo(Company::class, 'company_id', 'id');
     }
 
-    public function availableRating(): BelongsTo
+    public function ratingForGuest(): BelongsTo
     {
-        return $this->belongsTo(SystemLookup::class, 'rating_id', 'id');
+        return $this->belongsTo(RatingForGuest::class, 'rating_id', 'id');
     }
 }

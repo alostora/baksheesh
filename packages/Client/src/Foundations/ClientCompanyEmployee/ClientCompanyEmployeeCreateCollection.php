@@ -9,7 +9,7 @@ use App\Models\User;
 
 class ClientCompanyEmployeeCreateCollection
 {
-    
+
     public static function createCompanyEmployee($request)
     {
 
@@ -51,6 +51,6 @@ class ClientCompanyEmployeeCreateCollection
                 "available_rating_id" => $available_rating_id,
             ];
         }
-        $user->employeeAvailableRatings()->createMany($data);
+        $user->ratingForGuest()->createMany($data);
     }
 }

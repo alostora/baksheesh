@@ -1,15 +1,10 @@
-<!-- Main content -->
 <section class="content">
     <div class="row">
-        <!-- left column -->
         <div class="col-md-12">
-            <!-- general form elements -->
             <div class="box box-primary">
                 <div class="box-header with-border">
                     <h3 class="box-title col-md-8">@lang('company_employee.create')</h3>
                 </div>
-                <!-- /.box-header -->
-                <!-- form start -->
                 <form role="form" action="{{url('client/client-company-employee')}}" method="POST" enctype="multipart/form-data">
                     @csrf
                     <div class="box-body">
@@ -85,30 +80,26 @@
                                     <label for="password">@lang('user.password')</label>
                                     <input type="password" class="form-control" name="password" id="password" placeholder="@lang('user.password')">
                                 </div>
+                            </div>
 
-                                <div class="col-md-6">
-                                    <label for="available_rating_ids">@lang('company_employee.available_rating')</label>
-                                    <select class="form-control select2" multiple="multiple" name="available_rating_ids[]" id="available_rating_ids">
-                                        @foreach ($available_rating as $available_rating)
-                                        <option value="{{$available_rating->id}}">{{$available_rating->name}}</option>
-                                        @endforeach
-                                    </select>
-                                </div>
+                            <div class="col-md-6">
+                                <label for="available_rating_ids">@lang('company_employee.available_rating')</label>
+                                <select class="form-control select2" multiple="multiple" name="available_rating_ids[]" id="available_rating_ids">
+                                    @foreach ($available_rating as $available_rating)
+                                    <option value="{{$available_rating->id}}">{{$available_rating->name}}</option>
+                                    @endforeach
+                                </select>
                             </div>
                         </div>
                     </div>
-                    <!-- /.box-body -->
                     <div class="box-footer">
                         <button type="submit" class="btn btn-primary">@lang('company_employee.submit')</button>
                     </div>
                 </form>
             </div>
-            <!-- /.box -->
         </div>
     </div>
-    <!-- /.row -->
 </section>
-<!-- /.content -->
 
 
 

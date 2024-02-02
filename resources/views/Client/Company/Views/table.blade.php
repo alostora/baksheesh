@@ -75,6 +75,9 @@
                         <td> {{$company->name}} </td>
                         <td>
 
+                            <a href="{{url('client/company-available-ratings/search?company_id/'.$company->id)}}" class="btn btn-warning btn-sm">
+                                <i class="fa fa-star"></i>
+                            </a>
 
                             <a href="{{url('client/company-wallets?company_id='.$company->id)}}" class="btn btn-success btn-sm">
                                 <i class="fa fa-info"></i> @lang('general.wallet') : ( {{$company->cash->sum('amount')}} )

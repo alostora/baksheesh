@@ -194,9 +194,17 @@ class User extends Authenticatable implements MustVerifyEmail
             ->where('stopped_at', null);
     }
 
+    //for select inside client create employee
     public function employeeAvailableRatings(): HasMany
     {
-        return $this->hasMany(EmployeeAvailableRating::class, 'employee_id', 'id')
+        return $this->hasMany(EmployeeAvailableRating::class, 'client_id', 'id')
+            ->where('stopped_at', null);
+    }
+
+    //for select inside guest payment
+    public function ratingForGuest(): HasMany
+    {
+        return $this->hasMany(RatingForGuest::class, 'employee_id', 'id')
             ->where('stopped_at', null);
     }
 }

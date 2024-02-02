@@ -104,13 +104,12 @@
                         </div>
 
                     </div>
+                    <div class="box-footer">
+                        <button type="submit" class="btn btn-primary">@lang('company_employee.submit')</button>
+                    </div>
+                </form>
             </div>
-            <div class="box-footer">
-                <button type="submit" class="btn btn-primary">@lang('company_employee.submit')</button>
-            </div>
-            </form>
         </div>
-    </div>
     </div>
 </section>
 

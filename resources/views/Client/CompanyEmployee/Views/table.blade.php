@@ -77,6 +77,11 @@
                             <td> {{$user->employee_job_name}} </td>
                             <td> {{$user->country ? $user->country->name : ""}} </td>
                             <td>
+
+                                <a href="{{url('client/employee-available-ratings/search?employee_id='.$user->id.'&company_id='.$user->company_id)}}" class="btn btn-warning btn-sm">
+                                    <i class="fa fa-star"></i>
+                                </a>
+
                                 <a href="{{url('client/employee-wallets?company_id='.$user->company_id.'&employee_id='.$user->id)}}" class="btn btn-success btn-sm">
                                     <i class="fa fa-info"></i> @lang('general.wallet') : ( {{$user->employeeCash->sum('amount')}} )
                                 </a>

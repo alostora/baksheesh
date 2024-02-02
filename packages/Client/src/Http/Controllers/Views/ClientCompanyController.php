@@ -8,6 +8,7 @@ use App\Constants\StatusCode;
 use App\Constants\SystemDefault;
 use App\Http\Controllers\Controller;
 use App\Models\Company;
+use App\Models\CompanyAvailableRating;
 use App\Models\SystemLookup;
 use Carbon\Carbon;
 use Client\Foundations\ClientCompany\ClientCompanySearchCollection;
@@ -52,7 +53,7 @@ class ClientCompanyController extends Controller
 
     public function create()
     {
-        $data['available_rating'] = SystemLookup::where('type', AvailableCompanyRating::LOOKUP_TYPE)->get();
+        $data['available_rating'] = CompanyAvailableRating::where('stopped_at', null)->where('client_id', auth()->id())->get();
 
         return view('Client/Company/create', $data);
     }
@@ -70,14 +71,15 @@ class ClientCompanyController extends Controller
 
         $data['company'] = $company;
 
-        $selected_available_rating_ids = $company->companyAvailableRatings()->pluck('available_rating_id');
+        $selected_available_rating_ids = $company->ratingForGuest()->pluck('available_rating_id');
 
-        $data['available_rating'] = SystemLookup::where('type', AvailableCompanyRating::LOOKUP_TYPE)
-            ->whereNotIn('id', $selected_available_rating_ids)
+        $data['available_rating'] = CompanyAvailableRating::where('stopped_at', null)
+            ->whereIn('id', $selected_available_rating_ids)
+            ->where('client_id', $company->client_id)
             ->get();
 
-        $data['selected_available_rating'] = SystemLookup::where('type', AvailableCompanyRating::LOOKUP_TYPE)
-            ->whereIn('id', $selected_available_rating_ids)
+        $data['selected_available_rating'] = CompanyAvailableRating::where('stopped_at', null)
+            ->where('client_id', $company->client_id)
             ->get();
 
 
