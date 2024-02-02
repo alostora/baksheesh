@@ -2,17 +2,15 @@
 
 namespace Client\Http\Controllers\Views;
 
-use Admin\Foundations\Employee\EmployeeAvailableRating\EmployeeAvailableRatingCreateCollection;
-use Admin\Foundations\Employee\EmployeeAvailableRating\EmployeeAvailableRatingSearchCollection;
-use Admin\Foundations\Employee\EmployeeAvailableRating\EmployeeAvailableRatingUpdateCollection;
-use Admin\Http\Requests\Company\CompanyEmployee\EmployeeAvailableRating\EmployeeAvailableRatingCreateRequest;
-use Admin\Http\Requests\Company\CompanyEmployee\EmployeeAvailableRating\EmployeeAvailableRatingUpdateRequest;
 use App\Constants\SystemDefault;
-use App\Foundations\LookupType\AccountTypeCollection;
 use App\Http\Controllers\Controller;
 use App\Models\EmployeeAvailableRating;
-use App\Models\User;
 use Carbon\Carbon;
+use Client\Foundations\ClientCompanyEmployee\EmployeeAvailableRating\EmployeeAvailableRatingCreateCollection;
+use Client\Foundations\ClientCompanyEmployee\EmployeeAvailableRating\EmployeeAvailableRatingSearchCollection;
+use Client\Foundations\ClientCompanyEmployee\EmployeeAvailableRating\EmployeeAvailableRatingUpdateCollection;
+use Client\Http\Requests\ClientCompany\EmployeeAvailableRating\EmployeeAvailableRatingCreateRequest;
+use Client\Http\Requests\ClientCompany\EmployeeAvailableRating\EmployeeAvailableRatingUpdateRequest;
 use Illuminate\Http\Request;
 
 class EmployeeAvailableRatingController extends Controller
@@ -20,8 +18,6 @@ class EmployeeAvailableRatingController extends Controller
     public function index(Request $request)
     {
         $data = EmployeeAvailableRatingSearchCollection::searchEmployeeAvailableRatings(
-            -1,
-            -1,
             -1,
             -1,
             $request->get('per_page') ? $request->get('per_page') : SystemDefault::DEFAUL_PAGINATION_COUNT
@@ -33,8 +29,6 @@ class EmployeeAvailableRatingController extends Controller
     public function search(Request $request)
     {
         $data = EmployeeAvailableRatingSearchCollection::searchEmployeeAvailableRatings(
-            $request->get('company_id') ? $request->get('company_id') : -1,
-            $request->get('employee_id') ? $request->get('employee_id') : -1,
             $request->get('query_string') ? $request->get('query_string') : -1,
             $request->get('active') ? $request->get('active') : -1,
             $request->get('per_page') ? $request->get('per_page') : SystemDefault::DEFAUL_PAGINATION_COUNT
@@ -43,17 +37,9 @@ class EmployeeAvailableRatingController extends Controller
         return view('Client/EmployeeAvailableRating/index', $data);
     }
 
-    public function create(User $user)
+    public function create()
     {
-        $data['employees'] = User::where('user_account_type_id', AccountTypeCollection::employee()->id)
-
-            ->where('company_id', $user->company_id)
-
-            ->where('stopped_at', null)
-
-            ->get();
-
-        return view('Client/EmployeeAvailableRating/create', $data);
+        return view('Client/EmployeeAvailableRating/create');
     }
 
     public function store(EmployeeAvailableRatingCreateRequest $request)

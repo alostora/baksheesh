@@ -54,6 +54,7 @@ class ClientCompanyController extends Controller
     public function create()
     {
         $data['available_rating'] = CompanyAvailableRating::where('stopped_at', null)
+
             ->where('client_id', auth()->id())->get();
 
         return view('Client/Company/create', $data);
@@ -61,7 +62,6 @@ class ClientCompanyController extends Controller
 
     public function store(ClientCompanyCreateRequest $request)
     {
-
         CompanyCreateCollection::createCompany($request);
 
         return redirect(url('client/client-companies'));
