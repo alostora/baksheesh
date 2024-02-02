@@ -75,7 +75,7 @@
                         <td> {{$company->name}} </td>
                         <td>
 
-                            <a href="{{url('client/company-available-ratings/search?company_id/'.$company->id)}}" class="btn btn-warning btn-sm">
+                            <a href="{{url('client/company-available-ratings/search?company_id='.$company->id)}}" class="btn btn-warning btn-sm">
                                 <i class="fa fa-star"></i>
                             </a>
 

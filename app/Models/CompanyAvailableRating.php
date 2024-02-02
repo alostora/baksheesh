@@ -17,8 +17,6 @@ class CompanyAvailableRating extends Model
 
         'client_id',
 
-        'company_id',
-
         'name',
 
         'name_ar',
@@ -37,10 +35,5 @@ class CompanyAvailableRating extends Model
     public function client(): BelongsTo
     {
         return $this->belongsTo(User::class, 'client_id', 'id');
-    }
-
-    public function company(): BelongsTo
-    {
-        return $this->belongsTo(Company::class, 'company_id', 'id');
     }
 }

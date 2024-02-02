@@ -51,6 +51,8 @@ return [
     "create_new_company" => "اضافة شركة",
 
     "edit_company" => "بيانات الشركات",
+    "company_available_ratings" => "تقييم الشركات",
+    "employee_available_ratings" => "تقييم الموظفين",
 
     "company_employee" => "الموظفون",
     "good" => "جيد",

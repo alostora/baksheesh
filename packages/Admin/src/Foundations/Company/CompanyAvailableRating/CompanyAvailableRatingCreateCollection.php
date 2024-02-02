@@ -11,8 +11,6 @@ class CompanyAvailableRatingCreateCollection
     {
         $validated = $request->validated();
 
-        $validated['client_id'] = Company::find($validated['company_id'])->client_id;
-
         return CompanyAvailableRating::create($validated);
     }
 }

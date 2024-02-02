@@ -1,11 +1,11 @@
 <section class="content">
     <div class="box box-promary">
-       
+
 
         <div class="box-header">
             <h3 class="box-title col-md-8">@lang('company_available_rating.page_title')</h3>
             <div class="col-md-4">
-                <a href="{{url('client/company-available-rating/create?company_id='.Request('company_id'))}}" class="btn bg-olive btn-sm" style="height:25px;padding:2px;width:150px">
+                <a href="{{url('client/company-available-rating/create/'.Request('company_id'))}}" class="btn bg-olive btn-sm" style="height:25px;padding:2px;width:150px">
                     <i class="fa fa-plus"></i>
                     <span>@lang('company_available_rating.create')</span>
                 </a>

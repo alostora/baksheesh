@@ -17,11 +17,10 @@
                         <div class="row">
                             <div class="form-group">
                                 <div class="col-md-6">
-                                    <label for="company_id">@lang('company_available_rating.company')</label>
-                                    <select class="form-control" name="company_id" id="company_id">
-                                        @foreach ($companies as $company)
-                                        {{$selected = $company->id == Request('company')->id ? "selected" : "" }}
-                                        <option value="{{$company->id}}" {{$selected}}>{{$company->name}}</option>
+                                    <label for="client_id">@lang('company_available_rating.client')</label>
+                                    <select class="form-control" name="client_id" id="client_id" require>
+                                        @foreach ($clients as $client)
+                                        <option value="{{$client->id}}">{{$client->name}}</option>
                                         @endforeach
                                     </select>
                                 </div>
@@ -32,11 +31,11 @@
                             <div class="form-group">
                                 <div class="col-md-6">
                                     <label for="name">@lang('company_available_rating.name')</label>
-                                    <input type="text" class="form-control" name="name" id="name" value="{{$availableRating->name}}">
+                                    <input type="text" class="form-control" name="name" id="name" value="">
                                 </div>
                                 <div class="col-md-6">
                                     <label for="name_ar">@lang('company_available_rating.name_ar')</label>
-                                    <input type="text" class="form-control" name="name_ar" id="name_ar" value="{{$availableRating->name_ar}}">
+                                    <input type="text" class="form-control" name="name_ar" id="name_ar" value="">
                                 </div>
                             </div>
                         </div>

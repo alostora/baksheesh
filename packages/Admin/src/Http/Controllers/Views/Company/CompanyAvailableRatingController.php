@@ -8,9 +8,11 @@ use Admin\Foundations\Company\CompanyAvailableRating\CompanyAvailableRatingUpdat
 use Admin\Http\Requests\Company\CompanyAvailableRating\CompanyAvailableRatingCreateRequest;
 use Admin\Http\Requests\Company\CompanyAvailableRating\CompanyAvailableRatingUpdateRequest;
 use App\Constants\SystemDefault;
+use App\Foundations\LookupType\AccountTypeCollection;
 use App\Http\Controllers\Controller;
 use App\Models\Company;
 use App\Models\CompanyAvailableRating;
+use App\Models\User;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 
@@ -31,7 +33,7 @@ class CompanyAvailableRatingController extends Controller
     public function search(Request $request)
     {
         $data = CompanyAvailableRatingSearchCollection::searchCompanyAvailableRatings(
-            $request->get('company_id') ? $request->get('company_id') : -1,
+            $request->get('client_id') ? $request->get('client_id') : -1,
             $request->get('query_string') ? $request->get('query_string') : -1,
             $request->get('active') ? $request->get('active') : -1,
             $request->get('per_page') ? $request->get('per_page') : SystemDefault::DEFAUL_PAGINATION_COUNT
@@ -40,9 +42,9 @@ class CompanyAvailableRatingController extends Controller
         return view('Admin/CompanyAvailableRating/index', $data);
     }
 
-    public function create(Company $company)
+    public function create()
     {
-        $data['companies'] = Company::where('client_id', $company->client_id)
+        $data['clients'] = User::where('user_account_type_id', AccountTypeCollection::client()->id)
 
             ->where('stopped_at', null)
 
@@ -55,7 +57,7 @@ class CompanyAvailableRatingController extends Controller
     {
         CompanyAvailableRatingCreateCollection::createCompanyAvailableRating($request);
 
-        return redirect(url("admin/company-available-ratings/search?company_id=" . $request->get('company_id')));
+        return redirect(url("admin/company-available-ratings/search?client_id=" . $request->get('client_id')));
     }
 
     public function edit(CompanyAvailableRating $companyAvailableRating)
@@ -69,7 +71,7 @@ class CompanyAvailableRatingController extends Controller
     {
         CompanyAvailableRatingUpdateCollection::updateCompanyAvailableRating($request, $companyAvailableRating);
 
-        return redirect(url("admin/company-available-ratings/search?company_id=" . $request->get('company_id')));
+        return redirect(url("admin/company-available-ratings/search?client_id=" . $request->get('client_id')));
     }
 
     public function destroy(CompanyAvailableRating $companyAvailableRating)

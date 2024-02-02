@@ -25,7 +25,7 @@ class CompanyAvailableRatingController extends Controller
             $request->get('per_page') ? $request->get('per_page') : SystemDefault::DEFAUL_PAGINATION_COUNT
         );
 
-        return view('Admin/CompanyAvailableRating/index', $data);
+        return view('Client/CompanyAvailableRating/index', $data);
     }
 
     public function search(Request $request)
@@ -37,39 +37,34 @@ class CompanyAvailableRatingController extends Controller
             $request->get('per_page') ? $request->get('per_page') : SystemDefault::DEFAUL_PAGINATION_COUNT
         );
 
-        return view('Admin/CompanyAvailableRating/index', $data);
+        return view('Client/CompanyAvailableRating/index', $data);
     }
 
     public function create(Company $company)
     {
-        $data['companies'] = Company::where('client_id', $company->client_id)
 
-            ->where('stopped_at', null)
-
-            ->get();
-
-        return view('Admin/CompanyAvailableRating/create', $data);
+        return view('Client/CompanyAvailableRating/create');
     }
 
     public function store(CompanyAvailableRatingCreateRequest $request)
     {
         CompanyAvailableRatingCreateCollection::createCompanyAvailableRating($request);
 
-        return redirect(url("admin/company-available-ratings/search?company_id=" . $request->get('company_id')));
+        return redirect(url("client/company-available-ratings/search?company_id=" . $request->get('company_id')));
     }
 
     public function edit(CompanyAvailableRating $companyAvailableRating)
     {
         $data['companyAvailableRating'] = $companyAvailableRating;
 
-        return view('Admin/CompanyAvailableRating/edit', $data);
+        return view('Client/CompanyAvailableRating/edit', $data);
     }
 
     public function update(CompanyAvailableRatingUpdateRequest $request, CompanyAvailableRating $companyAvailableRating)
     {
         CompanyAvailableRatingUpdateCollection::updateCompanyAvailableRating($request, $companyAvailableRating);
 
-        return redirect(url("admin/company-available-ratings/search?company_id=" . $request->get('company_id')));
+        return redirect(url("client/company-available-ratings/search?company_id=" . $request->get('company_id')));
     }
 
     public function destroy(CompanyAvailableRating $companyAvailableRating)

@@ -7,24 +7,23 @@ use App\Models\CompanyAvailableRating;
 class CompanyAvailableRatingQueryCollection
 {
     public static function searchAllCompanyAvailableRatings(
-        $company_id,
+        $client_id,
         $query_string = -1,
         $active = -1,
     ) {
 
-        return CompanyAvailableRating::where(function ($q) use ($query_string, $company_id, $active) {
+        return CompanyAvailableRating::where(function ($q) use ($query_string, $client_id, $active) {
+
+            if ($client_id && $client_id != -1) {
+
+                $q
+                    ->where('client_id', $client_id);
+            }
 
             if ($query_string && $query_string != -1) {
 
                 $q
                     ->where('name', 'like', '%' . $query_string . '%');
-            }
-
-
-            if ($company_id && $company_id != -1) {
-
-                $q
-                    ->where('company_id', $company_id);
             }
 
             if ($active == 'active') {

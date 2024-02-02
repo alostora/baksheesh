@@ -11,6 +11,7 @@ use App\Constants\SystemDefault;
 use App\Http\Controllers\Controller;
 use App\Models\Company;
 use App\Models\Country;
+use App\Models\EmployeeAvailableRating;
 use App\Models\SystemLookup;
 use App\Models\User;
 use Carbon\Carbon;
@@ -88,14 +89,19 @@ class ClientCompanyEmployeeController extends Controller
 
         $data['employee'] = $user;
 
-        $selected_available_rating_ids = $user->EmployeeAvailableRatings()->pluck('available_rating_id');
+        $selected_available_rating_ids = $user->ratingForGuest()->pluck('available_rating_id');
 
-        $data['available_rating'] = SystemLookup::where('type', AvailableEmployeeRating::LOOKUP_TYPE)
-            ->whereNotIn('id', $selected_available_rating_ids)
+        $data['available_rating'] =
+            $data['selected_available_rating'] = EmployeeAvailableRating::where('stopped_at', null)
+            ->whereIn('id', $selected_available_rating_ids)
+            ->where('client_id', $user->client_id)
             ->get();
 
-        $data['selected_available_rating'] = SystemLookup::where('type', AvailableEmployeeRating::LOOKUP_TYPE)
-            ->whereIn('id', $selected_available_rating_ids)
+        $data['available_rating'] = EmployeeAvailableRating::where('stopped_at', null)
+            ->where('client_id', $user->client_id)
+            ->get();;
+
+        $data['selected_available_rating'] = EmployeeAvailableRating::whereIn('id', $selected_available_rating_ids)
             ->get();
 
         $data['countries'] = Country::where('type', CountryType::COUNTRY['code'])

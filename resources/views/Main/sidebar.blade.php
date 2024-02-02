@@ -88,6 +88,24 @@
                         </ul>
                     </li>
 
+                    <!--company available-ratings  -->
+
+                    <li>
+                        <a href="{{url('admin/company-available-ratings/search')}}">
+                            <div class="col-md-12">
+                                <i class="fa fa-plus"></i> @lang('sidebar.company_available_ratings')
+                            </div>
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="{{url('admin/employee-available-ratings/search')}}">
+                            <div class="col-md-12">
+                                <i class="fa fa-plus"></i> @lang('sidebar.employee_available_ratings')
+                            </div>
+                        </a>
+                    </li>
+
                     <!-- companies -->
                     <li class=" treeview ">
                         <a href="#" style="padding: 10px !important;">

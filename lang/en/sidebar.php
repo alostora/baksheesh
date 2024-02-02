@@ -54,7 +54,9 @@ return [
     "edit_company" => "Companies",
 
     "company_employee" => "Employees",
-    
+    "company_available_ratings" => "Company Available Ratings",
+    "employee_available_ratings" => "Employee Available Ratings",
+
     "good" => "Good",
     "bad" => "Bad",
 

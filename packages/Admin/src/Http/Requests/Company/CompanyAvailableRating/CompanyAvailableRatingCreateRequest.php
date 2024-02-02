@@ -22,7 +22,7 @@ class CompanyAvailableRatingCreateRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'company_id' => ['required', 'uuid', 'exists:companies,id'],
+            'client_id' => ['required', 'uuid', 'exists:users,id'],
 
             "name" => ["required", "string", "max:255"],
 
