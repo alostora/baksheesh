@@ -18,7 +18,7 @@
                             <div class="form-group">
                                 <div class="col-md-6">
                                     <label for="client_id">@lang('employee_available_rating.client')</label>
-                                    <select class="form-control" name="client_id" id="client_id" require>
+                                    <select required class="form-control" name="client_id" id="client_id" require>
                                         @foreach ($clients as $client)
                                         <option value="{{$client->id}}">{{$client->name}}</option>
                                         @endforeach
@@ -31,11 +31,11 @@
                             <div class="form-group">
                                 <div class="col-md-6">
                                     <label for="name">@lang('employee_available_rating.name')</label>
-                                    <input type="text" class="form-control" name="name" id="name" value="">
+                                    <input required type="text" class="form-control" name="name" id="name" value="">
                                 </div>
                                 <div class="col-md-6">
                                     <label for="name_ar">@lang('employee_available_rating.name_ar')</label>
-                                    <input type="text" class="form-control" name="name_ar" id="name_ar" value="">
+                                    <input required type="text" class="form-control" name="name_ar" id="name_ar" value="">
                                 </div>
                             </div>
                         </div>

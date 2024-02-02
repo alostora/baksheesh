@@ -16,11 +16,11 @@
             <div class="form-group">
               <div class="col-md-6">
                 <label for="name">@lang('country.name')</label>
-                <input type="text" class="form-control" name="name" id="name" placeholder="@lang('country.name')">
+                <input type="text" class="form-control" name="name" id="name" placeholder="@lang('country.name')" required>
               </div>
               <div class="col-md-6">
                 <label for="name_ar">@lang('country.name_ar')</label>
-                <input type="text" class="form-control" name="name_ar" id="name_ar" placeholder="@lang('country.name_ar')">
+                <input type="text" class="form-control" name="name_ar" id="name_ar" placeholder="@lang('country.name_ar')" required>
               </div>
             </div>
           </div>

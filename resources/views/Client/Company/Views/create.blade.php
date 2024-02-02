@@ -13,12 +13,12 @@
                         <div class="row">
                             <div class="col-md-6">
                                 <label for="file">@lang('company.file')</label>
-                                <input type="file" class="form-control" name="file" id="file" placeholder="@lang('company.file')">
+                                <input required type="file" class="form-control" name="file" id="file" placeholder="@lang('company.file')">
                             </div>
 
                             <div class="col-md-6">
                                 <label for="company_field">@lang('company.company_field')</label>
-                                <input type="text" class="form-control" name="company_field" id="company_field" placeholder="@lang('company.company_field')">
+                                <input required type="text" class="form-control" name="company_field" id="company_field" placeholder="@lang('company.company_field')">
                             </div>
                         </div>
 
@@ -26,12 +26,12 @@
                             <div class="form-group">
                                 <div class="col-md-6">
                                     <label for="name">@lang('company.name')</label>
-                                    <input type="text" class="form-control" name="name" id="name" placeholder="@lang('company.name')">
+                                    <input required type="text" class="form-control" name="name" id="name" placeholder="@lang('company.name')">
                                 </div>
 
                                 <div class="col-md-6">
                                     <label for="available_rating_ids">@lang('company.available_rating')</label>
-                                    <select class="form-control select2" multiple="multiple" name="available_rating_ids[]" id="available_rating_ids">
+                                    <select required class="form-control select2" multiple="multiple" name="available_rating_ids[]" id="available_rating_ids">
                                         @foreach ($available_rating as $available_rating)
                                         <option value="{{$available_rating->id}}">{{$available_rating->name}}</option>
                                         @endforeach

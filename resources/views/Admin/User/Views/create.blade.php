@@ -17,7 +17,7 @@
                             <div class="form-group">
                                 <div class="col-md-6">
                                     <label for="user_account_type_id">@lang('user.user_account_type')</label>
-                                    <select class="form-control" name="user_account_type_id" id="user_account_type_id">
+                                    <select required class="form-control" name="user_account_type_id" id="user_account_type_id">
                                         @foreach ($user_account_types as $account_type)
                                         <option value="{{$account_type->id}}">{{$account_type->name}}</option>
                                         @endforeach
@@ -26,7 +26,7 @@
                                 <div class="col-md-6">
 
                                     <label for="name">@lang('user.name')</label>
-                                    <input type="text" class="form-control" name="name" id="name" placeholder="@lang('user.name')">
+                                    <input required type="text" class="form-control" name="name" id="name" placeholder="@lang('user.name')">
                                 </div>
                             </div>
                         </div>
@@ -34,11 +34,11 @@
                             <div class="form-group">
                                 <div class="col-md-6">
                                     <label for="email">@lang('user.email')</label>
-                                    <input type="email" class="form-control" name="email" id="email" placeholder="@lang('user.email')">
+                                    <input required type="email" class="form-control" name="email" id="email" placeholder="@lang('user.email')">
                                 </div>
                                 <div class="col-md-6">
                                     <label for="phone">@lang('user.phone')</label>
-                                    <input type="text" class="form-control" name="phone" id="phone" placeholder="@lang('user.phone')">
+                                    <input required type="text" class="form-control" name="phone" id="phone" placeholder="@lang('user.phone')">
                                 </div>
                             </div>
                         </div>
@@ -46,7 +46,7 @@
                             <div class="form-group">
                                 <div class="col-md-6">
                                     <label for="password">@lang('user.password')</label>
-                                    <input type="password" class="form-control" name="password" id="password" placeholder="@lang('user.password')">
+                                    <input required type="password" class="form-control" name="password" id="password" placeholder="@lang('user.password')">
                                 </div>
                             </div>
                         </div>

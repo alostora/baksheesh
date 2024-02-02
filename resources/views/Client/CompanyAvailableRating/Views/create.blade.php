@@ -18,11 +18,11 @@
                             <div class="form-group">
                                 <div class="col-md-6">
                                     <label for="name">@lang('company_available_rating.name')</label>
-                                    <input type="text" class="form-control" name="name" id="name">
+                                    <input required type="text" class="form-control" name="name" id="name">
                                 </div>
                                 <div class="col-md-6">
                                     <label for="name_ar">@lang('company_available_rating.name_ar')</label>
-                                    <input type="text" class="form-control" name="name_ar" id="name_ar">
+                                    <input required type="text" class="form-control" name="name_ar" id="name_ar">
                                 </div>
                             </div>
                         </div>

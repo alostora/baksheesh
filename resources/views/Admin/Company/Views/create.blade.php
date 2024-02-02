@@ -13,12 +13,12 @@
                         <div class="row">
                             <div class="col-md-6">
                                 <label for="file">@lang('company.file')</label>
-                                <input type="file" class="form-control" name="file" id="file" placeholder="@lang('company.file')">
+                                <input type="file" class="form-control" name="file" id="file" placeholder="@lang('company.file')" required>
                             </div>
 
                             <div class="col-md-6">
                                 <label for="company_field">@lang('company.company_field')</label>
-                                <input type="text" class="form-control" name="company_field" id="company_field" placeholder="@lang('company.company_field')">
+                                <input type="text" class="form-control" name="company_field" id="company_field" placeholder="@lang('company.company_field')" required>
                             </div>
                         </div>
 
@@ -26,7 +26,7 @@
                             <div class="form-group">
                                 <div class="col-md-6">
                                     <label for="client_id">@lang('company.client')</label>
-                                    <select class="form-control select2" name="client_id" id="client_id" onchange="clientCompanyAvailableRating(this.value)">
+                                    <select class="form-control select2" name="client_id" id="client_id" onchange="clientCompanyAvailableRating(this.value)" required>
                                         <option value="">@lang('company.client')</option>
 
                                         @foreach ($clients as $client)
@@ -36,7 +36,7 @@
                                 </div>
                                 <div class="col-md-6">
                                     <label for="name">@lang('company.name')</label>
-                                    <input type="text" class="form-control" name="name" id="name" placeholder="@lang('company.name')">
+                                    <input  required type="text" class="form-control" name="name" id="name" placeholder="@lang('company.name')">
                                 </div>
                             </div>
                         </div>
@@ -45,7 +45,7 @@
                             <div class="form-group" id="available_rating" style="display: none;">
                                 <div class="col-md-6">
                                     <label for="available_rating_ids">@lang('company.available_rating')</label>
-                                    <select class="form-control select2" multiple="multiple" name="available_rating_ids[]" id="available_rating_ids">
+                                    <select required class="form-control select2" multiple="multiple" name="available_rating_ids[]" id="available_rating_ids">
                                     </select>
                                 </div>
                             </div>
