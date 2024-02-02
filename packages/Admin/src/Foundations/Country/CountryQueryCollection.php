@@ -22,9 +22,9 @@ class CountryQueryCollection
                         ->where(function ($q) use ($query_string) {
 
                             $q
-                                ->orWhere('name_ar', 'like', '%' . $query_string . '%')
+                                ->where('name', 'like', '%' . $query_string . '%')
 
-                                ->where('name', 'like', '%' . $query_string . '%');
+                                ->orWhere('name_ar', 'like', '%' . $query_string . '%');
                         });
                 }
 
