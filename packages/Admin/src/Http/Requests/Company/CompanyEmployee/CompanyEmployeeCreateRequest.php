@@ -32,8 +32,6 @@ class CompanyEmployeeCreateRequest extends FormRequest
 
             "phone" => ["required", "string", "unique:users,phone", "max:255"],
 
-            "password" => ["required", "string", "max:255"],
-
             "employee_job_name" => ["required", "string", "max:255"],
 
             "country_id" => [
@@ -51,6 +49,10 @@ class CompanyEmployeeCreateRequest extends FormRequest
             ],
 
             'file' => ['required', 'file'],
+
+            'available_rating_ids' => ['required', 'array', 'max:20'],
+
+            'available_rating_ids.*' => ['required', 'uuid', 'exists:employee_available_ratings,id'],
         ];
     }
 }

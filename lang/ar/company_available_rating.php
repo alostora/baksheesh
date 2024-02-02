@@ -27,4 +27,6 @@ return [
     "current_status" => "الحالة الحالية",
     "active" => "نشط",
     "inactive" => "غير نشط",
+
+    "client" => "العميل",
 ];

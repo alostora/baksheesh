@@ -3,27 +3,27 @@
         <div class="col-md-12">
             <div class="box box-primary">
                 <div class="box-header with-border">
-                    <h3 class="box-title col-md-8">@lang('employee_available_rating.update')</h3>
+                    <h3 class="box-title col-md-8">@lang('company_available_rating.update')</h3>
                 </div>
-                <form role="form" action="{{url('admin/employee-available-rating/'.$employeeAvailableRating->id)}}" method="post" enctype="multipart/form-data">
+                <form role="form" action="{{url('admin/company-available-rating/'.Request('companyAvailableRating')->id)}}" method="post" enctype="multipart/form-data">
                     @csrf
                     @method('PATCH')
                     <div class="box-body">
                         <div class="row">
                             <div class="form-group">
                                 <div class="col-md-6">
-                                    <label for="name">@lang('employee_available_rating.name')</label>
-                                    <input type="text" class="form-control" name="name" id="name" value="{{$employeeAvailableRating->name}}">
+                                    <label for="name">@lang('company_available_rating.name')</label>
+                                    <input type="text" class="form-control" name="name" id="name" value="{{$companyAvailableRating->name}}">
                                 </div>
                                 <div class="col-md-6">
-                                    <label for="name_ar">@lang('employee_available_rating.name_ar')</label>
-                                    <input type="text" class="form-control" name="name_ar" id="name_ar" value="{{$employeeAvailableRating->name_ar}}">
+                                    <label for="name_ar">@lang('company_available_rating.name_ar')</label>
+                                    <input type="text" class="form-control" name="name_ar" id="name_ar" value="{{$companyAvailableRating->name_ar}}">
                                 </div>
                             </div>
                         </div>
                     </div>
                     <div class="box-footer">
-                        <button type="submit" class="btn btn-primary">@lang('employee_available_rating.submit')</button>
+                        <button type="submit" class="btn btn-primary">@lang('company_available_rating.submit')</button>
                     </div>
                 </form>
             </div>

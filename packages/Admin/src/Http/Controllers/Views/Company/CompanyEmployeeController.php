@@ -13,9 +13,11 @@ use Admin\Http\Resources\Company\CompanyEmployee\CompanyEmployeeResource;
 use App\Constants\HasLookupType\CountryType;
 use App\Constants\StatusCode;
 use App\Constants\SystemDefault;
+use App\Foundations\LookupType\AccountTypeCollection;
 use App\Http\Controllers\Controller;
 use App\Models\Company;
 use App\Models\Country;
+use App\Models\EmployeeAvailableRating;
 use App\Models\User;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
@@ -60,13 +62,53 @@ class CompanyEmployeeController extends Controller
 
     public function create()
     {
-        $data['companies'] = Company::where('stopped_at', null)->get();
+        $client_type = AccountTypeCollection::client();
 
         $data['countries'] = Country::where('type', CountryType::COUNTRY['code'])
             ->where('stopped_at', null)
             ->get();
 
+        $data['clients'] = User::where('user_account_type_id', $client_type->id)
+            ->where('stopped_at', null)
+            ->get();
+
         return view('Admin/CompanyEmployee/create', $data);
+    }
+
+
+    public function clientEmployeeAvailableRatings(User $user)
+    {
+
+        $data['status'] = false;
+
+        $data['available_rating'] = EmployeeAvailableRating::where('stopped_at', null)
+            ->where('client_id', $user->id)->get();
+
+        if (count($data['available_rating']) > 0) {
+            $data['status'] = true;
+        }
+
+        return $data;
+    }
+
+    public function clientCompanies(User $user)
+    {
+
+        $data['status'] = false;
+
+        $data['companies'] = Company::where('client_id', $user->id)
+
+            ->where('client_id', $user->id)
+
+            ->where('stopped_at', null)
+
+            ->get();
+
+        if (count($data['companies']) > 0) {
+            $data['status'] = true;
+        }
+
+        return $data;
     }
 
     public function store(CompanyEmployeeCreateRequest $request)
@@ -94,6 +136,18 @@ class CompanyEmployeeController extends Controller
         $data['governorates'] = Country::where('country_id', $user->country_id)
             ->where('type', CountryType::GOVERNORATE['code'])
             ->where('stopped_at', null)
+            ->get();
+
+
+        $selected_available_rating_ids = $user->ratingForGuest()->pluck('available_rating_id');
+
+        $data['selected_available_rating'] = EmployeeAvailableRating::where('stopped_at', null)
+            ->whereIn('id', $selected_available_rating_ids)
+            ->where('client_id', $user->client_id)
+            ->get();
+
+        $data['available_rating'] = EmployeeAvailableRating::where('stopped_at', null)
+            ->where('client_id', $user->client_id)
             ->get();
 
         return view('Admin/CompanyEmployee/edit', $data);

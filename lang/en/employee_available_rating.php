@@ -2,13 +2,11 @@
 
 return [
 
-    'page_title' => 'Company Available Rating',
+    'page_title' => 'Employee Available Rating',
 
     'name' => 'Name',
 
     'name_ar' => 'Name ar',
-
-    'company' => 'Company',
 
     'company' => 'Company',
 
@@ -33,4 +31,5 @@ return [
     "current_status" => "Current Status",
     "active" => "Active",
     "inactive" => "Inactive",
+    "client" => "Client",
 ];

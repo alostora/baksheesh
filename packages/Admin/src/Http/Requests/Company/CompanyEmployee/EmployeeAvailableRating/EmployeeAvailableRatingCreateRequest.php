@@ -22,8 +22,8 @@ class EmployeeAvailableRatingCreateRequest extends FormRequest
     public function rules(): array
     {
         return [
-            
-            'employee_id' => ['required', 'uuid', 'exists:users,id'],
+
+            'client_id' => ['required', 'uuid', 'exists:users,id'],
 
             "name" => ["required", "string", "max:255"],
 

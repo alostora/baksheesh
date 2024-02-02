@@ -39,7 +39,7 @@
 
                                 <div class="col-md-6">
                                     <label for="available_rating_ids">@lang('company.available_rating')</label>
-                                    <select class="form-control" multiple="multiple" name="available_rating_ids[]" id="available_rating_ids">
+                                    <select class="form-control select2" multiple="multiple" name="available_rating_ids[]" id="available_rating_ids">
                                         @foreach ($available_rating as $available_rating)
                                         <option value="{{$available_rating->id}}">{{$available_rating->name}}</option>
                                         @endforeach
