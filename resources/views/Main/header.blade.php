@@ -114,7 +114,7 @@
                             </a>
                             <ul class="dropdown-menu">
                                 <!-- User image -->
-                                <li class="user-header">
+                                <li class="user-header" style="background-color: #fff;">
                                     <img src="{{url('/')}}/user2-160x160.png" class="img-circle" alt="User Image" style="border-radius: 50%;">
 
                                     <p>
