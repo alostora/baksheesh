@@ -22,6 +22,7 @@ body{
    top: 0;
    padding-bottom: 60px;
    bottom: 0;
+   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 
 }
 .main-sidebar:hover{
@@ -32,14 +33,7 @@ body{
    bottom: 0;
 
 }
-.main-sidebar:hover{
-  height:100vh !important;
-  position: fixed;
-   overflow-y: scroll;
-   top: 0;
-   bottom: 0;
 
-}
 /* .user-panel{
   background-color: #fff !important;
   border-radius: 5px;
@@ -81,6 +75,7 @@ transition: 0.5s;
   background-color: #21beda  !important;
   color: #fff  !important;
   padding:10px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 
 }
 .header a:hover {
@@ -106,6 +101,7 @@ color: #047386;
 /* margin:5px !important; */
 opacity: 0.8 !important;
 color: #047386;
+
 }
 .level-two span {
 text-decoration: none !important;
@@ -137,6 +133,8 @@ text-decoration: none !important;
   /* padding:10px !important; */
   /* display: flex; */
   border-radius: 5px;
+  margin-top:8px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 
 }
 .treeview .treeview-menu {
@@ -157,16 +155,19 @@ min-height: 40px;
   /* border:1px solid#ff0080 !important; */
 background-color: #fff;
 min-height: 40px;
-  font-size: 14px !important;
-  color:#1b1b1b98 !important;
+  font-size: 12px !important;
+  color:#1b1b1bb6 !important;
+  font-weight: 700;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+margin:10px;
+border-radius: 5px;
 }
 .treeview .treeview-menu  li a:hover,
 .client_side a:hover {
   /* border:1px solid#ff0080 !important; */
-background-color: #21beda;
-color:#ffffff !important;
+background-color: #35e1ff;
 /* width:auto; */
-font-weight: 500;
+font-weight: 700;
 }
 
 
@@ -181,25 +182,28 @@ font-weight: 500;
   background: #fff;
 }
 .navbar-static-top .fa-exchange{
-  font-size: 14px;
+  font-size: 12px;
   margin-top: 10px;
   margin:5px;
   padding:8px;
-  color: #002fff;
+  color: #035463;
   text-decoration: none;
-  background-color: #fff;
+  background-color: #f7e331;
+  box-shadow: 0 1px 3px 0 rgba(65, 65, 65, 0.1), 0 2px 8px 0 rgba(0, 0, 0, 0.19);
   border-radius: 10px;
-  opacity: 0.5;
-  transition: 0.3s;
+
+  transition: 0.5s;
 }
 .navbar-static-top .fa-exchange:hover{
   margin-top: 10px;
   margin:5px;
   padding:8px;
-  color: #ffffff;
+  color: #035463;
   scale: calc(1.1);
   text-decoration: none;
-  background-color: #21beda;
+  background-color: #f7e331;
+  box-shadow: 0 1px 3px 0 rgba(65, 65, 65, 0.1), 0 2px 8px 0 rgba(0, 0, 0, 0.19);
+
   border-radius: 10px;
   opacity: 1;
 }
@@ -258,13 +262,16 @@ header {
 
 }
 .navbar{
-  background-color: #fff !important  ;
+    background-image: linear-gradient(
+        #fff,
+        rgb(72, 220, 247, 0.5),
+        rgb(72, 220, 247, 0.8)
+    ) !important  ;
   box-shadow: 0 1px 3px 0 rgba(65, 65, 65, 0.1), 0 2px 8px 0 rgba(0, 0, 0, 0.19);
 
 }
 .logo{
   background-color: #fff !important  ;
-  box-shadow: 0 1px 3px 0 rgba(65, 65, 65, 0.1), 0 2px 8px 0 rgba(0, 0, 0, 0.19);
 
 }
 .navbar-nav>.user-menu .user-image{
