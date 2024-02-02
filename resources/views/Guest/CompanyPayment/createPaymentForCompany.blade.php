@@ -32,7 +32,7 @@
                 <label>
                     @foreach([1,2] as $i)
 
-                    <?php $image = $i == 1 ? 'Happy' : 'Sad' ?>
+                    <?php $image = $i == 1 ? 'SadB' : 'HappyB' ?>
 
                     <input type="radio" class="{{$key.'__'.$i}}" name="{{$company_available_rating->id}}" value="{{$i}}" onclick="postRate(this)" style="display:none">
                     <img src="{{url('guest/images/'.$image.'.png')}}" style="font-size:50px;color:#fff; padding:5px; width:70px;height:70px; border-radius:100px; " id="{{$key.'__'.$i}}" />
@@ -112,6 +112,19 @@
 
         elementClass = element.className;
         elementId = elementClass;
+
+        let image = element.value === 1 ? 'Sad' : 'Happy'
+
+        if (element.value == 1) {
+
+            document.getElementById(elementId).src = "{{url('guest')}}/images/" + image + ".png";
+
+        } else {
+
+            document.getElementById(elementId).src = "{{url('guest')}}/images/" + image + ".png";
+
+        }
+
 
         level = elementClass.split("__")[0];
         value = elementClass.split("__")[1];
