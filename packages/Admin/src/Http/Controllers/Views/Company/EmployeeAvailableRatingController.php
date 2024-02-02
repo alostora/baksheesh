@@ -23,7 +23,6 @@ class EmployeeAvailableRatingController extends Controller
             -1,
             -1,
             -1,
-            -1,
             $request->get('per_page') ? $request->get('per_page') : SystemDefault::DEFAUL_PAGINATION_COUNT
         );
 
@@ -33,8 +32,7 @@ class EmployeeAvailableRatingController extends Controller
     public function search(Request $request)
     {
         $data = EmployeeAvailableRatingSearchCollection::searchEmployeeAvailableRatings(
-            $request->get('company_id') ? $request->get('company_id') : -1,
-            $request->get('employee_id') ? $request->get('employee_id') : -1,
+            $request->get('client_id') ? $request->get('client_id') : -1,
             $request->get('query_string') ? $request->get('query_string') : -1,
             $request->get('active') ? $request->get('active') : -1,
             $request->get('per_page') ? $request->get('per_page') : SystemDefault::DEFAUL_PAGINATION_COUNT
@@ -43,11 +41,10 @@ class EmployeeAvailableRatingController extends Controller
         return view('Admin/EmployeeAvailableRating/index', $data);
     }
 
-    public function create(User $user)
+    public function create()
     {
-        $data['employees'] = User::where('user_account_type_id', AccountTypeCollection::employee()->id)
 
-            ->where('company_id', $user->company_id)
+        $data['clients'] = User::where('user_account_type_id', AccountTypeCollection::client()->id)
 
             ->where('stopped_at', null)
 
@@ -74,7 +71,7 @@ class EmployeeAvailableRatingController extends Controller
     {
         EmployeeAvailableRatingUpdateCollection::updateEmployeeAvailableRating($request, $employeeAvailableRating);
 
-        return redirect(url("admin/employee-available-ratings/search?company_id=" . $request->get('company_id')));
+        return redirect(url("admin/employee-available-ratings/search?client_id=" . $request->get('client_id')));
     }
 
     public function destroy(EmployeeAvailableRating $employeeAvailableRating)

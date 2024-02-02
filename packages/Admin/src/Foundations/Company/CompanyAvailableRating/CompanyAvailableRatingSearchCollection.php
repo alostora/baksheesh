@@ -3,8 +3,10 @@
 namespace Admin\Foundations\Company\CompanyAvailableRating;
 
 use App\Constants\SystemDefault;
+use App\Foundations\LookupType\AccountTypeCollection;
 use App\Models\Company;
 use App\Models\CompanyAvailableRating;
+use App\Models\User;
 
 class CompanyAvailableRatingSearchCollection
 {
@@ -15,13 +17,17 @@ class CompanyAvailableRatingSearchCollection
         $per_page = SystemDefault::DEFAUL_PAGINATION_COUNT
     ) {
 
-        return $data['availableRatings'] = CompanyAvailableRatingQueryCollection::searchAllCompanyAvailableRatings(
+        $data['availableRatings'] = CompanyAvailableRatingQueryCollection::searchAllCompanyAvailableRatings(
             $client_id,
             $query_string,
             $archived,
         )->paginate($per_page);
 
-        $data['companies'] = Company::where('stopped_at', null)->get();
+        $data['clients'] = User::where('user_account_type_id', AccountTypeCollection::client()->id)
+
+            ->where('stopped_at', null)
+
+            ->get();
 
         $data['count_active'] =  CompanyAvailableRating::where(function ($q) use ($client_id) {
 

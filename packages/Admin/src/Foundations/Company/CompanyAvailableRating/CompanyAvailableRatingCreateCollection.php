@@ -9,8 +9,6 @@ class CompanyAvailableRatingCreateCollection
 {
     public static function createCompanyAvailableRating($request)
     {
-        $validated = $request->validated();
-
-        return CompanyAvailableRating::create($validated);
+        return CompanyAvailableRating::create($request->validated());
     }
 }

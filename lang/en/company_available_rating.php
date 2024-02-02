@@ -27,4 +27,5 @@ return [
     "current_status" => "Current Status",
     "active" => "Active",
     "inactive" => "Inactive",
+    "client" => "Client",
 ];

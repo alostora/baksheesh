@@ -12,7 +12,7 @@ Route::group([
 
     Route::get('employee-available-ratings/search', [EmployeeAvailableRatingController::class, 'search']);
 
-    Route::get('employee-available-rating/create/{user}', [EmployeeAvailableRatingController::class, 'create']);
+    Route::get('employee-available-rating/create', [EmployeeAvailableRatingController::class, 'create']);
 
     Route::post('employee-available-rating', [EmployeeAvailableRatingController::class, 'store']);
 

@@ -17,11 +17,10 @@
                         <div class="row">
                             <div class="form-group">
                                 <div class="col-md-6">
-                                    <label for="employee_id">@lang('employee_available_rating.employees')</label>
-                                    <select class="form-control" name="employee_id" id="employee_id">
-                                        @foreach ($employees as $employee)
-                                        {{$selected = $employee->id == Request('user')->id ? "selected" : "" }}
-                                        <option value="{{$employee->id}}" {{$selected}}>{{$employee->name}}</option>
+                                    <label for="client_id">@lang('employee_available_rating.client')</label>
+                                    <select class="form-control" name="client_id" id="client_id" require>
+                                        @foreach ($clients as $client)
+                                        <option value="{{$client->id}}">{{$client->name}}</option>
                                         @endforeach
                                     </select>
                                 </div>

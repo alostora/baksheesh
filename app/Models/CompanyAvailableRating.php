@@ -22,7 +22,6 @@ class CompanyAvailableRating extends Model
         'name_ar',
 
         'stopped_at',
-
     ];
 
     protected function createdAt(): Attribute
@@ -34,6 +33,7 @@ class CompanyAvailableRating extends Model
 
     public function client(): BelongsTo
     {
-        return $this->belongsTo(User::class, 'client_id', 'id');
+        return $this->belongsTo(User::class, 'client_id', 'id')
+            ->where('stopped_at', null);
     }
 }

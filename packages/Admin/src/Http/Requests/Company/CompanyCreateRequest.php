@@ -29,6 +29,10 @@ class CompanyCreateRequest extends FormRequest
 
             'company_field' => ['required', 'string', 'max:255'],
 
+            'available_rating_ids' => ['required', 'array', 'max:20'],
+
+            'available_rating_ids.*' => ['required', 'uuid', 'exists:company_available_ratings,id'],
+
             'file' => ['required', 'file'],
 
         ];

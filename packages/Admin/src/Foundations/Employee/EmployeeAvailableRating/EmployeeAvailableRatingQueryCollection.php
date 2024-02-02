@@ -7,31 +7,27 @@ use App\Models\EmployeeAvailableRating;
 class EmployeeAvailableRatingQueryCollection
 {
     public static function searchAllEmployeeAvailableRatings(
-        $company_id,
-        $employee_id,
+        $client_id,
         $query_string = -1,
         $active = -1,
     ) {
 
-        return EmployeeAvailableRating::where(function ($q) use ($company_id, $employee_id, $query_string, $active) {
+        return EmployeeAvailableRating::where(function ($q) use ($client_id, $query_string, $active) {
 
             if ($query_string && $query_string != -1) {
 
                 $q
-                    ->where('name', 'like', '%' . $query_string . '%');
+                    ->where(function ($q) use ($query_string) {
+                        $q
+                            ->where('name', 'like', '%' . $query_string . '%')
+                            ->orWhere('name_ar', 'like', '%' . $query_string . '%');
+                    });
             }
 
-
-            if ($company_id && $company_id != -1) {
-
-                $q
-                    ->where('company_id', $company_id);
-            }
-
-            if ($employee_id && $employee_id != -1) {
+            if ($client_id && $client_id != -1) {
 
                 $q
-                    ->where('employee_id', $employee_id);
+                    ->where('client_id', $client_id);
             }
 
             if ($active == 'active') {

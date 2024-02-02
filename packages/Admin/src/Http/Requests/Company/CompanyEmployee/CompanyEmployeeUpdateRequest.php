@@ -60,6 +60,10 @@ class CompanyEmployeeUpdateRequest extends FormRequest
 
             'file' => ['nullable', 'file'],
 
+            'available_rating_ids' => ['nullable', 'array', 'max:20'],
+
+            'available_rating_ids.*' => ['required', 'uuid', 'exists:employee_available_ratings,id'],
+
         ];
     }
 }

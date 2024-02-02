@@ -1,7 +1,8 @@
 <section class="content">
     <div class="box box-promary">
+
         <!-- filter -->
-        {{-- @include('Admin/TableFilter/employee') --}}
+        @include('Admin/TableFilter/company_available_rating')
 
         <div class="box-header">
             <h3 class="box-title col-md-8">@lang('company_available_rating.page_title')</h3>
@@ -71,12 +72,12 @@
 
                             @if($availableRating->stopped_at == null)
                             <a href="{{url('admin/company-available-rating-inactive/'.$availableRating->id)}}" class="btn btn-success btn-sm">
-                                <i class="fa fa-check"></i> @lang('company.active')
+                                <i class="fa fa-check"></i> @lang('general.active')
                             </a>
                             @else
 
                             <a href="{{url('admin/company-available-rating-active/'.$availableRating->id)}}" class="btn btn-danger btn-sm">
-                                <i class="fa fa-close"></i> @lang('company.inactive')
+                                <i class="fa fa-close"></i> @lang('general.inactive')
                             </a>
                             @endif
                         </td>

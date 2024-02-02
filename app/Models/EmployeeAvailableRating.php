@@ -17,10 +17,6 @@ class EmployeeAvailableRating extends Model
 
         'client_id',
 
-        'company_id',
-
-        'employee_id',
-
         'name',
 
         'name_ar',
@@ -39,15 +35,5 @@ class EmployeeAvailableRating extends Model
     public function client(): BelongsTo
     {
         return $this->belongsTo(User::class, 'client_id', 'id');
-    }
-
-    public function company(): BelongsTo
-    {
-        return $this->belongsTo(Company::class, 'company_id', 'id');
-    }
-
-    public function employee(): BelongsTo
-    {
-        return $this->belongsTo(User::class, 'employee_id', 'id');
     }
 }

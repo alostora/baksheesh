@@ -7,6 +7,7 @@ use App\Foundations\File\FileCreateCollection;
 use App\Foundations\File\FileDeleteCollection;
 use App\Models\Company;
 use App\Models\File;
+use App\Models\User;
 
 class CompanyEmployeeUpdateCollection
 {
@@ -38,6 +39,27 @@ class CompanyEmployeeUpdateCollection
 
         $user->update($validated);
 
+
+        if (isset($validated['available_rating_ids'])) {
+            self::createAvailableRating($validated['available_rating_ids'], $user);
+        }
+
         return $user;
+    }
+
+
+    public static function createAvailableRating($available_rating_ids, User $user)
+    {
+        $user->ratingForGuest()->delete();
+
+        foreach ($available_rating_ids as $available_rating_id) {
+            $data[] = [
+                "client_id" => $user->client_id,
+                "employee_id" => $user->id,
+                "available_rating_id" => $available_rating_id,
+            ];
+        }
+
+        $user->ratingForGuest()->createMany($data);
     }
 }

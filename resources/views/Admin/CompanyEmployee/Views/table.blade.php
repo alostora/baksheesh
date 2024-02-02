@@ -79,10 +79,6 @@
                         <td> {{$user->country ? $user->country->name : ""}} </td>
                         <td>
 
-                            <a href="{{url('admin/employee-available-ratings/search?employee_id='.$user->id.'&company_id='.$user->company_id)}}" class="btn btn-warning btn-sm">
-                                <i class="fa fa-star"></i>
-                            </a>
-
                             <a href="{{url('admin/company-employee/edit/'.$user->id)}}" class="btn btn-info btn-sm">
                                 <i class="fa fa-edit"></i>
                             </a>

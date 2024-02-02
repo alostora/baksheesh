@@ -15,6 +15,7 @@ use App\Constants\SystemDefault;
 use App\Foundations\LookupType\AccountTypeCollection;
 use App\Http\Controllers\Controller;
 use App\Models\Company;
+use App\Models\CompanyAvailableRating;
 use App\Models\SystemLookup;
 use App\Models\User;
 use Carbon\Carbon;
@@ -101,9 +102,26 @@ class CompanyController extends Controller
     {
         $client_type = AccountTypeCollection::client();
 
-        $data['clients'] = User::where('user_account_type_id', $client_type->id)->get();
+        $data['clients'] = User::where('user_account_type_id', $client_type->id)
+            ->where('stopped_at', null)
+            ->get();
 
         return view('Admin/Company/create', $data);
+    }
+
+    public function clientCompanyAvailableRatings(User $user)
+    {
+
+        $data['status'] = false;
+
+        $data['available_rating'] = CompanyAvailableRating::where('stopped_at', null)
+            ->where('client_id', $user->id)->get();
+
+        if (count($data['available_rating']) > 0) {
+            $data['status'] = true;
+        }
+
+        return $data;
     }
 
     public function store(CompanyCreateRequest $request)
@@ -114,18 +132,25 @@ class CompanyController extends Controller
 
             return redirect(url('admin/companies'));
         } else {
-            Session::flash('message', 'This is a message!');
+            Session::flash('message', 'You have the max count of companies');
             return back();
         }
     }
 
     public function edit(Company $company)
     {
-        $client_type = AccountTypeCollection::client();
-
-        $data['clients'] = User::where('user_account_type_id', $client_type->id)->get();
-
         $data['company'] = $company;
+
+        $selected_available_rating_ids = $company->ratingForGuest()->pluck('available_rating_id');
+
+        $data['selected_available_rating'] = CompanyAvailableRating::where('stopped_at', null)
+            ->whereIn('id', $selected_available_rating_ids)
+            ->where('client_id', $company->client_id)
+            ->get();
+
+        $data['available_rating'] = CompanyAvailableRating::where('stopped_at', null)
+            ->where('client_id', $company->client_id)
+            ->get();
 
         return view('Admin/Company/edit', $data);
     }

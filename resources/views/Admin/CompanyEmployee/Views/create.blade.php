@@ -42,15 +42,32 @@
                                 </div>
                             </div>
                         </div>
+
                         <div class="row">
-                            <div class="form-group">
+                            <div class="col-md-6">
+                                <label for="client_id">@lang('company.client')</label>
+                                <select class="form-control select2" name="client_id" id="client_id" onchange="clientEmployeeAvailableRating(this.value)">
+                                    <option value="">@lang('company.client')</option>
+
+                                    @foreach ($clients as $client)
+                                    <option value="{{$client->id}}">{{$client->name}}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                        </div>
+
+
+                        <div class="row">
+                            <div class="form-group" id="company_parent_id" style="display: none;">
                                 <div class="col-md-6">
                                     <label for="company_id">@lang('company_employee.company')</label>
                                     <select class="form-control" name="company_id" id="company_id">
+                                        @if(isset($companies) && count($companies))
                                         @foreach ($companies as $company)
                                         {{$selected = $company->id == Request('company_id') ? "selected" : "" }}
                                         <option value="{{$company->id}}" {{$selected}}>{{$company->name}}</option>
                                         @endforeach
+                                        @endif
                                     </select>
                                 </div>
                                 <div class="col-md-6">
@@ -59,6 +76,17 @@
                                 </div>
                             </div>
                         </div>
+
+                        <div class="row">
+                            <div class="form-group" id="available_rating" style="display: none;">
+                                <div class="col-md-6">
+                                    <label for="available_rating_ids">@lang('company.available_rating')</label>
+                                    <select class="form-control select2" multiple="multiple" name="available_rating_ids[]" id="available_rating_ids">
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+
                         <div class="row">
                             <div class="form-group">
                                 <div class="col-md-6">
@@ -68,14 +96,6 @@
                                 <div class="col-md-6">
                                     <label for="email">@lang('company_employee.email')</label>
                                     <input type="email" class="form-control" name="email" id="email" placeholder="@lang('company_employee.email')">
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="form-group">
-                                <div class="col-md-6">
-                                    <label for="password">@lang('company_employee.password')</label>
-                                    <input type="password" class="form-control" name="password" id="password" placeholder="@lang('company_employee.password')">
                                 </div>
                             </div>
                         </div>
@@ -91,6 +111,90 @@
 
 
 <script>
+    function clientEmployeeAvailableRating(client_id) {
+
+        if (client_id) {
+
+            //client-employee-available-rating
+            $.ajax({
+
+                url: '{{url("admin/company/client-employee-available-rating")}}/' + client_id,
+                type: 'GET',
+                data: {},
+                dataType: 'json',
+                success: function(response) {
+
+                    if (response.status == true) {
+
+                        $("#available_rating").css('display', 'block');
+                        $(".select2").css('width', '100%');
+
+                        let result = response.available_rating;
+
+                        $("#available_rating_ids").html(`<option value=''>@lang('filter.select')</option>`)
+
+                        for (let i = 0; i < result.length; i++) {
+
+                            $("#available_rating_ids").append(`<option value='${result[i].id}'>${result[i].name}</option>`);
+                            console.log(result[i]);
+
+
+                        }
+                    } else {
+
+                        $("#available_rating").css('display', 'none');
+                        $("#company_parent_id").css('display', 'none');
+                    }
+                },
+                error: function(request, error) {
+                    $("#available_rating").css('display', 'none');
+                    $("#company_parent_id").css('display', 'none');
+                    console.log("Request: " + JSON.stringify(request));
+                }
+            });
+
+            //client-companies
+            $.ajax({
+                url: '{{url("admin/company/client-companies")}}/' + client_id,
+                type: 'GET',
+                data: {},
+                dataType: 'json',
+                success: function(response) {
+
+                    if (response.status == true) {
+
+                        $("#company_parent_id").show();
+                        $(".select2").css('width', '100%');
+
+                        let result = response.companies;
+
+                        $("#company_id").html(`<option value=''>@lang('filter.select')</option>`)
+
+                        for (let i = 0; i < result.length; i++) {
+
+                            $("#company_id").append(`<option value='${result[i].id}'>${result[i].name}</option>`);
+                            console.log(result[i]);
+
+                        }
+                    } else {
+
+                        $("#available_rating").css('display', 'none');
+                        $("#company_parent_id").css('display', 'none');
+                    }
+                },
+                error: function(request, error) {
+                    $("#available_rating").css('display', 'none');
+                    $("#company_parent_id").css('display', 'none');
+                    console.log("Request: " + JSON.stringify(request));
+                }
+            });
+
+        } else {
+            $("#available_rating").css('display', 'none');
+            $("#company_parent_id").css('display', 'none');
+        }
+    }
+
     function getGovernorate(country_id) {
 
         $("#parent_governorate_id").hide();
