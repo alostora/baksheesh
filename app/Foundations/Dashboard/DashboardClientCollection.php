@@ -15,72 +15,72 @@ use Carbon\Carbon;
 class DashboardClientCollection
 
 {
-     public static function dashboardData()
-     {
-          $data['count_active_employees'] = self::countActiveEmployees();
+    public static function dashboardData()
+    {
+        $data['count_active_employees'] = self::countActiveEmployees();
 
-          $data['count_active_companies'] = Company::where('client_id', auth()->id())
-               ->where('stopped_at', null)
-               ->count();
+        $data['count_active_companies'] = Company::where('client_id', auth()->id())
+            ->where('stopped_at', null)
+            ->count();
 
-          $data['month_income'] = self::monthIncome();
+        $data['month_income'] = self::monthIncome();
 
-          $data['year_income'] = self::yearIncome();
+        $data['year_income'] = self::yearIncome();
 
-          $data['current_amount'] = self::currentAmount();
+        $data['current_amount'] = self::currentAmount();
 
-          return $data;
-     }
+        return $data;
+    }
 
-     public static function countActiveEmployees()
-     {
-          $employee_type = AccountTypeCollection::employee();
+    public static function countActiveEmployees()
+    {
+        $employee_type = AccountTypeCollection::employee();
 
-          return User::where('user_account_type_id', $employee_type->id)
-               ->where('client_id', auth()->id())
-               ->where('stopped_at', null)
-               ->count();
-     }
+        return User::where('user_account_type_id', $employee_type->id)
+            ->where('client_id', auth()->id())
+            ->where('stopped_at', null)
+            ->count();
+    }
 
-     public static function monthIncome()
-     {
-          $company_cash = CompanyCash::where('client_id', auth()->id())
-               ->whereYear('created_at', Carbon::now()->year)
-               ->whereMonth('created_at', Carbon::now()->month)
-               ->sum('amount');
+    public static function monthIncome()
+    {
+        $company_cash = CompanyCash::where('client_id', auth()->id())
+            ->whereYear('created_at', Carbon::now()->endOfYear()->year)
+            ->whereMonth('created_at', Carbon::now()->endOfMonth()->month)
+            ->sum('amount');
 
-          $employee_cash = EmployeeCash::where('client_id', auth()->id())
-               ->whereYear('created_at', Carbon::now()->year)
-               ->whereMonth('created_at', Carbon::now()->month)
-               ->sum('amount');
+        $employee_cash = EmployeeCash::where('client_id', auth()->id())
+            ->whereYear('created_at', Carbon::now()->endOfYear()->year)
+            ->whereMonth('created_at', Carbon::now()->endOfMonth()->month)
+            ->sum('amount');
 
-          return $company_cash + $employee_cash;
-     }
+        return $company_cash + $employee_cash;
+    }
 
-     public static function yearIncome()
-     {
-          $company_cash = CompanyCash::where('client_id', auth()->id())
-               ->whereYear('created_at', Carbon::now()->year)
-               ->sum('amount');
+    public static function yearIncome()
+    {
+        $company_cash = CompanyCash::where('client_id', auth()->id())
+            ->whereYear('created_at', Carbon::now()->endOfYear()->year)
+            ->sum('amount');
 
-          $employee_cash = EmployeeCash::where('client_id', auth()->id())
-               ->whereYear('created_at', Carbon::now()->year)
-               ->sum('amount');
+        $employee_cash = EmployeeCash::where('client_id', auth()->id())
+            ->whereYear('created_at', Carbon::now()->endOfYear()->year)
+            ->sum('amount');
 
-          return $company_cash + $employee_cash;
-     }
+        return $company_cash + $employee_cash;
+    }
 
-     public static function currentAmount()
-     {
-          $accepted_status = WithdrawalRequestStatusCollection::accepted();
+    public static function currentAmount()
+    {
+        $accepted_status = WithdrawalRequestStatusCollection::accepted();
 
-          $delivered_withdrawal = ClientWithdrawalRequest::where('client_id', auth()->id())
-               ->where('status', $accepted_status->id)
-               ->sum('amount');
+        $delivered_withdrawal = ClientWithdrawalRequest::where('client_id', auth()->id())
+            ->where('status', $accepted_status->id)
+            ->sum('amount');
 
-          $company_cash = CompanyCash::sum('amount');
-          $employee_cash = EmployeeCash::sum('amount');
+        $company_cash = CompanyCash::sum('amount');
+        $employee_cash = EmployeeCash::sum('amount');
 
-          return ($company_cash + $employee_cash) - $delivered_withdrawal;
-     }
+        return ($company_cash + $employee_cash) - $delivered_withdrawal;
+    }
 }

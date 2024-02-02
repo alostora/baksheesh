@@ -19,14 +19,14 @@ return new class extends Migration
         $lookup_account_type_admin = SystemLookup::where('type', UserAccountType::LOOKUP_TYPE)
             ->where('key', UserAccountType::ADMIN['key'])
             ->first();
-
+/*
         $lookup_account_type_client = SystemLookup::where('type', UserAccountType::LOOKUP_TYPE)
             ->where('key', UserAccountType::CLIENT['key'])
             ->first();
 
         $lookup_account_type_employee = SystemLookup::where('type', UserAccountType::LOOKUP_TYPE)
             ->where('key', UserAccountType::EMPLOYEE['key'])
-            ->first();
+            ->first(); */
 
         $root = User::create([
 
@@ -59,7 +59,7 @@ return new class extends Migration
             'address'  => 'admin address',
 
         ]);
-
+/*
         $client = User::create([
 
             'user_account_type_id' => $lookup_account_type_client->id,
@@ -92,7 +92,7 @@ return new class extends Migration
 
             'address'  => 'employee address',
 
-        ]);
+        ]); */
     }
 
     /**
