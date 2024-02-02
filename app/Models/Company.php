@@ -83,4 +83,36 @@ class Company extends Model
         return $this->hasMany(RatingForGuest::class, 'company_id', 'id')
             ->where('stopped_at', null);
     }
+
+    public function companyGoodRating(): HasMany
+    {
+        return $this->hasMany(CompanyRating::class, 'company_id', 'id')->where('rating_value', 2);
+    }
+
+    public function companyBadRating(): HasMany
+    {
+        return $this->hasMany(CompanyRating::class, 'company_id', 'id')->where('rating_value', 1);
+    }
+
+    public function companyTotalRating()
+    {
+
+        $ratingForGuestRatedBad = $this->ratingForGuest()
+            ->whereIn('available_rating_id', $this->companyBadRating()->pluck('rating_id'))
+            ->count();
+
+        $ratingForGuestRatedGood = $this->ratingForGuest()
+            ->whereIn('available_rating_id', $this->companyGoodRating()->pluck('rating_id'))
+            ->count();
+
+
+        if ($ratingForGuestRatedBad != 0 && $ratingForGuestRatedGood != 0) {
+
+            return ($this->companyBadRating()->count() / $ratingForGuestRatedBad)
+
+                -
+
+                ($this->companyGoodRating()->count() / $ratingForGuestRatedGood);
+        }
+    }
 }

@@ -31,6 +31,8 @@ class ReviewController extends Controller
 
     public function viewPaymentForEmployee(User $user, Request $request)
     {
+        // return $user->employeeTotalRating();
+
         if ($user->stopped_at) {
             return abort(404);
         }
@@ -47,6 +49,10 @@ class ReviewController extends Controller
 
     public function viewPaymentForCompany(Company $company, Request $request)
     {
+
+        // return $company->companyTotalRating();
+
+
         if ($company->stopped_at) {
             return abort(404);
         }
