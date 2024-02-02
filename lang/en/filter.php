@@ -33,5 +33,7 @@ return [
      "active" => "Active",
 
      "inactive" => "Inactive",
+     "good" => "Good",
+     "bad" => "Bad",
 
 ];

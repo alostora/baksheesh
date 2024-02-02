@@ -57,6 +57,8 @@ class ClientReportController extends Controller
 
         $data = EmployeeRatingReportSearchCollection::searchAllEmployeeRating(
 
+            $request->get('company_id') ? $request->get('company_id') : -1,
+            $request->get('employee_id') ? $request->get('employee_id') : -1,
             $request->get('rating_value') ? $request->get('rating_value') : -1,
             $request->get('date_from') ? $request->get('date_from') : -1,
             $request->get('date_to') ? $request->get('date_to') : -1,

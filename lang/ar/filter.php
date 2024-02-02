@@ -2,36 +2,38 @@
 
 return [
 
-     "filter" => "فلتر",
+    "filter" => "فلتر",
 
-     "clients" => "العملاء",
+    "clients" => "العملاء",
 
-     "select" => "اختر",
+    "select" => "اختر",
 
-     "status" => "الحالة",
+    "status" => "الحالة",
 
-     "query_string" => "كلمة البحث",
+    "query_string" => "كلمة البحث",
 
-     "search" => "بحث",
+    "search" => "بحث",
 
-     "date_from" => "تاريخ من",
+    "date_from" => "تاريخ من",
 
-     "date_to" => "تاريخ الي",
+    "date_to" => "تاريخ الي",
 
-     "employees" => "الموظفون",
+    "employees" => "الموظفون",
 
-     "companies" => "الشركات",
+    "companies" => "الشركات",
 
-     "user_account_type" => "نوع الحساب",
+    "user_account_type" => "نوع الحساب",
 
-     "countries" => "الدول",
+    "countries" => "الدول",
 
-     "rating_value" => "قيمة التقييم",
+    "rating_value" => "قيمة التقييم",
 
-     "all" => "الكل",
+    "all" => "الكل",
 
-     "active" => "نشط",
+    "active" => "نشط",
 
-     "inactive" => "غير نشط",
+    "inactive" => "غير نشط",
+    "good" => "جيد",
+    "bad" => "سئ",
 
 ];

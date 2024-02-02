@@ -8,10 +8,10 @@
 
         <div class="col-md-4">
             <div class="form-group">
-                <select class="form-control" name="active">
-                    <option value="" {{Request('active') == "" ? "selected" : "";}}>@lang('filter.all')</option>
-                    <option value="active" {{Request('active') == "active" ? "selected" : "";}}>@lang('filter.active')</option>
-                    <option value="inactive" {{Request('active') == "inactive" ? "selected" : "";}}>@lang('filter.inactive')</option>
+                <select class="form-control" name="rating_value">
+                    <option value="" {{Request('rating_value') == "" ? "selected" : "";}}>@lang('filter.all')</option>
+                    <option value="1" {{Request('rating_value') == "1" ? "selected" : "";}}>@lang('filter.bad')</option>
+                    <option value="2" {{Request('rating_value') == "2" ? "selected" : "";}}>@lang('filter.good')</option>
                 </select>
             </div>
         </div>

@@ -53,5 +53,7 @@ return [
     "edit_company" => "بيانات الشركات",
 
     "company_employee" => "الموظفون",
+    "good" => "جيد",
+    "bad" => "سئ",
 
 ];

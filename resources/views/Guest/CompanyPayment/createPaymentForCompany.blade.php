@@ -5,8 +5,9 @@
 </div>
 
 <div class="employee_bg">
-
+    @if($company->file)
     <img class="employee_img" src="{{ url('uploads/'.$company->file->new_name)}}" alt="">
+    @endif
     <div class="back_employee_img">
         <h1 class="name_employee">{{$company->name}}</h1>
         <h3 class="job_name">{{$company->company_field}}</h3>
@@ -25,7 +26,7 @@
 
 <div class="bg_rating_employee">
     <div class="box-body">
-        @foreach($company_available_ratings as $key=>$company_available_rating)
+        @foreach($company->companyAvailableRatings as $key=>$company_available_rating)
         <div class="rating_1">
             <div style="display:flex;margin-right:40px;margin-top:10px;padding-left:10px;">
                 <label>
@@ -73,7 +74,7 @@
 
         <div class="anotherPriceBox" style="display: none;">
             <label for="amount" class="col-md-4">مبلغ اخر</label>
-            <input  class="anotherPrice" type="number" name="amount" id="amount" placeholder="ادخل المبلغ" style="background-color: #14bbd8">
+            <input class="anotherPrice" type="number" name="amount" id="amount" placeholder="ادخل المبلغ" style="background-color: #14bbd8">
         </div>
 
         <div class="apple_pay">

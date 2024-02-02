@@ -40,10 +40,6 @@ class ReviewController extends Controller
             $request->session()->put('guest_key', str()->random(50));
         }
 
-        $employee_available_ratings = $user->employeeAvailableRatings()->pluck('available_rating_id');
-
-        $data['employee_available_ratings'] = SystemLookup::whereIn('id', $employee_available_ratings)->get();
-
         $data['employee'] = $user;
 
         return view('Guest/EmployeePayment/paymentForEmployee', $data);
@@ -59,10 +55,6 @@ class ReviewController extends Controller
 
             $request->session()->put('guest_key', str()->random(50));
         }
-
-        $company_available_ratings = $company->companyAvailableRatings()->pluck('available_rating_id');
-
-        $data['company_available_ratings'] = SystemLookup::whereIn('id', $company_available_ratings)->get();
 
         $data['company'] = $company;
 

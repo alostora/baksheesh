@@ -3,6 +3,7 @@
 namespace App\Foundations\SideBar;
 
 use App\Constants\HasLookupType\UserAccountType;
+use App\Foundations\LookupType\AccountTypeCollection;
 use App\Models\Company;
 use App\Models\SystemLookup;
 use App\Models\User;
@@ -16,9 +17,8 @@ class SideBarCollection
             ->where('code', '!=', UserAccountType::CLIENT['code'])
             ->pluck('id');
 
-        $clientId =  SystemLookup::where('type', UserAccountType::LOOKUP_TYPE)
-            ->where('code', UserAccountType::CLIENT['code'])
-            ->first()->id;
+        $clientId =  AccountTypeCollection::client()->id;
+        
 
         $data['users_count'] = User::whereIn('user_account_type_id', $adminIds)
             ->where('stopped_at', null)
