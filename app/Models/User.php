@@ -207,4 +207,40 @@ class User extends Authenticatable implements MustVerifyEmail
         return $this->hasMany(RatingForGuest::class, 'employee_id', 'id')
             ->where('stopped_at', null);
     }
+
+
+
+
+
+    public function employeeGoodRating(): HasMany
+    {
+        return $this->hasMany(EmployeeRating::class, 'employee_id', 'id')->where('rating_value', 2);
+    }
+
+    public function employeeBadRating(): HasMany
+    {
+        return $this->hasMany(EmployeeRating::class, 'employee_id', 'id')->where('rating_value', 1);
+    }
+
+    public function employeeTotalRating()
+    {
+
+        $ratingForGuestRatedBad = $this->ratingForGuest()
+            ->whereIn('available_rating_id', $this->employeeBadRating()->pluck('rating_id'))
+            ->count();
+
+        $ratingForGuestRatedGood = $this->ratingForGuest()
+            ->whereIn('available_rating_id', $this->employeeGoodRating()->pluck('rating_id'))
+            ->count();
+
+
+        if ($ratingForGuestRatedBad != 0 && $ratingForGuestRatedGood != 0) {
+
+            return ($this->employeeBadRating()->count() / $ratingForGuestRatedBad)
+
+                -
+
+                ($this->employeeGoodRating()->count() / $ratingForGuestRatedGood);
+        }
+    }
 }
