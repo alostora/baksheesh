@@ -33,7 +33,7 @@
                     <!-- countries -->
                     <li>
                         <a href="{{url('admin/countries')}}">
-                            <i class="fa fa-flag"></i>@lang('sidebar.countries')
+                            <i class="ion ion-earth"></i>@lang('sidebar.countries')
                         </a>
                     </li>
 
@@ -56,9 +56,12 @@
                     </li>
 
                     <!-- clients -->
-                    <li class=" treeview ">
-                        <a href="#" style="padding: 10px !important;">
-                            <i class="ion ion-ios-people"></i> <span>@lang('sidebar.clients')</span>
+                    <li class=" treeview client_side">
+                        <a href="#" 
+                        style="padding-left: 10px !important;">
+                            <i class="ion ion-ios-people" style="font-size:20px !important; 
+                             
+                            }" ></i> <span>@lang('sidebar.clients')</span>
                             <span class="pull-right-container">
                                 <i class="fa fa-angle-left pull-right"></i>
                             </span>
@@ -69,7 +72,7 @@
                             <li>
                                 <a href="{{url('admin/clients/search?active=active')}}">
                                     <div class="col-md-12">
-                                        <i class="ion ion-ios-people"></i> @lang('sidebar.edit_client')
+                                        <i class="ion ion-ios-people" style="font-size:18px ;padding:5px" ></i> @lang('sidebar.edit_client')
                                         <span class="pull-right-container">
                                             <small class="label pull-right bg-primary">{{$info['clients_count']}}</small>
                                         </span>
@@ -81,7 +84,7 @@
                                 <a href="{{url('admin/client/create')}}">
 
                                     <div class="col-md-12">
-                                        <i class="fa fa-user-plus"></i> @lang('sidebar.create_new_client')
+                                        <i class="ion ion-person-add" style="font-size:18px ;padding:5px"></i> @lang('sidebar.create_new_client')
                                     </div>
                                 </a>
                             </li>
@@ -92,16 +95,16 @@
 
                     <li>
                         <a href="{{url('admin/company-available-ratings/search')}}">
-                            <div class="col-md-12">
-                                <i class="fa fa-plus"></i> @lang('sidebar.company_available_ratings')
+                            <div >
+                                <i class="ion ion-ribbon-b"></i> @lang('sidebar.company_available_ratings')
                             </div>
                         </a>
                     </li>
 
                     <li>
                         <a href="{{url('admin/employee-available-ratings/search')}}">
-                            <div class="col-md-12">
-                                <i class="fa fa-plus"></i> @lang('sidebar.employee_available_ratings')
+                            <div >
+                                <i class="ion ion-ribbon-a"></i> @lang('sidebar.employee_available_ratings')
                             </div>
                         </a>
                     </li>
@@ -120,7 +123,7 @@
                             <li>
                                 <a href="{{url('admin/companies/search?active=active')}}">
                                     <div class="col-md-12">
-                                        <i class="fa fa-bank"></i> @lang('sidebar.edit_company')
+                                        <i class="fa fa-bank"  style="font-size:12px ;padding:5px"></i> @lang('sidebar.edit_company')
                                         <span class="pull-right-container">
                                             <small class="label pull-right bg-primary">{{$info['companies_count']}}</small>
                                         </span>
@@ -130,7 +133,7 @@
                             <li>
                                 <a href="{{url('admin/company/create')}}">
                                     <div class="col-md-12">
-                                        <i class="fa fa-plus"></i> @lang('sidebar.create_new_company')
+                                        <i class="fa fa-plus"  style="font-size:12px ;padding:5px"></i> @lang('sidebar.create_new_company')
                                     </div>
                                 </a>
                             </li>
