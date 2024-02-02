@@ -43,8 +43,6 @@
                         <th>#</th>
                         <th>@lang('employee_available_rating.name')</th>
                         <th>@lang('employee_available_rating.name_ar')</th>
-                        <th>@lang('employee_available_rating.company')</th>
-                        <th>@lang('employee_available_rating.employee')</th>
                         <th>@lang('employee_available_rating.operations')</th>
                     </tr>
                 </thead>
@@ -55,21 +53,19 @@
                         <td> {{$key+1}} </td>
                         <td> {{$availableRating->name}} </td>
                         <td> {{$availableRating->name_ar}} </td>
-                        <td> {{$availableRating->company->name}} </td>
-                        <td> {{$availableRating->employee->name}} </td>
                         <td>
 
-                            <a href="{{url('admin/employee-available-rating/edit/'.$availableRating->id)}}" class="btn btn-info btn-sm">
+                            <a href="{{url('client/employee-available-rating/edit/'.$availableRating->id)}}" class="btn btn-info btn-sm">
                                 <i class="fa fa-edit"></i>
                             </a>
 
                             @if($availableRating->stopped_at == null)
-                            <a href="{{url('admin/employee-available-rating-inactive/'.$availableRating->id)}}" class="btn btn-success btn-sm">
+                            <a href="{{url('client/employee-available-rating-inactive/'.$availableRating->id)}}" class="btn btn-success btn-sm">
                                 <i class="fa fa-check"></i> @lang('company.active')
                             </a>
                             @else
 
-                            <a href="{{url('admin/employee-available-rating-active/'.$availableRating->id)}}" class="btn btn-danger btn-sm">
+                            <a href="{{url('client/employee-available-rating-active/'.$availableRating->id)}}" class="btn btn-danger btn-sm">
                                 <i class="fa fa-close"></i> @lang('company.inactive')
                             </a>
                             @endif

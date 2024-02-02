@@ -84,11 +84,6 @@
                         <div class="row">
                             <div class="form-group">
                                 <div class="col-md-6">
-                                    <label for="password">@lang('company_employee.password')</label>
-                                    <input type="password" class="form-control" name="password" id="password">
-                                </div>
-
-                                <div class="col-md-6">
                                     <label for="available_rating_ids">@lang('company_employee.available_rating')</label>
                                     <select class="form-control select2" multiple="multiple" name="available_rating_ids[]" id="available_rating_ids">
                                         @foreach ($available_rating as $available_rating)
@@ -102,7 +97,6 @@
                                 </div>
                             </div>
                         </div>
-
                     </div>
                     <div class="box-footer">
                         <button type="submit" class="btn btn-primary">@lang('company_employee.submit')</button>

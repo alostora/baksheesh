@@ -2,16 +2,16 @@
 
 namespace Client\Http\Controllers\Views;
 
-use Admin\Foundations\Company\CompanyAvailableRating\CompanyAvailableRatingCreateCollection;
-use Admin\Foundations\Company\CompanyAvailableRating\CompanyAvailableRatingSearchCollection;
-use Admin\Foundations\Company\CompanyAvailableRating\CompanyAvailableRatingUpdateCollection;
-use Admin\Http\Requests\Company\CompanyAvailableRating\CompanyAvailableRatingCreateRequest;
-use Admin\Http\Requests\Company\CompanyAvailableRating\CompanyAvailableRatingUpdateRequest;
 use App\Constants\SystemDefault;
 use App\Http\Controllers\Controller;
 use App\Models\Company;
 use App\Models\CompanyAvailableRating;
 use Carbon\Carbon;
+use Client\Foundations\ClientCompany\CompanyAvailableRating\CompanyAvailableRatingCreateCollection;
+use Client\Foundations\ClientCompany\CompanyAvailableRating\CompanyAvailableRatingSearchCollection;
+use Client\Foundations\ClientCompany\CompanyAvailableRating\CompanyAvailableRatingUpdateCollection;
+use Client\Http\Requests\ClientCompany\CompanyAvailableRating\CompanyAvailableRatingCreateRequest;
+use Client\Http\Requests\ClientCompany\CompanyAvailableRating\CompanyAvailableRatingUpdateRequest;
 use Illuminate\Http\Request;
 
 class CompanyAvailableRatingController extends Controller
@@ -19,7 +19,6 @@ class CompanyAvailableRatingController extends Controller
     public function index(Request $request)
     {
         $data = CompanyAvailableRatingSearchCollection::searchCompanyAvailableRatings(
-            -1,
             -1,
             -1,
             $request->get('per_page') ? $request->get('per_page') : SystemDefault::DEFAUL_PAGINATION_COUNT
@@ -31,7 +30,6 @@ class CompanyAvailableRatingController extends Controller
     public function search(Request $request)
     {
         $data = CompanyAvailableRatingSearchCollection::searchCompanyAvailableRatings(
-            $request->get('company_id') ? $request->get('company_id') : -1,
             $request->get('query_string') ? $request->get('query_string') : -1,
             $request->get('active') ? $request->get('active') : -1,
             $request->get('per_page') ? $request->get('per_page') : SystemDefault::DEFAUL_PAGINATION_COUNT
@@ -40,9 +38,8 @@ class CompanyAvailableRatingController extends Controller
         return view('Client/CompanyAvailableRating/index', $data);
     }
 
-    public function create(Company $company)
+    public function create()
     {
-
         return view('Client/CompanyAvailableRating/create');
     }
 
@@ -50,7 +47,7 @@ class CompanyAvailableRatingController extends Controller
     {
         CompanyAvailableRatingCreateCollection::createCompanyAvailableRating($request);
 
-        return redirect(url("client/company-available-ratings/search?company_id=" . $request->get('company_id')));
+        return redirect(url("client/company-available-ratings/search"));
     }
 
     public function edit(CompanyAvailableRating $companyAvailableRating)
