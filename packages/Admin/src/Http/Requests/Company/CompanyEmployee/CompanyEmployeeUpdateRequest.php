@@ -42,8 +42,6 @@ class CompanyEmployeeUpdateRequest extends FormRequest
                 Rule::unique('users', 'email')->ignore($request->user->id, 'id')
             ],
 
-            "address" => ["bail", "nullable", "string", "max:255"],
-
             "employee_job_name" => ["required", "string", "max:255"],
 
             "country_id" => [

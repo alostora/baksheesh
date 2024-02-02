@@ -5,6 +5,7 @@ namespace Admin\Foundations\Company;
 use App\Constants\FileModuleType;
 use App\Foundations\File\FileCreateCollection;
 use App\Models\Company;
+use App\Models\User;
 
 class CompanyCreateCollection
 {
@@ -12,17 +13,24 @@ class CompanyCreateCollection
     {
         $validated = $request->validated();
 
-        if (isset($validated['file'])) {
+        $client = User::find($validated['client_id']);
 
-            $validated['type'] = FileModuleType::COMPANY_PROFILE['key'];
+        if ($client->companies->count() < $client->available_companies_count) {
 
-            $validated['file_id'] = FileCreateCollection::createFile($validated)->id;
+            $company = Company::create($validated);
 
-            unset($validated['type']);
+            if (isset($validated['file'])) {
+
+                $validated['type'] = FileModuleType::COMPANY_PROFILE['key'];
+
+                $validated['file_id'] = FileCreateCollection::createFile($validated)->id;
+
+                unset($validated['type']);
+            }
+
+            return $company;
         }
 
-        $company = Company::create($validated);
-
-        return $company;
+        return false;
     }
 }

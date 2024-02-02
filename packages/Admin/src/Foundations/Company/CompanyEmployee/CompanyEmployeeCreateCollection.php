@@ -3,11 +3,9 @@
 namespace Admin\Foundations\Company\CompanyEmployee;
 
 use App\Constants\FileModuleType;
-use App\Constants\HasLookupType\UserAccountType;
 use App\Foundations\File\FileCreateCollection;
 use App\Foundations\LookupType\AccountTypeCollection;
 use App\Models\Company;
-use App\Models\SystemLookup;
 use App\Models\User;
 
 class CompanyEmployeeCreateCollection
@@ -17,40 +15,28 @@ class CompanyEmployeeCreateCollection
 
         $validated = $request->validated();
 
-        $validated['user_account_type_id'] = AccountTypeCollection::employee()->id;
-
         $validated['client_id'] = Company::find($validated['company_id'])->client_id;
 
-        if (isset($validated['file'])) {
+        $client = User::find($validated['client_id']);
 
-            $validated['type'] = FileModuleType::USER_PROFILE_AVATAR['key'];
+        if ($client->employees->count() < $client->available_employees_count) {
 
-            $validated['file_id'] = FileCreateCollection::createFile($validated)->id;
+            $validated['user_account_type_id'] = AccountTypeCollection::employee()->id;
 
-            unset($validated['type']);
+            if (isset($validated['file'])) {
+
+                $validated['type'] = FileModuleType::USER_PROFILE_AVATAR['key'];
+
+                $validated['file_id'] = FileCreateCollection::createFile($validated)->id;
+
+                unset($validated['type']);
+            }
+
+            $user = User::create($validated);
+
+            return $user;
         }
 
-        $user = User::create($validated);
-
-        if (isset($validated['available_rating_ids'])) {
-
-            self::createAvailableRating($validated['available_rating_ids'], $user);
-        }
-
-        return $user;
-    }
-
-    public static function createAvailableRating($available_rating_ids, User $user)
-    {
-
-        foreach ($available_rating_ids as $available_rating_id) {
-            $data[] = [
-                "client_id" => $user->client_id,
-                "company_id" => $user->company_id,
-                "employee_id" => $user->id,
-                "available_rating_id" => $available_rating_id,
-            ];
-        }
-        $user->employeeAvailableRatings()->createMany($data);
+        return false;
     }
 }

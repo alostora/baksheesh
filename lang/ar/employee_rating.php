@@ -20,7 +20,7 @@ return [
 
     'rating_value' => 'مستوي التقيم',
 
-    'created_at' => 'تاريخ الانشاء',
+    'created_at' => 'تاريخ الاضافة',
 
     'action_at' => 'تاريخ الحدث',
 

@@ -16,7 +16,7 @@ return [
 
     'status' => 'حالة الطلب',
 
-    'created_at' => 'تاريخ الانشاء',
+    'created_at' => 'تاريخ الاضافة',
 
     'action_at' => 'تاريخ الحدث',
 
@@ -26,18 +26,18 @@ return [
 
     'bank_transfer_number' => 'رقم الحوالة البنكية',
 
-    'admin_notes' => 'ملاحظات الادمن',
+    'admin_notes' => 'ملاحظات الاداره',
 
     'client_notes' => 'ملاحظات العميل',
 
     'refuse_reasone' => 'سبب الرفض',
 
     //operatoins
-    "operations" => "عمليات",
+    "operations" => "اجراءات",
 
-    "create" => "انشاء",
+    "create" => "اضافة طلب سحب",
 
-    "update" => "تعديل",
+    "update" => "تعديل بيانات طلب السحب",
 
     "submit" => "حفظ",
 

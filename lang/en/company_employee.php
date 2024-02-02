@@ -47,9 +47,9 @@ return [
     //operatoins
     "operations" => "Operations",
 
-    "create" => "Create",
+    "create" => "Create Employee",
 
-    "update" => "Update",
+    "update" => "Update Employee",
 
     "submit" => "Submit",
 

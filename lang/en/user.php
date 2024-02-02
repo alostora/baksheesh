@@ -18,8 +18,8 @@ return [
 
     //operatoins
     "operations" => "Operations",
-    "create" => "Create",
-    "update" => "Update",
+    "create" => "Create User",
+    "update" => "Update User",
     "submit" => "Submit",
     "search" => "Search",
     "empty" => "Empty",

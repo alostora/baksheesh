@@ -35,9 +35,9 @@ return [
     //operatoins
     "operations" => "Operations",
 
-    "create" => "Create",
+    "create" => "Create Withdrawal Request",
 
-    "update" => "Update",
+    "update" => "Update Withdrawal Request",
 
     "submit" => "Submit",
 

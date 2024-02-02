@@ -15,7 +15,7 @@ return [
 
     'tipo' => 'Tipo',
     'dashboard' => 'لوحة التحكم',
-    'email' => 'البريد',
+    'email' => 'البريد الالكتروني',
     'password' => 'كلمة المرور',
     'login' => 'دخول',
 

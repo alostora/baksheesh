@@ -16,7 +16,7 @@ return [
     'withdrawal_requests' => 'طلبات السحب',
     'companies' => 'الشركات',
     'employees' => 'الموظفين',
-    "created_at" => "تارخ الانشاء",
+    "created_at" => "تارخ الاضافة",
     "stopped_at" => "تارخ الايقاف",
     "collected_cash" => "الاكراميات المحصلة",
     "delivered_cash" => "المبالغ المستلمة",
@@ -31,8 +31,8 @@ return [
 
     //operatoins
     "operations" => "اجراءات",
-    "create" => "انشاء",
-    "update" => "تعديل",
+    "create" => "اضافة عميل",
+    "update" => "تعديل بيانات العميل",
     "submit" => "حفظ",
     "search" => "بحث",
     "empty" => "فارغ",

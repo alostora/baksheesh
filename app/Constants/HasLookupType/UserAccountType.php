@@ -18,7 +18,7 @@ class UserAccountType
         'key' => 1,
         'prefix' => "AUDITOR",
         'name' => "Auditor",
-        'name_ar' => "محاسب",
+        'name_ar' => "مراجع",
     ];
 
     public const ADMIN = [
@@ -26,7 +26,7 @@ class UserAccountType
         'key' => 2,
         'prefix' => "ADMIN",
         'name' => "Admin",
-        'name_ar' => "أدمن",
+        'name_ar' => "مدير",
     ];
 
     public const CLIENT = [

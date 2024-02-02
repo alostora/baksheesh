@@ -32,9 +32,9 @@ return [
     //operatoins
     "operations" => "Operations",
 
-    "create" => "Create",
+    "create" => "Create Company",
 
-    "update" => "Update",
+    "update" => "Update Company",
 
     "submit" => "Submit",
 

@@ -36,9 +36,9 @@ return [
 
 
     //operatoins
-    "operations" => "عمليات",
+    "operations" => "اجراءات",
 
-    "create" => "انشاء",
+    "create" => "اضافة",
 
     "update" => "تعديل",
 

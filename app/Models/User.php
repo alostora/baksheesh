@@ -152,12 +152,14 @@ class User extends Authenticatable implements MustVerifyEmail
 
     public function employees(): HasMany
     {
-        return $this->hasMany(User::class, 'client_id', 'id');
+        return $this->hasMany(User::class, 'client_id', 'id')
+            ->where('stopped_at', null);
     }
 
     public function companies(): HasMany
     {
-        return $this->hasMany(Company::class, 'client_id', 'id');
+        return $this->hasMany(Company::class, 'client_id', 'id')
+            ->where('stopped_at', null);
     }
 
     public function employeeCash(): HasMany
@@ -177,7 +179,8 @@ class User extends Authenticatable implements MustVerifyEmail
 
     public function withdrawalRequests(): HasMany
     {
-        return $this->hasMany(ClientWithdrawalRequest::class, 'client_id', 'id');
+        return $this->hasMany(ClientWithdrawalRequest::class, 'client_id', 'id')
+            ->where('stopped_at', null);
     }
 
     public function acceptedWithdrawal(): HasMany
@@ -186,11 +189,14 @@ class User extends Authenticatable implements MustVerifyEmail
             ->where('code', WithdrawalRequestStatus::ACCEPTED['code'])
             ->first();
 
-        return $this->hasMany(ClientWithdrawalRequest::class, 'client_id', 'id')->where('status', $accpted_withdrawalRequest->id);
+        return $this->hasMany(ClientWithdrawalRequest::class, 'client_id', 'id')
+            ->where('status', $accpted_withdrawalRequest->id)
+            ->where('stopped_at', null);
     }
 
     public function employeeAvailableRatings(): HasMany
     {
-        return $this->hasMany(EmployeeAvailableRating::class, 'employee_id', 'id');
+        return $this->hasMany(EmployeeAvailableRating::class, 'employee_id', 'id')
+            ->where('stopped_at', null);
     }
 }

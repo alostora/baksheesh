@@ -42,12 +42,6 @@ class CompanyEmployeeUpdateApiRequest extends FormRequest
                 Rule::unique('users', 'email')->ignore($request->user->id, 'id')
             ],
 
-            "address" => ["bail", "nullable", "string", "max:255"],
-
-            'available_rating_ids' => ['required', 'array', 'max:5'],
-
-            'available_rating_ids.*' => ['required', 'uuid', 'exists:system_lookups,id'],
-
             "employee_job_name" => ["required", "string", "max:255"],
 
             "country_id" => [

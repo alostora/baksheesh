@@ -10,17 +10,16 @@ use Admin\Http\Requests\Company\CompanyEmployee\AssignCompanyEmployeeCreateReque
 use Admin\Http\Requests\Company\CompanyEmployee\CompanyEmployeeCreateRequest;
 use Admin\Http\Requests\Company\CompanyEmployee\CompanyEmployeeUpdateRequest;
 use Admin\Http\Resources\Company\CompanyEmployee\CompanyEmployeeResource;
-use App\Constants\HasLookupType\AvailableEmployeeRating;
 use App\Constants\HasLookupType\CountryType;
 use App\Constants\StatusCode;
 use App\Constants\SystemDefault;
 use App\Http\Controllers\Controller;
 use App\Models\Company;
 use App\Models\Country;
-use App\Models\SystemLookup;
 use App\Models\User;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Session;
 
 class CompanyEmployeeController extends Controller
 {
@@ -59,11 +58,9 @@ class CompanyEmployeeController extends Controller
         );
     }
 
-    public function create(Request $request)
+    public function create()
     {
-        $data['company_id'] = $request->get('company_id');
-
-        $data['companies'] = Company::get();
+        $data['companies'] = Company::where('stopped_at', null)->get();
 
         $data['countries'] = Country::where('type', CountryType::COUNTRY['code'])
             ->where('stopped_at', null)
@@ -74,16 +71,19 @@ class CompanyEmployeeController extends Controller
 
     public function store(CompanyEmployeeCreateRequest $request)
     {
-        CompanyEmployeeCreateCollection::createCompanyEmployee($request);
+        $employee = CompanyEmployeeCreateCollection::createCompanyEmployee($request);
 
-        return redirect(url("admin/company-employees/search?company_id=" . $request->get('company_id')));
+        if ($employee) {
+            return redirect(url("admin/company-employees/search?company_id=" . $request->get('company_id')));
+        } else {
+            Session::flash('message', 'This is a message!');
+            return back();
+        }
     }
 
     public function edit(User $user)
     {
-        $data['company_id'] = $user->company_id;
-
-        $data['companies'] = Company::get();
+        $data['companies'] = Company::where('stopped_at', null)->get();
 
         $data['employee'] = $user;
 

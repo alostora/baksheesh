@@ -19,6 +19,7 @@ use App\Models\SystemLookup;
 use App\Models\User;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Session;
 
 class CompanyController extends Controller
 {
@@ -108,9 +109,14 @@ class CompanyController extends Controller
 
     public function store(CompanyCreateRequest $request)
     {
-        CompanyCreateCollection::createCompany($request);
+        $company = CompanyCreateCollection::createCompany($request);
 
-        return redirect(url('admin/companies'));
+        if ($company) {
+            return redirect(url('admin/companies'));
+        } else {
+            Session::flash('message', 'This is a message!');
+            return back();
+        }
     }
 
     public function edit(Company $company)

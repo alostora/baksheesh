@@ -17,7 +17,7 @@
               <div class="form-group">
                 <div class="col-md-6">
                   <label for="country_id">@lang('governorate.country')</label>
-                  <select class="form-control select2" name="country_id" id="country_id">
+                  <select class="form-control" name="country_id" id="country_id">
                     @foreach ($countries as $country)
                     <?php $selected = Request('country_id') == $country->id ? "selected" : ""; ?>
                     <option value="{{$country->id}}" {{$selected}}>{{$country->name}}</option>

@@ -34,12 +34,6 @@ class CompanyEmployeeCreateApiRequest extends FormRequest
 
             "password" => ["required", "string", "max:255"],
 
-            "address" => ["nullable", "string", "max:255"],
-
-            'available_rating_ids' => ['required', 'array', 'max:5'],
-
-            'available_rating_ids.*' => ['required', 'uuid', 'exists:system_lookups,id'],
-
             "employee_job_name" => ["required", "string", "max:255"],
 
             "country_id" => [

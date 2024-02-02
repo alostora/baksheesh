@@ -8,7 +8,7 @@ return [
     'select' => 'اختر',
 
     'name' => 'الاسم',
-    'email' => 'البريد',
+    'email' => 'البريد الالكتروني',
     'password' => 'كلمة المرور',
     'phone' => 'الهاتف',
     'address' => 'العنوان',
@@ -17,9 +17,9 @@ return [
 
 
     //operatoins
-    "operations" => "عمليات",
-    "create" => "انشاء",
-    "update" => "تعديل",
+    "operations" => "اجراءات",
+    "create" => "اضافة مستخدم",
+    "update" => "تعديل بيانات المستخدم",
     "submit" => "حفظ",
     "search" => "بحث",
     "empty" => "فارغ",

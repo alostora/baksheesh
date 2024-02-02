@@ -2,24 +2,26 @@
 
 return [
 
-    'page_title' => 'Governorates',
-
-    'filter' => 'Filter',
-
-    'query_string' => 'Query String',
-
-    'select' => 'Select',
-
-    'country' => 'Country',
+    'page_title' => 'Company Available Rating',
 
     'name' => 'Name',
 
-    'name_ar' => 'Name (AR)',
+    'name_ar' => 'Name ar',
+
+    'company' => 'Company',
+
+    'company' => 'Company',
+
+    'employee' => 'Employee',
+
+    'employees' => 'Employees',
+
+
 
     //operatoins
     "operations" => "Operations",
 
-    "create" => "Create City",
+    "create" => "Create Rating",
 
     "update" => "Update Governorate",
 

@@ -19,9 +19,9 @@ return [
     //operatoins
     "operations" => "Operations",
 
-    "create" => "Create",
+    "create" => "Create Country",
 
-    "update" => "Update",
+    "update" => "Update Country",
 
     "submit" => "Submit",
 
@@ -30,8 +30,8 @@ return [
     "empty" => "Empty",
 
     "current_status" => "Current Status",
-    
+
     "active" => "Active",
-    
+
     "inactive" => "Inactive",
 ];

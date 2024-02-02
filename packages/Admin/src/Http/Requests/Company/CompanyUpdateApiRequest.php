@@ -26,11 +26,7 @@ class CompanyUpdateApiRequest extends FormRequest
 
             'company_field' => ['required', 'string', 'max:255'],
 
-            'file_id' => ['nullable',  'uuid', 'exists:files,id'],
-
-            'available_rating_ids' => ['nullable', 'array', 'max:5'],
-
-            'available_rating_ids.*' => ['required', 'uuid', 'exists:system_lookups,id'],
+            'file_id' => ['required',  'uuid', 'exists:files,id'],
         ];
     }
 }

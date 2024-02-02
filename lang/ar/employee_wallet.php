@@ -2,7 +2,7 @@
 
 return [
 
-    'page_title' => 'محافظ الموظفون',
+    'page_title' => 'محافظ الموظفين',
 
     'filter' => 'فلتر',
 
@@ -37,9 +37,9 @@ return [
     'SAR' => 'ريال',
 
     //operatoins
-    "operations" => "عمليات",
+    "operations" => "اجراءات",
 
-    "create" => "انشاء",
+    "create" => "اضافة موظف",
 
     "update" => "تعديل",
 

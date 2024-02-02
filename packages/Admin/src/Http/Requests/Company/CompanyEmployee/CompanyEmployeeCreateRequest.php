@@ -34,8 +34,6 @@ class CompanyEmployeeCreateRequest extends FormRequest
 
             "password" => ["required", "string", "max:255"],
 
-            "address" => ["nullable", "string", "max:255"],
-
             "employee_job_name" => ["required", "string", "max:255"],
 
             "country_id" => [
@@ -52,7 +50,7 @@ class CompanyEmployeeCreateRequest extends FormRequest
                 Rule::exists('countries', 'id')->where('type', CountryType::GOVERNORATE['code'])
             ],
 
-            'file' => ['nullable', 'file'],
+            'file' => ['required', 'file'],
         ];
     }
 }

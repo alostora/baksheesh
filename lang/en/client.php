@@ -31,8 +31,8 @@ return [
 
     //operatoins
     "operations" => "Operations",
-    "create" => "Create",
-    "update" => "Update",
+    "create" => "Create Client",
+    "update" => "Update Client",
     "submit" => "Submit",
     "search" => "Search",
     "empty" => "Empty",

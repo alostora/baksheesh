@@ -29,11 +29,11 @@ return [
 
 
     //operatoins
-    "operations" => "عمليات",
+    "operations" => "اجراءات",
 
-    "create" => "انشاء",
+    "create" => "اضافة شركة",
 
-    "update" => "تعديل",
+    "update" => "تعديل بيانات الشركة",
 
     "submit" => "حفظ",
 

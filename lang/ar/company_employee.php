@@ -14,7 +14,7 @@ return [
 
     'name' => 'الاسم',
 
-    'email' => 'البريد',
+    'email' => 'البريد الالكتروني',
 
     'password' => 'كلمة المرور',
 
@@ -40,11 +40,11 @@ return [
 
 
     //operatoins
-    "operations" => "عمليات",
+    "operations" => "اجراءات",
 
-    "create" => "انشاء",
+    "create" => "اضافة موظف",
 
-    "update" => "تعديل",
+    "update" => "تعديل بيانات الموظف",
 
     "submit" => "حفظ",
 

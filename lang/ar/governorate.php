@@ -17,11 +17,11 @@ return [
     'name_ar' => 'الاسم عربي',
 
     //operatoins
-    "operations" => "عمليات",
+    "operations" => "اجراءات",
 
-    "create" => "انشاء",
+    "create" => "اضافة مدينة",
 
-    "update" => "تعديل",
+    "update" => "تعديل بيانات المدينة",
 
     "submit" => "حفظ",
     "search" => "بحث",

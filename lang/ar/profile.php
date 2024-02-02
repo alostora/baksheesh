@@ -16,7 +16,7 @@ return [
 
     'phone' => 'الهاتف',
 
-    'email' => 'البريد',
+    'email' => 'البريد الالكتروني',
 
     'available_companies_count' => 'عدد الشركات المتاح',
 

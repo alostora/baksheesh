@@ -2,36 +2,29 @@
 
 return [
 
-    'page_title' => 'الدول',
-
-    'filter' => 'فلتر',
-
-    'query_string' => 'كلمة البحث',
-
-    'select' => 'اختر',
+    'page_title' => 'التقيم المتاح للشركات',
 
     'name' => 'الاسم',
 
     'name_ar' => 'الاسم عربي',
 
-    'governorates' => 'المدن',
+    'company' => 'الشركة',
+
+
 
     //operatoins
     "operations" => "اجراءات",
 
-    "create" => "اضافة دولة",
+    "create" => "اضافة تقييم",
 
-    "update" => "تعديل بيانات الدولة",
+    "update" => "تعديل بيانات التقييم",
 
     "submit" => "حفظ",
 
     "search" => "بحث",
 
     "empty" => "فارغ",
-
     "current_status" => "الحالة الحالية",
-
     "active" => "نشط",
-
     "inactive" => "غير نشط",
 ];

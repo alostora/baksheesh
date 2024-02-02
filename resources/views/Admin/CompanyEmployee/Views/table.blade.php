@@ -16,9 +16,9 @@
             <div class="box-body">
                 <div class="col-sm-4 col-md-2">
                     <div class="color-palette-set">
-                        <div class="bg-red disabled color-palette">
+                        <div class="bg-blue disabled color-palette">
                             <span>
-                                @lang('company_employee.inactive') : {{$count_inactive}}
+                                @lang('general.total') : {{$count_active + $count_inactive}}
                             </span>
                         </div>
                     </div>
@@ -27,7 +27,16 @@
                     <div class="color-palette-set">
                         <div class="bg-green disabled color-palette">
                             <span>
-                                @lang('company_employee.active') : {{$count_active}}
+                                @lang('general.active') : {{$count_active}}
+                            </span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-4 col-md-2">
+                    <div class="color-palette-set">
+                        <div class="bg-red disabled color-palette">
+                            <span>
+                                @lang('general.inactive') : {{$count_inactive}}
                             </span>
                         </div>
                     </div>

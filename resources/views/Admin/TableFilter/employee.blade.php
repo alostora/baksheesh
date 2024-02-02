@@ -3,14 +3,8 @@
     <div class="row">
 
         <div class="col-md-4">
-            <div class="input-group">
+            <div class="form-group">
                 <input type="text" class="form-control" name="query_string" value="{{Request('query_string')}}" placeholder="{{Lang::get('filter.query_string')}}">
-
-                <span class="input-group-btn">
-                    <button type="submit" name="search" id="search-btn" class="btn btn-flat bg-orange">
-                        <i class="fa fa-search"></i>
-                    </button>
-                </span>
             </div>
         </div>
         <div class="col-md-4">
@@ -38,7 +32,7 @@
 
 
         <div class="col-md-4">
-            <div class="form-group">
+            <div class="input-group">
                 <select class="form-control" name="company_id" id="company_id" onchange="getEmployees('',this.value);">
                     <option value="">@lang('filter.companies')</option>
                     @foreach ($companies as $company)
@@ -47,6 +41,11 @@
                     </option>
                     @endforeach
                 </select>
+                <span class="input-group-btn">
+                    <button type="submit" name="search" id="search-btn" class="btn btn-flat bg-orange">
+                        <i class="fa fa-search"></i>
+                    </button>
+                </span>
             </div>
         </div>
         <div class="clear-fix"></div>

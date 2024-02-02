@@ -23,9 +23,11 @@ class CompanyEmployeeSearchCollection
             $archived,
         )->paginate($per_page);
 
-        $data['clients'] = User::where('user_account_type_id', AccountTypeCollection::client()->id)->get();
+        $data['clients'] = User::where('user_account_type_id', AccountTypeCollection::client()->id)
+            ->where('stopped_at', null)
+            ->get();
 
-        $data['companies'] = Company::get();
+        $data['companies'] = Company::where('stopped_at', null)->get();
 
         $data['count_active'] =  User::where('user_account_type_id', AccountTypeCollection::employee()->id)
 
