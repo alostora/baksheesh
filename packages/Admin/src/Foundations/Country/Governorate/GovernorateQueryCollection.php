@@ -13,16 +13,25 @@ class GovernorateQueryCollection
         $active = -1,
     ) {
         return Country::where('country_id', $country->id)
+
             ->where('type', CountryType::GOVERNORATE['code'])
+
             ->whereHas('country')
+
             ->where(function ($q) use ($query_string, $active) {
+
 
                 if ($query_string && $query_string != -1) {
 
                     $q
-                        ->where('name', 'like', '%' . $query_string . '%')
-                        ->orWhere('name_ar', 'like', '%' . $query_string . '%')
-                        ->orWhere('prefix', 'like', '%' . $query_string . '%');
+
+                        ->where(function ($q) use ($query_string) {
+
+                            $q
+                                ->where('name', 'like', '%' . $query_string . '%')
+
+                                ->orWhere('name_ar', 'like', '%' . $query_string . '%');
+                        });
                 }
 
                 if ($active == 'active') {
