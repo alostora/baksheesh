@@ -2,10 +2,12 @@
     <br>
     <br>
     <br>
-    <h1>
-        @lang('dashboard.app_name')
-        <small>@lang('dashboard.dashboard')</small>
-    </h1>
+    <div class="hed_title">
+      <h1>
+          @lang('dashboard.app_name')
+          <!-- <small>@lang('dashboard.dashboard')</small> -->
+      </h1>
+  </div>
 </section>
 <section class="content">
     <div class="row">
