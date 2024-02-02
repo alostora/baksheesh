@@ -19,8 +19,14 @@ class CountryQueryCollection
 
                     $q
                         ->where('name', 'like', '%' . $query_string . '%')
-                        ->orWhere('name_ar', 'like', '%' . $query_string . '%')
-                        ->orWhere('prefix', 'like', '%' . $query_string . '%');
+                        
+                        ->where('prefix', 'like', '%' . $query_string . '%')
+
+                        ->where(function ($q) use ($query_string) {
+
+                            $q
+                                ->orWhere('name_ar', 'like', '%' . $query_string . '%');
+                        });
                 }
 
                 if ($active == 'active') {
