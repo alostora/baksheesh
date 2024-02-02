@@ -75,17 +75,16 @@ align-items: center;
 .info-box-icon {
     background-color: #ffffff00 !important;
     color: rgb(0, 197, 187) !important;
-    font-size: 110px;
-    width: 200px !important;
+    font-size:75px;
 }
 
 .info-box-text {
-    font-size: 25px;
+    font-size: 18px;
     font-weight: 600;
     color: rgb(0, 104, 104);
 }
 .info-box-number {
-    font-size: 30px;
+    font-size: 25px;
     font-weight: 600;
     color: rgb(255, 255, 255);
     border-radius: 10px;
@@ -96,7 +95,7 @@ align-items: center;
     transition: 0.5s;
 }
 .info-box-number:hover {
-    font-size: 30px;
+    font-size: 25px;
     font-weight: 600;
     color: rgb(255, 255, 255);
     border-radius: 10px;
