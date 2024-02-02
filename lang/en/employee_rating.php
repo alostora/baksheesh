@@ -37,4 +37,10 @@ return [
     'payer_email' => 'Payer Email',
 
     'payer_phone' => 'Payer Phone',
+
+    'total_bad_count' => 'Total Bad Count',
+
+    'total_good_count' => 'Total Good Count',
+    "good" => "Good",
+    "bad" => "Bad",
 ];

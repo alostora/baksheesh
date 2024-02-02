@@ -53,6 +53,9 @@ return [
 
     "edit_company" => "Companies",
 
-    "company_employee" => "Employees"
+    "company_employee" => "Employees",
+    
+    "good" => "Good",
+    "bad" => "Bad",
 
 ];

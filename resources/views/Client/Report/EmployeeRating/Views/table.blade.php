@@ -6,10 +6,40 @@
 
         <div class="box-header">
             <h3 class="box-title col-md-8">@lang('employee_rating.page_title')</h3>
-            <div class="col-md-4">
+        </div>
 
+        <div class="box">
+            <div class="box-body">
+                <div class="col-sm-4 col-md-2">
+                    <div class="color-palette-set">
+                        <div class="bg-blue disabled color-palette">
+                            <span>
+                                @lang('general.total') : {{$total_good_count + $total_bad_count}}
+                            </span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-4 col-md-2">
+                    <div class="color-palette-set">
+                        <div class="bg-green disabled color-palette">
+                            <span>
+                                @lang('employee_rating.total_good_count') : {{$total_good_count}}
+                            </span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-4 col-md-2">
+                    <div class="color-palette-set">
+                        <div class="bg-red disabled color-palette">
+                            <span>
+                                @lang('employee_rating.total_bad_count') : {{$total_bad_count}}
+                            </span>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
+
         <div class="box-body">
             <table id="example2" class="table table-bordered table-striped">
                 <thead>
@@ -34,7 +64,7 @@
                         <td> {{$employee_rating->employee ? $employee_rating->employee->name : ''}} </td>
                         <td> {{$employee_rating->availableRating ? $employee_rating->availableRating->name : ''}} </td>
                         <td>
-                            {!! $employee_rating->rating_value === 1 ? '<label class="label label-danger" style="font-size:12px">bad</label>' : '<label class="label label-success" style="font-size:12px">good</label>' !!}
+                            {!! $employee_rating->rating_value === 1 ? '<label class="label label-danger" style="font-size:12px">'.Lang::get("employee_rating.bad").'</label>' : '<label class="label label-success" style="font-size:12px">'.Lang::get("employee_rating.good").'</label>' !!}
                         </td>
                         <td> {{$employee_rating->payer_name}} </td>
                         <td> {{$employee_rating->created_at}} </td>

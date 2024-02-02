@@ -18,4 +18,7 @@ return [
 
     "wallet" => "Wallet",
 
+    "good" => "Good",
+    "bad" => "Bad",
+
 ];

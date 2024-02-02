@@ -199,14 +199,38 @@
                 </a>
                 <ul class="treeview-menu">
 
-                    <li>
-                        <a href="{{url('client/client-companies')}}">
-                            <i class="fa fa-bank"></i>@lang('sidebar.companies')
+                    <!-- companies -->
+                    <li class=" treeview ">
+                        <a href="#" style="padding: 10px !important;">
+                            <i class="fa fa-bank"></i> <span> @lang('sidebar.companies')</span>
                             <span class="pull-right-container">
-                                <small class="label pull-right bg-primary">{{$info['companies_count']}}</small>
+                                <i class="fa fa-angle-left pull-right"></i>
                             </span>
                         </a>
+
+                        <ul class="treeview-menu">
+
+                            <li>
+                                <a href="{{url('client/client-companies/search?active=active')}}">
+                                    <div class="col-md-12">
+                                        <i class="fa fa-bank"></i> @lang('sidebar.edit_company')
+                                        <span class="pull-right-container">
+                                            <small class="label pull-right bg-primary">{{$info['companies_count']}}</small>
+                                        </span>
+                                    </div>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="{{url('client/client-company/create')}}">
+                                    <div class="col-md-12">
+                                        <i class="fa fa-plus"></i> @lang('sidebar.create_new_company')
+                                    </div>
+                                </a>
+                            </li>
+                        </ul>
                     </li>
+
+                    <!-- employees -->
                     <li>
                         <a href="{{url('client/client-company-employees/search')}}">
                             <i class="ion ion-person-stalker"></i>@lang('sidebar.employees')

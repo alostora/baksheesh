@@ -5,8 +5,9 @@
 </div>
 
 <div class="employee_bg">
-
+    @if($company->file)
     <img class="employee_img" src="{{ url('uploads/'.$company->file->new_name)}}" alt="">
+    @endif
     <div class="back_employee_img">
         <h1 class="name_employee">{{$company->name}}</h1>
         <h3 class="job_name">{{$company->company_field}}</h3>
@@ -25,13 +26,13 @@
 
 <div class="bg_rating_employee">
     <div class="box-body">
-        @foreach($company_available_ratings as $key=>$company_available_rating)
+        @foreach($company->companyAvailableRatings as $key=>$company_available_rating)
         <div class="rating_1">
             <div style="display:flex;margin-right:40px;margin-top:10px;padding-left:10px;">
                 <label>
                     @foreach([1,2] as $i)
 
-                    <?php $image = $i == 1 ? 'Happy' : 'Sad' ?>
+                    <?php $image = $i == 1 ? 'SadB' : 'HappyB' ?>
 
                     <input type="radio" class="{{$key.'__'.$i}}" name="{{$company_available_rating->id}}" value="{{$i}}" onclick="postRate(this)" style="display:none">
                     <img src="{{url('guest/images/'.$image.'.png')}}" style="font-size:50px;color:#fff; padding:5px; width:70px;height:70px; border-radius:100px; " id="{{$key.'__'.$i}}" />
@@ -73,7 +74,7 @@
 
         <div class="anotherPriceBox" style="display: none;">
             <label for="amount" class="col-md-4">مبلغ اخر</label>
-            <input  class="anotherPrice" type="number" name="amount" id="amount" placeholder="ادخل المبلغ" style="background-color: #14bbd8">
+            <input class="anotherPrice" type="number" name="amount" id="amount" placeholder="ادخل المبلغ" style="background-color: #14bbd8">
         </div>
 
         <div class="apple_pay">
@@ -111,6 +112,19 @@
 
         elementClass = element.className;
         elementId = elementClass;
+
+        let image = element.value === 1 ? 'Sad' : 'Happy'
+
+        if (element.value == 1) {
+
+            document.getElementById(elementId).src = "{{url('guest')}}/images/" + image + ".png";
+
+        } else {
+
+            document.getElementById(elementId).src = "{{url('guest')}}/images/" + image + ".png";
+
+        }
+
 
         level = elementClass.split("__")[0];
         value = elementClass.split("__")[1];

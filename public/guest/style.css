@@ -163,9 +163,14 @@ textarea{
   padding:5px;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
+textarea:focus{
+  outline: none;
+  border-color: #fff61a;
+}
+
 
 .btn{
-  width: 120px;
+  width: 20%;
   height: 45px;
   border-radius: 35px;
   text-align: center;
@@ -174,7 +179,7 @@ textarea{
 margin-right:50% ;
 margin-top:20px ;
   background-color: #fff61a;
-  font-size: 14px;
+  font-size: medium;
   font-family: cairo;
   font-weight: 800;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
@@ -182,7 +187,7 @@ margin-top:20px ;
   transition: 0.5s;
 }
 .btn:hover {
-  width: 120px;
+  width: 22%;
   height: 45px;
   border-radius: 35px;
   text-align: center;
@@ -224,13 +229,13 @@ text-align: center;
 .payingButton button {
   width: 20%;
   padding:2px;
-  height: 35px;
+  height: 45px;
   border-radius: 35px;
   text-align: center;
-  border:1px solid grey;
+  border:1px solid rgb(255, 255, 255);
   color:gray;
   background-color: #fff61a;
-  font-size: 14px;
+  font-size:medium;
 margin-top: 30px;
   font-family: cairo;
   font-weight: 800;
@@ -247,6 +252,7 @@ margin-top: 30px;
   font-size: 16px;
   border:1px solid rgb(255, 255, 255);
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  outline: none;
 }
 .apple_pay button {
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
@@ -260,7 +266,7 @@ border: 3px solid #fff61a;
   border-radius: 20px;
   font-size:20px;
   font-family: cairo;
-  color:grey;
+  color:grey; 
   margin-top: 35px;
   cursor: pointer;
   transition: 0.5s;
@@ -300,6 +306,10 @@ border: 3px solid #14bbd8;
   border-top-right-radius: 35px;
   border-top-left-radius: 35px;
 margin-top:20px;
+}
+input:focus{
+  outline: none;
+  border-color: #fff61a;
 }
 
 .input_visa_logo{
@@ -351,10 +361,8 @@ border: 3px solid #fff61a;
 
 }
 
-
-
-
 .anotherPriceBox{
+  display:block;
   justify-content: center;
   text-align: center;
   font-size: large;
@@ -383,10 +391,6 @@ border: 3px solid #fff61a;
   outline: none;
   border-color: #14bbd8;
 }
-
-
-
-
 
 
 
