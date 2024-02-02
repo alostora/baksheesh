@@ -26,7 +26,8 @@
 
 <div class="bg_rating_employee">
     <div class="box-body">
-        @foreach($company->companyAvailableRatings as $key=>$company_available_rating)
+        @if(count($company->ratingForGuest))
+        @foreach($company->ratingForGuest as $key=>$company_available_rating)
         <div class="rating_1">
             <div style="display:flex;margin-right:40px;margin-top:10px;padding-left:10px;">
                 <label>
@@ -41,9 +42,10 @@
                 </label>
 
             </div>
-            <h3 class="rate_name">{{$company_available_rating->name_ar}}</h3>
+            <h3 class="rate_name">{{$company_available_rating->companyAvailableRating->name_ar}}</h3>
         </div>
         @endforeach
+        @endif
     </div>
 </div>
 

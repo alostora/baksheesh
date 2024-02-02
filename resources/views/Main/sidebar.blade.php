@@ -57,11 +57,9 @@
 
                     <!-- clients -->
                     <li class=" treeview client_side">
-                        <a href="#" 
-                        style="padding-left: 10px !important;">
-                            <i class="ion ion-ios-people" style="font-size:20px !important; 
-                             
-                            }" ></i> <span>@lang('sidebar.clients')</span>
+                        <a href="#" style="padding-left: 10px !important;">
+                            <i class="ion ion-ios-people" style="font-size:20px !important;">
+                            </i> <span>@lang('sidebar.clients')</span>
                             <span class="pull-right-container">
                                 <i class="fa fa-angle-left pull-right"></i>
                             </span>
@@ -72,7 +70,7 @@
                             <li>
                                 <a href="{{url('admin/clients/search?active=active')}}">
                                     <div class="col-md-12">
-                                        <i class="ion ion-ios-people" style="font-size:18px ;padding:5px" ></i> @lang('sidebar.edit_client')
+                                        <i class="ion ion-ios-people" style="font-size:18px ;padding:5px"></i> @lang('sidebar.edit_client')
                                         <span class="pull-right-container">
                                             <small class="label pull-right bg-primary">{{$info['clients_count']}}</small>
                                         </span>
@@ -95,7 +93,7 @@
 
                     <li>
                         <a href="{{url('admin/company-available-ratings/search')}}">
-                            <div >
+                            <div>
                                 <i class="ion ion-ribbon-b"></i> @lang('sidebar.company_available_ratings')
                             </div>
                         </a>
@@ -103,7 +101,7 @@
 
                     <li>
                         <a href="{{url('admin/employee-available-ratings/search')}}">
-                            <div >
+                            <div>
                                 <i class="ion ion-ribbon-a"></i> @lang('sidebar.employee_available_ratings')
                             </div>
                         </a>
@@ -123,7 +121,7 @@
                             <li>
                                 <a href="{{url('admin/companies/search?active=active')}}">
                                     <div class="col-md-12">
-                                        <i class="fa fa-bank"  style="font-size:12px ;padding:5px"></i> @lang('sidebar.edit_company')
+                                        <i class="fa fa-bank" style="font-size:12px ;padding:5px"></i> @lang('sidebar.edit_company')
                                         <span class="pull-right-container">
                                             <small class="label pull-right bg-primary">{{$info['companies_count']}}</small>
                                         </span>
@@ -133,7 +131,7 @@
                             <li>
                                 <a href="{{url('admin/company/create')}}">
                                     <div class="col-md-12">
-                                        <i class="fa fa-plus"  style="font-size:12px ;padding:5px"></i> @lang('sidebar.create_new_company')
+                                        <i class="fa fa-plus" style="font-size:12px ;padding:5px"></i> @lang('sidebar.create_new_company')
                                     </div>
                                 </a>
                             </li>
@@ -262,6 +260,18 @@
                         </ul>
                     </li>
 
+
+                    <li>
+                        <a href="{{url('client/company-available-ratings/search')}}">
+                            <i class="fa fa-credit-card"></i>@lang('sidebar.company_available_ratings')
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="{{url('client/employee-available-ratings/search')}}">
+                            <i class="fa fa-credit-card"></i>@lang('sidebar.employee_available_ratings')
+                        </a>
+                    </li>
 
                     <li>
                         <a href="{{url('client/company-wallets')}}">

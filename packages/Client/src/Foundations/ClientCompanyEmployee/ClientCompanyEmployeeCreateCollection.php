@@ -6,6 +6,8 @@ use App\Constants\FileModuleType;
 use App\Foundations\File\FileCreateCollection;
 use App\Foundations\LookupType\AccountTypeCollection;
 use App\Models\User;
+use Illuminate\Support\Str;
+use Illuminate\Support\Facades\Hash;
 
 class ClientCompanyEmployeeCreateCollection
 {
@@ -20,6 +22,8 @@ class ClientCompanyEmployeeCreateCollection
         $validated['user_account_type_id'] = $lookup_account_type_employee->id;
 
         $validated['client_id'] = auth()->id();
+
+        $validated['password'] = Hash::make(Str::random(10));
 
         if (isset($validated['file'])) {
 

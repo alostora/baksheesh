@@ -76,11 +76,11 @@ class ClientCompanyController extends Controller
 
         $data['selected_available_rating'] = CompanyAvailableRating::where('stopped_at', null)
             ->whereIn('id', $selected_available_rating_ids)
-            ->where('client_id', $company->client_id)
+            ->where('client_id', auth()->id())
             ->get();
 
         $data['available_rating'] = CompanyAvailableRating::where('stopped_at', null)
-            ->where('client_id', $company->client_id)
+            ->where('client_id', auth()->id())
             ->get();
 
 

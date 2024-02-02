@@ -1,6 +1,6 @@
 <?php
 
-namespace Client\Http\Requests\ClientCompany\ClientCompanyEmployee;
+namespace Client\Http\Requests\ClientCompany\CompanyEmployee\ClientCompanyEmployee;
 
 use App\Constants\HasLookupType\CountryType;
 use Illuminate\Foundation\Http\FormRequest;
@@ -31,10 +31,6 @@ class ClientCompanyEmployeeCreateRequest extends FormRequest
             "email" => ["required", "email", "unique:users,email", "max:255"],
 
             "phone" => ["required", "string", "unique:users,phone", "max:255"],
-
-            "password" => ["required", "string", "max:255"],
-
-            "address" => ["nullable", "string", "max:255"],
 
             'available_rating_ids' => ['required', 'array', 'max:5'],
 

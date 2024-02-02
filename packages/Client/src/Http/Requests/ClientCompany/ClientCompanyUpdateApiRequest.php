@@ -31,7 +31,7 @@ class ClientCompanyUpdateApiRequest extends FormRequest
 
             'available_rating_ids' => ['required', 'array', 'max:5'],
 
-            'available_rating_ids.*' => ['required', 'uuid', 'exists:system_lookups,id'],
+            'available_rating_ids.*' => ['required', 'uuid', 'exists:company_available_ratings,id'],
         ];
     }
 }

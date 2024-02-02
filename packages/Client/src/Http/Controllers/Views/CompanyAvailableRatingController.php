@@ -47,7 +47,7 @@ class CompanyAvailableRatingController extends Controller
     {
         CompanyAvailableRatingCreateCollection::createCompanyAvailableRating($request);
 
-        return redirect(url("client/company-available-ratings/search?company_id=" . $request->get('company_id')));
+        return redirect(url("client/company-available-ratings/search"));
     }
 
     public function edit(CompanyAvailableRating $companyAvailableRating)

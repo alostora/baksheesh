@@ -1,6 +1,6 @@
 <?php
 
-namespace Client\Http\Requests\ClientCompany\EmployeeAvailableRating;
+namespace Client\Http\Requests\ClientCompany\CompanyEmployee\EmployeeAvailableRating;
 
 use Illuminate\Foundation\Http\FormRequest;
 

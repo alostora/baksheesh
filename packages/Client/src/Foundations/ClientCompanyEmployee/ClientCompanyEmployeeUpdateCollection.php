@@ -40,7 +40,7 @@ class ClientCompanyEmployeeUpdateCollection
 
     public static function updateAvailableRating($available_rating_ids, User $user)
     {
-        $user->employeeAvailableRatings()->delete();
+        $user->ratingForGuest()->delete();
 
         foreach ($available_rating_ids as $available_rating_id) {
             $data[] = [
@@ -50,6 +50,6 @@ class ClientCompanyEmployeeUpdateCollection
                 "available_rating_id" => $available_rating_id,
             ];
         }
-        $user->employeeAvailableRatings()->createMany($data);
+        $user->ratingForGuest()->createMany($data);
     }
 }

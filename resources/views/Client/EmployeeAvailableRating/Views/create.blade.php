@@ -17,20 +17,6 @@
                         <div class="row">
                             <div class="form-group">
                                 <div class="col-md-6">
-                                    <label for="employee_id">@lang('employee_available_rating.employees')</label>
-                                    <select class="form-control" name="employee_id" id="employee_id">
-                                        @foreach ($employees as $employee)
-                                        {{$selected = $employee->id == Request('user')->id ? "selected" : "" }}
-                                        <option value="{{$employee->id}}" {{$selected}}>{{$employee->name}}</option>
-                                        @endforeach
-                                    </select>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="row">
-                            <div class="form-group">
-                                <div class="col-md-6">
                                     <label for="name">@lang('employee_available_rating.name')</label>
                                     <input type="text" class="form-control" name="name" id="name" value="">
                                 </div>

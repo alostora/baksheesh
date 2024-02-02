@@ -1,6 +1,6 @@
 <?php
 
-namespace Client\Http\Requests\ClientCompany\ClientCompanyEmployee;
+namespace Client\Http\Requests\ClientCompany\CompanyEmployee\ClientCompanyEmployee;
 
 use App\Constants\HasLookupType\CountryType;
 use Illuminate\Foundation\Http\FormRequest;
@@ -41,11 +41,10 @@ class ClientCompanyEmployeeUpdateRequest extends FormRequest
 
                 Rule::unique('users', 'email')->ignore($request->user->id, 'id')
             ],
-            "address" => ["bail", "nullable", "string", "max:255"],
 
             'available_rating_ids' => ['required', 'array', 'max:5'],
 
-            'available_rating_ids.*' => ['required', 'uuid', 'exists:system_lookups,id'],
+            'available_rating_ids.*' => ['required', 'uuid', 'exists:employee_available_ratings,id'],
 
             "employee_job_name" => ["required", "string", "max:255"],
 

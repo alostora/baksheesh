@@ -9,8 +9,8 @@ use Carbon\Carbon;
 use Client\Foundations\ClientCompanyEmployee\EmployeeAvailableRating\EmployeeAvailableRatingCreateCollection;
 use Client\Foundations\ClientCompanyEmployee\EmployeeAvailableRating\EmployeeAvailableRatingSearchCollection;
 use Client\Foundations\ClientCompanyEmployee\EmployeeAvailableRating\EmployeeAvailableRatingUpdateCollection;
-use Client\Http\Requests\ClientCompany\EmployeeAvailableRating\EmployeeAvailableRatingCreateRequest;
-use Client\Http\Requests\ClientCompany\EmployeeAvailableRating\EmployeeAvailableRatingUpdateRequest;
+use Client\Http\Requests\ClientCompany\CompanyEmployee\EmployeeAvailableRating\EmployeeAvailableRatingCreateRequest;
+use Client\Http\Requests\ClientCompany\CompanyEmployee\EmployeeAvailableRating\EmployeeAvailableRatingUpdateRequest;
 use Illuminate\Http\Request;
 
 class EmployeeAvailableRatingController extends Controller

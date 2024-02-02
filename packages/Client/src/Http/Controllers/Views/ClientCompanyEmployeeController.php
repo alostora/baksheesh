@@ -2,9 +2,7 @@
 
 namespace Client\Http\Controllers\Views;
 
-use Admin\Http\Resources\Company\CompanyEmployee\CompanyEmployeeMinifiedResource;
 use Admin\Http\Resources\Company\CompanyEmployee\CompanyEmployeeResource;
-use App\Constants\HasLookupType\AvailableEmployeeRating;
 use App\Constants\HasLookupType\CountryType;
 use App\Constants\StatusCode;
 use App\Constants\SystemDefault;
@@ -12,7 +10,6 @@ use App\Http\Controllers\Controller;
 use App\Models\Company;
 use App\Models\Country;
 use App\Models\EmployeeAvailableRating;
-use App\Models\SystemLookup;
 use App\Models\User;
 use Carbon\Carbon;
 use Client\Foundations\ClientCompanyEmployee\AssignClientCompanyEmployeeCollection;
@@ -20,8 +17,8 @@ use Client\Foundations\ClientCompanyEmployee\ClientCompanyEmployeeCreateCollecti
 use Client\Foundations\ClientCompanyEmployee\ClientCompanyEmployeeSearchCollection;
 use Client\Foundations\ClientCompanyEmployee\ClientCompanyEmployeeUpdateCollection;
 use Client\Http\Requests\ClientCompany\ClientCompanyEmployee\AssignClientCompanyEmployeeCreateRequest;
-use Client\Http\Requests\ClientCompany\ClientCompanyEmployee\ClientCompanyEmployeeCreateRequest;
-use Client\Http\Requests\ClientCompany\ClientCompanyEmployee\ClientCompanyEmployeeUpdateRequest;
+use Client\Http\Requests\ClientCompany\CompanyEmployee\ClientCompanyEmployee\ClientCompanyEmployeeCreateRequest;
+use Client\Http\Requests\ClientCompany\CompanyEmployee\ClientCompanyEmployee\ClientCompanyEmployeeUpdateRequest;
 use Illuminate\Http\Request;
 
 class ClientCompanyEmployeeController extends Controller
@@ -65,7 +62,9 @@ class ClientCompanyEmployeeController extends Controller
 
         $data['companies'] = Company::where('client_id', auth()->id())->get();
 
-        $data['available_rating'] = SystemLookup::where('type', AvailableEmployeeRating::LOOKUP_TYPE)->get();
+
+        $data['available_rating'] = EmployeeAvailableRating::where('stopped_at', null)
+            ->where('client_id', auth()->id())->get();
 
         $data['countries'] = Country::where('type', CountryType::COUNTRY['code'])
             ->where('stopped_at', null)

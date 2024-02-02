@@ -39,7 +39,7 @@ class CompanyUpdateCollection
 
     public static function updateAvailableRating($available_rating_ids, Company $company)
     {
-        $company->companyAvailableRatings()->delete();
+        $company->ratingForGuest()->delete();
 
         foreach ($available_rating_ids as $available_rating_id) {
             $data[] = [
@@ -48,6 +48,6 @@ class CompanyUpdateCollection
                 "available_rating_id" => $available_rating_id,
             ];
         }
-        $company->companyAvailableRatings()->createMany($data);
+        $company->ratingForGuest()->createMany($data);
     }
 }
