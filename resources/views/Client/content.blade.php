@@ -17,6 +17,7 @@
                 <div class="info-box">
                     <span class="info-box-icon bg-warning"><i class="fa fa-bank" style="color:rgb(176 1 143)"></i></span>
                     <br>
+                    <br>
                     <div class="info-box-content">
                         <span class="info-box-text">@lang('dashboard.active_companies')</span>
                         <br>
@@ -32,6 +33,8 @@
                 <div class="info-box">
                     <span class="info-box-icon bg-primary"><i class="ion ion-person-stalker" style="color:#0fa742"></i></span>
                     <br>
+                    <br>
+
                     <div class="info-box-content">
                         <span class="info-box-text">@lang('dashboard.active_employees')</span>
                         <br>
@@ -41,13 +44,13 @@
                 </div>
             </div>
         </a>
-    </div>
-    <div class="row">
+
 
 
         <div class="col-md-4 col-sm-6 col-xs-12">
             <div class="info-box">
                 <span class="info-box-icon bg-danger"><i class="fa fa-line-chart" style="color:rgb(206 218 0)"></i></span>
+                <br>
                 <br>
                 <div class="info-box-content">
                     <span class="info-box-text">@lang('dashboard.month_income')</span>
@@ -62,6 +65,7 @@
             <div class="info-box">
                 <span class="info-box-icon bg-red"><i class="fa fa-bar-chart" style="color:rgb(0 116 168)"></i></span>
                 <br>
+                <br>
                 <div class="info-box-content">
                     <span class="info-box-text">@lang('dashboard.year_income')</span>
                     <br>
@@ -73,7 +77,8 @@
 
         <div class="col-md-4 col-sm-6 col-xs-12">
             <div class="info-box">
-                <span class="info-box-icon bg-green"><i class="fa-solid fa-sack-dollar" style="color:rgb(243 156 18);"></i></span>
+                <span class="info-box-icon bg-green"><i class="fa fa-money" style="color:rgb(243 156 18);"></i></span>
+                <br>
                 <br>
                 <div class="info-box-content">
                     <span class="info-box-text">@lang('dashboard.current_amount')</span>
