@@ -35,8 +35,7 @@
 
                     <?php $image = $i == 1 ? 'SadB' : 'HappyB' ?>
 
-                    <input type="radio" class="{{$key.'__'.$i}}" name="{{$company_available_rating->id}}" value="{{$i}}" onclick="postRate(this)" style="display:none">
-                    <img src="{{url('guest/images/'.$image.'.png')}}" style="font-size:50px;color:#fff; padding:5px; width:70px;height:70px; border-radius:100px; " id="{{$key.'__'.$i}}" />
+                    <img src="{{url('guest/images/'.$image.'.png')}}" class="{{$key.'__'.$i}}" name="{{$company_available_rating->companyAvailableRating->id}}" value="{{$i}}" onclick="postRate(this)" id="{{$key.'__'.$i}}" style="font-size:50px;color:#fff; padding:5px; width:70px;height:70px; border-radius:100px;" />
 
                     @endforeach
                 </label>
@@ -112,45 +111,31 @@
 <script>
     function postRate(element) {
 
-        elementClass = element.className;
-        elementId = elementClass;
 
-        let image = element.value === 1 ? 'Sad' : 'Happy'
+        let elementClass = element.className;
+        let elementId = elementClass;
 
-        if (element.value == 1) {
-
-            document.getElementById(elementId).src = "{{url('guest')}}/images/" + image + ".png";
-
-        } else {
-
-            document.getElementById(elementId).src = "{{url('guest')}}/images/" + image + ".png";
-
-        }
-
-
-        level = elementClass.split("__")[0];
-        value = elementClass.split("__")[1];
-
-        for (var i = 1; i <= value; i++) {
-            $("#" + level + "__" + i).css("color", "#e2e202");
-        }
-
-        for (var x = (Number(value) + 1); x <= 5; x++) {
-            $("#" + level + "__" + x).css("color", "#333");
-        }
+        let level = elementClass.split("__")[0];
+        let value = elementClass.split("__")[1];
 
         $.ajax({
 
             url: '{{url("api/guest/payment/company-rating/".Request("company")->id)}}',
             type: 'POST',
             data: {
-                rating_value: element.value,
+                rating_value: value,
                 rating_id: element.name,
                 guest_key: "{{Request()->session()->get('guest_key')}}",
             },
             dataType: 'json',
             success: function(response) {
                 console.log(response);
+
+                if (value == 1) {
+                    document.getElementById(elementId).src = "{{url('guest')}}/images/" + "Sad" + ".png";
+                } else {
+                    document.getElementById(elementId).src = "{{url('guest')}}/images/" + "Happy" + ".png";
+                }
             },
             error: function(request, error) {
                 console.log("Request: " + JSON.stringify(request));

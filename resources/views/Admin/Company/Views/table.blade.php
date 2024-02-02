@@ -123,7 +123,7 @@
 <script>
     function PrintElem(companyName, companyId) {
 
-        var mywindow = window.open();
+        var mywindow = window.open(" ", "PRINT");
 
         mywindow.document.write('<html><head><title>' + companyName + '</title>');
         mywindow.document.write('</head><body >');
@@ -133,7 +133,6 @@
 
         // mywindow.focus(); // necessary for IE >= 10*/
 
-        mywindow.print(document.getElementById(companyId).innerHTML);
 
         mywindow.print();
 
