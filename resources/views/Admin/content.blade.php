@@ -107,7 +107,7 @@
     </div>
 
     <!-- charts -->
-    <div class="charts row">
+    <div class="charts row" style="display: none;">
         <div class="col-md-6">
             <div class="box box-primary">
                 <div class="box-header with-border">

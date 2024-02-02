@@ -3,11 +3,11 @@
     <br>
     <br>
     <div class="hed_title">
-      <h1>
-          @lang('dashboard.app_name')
-          <!-- <small>@lang('dashboard.dashboard')</small> -->
-      </h1>
-  </div>
+        <h1>
+            @lang('dashboard.app_name')
+            <!-- <small>@lang('dashboard.dashboard')</small> -->
+        </h1>
+    </div>
 </section>
 <section class="content">
     <div class="row">
@@ -91,7 +91,7 @@
     </div>
 
     <!-- charts -->
-    <div class="row">
+    <div class="charts row" style="display: none;">
         <div class="col-md-6">
             <div class="box box-primary">
                 <div class="box-header with-border">
