@@ -31,11 +31,11 @@
                             <div class="form-group">
                                 <div class="col-md-6">
                                     <label for="name">@lang('company_available_rating.name')</label>
-                                    <input type="text" class="form-control" name="name" id="name" value="">
+                                    <input type="text" class="form-control" name="name" id="name" value="" required>
                                 </div>
                                 <div class="col-md-6">
                                     <label for="name_ar">@lang('company_available_rating.name_ar')</label>
-                                    <input type="text" class="form-control" name="name_ar" id="name_ar" value="">
+                                    <input type="text" class="form-control" name="name_ar" id="name_ar" value="" required>
                                 </div>
                             </div>
                         </div>

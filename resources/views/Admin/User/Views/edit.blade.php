@@ -18,7 +18,7 @@
                             <div class="form-group">
                                 <div class="col-md-6">
                                     <label for="user_account_type_id">@lang('user.user_account_type')</label>
-                                    <select class="form-control" name="user_account_type_id" id="user_account_type_id">
+                                    <select required class="form-control" name="user_account_type_id" id="user_account_type_id">
                                         @foreach ($user_account_types as $account_type)
                                         {{$selected = $account_type->id == $user->user_account_type_id ? "selected" : "" }}
                                         <option value="{{$account_type->id}}" {{$selected}}>{{$account_type->name}}</option>
@@ -28,7 +28,7 @@
                                 <div class="col-md-6">
 
                                     <label for="name">@lang('user.name')</label>
-                                    <input type="text" class="form-control" name="name" id="name" value="{{$user->name}}">
+                                    <input required type="text" class="form-control" name="name" id="name" value="{{$user->name}}">
                                 </div>
                             </div>
                         </div>
@@ -36,11 +36,11 @@
                             <div class="form-group">
                                 <div class="col-md-6">
                                     <label for="email">@lang('user.email')</label>
-                                    <input type="email" class="form-control" name="email" id="email" value="{{$user->email}}">
+                                    <input required type="email" class="form-control" name="email" id="email" value="{{$user->email}}">
                                 </div>
                                 <div class="col-md-6">
                                     <label for="phone">@lang('user.phone')</label>
-                                    <input type="text" class="form-control" name="phone" id="phone" value="{{$user->phone}}">
+                                    <input required type="text" class="form-control" name="phone" id="phone" value="{{$user->phone}}">
                                 </div>
                             </div>
                         </div>

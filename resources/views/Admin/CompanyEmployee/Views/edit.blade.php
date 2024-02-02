@@ -21,13 +21,13 @@
                                 </div>
                                 <div class="col-md-6">
                                     <label for="employee_job_name">@lang('company_employee.employee_job_name')</label>
-                                    <input type="text" class="form-control" name="employee_job_name" id="employee_job_name" value="{{$employee->employee_job_name}}">
+                                    <input required type="text" class="form-control" name="employee_job_name" id="employee_job_name" value="{{$employee->employee_job_name}}">
                                 </div>
                             </div>
                             <div class="form-group">
                                 <div class="col-md-6">
                                     <label for="country_id">@lang('client.country')</label>
-                                    <select class="form-control select2" name="country_id" id="country_id" onchange="getGovernorate(this.value)">
+                                    <select required class="form-control select2" name="country_id" id="country_id" onchange="getGovernorate(this.value)">
                                         <option value="">@lang('filter.select')</option>
                                         @foreach ($countries as $country)
                                         {{$selected = $country->id == $employee->country_id ? "selected" : "" }}
@@ -38,7 +38,7 @@
 
                                 <div class="col-md-6" id="parent_governorate_id">
                                     <label for="governorate_id">@lang('client.governorate')</label>
-                                    <select class="form-control select2" name="governorate_id" id="governorate_id">
+                                    <select required class="form-control select2" name="governorate_id" id="governorate_id">
 
                                         @foreach ($governorates as $governorate)
                                         {{$selected = $governorate->id == $employee->governorate_id ? "selected" : "" }}
@@ -53,7 +53,7 @@
                             <div class="form-group">
                                 <div class="col-md-6">
                                     <label for="company_id">@lang('company_employee.company')</label>
-                                    <select class="form-control" name="company_id" id="company_id">
+                                    <select required class="form-control" name="company_id" id="company_id">
                                         @foreach ($companies as $company)
                                         {{$selected = $company->id == $employee->company_id ? "selected" : "" }}
                                         <option value="{{$company->id}}" {{$selected}}>{{$company->name}}</option>
@@ -67,11 +67,11 @@
                             <div class="form-group">
                                 <div class="col-md-6">
                                     <label for="name">@lang('company_employee.name')</label>
-                                    <input type="text" class="form-control" name="name" id="name" value="{{$employee->name}}">
+                                    <input required type="text" class="form-control" name="name" id="name" value="{{$employee->name}}">
                                 </div>
                                 <div class="col-md-6">
                                     <label for="email">@lang('company_employee.email')</label>
-                                    <input type="email" class="form-control" name="email" id="email" value="{{$employee->email}}">
+                                    <input required type="email" class="form-control" name="email" id="email" value="{{$employee->email}}">
                                 </div>
                             </div>
                         </div>
@@ -80,7 +80,7 @@
                             <div class="form-group">
                                 <div class="col-md-6">
                                     <label for="phone">@lang('company_employee.phone')</label>
-                                    <input type="text" class="form-control" name="phone" id="phone" value="{{$employee->phone}}">
+                                    <input required type="text" class="form-control" name="phone" id="phone" value="{{$employee->phone}}">
                                 </div>
                             </div>
                         </div>
@@ -88,7 +88,7 @@
                         <div class="row">
                             <div class="col-md-6">
                                 <label for="available_rating_ids">@lang('company_employee.available_rating')</label>
-                                <select class="form-control select2" multiple="multiple" name="available_rating_ids[]" id="available_rating_ids">
+                                <select required class="form-control select2" multiple="multiple" name="available_rating_ids[]" id="available_rating_ids">
                                     @foreach ($available_rating as $available_rating)
                                     <option value="{{$available_rating->id}}">{{$available_rating->name}}</option>
                                     @endforeach

@@ -13,21 +13,21 @@
           <form role="form" action="{{url('admin/governorate/'.$governorate->id)}}" method="POST">
             @csrf
             @method('patch')
-            
+
             <input type="hidden" class="form-control" name="id" id="id" value="{{$governorate->id}}">
 
             <div class="box-body">
-                
+
                 <div class="form-group">
                     <div class="col-md-6">
                         <label for="name">@lang('governorate.name')</label>
-                        <input type="text" class="form-control" name="name" id="name" value="{{$governorate->name}}">
+                        <input type="text" class="form-control" name="name" id="name" value="{{$governorate->name}}" required>
                     </div>
                     <div class="col-md-6">
                         <label for="name_ar">@lang('governorate.name_ar')</label>
-                        <input type="text" class="form-control" name="name_ar" id="name_ar" value="{{$governorate->name_ar}}">
+                        <input type="text" class="form-control" name="name_ar" id="name_ar" value="{{$governorate->name_ar}}" required>
                     </div>
-                    
+
                 </div>
 
             </div>
@@ -40,10 +40,10 @@
         </div>
         <!-- /.box -->
 
-       
+
 
       </div>
-      
+
     </div>
     <!-- /.row -->
   </section>
