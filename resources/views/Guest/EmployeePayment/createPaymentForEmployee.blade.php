@@ -35,7 +35,7 @@
 
                     <?php $image = $i == 1 ? 'SadB' : 'HappyB' ?>
 
-                    <input type="radio" class="{{$key.'__'.$i}}" name="{{$employee_available_rating->id}}" value="{{$i}}" onclick="postRate(this)" style="display:none">
+                    <input type="radio" class="{{$key.'__'.$i}}" name="{{$employee_available_rating->employeeAvailableRating->id}}" value="{{$i}}" onclick="postRate(this)" style="display:none">
                     <img src="{{url('guest/images/'.$image.'.png')}}" style="font-size:50px;color:#fff; padding:5px; width:70px;height:70px; border-radius:100px;" id="{{$key.'__'.$i}}" />
 
                     @endforeach
