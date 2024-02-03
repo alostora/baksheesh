@@ -228,7 +228,7 @@
                           <!--company available-ratings  -->
 
                           <li>
-                        <a href="{{url('admin/company-available-ratings/search')}}">
+                        <a href="{{url('client/company-available-ratings/search')}}">
                             <div >
                                 <i class="ion ion-ribbon-b"></i> @lang('sidebar.company_available_ratings')
                             </div>
@@ -236,7 +236,7 @@
                     </li>
 
                     <li>
-                        <a href="{{url('admin/employee-available-ratings/search')}}">
+                        <a href="{{url('client/employee-available-ratings/search')}}">
                             <div >
                                 <i class="ion ion-ribbon-a"></i> @lang('sidebar.employee_available_ratings')
                             </div>
