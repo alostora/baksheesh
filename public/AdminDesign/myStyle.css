@@ -211,7 +211,7 @@ font-weight: 700;
 }
 
 .lang a{
-  color:#000 !important;
+  color:#ffffff !important;
   font-weight: 500;
 }
 .lang a:hover{
@@ -270,7 +270,7 @@ header {
 
 }
 .logo{
-  background-color:#047488 !important ;
+  background-color:#ffffff !important ;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 
 }
@@ -279,7 +279,7 @@ header {
 }
 
 .hidden-xs {
-  color:#000;
+  color:#fff;
   margin-left: 5px;
   margin-right: 5px;
 
