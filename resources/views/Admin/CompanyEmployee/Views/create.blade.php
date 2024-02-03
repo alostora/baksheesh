@@ -56,9 +56,8 @@
                             </div>
                         </div>
 
-
                         <div class="row">
-                            <div class="form-group" id="company_parent_id" style="display: none;">
+                            <div class="form-group" id="company_parent_id">
                                 <div class="col-md-6">
                                     <label for="company_id">@lang('company_employee.company')</label>
                                     <select class="form-control" name="company_id" id="company_id" required>
@@ -78,7 +77,7 @@
                         </div>
 
                         <div class="row">
-                            <div class="form-group" id="available_rating" style="display: none;">
+                            <div class="form-group" id="available_rating">
                                 <div class="col-md-6">
                                     <label for="available_rating_ids">@lang('company.available_rating')</label>
                                     <select class="form-control select2" multiple="multiple" name="available_rating_ids[]" id="available_rating_ids" required>
@@ -126,9 +125,6 @@
 
                     if (response.status == true) {
 
-                        $("#available_rating").css('display', 'block');
-                        $(".select2").css('width', '100%');
-
                         let result = response.available_rating;
 
                         $("#available_rating_ids").html(`<option value=''>@lang('filter.select')</option>`)
@@ -137,18 +133,10 @@
 
                             $("#available_rating_ids").append(`<option value='${result[i].id}'>${result[i].name}</option>`);
                             console.log(result[i]);
-
-
                         }
-                    } else {
-
-                        $("#available_rating").css('display', 'none');
-                        $("#company_parent_id").css('display', 'none');
-                    }
+                    } else {}
                 },
                 error: function(request, error) {
-                    $("#available_rating").css('display', 'none');
-                    $("#company_parent_id").css('display', 'none');
                     console.log("Request: " + JSON.stringify(request));
                 }
             });
@@ -176,23 +164,14 @@
                             console.log(result[i]);
 
                         }
-                    } else {
-
-                        $("#available_rating").css('display', 'none');
-                        $("#company_parent_id").css('display', 'none');
-                    }
+                    } else {}
                 },
                 error: function(request, error) {
-                    $("#available_rating").css('display', 'none');
-                    $("#company_parent_id").css('display', 'none');
                     console.log("Request: " + JSON.stringify(request));
                 }
             });
 
-        } else {
-            $("#available_rating").css('display', 'none');
-            $("#company_parent_id").css('display', 'none');
-        }
+        } else {}
     }
 
     function getGovernorate(country_id) {

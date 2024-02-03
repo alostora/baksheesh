@@ -7,7 +7,7 @@ return [
     'query_string' => 'Query String',
     'select' => 'Select',
 
-    'name' => 'Name',
+    'name' => 'Client Name',
     'email' => 'Email',
     'password' => 'Password',
     'phone' => 'Phone',
@@ -24,8 +24,8 @@ return [
     "available_employees_count" => "Available Companies Count",
     "countries" => "Countries",
     "country" => "Country",
-    "governorate" => "Governorate",
-    "governorates" => "Governorates",
+    "governorate" => "City",
+    "governorates" => "Cities",
     "file" => "Image",
 
 

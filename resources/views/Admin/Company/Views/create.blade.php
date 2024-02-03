@@ -79,9 +79,6 @@
 
                     if (response.status == true) {
 
-                        $("#available_rating").css('display', 'block');
-                        $(".select2").css('width', '100%');
-
                         let result = response.available_rating;
 
                         $("#available_rating_ids").html(`<option value=''>@lang('filter.select')</option>`)
@@ -95,16 +92,12 @@
                         }
                     } else {
 
-                        $("#available_rating").css('display', 'none');
                     }
                 },
                 error: function(request, error) {
-                    $("#available_rating").css('display', 'none');
                     console.log("Request: " + JSON.stringify(request));
                 }
             });
-        } else {
-            $("#available_rating").css('display', 'none');
-        }
+        } else {}
     }
 </script>

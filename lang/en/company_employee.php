@@ -12,7 +12,7 @@ return [
 
     'company' => 'Company',
 
-    'name' => 'Name',
+    'name' => 'Employee Name',
 
     'email' => 'Email',
 
@@ -36,9 +36,9 @@ return [
 
     "country" => "Country",
 
-    "governorate" => "Governorate",
+    "governorate" => "City",
 
-    "governorates" => "Governorates",
+    "governorates" => "Cities",
 
     "employee_job_name" => "Job Name",
 

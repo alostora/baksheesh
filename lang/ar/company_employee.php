@@ -12,7 +12,7 @@ return [
 
     'company' => 'الشركة',
 
-    'name' => 'الاسم',
+    'name' => 'اسم الموظف',
 
     'email' => 'البريد الالكتروني',
 
@@ -33,8 +33,8 @@ return [
     'qr' => 'QR Code',
     "countries" => "الدول",
     "country" => "الدولة",
-    "governorate" => "المحافظة",
-    "governorates" => "المحافظات",
+    "governorate" => "المدينة",
+    "governorates" => "المدن",
     "employee_job_name" => "اسم الوظيفة",
     "file" => "صورة",
 

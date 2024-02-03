@@ -21,4 +21,6 @@ return [
     "good" => "Good",
     "bad" => "Bad",
 
+    "sar" => "SAR",
+
 ];

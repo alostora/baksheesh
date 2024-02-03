@@ -38,7 +38,7 @@
                         <td> {{ $wallet->client->name }} </td>
                         <td> {{ $wallet->company? $wallet->company->name :  $wallet->company_id}} </td>
                         <td> {{ $wallet->employee ? $wallet->employee->name : $wallet->employee_id }} </td>
-                        <td> {{ $wallet->amount }} </td>
+                        <td> {{ $wallet->amount }}  @lang('general.sar')</td>
                     </tr>
                     @endforeach
                     @endif

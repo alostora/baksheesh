@@ -10,9 +10,9 @@ return [
 
     'select' => 'Select',
 
-    'name' => 'Name',
+    'name' => 'Company Name',
 
-    'name_ar' => 'Name (AR)',
+    'name_ar' => 'Name (Ar)',
 
     'client' => 'Client',
 

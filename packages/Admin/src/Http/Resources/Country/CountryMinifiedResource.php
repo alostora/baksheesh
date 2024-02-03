@@ -22,7 +22,7 @@ class CountryMinifiedResource extends JsonResource
             'flag' => $this->flag,
             'prefix' => $this->prefix,
             'stopped_at' => $this->stopped_at,
-'active' => $this->stopped_at ? false: true,
+            'active' => $this->stopped_at ? false : true,
 
         ];
     }

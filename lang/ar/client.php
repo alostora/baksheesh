@@ -7,7 +7,7 @@ return [
     'query_string' => 'كلمة البحث',
     'select' => 'اختر',
 
-    'name' => 'الاسم',
+    'name' => 'اسم العميل',
     'email' => ' البريد الاليكتروني',
     'password' => 'كلمة المرور',
     'phone' => 'الهاتف',
@@ -24,8 +24,8 @@ return [
     "available_employees_count" => "عدد الموظفين المتاح",
     "countries" => "الدول",
     "country" => "الدولة",
-    "governorate" => "المحافظة",
-    "governorates" => "المحافظات",
+    "governorate" => "المدينة",
+    "governorates" => "المدن",
     "file" => "صورة",
 
 

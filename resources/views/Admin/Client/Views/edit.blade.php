@@ -3,7 +3,7 @@
         <div class="col-md-12">
             <div class="box box-primary">
                 <div class="box-header with-border">
-                    <h3 class="box-title col-md-8">@lang('user.update')</h3>
+                    <h3 class="box-title col-md-8">@lang('client.update')</h3>
                 </div>
                 <form role="form" action="{{url('admin/client/'.$user->id)}}" method="post" enctype="multipart/form-data">
                     @csrf
@@ -40,11 +40,11 @@
                             <div class="form-group">
                                 <div class="col-md-6">
 
-                                    <label for="name">@lang('user.name')</label>
+                                    <label for="name">@lang('client.name')</label>
                                     <input type="text" class="form-control" name="name" id="name" value="{{$user->name}}" required>
                                 </div>
                                 <div class="col-md-6">
-                                    <label for="email">@lang('user.email')</label>
+                                    <label for="email">@lang('client.email')</label>
                                     <input type="email" class="form-control" name="email" id="email" value="{{$user->email}}" required>
                                 </div>
                             </div>
@@ -53,12 +53,12 @@
                         <div class="row">
                             <div class="form-group">
                                 <div class="col-md-6">
-                                    <label for="phone">@lang('user.phone')</label>
+                                    <label for="phone">@lang('client.phone')</label>
                                     <input type="text" class="form-control" name="phone" id="phone" value="{{$user->phone}}" required>
                                 </div>
 
                                 <div class="col-md-6">
-                                    <label for="password">@lang('user.password')</label>
+                                    <label for="password">@lang('client.password')</label>
                                     <input type="password" class="form-control" name="password" id="password">
                                 </div>
                             </div>
@@ -78,7 +78,7 @@
                         </div>
                     </div>
                     <div class="box-footer">
-                        <button type="submit" class="btn btn-primary">@lang('user.submit')</button>
+                        <button type="submit" class="btn btn-primary">@lang('client.submit')</button>
                     </div>
                 </form>
             </div>

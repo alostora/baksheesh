@@ -93,7 +93,7 @@
                         <td> {{$key+1}} </td>
                         <td> {{substr($withdrawalRequest->id, 0, 7)}} </td>
                         <td> {{$withdrawalRequest->client->name}} </td>
-                        <td> {{$withdrawalRequest->amount}} </td>
+                        <td> {{$withdrawalRequest->amount}}  @lang('general.sar')</td>
                         <td>
                             <label class="label bg-{{$color}}">{{$withdrawalRequest->withdrawalRequestStatus->name}}</label>
                         </td>

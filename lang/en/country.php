@@ -10,9 +10,9 @@ return [
 
     'select' => 'Select',
 
-    'name' => 'Name',
+    'name' => 'Country Name (En)',
 
-    'name_ar' => 'Name (AR)',
+    'name_ar' => 'Country Name (Ar)',
 
     'governorates' => 'Cities',
 

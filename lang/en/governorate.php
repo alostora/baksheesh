@@ -12,16 +12,16 @@ return [
 
     'country' => 'Country',
 
-    'name' => 'Name',
+    'name' => 'City Name (En)',
 
-    'name_ar' => 'Name (AR)',
+    'name_ar' => 'City Name (Ar)',
 
     //operatoins
     "operations" => "Operations",
 
     "create" => "Create City",
 
-    "update" => "Update Governorate",
+    "update" => "Update City",
 
     "submit" => "Submit",
 

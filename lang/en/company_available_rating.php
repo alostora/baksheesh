@@ -4,9 +4,9 @@ return [
 
     'page_title' => 'Company Available Rating',
 
-    'name' => 'Name',
+    'name' => 'Rating Name (En)',
 
-    'name_ar' => 'Name ar',
+    'name_ar' => 'Rating Name (ar)',
 
     'company' => 'Company',
 
@@ -17,7 +17,7 @@ return [
 
     "create" => "Create Rating",
 
-    "update" => "Update Governorate",
+    "update" => "Update City",
 
     "submit" => "Submit",
 

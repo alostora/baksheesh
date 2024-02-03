@@ -41,7 +41,7 @@
                         <td> {{$wallet->client->name}} </td>
                         <td> {{$wallet->company->name}} </td>
                         <td> {{$wallet->employee->name}} </td>
-                        <td> {{$wallet->amount}} </td>
+                        <td> {{$wallet->amount}}  @lang('general.sar')</td>
                     </tr>
                     @endforeach
                     @endif

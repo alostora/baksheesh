@@ -137,7 +137,6 @@
                         }
 
                         $("#parent_governorate_id").show();
-
                     }
                 },
                 error: function(request, error) {
