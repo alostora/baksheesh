@@ -136,7 +136,7 @@ margin-bottom:60px;
 .rate_name{
   color: #fff61a;
   /* margin-top:30px; */
-  font-size: 20px;
+  font-size: 16px;
   padding-right: 15px;
   text-align:end;
 }
@@ -327,7 +327,7 @@ input:focus{
   border-radius: 20px;
   min-height: 50px !important;
   text-align: center;
-  font-size: medium ;
+  font-size: 18px ;
   font-weight: 800 !important;
   color:rgb(255, 255, 255);
   border:2px solid #f7e331;

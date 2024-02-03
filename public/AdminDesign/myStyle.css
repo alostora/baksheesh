@@ -8,10 +8,6 @@ select{
 }
 
 
-/* body,p,label,li,input,div,button,input,form{
-     font-size :13px;
-
-} */
 body{
   height:100vh !important;
 
@@ -36,28 +32,7 @@ body{
 
 }
 
-/* .user-panel{
-  background-color: #fff !important;
-  border-radius: 5px;
 
-}
-
-.user-panel img{
-  border-radius: 5px !important;
-  width:50px !important;
-  height:50px !important;
-}
-.user-panel p{
-  font-size:20px !important;
-  font-weight: 500 !important;
-
-}
-.user-panel a{
-  font-size:12px !important;
-  font-weight: 600 !important;
-  : greenyellow !important;
-  letter-spacing: 2px;
-} */
 
 
 .header{
@@ -131,30 +106,28 @@ text-decoration: none !important;
 
 .treeview > a{
   background-color:#fff !important;
-  /* border: none !important; */
-  /* padding:10px !important; */
-  /* display: flex; */
+
+  border-radius: 5px;
+  margin-top:8px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+
+}
+.treeview > a:hover{
+  background-color:#35e1ff !important;
   border-radius: 5px;
   margin-top:8px;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 
 }
 .treeview .treeview-menu {
-  /* border:1px solid#ff0080 !important; */
 background-color: #fff;
-/* min-height: auto;
-min-width:auto; */
-  font-size: 18px !important;
-}
-.treeview .treeview-menu  li{
-  /* border:1px solid#ff0080 !important; */
+
 background-color: #fff;
 min-height: 40px;
   font-size: 20px !important;
 }
 .treeview .treeview-menu  li a ,
 .client_side a {
-  /* border:1px solid#ff0080 !important; */
 background-color: #fff;
 min-height: 40px;
   font-size: 12px !important;
@@ -163,13 +136,10 @@ min-height: 40px;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 margin-top:10px;
 border-radius: 5px;
-/* text-align: center; */
 }
 .treeview .treeview-menu  li a:hover,
 .client_side a:hover {
-  /* border:1px solid#ff0080 !important; */
 background-color: #35e1ff;
-/* width:auto; */
 font-weight: 700;
 }
 
@@ -233,13 +203,11 @@ font-weight: 700;
 }
 
 ::-webkit-scrollbar-track {
-  /* border: 2px solid #3d3d3d; */
   box-shadow: inset 0 0 2.5px 5px #fff;
   border-radius: 2px;
 }
 
 ::-webkit-scrollbar-thumb {
-  /* background: linear-gradient(90deg, rgb(187, 187, 187), #858686); */
   border-radius: 1px;
   background: #fff
 }
