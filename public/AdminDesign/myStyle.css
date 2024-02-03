@@ -159,10 +159,11 @@ background-color: #fff;
 min-height: 40px;
   font-size: 12px !important;
   color:#1b1b1bb6 !important;
-  font-weight: 700;
+  font-weight: 600;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-margin:10px;
+margin-top:10px;
 border-radius: 5px;
+/* text-align: center; */
 }
 .treeview .treeview-menu  li a:hover,
 .client_side a:hover {

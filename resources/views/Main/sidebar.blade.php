@@ -90,6 +90,24 @@
                     </li>
 
               
+                          <!--company available-ratings  -->
+
+                          <li>
+                        <a href="{{url('admin/company-available-ratings/search')}}">
+                            <div >
+                                <i class="ion ion-ribbon-b"></i> @lang('sidebar.company_available_ratings')
+                            </div>
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="{{url('admin/employee-available-ratings/search')}}">
+                            <div >
+                                <i class="ion ion-ribbon-a"></i> @lang('sidebar.employee_available_ratings')
+                            </div>
+                        </a>
+                    </li>
+
 
                     <!-- companies -->
                     <li class=" treeview ">
@@ -122,6 +140,7 @@
                         </ul>
                     </li>
 
+
                     <!-- employees -->
                     <li>
                         <a href="{{url('admin/company-employees/search?active=active')}}">
@@ -129,23 +148,7 @@
                         </a>
                     </li>
 
-                          <!--company available-ratings  -->
-
-                          <li>
-                        <a href="{{url('admin/company-available-ratings/search')}}">
-                            <div >
-                                <i class="ion ion-ribbon-b"></i> @lang('sidebar.company_available_ratings')
-                            </div>
-                        </a>
-                    </li>
-
-                    <li>
-                        <a href="{{url('admin/employee-available-ratings/search')}}">
-                            <div >
-                                <i class="ion ion-ribbon-a"></i> @lang('sidebar.employee_available_ratings')
-                            </div>
-                        </a>
-                    </li>
+                    
 
                     <!-- withdrawal requests -->
                     <li>
@@ -219,6 +222,29 @@
                     </span>
                 </a>
                 <ul class="treeview-menu">
+
+
+                
+                          <!--company available-ratings  -->
+
+                          <li>
+                        <a href="{{url('admin/company-available-ratings/search')}}">
+                            <div >
+                                <i class="ion ion-ribbon-b"></i> @lang('sidebar.company_available_ratings')
+                            </div>
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="{{url('admin/employee-available-ratings/search')}}">
+                            <div >
+                                <i class="ion ion-ribbon-a"></i> @lang('sidebar.employee_available_ratings')
+                            </div>
+                        </a>
+                    </li>
+
+
+
 
                     <!-- companies -->
                     <li class=" treeview ">
