@@ -42,7 +42,8 @@ class Company extends Model
     ];
 
     protected $appends = [
-        'company_qr'
+        'company_qr',
+        'company_total_rating',
     ];
 
     public function getCompanyQrAttribute()
@@ -94,8 +95,10 @@ class Company extends Model
         return $this->hasMany(CompanyRating::class, 'company_id', 'id')->where('rating_value', 1);
     }
 
-    public function companyTotalRating()
+    public function getCompanyTotalRatingAttribute()
     {
+
+        $total_good_percent = 100;
 
         $ratingForGuestRatedBad = $this->ratingForGuest()
             ->whereIn('available_rating_id', $this->companyBadRating()->pluck('rating_id'))
@@ -105,15 +108,14 @@ class Company extends Model
             ->whereIn('available_rating_id', $this->companyGoodRating()->pluck('rating_id'))
             ->count();
 
+        $all_available_ratings = $ratingForGuestRatedBad + $ratingForGuestRatedGood;
+       
 
-        if ($ratingForGuestRatedBad != 0 && $ratingForGuestRatedGood != 0) {
-
-            return ($this->companyBadRating()->count() / $ratingForGuestRatedBad)
-
-                -
-
-                ($this->companyGoodRating()->count() / $ratingForGuestRatedGood);
+        if ($all_available_ratings != 0) {
+            $total_good_percent = ((($this->companyGoodRating()->count() / $all_available_ratings) / $this->ratingForGuest()->count()) * 100) / 5;
         }
+
+        return ceil($total_good_percent);
     }
 }
 

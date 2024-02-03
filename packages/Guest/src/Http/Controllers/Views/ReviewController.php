@@ -50,7 +50,7 @@ class ReviewController extends Controller
     public function viewPaymentForCompany(Company $company, Request $request)
     {
 
-        // return $company->companyTotalRating();
+        // return $company->companyTotalRating;
 
 
         if ($company->stopped_at) {

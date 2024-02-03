@@ -14,11 +14,32 @@
     </div>
 
     <div class="icons">
-        <i class="fas fa-regular fa-star" style="font-size:16px;color:#f7ef31; "></i>
-        <i class="fas fa-regular fa-star" style="font-size:16px;color:#f7ef31; "></i>
-        <i class="fas fa-regular fa-star" style="font-size:16px;color:#f7ef31; "></i>
-        <i class="fas fa-regular fa-star" style="font-size:16px;color:#f7ef31; "></i>
-        <i class="fas fa-regular fa-star" style="font-size:16px;color:#f7ef31; "></i>
+
+        @if ($employee->employeeTotalRating > 0 && $employee->employeeTotalRating <= 20) <i class="fas fa-regular fa-star" style="font-size:16px;color:#f7ef31; "></i>
+            @endif
+
+            @if ($employee->employeeTotalRating >= 21 && $employee->employeeTotalRating <= 40) <i class="fas fa-regular fa-star" style="font-size:16px;color:#f7ef31; "></i>
+                <i class="fas fa-regular fa-star" style="font-size:16px;color:#f7ef31; "></i>
+                @endif
+
+                @if ($employee->employeeTotalRating >= 41 && $employee->employeeTotalRating <= 60) <i class="fas fa-regular fa-star" style="font-size:16px;color:#f7ef31; "></i>
+                    <i class="fas fa-regular fa-star" style="font-size:16px;color:#f7ef31; "></i>
+                    <i class="fas fa-regular fa-star" style="font-size:16px;color:#f7ef31; "></i>
+                    @endif
+
+                    @if ($employee->employeeTotalRating >= 61 && $employee->employeeTotalRating <= 80) <i class="fas fa-regular fa-star" style="font-size:16px;color:#f7ef31; "></i>
+                        <i class="fas fa-regular fa-star" style="font-size:16px;color:#f7ef31; "></i>
+                        <i class="fas fa-regular fa-star" style="font-size:16px;color:#f7ef31; "></i>
+                        <i class="fas fa-regular fa-star" style="font-size:16px;color:#f7ef31; "></i>
+                        @endif
+
+                        @if ($employee->employeeTotalRating >= 81 && $employee->employeeTotalRating <= 100) <i class="fas fa-regular fa-star" style="font-size:16px;color:#f7ef31; "></i>
+                            <i class="fas fa-regular fa-star" style="font-size:16px;color:#f7ef31; "></i>
+                            <i class="fas fa-regular fa-star" style="font-size:16px;color:#f7ef31; "></i>
+                            <i class="fas fa-regular fa-star" style="font-size:16px;color:#f7ef31; "></i>
+                            <i class="fas fa-regular fa-star" style="font-size:16px;color:#f7ef31; "></i>
+                            @endif
+
     </div>
 </div>
 
@@ -65,7 +86,8 @@
     @csrf
     <div>
         <div class="payingButton">
-            <button type="button" onclick="appendAmount(15)" dir="rtl">15 ريال</button>
+            <button type="button" onclick="appendAmount(50)" dir="rtl">50 ريال</button>
+            <button type="button" onclick="appendAmount(20)" dir="rtl">20 ريال</button>
             <button type="button" onclick="appendAmount(10)" dir="rtl">10 ريال</button>
             <button type="button" onclick="appendAmount(5)" dir="rtl">5 ريال</button>
         </div>
@@ -127,14 +149,18 @@
                 console.log(response);
 
                 if (value == 1) {
-                    console.log(value)
                     document.getElementById(elementId).src = "{{url('guest')}}/images/" + "Sad" + ".png";
+                    document.getElementById(Number(level) + "__" + (Number(value) + 1)).src = "{{url('guest')}}/images/" + "HappyB" + ".png";
                 } else {
                     document.getElementById(elementId).src = "{{url('guest')}}/images/" + "Happy" + ".png";
+                    document.getElementById(Number(level) + "__" + (Number(value) - 1)).src = "{{url('guest')}}/images/" + "SadB" + ".png";
                 }
+
+                alert("success")
             },
             error: function(request, error) {
                 console.log("Request: " + JSON.stringify(request));
+                alert("failed")
             }
         });
     }
@@ -156,9 +182,15 @@
 
                 console.log(response);
 
+                document.getElementById('notes').value = "";
+
+                alert("success")
+
             },
             error: function(request, error) {
                 console.log("Request: " + JSON.stringify(request));
+
+                alert("failed")
             }
         });
 
