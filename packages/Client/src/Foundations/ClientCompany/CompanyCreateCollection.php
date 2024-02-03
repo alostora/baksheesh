@@ -5,6 +5,7 @@ namespace Client\Foundations\ClientCompany;
 use App\Constants\FileModuleType;
 use App\Foundations\File\FileCreateCollection;
 use App\Models\Company;
+use App\Models\User;
 
 class CompanyCreateCollection
 {
@@ -12,24 +13,31 @@ class CompanyCreateCollection
     {
         $validated = $request->validated();
 
-        if (isset($validated['file'])) {
+        $client = User::find(auth()->id());
 
-            $validated['type'] = FileModuleType::COMPANY_PROFILE['key'];
+        if ($client->companies->count() < $client->available_companies_count) {
 
-            $validated['file_id'] = FileCreateCollection::createFile($validated)->id;
+            if (isset($validated['file'])) {
 
-            unset($validated['type']);
+                $validated['type'] = FileModuleType::COMPANY_PROFILE['key'];
+
+                $validated['file_id'] = FileCreateCollection::createFile($validated)->id;
+
+                unset($validated['type']);
+            }
+
+            $validated['client_id'] = $client->id;
+
+            $company = Company::create($validated);
+
+            if (isset($validated['available_rating_ids'])) {
+                self::createAvailableRating($validated['available_rating_ids'], $company);
+            }
+
+            return $company;
         }
 
-        $validated['client_id'] = auth()->id();
-
-        $company = Company::create($validated);
-
-        if (isset($validated['available_rating_ids'])) {
-            self::createAvailableRating($validated['available_rating_ids'], $company);
-        }
-
-        return $company;
+        return false;
     }
 
     public static function createAvailableRating($available_rating_ids, Company $company)

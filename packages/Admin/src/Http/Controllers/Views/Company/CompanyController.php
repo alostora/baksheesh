@@ -132,7 +132,7 @@ class CompanyController extends Controller
 
             return redirect(url('admin/companies'));
         } else {
-            Session::flash('message', 'You have the max count of companies');
+            Session::flash('error', Lang::get('company.You have the max count of companies'));
             return back();
         }
     }

@@ -17,6 +17,8 @@ use Client\Foundations\ClientCompany\CompanyUpdateCollection;
 use Client\Http\Requests\ClientCompany\ClientCompanyCreateRequest;
 use Client\Http\Requests\ClientCompany\ClientCompanyUpdateRequest;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Lang;
+use Illuminate\Support\Facades\Session;
 
 class ClientCompanyController extends Controller
 {
@@ -62,7 +64,16 @@ class ClientCompanyController extends Controller
 
     public function store(ClientCompanyCreateRequest $request)
     {
-        CompanyCreateCollection::createCompany($request);
+
+        $company = CompanyCreateCollection::createCompany($request);
+
+        if ($company) {
+
+            return redirect(url('admin/companies'));
+        } else {
+            Session::flash('error', Lang::get('company.You have the max count of companies'));
+            return back();
+        }
 
         return redirect(url('client/client-companies'));
     }

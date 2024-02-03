@@ -36,13 +36,13 @@
                                 </div>
                                 <div class="col-md-6">
                                     <label for="name">@lang('company.name')</label>
-                                    <input  required type="text" class="form-control" name="name" id="name" placeholder="@lang('company.name')">
+                                    <input required type="text" class="form-control" name="name" id="name" placeholder="@lang('company.name')">
                                 </div>
                             </div>
                         </div>
 
                         <div class="row">
-                            <div class="form-group" id="available_rating" style="display: none;">
+                            <div class="form-group" id="available_rating">
                                 <div class="col-md-6">
                                     <label for="available_rating_ids">@lang('company.available_rating')</label>
                                     <select required class="form-control select2" multiple="multiple" name="available_rating_ids[]" id="available_rating_ids">
