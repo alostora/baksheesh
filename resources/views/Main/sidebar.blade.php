@@ -57,7 +57,7 @@
 
                     <!-- clients -->
                     <li class=" treeview client_side">
-                        <a href="#" 
+                        <a href="#"
                         style="padding-left: 10px !important;">
                             <i class="ion ion-ios-people" style="font-size:20px !important; " ></i> <span>@lang('sidebar.clients')</span>
                             <span class="pull-right-container">
@@ -89,7 +89,7 @@
                         </ul>
                     </li>
 
-              
+
                           <!--company available-ratings  -->
 
                           <li>
@@ -148,7 +148,7 @@
                         </a>
                     </li>
 
-                    
+
 
                     <!-- withdrawal requests -->
                     <li>
@@ -224,7 +224,7 @@
                 <ul class="treeview-menu">
 
 
-                
+
                           <!--company available-ratings  -->
 
                           <li>
@@ -333,6 +333,18 @@
                     <li>
                         <a href="{{url('client/withdrawal-request-report')}}">
                             <i class="fa fa-file-text-o"></i>@lang('sidebar.withdrawal_request_report')
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="{{url('client/company-rating-report')}}">
+                            <i class="fa fa-regular fa-star"></i>@lang('sidebar.company_rating_report')
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="{{url('client/company-notes-report')}}">
+                            <i class="fa fa-solid fa-clipboard"></i>@lang('sidebar.company_notes_report')
                         </a>
                     </li>
 

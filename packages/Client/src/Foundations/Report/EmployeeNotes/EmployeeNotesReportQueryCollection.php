@@ -8,13 +8,27 @@ use Carbon\Carbon;
 class EmployeeNotesReportQueryCollection
 {
     public static function searchEmployeeNotes(
+        $company_id = -1,
+        $employee_id = -1,
         $query_string = -1,
         $date_from = -1,
         $date_to = -1
     ) {
         return EmployeeCash::where('client_id', auth()->id())
 
-            ->where(function ($q) use ($query_string, $date_from, $date_to) {
+            ->where(function ($q) use ($company_id,$employee_id,$query_string, $date_from, $date_to) {
+
+                if ($company_id && $company_id != -1) {
+
+                    $q
+                        ->where('company_id', $company_id);
+                }
+
+                if ($employee_id && $employee_id != -1) {
+
+                    $q
+                        ->where('employee_id', $employee_id);
+                }
 
                 if ($query_string && $query_string != -1) {
 

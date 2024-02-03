@@ -7,6 +7,8 @@ use Client\Foundations\Wallet\ClientCompanyWalletSearchCollection;
 use Client\Foundations\Wallet\ClientEmployeeWalletSearchCollection;
 use App\Constants\SystemDefault;
 use App\Http\Controllers\Controller;
+use Client\Foundations\Report\CompanyNotes\CompanyNotesReportSearchCollection;
+use Client\Foundations\Report\CompanyRating\CompanyRatingReportSearchCollection;
 use Client\Foundations\Report\EmployeeNotes\EmployeeNotesReportSearchCollection;
 use Client\Foundations\Report\EmployeeRating\EmployeeRatingReportSearchCollection;
 use Illuminate\Http\Request;
@@ -23,6 +25,35 @@ class ClientReportController extends Controller
         );
 
         return view('Client/Report/CompanyWallet/index', $data);
+    }
+
+    public function companyRatingReport(Request $request)
+    {
+
+        $data = CompanyRatingReportSearchCollection::searchAllCompanyRating(
+            $request->get('company_id') ? $request->get('company_id') : -1,
+            $request->get('rating_value') ? $request->get('rating_value') : -1,
+            $request->get('date_from') ? $request->get('date_from') : -1,
+            $request->get('date_to') ? $request->get('date_to') : -1,
+            $request->get('per_page') ? $request->get('per_page') : SystemDefault::DEFAUL_PAGINATION_COUNT
+        );
+
+        return view('Client/Report/CompanyRating/index', $data);
+    }
+
+    public function companyNotesReport(Request $request)
+    {
+
+        $data = CompanyNotesReportSearchCollection::searchAllCompanyNotes(
+
+            $request->get('company_id') ? $request->get('company_id') : -1,
+            $request->get('query_string') ? $request->get('query_string') : -1,
+            $request->get('date_from') ? $request->get('date_from') : -1,
+            $request->get('date_to') ? $request->get('date_to') : -1,
+            $request->get('per_page') ? $request->get('per_page') : SystemDefault::DEFAUL_PAGINATION_COUNT
+        );
+
+        return view('Client/Report/CompanyNotes/index', $data);
     }
 
     public function employeeWalletReport(Request $request)
@@ -73,6 +104,8 @@ class ClientReportController extends Controller
 
         $data = EmployeeNotesReportSearchCollection::searchAllEmployeeNotes(
 
+            $request->get('company_id') ? $request->get('company_id') : -1,
+            $request->get('employee_id') ? $request->get('employee_id') : -1,
             $request->get('query_string') ? $request->get('query_string') : -1,
             $request->get('date_from') ? $request->get('date_from') : -1,
             $request->get('date_to') ? $request->get('date_to') : -1,

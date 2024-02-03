@@ -11,23 +11,37 @@ class EmployeeNotesReportSearchCollection
 {
 
     public static function searchAllEmployeeNotes(
+        $company_id = -1,
+        $employee_id = -1,
         $query_string = -1,
         $date_from = -1,
         $date_to = -1,
         $per_page = SystemDefault::DEFAUL_PAGINATION_COUNT
     ) {
         $data['employee_notes'] = EmployeeNotesReportQueryCollection::searchEmployeeNotes(
+            $employee_id,
             $query_string,
             $date_from,
             $date_to
         )->paginate($per_page);
 
 
-        $data['employees'] = User::where('client_id', auth()->id())
-            ->where('user_account_type_id', AccountTypeCollection::employee()->id)
+        $data['companies'] = Company::where('client_id', auth()->id())
+            ->where('stopped_at', null)
             ->get();
 
-        $data['companies'] = Company::where('client_id', auth()->id())->get();
+        $data['employees'] = User::where('client_id', auth()->id())
+            ->where('user_account_type_id', AccountTypeCollection::employee()->id)
+            ->where('stopped_at', null)
+            ->where(function ($q) use ($company_id) {
+
+                if ($company_id && $company_id != -1) {
+
+                    $q
+                        ->where('company_id', $company_id);
+                }
+            })
+            ->get();
 
         return $data;
     }
