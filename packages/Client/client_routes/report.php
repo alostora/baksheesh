@@ -10,6 +10,11 @@ Route::group([
 
 	Route::get('company-wallet-report', [ClientReportController::class, 'companyWalletReport']);
 
+    Route::get('company-rating-report', [ClientReportController::class, 'companyRatingReport']);
+
+	Route::get('company-notes-report', [ClientReportController::class, 'companyNotesReport']);
+
+
 	Route::get('employee-wallet-report', [ClientReportController::class, 'employeeWalletReport']);
 
 	Route::get('withdrawal-request-report', [ClientReportController::class, 'withdrawalRequestReport']);

@@ -40,7 +40,11 @@ return [
 
     "employee_rating_report" => "تقارير تقييم الموظفين ",
 
-    "employee_notes_report" => "تقارير ملاحظات العملاء ",
+    "employee_notes_report" => "تقارير ملاحظات الموظفين ",
+
+    "company_rating_report" => "تقارير تقييم الشركات ",
+
+    "company_notes_report" => "تقارير ملاحظات الشركات ",
 
     "employees" => "الموظفون",
 

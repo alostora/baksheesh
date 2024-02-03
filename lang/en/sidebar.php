@@ -40,7 +40,11 @@ return [
 
     "employee_rating_report" => "Employee Rating Reports",
 
-    "employee_notes_report" => "Clients Notes Reports",
+    "employee_notes_report" => "Employees Notes Reports",
+
+    "company_rating_report" => "Company Rating Reports",
+
+    "company_notes_report" => "Company Notes Reports",
 
     "employees" => "Employees",
 
