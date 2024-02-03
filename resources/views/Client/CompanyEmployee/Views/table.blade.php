@@ -53,7 +53,6 @@
                             <th>@lang('company_employee.name')</th>
                             <th>@lang('company_employee.phone')</th>
                             <th>@lang('company_employee.employee_job_name')</th>
-                            <th>@lang('company_employee.country')</th>
                             <th>@lang('company_employee.operations')</th>
                         </tr>
                     </thead>
@@ -75,7 +74,6 @@
                             <td> {{$user->name}} </td>
                             <td> {{$user->phone}} </td>
                             <td> {{$user->employee_job_name}} </td>
-                            <td> {{$user->country ? $user->country->name : ""}} </td>
                             <td>
 
                                 <a href="{{url('client/employee-available-ratings/search?employee_id='.$user->id.'&company_id='.$user->company_id)}}" class="btn btn-warning btn-sm">

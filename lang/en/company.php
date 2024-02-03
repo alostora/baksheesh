@@ -24,7 +24,7 @@ return [
 
     'qr' => 'QR Code',
 
-    "file" => "Image",
+    "file" => "Logo",
 
     "company_field" => "Company Field",
 

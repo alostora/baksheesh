@@ -66,9 +66,9 @@ class ClientCompanyEmployeeController extends Controller
         $data['available_rating'] = EmployeeAvailableRating::where('stopped_at', null)
             ->where('client_id', auth()->id())->get();
 
-        $data['countries'] = Country::where('type', CountryType::COUNTRY['code'])
-            ->where('stopped_at', null)
-            ->get();
+        // $data['countries'] = Country::where('type', CountryType::COUNTRY['code'])
+        //     ->where('stopped_at', null)
+        //     ->get();
 
         return view('Client/CompanyEmployee/create', $data);
     }

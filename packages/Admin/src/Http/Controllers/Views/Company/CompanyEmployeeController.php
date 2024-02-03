@@ -64,9 +64,9 @@ class CompanyEmployeeController extends Controller
     {
         $client_type = AccountTypeCollection::client();
 
-        $data['countries'] = Country::where('type', CountryType::COUNTRY['code'])
-            ->where('stopped_at', null)
-            ->get();
+        // $data['countries'] = Country::where('type', CountryType::COUNTRY['code'])
+        //     ->where('stopped_at', null)
+        //     ->get();
 
         $data['clients'] = User::where('user_account_type_id', $client_type->id)
             ->where('stopped_at', null)

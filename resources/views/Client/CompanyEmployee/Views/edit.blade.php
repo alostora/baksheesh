@@ -25,29 +25,7 @@
                                     <input required type="text" class="form-control" name="employee_job_name" id="employee_job_name" value="{{$employee->employee_job_name}}">
                                 </div>
                             </div>
-                            <div class="form-group">
-                                <div class="col-md-6">
-                                    <label for="country_id">@lang('client.country')</label>
-                                    <select required class="form-control select2" name="country_id" id="country_id" onchange="getGovernorate(this.value)">
-                                        <option value="">@lang('filter.select')</option>
-                                        @foreach ($countries as $country)
-                                        {{$selected = $country->id == $employee->country_id ? "selected" : "" }}
-                                        <option value="{{$country->id}}" {{$selected}}>{{$country->name}}</option>
-                                        @endforeach
-                                    </select>
-                                </div>
 
-                                <div class="col-md-6" id="parent_governorate_id">
-                                    <label for="governorate_id">@lang('client.governorate')</label>
-                                    <select required class="form-control select2" name="governorate_id" id="governorate_id">
-
-                                        @foreach ($governorates as $governorate)
-                                        {{$selected = $governorate->id == $employee->governorate_id ? "selected" : "" }}
-                                        <option value="{{$governorate->id}}" {{$selected}}>{{$governorate->name}}</option>
-                                        @endforeach
-                                    </select>
-                                </div>
-                            </div>
                         </div>
 
                         <div class="row">

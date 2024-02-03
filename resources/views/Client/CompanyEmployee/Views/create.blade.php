@@ -26,24 +26,6 @@
                         <div class="row">
                             <div class="form-group">
                                 <div class="col-md-6">
-                                    <label for="country_id">@lang('client.country')</label>
-                                    <select required class="form-control select2" name="country_id" id="country_id" onchange="getGovernorate(this.value)">
-                                        <option value="">@lang('filter.select')</option>
-                                        @foreach ($countries as $country)
-                                        <option value="{{$country->id}}">{{$country->name}}</option>
-                                        @endforeach
-                                    </select>
-                                </div>
-                                <div class="col-md-6" id="parent_governorate_id">
-                                    <label for="governorate_id">@lang('client.governorate')</label>
-                                    <select required class="form-control select2" name="governorate_id" id="governorate_id"></select>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="row">
-                            <div class="form-group">
-                                <div class="col-md-6">
                                     <label for="company_id">@lang('company_employee.company')</label>
                                     <select required class="form-control" name="company_id" id="company_id">
                                         @foreach ($companies as $company)

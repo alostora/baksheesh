@@ -24,7 +24,7 @@ return [
 
     'qr' => 'QR Code',
 
-    "file" => "صورة",
+    "file" => "اللوجو",
 
     "company_field" => "نشاط الشركة",
 

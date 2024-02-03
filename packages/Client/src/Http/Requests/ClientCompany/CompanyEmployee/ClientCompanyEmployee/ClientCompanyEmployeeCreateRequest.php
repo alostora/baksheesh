@@ -38,19 +38,19 @@ class ClientCompanyEmployeeCreateRequest extends FormRequest
 
             "employee_job_name" => ["required", "string", "max:255"],
 
-            "country_id" => [
+            // "country_id" => [
 
-                "required", "uuid", "string",
+            //     "required", "uuid", "string",
 
-                Rule::exists('countries', 'id')->where('type', CountryType::COUNTRY['code'])
-            ],
+            //     Rule::exists('countries', 'id')->where('type', CountryType::COUNTRY['code'])
+            // ],
 
-            "governorate_id" => [
+            // "governorate_id" => [
 
-                "required", "uuid", "string",
+            //     "required", "uuid", "string",
 
-                Rule::exists('countries', 'id')->where('type', CountryType::GOVERNORATE['code'])
-            ],
+            //     Rule::exists('countries', 'id')->where('type', CountryType::GOVERNORATE['code'])
+            // ],
 
             'file_id' => ['nullable', 'uuid', 'exists:files,id'],
         ];
