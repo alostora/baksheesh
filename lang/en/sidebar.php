@@ -44,7 +44,6 @@ return [
 
     "employees" => "Employees",
 
-
     "create_new_client" => "Create New Client",
 
     "edit_client" => "Edit Client",
@@ -54,10 +53,13 @@ return [
     "edit_company" => "Companies",
 
     "company_employee" => "Employees",
-    "company_available_ratings" => "Company Available Ratings",
-    "employee_available_ratings" => "Employee Available Ratings",
+
+    "company_available_ratings" => "Company Ratings",
+
+    "employee_available_ratings" => "Employee Ratings",
 
     "good" => "Good",
+
     "bad" => "Bad",
 
 ];

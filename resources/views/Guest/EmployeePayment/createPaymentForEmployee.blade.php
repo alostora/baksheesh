@@ -87,7 +87,7 @@
     <div>
         <div class="payingButton">
             <button type="button" onclick="appendAmount(50)" dir="rtl">50 ريال</button>
-            <button type="button" onclick="appendAmount(20)" dir="rtl">20 ريال</button>
+            <button type="button" onclick="appendAmount(25)" dir="rtl">25 ريال</button>
             <button type="button" onclick="appendAmount(10)" dir="rtl">10 ريال</button>
             <button type="button" onclick="appendAmount(5)" dir="rtl">5 ريال</button>
         </div>

@@ -1,4 +1,4 @@
-<div class="logo_bg">
+<div class="logo_bg" style="display: none;">
     @if($company->file)
     <img class="img-logo" src="{{ url('uploads/'.$company->file->new_name)}}" alt="" height="150px;width:150px">
     @endif
@@ -15,40 +15,30 @@
 
     <div class="icons">
 
-        @if ($company->companyTotalRating > 0 && $company->companyTotalRating <= 20)
+        @if ($company->companyTotalRating > 0 && $company->companyTotalRating <= 20) <i class="fas fa-regular fa-star" style="font-size:16px;color:#f7ef31; "></i>
+            @endif
 
-        <i class="fas fa-regular fa-star" style="font-size:16px;color:#f7ef31; "></i>
-        @endif
+            @if ($company->companyTotalRating >= 21 && $company->companyTotalRating <= 40) <i class="fas fa-regular fa-star" style="font-size:16px;color:#f7ef31; "></i>
+                <i class="fas fa-regular fa-star" style="font-size:16px;color:#f7ef31; "></i>
+                @endif
 
-        @if ($company->companyTotalRating >= 21 && $company->companyTotalRating <= 40)
+                @if ($company->companyTotalRating >= 41 && $company->companyTotalRating <= 60) <i class="fas fa-regular fa-star" style="font-size:16px;color:#f7ef31; "></i>
+                    <i class="fas fa-regular fa-star" style="font-size:16px;color:#f7ef31; "></i>
+                    <i class="fas fa-regular fa-star" style="font-size:16px;color:#f7ef31; "></i>
+                    @endif
 
-        <i class="fas fa-regular fa-star" style="font-size:16px;color:#f7ef31; "></i>
-        <i class="fas fa-regular fa-star" style="font-size:16px;color:#f7ef31; "></i>
-        @endif
+                    @if ($company->companyTotalRating >= 61 && $company->companyTotalRating <= 80) <i class="fas fa-regular fa-star" style="font-size:16px;color:#f7ef31; "></i>
+                        <i class="fas fa-regular fa-star" style="font-size:16px;color:#f7ef31; "></i>
+                        <i class="fas fa-regular fa-star" style="font-size:16px;color:#f7ef31; "></i>
+                        <i class="fas fa-regular fa-star" style="font-size:16px;color:#f7ef31; "></i>
+                        @endif
 
-        @if ($company->companyTotalRating >= 41 && $company->companyTotalRating <= 60)
-
-        <i class="fas fa-regular fa-star" style="font-size:16px;color:#f7ef31; "></i>
-        <i class="fas fa-regular fa-star" style="font-size:16px;color:#f7ef31; "></i>
-        <i class="fas fa-regular fa-star" style="font-size:16px;color:#f7ef31; "></i>
-        @endif
-
-        @if ($company->companyTotalRating >= 61 && $company->companyTotalRating <= 80)
-
-        <i class="fas fa-regular fa-star" style="font-size:16px;color:#f7ef31; "></i>
-        <i class="fas fa-regular fa-star" style="font-size:16px;color:#f7ef31; "></i>
-        <i class="fas fa-regular fa-star" style="font-size:16px;color:#f7ef31; "></i>
-        <i class="fas fa-regular fa-star" style="font-size:16px;color:#f7ef31; "></i>
-        @endif
-
-        @if ($company->companyTotalRating >= 81 && $company->companyTotalRating <= 100)
-
-        <i class="fas fa-regular fa-star" style="font-size:16px;color:#f7ef31; "></i>
-        <i class="fas fa-regular fa-star" style="font-size:16px;color:#f7ef31; "></i>
-        <i class="fas fa-regular fa-star" style="font-size:16px;color:#f7ef31; "></i>
-        <i class="fas fa-regular fa-star" style="font-size:16px;color:#f7ef31; "></i>
-        <i class="fas fa-regular fa-star" style="font-size:16px;color:#f7ef31; "></i>
-        @endif
+                        @if ($company->companyTotalRating >= 81 && $company->companyTotalRating <= 100) <i class="fas fa-regular fa-star" style="font-size:16px;color:#f7ef31; "></i>
+                            <i class="fas fa-regular fa-star" style="font-size:16px;color:#f7ef31; "></i>
+                            <i class="fas fa-regular fa-star" style="font-size:16px;color:#f7ef31; "></i>
+                            <i class="fas fa-regular fa-star" style="font-size:16px;color:#f7ef31; "></i>
+                            <i class="fas fa-regular fa-star" style="font-size:16px;color:#f7ef31; "></i>
+                            @endif
 
     </div>
 </div>
@@ -98,7 +88,7 @@
         <div class="payingButton">
 
             <button type="button" onclick="appendAmount(50)" dir="rtl">50 ريال</button>
-            <button type="button" onclick="appendAmount(20)" dir="rtl">20 ريال</button>
+            <button type="button" onclick="appendAmount(25)" dir="rtl">25 ريال</button>
             <button type="button" onclick="appendAmount(10)" dir="rtl">10 ريال</button>
             <button type="button" onclick="appendAmount(5)" dir="rtl">5 ريال</button>
         </div>
