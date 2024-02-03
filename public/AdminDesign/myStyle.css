@@ -264,11 +264,7 @@ header {
 
 }
 .navbar{
-    background-image: linear-gradient(
-        #fff,
-        rgb(72, 220, 247, 0.5),
-        rgb(72, 220, 247, 0.8)
-    ) !important  ;
+    background:   rgb(72, 220, 247, 0.5) !important  ;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 
 

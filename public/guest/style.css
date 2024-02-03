@@ -186,20 +186,7 @@ margin-top:20px ;
   cursor: pointer;
   transition: 0.5s;
 }
-.btn:hover {
-  width: 22%;
-  height: 45px;
-  border-radius: 35px;
-  text-align: center;
-  border:1px solid rgb(255, 255, 255);
-  color:rgb(255, 255, 255);
-margin-top:16px ;
-  background-color: #14bbd8;
-  font-size: 25px;
-  font-family: cairo;
-  font-weight: 800;
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-}
+
 
 .paying{
   background: #fff;
@@ -246,14 +233,7 @@ margin-top: 30px;
 
 }
 
-.payingButton button:hover {
-  background-color: #14bbd8;
-  color: #f3f3f3;
-  font-size: 16px;
-  border:1px solid rgb(255, 255, 255);
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-  outline: none;
-}
+
 .apple_pay button {
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   justify-content: space-around;
@@ -271,21 +251,7 @@ border: 3px solid #fff61a;
   cursor: pointer;
   transition: 0.5s;
 }
-.apple_pay button:hover {
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-  justify-content: space-around;
 
-  align-items: center;
-  text-align: center;
-  width: 98%;
-border: 3px solid #14bbd8;
-  height: 70px;
-  border-radius: 20px;
-  font-size:25px;
-  font-family: cairo;
-  color:#14bbd8;
-  margin-top: 35px;
-}
 .visa{
   background: #14bbd8;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
@@ -342,24 +308,7 @@ input:focus{
   cursor: pointer;
   transition: 0.5s;
 }
-.pay_btn:hover{
 
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-  align-items: center;
-  text-align: center;
-  width: 70%;
-border: 3px solid #fff61a;
-  height: 50px;
-  border-radius: 25px;
-  background-color:#14bbd8;
-
-  font-size:20px;
-  font-family: cairo;
-  margin-top: 40px;
-  color: #ffffff;
-  font-weight: 600;
-
-}
 
 .anotherPriceBox{
   display:block;
