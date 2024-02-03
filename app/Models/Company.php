@@ -100,19 +100,11 @@ class Company extends Model
 
         $total_good_percent = 100;
 
-        $ratingForGuestRatedBad = $this->ratingForGuest()
-            ->whereIn('available_rating_id', $this->companyBadRating()->pluck('rating_id'))
-            ->count();
+        $all_available_ratings = $this->ratingForGuest()->count();
 
-        $ratingForGuestRatedGood = $this->ratingForGuest()
-            ->whereIn('available_rating_id', $this->companyGoodRating()->pluck('rating_id'))
-            ->count();
-
-        $all_available_ratings = $ratingForGuestRatedBad + $ratingForGuestRatedGood;
-       
 
         if ($all_available_ratings != 0) {
-            $total_good_percent = ((($this->companyGoodRating()->count() / $all_available_ratings) / $this->ratingForGuest()->count()) * 100) / 5;
+            $total_good_percent = ((($this->companyGoodRating()->count() / $all_available_ratings)) * 100) / 5;
         }
 
         return ceil($total_good_percent);

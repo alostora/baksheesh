@@ -228,20 +228,11 @@ class User extends Authenticatable implements MustVerifyEmail
 
         $total_good_percent = 100;
 
-        $ratingForGuestRatedBad = $this->ratingForGuest()
-            ->whereIn('available_rating_id', $this->employeeBadRating()->pluck('rating_id'))
-            ->count();
-
-        $ratingForGuestRatedGood = $this->ratingForGuest()
-            ->whereIn('available_rating_id', $this->employeeGoodRating()->pluck('rating_id'))
-            ->count();
-
-        $all_available_ratings = $ratingForGuestRatedBad + $ratingForGuestRatedGood;
+        $all_available_ratings = $this->ratingForGuest()->count();
 
         if ($all_available_ratings != 0) {
 
-            $total_good_percent = ((($this->employeeGoodRating()->count() / $all_available_ratings) / $this->ratingForGuest()->count()) * 100) / 5;
-
+            $total_good_percent = (($this->employeeGoodRating()->count() / $all_available_ratings) * 100) / 5;
         }
 
         return ceil($total_good_percent);
