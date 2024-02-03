@@ -12,15 +12,6 @@
                         <div class="row">
                             <div class="form-group">
                                 <div class="col-md-6">
-                                    <label for="file">@lang('client.file')</label>
-                                    <input type="file" class="form-control" name="file" id="file" placeholder="@lang('client.file')" required>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="row">
-                            <div class="form-group">
-                                <div class="col-md-6">
                                     <label for="country_id">@lang('client.country')</label>
                                     <select class="form-control select2" name="country_id" id="country_id" onchange="getGovernorate(this.value)" required>
                                         <option value="">@lang('filter.select')</option>

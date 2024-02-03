@@ -10,20 +10,6 @@
                     @method('PATCH')
                     <div class="box-body">
 
-                        @if($user->file)
-                        <img src="{{ url('uploads/'.$user->file->new_name)}}" style="height:50px;width:50px;border-radius:50%">
-                        @endif
-
-                        <div class="row">
-                            <div class="form-group">
-
-                                <div class="col-md-6">
-                                    <label for="file">@lang('client.file')</label>
-                                    <input type="file" class="form-control" name="file" id="file">
-                                </div>
-
-                            </div>
-                        </div>
                         <div class="row">
                             <div class="form-group">
                                 <div class="col-md-6">

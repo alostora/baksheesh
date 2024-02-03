@@ -49,7 +49,6 @@
                 <thead>
                     <tr>
                         <th>#</th>
-                        <th>@lang('client.file')</th>
                         <th>@lang('client.name')</th>
                         <th>@lang('client.phone')</th>
                         <th>@lang('client.country')</th>
@@ -63,11 +62,6 @@
                     @foreach ($users as $key=>$user)
                     <tr>
                         <td> {{$key+1}} </td>
-                        <td>
-                            @if($user->file)
-                            <img src="{{ url('uploads/'.$user->file->new_name)}}" style="height:50px;width:50px;border-radius:50%">
-                            @endif
-                        </td>
                         <td> {{$user->name}} </td>
                         <td> {{$user->phone}} </td>
                         <td> {{$user->country ? $user->country->name : ""}} </td>

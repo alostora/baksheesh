@@ -159,12 +159,10 @@
                     document.getElementById(Number(level) + "__" + (Number(value) - 1)).src = "{{url('guest')}}/images/" + "SadB" + ".png";
                 }
 
-                alert("success")
             },
             error: function(request, error) {
                 console.log("Request: " + JSON.stringify(request));
 
-                alert("failed")
             }
         });
     }
@@ -185,12 +183,10 @@
 
                 document.getElementById('notes').value = "";
 
-                alert("success")
             },
             error: function(request, error) {
                 console.log("Request: " + JSON.stringify(request));
 
-                alert("failed")
             }
         });
 

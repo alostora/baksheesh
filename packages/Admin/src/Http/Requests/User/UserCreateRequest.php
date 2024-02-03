@@ -40,7 +40,6 @@ class UserCreateRequest extends FormRequest
 
             "password" => ["bail", "required", "string", "max:255"],
 
-            "address" => ["bail", "nullable", "string", "max:255"],
         ];
     }
 }
