@@ -82,6 +82,7 @@
                     </tr>
                 </thead>
                 <tbody>
+                    <?php $color = '' ?>
                     @if(!empty($withdrawalRequests))
                     @foreach ($withdrawalRequests as $key=>$withdrawalRequest)
 

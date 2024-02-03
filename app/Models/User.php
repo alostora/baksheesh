@@ -87,7 +87,8 @@ class User extends Authenticatable implements MustVerifyEmail
     ];
 
     protected $appends = [
-        'employee_qr'
+        'employee_qr',
+        'company_total_rating',
     ];
 
     public function getEmployeeQrAttribute()
@@ -222,25 +223,18 @@ class User extends Authenticatable implements MustVerifyEmail
         return $this->hasMany(EmployeeRating::class, 'employee_id', 'id')->where('rating_value', 1);
     }
 
-    public function employeeTotalRating()
+    public function getEmployeeTotalRatingAttribute()
     {
 
-        $ratingForGuestRatedBad = $this->ratingForGuest()
-            ->whereIn('available_rating_id', $this->employeeBadRating()->pluck('rating_id'))
-            ->count();
+        $total_good_percent = 100;
 
-        $ratingForGuestRatedGood = $this->ratingForGuest()
-            ->whereIn('available_rating_id', $this->employeeGoodRating()->pluck('rating_id'))
-            ->count();
+        $all_available_ratings = $this->ratingForGuest()->count();
 
+        if ($all_available_ratings != 0) {
 
-        if ($ratingForGuestRatedBad != 0 && $ratingForGuestRatedGood != 0) {
-
-            return ($this->employeeBadRating()->count() / $ratingForGuestRatedBad)
-
-                -
-
-                ($this->employeeGoodRating()->count() / $ratingForGuestRatedGood);
+            $total_good_percent = (($this->employeeGoodRating()->count() / $all_available_ratings) * 100) / 5;
         }
+
+        return ceil($total_good_percent);
     }
 }

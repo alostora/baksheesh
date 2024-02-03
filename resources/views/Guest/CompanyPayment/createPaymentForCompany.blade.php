@@ -1,4 +1,4 @@
-<div class="logo_bg">
+<div class="logo_bg" style="display: none;">
     @if($company->file)
     <img class="img-logo" src="{{ url('uploads/'.$company->file->new_name)}}" alt="" height="150px;width:150px">
     @endif
@@ -14,11 +14,32 @@
     </div>
 
     <div class="icons">
-        <i class="fas fa-regular fa-star" style="font-size:16px;color:#f7ef31; "></i>
-        <i class="fas fa-regular fa-star" style="font-size:16px;color:#f7ef31; "></i>
-        <i class="fas fa-regular fa-star" style="font-size:16px;color:#f7ef31; "></i>
-        <i class="fas fa-regular fa-star" style="font-size:16px;color:#f7ef31; "></i>
-        <i class="fas fa-regular fa-star" style="font-size:16px;color:#f7ef31; "></i>
+
+        @if ($company->companyTotalRating > 0 && $company->companyTotalRating <= 20) <i class="fas fa-regular fa-star" style="font-size:16px;color:#f7ef31; "></i>
+            @endif
+
+            @if ($company->companyTotalRating >= 21 && $company->companyTotalRating <= 40) <i class="fas fa-regular fa-star" style="font-size:16px;color:#f7ef31; "></i>
+                <i class="fas fa-regular fa-star" style="font-size:16px;color:#f7ef31; "></i>
+                @endif
+
+                @if ($company->companyTotalRating >= 41 && $company->companyTotalRating <= 60) <i class="fas fa-regular fa-star" style="font-size:16px;color:#f7ef31; "></i>
+                    <i class="fas fa-regular fa-star" style="font-size:16px;color:#f7ef31; "></i>
+                    <i class="fas fa-regular fa-star" style="font-size:16px;color:#f7ef31; "></i>
+                    @endif
+
+                    @if ($company->companyTotalRating >= 61 && $company->companyTotalRating <= 80) <i class="fas fa-regular fa-star" style="font-size:16px;color:#f7ef31; "></i>
+                        <i class="fas fa-regular fa-star" style="font-size:16px;color:#f7ef31; "></i>
+                        <i class="fas fa-regular fa-star" style="font-size:16px;color:#f7ef31; "></i>
+                        <i class="fas fa-regular fa-star" style="font-size:16px;color:#f7ef31; "></i>
+                        @endif
+
+                        @if ($company->companyTotalRating >= 81 && $company->companyTotalRating <= 100) <i class="fas fa-regular fa-star" style="font-size:16px;color:#f7ef31; "></i>
+                            <i class="fas fa-regular fa-star" style="font-size:16px;color:#f7ef31; "></i>
+                            <i class="fas fa-regular fa-star" style="font-size:16px;color:#f7ef31; "></i>
+                            <i class="fas fa-regular fa-star" style="font-size:16px;color:#f7ef31; "></i>
+                            <i class="fas fa-regular fa-star" style="font-size:16px;color:#f7ef31; "></i>
+                            @endif
+
     </div>
 </div>
 
@@ -65,19 +86,19 @@
     @csrf
     <div>
         <div class="payingButton">
-            <button type="button" onclick="appendAmount(15)" dir="rtl">15 ريال</button>
+
+            <button type="button" onclick="appendAmount(50)" dir="rtl">50 ريال</button>
+            <button type="button" onclick="appendAmount(25)" dir="rtl">25 ريال</button>
             <button type="button" onclick="appendAmount(10)" dir="rtl">10 ريال</button>
             <button type="button" onclick="appendAmount(5)" dir="rtl">5 ريال</button>
-
         </div>
         <br>
         <br>
 
-        <div class="anotherPriceBox" style="display: none;">
+        <div class="anotherPriceBox">
             <label for="amount" class="col-md-4">مبلغ اخر</label>
             <input class="anotherPrice" type="number" name="amount" id="amount" placeholder="ادخل المبلغ" style="background-color: #14bbd8">
         </div>
-
         <div class="apple_pay">
             <button>
                 <i class="fa-brands fa-apple" style="font-size: 30px;color:#14bbd8;"></i>
@@ -111,7 +132,6 @@
 <script>
     function postRate(element) {
 
-
         let elementClass = element.className;
         let elementId = elementClass;
 
@@ -133,12 +153,18 @@
 
                 if (value == 1) {
                     document.getElementById(elementId).src = "{{url('guest')}}/images/" + "Sad" + ".png";
+                    document.getElementById(Number(level) + "__" + (Number(value) + 1)).src = "{{url('guest')}}/images/" + "HappyB" + ".png";
                 } else {
                     document.getElementById(elementId).src = "{{url('guest')}}/images/" + "Happy" + ".png";
+                    document.getElementById(Number(level) + "__" + (Number(value) - 1)).src = "{{url('guest')}}/images/" + "SadB" + ".png";
                 }
+
+                alert("success")
             },
             error: function(request, error) {
                 console.log("Request: " + JSON.stringify(request));
+
+                alert("failed")
             }
         });
     }
@@ -157,11 +183,14 @@
             dataType: 'json',
             success: function(response) {
 
-                console.log(response);
+                document.getElementById('notes').value = "";
 
+                alert("success")
             },
             error: function(request, error) {
                 console.log("Request: " + JSON.stringify(request));
+
+                alert("failed")
             }
         });
 
