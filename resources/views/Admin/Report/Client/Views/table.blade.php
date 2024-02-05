@@ -3,13 +3,21 @@
     <div class="box box-info">
         <!-- filter -->
         @include('Admin/TableFilter/client')
+        @include('Admin.Report.Client.Views.print')
+
         <div class="box-header">
             <h3 class="box-title col-md-8">@lang('client.page_title')</h3>
-            <div class="col-md-4">
+            <div class="col-md-2">
                 <a href="{{url('admin/client/create')}}" class="btn bg-purple btn-sm" style="height:25px;padding:2px;width:150px">
                     <i class="fa fa-plus"></i>
                     <span>@lang('client.create')</span>
                 </a>
+            </div>
+            <div class="col-md-2">
+                <button class="btn bg-purple btn-sm" style="height:25px;padding:2px;width:150px" onclick="PrintElem()">
+                    <i class="fa fa-print"></i>
+                    <span>@lang('client.create')</span>
+                </button>
             </div>
         </div>
         <div class="box box-success">
@@ -83,3 +91,22 @@
         </div>
     </div>
 </section>
+
+
+<script>
+   function PrintElem() {
+
+var mywindow = window.open(" ", "PRINT");
+
+mywindow.document.write('<html><head><title>' + "test report print" + '</title>');
+mywindow.document.write('</head><body >');
+mywindow.document.write('<h1>' + 'test report print' + '</h1>');
+mywindow.document.write(document.getElementById('report').innerHTML);
+mywindow.document.write('</body></html>');
+
+// mywindow.focus(); // necessary for IE >= 10*/
+
+
+mywindow.print();
+}
+</script>
