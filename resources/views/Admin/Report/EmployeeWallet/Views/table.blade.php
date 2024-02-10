@@ -1,11 +1,17 @@
 <section class="content">
     <div class="box box-info">
         <!-- filter -->
+        @include('Admin.Report.EmployeeWallet.Views.print')
         @include('Admin/TableFilter/employee_wallet')
         <div class="box-header">
             <h3 class="box-title col-md-8">@lang('employee_wallet.page_title')</h3>
+            <button class="btn bg-navy margin" style="height:25px;padding:2px;width:70px;" onclick="PrintElem()">
+                    <i class="fa fa-print"></i>
+                </button> 
         </div>
 
+        
+          
         <div class="box box-success">
             <div class="box-body">
                 <div class="col-sm-4 col-md-2">
@@ -111,4 +117,19 @@
             }
         });
     }
+    function PrintElem() {
+
+var mywindow = window.open(" ", "PRINT");
+
+mywindow.document.write('<html><head><title>' + "test report print" + '</title>');
+mywindow.document.write('</head><body >');
+mywindow.document.write('<h1>' + 'test report print' + '</h1>');
+mywindow.document.write(document.getElementById('report').innerHTML);
+mywindow.document.write('</body></html>');
+
+// mywindow.focus(); // necessary for IE >= 10*/
+
+
+mywindow.print();
+}
 </script>

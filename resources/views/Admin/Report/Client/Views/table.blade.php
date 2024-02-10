@@ -1,24 +1,24 @@
 <section class="content">
 
     <div class="box box-info">
+      
+    @include('Admin.Report.Client.Views.print')
         <!-- filter -->
         @include('Admin/TableFilter/client')
-        @include('Admin.Report.Client.Views.print')
 
         <div class="box-header">
             <h3 class="box-title col-md-8">@lang('client.page_title')</h3>
-            <div class="col-md-2">
-                <a href="{{url('admin/client/create')}}" class="btn bg-purple btn-sm" style="height:25px;padding:2px;width:150px">
+          
+                <a href="{{url('admin/client/create')}}" class="btn bg-purple margin" style="height:25px;padding:2px;width:150px;">
                     <i class="fa fa-plus"></i>
                     <span>@lang('client.create')</span>
                 </a>
-            </div>
-            <div class="col-md-2">
-                <button class="btn bg-purple btn-sm" style="height:25px;padding:2px;width:150px" onclick="PrintElem()">
+            
+          
+                <button class="btn bg-navy margin" style="height:25px;padding:2px;width:70px;" onclick="PrintElem()">
                     <i class="fa fa-print"></i>
-                    <span>@lang('client.create')</span>
                 </button>
-            </div>
+          
         </div>
         <div class="box box-success">
             <div class="box-body">
