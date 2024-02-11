@@ -341,6 +341,9 @@ header {
 width:100% !important;
 }
 
+#report {
+  display: none;
+};
 
 
 
@@ -367,5 +370,18 @@ width:100% !important;
     justify-content:space-between  !important; 
     text-align:center !important;
   }
+  
+#table td, th {
+  border: 1px solid #000;
+  text-align: left;
+  padding: 8px;
+}
+
+#table tr:nth-child(even) {
+  background-color: #fff;
+width:100% !important;
+}
+
+
   
 }

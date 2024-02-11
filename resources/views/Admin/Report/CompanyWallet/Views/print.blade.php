@@ -61,11 +61,15 @@
       <th>Client</th>
       <th>Country</th>
       <th>Amount</th>
+      <th>Amount</th>
+      <th>Amount</th>
     </tr>
     <tr style="width:100%; justify-content:space-between; text-align:center">
       <td>Emil</td>
       <td>Tobias</td>
       <td>Linus</td>
+      <td>35000 SAR</td>
+      <td>35000 SAR</td>
       <td>35000 SAR</td>
     </tr>
     <tr style="width:100%; justify-content:space-between; text-align:center">
@@ -73,19 +77,7 @@
       <td>Tobias</td>
       <td>Linus</td>
       <td>35000 SAR</td>
-
-    </tr>
-    <tr style="width:100%; justify-content:space-between; text-align:center">
-      <td>Emil</td>
-      <td>Tobias</td>
-      <td>Linus</td>
       <td>35000 SAR</td>
-
-    </tr>
-    <tr style="width:100%; justify-content:space-between; text-align:center">
-      <td>Emil</td>
-      <td>Tobias</td>
-      <td>Linus</td>
       <td>35000 SAR</td>
 
     </tr>
@@ -94,12 +86,34 @@
       <td>Tobias</td>
       <td>Linus</td>
       <td>35000 SAR</td>
+      <td>35000 SAR</td>
+      <td>35000 SAR</td>
 
     </tr>
     <tr style="width:100%; justify-content:space-between; text-align:center">
       <td>Emil</td>
       <td>Tobias</td>
       <td>Linus</td>
+      <td>35000 SAR</td>
+      <td>35000 SAR</td>
+      <td>35000 SAR</td>
+
+    </tr>
+    <tr style="width:100%; justify-content:space-between; text-align:center">
+      <td>Emil</td>
+      <td>Tobias</td>
+      <td>Linus</td>
+      <td>35000 SAR</td>
+      <td>35000 SAR</td>
+      <td>35000 SAR</td>
+
+    </tr>
+    <tr style="width:100%; justify-content:space-between; text-align:center">
+      <td>Emil</td>
+      <td>Tobias</td>
+      <td>Linus</td>
+      <td>35000 SAR</td>
+      <td>35000 SAR</td>
       <td>35000 SAR</td>
 
     </tr>
