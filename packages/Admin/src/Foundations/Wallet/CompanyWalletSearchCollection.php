@@ -47,6 +47,31 @@ class CompanyWalletSearchCollection
                 }
             })->sum('amount');
 
+
+        $data['all_companies_amount'] = CompanyCash::where('amount', '>', 0)->sum('amount');
+
+        $data['all_clients_amount'] = CompanyCash::where('amount', '>', 0)
+
+            ->where(function ($q) use ($client_id) {
+
+                if ($client_id && $client_id != -1) {
+
+                    $q
+                        ->where('client_id', $client_id);
+                }
+            })->sum('amount');
+
+        $data['one_company_amount'] = CompanyCash::where('amount', '>', 0)
+
+            ->where(function ($q) use ($company_id) {
+
+                if ($company_id && $company_id != -1) {
+
+                    $q
+                        ->where('company_id', $company_id);
+                }
+            })->sum('amount');
+
         return $data;
     }
 }
