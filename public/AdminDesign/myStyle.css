@@ -327,4 +327,10 @@ header {
     text-align: center !important;
     align-items: center
   };
+  span, strong, small{
+    font-family:'cairo' !important;
+  }
+/* body {
+    font-family: "cairo";
+} */
 }

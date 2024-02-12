@@ -1,38 +1,54 @@
 <section class="invoice" id="report">
 
     <div class="row">
-        <div class="col-xs-12">
-            <h2 class="page-header">
-                <i class="fa fa-globe"></i> AdminLTE, Inc.
-                <small class="pull-right">Date: 2/10/2014</small>
-            </h2>
+        <div >
+            <div  style="display:flex;justify-content:space-between;align-items:center">
+              <div  style="font-size:30px">
+                  <i class="fa-solid fa-t" style="font-size:40px"></i> Tipo Smart
+              </div>
+              <div>
+                  <small >Date: 2/10/2014</small>
+              </div>
+            </div>
         </div>
     </div>
+<br>
+<br>
 
     <div class="row invoice-info">
         <div class="col-sm-4 invoice-col">
-            To
+            Report To
             <address>
-                <strong>John Doe</strong><br>
+      
+                <br>
+                <strong>Mr / <span style="font-size:20px">{{"UserName"}}</span></strong>
+                <br>
+                <br>
                 Email: john.doe@example.com
             </address>
         </div>
     </div>
+<br>
+
     <hr>
     <div class="row">
         <div class="col-xs-12">
             <div style="width:100%;">
                 <table id="table" style="width:100%; justify-content:space-between;">
                     <tr style="width:100%; justify-content:space-between;  ">
-                        <th style="text-align: center;">All Companies</th>
-                        <th style="text-align: center;">Client Companies</th>
-                        <th style="text-align: center;">Company</th>
+                        <th style="text-align: start;font-size:16px">All Companies</th>
+                        <th style="text-align: start;font-size:16px">Client Companies</th>
+                        <th style="text-align: start;font-size:16px">Company</th>
+                        <th style="text-align: start;font-size:16px">Activation</th>
+                      
                     </tr>
 
-                    <tr style="width:100%; justify-content:space-between; text-align:center">
-                        <td>{{$all_companies_amount}} SAR</td>
-                        <td> <span>Client Name</span> {{$all_clients_amount}} SAR</td>
-                        <td> <span>Company Name</span>{{$one_company_amount}} SAR</td>
+                    <tr style="width:100%; justify-content:space-between; text-align:start">
+                    <br>
+                        <td style="font-size:16px;height:50px">{{$all_companies_amount}} <span style="font-size:12px">-SAR</span></td>
+                        <td style="font-size:16px;height:50px"> <span>Client Name</span> {{$all_clients_amount}} <span style="font-size:12px">-SAR</span></td>
+                        <td style="font-size:16px;height:50px"> <span>Company Name</span>{{$one_company_amount}}<span style="font-size:12px">-SAR</span></td>
+                        <td style="font-size:16px;height:50px"> {{"Active"}}</td>
                     </tr>
                 </table>
             </div>
