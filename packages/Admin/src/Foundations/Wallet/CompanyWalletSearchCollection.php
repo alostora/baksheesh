@@ -28,7 +28,14 @@ class CompanyWalletSearchCollection
 
         $data['clients'] = User::where('user_account_type_id', $client_type->id)->get();
 
-        $data['companies'] = Company::get();
+        $data['companies'] = Company::where(function ($q) use ($client_id) {
+
+            if ($client_id && $client_id != -1) {
+
+                $q
+                    ->where('client_id', $client_id);
+            }
+        })->get();
 
         $data['count_total'] = CompanyCash::where('amount', '>', 0)
 
@@ -50,27 +57,34 @@ class CompanyWalletSearchCollection
 
         $data['all_companies_amount'] = CompanyCash::where('amount', '>', 0)->sum('amount');
 
-        $data['all_clients_amount'] = CompanyCash::where('amount', '>', 0)
+        if ($client_id && $client_id != -1) {
 
-            ->where(function ($q) use ($client_id) {
+            $data['client_name'] = User::find($client_id)->name;
+            $data['all_client_companies_amount'] = CompanyCash::where('amount', '>', 0)
 
-                if ($client_id && $client_id != -1) {
+                ->where(function ($q) use ($client_id) {
 
-                    $q
-                        ->where('client_id', $client_id);
-                }
-            })->sum('amount');
+                    if ($client_id && $client_id != -1) {
 
-        $data['one_company_amount'] = CompanyCash::where('amount', '>', 0)
+                        $q
+                            ->where('client_id', $client_id);
+                    }
+                })->sum('amount');
+        }
 
-            ->where(function ($q) use ($company_id) {
+        if ($company_id && $company_id != -1) {
+            $data['company_name'] = Company::find($company_id)->name;
+            $data['one_company_amount'] = CompanyCash::where('amount', '>', 0)
 
-                if ($company_id && $company_id != -1) {
+                ->where(function ($q) use ($company_id) {
 
-                    $q
-                        ->where('company_id', $company_id);
-                }
-            })->sum('amount');
+                    if ($company_id && $company_id != -1) {
+
+                        $q
+                            ->where('company_id', $company_id);
+                    }
+                })->sum('amount');
+        }
 
         return $data;
     }

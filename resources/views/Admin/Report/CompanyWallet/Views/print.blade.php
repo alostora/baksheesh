@@ -1,57 +1,44 @@
-<section class="invoice" id="report">
+<section class="invoice" id="report" style="display:none">
 
     <div class="row">
-        <div >
-            <div  style="display:flex;justify-content:space-between;align-items:center">
-              <div  style="font-size:30px">
-                  <i class="fa-solid fa-t" style="font-size:40px"></i> Tipo Smart
-              </div>
-              <div>
-                  <small >Date: 2/10/2014</small>
-              </div>
+        <div>
+            <div style="display:flex;justify-content:space-between;align-items:center">
+                <div style="font-size:30px">
+                    {{config('app.name')}}
+                </div>
+                <div>
+                    <small>@lang('general.date') : {{date('Y-m-d')}}</small>
+                </div>
             </div>
         </div>
     </div>
-<br>
-<br>
 
-    <div class="row invoice-info">
+
+    <div class="row">
         <div class="col-sm-4 invoice-col">
-            Report To
+            @lang('general.to')
             <address>
-      
+                @lang('general.mr') : <span>{{auth()->user()->name}}</span>
                 <br>
-                <strong>Mr / <span style="font-size:20px">{{"UserName"}}</span></strong>
-                <br>
-                <br>
-                Email: john.doe@example.com
+                @lang('general.email') : {{auth()->user()->email}}
             </address>
         </div>
     </div>
-<br>
 
     <hr>
     <div class="row">
         <div class="col-xs-12">
-            <div style="width:100%;">
-                <table id="table" style="width:100%; justify-content:space-between;">
-                    <tr style="width:100%; justify-content:space-between;  ">
-                        <th style="text-align: start;font-size:16px">All Companies</th>
-                        <th style="text-align: start;font-size:16px">Client Companies</th>
-                        <th style="text-align: start;font-size:16px">Company</th>
-                        <th style="text-align: start;font-size:16px">Activation</th>
-                      
-                    </tr>
 
-                    <tr style="width:100%; justify-content:space-between; text-align:start">
-                    <br>
-                        <td style="font-size:16px;height:50px">{{$all_companies_amount}} <span style="font-size:12px">-SAR</span></td>
-                        <td style="font-size:16px;height:50px"> <span>Client Name</span> {{$all_clients_amount}} <span style="font-size:12px">-SAR</span></td>
-                        <td style="font-size:16px;height:50px"> <span>Company Name</span>{{$one_company_amount}}<span style="font-size:12px">-SAR</span></td>
-                        <td style="font-size:16px;height:50px"> {{"Active"}}</td>
-                    </tr>
-                </table>
-            </div>
+            <p>@lang('company_wallet.print_report_head') </p>
+            <p>@lang('company_wallet.print_report_all_companies_amount') {{$all_companies_amount}} @lang('general.sar')</p>
+            @if(isset($all_client_companies_amount))
+            <p>@lang('company_wallet.print_report_all_client_companies_amount') <strong>{{$client_name}}</strong> : <label>{{$all_client_companies_amount}} @lang('general.sar')</label></p>
+            @endif
+            @if(isset($one_company_amount))
+            <p>@lang('company_wallet.print_report_one_company_amount')<strong>{{$company_name}}</strong> : <label> {{$one_company_amount}}  @lang('general.sar')</label> </p>
+            @endif
+
         </div>
+
     </div>
 </section>

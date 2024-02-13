@@ -23,4 +23,13 @@ return [
 
     "sar" => "SAR",
 
+    "date" => "Date",
+
+
+    "to" => "To",
+
+    "mr" => "Mr/s",
+
+    "email" => "Email",
+
 ];

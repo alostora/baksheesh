@@ -50,4 +50,16 @@ return [
     "current_status" => "الحالة الحالية",
     "active" => "نشط",
     "inactive" => "غير نشط",
+
+    "print_report_all_companies_amount" => "نحيط سيادتكم علما بان اجمالي المكافات المحصلة لجميع الشركات   ",
+
+
+
+    "print_report_head" => "نحيط سيادتكم علما بان  ",
+
+    "print_report_all_companies_amount" => "اجمالي المكافات المحصلة لجميع الشركات   ",
+
+    "print_report_all_client_companies_amount" => "اجمالي المكافات المحصلة لجميع شركات العميل  ",
+
+    "print_report_one_company_amount" => "اجمالي المكافات المحصلة للشركة  ",
 ];
