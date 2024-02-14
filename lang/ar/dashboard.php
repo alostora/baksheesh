@@ -2,32 +2,34 @@
 
 return [
 
-     "app_name" => "Tipo Smart",
+    "app_name" => "Tipo Smart",
 
-     "online" => "متصل",
+    "online" => "متصل",
 
-     "logout" => "خروج",
+    "logout" => "خروج",
 
-     "dashboard" => "لوحة التحكم",
+    "dashboard" => "لوحة التحكم",
 
-     "active_clients" => "العملاء النشطون",
+    "active_clients" => "العملاء النشطون",
 
-     "active_companies" => "الشركات النشطة",
+    "active_companies" => "الشركات النشطة",
 
-     "active_employees" => "الموظفون النشطون",
+    "active_employees" => "الموظفون النشطون",
 
-     "month_income" => "اجمالي الدخل الشهري",
+    "month_income" => "اجمالي الدخل الشهري",
 
-     "year_income" => "اجمالي الدخل السنوي",
+    "year_income" => "اجمالي الدخل السنوي",
 
-     "current_amount" => "المبلغ الحالي",
+    "current_amount" => "المبلغ الحالي",
 
-     "current_status" => "الحالة الحالية",
+    "current_status" => "الحالة الحالية",
 
-     "active" => "نشط",
+    "active" => "نشط",
 
-     "inactive" => "غير نشط",
+    "inactive" => "غير نشط",
 
-     "profile" => "الملف الشخصي",
+    "profile" => "الملف الشخصي",
+
+    "quick_start" => "ابدا الان",
 
 ];

@@ -13,7 +13,7 @@
 <section class="content">
 
     <div class="row">
-        <a href="{{url('admin/quick-start-create-client')}}" class="btn bt-lg bg-green"><i class="fa fa-plus fa-lg"></i> quick start</a>
+        <a href="{{url('admin/quick-start-create-client')}}" class="btn bt-lg bg-green"><i class="fa fa-plus fa-lg"></i>@lang('dashboard.quick_start')</a>
     </div>
     <div class="row">
 

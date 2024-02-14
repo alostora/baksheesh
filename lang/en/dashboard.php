@@ -2,25 +2,26 @@
 
 return [
 
-     "app_name" => "Tips",
+    "app_name" => "Tips",
 
-     "online" => "Online",
+    "online" => "Online",
 
-     "logout" => "Logout",
+    "logout" => "Logout",
 
-     "dashboard" => "Dashboard",
+    "dashboard" => "Dashboard",
 
-     "active_clients" => "Active Clients",
+    "active_clients" => "Active Clients",
 
-     "active_companies" => "Active Companies",
+    "active_companies" => "Active Companies",
 
-     "active_employees" => "Active Employees",
+    "active_employees" => "Active Employees",
 
-     "month_income" => "Month Income",
+    "month_income" => "Month Income",
 
-     "year_income" => "Year Income",
+    "year_income" => "Year Income",
 
-     "current_amount" => "Current Amount",
+    "current_amount" => "Current Amount",
 
-     "profile" => "Profile",
+    "profile" => "Profile",
+    "quick_start" => "Quick start",
 ];
