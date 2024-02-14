@@ -2,6 +2,7 @@
 
 namespace Admin\Foundations\Wallet;
 
+use Admin\Foundations\Filter\FilterCollection;
 use App\Constants\SystemDefault;
 use App\Foundations\LookupType\AccountTypeCollection;
 use App\Models\Company;
@@ -26,34 +27,36 @@ class EmployeeWalletSearchCollection
             $date_to,
         )->paginate($per_page);
 
-        $data['clients'] = User::where('user_account_type_id', AccountTypeCollection::client()->id)->get();
+        //above table label info
+        $data['count_total'] = EmployeeWalletQueryCollection::sumEmployeeCashAmount($client_id, $company_id, $employee_id);
 
-        $data['employees'] = User::where('user_account_type_id', AccountTypeCollection::employee()->id)->get();
+        //print
+        $data['all_employees_amount'] = EmployeeWalletQueryCollection::printAllEmployeesAmount();
 
-        $data['companies'] = Company::get();
+        if ($client_id && $client_id != -1) {
 
-        $data['count_total'] = EmployeeCash::where('amount', '>', 0)
+            $clientEmployeesAmount = EmployeeWalletQueryCollection::printClientEmployeesAmount($client_id);
+            $data['client_name'] = $clientEmployeesAmount['client_name'];
+            $data['client_employees_amount'] = $clientEmployeesAmount['client_employees_amount'];
+        }
+        if ($company_id && $company_id != -1) {
 
-            ->where(function ($q) use ($client_id, $company_id, $employee_id) {
+            $oneCompanyEmployeesAmount = EmployeeWalletQueryCollection::printOneCompanyEmployeesAmount($company_id);
+            $data['company_name'] = $oneCompanyEmployeesAmount['company_name'];
+            $data['one_company_employees_amount'] = $oneCompanyEmployeesAmount['one_company_employees_amount'];
+        }
+        if ($employee_id && $employee_id != -1) {
+            $oneEmployeeAmount = EmployeeWalletQueryCollection::printOneEmployeeAmount($employee_id);
+            $data['employee_name'] = $oneEmployeeAmount['employee_name'];
+            $data['one_employee_amount'] = $oneEmployeeAmount['one_employee_amount'];
+        }
 
-                if ($client_id && $client_id != -1) {
+        //filters
+        $data['clients'] = FilterCollection::clients();
 
-                    $q
-                        ->where('client_id', $client_id);
-                }
+        $data['companies'] = FilterCollection::companies($client_id);
 
-                if ($company_id && $company_id != -1) {
-
-                    $q
-                        ->where('company_id', $company_id);
-                }
-
-                if ($employee_id && $employee_id != -1) {
-
-                    $q
-                        ->where('employee_id', $employee_id);
-                }
-            })->sum('amount');
+        $data['employees'] = FilterCollection::employees($client_id, $company_id);
 
         return $data;
     }

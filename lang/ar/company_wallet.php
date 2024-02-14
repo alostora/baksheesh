@@ -51,9 +51,6 @@ return [
     "active" => "نشط",
     "inactive" => "غير نشط",
 
-    "print_report_all_companies_amount" => "نحيط سيادتكم علما بان اجمالي المكافات المحصلة لجميع الشركات   ",
-
-
 
     "print_report_head" => "نحيط سيادتكم علما بان  ",
 

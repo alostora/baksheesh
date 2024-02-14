@@ -68,28 +68,34 @@
                         <td> {{$user->available_companies_count}} </td>
                         <td> {{$user->available_employees_count}} </td>
                         <td>
+                            <div class="btn-group">
+                                <a href="{{url('admin/client/edit/'.$user->id)}}" class="btn btn-info btn-sm">
+                                    <i class="fa fa-edit"></i>
+                                </a>
 
-                            <a href="{{url('admin/client/edit/'.$user->id)}}" class="btn btn-info btn-sm">
-                                <i class="fa fa-edit"></i>
-                            </a>
+                                <a href="{{url('admin/company/create?client_id='.$user->id)}}" class="btn bg-olive btn-sm">
+                                    <i class="fa fa-plus"></i>
+                                    <span>@lang('company.create')</span>
+                                </a>
 
-                            <a href="{{url('admin/companies/search?client_id='.$user->id)}}" class="btn  bg-purple btn-sm">
-                                <i class="fa fa-info"></i> @lang('client.companies') : ( {{$user->companies->count()}} )
-                            </a>
+                                <a href="{{url('admin/companies/search?client_id='.$user->id)}}" class="btn  bg-purple btn-sm">
+                                    <i class="fa fa-info"></i> @lang('client.companies') : ( {{$user->companies->count()}} )
+                                </a>
 
-                            <a href="{{url('admin/all-client-withdrawal-requests/search?client_id='.$user->id)}}" class="btn bg-purple btn-sm">
-                                <i class="fa fa-info"></i> @lang('client.withdrawal_requests')
-                            </a>
+                                <a href="{{url('admin/all-client-withdrawal-requests/search?client_id='.$user->id)}}" class="btn bg-purple btn-sm">
+                                    <i class="fa fa-info"></i> @lang('client.withdrawal_requests')
+                                </a>
 
-                            @if($user->stopped_at == null)
-                            <a href="{{url('admin/client-inactive/'.$user->id)}}" class="btn btn-success btn-sm">
-                                <i class="fa fa-check"></i> @lang('general.active')
-                            </a>
-                            @else
-                            <a href="{{url('admin/client-active/'.$user->id)}}" class="btn btn-danger btn-sm">
-                                <i class="fa fa-close"></i> @lang('general.inactive')
-                            </a>
-                            @endif
+                                @if($user->stopped_at == null)
+                                <a href="{{url('admin/client-inactive/'.$user->id)}}" class="btn btn-success btn-sm">
+                                    <i class="fa fa-check"></i> @lang('general.active')
+                                </a>
+                                @else
+                                <a href="{{url('admin/client-active/'.$user->id)}}" class="btn btn-danger btn-sm">
+                                    <i class="fa fa-close"></i> @lang('general.inactive')
+                                </a>
+                                @endif
+                            </div>
                         </td>
                     </tr>
                     @endforeach

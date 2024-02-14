@@ -2,7 +2,10 @@
 
 namespace Admin\Foundations\Wallet;
 
+use App\Foundations\LookupType\AccountTypeCollection;
+use App\Models\Company;
 use App\Models\CompanyCash;
+use App\Models\User;
 use Carbon\Carbon;
 
 class CompanyWalletQueryCollection
@@ -58,5 +61,70 @@ class CompanyWalletQueryCollection
                 }
             })
             ->orderBy('created_at', 'DESC');
+    }
+
+    public static function sumCompanyCashAmount($client_id = -1, $company_id = -1)
+    {
+
+        return CompanyCash::where('amount', '>', 0)
+
+            ->where(function ($q) use ($client_id, $company_id) {
+
+                if ($client_id && $client_id != -1) {
+
+                    $q
+                        ->where('client_id', $client_id);
+                }
+
+                if ($company_id && $company_id != -1) {
+
+                    $q
+                        ->where('company_id', $company_id);
+                }
+            })->sum('amount');
+    }
+
+    public static function printAllCompaniesAmount()
+    {
+
+        return CompanyCash::where('amount', '>', 0)->sum('amount');
+    }
+
+    public static function printClientCompaniesAmount($client_id)
+    {
+
+        $data['client_name'] = User::find($client_id)->name;
+
+        $data['all_client_companies_amount'] = CompanyCash::where('amount', '>', 0)
+
+            ->where(function ($q) use ($client_id) {
+
+                if ($client_id && $client_id != -1) {
+
+                    $q
+                        ->where('client_id', $client_id);
+                }
+            })->sum('amount');
+
+        return $data;
+    }
+
+    public static function printOneCompanyAmount($company_id)
+    {
+
+        $data['company_name'] = Company::find($company_id)->name;
+
+        $data['one_company_amount'] = CompanyCash::where('amount', '>', 0)
+
+            ->where(function ($q) use ($company_id) {
+
+                if ($company_id && $company_id != -1) {
+
+                    $q
+                        ->where('company_id', $company_id);
+                }
+            })->sum('amount');
+
+        return $data;
     }
 }

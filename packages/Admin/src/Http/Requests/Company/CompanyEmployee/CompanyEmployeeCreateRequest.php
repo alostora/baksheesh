@@ -2,9 +2,7 @@
 
 namespace Admin\Http\Requests\Company\CompanyEmployee;
 
-use App\Constants\HasLookupType\CountryType;
 use Illuminate\Foundation\Http\FormRequest;
-use Illuminate\Validation\Rule;
 
 class CompanyEmployeeCreateRequest extends FormRequest
 {

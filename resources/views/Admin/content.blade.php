@@ -13,6 +13,9 @@
 <section class="content">
 
     <div class="row">
+        <a href="{{url('admin/quick-start-create-client')}}" class="btn bt-lg bg-green"><i class="fa fa-plus fa-lg"></i> quick start</a>
+    </div>
+    <div class="row">
 
         <a href="{{url('admin/clients/search?active=active')}}">
 

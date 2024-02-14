@@ -26,9 +26,9 @@ return [
 
     "reports" => "التقارير",
 
-    "company_wallet_report" => "اكراميات الشركات",
+    "company_wallet_report" => "مكافئات الشركات",
 
-    "employee_wallet_report" => "اكراميات الموظفين",
+    "employee_wallet_report" => "مكافئات الموظفين",
 
     "withdrawal_requests" => "طلبات السحب",
 

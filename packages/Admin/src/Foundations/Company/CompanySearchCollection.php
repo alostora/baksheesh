@@ -2,8 +2,8 @@
 
 namespace Admin\Foundations\Company;
 
+use Admin\Foundations\Filter\FilterCollection;
 use App\Constants\SystemDefault;
-use App\Foundations\LookupType\AccountTypeCollection;
 use App\Models\Company;
 use App\Models\User;
 
@@ -25,9 +25,7 @@ class CompanySearchCollection
 
         $data['count_inactive'] = Company::where('stopped_at', '!=', null)->count();
 
-        $client_type = AccountTypeCollection::client();
-
-        $data['clients'] = User::where('user_account_type_id', $client_type->id)->get();
+        $data['clients'] = FilterCollection::clients();
 
         return $data;
     }
@@ -48,9 +46,7 @@ class CompanySearchCollection
 
         $data['count_inactive'] = Company::where('stopped_at', '!=', null)->count();
 
-        $client_type = AccountTypeCollection::client();
-
-        $data['clients'] = User::where('user_account_type_id', $client_type->id)->get();
+        $data['clients'] = FilterCollection::clients();
 
         return $data;
     }

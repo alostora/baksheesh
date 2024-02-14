@@ -51,4 +51,15 @@ return [
     "current_status" => "Current Status",
     "active" => "Active",
     "inactive" => "Inactive",
+
+
+    "print_report_head" => "We would like to inform you that the : ",
+
+    "print_report_all_employees_amount" => "Total bonuses collected for all employees amount to : ",
+
+    "print_report_client_employees_amount" => "Total bonuses collected for all client employees amount to : ",
+
+    "print_report_one_company_employees_amount" => "Total bonuses collected for the company employees amount to :",
+
+    "print_report_one_employee_amount" => "Total bonuses collected for the employee amount to :",
 ];

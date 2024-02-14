@@ -2,11 +2,8 @@
 
 namespace Admin\Foundations\Wallet;
 
+use Admin\Foundations\Filter\FilterCollection;
 use App\Constants\SystemDefault;
-use App\Foundations\LookupType\AccountTypeCollection;
-use App\Models\Company;
-use App\Models\CompanyCash;
-use App\Models\User;
 
 class CompanyWalletSearchCollection
 {
@@ -24,67 +21,28 @@ class CompanyWalletSearchCollection
             $date_to,
         )->paginate($per_page);
 
-        $client_type = AccountTypeCollection::client();
+        //above table label info
+        $data['count_total'] = CompanyWalletQueryCollection::sumCompanyCashAmount($client_id, $company_id);
 
-        $data['clients'] = User::where('user_account_type_id', $client_type->id)->get();
-
-        $data['companies'] = Company::where(function ($q) use ($client_id) {
-
-            if ($client_id && $client_id != -1) {
-
-                $q
-                    ->where('client_id', $client_id);
-            }
-        })->get();
-
-        $data['count_total'] = CompanyCash::where('amount', '>', 0)
-
-            ->where(function ($q) use ($client_id, $company_id) {
-
-                if ($client_id && $client_id != -1) {
-
-                    $q
-                        ->where('client_id', $client_id);
-                }
-
-                if ($company_id && $company_id != -1) {
-
-                    $q
-                        ->where('company_id', $company_id);
-                }
-            })->sum('amount');
-
-
-        $data['all_companies_amount'] = CompanyCash::where('amount', '>', 0)->sum('amount');
+        //print
+        $data['all_companies_amount'] = CompanyWalletQueryCollection::printAllCompaniesAmount();
 
         if ($client_id && $client_id != -1) {
-
-            $data['client_name'] = User::find($client_id)->name;
-            $data['all_client_companies_amount'] = CompanyCash::where('amount', '>', 0)
-
-                ->where(function ($q) use ($client_id) {
-
-                    if ($client_id && $client_id != -1) {
-
-                        $q
-                            ->where('client_id', $client_id);
-                    }
-                })->sum('amount');
+            $clientCompaniesAmount = CompanyWalletQueryCollection::printClientCompaniesAmount($client_id);
+            $data['client_name'] = $clientCompaniesAmount['client_name'];
+            $data['all_client_companies_amount'] =  $clientCompaniesAmount['all_client_companies_amount'];
         }
 
         if ($company_id && $company_id != -1) {
-            $data['company_name'] = Company::find($company_id)->name;
-            $data['one_company_amount'] = CompanyCash::where('amount', '>', 0)
-
-                ->where(function ($q) use ($company_id) {
-
-                    if ($company_id && $company_id != -1) {
-
-                        $q
-                            ->where('company_id', $company_id);
-                    }
-                })->sum('amount');
+            $oneCompanyAmount = CompanyWalletQueryCollection::printOneCompanyAmount($company_id);
+            $data['company_name'] = $oneCompanyAmount['company_name'];
+            $data['one_company_amount'] = $oneCompanyAmount['one_company_amount'];
         }
+
+        //filters
+        $data['clients'] = FilterCollection::clients();
+
+        $data['companies'] = FilterCollection::companies($client_id);
 
         return $data;
     }

@@ -65,4 +65,20 @@ class WithdrawalReportQueryCollection
         })
             ->orderBy('created_at', 'DESC');
     }
+
+    public static function countWithdrawalRequestByStatus($status_id = -1, $client_id = -1)
+    {
+        return ClientWithdrawalRequest::where(function ($q) use ($status_id, $client_id) {
+
+            if ($client_id && $client_id != -1) {
+                $q
+                    ->where('client_id', $client_id);
+            }
+
+            if ($status_id && $status_id != -1) {
+                $q
+                    ->where('status', $status_id);
+            }
+        })->count();
+    }
 }

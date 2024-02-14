@@ -6,8 +6,9 @@
                 <div class="box-header with-border">
                     <h3 class="box-title col-md-8">@lang('company.create')</h3>
                 </div>
-                <form role="form" action="{{url('admin/company')}}" method="POST" enctype="multipart/form-data">
+                <form role="form" action="{{url('admin/quick-start-create-company')}}" method="POST" enctype="multipart/form-data">
                     @csrf
+                    <input type="hidden" name="client_id" value="{{$client->id}}">
                     <div class="box-body">
 
                         <div class="row">
@@ -17,33 +18,17 @@
                             </div>
 
                             <div class="col-md-6">
+                                <label for="name">@lang('company.name')</label>
+                                <input required type="text" class="form-control" name="name" id="name" placeholder="@lang('company.name')">
+                            </div>
+                        </div>
+
+                        <div class="row">
+
+                            <div class="col-md-6">
                                 <label for="company_field">@lang('company.company_field')</label>
                                 <input type="text" class="form-control" name="company_field" id="company_field" placeholder="@lang('company.company_field')" required>
                             </div>
-                        </div>
-
-                        <div class="row">
-                            <div class="form-group">
-                                <div class="col-md-6">
-                                    <label for="client_id">@lang('company.client')</label>
-                                    <select class="form-control select2" name="client_id" id="client_id" onchange="clientCompanyAvailableRating(this.value)" required>
-                                        <option value="">@lang('company.client')</option>
-                                        @foreach ($clients as $client)
-                                        <?php
-                                        $selected = request()->get('client_id') && request()->get('client_id') ==  $client->id ? 'selected' : '';
-                                        ?>
-                                        <option value="{{$client->id}}" {{$selected}}>{{$client->name}}</option>
-                                        @endforeach
-                                    </select>
-                                </div>
-                                <div class="col-md-6">
-                                    <label for="name">@lang('company.name')</label>
-                                    <input required type="text" class="form-control" name="name" id="name" placeholder="@lang('company.name')">
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="row">
                             <div class="form-group" id="available_rating">
                                 <div class="col-md-6">
                                     <label for="available_rating_ids">@lang('company.available_rating')</label>
@@ -102,4 +87,9 @@
             });
         } else {}
     }
+
+    $(function() {
+
+        clientCompanyAvailableRating("{{$client->id}}")
+    });
 </script>

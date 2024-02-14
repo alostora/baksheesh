@@ -2,7 +2,10 @@
 
 namespace Admin\Foundations\Wallet;
 
+use App\Foundations\LookupType\AccountTypeCollection;
+use App\Models\Company;
 use App\Models\EmployeeCash;
+use App\Models\User;
 use Carbon\Carbon;
 
 class EmployeeWalletQueryCollection
@@ -64,5 +67,95 @@ class EmployeeWalletQueryCollection
             }
         })
             ->orderBy('created_at', 'DESC');
+    }
+
+    public static function sumEmployeeCashAmount($client_id = -1, $company_id = -1, $employee_id = -1)
+    {
+
+        return EmployeeCash::where('amount', '>', 0)
+
+            ->where(function ($q) use ($client_id, $company_id, $employee_id) {
+
+                if ($client_id && $client_id != -1) {
+
+                    $q
+                        ->where('client_id', $client_id);
+                }
+
+                if ($company_id && $company_id != -1) {
+
+                    $q
+                        ->where('company_id', $company_id);
+                }
+
+                if ($employee_id && $employee_id != -1) {
+
+                    $q
+                        ->where('employee_id', $employee_id);
+                }
+            })->sum('amount');
+    }
+
+    public static function printAllEmployeesAmount()
+    {
+
+        return EmployeeCash::where('amount', '>', 0)->sum('amount');
+    }
+
+    public static function printClientEmployeesAmount($client_id)
+    {
+
+        $data['client_name'] = User::find($client_id)->name;
+
+        $data['client_employees_amount'] = EmployeeCash::where('amount', '>', 0)
+
+            ->where(function ($q) use ($client_id) {
+
+                if ($client_id && $client_id != -1) {
+
+                    $q
+                        ->where('client_id', $client_id);
+                }
+            })->sum('amount');
+
+        return $data;
+    }
+
+    public static function printOneCompanyEmployeesAmount($company_id)
+    {
+
+        $data['company_name'] = Company::find($company_id)->name;
+
+        $data['one_company_employees_amount'] = EmployeeCash::where('amount', '>', 0)
+
+            ->where(function ($q) use ($company_id) {
+
+                if ($company_id && $company_id != -1) {
+
+                    $q
+                        ->where('company_id', $company_id);
+                }
+            })->sum('amount');
+
+        return $data;
+    }
+
+    public static function printOneEmployeeAmount($employee_id)
+    {
+
+        $data['employee_name'] = User::find($employee_id)->name;
+
+        $data['one_employee_amount'] = EmployeeCash::where('amount', '>', 0)
+
+            ->where(function ($q) use ($employee_id) {
+
+                if ($employee_id && $employee_id != -1) {
+
+                    $q
+                        ->where('employee_id', $employee_id);
+                }
+            })->sum('amount');
+
+        return $data;
     }
 }

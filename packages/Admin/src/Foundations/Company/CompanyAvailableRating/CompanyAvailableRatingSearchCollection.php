@@ -2,6 +2,7 @@
 
 namespace Admin\Foundations\Company\CompanyAvailableRating;
 
+use Admin\Foundations\Filter\FilterCollection;
 use App\Constants\SystemDefault;
 use App\Foundations\LookupType\AccountTypeCollection;
 use App\Models\Company;
@@ -23,11 +24,7 @@ class CompanyAvailableRatingSearchCollection
             $archived,
         )->paginate($per_page);
 
-        $data['clients'] = User::where('user_account_type_id', AccountTypeCollection::client()->id)
-
-            ->where('stopped_at', null)
-
-            ->get();
+        $data['clients'] = FilterCollection::clients();
 
         $data['count_active'] =  CompanyAvailableRating::where(function ($q) use ($client_id) {
 

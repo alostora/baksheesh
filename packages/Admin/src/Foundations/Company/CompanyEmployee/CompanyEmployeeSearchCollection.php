@@ -2,6 +2,7 @@
 
 namespace Admin\Foundations\Company\CompanyEmployee;
 
+use Admin\Foundations\Filter\FilterCollection;
 use App\Constants\SystemDefault;
 use App\Foundations\LookupType\AccountTypeCollection;
 use App\Models\Company;
@@ -23,11 +24,9 @@ class CompanyEmployeeSearchCollection
             $archived,
         )->paginate($per_page);
 
-        $data['clients'] = User::where('user_account_type_id', AccountTypeCollection::client()->id)
-            ->where('stopped_at', null)
-            ->get();
+        $data['clients'] = FilterCollection::clients();
 
-        $data['companies'] = Company::where('stopped_at', null)->get();
+        $data['companies'] = FilterCollection::companies();
 
         $data['count_active'] =  User::where('user_account_type_id', AccountTypeCollection::employee()->id)
 

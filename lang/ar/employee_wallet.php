@@ -51,4 +51,15 @@ return [
     "current_status" => "الحالة الحالية",
     "active" => "نشط",
     "inactive" => "غير نشط",
+
+
+    "print_report_head" => "نحيط سيادتكم علما بان",
+
+    "print_report_all_employees_amount" => "اجمالي المكافات المحصلة لجميع الموظفين",
+
+    "print_report_client_employees_amount" => "اجمالي المكافات المحصلة لجميع موظفين العميل",
+
+    "print_report_one_company_employees_amount" => "اجمالي المكافات المحصلة لجميع موظفين الشركة",
+
+    "print_report_one_employee_amount" => "اجمالي المكافات المحصلة للموظف",
 ];
