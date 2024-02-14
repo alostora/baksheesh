@@ -124,7 +124,6 @@
 
         mywindow.document.write('<html><head>');
         mywindow.document.write('</head><body dir="rtl">');
-        mywindow.document.write('<h1>' + 'test report print' + '</h1>');
         mywindow.document.write(document.getElementById('report').innerHTML);
         mywindow.document.write('</body></html>');
 

@@ -6,7 +6,7 @@
             <!-- general form elements -->
             <div class="box box-primary">
                 <div class="box-header with-border">
-                    <h3 class="box-title col-md-8">@lang('company_available_rating.create')</h3>
+                    <h3 class="box-title col-md-8">@lang('employee_available_rating.create')</h3>
                 </div>
                 <!-- /.box-header -->
                 <!-- form start -->
@@ -14,6 +14,14 @@
                     @csrf
                     <input type="hidden" name="client_id" value="{{$client->id}}">
                     <div class="box-body">
+
+                        <div class="row">
+                            <div class="col-md-12">
+                                <a href="#" class="btn btn-sm btn-success" onclick="appendRating(this)">
+                                    <i class="fa fa-plus"></i>
+                                </a>
+                            </div>
+                        </div>
 
                         <div class="row">
                             <div class="form-group">
@@ -27,18 +35,8 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="row">
-                            <div class="form-group">
-                                <div class="col-md-6">
-                                    <label for="name">@lang('company_available_rating.name')</label>
-                                    <input type="text" class="form-control" name="ratings[1][name]" id="name">
-                                </div>
-                                <div class="col-md-6">
-                                    <label for="name_ar">@lang('company_available_rating.name_ar')</label>
-                                    <input type="text" class="form-control" name="ratings[1][name_ar]" id="name_ar">
-                                </div>
-                            </div>
-                        </div>
+
+                        <div id="rating"></div>
 
                     </div>
                     <div class="box-footer">
@@ -51,6 +49,39 @@
 </section>
 
 
-<script>
 
+<script>
+    var countr = 1;
+
+    function appendRating(e) {
+
+        $('#rating').append(
+            '<div class="row" id="' + countr + '">' +
+
+            '<div class="col-md-12">' +
+            '<a href="#" class="btn btn-sm btn-danger" onclick="removeRating(this)" value="' + countr + '">' +
+            '<i class="fa fa-close"></i>' +
+            '</a>' +
+            '</div>' +
+
+            '<div class="col-md-6">' +
+            '<label for="name">@lang("company_available_rating.name")</label>' +
+            '<input type="text" class="form-control" name="ratings[' + countr + '][name]" id="name" required>' +
+            '</div>' +
+
+            '<div class="col-md-6">' +
+            '<label for="name_ar">@lang("company_available_rating.name_ar")</label>' +
+            '<input type="text" class="form-control" name="ratings[' + countr + '][name_ar]" id="name_ar" required>' +
+            '</div>' +
+
+            '</div>'
+        );
+
+        countr++;
+    }
+
+    function removeRating(e) {
+
+        e.parentNode.parentNode.remove()
+    }
 </script>

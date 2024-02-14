@@ -1,7 +1,6 @@
 <form role="form" action="{{url('admin/company-wallets')}}" method="GET">
 
     <div class="row">
-
         <div class="col-sm-4 col-md-4">
             <div class="form-group">
                 <input type="text" class="form-control" name="query_string" value="{{Request('query_string')}}" placeholder="{{Lang::get('filter.query_string')}}">
@@ -9,7 +8,7 @@
         </div>
         <div class="col-sm-4 col-md-4">
             <div class="form-group">
-                <select class="form-control" name="client_id">
+                <select class="form-control" name="client_id" onchange="getCompenies(this.value)">
                     <option value="">@lang('filter.clients')</option>
                     @foreach($clients as $client)
                     <?php $selected = Request('client_id') == $client->id ? "selected" : ""; ?>
@@ -49,3 +48,6 @@
         </div>
     </div>
 </form>
+
+
+@include('Admin/TableFilter/filter_scripts')

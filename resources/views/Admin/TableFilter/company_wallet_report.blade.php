@@ -9,7 +9,7 @@
         </div>
         <div class="col-sm-4 col-md-4">
             <div class="form-group">
-                <select class="form-control" name="client_id">
+                <select class="form-control" name="client_id" onchange="getCompenies(this.value)">
                     <option value="">@lang('filter.clients')</option>
                     @foreach($clients as $client)
                     <?php $selected = Request('client_id') == $client->id ? "selected" : ""; ?>
@@ -49,3 +49,6 @@
         </div>
     </div>
 </form>
+
+
+@include('Admin/TableFilter/filter_scripts')

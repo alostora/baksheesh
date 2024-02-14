@@ -27,7 +27,9 @@ class UserQueryCollection
             if ($query_string && $query_string != -1) {
 
                 $q
-                    ->where('name', 'like', '%' . $query_string . '%');
+                    ->where('name', 'like', '%' . $query_string . '%')
+
+                    ->orWhere('email', 'like', '%' . $query_string . '%');
             }
 
             if ($active == 'active') {

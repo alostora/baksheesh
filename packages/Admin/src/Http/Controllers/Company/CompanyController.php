@@ -47,14 +47,14 @@ class CompanyController extends Controller
 
     public function clientCompanies(User $user, Request $request)
     {
-        $companies = CompanySearchCollection::searchClientCompanies(
+        $data = CompanySearchCollection::searchClientCompanies(
             $user,
             -1,
             -1,
             $request->get('per_page') ? $request->get('per_page') : SystemDefault::DEFAUL_PAGINATION_COUNT
         );
 
-        return response()->paginated(CompanyMinifiedResource::collection($companies));
+        return response()->paginated(CompanyMinifiedResource::collection($data['companies']));
     }
 
     public function searchClientCompanies(User $user, Request $request)

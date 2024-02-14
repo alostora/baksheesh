@@ -4,7 +4,7 @@
 
         @include('Admin.Report.Client.Views.print')
         <!-- filter -->
-        @include('Admin/TableFilter/client')
+        @include('Admin/TableFilter/client_report')
 
         <div class="box-header">
             <h3 class="box-title col-md-8">@lang('client.page_title')</h3>
@@ -14,11 +14,11 @@
                 <span>@lang('client.create')</span>
             </a>
 
-
+            {{--
             <button class="btn bg-navy margin" style="height:25px;padding:2px;width:70px;" onclick="PrintElem()">
                 <i class="fa fa-print"></i>
             </button>
-
+--}}
         </div>
         <div class="box box-success">
             <div class="box-body">
@@ -98,9 +98,8 @@
 
         var mywindow = window.open(" ", "PRINT");
 
-        mywindow.document.write('<html><head><title>' + "test report print" + '</title>');
+        mywindow.document.write('<html><head>');
         mywindow.document.write('</head><body >');
-        mywindow.document.write('<h1>' + 'test report print' + '</h1>');
         mywindow.document.write(document.getElementById('report').innerHTML);
         mywindow.document.write('</body></html>');
 

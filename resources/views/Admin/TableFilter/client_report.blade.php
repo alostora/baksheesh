@@ -1,4 +1,4 @@
-<form role="form" action="{{url('admin/clients/search')}}" method="GET">
+<form role="form" action="{{url('admin/inactive-client-report')}}" method="GET">
     <div class="row">
         <div class="col-sm-6 col-md-6">
             <div class="form-group">
@@ -22,5 +22,3 @@
         </div>
     </div>
 </form>
-
-

@@ -191,8 +191,7 @@ class User extends Authenticatable implements MustVerifyEmail
             ->first();
 
         return $this->hasMany(ClientWithdrawalRequest::class, 'client_id', 'id')
-            ->where('status', $accpted_withdrawalRequest->id)
-            ->where('stopped_at', null);
+            ->where('status', $accpted_withdrawalRequest->id);
     }
 
     //for select inside client create employee
@@ -208,10 +207,6 @@ class User extends Authenticatable implements MustVerifyEmail
         return $this->hasMany(RatingForGuest::class, 'employee_id', 'id')
             ->where('stopped_at', null);
     }
-
-
-
-
 
     public function employeeGoodRating(): HasMany
     {

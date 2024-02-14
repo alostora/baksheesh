@@ -10,9 +10,7 @@ use Admin\Foundations\Company\CompanyEmployee\CompanyEmployeeUpdateApiCollection
 use Admin\Foundations\Company\CompanyEmployee\CompanyEmployeeUpdateCollection;
 use Admin\Http\Requests\Company\CompanyEmployee\AssignCompanyEmployeeCreateRequest;
 use Admin\Http\Requests\Company\CompanyEmployee\CompanyEmployeeCreateApiRequest;
-use Admin\Http\Requests\Company\CompanyEmployee\CompanyEmployeeCreateRequest;
 use Admin\Http\Requests\Company\CompanyEmployee\CompanyEmployeeUpdateApiRequest;
-use Admin\Http\Requests\Company\CompanyEmployee\CompanyEmployeeUpdateRequest;
 use Admin\Http\Resources\Company\CompanyEmployee\CompanyEmployeeMinifiedResource;
 use Admin\Http\Resources\Company\CompanyEmployee\CompanyEmployeeResource;
 use App\Constants\StatusCode;
@@ -39,13 +37,14 @@ class CompanyEmployeeController extends Controller
     public function search(Request $request)
     {
         $companies = CompanyEmployeeSearchCollection::searchCompanyEmployees(
+            $request->get('client_id') ? $request->get('client_id') : -1,
             $request->get('company_id') ? $request->get('company_id') : -1,
             $request->get('query_string') ? $request->get('query_string') : -1,
             $request->get('active') ? $request->get('active') : -1,
             $request->get('per_page') ? $request->get('per_page') : SystemDefault::DEFAUL_PAGINATION_COUNT
         );
 
-        return response()->paginated(CompanyEmployeeMinifiedResource::collection($companies));
+        return response()->paginated(CompanyEmployeeMinifiedResource::collection($companies['employees']));
     }
 
     public function show(User $user)

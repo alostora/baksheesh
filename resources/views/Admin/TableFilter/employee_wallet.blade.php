@@ -22,20 +22,7 @@
 
         <div class="col-sm-4 col-md-4">
             <div class="form-group">
-                <select class="form-control" name="employee_id" id="employee_id">
-                    <option value="">@lang('filter.employees')</option>
-                    @foreach ($employees as $employee)
-                    <?php $selected = Request('employee_id') == $employee->id ? 'selected' : ''; ?>
-                    <option value="{{ $employee->id }}" {{ $selected }}>
-                        {{ $employee->name }}
-                    </option>
-                    @endforeach
-                </select>
-            </div>
-        </div>
-        <div class="col-sm-4 col-md-4">
-            <div class="form-group">
-                <select class="form-control" name="client_id">
+                <select class="form-control" name="client_id" onchange="getCompenies(this.value)">
                     <option value="">@lang('filter.clients')</option>
                     @foreach($clients as $client)
                     <?php $selected = Request('client_id') == $client->id ? "selected" : ""; ?>
@@ -45,12 +32,26 @@
             </div>
         </div>
         <div class="col-sm-4 col-md-4">
-            <div class="input-group">
-                <select class="form-control" name="company_id" id="company_id">
+            <div class="form-group">
+                <select class="form-control" name="company_id" id="company_id" onchange="getCompenyEmployees(this.value)">
                     <option value="">@lang('filter.companies')</option>
                     @foreach($companies as $company)
                     <?php $selected = Request('company_id') == $company->id ? "selected" : ""; ?>
                     <option value="{{$company->id}}" {{$selected}}>{{$company->name}}</option>
+                    @endforeach
+                </select>
+            </div>
+        </div>
+
+        <div class="col-sm-4 col-md-4">
+            <div class="input-group">
+                <select class="form-control" name="employee_id" id="employee_id">
+                    <option value="">@lang('filter.employees')</option>
+                    @foreach ($employees as $employee)
+                    <?php $selected = Request('employee_id') == $employee->id ? 'selected' : ''; ?>
+                    <option value="{{ $employee->id }}" {{ $selected }}>
+                        {{ $employee->name }}
+                    </option>
                     @endforeach
                 </select>
                 <span class="input-group-btn">
@@ -62,3 +63,5 @@
         </div>
     </div>
 </form>
+
+@include('Admin/TableFilter/filter_scripts')
