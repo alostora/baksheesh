@@ -30,18 +30,19 @@
         <div class="col-xs-12">
 
             <p>@lang('employee_wallet.print_report_head') </p>
-            <p>@lang('employee_wallet.print_report_all_employees_amount') {{$all_employees_amount}} @lang('general.sar')</p>
+            <br>
+            <p  style="display:flex;justify-content: space-between;">@lang('employee_wallet.print_report_all_employees_amount')<span> {{$all_employees_amount}} @lang('general.sar')</span></p>
 
             @if(isset($client_employees_amount))
-            <p>@lang('employee_wallet.print_report_client_employees_amount') <strong> {{$client_name}} </strong> : <label>{{$client_employees_amount}} @lang('general.sar')</label></p>
+            <p  style="display:flex;justify-content: space-between;">@lang('employee_wallet.print_report_client_employees_amount') <strong> {{$client_name}} </strong> : <label>{{$client_employees_amount}} @lang('general.sar')</label></p>
             @endif
 
             @if(isset($one_company_employees_amount))
-            <p>@lang('employee_wallet.print_report_one_company_employees_amount')<strong> {{$company_name}} </strong> : <label> {{$one_company_employees_amount}} @lang('general.sar')</label></p>
+            <p  style="display:flex;justify-content: space-between;">@lang('employee_wallet.print_report_one_company_employees_amount')<strong> {{$company_name}} </strong> : <label> {{$one_company_employees_amount}} @lang('general.sar')</label></p>
             @endif
 
             @if(isset($one_employee_amount))
-            <p>@lang('employee_wallet.print_report_one_employee_amount')<strong> {{$employee_name}} </strong> : <label> {{$one_employee_amount}} @lang('general.sar')</label></p>
+            <p  style="display:flex;justify-content: space-between;">@lang('employee_wallet.print_report_one_employee_amount')<strong> {{$employee_name}} </strong> : <label> {{$one_employee_amount}} @lang('general.sar')</label></p>
             @endif
 
         </div>

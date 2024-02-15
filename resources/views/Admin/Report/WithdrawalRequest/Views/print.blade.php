@@ -29,38 +29,55 @@
     <div class="row">
         <div class="col-xs-12">
 
-            <p>@lang('withdrawal_request.print_report_head') </p>
-
-            <p>@lang('withdrawal_request.print_count_all') {{$count_all}} @lang('general.sar')</p>
-            <p>@lang('withdrawal_request.print_count_pending') {{$count_pending}} @lang('general.sar')</p>
-            <p>@lang('withdrawal_request.print_count_accepted') {{$count_accepted}} @lang('general.sar')</p>
-            <p>@lang('withdrawal_request.print_count_refused') {{$count_refused}} @lang('general.sar')</p>
-            <p>@lang('withdrawal_request.print_count_unexecutable') {{$count_unexecutable}} @lang('general.sar')</p>
-
-            <p>@lang('withdrawal_request.print_sum_all') {{$sum_all}} @lang('general.sar')</p>
-            <p>@lang('withdrawal_request.print_sum_pending') {{$sum_pending}} @lang('general.sar')</p>
-            <p>@lang('withdrawal_request.print_sum_accepted') {{$sum_accepted}} @lang('general.sar')</p>
-            <p>@lang('withdrawal_request.print_sum_refused') {{$sum_refused}} @lang('general.sar')</p>
-            <p>@lang('withdrawal_request.print_sum_unexecutable') {{$sum_unexecutable}} @lang('general.sar')</p>
+            <p style="display:flex;justify-content: space-between;">@lang('withdrawal_request.print_report_head') </p>
+<br>
+            <p style="display:flex;justify-content: space-between;" >@lang('withdrawal_request.print_count_all') <span class="report_value">{{$count_all}} @lang('general.sar')</span></p>
+            <hr>
+            <p style="display:flex;justify-content: space-between;">@lang('withdrawal_request.print_count_pending') <span class="report_value">{{$count_pending}} @lang('general.sar')</span></p>
+            <hr>
+            <p style="display:flex;justify-content: space-between;">@lang('withdrawal_request.print_count_accepted') <span class="report_value">{{$count_accepted}} @lang('general.sar')</span></p>
+            <hr>
+            <p style="display:flex;justify-content: space-between;">@lang('withdrawal_request.print_count_refused') <span class="report_value">{{$count_refused}} @lang('general.sar')</span></p>
+            <hr>
+            <p style="display:flex;justify-content: space-between;">@lang('withdrawal_request.print_count_unexecutable') <span class="report_value">{{$count_unexecutable}} @lang('general.sar')</span></p>
+            <hr>
+            <p style="display:flex;justify-content: space-between;">@lang('withdrawal_request.print_sum_all') <span class="report_value">{{$sum_all}} @lang('general.sar')</span></p>
+            <hr>
+            <p style="display:flex;justify-content: space-between;">@lang('withdrawal_request.print_sum_pending') <span class="report_value">{{$sum_pending}} @lang('general.sar')</span></p>
+            <hr>
+            <p style="display:flex;justify-content: space-between;">@lang('withdrawal_request.print_sum_accepted') <span class="report_value">{{$sum_accepted}} @lang('general.sar')</span></p>
+            <hr>
+            <p style="display:flex;justify-content: space-between;">@lang('withdrawal_request.print_sum_refused') <span class="report_value">{{$sum_refused}} @lang('general.sar')</span></p>
+            <hr>      
+            <p style="display:flex;justify-content: space-between;">@lang('withdrawal_request.print_sum_unexecutable') <span class="report_value">{{$sum_unexecutable}} @lang('general.sar')</span></p>
 
             @if(isset($client_name))
 
-            <p>@lang('withdrawal_request.client') : <strong> {{$client_name}} </strong> </p>
+            <p style="display:flex;justify-content: space-between;">@lang('withdrawal_request.client') : <strong> {{$client_name}} </strong> </p>
 
             <br>
-            <p>@lang('withdrawal_request.print_client_count_all') {{$client_count_all}} @lang('general.sar')</p>
-            <p>@lang('withdrawal_request.print_client_count_pending') {{$client_count_pending}} @lang('general.sar')</p>
-            <p>@lang('withdrawal_request.print_client_count_accepted') {{$client_count_accepted}} @lang('general.sar')</p>
-            <p>@lang('withdrawal_request.print_client_count_refused') {{$client_count_refused}} @lang('general.sar')</p>
-            <p>@lang('withdrawal_request.print_client_count_unexecutable') {{$client_count_unexecutable}} @lang('general.sar')</p>
+            <p style="display:flex;justify-content: space-between;">@lang('withdrawal_request.print_client_count_all') <span class="report_value">{{$client_count_all}} @lang('general.sar')</span></p>
+            <hr>
+            <p style="display:flex;justify-content: space-between;">@lang('withdrawal_request.print_client_count_pending') <span class="report_value">{{$client_count_pending}} @lang('general.sar')</span></p>
+              <hr>
+            <p style="display:flex;justify-content: space-between;">@lang('withdrawal_request.print_client_count_accepted') <span class="report_value">{{$client_count_accepted}} @lang('general.sar')</span></p>
+            <hr>
+            <p style="display:flex;justify-content: space-between;">@lang('withdrawal_request.print_client_count_refused') <span class="report_value">{{$client_count_refused}} @lang('general.sar')</span></p>
+            <hr>
+            <p style="display:flex;justify-content: space-between;">@lang('withdrawal_request.print_client_count_unexecutable') <span class="report_value">{{$client_count_unexecutable}} @lang('general.sar')</span></p>
 
             <br>
 
-            <p>@lang('withdrawal_request.print_client_sum_all') {{$client_sum_all}} @lang('general.sar')</p>
-            <p>@lang('withdrawal_request.print_client_sum_pending') {{$client_sum_pending}} @lang('general.sar')</p>
-            <p>@lang('withdrawal_request.print_client_sum_accepted') {{$client_sum_accepted}} @lang('general.sar')</p>
-            <p>@lang('withdrawal_request.print_client_sum_refused') {{$client_sum_refused}} @lang('general.sar')</p>
-            <p>@lang('withdrawal_request.print_client_sum_unexecutable') {{$client_sum_unexecutable}} @lang('general.sar')</p>
+          
+            <p style="display:flex;justify-content: space-between;">@lang('withdrawal_request.print_client_sum_all') <span class="report_value">{{$client_sum_all}} @lang('general.sar')</span></p>
+            <hr>
+            <p style="display:flex;justify-content: space-between;">@lang('withdrawal_request.print_client_sum_pending') <span class="report_value">{{$client_sum_pending}} @lang('general.sar')</span></p>
+            <hr>
+            <p style="display:flex;justify-content: space-between;">@lang('withdrawal_request.print_client_sum_accepted') <span class="report_value">{{$client_sum_accepted}} @lang('general.sar')</span></p>
+            <hr>
+            <p style="display:flex;justify-content: space-between;">@lang('withdrawal_request.print_client_sum_refused') <span class="report_value">{{$client_sum_refused}} @lang('general.sar')</span></p>
+            <hr>
+            <p style="display:flex;justify-content: space-between;">@lang('withdrawal_request.print_client_sum_unexecutable') <span class="report_value">{{$client_sum_unexecutable}} @lang('general.sar')</span></p>
 
             @endif
 

@@ -317,7 +317,11 @@ header {
 
 
 @media print {
-
+  .report_value{text-align: end;}
+  .paragraph{
+    display:flex;
+    justify-content: space-between;
+  }
   .report {
       background: #fff;
   };

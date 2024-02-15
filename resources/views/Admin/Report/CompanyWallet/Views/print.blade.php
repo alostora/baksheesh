@@ -30,12 +30,13 @@
         <div class="col-xs-12">
 
             <p>@lang('company_wallet.print_report_head') </p>
-            <p>@lang('company_wallet.print_report_all_companies_amount') {{$all_companies_amount}} @lang('general.sar')</p>
+            <br>
+            <p style="display:flex;justify-content: space-between;" >@lang('company_wallet.print_report_all_companies_amount') <span>{{$all_companies_amount}} @lang('general.sar')</span></p>
             @if(isset($all_client_companies_amount))
-            <p>@lang('company_wallet.print_report_all_client_companies_amount') <strong>{{$client_name}}</strong> : <label>{{$all_client_companies_amount}} @lang('general.sar')</label></p>
+            <p style="display:flex;justify-content: space-between;" >@lang('company_wallet.print_report_all_client_companies_amount')<span> <strong>{{$client_name}}</strong></span> : <label><span>{{$all_client_companies_amount}} @lang('general.sar')</span></label></p>
             @endif
             @if(isset($one_company_amount))
-            <p>@lang('company_wallet.print_report_one_company_amount')<strong>{{$company_name}}</strong> : <label> {{$one_company_amount}}  @lang('general.sar')</label> </p>
+            <p style="display:flex;justify-content: space-between;" >@lang('company_wallet.print_report_one_company_amount')<span><strong>{{$company_name}}</strong> </span>: <label> <span>{{$one_company_amount}}  @lang('general.sar')</span></label> </p>
             @endif
 
         </div>
