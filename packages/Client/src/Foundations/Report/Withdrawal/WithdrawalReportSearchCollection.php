@@ -2,6 +2,8 @@
 
 namespace Client\Foundations\Report\Withdrawal;
 
+use Admin\Foundations\Report\Withdrawal\WithdrawalReportPrintQueryCollection;
+use Admin\Foundations\Report\Withdrawal\WithdrawalReportQueryCollection as AdminWithdrawalReportQueryCollection;
 use App\Constants\SystemDefault;
 use App\Foundations\LookupType\WithdrawalRequestStatusCollection;
 use App\Models\ClientWithdrawalRequest;
@@ -37,6 +39,35 @@ class WithdrawalReportSearchCollection
         $data['count_unexecutable'] = ClientWithdrawalRequest::where('client_id', auth()->id())->where('status', WithdrawalRequestStatusCollection::unexecutable()->id)->count();
 
         $data['withdrawal_request_status'] = WithdrawalRequestStatusCollection::statusList();
+
+
+
+        $data['client_name'] = auth()->user()->name;
+
+        $data['client_count_all'] = AdminWithdrawalReportQueryCollection::countWithdrawalRequestByStatus(-1, auth()->id());
+
+        $data['client_count_pending'] = AdminWithdrawalReportQueryCollection::countWithdrawalRequestByStatus(WithdrawalRequestStatusCollection::pending()->id, auth()->id());
+
+        $data['client_count_accepted'] = AdminWithdrawalReportQueryCollection::countWithdrawalRequestByStatus(WithdrawalRequestStatusCollection::accepted()->id, auth()->id());
+
+        $data['client_count_refused'] = AdminWithdrawalReportQueryCollection::countWithdrawalRequestByStatus(WithdrawalRequestStatusCollection::refused()->id, auth()->id());
+
+        $data['client_count_implemented'] = AdminWithdrawalReportQueryCollection::countWithdrawalRequestByStatus(WithdrawalRequestStatusCollection::implemented()->id, auth()->id());
+
+        $data['client_count_unexecutable'] = AdminWithdrawalReportQueryCollection::countWithdrawalRequestByStatus(WithdrawalRequestStatusCollection::unexecutable()->id, auth()->id());
+
+
+        $data['client_sum_all'] = WithdrawalReportPrintQueryCollection::sumWithdrawalRequestByStatus(-1, auth()->id());
+
+        $data['client_sum_pending'] = WithdrawalReportPrintQueryCollection::sumWithdrawalRequestByStatus(WithdrawalRequestStatusCollection::pending()->id, auth()->id());
+
+        $data['client_sum_accepted'] = WithdrawalReportPrintQueryCollection::sumWithdrawalRequestByStatus(WithdrawalRequestStatusCollection::accepted()->id, auth()->id());
+
+        $data['client_sum_refused'] = WithdrawalReportPrintQueryCollection::sumWithdrawalRequestByStatus(WithdrawalRequestStatusCollection::refused()->id, auth()->id());
+
+        $data['client_sum_implemented'] = WithdrawalReportPrintQueryCollection::sumWithdrawalRequestByStatus(WithdrawalRequestStatusCollection::implemented()->id, auth()->id());
+
+        $data['client_sum_unexecutable'] = WithdrawalReportPrintQueryCollection::sumWithdrawalRequestByStatus(WithdrawalRequestStatusCollection::unexecutable()->id, auth()->id());
 
         return $data;
     }

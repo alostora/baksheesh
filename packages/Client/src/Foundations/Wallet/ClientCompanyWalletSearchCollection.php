@@ -4,7 +4,6 @@ namespace Client\Foundations\Wallet;
 
 use App\Constants\SystemDefault;
 use App\Models\Company;
-use App\Models\CompanyCash;
 
 class ClientCompanyWalletSearchCollection
 {
@@ -22,19 +21,17 @@ class ClientCompanyWalletSearchCollection
 
         $data['companies'] = Company::where('client_id', auth()->id())->where('stopped_at', null)->get();
 
+        //above table label info
+        $data['count_total'] = ClientCompanyWalletQueryCollection::sumCompanyCashAmount($company_id);
 
-        $data['count_total'] = CompanyCash::where('client_id', auth()->id())
+        //print
+        $data['all_companies_amount'] = ClientCompanyWalletQueryCollection::printAllCompaniesAmount();
 
-            ->where('amount', '>', 0)
-
-            ->where(function ($q) use ($company_id) {
-
-                if ($company_id && $company_id != -1) {
-
-                    $q
-                        ->where('company_id', $company_id);
-                }
-            })->sum('amount');
+        if ($company_id && $company_id != -1) {
+            $oneCompanyAmount = ClientCompanyWalletQueryCollection::printOneCompanyAmount($company_id);
+            $data['company_name'] = $oneCompanyAmount['company_name'];
+            $data['one_company_amount'] = $oneCompanyAmount['one_company_amount'];
+        }
 
         return $data;
     }

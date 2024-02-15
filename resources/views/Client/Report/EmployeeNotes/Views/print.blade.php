@@ -1,25 +1,25 @@
-<section class="invoice" id="report">
+<section class="invoice" id="report" style="display: none;">
 
     <div class="row">
-        <div >
-            <div  style="display:flex;justify-content:space-between;align-items:center">
-              <div  style="font-size:30px">
-                  <i class="fa-solid fa-t" style="font-size:40px"></i> Tipo Smart
-              </div>
-              <div>
-                  <small >Date: 2/10/2014</small>
-              </div>
+        <div>
+            <div style="display:flex;justify-content:space-between;align-items:center">
+                <div style="font-size:30px">
+                    <i class="fa-solid fa-t" style="font-size:40px"></i> Tipo Smart
+                </div>
+                <div>
+                    <small>Date: 2/10/2014</small>
+                </div>
             </div>
         </div>
     </div>
-<br>
-<br>
+    <br>
+    <br>
 
     <div class="row invoice-info">
         <div class="col-sm-4 invoice-col">
             Report To
             <address>
-      
+
                 <br>
                 <strong>Mr / <span style="font-size:20px">{{"UserName"}}</span></strong>
                 <br>
@@ -28,7 +28,7 @@
             </address>
         </div>
     </div>
-<br>
+    <br>
 
     <hr>
     <div class="row">
@@ -40,11 +40,11 @@
                         <th style="text-align: start;font-size:16px">Client</th>
                         <th style="text-align: start;font-size:16px">Notes</th>
                         <th style="text-align: start;font-size:16px">Created At</th>
-                      
+
                     </tr>
 
                     <tr style="width:100%; justify-content:space-between; text-align:start">
-                    <br>
+                        <br>
                         <td style="font-size:16px;height:50px">{{"Notes Owner name"}} </td>
                         <td style="font-size:16px;height:50px"> {{"Client Name"}} </td>
                         <td style="font-size:16px;height:50px"> {{"Notes"}}</td>

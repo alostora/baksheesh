@@ -1,7 +1,7 @@
 <section class="content">
 
     <div class="box box-info">
-    @include('Client.Report.WithdrawalRequest.Views.print')
+        @include('Client.Report.WithdrawalRequest.Views.print')
 
         @include('Client/TableFilter/withdrawal_request_report')
 
@@ -10,11 +10,11 @@
             <h3 class="box-title col-md-8">@lang('withdrawal_request.page_title')</h3>
             <div class="col-md-4">
 
-<button class="btn bg-navy margin" style="height:25px;padding:2px;width:70px;" onclick="PrintElem()">
-    <i class="fa fa-print"></i>
-</button>
+                <button class="btn bg-navy margin" style="height:25px;padding:2px;width:70px;" onclick="PrintElem()">
+                    <i class="fa fa-print"></i>
+                </button>
 
-</div>
+            </div>
         </div>
 
         <div class="box">
@@ -127,14 +127,12 @@
     </div>
 </section>
 <script>
-  
-
     function PrintElem() {
 
         var mywindow = window.open(" ", "PRINT");
 
-        mywindow.document.write('<html><head><title>' + "test report print" + '</title>');
-        mywindow.document.write('</head><body >');
+        mywindow.document.write('<html><head>');
+        mywindow.document.write('</head><body dir="rtl">');
         mywindow.document.write(document.getElementById('report').innerHTML);
         mywindow.document.write('</body></html>');
 

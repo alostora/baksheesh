@@ -14,4 +14,22 @@ class EmployeeAvailableRatingCreateCollection
 
         return EmployeeAvailableRating::create($validated);
     }
+
+
+    public static function createEmployeeAvailableRatingMultiable($request)
+    {
+        $validated = $request->validated();
+
+        foreach ($validated['ratings'] as $rating) {
+
+            EmployeeAvailableRating::create([
+
+                'client_id' => auth()->id(),
+
+                'name' => $rating['name'],
+
+                'name_ar' => $rating['name_ar'],
+            ]);
+        }
+    }
 }

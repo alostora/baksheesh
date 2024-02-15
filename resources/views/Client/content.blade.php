@@ -10,6 +10,14 @@
     </div>
 </section>
 <section class="content">
+
+
+    <div class="row">
+        <div class="col-sm-12">
+            <a href="{{url('client/quick-start-create-company-available-rating')}}" class="btn bt-lg bg-green"><i class="fa fa-plus fa-lg"></i>@lang('dashboard.quick_start')</a>
+        </div>
+    </div>
+
     <div class="row">
 
         <a href="{{url('client/client-companies/search?active=active')}}">

@@ -2,6 +2,8 @@
 
 namespace Client\Foundations\Wallet;
 
+use Admin\Foundations\Filter\FilterCollection;
+use Admin\Foundations\Wallet\EmployeeWalletQueryCollection;
 use App\Constants\SystemDefault;
 use App\Foundations\LookupType\AccountTypeCollection;
 use App\Models\Company;
@@ -24,28 +26,30 @@ class ClientEmployeeWalletSearchCollection
             $date_to,
         )->paginate($per_page);
 
-        $data['employees'] = User::where('user_account_type_id', AccountTypeCollection::employee()->id)->get();
+        //above table label info
+        $data['count_total'] = ClientEmployeeWalletQueryCollection::sumEmployeeCashAmount($company_id, $employee_id);
 
-        $data['companies'] = Company::get();
+        //print
+        $data['all_employees_amount'] = ClientEmployeeWalletQueryCollection::printAllEmployeesAmount();
 
-        $data['count_total'] = EmployeeCash::where('client_id', auth()->id())
 
-            ->where('amount', '>', 0)
+        if ($company_id && $company_id != -1) {
 
-            ->where(function ($q) use ($company_id, $employee_id) {
+            $oneCompanyEmployeesAmount = EmployeeWalletQueryCollection::printOneCompanyEmployeesAmount($company_id);
+            $data['company_name'] = $oneCompanyEmployeesAmount['company_name'];
+            $data['one_company_employees_amount'] = $oneCompanyEmployeesAmount['one_company_employees_amount'];
+        }
+        if ($employee_id && $employee_id != -1) {
+            $oneEmployeeAmount = EmployeeWalletQueryCollection::printOneEmployeeAmount($employee_id);
+            $data['employee_name'] = $oneEmployeeAmount['employee_name'];
+            $data['one_employee_amount'] = $oneEmployeeAmount['one_employee_amount'];
+        }
 
-                if ($company_id && $company_id != -1) {
+        //filters
 
-                    $q
-                        ->where('company_id', $company_id);
-                }
+        $data['companies'] = FilterCollection::companies(auth()->id());
 
-                if ($employee_id && $employee_id != -1) {
-
-                    $q
-                        ->where('employee_id', $employee_id);
-                }
-            })->sum('amount');
+        $data['employees'] = FilterCollection::employees(auth()->id());
 
         return $data;
     }

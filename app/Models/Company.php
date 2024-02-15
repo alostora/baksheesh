@@ -110,17 +110,3 @@ class Company extends Model
         return ceil($total_good_percent);
     }
 }
-
-
-/*
-    (all good / total rated from guest) * 100
-
-    (12  / 20) * 100 = 60%   means 3 stars
-
-    0 to 20 0ne star
-    21 to 40 two stars
-    31 to 50 two stars
-
-    if devided by zero its means 100%
-
-*/

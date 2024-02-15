@@ -7,10 +7,10 @@
         <div class="box-header">
             <h3 class="box-title col-md-8">@lang('employee_notes.page_title')</h3>
             <div class="col-md-4">
-
+<!--
 <button class="btn bg-navy margin" style="height:25px;padding:2px;width:70px;" onclick="PrintElem()">
     <i class="fa fa-print"></i>
-</button>
+</button> -->
 
 </div>
         </div>
@@ -49,7 +49,7 @@
     </div>
 </section>
 <script>
-  
+
 
     function PrintElem() {
 

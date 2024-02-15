@@ -2,19 +2,19 @@
 
 
     <div class="box box-info">
-    @include('Client.Report.CompanyWallet.Views.print')
+        @include('Client.Report.CompanyWallet.Views.print')
 
-        @include('Client/TableFilter/company_wallet')
+        @include('Client/TableFilter/company_wallet_report')
 
         <div class="box-header">
             <h3 class="box-title col-md-8">@lang('company_wallet.page_title')</h3>
             <div class="col-md-4">
 
-<button class="btn bg-navy margin" style="height:25px;padding:2px;width:70px;" onclick="PrintElem()">
-    <i class="fa fa-print"></i>
-</button>
+                <button class="btn bg-navy margin" style="height:25px;padding:2px;width:70px;" onclick="PrintElem()">
+                    <i class="fa fa-print"></i>
+                </button>
 
-</div>
+            </div>
         </div>
 
         <div class="box">
@@ -49,7 +49,7 @@
                         <td> {{$key+1}} </td>
                         <td> {{$wallet->client ? $wallet->client->name : ''}} </td>
                         <td> {{$wallet->company ? $wallet->company->name : ''}} </td>
-                        <td> {{$wallet->amount}}  @lang('general.sar')</td>
+                        <td> {{$wallet->amount}} @lang('general.sar')</td>
                         <td> {{$wallet->created_at}} </td>
                     </tr>
                     @endforeach
@@ -67,48 +67,15 @@
     </div>
 </section>
 
-
 <script>
-    function getCompanies(client_id) {
-
-        $.ajax({
-
-            url: '{{url("admin/companies/all?client_id=")}}' + client_id,
-            type: 'GET',
-            data: {},
-            dataType: 'json',
-            success: function(response) {
-
-                let result = response.data;
-
-                $("#company_id").html(`<option value=''>@lang('filter.select')</option>`)
-
-                for (let i = 0; i < result.length; i++) {
-
-                    $("#company_id").append(`<option value='${result[i].id}'>${result[i].name}</option>`);
-                    console.log(result[i]);
-
-
-                }
-            },
-            error: function(request, error) {
-                console.log("Request: " + JSON.stringify(request));
-            }
-        });
-    }
-    
     function PrintElem() {
 
-var mywindow = window.open(" ", "PRINT");
+        var mywindow = window.open(" ", "PRINT");
+        mywindow.document.write('<html><head>');
+        mywindow.document.write('</head><body dir="rtl">');
+        mywindow.document.write(document.getElementById('report').innerHTML);
+        mywindow.document.write('</body></html>');
 
-mywindow.document.write('<html><head><title>' + "test report print" + '</title>');
-mywindow.document.write('</head><body >');
-mywindow.document.write(document.getElementById('report').innerHTML);
-mywindow.document.write('</body></html>');
-
-// mywindow.focus(); // necessary for IE >= 10*/
-
-
-mywindow.print();
-}
+        mywindow.print();
+    }
 </script>

@@ -88,7 +88,7 @@ class User extends Authenticatable implements MustVerifyEmail
 
     protected $appends = [
         'employee_qr',
-        'company_total_rating',
+        'employee_total_rating',
     ];
 
     public function getEmployeeQrAttribute()

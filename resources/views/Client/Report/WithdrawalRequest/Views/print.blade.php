@@ -1,75 +1,53 @@
-<section class="invoice" id="report">
+<section class="invoice" id="report" style="display:none">
 
     <div class="row">
-        <div >
-            <div  style="display:flex;justify-content:space-between;align-items:center">
-              <div  style="font-size:30px">
-                  <i class="fa-solid fa-t" style="font-size:40px"></i> Tipo Smart
-              </div>
-              <div>
-                  <small >Date: 2/10/2014</small>
-              </div>
+        <div>
+            <div style="display:flex;justify-content:space-between;align-items:center">
+                <div style="font-size:30px">
+                    {{config('app.name')}}
+                </div>
+                <div>
+                    <small>@lang('general.date') : {{date('Y-m-d')}}</small>
+                </div>
             </div>
         </div>
     </div>
-<br>
-<br>
 
-    <div class="row invoice-info">
+    <div class="row">
         <div class="col-sm-4 invoice-col">
-            Report To
+            @lang('general.to')
             <address>
-      
+                @lang('general.mr') : <span>{{auth()->user()->name}}</span>
                 <br>
-                <strong>Mr / <span style="font-size:20px">{{"UserName"}}</span></strong>
-                <br>
-                <br>
-                Email: john.doe@example.com
+                @lang('general.email') : {{auth()->user()->email}}
             </address>
         </div>
     </div>
-<br>
 
     <hr>
+
     <div class="row">
         <div class="col-xs-12">
-            <div style="width:100%;">
-                <table id="table" style="width:100%; justify-content:space-between;column-gap:20px">
-                    <tr style="width:100%; justify-content:space-between;  ">
-                    <th style="text-align: start;font-size:15px">Referance Code</th>
 
-                        <th style="text-align: start;font-size:15px">Amount</th>
-                        <th style="text-align: start;font-size:15px">Request Status</th>
+            <p>@lang('withdrawal_request.print_report_head') </p>
 
-                        <th style="text-align: start;font-size:15px">Created At</th>                        
-                        <th style="text-align: start;font-size:15px">Action At</th>
-                        <th style="text-align: start;font-size:15px"> Bank Transfer</th>
-                      
-                    </tr>
+            <p>@lang('withdrawal_request.client') : <strong> {{$client_name}} </strong> </p>
 
-                    <tr style="width:100%; justify-content:space-between; text-align:start">
-                    <br>
-                    <td style="font-size:15px;height:50px"> {{"123sdssf655"}}</td>
+            <br>
+            <p>@lang('withdrawal_request.print_client_count_all') {{$client_count_all}} @lang('general.sar')</p>
+            <p>@lang('withdrawal_request.print_client_count_pending') {{$client_count_pending}} @lang('general.sar')</p>
+            <p>@lang('withdrawal_request.print_client_count_accepted') {{$client_count_accepted}} @lang('general.sar')</p>
+            <p>@lang('withdrawal_request.print_client_count_refused') {{$client_count_refused}} @lang('general.sar')</p>
+            <p>@lang('withdrawal_request.print_client_count_unexecutable') {{$client_count_unexecutable}} @lang('general.sar')</p>
 
-                        <td style="font-size:15px;height:50px">{{"5000"}}<span style="font-size:12px">-SAR</span></td>
-                        <td style="font-size:15px;height:50px">{{"Accepted"}}</td>
-                        
-                        <td style="font-size:15px;height:50px">{{"2/10/2014"}}</td>
-                        <td style="font-size:15px;height:50px"> {{"2/10/2014"}}</td>
-                        <td style="font-size:15px;height:50px"> {{"a5345k56sa"}}</td>
-                    </tr>
-                </table>
-            </div>
-        </div>
-        <br>
-        <hr>
-        <br>
-        <div>
-          <bold style="font-size:15px;height:50px">Admin Notes : </bold>
-          <br>
-      
-          <br>
-          <bold style="font-size:15px;height:50px">{{"notes from admin here"}} </bold>
+            <br>
+
+            <p>@lang('withdrawal_request.print_client_sum_all') {{$client_sum_all}} @lang('general.sar')</p>
+            <p>@lang('withdrawal_request.print_client_sum_pending') {{$client_sum_pending}} @lang('general.sar')</p>
+            <p>@lang('withdrawal_request.print_client_sum_accepted') {{$client_sum_accepted}} @lang('general.sar')</p>
+            <p>@lang('withdrawal_request.print_client_sum_refused') {{$client_sum_refused}} @lang('general.sar')</p>
+            <p>@lang('withdrawal_request.print_client_sum_unexecutable') {{$client_sum_unexecutable}} @lang('general.sar')</p>
+
         </div>
     </div>
 </section>

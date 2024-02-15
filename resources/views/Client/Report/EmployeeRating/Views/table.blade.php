@@ -92,14 +92,14 @@
 
 </section>
 <script>
-  
+
 
     function PrintElem() {
 
         var mywindow = window.open(" ", "PRINT");
 
-        mywindow.document.write('<html><head><title>' + "test report print" + '</title>');
-        mywindow.document.write('</head><body >');
+        mywindow.document.write('<html><head>');
+        mywindow.document.write('</head><body dir="rtl">');
         mywindow.document.write(document.getElementById('report').innerHTML);
         mywindow.document.write('</body></html>');
 

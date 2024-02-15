@@ -1,4 +1,4 @@
-<section class="invoice" id="report">
+<section class="invoice" id="report" style="display: none;">
 
     <div class="row">
         <div >
@@ -19,7 +19,7 @@
         <div class="col-sm-4 invoice-col">
             Report To
             <address>
-      
+
                 <br>
                 <strong>Mr / <span style="font-size:20px">{{"UserName"}}</span></strong>
                 <br>
@@ -40,7 +40,7 @@
                         <th style="text-align: start;font-size:16px">Client</th>
                         <th style="text-align: start;font-size:16px">Notes</th>
                         <th style="text-align: start;font-size:16px">Created At</th>
-                      
+
                     </tr>
 
                     <tr style="width:100%; justify-content:space-between; text-align:start">

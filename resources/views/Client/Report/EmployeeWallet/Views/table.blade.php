@@ -2,7 +2,7 @@
     <div class="box box-info">
     @include('Client.Report.EmployeeWallet.Views.print')
 
-        @include('Client/TableFilter/employee_wallet')
+        @include('Client/TableFilter/employee_wallet_report')
         <div class="box-header">
             <h3 class="box-title col-md-8">@lang('employee_wallet.page_title')</h3>
             <div class="col-md-4">
@@ -89,8 +89,8 @@
             }
         });
     }
-  
-  
+
+
 
     function PrintElem() {
 

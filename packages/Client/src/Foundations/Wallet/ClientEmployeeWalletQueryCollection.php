@@ -63,4 +63,37 @@ class ClientEmployeeWalletQueryCollection
             })
             ->orderBy('created_at', 'DESC');
     }
+
+    public static function sumEmployeeCashAmount($company_id = -1, $employee_id = -1)
+    {
+
+        return EmployeeCash::where('client_id', auth()->id())
+
+            ->where('amount', '>', 0)
+
+            ->where(function ($q) use ($company_id, $employee_id) {
+
+                if ($company_id && $company_id != -1) {
+
+                    $q
+                        ->where('company_id', $company_id);
+                }
+
+                if ($employee_id && $employee_id != -1) {
+
+                    $q
+                        ->where('employee_id', $employee_id);
+                }
+            })->sum('amount');
+    }
+
+
+    public static function printAllEmployeesAmount()
+    {
+        return EmployeeCash::where('client_id', auth()->id())
+
+            ->where('amount', '>', 0)
+
+            ->sum('amount');
+    }
 }
