@@ -25,6 +25,11 @@ class DashboardClientController extends Controller
     //CompanyAvailableRating
     public function quickStartViewCreateCompanyAvailableRating()
     {
+        if (auth()->user()->companyAvailableRatings->count() > 0) {
+
+            return redirect(url('client/quick-start-create-employee-available-rating'));
+        }
+
         return view('Client/QueckStart/CompanyAvailableRating/create');
     }
 
@@ -32,13 +37,17 @@ class DashboardClientController extends Controller
     {
         CompanyAvailableRatingCreateCollection::createCompanyAvailableRatingMultiable($request);
 
-        return redirect(url('client/quick-start-create-employee-available-rating/'));
+        return redirect(url('client/quick-start-create-employee-available-rating'));
     }
     //CompanyAvailableRating
 
     //EmployeeAvailableRating
     public function quickStartViewCreateEmployeeAvailableRating()
     {
+        if (auth()->user()->employeeAvailableRatings->count() > 0) {
+
+            return redirect(url('client/quick-start-create-company'));
+        }
         return view('Client/QueckStart/EmployeeAvailableRating/create');
     }
 
