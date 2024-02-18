@@ -34,9 +34,12 @@
             <p>@lang('withdrawal_request.client') : <strong> {{auth()->user()->name}} </strong> </p>
 
             <br>
-            <p>@lang('general.total') : {{$total_good_count + $total_bad_count}}</p>
-            <p> @lang('employee_rating.total_good_count') : {{$total_good_count}}</p>
-            <p>@lang('employee_rating.total_bad_count') : {{$total_bad_count}}</p>
+            <p style="display:flex;justify-content: space-between;" >@lang('general.total') : <span>{{$total_good_count + $total_bad_count}}</span></p>
+            <hr>
+            <p style="display:flex;justify-content: space-between;" > @lang('employee_rating.total_good_count') : <span>{{$total_good_count}}</span></p>
+            <hr>
+            <p style="display:flex;justify-content: space-between;" >@lang('employee_rating.total_bad_count') : <span>{{$total_bad_count}}</span></p>
+            <hr>
 
         </div>
     </div>

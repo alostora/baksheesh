@@ -29,18 +29,18 @@
     <div class="row">
         <div class="col-xs-12">
 
-            <p>@lang('employee_wallet.print_report_head') </p>
-
-            <p>@lang('employee_wallet.print_report_all_employees_amount') {{$all_employees_amount}} @lang('general.sar')</p>
+            <p style="display:flex;justify-content: space-between;" >@lang('employee_wallet.print_report_head') </p>
+<br>
+            <p style="display:flex;justify-content: space-between;" >@lang('employee_wallet.print_report_all_employees_amount') {{$all_employees_amount}} @lang('general.sar')</p>
 
             @if(isset($one_company_employees_amount))
-            <p>@lang('employee_wallet.print_report_one_company_employees_amount')<strong> {{$company_name}} </strong> : <label> {{$one_company_employees_amount}} @lang('general.sar')</label></p>
+            <p style="display:flex;justify-content: space-between;" >@lang('employee_wallet.print_report_one_company_employees_amount')<strong> {{$company_name}} </strong> : <label> {{$one_company_employees_amount}} @lang('general.sar')</label></p>
             @endif
 
             @if(isset($one_employee_amount))
-            <p>@lang('employee_wallet.print_report_one_employee_amount')<strong> {{$employee_name}} </strong> : <label> {{$one_employee_amount}} @lang('general.sar')</label></p>
+            <p style="display:flex;justify-content: space-between;" >@lang('employee_wallet.print_report_one_employee_amount')<strong> {{$employee_name}} </strong> : <label> {{$one_employee_amount}} @lang('general.sar')</label></p>
             @endif
-
+<hr>
         </div>
     </div>
 </section>
