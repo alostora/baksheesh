@@ -52,7 +52,7 @@ class ClientCompanyEmployeeCreateRequest extends FormRequest
             //     Rule::exists('countries', 'id')->where('type', CountryType::GOVERNORATE['code'])
             // ],
 
-            'file_id' => ['nullable', 'uuid', 'exists:files,id'],
+            'file' => ['required', 'file'],
         ];
     }
 }
