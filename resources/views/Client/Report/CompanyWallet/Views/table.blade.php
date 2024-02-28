@@ -4,9 +4,10 @@
     <div class="box box-info">
         @include('Client.Report.CompanyWallet.Views.print')
 
-        @include('Client/TableFilter/company_wallet_report')
-
-        <div class="box-header">
+        <div class="no-print">
+            @include('Client/TableFilter/company_wallet_report')
+        </div>
+        <div class="box-header no-print">
             <h3 class="box-title col-md-8">@lang('company_wallet.page_title')</h3>
             <div class="col-md-4">
 
@@ -18,7 +19,7 @@
         </div>
 
         <div class="box">
-            <div class="box-body">
+            <div class="box-body no-print">
                 <div class="col-sm-4 col-md-2">
                     <div class="color-palette-set">
                         <div class="bg-blue disabled color-palette">
@@ -35,11 +36,11 @@
             <table id="example2" class="table table-bordered table-striped">
                 <thead>
                     <tr>
-                        <th>#</th>
-                        <th>@lang('company_wallet.client')</th>
-                        <th>@lang('company_wallet.company')</th>
-                        <th>@lang('company_wallet.amount')</th>
-                        <th>@lang('company_wallet.created_at')</th>
+                        <th style="background-color: #1fbdd9 !important;">#</th>
+                        <th style="background-color: #1fbdd9 !important;">@lang('company_wallet.client')</th>
+                        <th style="background-color: #1fbdd9 !important;">@lang('company_wallet.company')</th>
+                        <th style="background-color: #1fbdd9 !important;">@lang('company_wallet.amount')</th>
+                        <th style="background-color: #1fbdd9 !important;">@lang('company_wallet.created_at')</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -67,15 +68,4 @@
     </div>
 </section>
 
-<script>
-    function PrintElem() {
 
-        var mywindow = window.open(" ", "PRINT");
-        mywindow.document.write('<html><head>');
-        mywindow.document.write('</head><body dir="rtl">');
-        mywindow.document.write(document.getElementById('report').innerHTML);
-        mywindow.document.write('</body></html>');
-
-        mywindow.print();
-    }
-</script>

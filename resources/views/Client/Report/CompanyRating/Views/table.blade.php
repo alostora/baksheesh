@@ -2,9 +2,11 @@
 
     <div class="box box-info">
         @include('Client.Report.CompanyRating.Views.print')
-        @include('Client/TableFilter/company_rating_report')
+        <div class="no-print">
+            @include('Client/TableFilter/company_rating_report')
+        </div>
 
-        <div class="box-header">
+        <div class="box-header no-print">
             <h3 class="box-title col-md-8">@lang('company_rating.page_title')</h3>
             <div class="col-md-4">
 
@@ -16,7 +18,7 @@
         </div>
 
         <div class="box">
-            <div class="box-body">
+            <div class="box-body no-print">
                 <div class="col-sm-4 col-md-2">
                     <div class="color-palette-set">
                         <div class="bg-blue disabled color-palette">
@@ -51,13 +53,13 @@
             <table id="example2" class="table table-bordered table-striped">
                 <thead>
                     <tr>
-                        <th>#</th>
-                        <th>@lang('company_rating.client')</th>
-                        <th>@lang('company_rating.company')</th>
-                        <th>@lang('company_rating.available_rating')</th>
-                        <th>@lang('company_rating.rating_value')</th>
-                        <th>@lang('company_rating.payer_name')</th>
-                        <th>@lang('company_rating.created_at')</th>
+                        <th style="background-color: #1fbdd9 !important;">#</th>
+                        <th style="background-color: #1fbdd9 !important;">@lang('company_rating.client')</th>
+                        <th style="background-color: #1fbdd9 !important;">@lang('company_rating.company')</th>
+                        <th style="background-color: #1fbdd9 !important;">@lang('company_rating.available_rating')</th>
+                        <th style="background-color: #1fbdd9 !important;">@lang('company_rating.rating_value')</th>
+                        <th style="background-color: #1fbdd9 !important;">@lang('company_rating.payer_name')</th>
+                        <th style="background-color: #1fbdd9 !important;">@lang('company_rating.created_at')</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -88,17 +90,3 @@
     </div>
 
 </section>
-<script>
-    function PrintElem() {
-
-        var mywindow = window.open(" ", "PRINT");
-
-        mywindow.document.write('<html><head>');
-        mywindow.document.write('</head><body dir="rtl">');
-        mywindow.document.write(document.getElementById('report').innerHTML);
-        mywindow.document.write('</body></html>');
-        // mywindow.focus(); // necessary for IE >= 10*/
-
-        mywindow.print();
-    }
-</script>
