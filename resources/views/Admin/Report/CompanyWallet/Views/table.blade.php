@@ -3,7 +3,7 @@
     <div class="box box-info">
         <!-- filter -->
         @include('Admin.Report.CompanyWallet.Views.print')
-        <div class=" no-print">
+        <div class="no-print">
             @include('Admin/TableFilter/company_wallet_report')
         </div>
         <div class="box-header no-print">
@@ -33,11 +33,11 @@
             <table id="example2" class="table table-bordered table-striped">
                 <thead>
                     <tr>
-                        <th>#</th>
-                        <th>@lang('company_wallet.client')</th>
-                        <th>@lang('company_wallet.company')</th>
-                        <th>@lang('company_wallet.amount')</th>
-                        <th>@lang('company_wallet.created_at')</th>
+                        <th style="background-color: #1fbdd9 !important;">#</th>
+                        <th style="background-color: #1fbdd9 !important;">@lang('company_wallet.client')</th>
+                        <th style="background-color: #1fbdd9 !important;">@lang('company_wallet.company')</th>
+                        <th style="background-color: #1fbdd9 !important;">@lang('company_wallet.amount')</th>
+                        <th style="background-color: #1fbdd9 !important;">@lang('company_wallet.created_at')</th>
                     </tr>
                 </thead>
                 <tbody>

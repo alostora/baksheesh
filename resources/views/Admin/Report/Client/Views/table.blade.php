@@ -4,9 +4,9 @@
 
         @include('Admin.Report.Client.Views.print')
         <!-- filter -->
-        @include('Admin/TableFilter/client_report')
+        <div class="no-print">@include('Admin/TableFilter/client_report')</div>
 
-        <div class="box-header">
+        <div class="box-header no-print">
             <h3 class="box-title col-md-8">@lang('client.page_title')</h3>
 
             <a href="{{url('admin/client/create')}}" class="btn bg-purple margin" style="height:25px;padding:2px;width:150px;">
@@ -20,7 +20,7 @@
             </button>
 --}}
         </div>
-        <div class="box box-success">
+        <div class="box box-success no-print">
             <div class="box-body">
                 <div class="col-sm-4 col-md-2">
                     <div class="color-palette-set">
@@ -56,14 +56,14 @@
             <table id="example2" class="table table-bordered table-striped">
                 <thead>
                     <tr>
-                        <th>#</th>
-                        <th>@lang('client.name')</th>
-                        <th>@lang('client.companies')</th>
-                        <th>@lang('client.employees')</th>
-                        <th>@lang('client.created_at')</th>
-                        <th>@lang('client.stopped_at')</th>
-                        <th>@lang('client.collected_cash')</th>
-                        <th>@lang('client.delivered_cash')</th>
+                        <th style="background-color: #1fbdd9 !important;">#</th>
+                        <th style="background-color: #1fbdd9 !important;">@lang('client.name')</th>
+                        <th style="background-color: #1fbdd9 !important;">@lang('client.companies')</th>
+                        <th style="background-color: #1fbdd9 !important;">@lang('client.employees')</th>
+                        <th style="background-color: #1fbdd9 !important;">@lang('client.created_at')</th>
+                        <th style="background-color: #1fbdd9 !important;">@lang('client.stopped_at')</th>
+                        <th style="background-color: #1fbdd9 !important;">@lang('client.collected_cash')</th>
+                        <th style="background-color: #1fbdd9 !important;">@lang('client.delivered_cash')</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -92,20 +92,3 @@
     </div>
 </section>
 
-
-<script>
-    function PrintElem() {
-
-        var mywindow = window.open(" ", "PRINT");
-
-        mywindow.document.write('<html><head>');
-        mywindow.document.write('</head><body >');
-        mywindow.document.write(document.getElementById('report').innerHTML);
-        mywindow.document.write('</body></html>');
-
-        // mywindow.focus(); // necessary for IE >= 10*/
-
-
-        mywindow.print();
-    }
-</script>

@@ -1,50 +1,46 @@
-<section class="invoice" id="report" style="display:none">
-
+<section class="invoice" id="report">
+    <div class="row" style="text-align: left; padding:10px;">
+        <span class="logo-mini"><img  src="{{url('AdminDesign')}}/logo_tipo.png" style="width:100px"></span>
+    </div>
     <div class="row">
-        <div>
-            <div style="display:flex;justify-content:space-between;align-items:center">
-                <div style="font-size:30px">
-                    {{config('app.name')}}
-                </div>
-                <div>
-                    <small>@lang('general.date') : {{date('Y-m-d')}}</small>
-                </div>
+        <div style="display:flex;justify-content:space-between;align-items:center;background-color:#f7ef31 !important">
+            <div
+                style="font-size:30px;font-weight:800; color:#1fbdd9 !important; background-color:white !important;margin-right: 100px;padding:5px">
+                {{ config('app.name') }}
             </div>
+            {{-- <div>
+                <small style="padding:5px">@lang('general.date') : {{ date('Y-m-d') }}</small>
+            </div> --}}
         </div>
     </div>
 
+
+
+    <div class="row" style="justify-content:center; text-align:center;margin-top:20px">
+        <address class="col-xs-6 col-sm-6 col-md-6 col-lg-6"
+            style="padding:10px;font-weight:800; font-size:16px; justify-content:center; text-align:center ;align-item:center">
+            <strong style="padding:10px;font-weight:800; font-size:16px;">@lang('company.name') :
+                {{ isset($company_name) ? $company_name : '' }}</strong>
+        </address>
+
+        <address class="col-xs-6 col-sm-6 col-md-6 col-lg-6"
+            style="padding:10px;font-weight:800; font-size:16px; justify-content:center; text-align:center ;align-item:center">
+            <strong style="padding:10px;font-weight:800; font-size:16px;">@lang('company.client') :
+                {{ isset($client_name) ? $client_name : '' }}</strong>
+        </address>
+        <address class="row"
+            style="  font-weight:800; font-size:16px;  justify-content:center; text-align:center ;align-item:center">
+            <strong>@lang('general.date') @lang('general.from') : {{ Request('date_from') }}
+                @lang('general.to') :{{ Request('date_to') }} </strong>
+        </address>
+    </div>
 
     <div class="row">
-        <div class="col-sm-4 invoice-col">
-            @lang('general.to')
-            <address>
-                @lang('general.mr') : <span>{{auth()->user()->name}}</span>
-                <br>
-                @lang('general.email') : {{auth()->user()->email}}
-            </address>
-        </div>
+        <address>
+            <strong  style="font-weight:800; font-size:18px; background-color:#f7ef31 !important; padding:10px">
+                @lang('general.total') :
+                {{ isset($one_company_amount) ? $one_company_amount : '' }} @lang('general.sar')</strong>
+        </address>
     </div>
 
-    <hr>
-    <div class="row">
-        <div class="col-xs-12">
-
-            <p>@lang('employee_wallet.print_report_head') </p>
-            <br>
-            <p  style="display:flex;justify-content: space-between;">@lang('employee_wallet.print_report_all_employees_amount')<span> {{$all_employees_amount}} @lang('general.sar')</span></p>
-
-            @if(isset($client_employees_amount))
-            <p  style="display:flex;justify-content: space-between;">@lang('employee_wallet.print_report_client_employees_amount') <strong> {{$client_name}} </strong> : <label>{{$client_employees_amount}} @lang('general.sar')</label></p>
-            @endif
-
-            @if(isset($one_company_employees_amount))
-            <p  style="display:flex;justify-content: space-between;">@lang('employee_wallet.print_report_one_company_employees_amount')<strong> {{$company_name}} </strong> : <label> {{$one_company_employees_amount}} @lang('general.sar')</label></p>
-            @endif
-
-            @if(isset($one_employee_amount))
-            <p  style="display:flex;justify-content: space-between;">@lang('employee_wallet.print_report_one_employee_amount')<strong> {{$employee_name}} </strong> : <label> {{$one_employee_amount}} @lang('general.sar')</label></p>
-            @endif
-
-        </div>
-    </div>
 </section>

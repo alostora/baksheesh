@@ -2,8 +2,8 @@
     <div class="box box-info">
         <!-- filter -->
         @include('Admin.Report.EmployeeWallet.Views.print')
-        @include('Admin/TableFilter/employee_wallet_report')
-        <div class="box-header">
+        <div class="no-print">@include('Admin/TableFilter/employee_wallet_report')</div>
+        <div class="box-header no-print">
             <h3 class="box-title col-md-8">@lang('employee_wallet.page_title')</h3>
             <button class="btn bg-navy margin" style="height:25px;padding:2px;width:70px;" onclick="PrintElem()">
                 <i class="fa fa-print"></i>
@@ -12,7 +12,7 @@
 
 
 
-        <div class="box box-success">
+        <div class="box box-success no-print" >
             <div class="box-body">
                 <div class="col-sm-4 col-md-2">
                     <div class="color-palette-set">
@@ -29,12 +29,12 @@
             <table id="example2" class="table table-bordered table-striped">
                 <thead>
                     <tr>
-                        <th>#</th>
-                        <th>@lang('employee_wallet.client')</th>
-                        <th>@lang('employee_wallet.company')</th>
-                        <th>@lang('employee_wallet.employee')</th>
-                        <th>@lang('employee_wallet.amount')</th>
-                        <th>@lang('employee_wallet.created_at')</th>
+                        <th style="background-color: #1fbdd9 !important;">#</th>
+                        <th style="background-color: #1fbdd9 !important;">@lang('employee_wallet.client')</th>
+                        <th style="background-color: #1fbdd9 !important;">@lang('employee_wallet.company')</th>
+                        <th style="background-color: #1fbdd9 !important;">@lang('employee_wallet.employee')</th>
+                        <th style="background-color: #1fbdd9 !important;">@lang('employee_wallet.amount')</th>
+                        <th style="background-color: #1fbdd9 !important;">@lang('employee_wallet.created_at')</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -118,18 +118,5 @@
         });
     }
 
-    function PrintElem() {
 
-        var mywindow = window.open(" ", "PRINT");
-
-        mywindow.document.write('<html><head>');
-        mywindow.document.write('</head><body dir="rtl">');
-        mywindow.document.write(document.getElementById('report').innerHTML);
-        mywindow.document.write('</body></html>');
-
-        // mywindow.focus(); // necessary for IE >= 10*/
-
-
-        mywindow.print();
-    }
 </script>
