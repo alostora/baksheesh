@@ -59,4 +59,5 @@ return [
     "current_status" => "Current Status",
     "active" => "Active",
     "inactive" => "Inactive",
+    "again" => "Create Another Employee",
 ];

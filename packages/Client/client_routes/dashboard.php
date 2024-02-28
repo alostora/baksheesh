@@ -33,5 +33,5 @@ Route::group([
 
     Route::get('quick-start-create-employee/{company}', [DashboardClientController::class, 'quickStartViewCreateemployee']);
 
-    Route::post('quick-start-create-employee', [DashboardClientController::class, 'quickStartCreateemployee']);
+    Route::post('quick-start-create-employee', [DashboardClientController::class, 'quickStartCreateEmployee']);
 });

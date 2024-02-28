@@ -109,6 +109,10 @@ class DashboardController extends Controller
     {
         $employee = CompanyEmployeeCreateCollection::createCompanyEmployee($request);
 
+        if ($request->again == 1) {
+            return back();
+        }
+
         return redirect(url('admin'));
     }
 }

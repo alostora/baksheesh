@@ -81,7 +81,12 @@ class DashboardClientController extends Controller
 
     public function quickStartCreateEmployee(ClientCompanyEmployeeCreateRequest $request)
     {
+
         $employee = ClientCompanyEmployeeCreateCollection::createCompanyEmployee($request);
+
+        if ($request->again == 1) {
+            return back();
+        }
 
         return redirect(url('client'));
     }
