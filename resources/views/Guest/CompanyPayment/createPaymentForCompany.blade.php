@@ -70,7 +70,7 @@
 </div>
 
 
-<h1 class="text_rating_employee"> أضف تعليق</h1>
+<h1 class="text_rating_employee" id="note_header"> أضف تعليق</h1>
 <div class="text">
     <textarea name="notes" id="notes" style="text-align: right;padding:50px"></textarea>
 </div>
@@ -108,9 +108,9 @@
 
         <div class="visa">
             <div class="input_visa">
-                <input type="text" placeholder="Card Number" style="width:40%;height:50px;border-radius:5px;display:flex;text-align:center;font-size: 14px;transform: scale(1.1);  border: 1px solid blue;">
-                <input type="text" placeholder="MM/YY" style="width:25%;height:50px;border-radius:5px;display:flex;text-align:center;font-size: 14px;transform: scale(1.1);  border: 1px solid blue;">
-                <input type="text" placeholder="CVV" style="width:20%;height:50px;border-radius:5px;display:flex;text-align:center;font-size: 14px;transform: scale(1.1);  border: 1px solid blue;">
+                <input required type="text" placeholder="Card Number" style="width:40%;height:50px;border-radius:5px;display:flex;text-align:center;font-size: 14px;transform: scale(1.1);  border: 1px solid blue;">
+                <input required type="text" placeholder="MM/YY" style="width:25%;height:50px;border-radius:5px;display:flex;text-align:center;font-size: 14px;transform: scale(1.1);  border: 1px solid blue;">
+                <input required type="text" placeholder="CVV" style="width:20%;height:50px;border-radius:5px;display:flex;text-align:center;font-size: 14px;transform: scale(1.1);  border: 1px solid blue;">
             </div>
             <div class="input_visa_logo">
                 <img src="{{url('guest/images/')}}/visa-dark-large.svg" alt="" style="width: 20%;height:auto;">
@@ -138,6 +138,15 @@
         let level = elementClass.split("__")[0];
         let value = elementClass.split("__")[1];
 
+
+        if (value == 1) {
+            document.getElementById(elementId).src = "{{url('guest')}}/images/" + "Sad" + ".png";
+            document.getElementById(Number(level) + "__" + (Number(value) + 1)).src = "{{url('guest')}}/images/" + "HappyB" + ".png";
+        } else {
+            document.getElementById(elementId).src = "{{url('guest')}}/images/" + "Happy" + ".png";
+            document.getElementById(Number(level) + "__" + (Number(value) - 1)).src = "{{url('guest')}}/images/" + "SadB" + ".png";
+        }
+
         $.ajax({
 
             url: '{{url("api/guest/payment/company-rating/".Request("company")->id)}}',
@@ -151,13 +160,13 @@
             success: function(response) {
                 console.log(response);
 
-                if (value == 1) {
-                    document.getElementById(elementId).src = "{{url('guest')}}/images/" + "Sad" + ".png";
-                    document.getElementById(Number(level) + "__" + (Number(value) + 1)).src = "{{url('guest')}}/images/" + "HappyB" + ".png";
-                } else {
-                    document.getElementById(elementId).src = "{{url('guest')}}/images/" + "Happy" + ".png";
-                    document.getElementById(Number(level) + "__" + (Number(value) - 1)).src = "{{url('guest')}}/images/" + "SadB" + ".png";
-                }
+                // if (value == 1) {
+                //     document.getElementById(elementId).src = "{{url('guest')}}/images/" + "Sad" + ".png";
+                //     document.getElementById(Number(level) + "__" + (Number(value) + 1)).src = "{{url('guest')}}/images/" + "HappyB" + ".png";
+                // } else {
+                //     document.getElementById(elementId).src = "{{url('guest')}}/images/" + "Happy" + ".png";
+                //     document.getElementById(Number(level) + "__" + (Number(value) - 1)).src = "{{url('guest')}}/images/" + "SadB" + ".png";
+                // }
 
             },
             error: function(request, error) {
@@ -181,7 +190,8 @@
             dataType: 'json',
             success: function(response) {
 
-                document.getElementById('notes').value = "";
+                // document.getElementById('notes').value = "";
+                document.getElementById('note_header').innerHTML = "تم ارسال التعليق";
 
             },
             error: function(request, error) {

@@ -54,6 +54,17 @@
                                 </div>
                             </div>
                         </div>
+
+                        <hr>
+
+                        <div class="row">
+                            <div class="form-group">
+                                <div class="col-md-6">
+                                    <label for="again">@lang('company_employee.again')</label>
+                                    <input type="checkbox" class="checkbox" name="again" id="again" value="1">
+                                </div>
+                            </div>
+                        </div>
                     </div>
                     <div class="box-footer">
                         <button type="submit" class="btn btn-primary">@lang('company_employee.submit')</button>
