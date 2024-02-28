@@ -79,17 +79,17 @@
             "responsive": true,
             "lengthChange": true,
             "autoWidth": false,
-            "buttons": [ /* "copy" */ , /*  "csv", */ "excel", /*  "pdf", */ "print", /*  "colvis" */ ]
+            "buttons": [ /* "copy" */ , /*  "csv", */ "excel", /*  "pdf", */ /* "print", */ /*  "colvis" */ ]
         }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
 
         $("#example2").DataTable({
             "responsive": true,
             "lengthChange": false,
             "autoWidth": false,
-            "searching": true,
+            "searching": false,
             "bPaginate": false,
             "bSort": true,
-            "buttons": [ /* "copy" */ , /*  "csv", */ "excel", /*  "pdf", */ "print", /*  "colvis" */ ]
+            "buttons": [ /* "copy" */ , /*  "csv", */ "excel", /*  "pdf", */ /*  "print", */ /*  "colvis" */ ]
         }).buttons().container().appendTo('#example2_wrapper .col-md-6:eq(0)');
         // $('#example2').DataTable({
         //   "paging": true,
@@ -105,21 +105,10 @@
 
 
 <script>
-    (function() {
+    function PrintElem() {
 
-        // $('.skin-blue').attr("style", "background-color:#77cfb7")
-        // $('.main-header').attr("style", "background-color:#77cfb7")
-        // $('.navbar').attr("style", "background-color:#77cfb7")
-        // $('.logo').attr("style", "background-color:#77cfb7")
-
-        // $('.wrapper').attr("style", "background-color:#404e67")
-        // $('.main-sidebar').attr("style", "background-color:#19253a")
-
-        // $('.treeview-menu>li>a').attr("style", "color:#3ba78a")
-        // $('.sidebar-menu>li.active>a').attr("style", "color:#37f8c5")
-
-
-    })();
+        window.print();
+    }
 </script>
 </body>
 

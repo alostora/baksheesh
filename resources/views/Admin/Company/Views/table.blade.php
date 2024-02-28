@@ -123,8 +123,6 @@
 <script>
     function PrintElem(companyName, companyId) {
 
-        return false;
-
         var mywindow = window.open(" ", "PRINT");
 
         mywindow.document.write('<html><head><title>' + companyName + '</title>');

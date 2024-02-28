@@ -28,8 +28,12 @@ return [
 
     "to" => "To",
 
+    "from" => "From",
+
     "mr" => "Mr/s",
 
     "email" => "Email",
+
+    "period" => "Period",
 
 ];

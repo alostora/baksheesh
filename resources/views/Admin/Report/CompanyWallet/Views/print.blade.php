@@ -1,4 +1,4 @@
-<section class="invoice" id="report" style="display:none">
+<section class="invoice" id="report">
 
     <div class="row">
         <div>
@@ -13,33 +13,29 @@
         </div>
     </div>
 
+    <hr>
 
     <div class="row">
         <div class="col-sm-4 invoice-col">
-            @lang('general.to')
             <address>
-                @lang('general.mr') : <span>{{auth()->user()->name}}</span>
-                <br>
-                @lang('general.email') : {{auth()->user()->email}}
+                <strong>@lang('company.name') : {{isset($company_name) ? $company_name : ''}}</strong>
+            </address>
+
+            <address>
+                <strong>@lang('company.client') : {{isset($client_name) ? $client_name : ''}}</strong>
+            </address>
+            <address>
+                <strong>@lang('general.date') @lang('general.from') : {{Request('date_from')}} @lang('general.to') : {{Request('date_to')}} </strong>
             </address>
         </div>
     </div>
 
-    <hr>
     <div class="row">
-        <div class="col-xs-12">
-
-            <p>@lang('company_wallet.print_report_head') </p>
-            <br>
-            <p style="display:flex;justify-content: space-between;" >@lang('company_wallet.print_report_all_companies_amount') <span>{{$all_companies_amount}} @lang('general.sar')</span></p>
-            @if(isset($all_client_companies_amount))
-            <p style="display:flex;justify-content: space-between;" >@lang('company_wallet.print_report_all_client_companies_amount')<span> <strong>{{$client_name}}</strong></span> : <label><span>{{$all_client_companies_amount}} @lang('general.sar')</span></label></p>
-            @endif
-            @if(isset($one_company_amount))
-            <p style="display:flex;justify-content: space-between;" >@lang('company_wallet.print_report_one_company_amount')<span><strong>{{$company_name}}</strong> </span>: <label> <span>{{$one_company_amount}}  @lang('general.sar')</span></label> </p>
-            @endif
-
+        <div class="col-sm-4 invoice-col">
+            <address>
+                <strong> @lang('general.total') : {{isset($one_company_amount) ? $one_company_amount : ''}} @lang('general.sar')</strong>
+            </address>
         </div>
-
     </div>
+
 </section>

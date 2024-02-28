@@ -14,7 +14,7 @@ return [
 
     'name_ar' => 'Name (Ar)',
 
-    'client' => 'Client',
+    'client' => 'Client Name',
 
     'employees' => 'Employees',
 

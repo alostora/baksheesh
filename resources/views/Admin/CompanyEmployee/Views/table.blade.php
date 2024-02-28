@@ -119,7 +119,6 @@
 <script>
     function PrintElem(userName, userId) {
 
-        return false;
         var mywindow = window.open(" ", "PRINT");
 
         mywindow.document.write('<html><head><title>' + userName + '</title>');
