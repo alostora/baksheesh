@@ -80,17 +80,17 @@ return [
 
 
 
-    "print_client_count_all" => "اجمالي عدد طلبات السحب للعميل   ",
-    "print_client_count_pending" => "اجمالي عدد طلبات السحب قيد الانتظار للعميل ",
-    "print_client_count_accepted" => "اجمالي عدد طلبات السحب المقبولة للعميل ",
-    "print_client_count_refused" => "اجمالي عدد طلبات السحب المرفوضة للعميل ",
-    "print_client_count_unexecutable" => "اجمالي عدد طلبات السحب التي تعذر تنفيذها للعميل ",
+    "print_client_count_all" => "اجمالي عدد طلبات السحب   ",
+    "print_client_count_pending" => "اجمالي عدد طلبات السحب قيد الانتظار ",
+    "print_client_count_accepted" => "اجمالي عدد طلبات السحب المقبولة ",
+    "print_client_count_refused" => "اجمالي عدد طلبات السحب المرفوضة ",
+    "print_client_count_unexecutable" => "اجمالي عدد طلبات السحب التي تعذر تنفيذها ",
 
-    "print_client_sum_all" => "اجمالي مجموع طلبات السحب للعميل ",
-    "print_client_sum_pending" => "اجمالي مجموع طلبات السحب قيد الانتظار للعميل ",
-    "print_client_sum_accepted" => "اجمالي مجموع طلبات السحب المقبولة للعميل ",
-    "print_client_sum_refused" => "اجمالي مجموع طلبات السحب المرفوضة للعميل ",
-    "print_client_sum_unexecutable" => "اجمالي مجموع طلبات السحب التي تعذر تنفيذها للعميل ",
+    "print_client_sum_all" => "اجمالي مجموع طلبات السحب ",
+    "print_client_sum_pending" => "اجمالي مجموع طلبات السحب قيد الانتظار ",
+    "print_client_sum_accepted" => "اجمالي مجموع طلبات السحب المقبولة ",
+    "print_client_sum_refused" => "اجمالي مجموع طلبات السحب المرفوضة ",
+    "print_client_sum_unexecutable" => "اجمالي مجموع طلبات السحب التي تعذر تنفيذها ",
 
 
 

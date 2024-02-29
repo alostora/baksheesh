@@ -33,7 +33,7 @@
         </div>
         <div class="col-sm-4 col-md-4">
             <div class="input-group">
-                <select class="form-control" name="company_id" id="company_id">
+                <select class="form-control" name="company_id" id="company_id" onchange="getCompenyEmployees(this.value)">
                     <option value="">@lang('filter.companies')</option>
                     @foreach($companies as $company)
                     <?php $selected = Request('company_id') == $company->id ? "selected" : ""; ?>
@@ -49,3 +49,6 @@
         </div>
     </div>
 </form>
+
+
+@include('Admin/TableFilter/filter_scripts')

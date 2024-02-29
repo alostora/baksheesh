@@ -3,8 +3,9 @@
     <div class="box box-info">
         @include('Client.Report.WithdrawalRequest.Views.print')
 
-        <div class="no-print">@include('Client/TableFilter/withdrawal_request_report')</div>
-
+        <div class="no-print">
+            @include('Client/TableFilter/withdrawal_request_report')
+        </div>
 
         <div class="box-header no-print">
             <h3 class="box-title col-md-8">@lang('withdrawal_request.page_title')</h3>
@@ -18,7 +19,7 @@
         </div>
 
         <div class="box">
-            <div class="box-bod no-print">
+            <div class="box-body no-print">
                 <div class="col-sm-4 col-md-2">
                     <div class="color-palette-set">
                         <div class="bg-info disabled color-palette">
@@ -77,13 +78,10 @@
                 <thead>
                     <tr>
                         <th style="background-color: #1fbdd9 !important;">#</th>
-                        <th style="background-color: #1fbdd9 !important;">@lang('withdrawal_request.reference_code')</th>
                         <th style="background-color: #1fbdd9 !important;">@lang('withdrawal_request.amount')</th>
                         <th style="background-color: #1fbdd9 !important;">@lang('withdrawal_request.status')</th>
                         <th style="background-color: #1fbdd9 !important;">@lang('withdrawal_request.created_at')</th>
                         <th style="background-color: #1fbdd9 !important;">@lang('withdrawal_request.action_at')</th>
-                        <th style="background-color: #1fbdd9 !important;">@lang('withdrawal_request.bank_transfer_number')</th>
-                        <th style="background-color: #1fbdd9 !important;">@lang('withdrawal_request.admin_notes')</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -102,15 +100,12 @@
 
                     <tr>
                         <td> {{$key+1}} </td>
-                        <td> {{substr($withdrawalRequest->id, 0, 7)}} </td>
                         <td> {{$withdrawalRequest->amount}} </td>
                         <td>
                             <label class="label bg-{{$color}}">{{$withdrawalRequest->withdrawalRequestStatus->name}}</label>
                         </td>
                         <td> {{$withdrawalRequest->created_at}} </td>
                         <td> {{$withdrawalRequest->updated_at}} </td>
-                        <td> {{$withdrawalRequest->bank_transfer_number}} </td>
-                        <td> {{$withdrawalRequest->admin_notes}} </td>
                     </tr>
                     @endforeach
                     @endif
@@ -126,4 +121,3 @@
         </div>
     </div>
 </section>
-

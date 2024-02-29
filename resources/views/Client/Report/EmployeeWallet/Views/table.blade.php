@@ -31,7 +31,6 @@
                 <thead>
                     <tr>
                         <th style="background-color: #1fbdd9 !important;">#</th>
-                        <th style="background-color: #1fbdd9 !important;">@lang('employee_wallet.client')</th>
                         <th style="background-color: #1fbdd9 !important;">@lang('employee_wallet.company')</th>
                         <th style="background-color: #1fbdd9 !important;">@lang('employee_wallet.employee')</th>
                         <th style="background-color: #1fbdd9 !important;">@lang('employee_wallet.amount')</th>
@@ -40,16 +39,15 @@
                 </thead>
                 <tbody>
                     @if (!empty($wallets))
-                        @foreach ($wallets as $key => $wallet)
-                            <tr>
-                                <td> {{ $key + 1 }} </td>
-                                <td> {{ $wallet->client ? $wallet->client->name : '' }} </td>
-                                <td> {{ $wallet->company ? $wallet->company->name : '' }} </td>
-                                <td> {{ $wallet->employee ? $wallet->employee->name : '' }} </td>
-                                <td> {{ $wallet->amount }} @lang('general.sar')</td>
-                                <td> {{ $wallet->created_at }} </td>
-                            </tr>
-                        @endforeach
+                    @foreach ($wallets as $key => $wallet)
+                    <tr>
+                        <td> {{ $key + 1 }} </td>
+                        <td> {{ $wallet->company ? $wallet->company->name : '' }} </td>
+                        <td> {{ $wallet->employee ? $wallet->employee->name : '' }} </td>
+                        <td> {{ $wallet->amount }} @lang('general.sar')</td>
+                        <td> {{ $wallet->created_at }} </td>
+                    </tr>
+                    @endforeach
                     @endif
                 </tbody>
             </table>
@@ -63,30 +61,3 @@
     </div>
 </section>
 
-<script>
-    function getEmployees(company_id = "") {
-
-        $.ajax({
-
-            url: '{{ url('client/employees?company_id=') }}' + company_id,
-            type: 'GET',
-            data: {},
-            dataType: 'json',
-            success: function(response) {
-
-                let result = response.data;
-
-                $("#employee_id").html(`<option value=''>@lang('filter.select')</option>`)
-
-                for (let i = 0; i < result.length; i++) {
-
-                    $("#employee_id").append(`<option value='${result[i].id}'>${result[i].name}</option>`)
-
-                }
-            },
-            error: function(request, error) {
-                console.log("Request: " + JSON.stringify(request));
-            }
-        });
-    }
-</script>

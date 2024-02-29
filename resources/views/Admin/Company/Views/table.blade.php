@@ -62,7 +62,7 @@
                     @foreach ($companies as $key=>$company)
                     <tr>
                         <td> {{$key+1}} </td>
-                        <td onclick="PrintElem('{{$company->name}}','{{$company->id}}')">
+                        <td onclick="PrintQr('{{$company->name}}','{{$company->id}}')">
                             <div id="{{$company->id}}">
 
                                 {!! $company->company_qr !!}
@@ -121,7 +121,7 @@
 
 
 <script>
-    function PrintElem(companyName, companyId) {
+    function PrintQr(companyName, companyId) {
 
         var mywindow = window.open(" ", "PRINT");
 

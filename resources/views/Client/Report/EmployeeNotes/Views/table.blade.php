@@ -1,18 +1,21 @@
 <section class="content">
     <div class="box box-info">
-    @include('Client.Report.EmployeeNotes.Views.print')
+        {{--
+
+@include('Client.Report.EmployeeNotes.Views.print')
+        --}}
 
         @include('Client/TableFilter/employee_notes_report')
 
         <div class="box-header">
             <h3 class="box-title col-md-8">@lang('employee_notes.page_title')</h3>
             <div class="col-md-4">
-<!--
+                <!--
 <button class="btn bg-navy margin" style="height:25px;padding:2px;width:70px;" onclick="PrintElem()">
     <i class="fa fa-print"></i>
 </button> -->
 
-</div>
+            </div>
         </div>
         <div class="box-body">
             <table id="example2" class="table table-bordered table-striped">
@@ -49,8 +52,6 @@
     </div>
 </section>
 <script>
-
-
     function PrintElem() {
 
         var mywindow = window.open(" ", "PRINT");

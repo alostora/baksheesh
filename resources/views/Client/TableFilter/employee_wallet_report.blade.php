@@ -20,6 +20,18 @@
 
         <div class="col-sm-4 col-md-4">
             <div class="form-group">
+                <select class="form-control" name="company_id" id="company_id" onchange="getCompenyEmployees(this.value)">
+                    <option value="">@lang('filter.companies')</option>
+                    @foreach($companies as $company)
+                    <?php $selected = Request('company_id') == $company->id ? "selected" : ""; ?>
+                    <option value="{{$company->id}}" {{$selected}}>{{$company->name}}</option>
+                    @endforeach
+                </select>
+            </div>
+        </div>
+
+        <div class="col-sm-4 col-md-4">
+            <div class="input-group">
                 <select class="form-control" name="employee_id" id="employee_id">
                     <option value="">@lang('filter.employees')</option>
                     @foreach ($employees as $employee)
@@ -29,17 +41,6 @@
                     </option>
                     @endforeach
                 </select>
-            </div>
-        </div>
-        <div class="col-sm-4 col-md-4">
-            <div class="input-group">
-                <select class="form-control" name="company_id" id="company_id">
-                    <option value="">@lang('filter.companies')</option>
-                    @foreach($companies as $company)
-                    <?php $selected = Request('company_id') == $company->id ? "selected" : ""; ?>
-                    <option value="{{$company->id}}" {{$selected}}>{{$company->name}}</option>
-                    @endforeach
-                </select>
                 <span class="input-group-btn">
                     <button type="submit" name="search" id="search-btn" class="btn btn-flat bg-orange">
                         <i class="fa fa-search"></i>
@@ -47,5 +48,9 @@
                 </span>
             </div>
         </div>
+
     </div>
 </form>
+
+
+@include('Admin/TableFilter/filter_scripts')

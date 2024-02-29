@@ -1,10 +1,11 @@
 <section class="content">
-
     <div class="box box-info">
         <!-- filter -->
         @include('Admin.Report.WithdrawalRequest.Views.print')
-        <div class="no-print">@include('Admin/TableFilter/withdrawal_request_report')</div>
-        <div class="box-header no-print" >
+        <div class="no-print">
+            @include('Admin/TableFilter/withdrawal_request_report')
+        </div>
+        <div class="box-header no-print">
             <h3 class="box-title col-md-8">@lang('withdrawal_request.page_title')</h3>
             <button class="btn bg-navy margin" style="height:25px;padding:2px;width:70px;" onclick="PrintElem()">
                 <i class="fa fa-print"></i>
@@ -65,19 +66,16 @@
 
             </div>
         </div>
-        <div class="box-body">
+        <div class="box-body table-responsive no-padding">
             <table id="example2" class="table table-bordered table-striped">
                 <thead>
                     <tr>
                         <th style="background-color: #1fbdd9 !important;">#</th>
-                        <th style="background-color: #1fbdd9 !important;">@lang('withdrawal_request.reference_code')</th>
-                        <th style="background-color: #1fbdd9 !important;">@lang('withdrawal_request.client')</th>
+                        {{-- <th style="background-color: #1fbdd9 !important;">@lang('withdrawal_request.reference_code')</th>--}}
                         <th style="background-color: #1fbdd9 !important;">@lang('withdrawal_request.amount')</th>
                         <th style="background-color: #1fbdd9 !important;">@lang('withdrawal_request.status')</th>
                         <th style="background-color: #1fbdd9 !important;">@lang('withdrawal_request.created_at')</th>
                         <th style="background-color: #1fbdd9 !important;">@lang('withdrawal_request.action_at')</th>
-                        <th style="background-color: #1fbdd9 !important;">@lang('withdrawal_request.bank_transfer_number')</th>
-                        <th style="background-color: #1fbdd9 !important;">@lang('withdrawal_request.admin_notes')</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -95,16 +93,13 @@
 
                     <tr>
                         <td> {{$key+1}} </td>
-                        <td> {{substr($withdrawalRequest->id, 0, 7)}} </td>
-                        <td> {{$withdrawalRequest->client->name}} </td>
+                        {{--<td> {{substr($withdrawalRequest->id, 0, 7)}} </td>--}}
                         <td> {{$withdrawalRequest->amount}} @lang('general.sar')</td>
                         <td>
                             <label class="label bg-{{$color}}">{{$withdrawalRequest->withdrawalRequestStatus->name}}</label>
                         </td>
                         <td> {{$withdrawalRequest->created_at}} </td>
                         <td> {{$withdrawalRequest->updated_at}} </td>
-                        <td> {{$withdrawalRequest->bank_transfer_number}} </td>
-                        <td> {{$withdrawalRequest->admin_notes}} </td>
                     </tr>
                     @endforeach
                     @endif
@@ -121,4 +116,3 @@
     </div>
 
 </section>
-

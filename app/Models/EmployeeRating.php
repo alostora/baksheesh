@@ -60,4 +60,9 @@ class EmployeeRating extends Model
     {
         return $this->belongsTo(RatingForGuest::class, 'rating_id', 'id');
     }
+
+    public function employeeAvailableRating(): BelongsTo
+    {
+        return $this->belongsTo(EmployeeAvailableRating::class, 'rating_id', 'id');
+    }
 }

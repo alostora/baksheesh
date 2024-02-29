@@ -2,7 +2,9 @@
     <div class="box box-info">
         <!-- filter -->
         @include('Admin.Report.EmployeeWallet.Views.print')
-        <div class="no-print">@include('Admin/TableFilter/employee_wallet_report')</div>
+        <div class="no-print">
+            @include('Admin/TableFilter/employee_wallet_report')
+        </div>
         <div class="box-header no-print">
             <h3 class="box-title col-md-8">@lang('employee_wallet.page_title')</h3>
             <button class="btn bg-navy margin" style="height:25px;padding:2px;width:70px;" onclick="PrintElem()">
@@ -12,7 +14,7 @@
 
 
 
-        <div class="box box-success no-print" >
+        <div class="box box-success no-print">
             <div class="box-body">
                 <div class="col-sm-4 col-md-2">
                     <div class="color-palette-set">
@@ -30,8 +32,6 @@
                 <thead>
                     <tr>
                         <th style="background-color: #1fbdd9 !important;">#</th>
-                        <th style="background-color: #1fbdd9 !important;">@lang('employee_wallet.client')</th>
-                        <th style="background-color: #1fbdd9 !important;">@lang('employee_wallet.company')</th>
                         <th style="background-color: #1fbdd9 !important;">@lang('employee_wallet.employee')</th>
                         <th style="background-color: #1fbdd9 !important;">@lang('employee_wallet.amount')</th>
                         <th style="background-color: #1fbdd9 !important;">@lang('employee_wallet.created_at')</th>
@@ -42,8 +42,6 @@
                     @foreach ($wallets as $key=>$wallet)
                     <tr>
                         <td> {{$key+1}} </td>
-                        <td> {{$wallet->client ? $wallet->client->name : ''}} </td>
-                        <td> {{$wallet->company ? $wallet->company->name : ''}} </td>
                         <td> {{$wallet->employee ? $wallet->employee->name : ''}} </td>
                         <td> {{$wallet->amount}} @lang('general.sar')</td>
                         <td> {{$wallet->created_at}} </td>
@@ -117,6 +115,4 @@
             }
         });
     }
-
-
 </script>

@@ -54,11 +54,9 @@
                 <thead>
                     <tr>
                         <th style="background-color: #1fbdd9 !important;">#</th>
-                        <th style="background-color: #1fbdd9 !important;">@lang('company_rating.client')</th>
                         <th style="background-color: #1fbdd9 !important;">@lang('company_rating.company')</th>
                         <th style="background-color: #1fbdd9 !important;">@lang('company_rating.available_rating')</th>
                         <th style="background-color: #1fbdd9 !important;">@lang('company_rating.rating_value')</th>
-                        <th style="background-color: #1fbdd9 !important;">@lang('company_rating.payer_name')</th>
                         <th style="background-color: #1fbdd9 !important;">@lang('company_rating.created_at')</th>
                     </tr>
                 </thead>
@@ -67,13 +65,11 @@
                     @foreach ($company_ratings as $key=>$company_rating)
                     <tr>
                         <td> {{$key+1}} </td>
-                        <td> {{$company_rating->client ? $company_rating->client->name : ''}} </td>
                         <td> {{$company_rating->company ? $company_rating->company->name : ''}} </td>
-                        <td> {{$company_rating->availableRating ? $company_rating->availableRating->name : ''}} </td>
+                        <td> {{$company_rating->companyAvailableRating ? $company_rating->companyAvailableRating->name : ''}} </td>
                         <td>
                             {!! $company_rating->rating_value === 1 ? '<label class="label label-danger" style="font-size:12px">'.Lang::get("company_rating.bad").'</label>' : '<label class="label label-success" style="font-size:12px">'.Lang::get("company_rating.good").'</label>' !!}
                         </td>
-                        <td> {{$company_rating->payer_name}} </td>
                         <td> {{$company_rating->created_at}} </td>
                     </tr>
                     @endforeach

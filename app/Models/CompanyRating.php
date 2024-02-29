@@ -53,4 +53,9 @@ class CompanyRating extends Model
     {
         return $this->belongsTo(RatingForGuest::class, 'rating_id', 'id');
     }
+
+    public function companyAvailableRating(): BelongsTo
+    {
+        return $this->belongsTo(CompanyAvailableRating::class, 'rating_id', 'id');
+    }
 }

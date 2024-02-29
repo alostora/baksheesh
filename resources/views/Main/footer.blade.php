@@ -107,7 +107,10 @@
 <script>
     function PrintElem() {
 
+        document.getElementsByClassName("dt-buttons btn-group flex-wrap")[0].style = "display:none"
         window.print();
+        document.getElementsByClassName("dt-buttons btn-group flex-wrap")[0].style = "display:block"
+
     }
 </script>
 </body>

@@ -28,6 +28,8 @@ class CompanyRatingReportSearchCollection
             ->where('stopped_at', null)
             ->get();
 
+        $data['company_name'] = ($company_id && $company_id != -1) && Company::find($company_id) ? Company::find($company_id)->name : '';
+
 
         $data['total_bad_count'] = CompanyRating::where('client_id', auth()->id())
 

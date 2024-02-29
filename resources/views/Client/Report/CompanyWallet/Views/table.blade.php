@@ -1,6 +1,4 @@
 <section class="content">
-
-
     <div class="box box-info">
         @include('Client.Report.CompanyWallet.Views.print')
 
@@ -37,7 +35,6 @@
                 <thead>
                     <tr>
                         <th style="background-color: #1fbdd9 !important;">#</th>
-                        <th style="background-color: #1fbdd9 !important;">@lang('company_wallet.client')</th>
                         <th style="background-color: #1fbdd9 !important;">@lang('company_wallet.company')</th>
                         <th style="background-color: #1fbdd9 !important;">@lang('company_wallet.amount')</th>
                         <th style="background-color: #1fbdd9 !important;">@lang('company_wallet.created_at')</th>
@@ -48,7 +45,6 @@
                     @foreach ($wallets as $key=>$wallet)
                     <tr>
                         <td> {{$key+1}} </td>
-                        <td> {{$wallet->client ? $wallet->client->name : ''}} </td>
                         <td> {{$wallet->company ? $wallet->company->name : ''}} </td>
                         <td> {{$wallet->amount}} @lang('general.sar')</td>
                         <td> {{$wallet->created_at}} </td>
@@ -67,5 +63,3 @@
         </div>
     </div>
 </section>
-
-

@@ -62,7 +62,7 @@
                     @foreach ($employees as $key=>$user)
                     <tr>
                         <td> {{$key+1}} </td>
-                        <td onclick="PrintElem('{{$user->name}}','{{$user->id}}')">
+                        <td onclick="PrintQr('{{$user->name}}','{{$user->id}}')">
                             <div id="{{$user->id}}">
                                 {!! $user->employee_qr !!}
                             </div>
@@ -117,7 +117,7 @@
 
 
 <script>
-    function PrintElem(userName, userId) {
+    function PrintQr(userName, userId) {
 
         var mywindow = window.open(" ", "PRINT");
 

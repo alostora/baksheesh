@@ -37,7 +37,7 @@ class WithdrawalReportQueryCollection
             if ($date_from && $date_from != -1 && $date_to && $date_to != -1) {
 
                 $q
-                    ->whereBetween('action_at', [
+                    ->whereBetween('created_at', [
 
                         Carbon::create($date_from),
 
@@ -46,7 +46,7 @@ class WithdrawalReportQueryCollection
             } else if ($date_from && $date_from != -1) {
 
                 $q
-                    ->whereBetween('action_at', [
+                    ->whereBetween('created_at', [
 
                         Carbon::create($date_from)->startOfDay(),
 
@@ -55,7 +55,7 @@ class WithdrawalReportQueryCollection
             } else if ($date_to && $date_to != -1) {
 
                 $q
-                    ->whereBetween('action_at', [
+                    ->whereBetween('created_at', [
 
                         Carbon::create(1900, 01, 01),
 

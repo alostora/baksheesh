@@ -44,7 +44,10 @@
 
 
     <link rel="stylesheet" href="{{url('AdminDesign')}}/myStyle.css">
-    <link rel="stylesheet" href="{{url('AdminDesign')}}/bootstrap-print.min.css" media="print">
+    {{--
+
+<link rel="stylesheet" href="{{url('AdminDesign')}}/bootstrap-print.css" media="print">
+    --}}
 
     @if(App::getLocale() == "ar" || App::getLocale() == "")
     <link rel="stylesheet" href="{{url('AdminDesign')}}/bootstrap/css/bootstrap-rtl.min.css">
