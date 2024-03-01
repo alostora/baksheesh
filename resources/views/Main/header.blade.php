@@ -82,6 +82,14 @@
         .box {
             padding: 10px !important;
         }
+        * {
+            -webkit-print-color-adjust: exact !important;
+            /* Chrome, Safari 6 – 15.3, Edge */
+            color-adjust: exact !important;
+            /* Firefox 48 – 96 */
+            print-color-adjust: exact !important;
+            /* Firefox 97+, Safari 15.4+ */
+        }
     </style>
 </head>
 

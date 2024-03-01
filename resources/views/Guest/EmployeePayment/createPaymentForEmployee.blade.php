@@ -78,12 +78,22 @@
 
 
 
-<h1 class="text_rating_employee" style="margin-top:70px;"> دفع اكرامية</h1>
+<h1 class="text_rating_employee" style="margin-top:70px;"> دفع مكافئة</h1>
 <form role="form" action="{{url('guest/payment/pay-for-employee')}}" method="POST" class="paying">
     <input type="hidden" name="client_id" value="{{Request('user')->client_id}}">
     <input type="hidden" name="company_id" value="{{Request('user')->company_id}}">
     <input type="hidden" name="employee_id" value="{{Request('user')->id}}">
     @csrf
+
+
+    <div class="form-group">
+        <label for="payer_name" class="col-md-4">الاسم</label>
+        <input class="form-control" type="text" name="payer_name" id="payer_name" placeholder="الاسم">
+
+        <label for="payer_phone" class="col-md-4">الهاتف</label>
+        <input class="form-control" type="text" name="payer_phone" id="payer_phone" placeholder="الهاتف">
+    </div>
+
     <div>
         <div class="payingButton">
             <button type="button" onclick="appendAmount(50)" dir="rtl">50 ريال</button>
@@ -183,23 +193,19 @@
                 company_id: "{{Request('user')->company_id}}",
                 employee_id: "{{Request('user')->id}}",
                 notes: document.getElementById('notes').value,
+                payer_name: document.getElementById('payer_name').value,
+                payer_phone: document.getElementById('payer_phone').value,
             },
             dataType: 'json',
             success: function(response) {
 
-                console.log(response);
-
-                // document.getElementById('notes').value = "";
                 document.getElementById('note_header').innerHTML = "تم ارسال التعليق";
-
 
             },
             error: function(request, error) {
                 console.log("Request: " + JSON.stringify(request));
-
             }
         });
-
     }
 
     function appendAmount(amount) {
