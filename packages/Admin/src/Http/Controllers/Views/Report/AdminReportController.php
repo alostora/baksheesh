@@ -3,6 +3,8 @@
 namespace Admin\Http\Controllers\Views\Report;
 
 use Admin\Foundations\Report\Client\ClientSearchCollection;
+use Admin\Foundations\Report\CompanyNotes\CompanyNotesReportSearchCollection;
+use Admin\Foundations\Report\CompanyRating\CompanyRatingReportSearchCollection;
 use Admin\Foundations\Report\Withdrawal\WithdrawalReportSearchCollection;
 use Admin\Foundations\Wallet\CompanyWalletSearchCollection;
 use Admin\Foundations\Wallet\EmployeeWalletSearchCollection;
@@ -23,6 +25,35 @@ class AdminReportController extends Controller
         );
 
         return view('Admin/Report/CompanyWallet/index', $data);
+    }
+
+    public function companyRatingReport(Request $request)
+    {
+
+        $data = CompanyRatingReportSearchCollection::searchAllCompanyRating(
+            $request->get('client_id') ? $request->get('client_id') : -1,
+            $request->get('company_id') ? $request->get('company_id') : -1,
+            $request->get('rating_value') ? $request->get('rating_value') : -1,
+            $request->get('date_from') ? $request->get('date_from') : -1,
+            $request->get('date_to') ? $request->get('date_to') : -1,
+            $request->get('per_page') ? $request->get('per_page') : SystemDefault::DEFAUL_PAGINATION_COUNT
+        );
+
+        return view('Admin/Report/CompanyRating/index', $data);
+    }
+
+    public function companyNotesReport(Request $request)
+    {
+        $data = CompanyNotesReportSearchCollection::searchAllCompanyNotes(
+            $request->get('client_id') ? $request->get('client_id') : -1,
+            $request->get('company_id') ? $request->get('company_id') : -1,
+            $request->get('query_string') ? $request->get('query_string') : -1,
+            $request->get('date_from') ? $request->get('date_from') : -1,
+            $request->get('date_to') ? $request->get('date_to') : -1,
+            $request->get('per_page') ? $request->get('per_page') : SystemDefault::DEFAUL_PAGINATION_COUNT
+        );
+
+        return view('Admin/Report/CompanyNotes/index', $data);
     }
 
     public function employeeWalletReport(Request $request)

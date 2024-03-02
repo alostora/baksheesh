@@ -17,10 +17,11 @@ Route::group([
 
 	Route::get('employee-wallet-report', [ClientReportController::class, 'employeeWalletReport']);
 
-	Route::get('withdrawal-request-report', [ClientReportController::class, 'withdrawalRequestReport']);
-
 	Route::get('employee-rating-report', [ClientReportController::class, 'employeeRatingReport']);
 
 	Route::get('employee-notes-report', [ClientReportController::class, 'employeeNotesReport']);
+    
+	Route::get('withdrawal-request-report', [ClientReportController::class, 'withdrawalRequestReport']);
+
 
 });

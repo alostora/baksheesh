@@ -1,5 +1,3 @@
-<script src="https://secure.clickpay.com.sa/payment/js/paylib.js"></script>
-
 <div class="logo_bg" style="display: none;">
     @if ($company->file)
     <img class="img-logo" src="{{ url('uploads/' . $company->file->new_name) }}" alt="" height="150px;width:150px">
@@ -78,7 +76,7 @@
 
 <h1 class="text_rating_employee" style="margin-top:80px;"> دفع مكافئة</h1>
 
-<form role="form" action="{{ url('guest/payment/pay-for-company') }}" method="POST" class="paying" id="payform">
+<form role="form" action="{{ url('guest/payment/pay-for-company') }}" method="POST" class="paying">
     <input type="hidden" name="client_id" value="{{ Request('company')->client_id }}">
     <input type="hidden" name="company_id" value="{{ Request('company')->id }}">
     @csrf
@@ -118,14 +116,11 @@
             </button>
         </div>
 
-        <div id="paymentErrors" class="alert alert-warning"></div>
-
         <div class="visa">
             <div class="input_visa">
-                <input required type="text" data-paylib="number" placeholder="Card Number" style="width:60%;height:50px;border-radius:5px;text-align:center;font-size: 14px; border: 1px solid blue;">
-                <input size="2" required type="text" data-paylib="expmonth" placeholder="MM" style="width:33%;height:50px;border-radius:5px;display:flex;text-align:center;font-size: 14px;transform: scale(1.1);  border: 1px solid blue;">
-                <input size="4" required type="text" data-paylib="expyear" placeholder="YYYY" style="width:33%;height:50px;border-radius:5px;display:flex;text-align:center;font-size: 14px;transform: scale(1.1);  border: 1px solid blue;">
-                <input size="3" required type="text" data-paylib="cvv" placeholder="CVV" style="width:33%;height:50px;border-radius:5px;display:flex;text-align:center;font-size: 14px;transform: scale(1.1);  border: 1px solid blue;">
+                <input required type="text" placeholder="Card Number" style="width:40%;height:50px;border-radius:5px;display:flex;text-align:center;font-size: 14px;transform: scale(1.1);  border: 1px solid blue;">
+                <input required type="text" placeholder="MM/YY" style="width:25%;height:50px;border-radius:5px;display:flex;text-align:center;font-size: 14px;transform: scale(1.1);  border: 1px solid blue;">
+                <input required type="text" placeholder="CVV" style="width:20%;height:50px;border-radius:5px;display:flex;text-align:center;font-size: 14px;transform: scale(1.1);  border: 1px solid blue;">
             </div>
             <div class="input_visa_logo">
                 <img src="{{ url('guest/images/') }}/visa-dark-large.svg" alt="" style="width: 20%;height:auto;">
@@ -133,7 +128,8 @@
                 <img src="{{ url('guest/images/') }}/americanexpress-dark-large.svg" alt="" style="width: 20%;height:auto;">
             </div>
         </div>
-        <input type="submit" value="ادفع" class="pay_btn">
+        <button class="pay_btn" type="submit">ادفع</button>
+    </div>
 </form>
 <div style="display:flex;flex-direction:row;letter-spacing: 2p;margin-top:20px;">
 
@@ -221,18 +217,4 @@
     function appendAmount(amount) {
         document.getElementById("amount").value = Number(amount);
     }
-</script>
-<script type="text/javascript">
-    var myform = document.getElementById('payform');
-    paylib.inlineForm({
-        'key': 'C2KMDG-HTKK6H-K92GVT-RDTQ9T',
-        'form': myform,
-        'autoSubmit': true,
-        'callback': function(response) {
-            document.getElementById('paymentErrors').innerHTML = '';
-            if (response.error) {
-                paylib.handleError(document.getElementById('paymentErrors'), response);
-            }
-        }
-    });
 </script>
