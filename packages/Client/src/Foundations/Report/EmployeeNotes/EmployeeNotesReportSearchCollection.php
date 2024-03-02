@@ -43,6 +43,9 @@ class EmployeeNotesReportSearchCollection
             })
             ->get();
 
+        $data['company_name'] = $company_id && $company_id != -1 ? Company::find('company_id')->name : '';
+        $data['employee_name'] = $employee_id && $employee_id != -1 ? User::find('employee_id')->name : '';
+
         return $data;
     }
 }
