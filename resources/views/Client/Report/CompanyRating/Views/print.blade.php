@@ -7,13 +7,8 @@
             <div style="font-size:30px;font-weight:800; color:#1fbdd9 !important; background-color:white !important;margin-right: 100px;padding:5px">
                 {{ config('app.name') }}
             </div>
-            {{-- <div>
-                <small style="padding:5px">@lang('general.date') : {{ date('Y-m-d') }}</small>
-        </div> --}}
+        </div>
     </div>
-    </div>
-
-
 
     <div class="row" style="justify-content:center; text-align:center;margin-top:20px">
         <address class="col-xs-6 col-sm-6 col-md-6 col-lg-6" style="padding:10px;font-weight:800; font-size:16px; justify-content:center; text-align:center ;align-item:center">
@@ -30,6 +25,5 @@
                 @lang('general.to') :{{ Request('date_to') }} </strong>
         </address>
     </div>
-
 
 </section>
