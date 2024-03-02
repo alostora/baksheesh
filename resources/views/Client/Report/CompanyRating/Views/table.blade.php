@@ -9,11 +9,9 @@
         <div class="box-header no-print">
             <h3 class="box-title col-md-8">@lang('company_rating.page_title')</h3>
             <div class="col-md-4">
-
                 <button class="btn bg-navy margin" style="height:25px;padding:2px;width:70px;" onclick="PrintElem()">
                     <i class="fa fa-print"></i>
                 </button>
-
             </div>
         </div>
 
@@ -81,8 +79,6 @@
                     {{ $company_ratings->render( "pagination::bootstrap-4") }}
                 </ul>
             </div>
-
         </div>
     </div>
-
 </section>
