@@ -5,7 +5,7 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-  
+
     }
 
     html {
@@ -15,9 +15,9 @@
 
     body {
     font-family: "cairo", "Arial", sans-serif;
-    
+
     }
-  
+
 
       .bg {
         display: flex;
@@ -28,7 +28,7 @@ text-align: center;
 padding-bottom:300px;
 height:auto;
       }
-    
+
 
 /* .bg {
 
@@ -42,7 +42,7 @@ height:auto;
   margin-top:50px;
 width: 50%;
 }
-.img_logo{ 
+.img_logo{
      width:60%;
      height:auto;
   color:"#fff";
@@ -119,7 +119,7 @@ margin-bottom:60px;
   text-align: center;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   padding-bottom: 20px;
-  
+
 
   }
 
@@ -131,7 +131,7 @@ margin-bottom:60px;
   padding:5px;
   align-items:center;
   text-align: center;
-  
+
 }
 .rate_name{
   color: #fff61a;
@@ -246,7 +246,7 @@ border: 3px solid #fff61a;
   border-radius: 20px;
   font-size:20px;
   font-family: cairo;
-  color:grey; 
+  color:grey;
   margin-top: 35px;
   cursor: pointer;
   transition: 0.5s;
@@ -287,7 +287,7 @@ input:focus{
 
   /* border-bottom-right-radius: 35px;
   border-bottom-left-radius: 35px; */
-  border-radius: 10px; 
+  border-radius: 10px;
 }
 
 .pay_btn{
@@ -310,6 +310,15 @@ input:focus{
 }
 
 
+.payerDataBox{
+  display:block;
+  justify-content: center;
+  text-align: center;
+  font-size: large;
+  font-weight: 700;
+  column-gap: 20px;
+  color:grey;
+}
 .anotherPriceBox{
   display:block;
   justify-content: center;
@@ -323,7 +332,7 @@ input:focus{
 
 
 .anotherPrice {
-  width: 50%;
+  width: 70%;
   border-radius: 20px;
   min-height: 50px !important;
   text-align: center;
@@ -331,8 +340,24 @@ input:focus{
   font-weight: 800 !important;
   color:rgb(255, 255, 255);
   border:2px solid #f7e331;
-  
 }
+.payerData{
+  width:70%;
+  border-radius: 20px;
+  min-height: 50px !important;
+  text-align: center;
+  font-size: 18px ;
+  font-weight: 800 !important;
+  color:rgb(255, 255, 255);
+  border:2px solid #f7e331;
+  background-color: #14bbd8;
+  margin-top:10px;
+};
+
+.payerData:focus{
+    outline: none;
+    border-color: #14bbd8;
+  }
 
 
 

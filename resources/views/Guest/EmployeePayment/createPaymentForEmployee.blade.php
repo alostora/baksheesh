@@ -87,11 +87,15 @@
 
 
     <div class="form-group">
-        <label for="payer_name" class="col-md-4">الاسم</label>
-        <input class="form-control" type="text" name="payer_name" id="payer_name" placeholder="الاسم">
+    <div  class="payerDataBox" >
+            <label for="payer_name" class="col-md-4 payerName">الاسم</label>
+            <input class="form-control payerData" type="text" name="payer_name " id="payer_name" placeholder="الاسم">
 
-        <label for="payer_phone" class="col-md-4">الهاتف</label>
-        <input class="form-control" type="text" name="payer_phone" id="payer_phone" placeholder="الهاتف">
+    </div>
+    <div class="payerDataBox">
+            <label for="payer_phone" class="col-md-4 payerPhone">الهاتف</label>
+            <input class="form-control payerData" type="text" name="payer_phone" id="payer_phone" placeholder="الهاتف">
+    </div>
     </div>
 
     <div>
