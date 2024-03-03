@@ -118,12 +118,15 @@
             </button>
         </div>
 
-        <div class="visa">
+        <div class="visa" >
+      <div>
+            <input required type="text" data-paylib="number" placeholder="Card Number" style="width:60%;height:43px;border-radius:5px;text-align:center;font-size: 14px; border: 1px solid blue;">>
+      </div>
+
             <div class="input_visa">
-                <input required type="text" data-paylib="number" placeholder="Card Number" style="width:60%;height:50px;border-radius:5px;text-align:center;font-size: 14px; border: 1px solid blue;">
-                <input size="2" required type="text" data-paylib="expmonth" placeholder="MM" style="width:33%;height:50px;border-radius:5px;display:flex;text-align:center;font-size: 14px;transform: scale(1.1);  border: 1px solid blue;">
-                <input size="4" required type="text" data-paylib="expyear" placeholder="YYYY" style="width:33%;height:50px;border-radius:5px;display:flex;text-align:center;font-size: 14px;transform: scale(1.1);  border: 1px solid blue;">
-                <input size="3" required type="text" data-paylib="cvv" placeholder="CVV" style="width:33%;height:50px;border-radius:5px;display:flex;text-align:center;font-size: 14px;transform: scale(1.1);  border: 1px solid blue;">
+                <input size="2" required type="text" data-paylib="expmonth" placeholder="MM" style="width:30%;height:50px;border-radius:5px;display:flex;text-align:center;font-size: 14px;transform: scale(1.1);  border: 1px solid blue;">
+                <input size="4" required type="text" data-paylib="expyear" placeholder="YYYY" style="width:30%;height:50px;border-radius:5px;display:flex;text-align:center;font-size: 14px;transform: scale(1.1);  border: 1px solid blue;">
+                <input size="3" required type="text" data-paylib="cvv" placeholder="CVV" style="width:30%;height:50px;border-radius:5px;display:flex;text-align:center;font-size: 14px;transform: scale(1.1);  border: 1px solid blue;">
             </div>
             <div class="input_visa_logo">
                 <img src="{{url('guest/images/')}}/visa-dark-large.svg" alt="" style="width: 20%;height:auto;">
@@ -137,7 +140,7 @@
 <div style="display:flex;flex-direction:row;letter-spacing: 2p;margin-top:20px;">
 
     <p style="font-size:18px;color:#fff;font-weight: 200;">Powered by </p>
-    <a href="{{url('/')}}" style="font-size:18px;text-decoration: none;color:#fff61a"> Tiposmart.com</a>
+    <a href="{{url('/')}}" style="font-size:20px;text-decoration: none;color:#fff61a"> Tiposmart.com</a>
 </div>
 
 

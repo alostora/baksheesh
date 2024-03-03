@@ -2,13 +2,14 @@
 
 <div class="logo_bg" style="display: none;">
     @if ($company->file)
-    <img class="img-logo" src="{{ url('uploads/' . $company->file->new_name) }}" alt="" height="150px;width:150px">
+        <img class="img-logo" src="{{ url('uploads/' . $company->file->new_name) }}" alt=""
+            height="150px;width:150px">
     @endif
 </div>
 
 <div class="employee_bg">
     @if ($company->file)
-    <img class="employee_img" src="{{ url('uploads/' . $company->file->new_name) }}" alt="">
+        <img class="employee_img" src="{{ url('uploads/' . $company->file->new_name) }}" alt="">
     @endif
     <div class="back_employee_img">
         <h1 class="name_employee">{{ $company->name }}</h1>
@@ -17,30 +18,35 @@
 
     <div class="icons">
 
-        @if ($company->companyTotalRating > 0 && $company->companyTotalRating <= 20) <i class="fas fa-regular fa-star" style="font-size:16px;color:#f7ef31; "></i>
-            @endif
+        @if ($company->companyTotalRating > 0 && $company->companyTotalRating <= 20)
+            <i class="fas fa-regular fa-star" style="font-size:16px;color:#f7ef31; "></i>
+        @endif
 
-            @if ($company->companyTotalRating >= 21 && $company->companyTotalRating <= 40) <i class="fas fa-regular fa-star" style="font-size:16px;color:#f7ef31; "></i>
-                <i class="fas fa-regular fa-star" style="font-size:16px;color:#f7ef31; "></i>
-                @endif
+        @if ($company->companyTotalRating >= 21 && $company->companyTotalRating <= 40)
+            <i class="fas fa-regular fa-star" style="font-size:16px;color:#f7ef31; "></i>
+            <i class="fas fa-regular fa-star" style="font-size:16px;color:#f7ef31; "></i>
+        @endif
 
-                @if ($company->companyTotalRating >= 41 && $company->companyTotalRating <= 60) <i class="fas fa-regular fa-star" style="font-size:16px;color:#f7ef31; "></i>
-                    <i class="fas fa-regular fa-star" style="font-size:16px;color:#f7ef31; "></i>
-                    <i class="fas fa-regular fa-star" style="font-size:16px;color:#f7ef31; "></i>
-                    @endif
+        @if ($company->companyTotalRating >= 41 && $company->companyTotalRating <= 60)
+            <i class="fas fa-regular fa-star" style="font-size:16px;color:#f7ef31; "></i>
+            <i class="fas fa-regular fa-star" style="font-size:16px;color:#f7ef31; "></i>
+            <i class="fas fa-regular fa-star" style="font-size:16px;color:#f7ef31; "></i>
+        @endif
 
-                    @if ($company->companyTotalRating >= 61 && $company->companyTotalRating <= 80) <i class="fas fa-regular fa-star" style="font-size:16px;color:#f7ef31; "></i>
-                        <i class="fas fa-regular fa-star" style="font-size:16px;color:#f7ef31; "></i>
-                        <i class="fas fa-regular fa-star" style="font-size:16px;color:#f7ef31; "></i>
-                        <i class="fas fa-regular fa-star" style="font-size:16px;color:#f7ef31; "></i>
-                        @endif
+        @if ($company->companyTotalRating >= 61 && $company->companyTotalRating <= 80)
+            <i class="fas fa-regular fa-star" style="font-size:16px;color:#f7ef31; "></i>
+            <i class="fas fa-regular fa-star" style="font-size:16px;color:#f7ef31; "></i>
+            <i class="fas fa-regular fa-star" style="font-size:16px;color:#f7ef31; "></i>
+            <i class="fas fa-regular fa-star" style="font-size:16px;color:#f7ef31; "></i>
+        @endif
 
-                        @if ($company->companyTotalRating >= 81 && $company->companyTotalRating <= 100) <i class="fas fa-regular fa-star" style="font-size:16px;color:#f7ef31; "></i>
-                            <i class="fas fa-regular fa-star" style="font-size:16px;color:#f7ef31; "></i>
-                            <i class="fas fa-regular fa-star" style="font-size:16px;color:#f7ef31; "></i>
-                            <i class="fas fa-regular fa-star" style="font-size:16px;color:#f7ef31; "></i>
-                            <i class="fas fa-regular fa-star" style="font-size:16px;color:#f7ef31; "></i>
-                            @endif
+        @if ($company->companyTotalRating >= 81 && $company->companyTotalRating <= 100)
+            <i class="fas fa-regular fa-star" style="font-size:16px;color:#f7ef31; "></i>
+            <i class="fas fa-regular fa-star" style="font-size:16px;color:#f7ef31; "></i>
+            <i class="fas fa-regular fa-star" style="font-size:16px;color:#f7ef31; "></i>
+            <i class="fas fa-regular fa-star" style="font-size:16px;color:#f7ef31; "></i>
+            <i class="fas fa-regular fa-star" style="font-size:16px;color:#f7ef31; "></i>
+        @endif
 
     </div>
 </div>
@@ -50,21 +56,24 @@
 <div class="bg_rating_employee">
     <div class="box-body">
         @if (count($company->ratingForGuest))
-        @foreach ($company->ratingForGuest as $key => $company_available_rating)
-        <div class="rating_1">
-            <div style="display:flex;margin-right:40px;margin-top:10px;padding-left:10px;">
-                <label>
-                    @foreach ([1, 2] as $i)
-                    <?php $image = $i == 1 ? 'SadB' : 'HappyB'; ?>
+            @foreach ($company->ratingForGuest as $key => $company_available_rating)
+                <div class="rating_1">
+                    <div style="display:flex;margin-right:40px;margin-top:10px;padding-left:10px;">
+                        <label>
+                            @foreach ([1, 2] as $i)
+                                <?php $image = $i == 1 ? 'SadB' : 'HappyB'; ?>
 
-                    <img src="{{ url('guest/images/' . $image . '.png') }}" class="{{ $key . '__' . $i }}" name="{{ $company_available_rating->companyAvailableRating->id }}" value="{{ $i }}" onclick="postRate(this)" id="{{ $key . '__' . $i }}" style="font-size:50px;color:#fff; padding:5px; width:70px;height:70px; border-radius:100px;" />
-                    @endforeach
-                </label>
+                                <img src="{{ url('guest/images/' . $image . '.png') }}" class="{{ $key . '__' . $i }}"
+                                    name="{{ $company_available_rating->companyAvailableRating->id }}"
+                                    value="{{ $i }}" onclick="postRate(this)" id="{{ $key . '__' . $i }}"
+                                    style="font-size:50px;color:#fff; padding:5px; width:70px;height:70px; border-radius:100px;" />
+                            @endforeach
+                        </label>
 
-            </div>
-            <h3 class="rate_name">{{ $company_available_rating->companyAvailableRating->name_ar }}</h3>
-        </div>
-        @endforeach
+                    </div>
+                    <h3 class="rate_name">{{ $company_available_rating->companyAvailableRating->name_ar }}</h3>
+                </div>
+            @endforeach
         @endif
     </div>
 </div>
@@ -91,7 +100,8 @@
         </div>
         <div class="payerDataBox">
             <label for="payer_phone" class="col-md-4 payerPhone">الهاتف</label>
-            <input class="form-control payerData" type="text" name="payer_phone" id="payer_phone" placeholder="الهاتف">
+            <input class="form-control payerData" type="text" name="payer_phone" id="payer_phone"
+                placeholder="الهاتف">
 
         </div>
     </div>
@@ -109,7 +119,8 @@
 
         <div class="anotherPriceBox">
             <label for="amount" class="col-md-4">مبلغ اخر</label>
-            <input class="anotherPrice" type="number" name="amount" id="amount" placeholder="ادخل المبلغ" style="background-color: #14bbd8">
+            <input class="anotherPrice" type="number" name="amount" id="amount" placeholder="ادخل المبلغ"
+                style="background-color: #14bbd8">
         </div>
         <div class="apple_pay">
             <button>
@@ -120,17 +131,27 @@
 
         <div id="paymentErrors" class="alert alert-warning"></div>
 
-        <div class="visa">
+        <div class="visa" style={flex-direction:'column'}>
+            <div>
+                <input required type="text" data-paylib="number" placeholder="Card Number"
+                    style="width:60%;height:43px;border-radius:5px;text-align:center;font-size: 14px; border: 1px solid blue;">
+
+            </div>
             <div class="input_visa">
-                <input required type="text" data-paylib="number" placeholder="Card Number" style="width:60%;height:50px;border-radius:5px;text-align:center;font-size: 14px; border: 1px solid blue;">
-                <input size="2" required type="text" data-paylib="expmonth" placeholder="MM" style="width:33%;height:50px;border-radius:5px;display:flex;text-align:center;font-size: 14px;transform: scale(1.1);  border: 1px solid blue;">
-                <input size="4" required type="text" data-paylib="expyear" placeholder="YYYY" style="width:33%;height:50px;border-radius:5px;display:flex;text-align:center;font-size: 14px;transform: scale(1.1);  border: 1px solid blue;">
-                <input size="3" required type="text" data-paylib="cvv" placeholder="CVV" style="width:33%;height:50px;border-radius:5px;display:flex;text-align:center;font-size: 14px;transform: scale(1.1);  border: 1px solid blue;">
+                <input size="2" required type="text" data-paylib="expmonth" placeholder="MM"
+                    style="width:30%;height:40px;border-radius:5px;display:flex;text-align:center;font-size: 14px;transform: scale(1.1);  border: 1px solid blue;">
+                <input size="4" required type="text" data-paylib="expyear" placeholder="YYYY"
+                    style="width:30%;height:40px;border-radius:5px;display:flex;text-align:center;font-size: 14px;transform: scale(1.1);  border: 1px solid blue;">
+                <input size="3" required type="text" data-paylib="cvv" placeholder="CVV"
+                    style="width:30%;height:40px;border-radius:5px;display:flex;text-align:center;font-size: 14px;transform: scale(1.1);  border: 1px solid blue;">
             </div>
             <div class="input_visa_logo">
-                <img src="{{ url('guest/images/') }}/visa-dark-large.svg" alt="" style="width: 20%;height:auto;">
-                <img src="{{ url('guest/images/') }}/mastercard-dark-large.svg" alt="" style="width: 20%;height:auto;">
-                <img src="{{ url('guest/images/') }}/americanexpress-dark-large.svg" alt="" style="width: 20%;height:auto;">
+                <img src="{{ url('guest/images/') }}/visa-dark-large.svg" alt=""
+                    style="width: 20%;height:auto;">
+                <img src="{{ url('guest/images/') }}/mastercard-dark-large.svg" alt=""
+                    style="width: 20%;height:auto;">
+                <img src="{{ url('guest/images/') }}/americanexpress-dark-large.svg" alt=""
+                    style="width: 20%;height:auto;">
             </div>
         </div>
         <input type="submit" value="ادفع" class="pay_btn">
@@ -138,7 +159,7 @@
 <div style="display:flex;flex-direction:row;letter-spacing: 2p;margin-top:20px;">
 
     <p style="font-size:18px;color:#fff;font-weight: 200;">Powered by </p>
-    <a href="{{ url('/') }}" style="font-size:18px;text-decoration: none;color:#fff61a"> Tiposmart.com</a>
+    <a href="{{ url('/') }}" style="font-size:20px;text-decoration: none;color:#fff61a"> Tiposmart.com</a>
 </div>
 
 <script>
