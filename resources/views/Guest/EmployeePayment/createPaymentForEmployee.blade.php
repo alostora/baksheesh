@@ -74,7 +74,7 @@
 <div class="text">
     <textarea name="notes" id="notes" style="text-align: right;padding:50px"></textarea>
 </div>
-<button class="btn" onclick="sendEmployeeNote()">ارسال</button>
+<button class="btn " onclick="sendEmployeeNote()">ارسال</button>
 
 
 
