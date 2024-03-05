@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ar" dir="rtl">
+<html lang="en">
 
 <head>
     <meta charset="UTF-8">
@@ -17,7 +17,7 @@
     <script src="{{url('AdminDesign/bower_components/jquery/dist/jquery.min.js')}}"></script>
 </head>
 
-<body style="text-align: right;">
+<body>
     <main class="bg">
 
 
