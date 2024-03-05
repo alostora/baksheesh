@@ -86,13 +86,13 @@
 
     <div class="form-group">
         <div class="payerDataBox">
-            <label for="payer_name" class="col-md-4 payerName">الاسم</label>
             <input class="form-control payerData" type="text" name="payer_name" id="payer_name" placeholder="الاسم">
+            <label for="payer_name" class="col-md-4 payerName">الاسم</label>
 
         </div>
         <div class="payerDataBox">
-            <label for="payer_phone" class="col-md-4 payerPhone">الهاتف</label>
             <input class="form-control payerData" type="text" name="payer_phone" id="payer_phone" placeholder="الهاتف">
+            <label for="payer_phone" class="col-md-4 payerPhone">الهاتف</label>
 
         </div>
     </div>
@@ -109,8 +109,9 @@
         <br>
 
         <div class="anotherPriceBox">
-            <label for="amount" class="col-md-4">مبلغ اخر</label>
             <input class="anotherPrice" type="number" name="amount" id="amount" placeholder="ادخل المبلغ" style="background-color: #14bbd8">
+            <label for="amount" class="col-md-4">مبلغ اخر</label>
+
         </div>
         <div class="apple_pay">
             <button>
@@ -123,13 +124,13 @@
 
         <div class="visa" style="flex-direction:column">
             <div>
-                <input required type="text" data-paylib="number" placeholder="Card Number" style="width:60%;height:43px;border-radius:5px;text-align:center;font-size: 14px; border: 1px solid blue;">
+                <input required type="text" data-paylib="number" placeholder="Card Number" style="width:93%;height:43px;border-radius:5px;text-align:center;font-size: 14px; border: 1px solid #f7ef31;">
 
             </div>
             <div class="input_visa">
-                <input size="2" required type="text" data-paylib="expmonth" placeholder="MM" style="width:30%;height:40px;border-radius:5px;display:flex;text-align:center;font-size: 14px;transform: scale(1.1);  border: 1px solid blue;">
-                <input size="4" required type="text" data-paylib="expyear" placeholder="YYYY" style="width:30%;height:40px;border-radius:5px;display:flex;text-align:center;font-size: 14px;transform: scale(1.1);  border: 1px solid blue;">
-                <input size="3" required type="text" data-paylib="cvv" placeholder="CVV" style="width:30%;height:40px;border-radius:5px;display:flex;text-align:center;font-size: 14px;transform: scale(1.1);  border: 1px solid blue;">
+                <input size="2" required type="text" data-paylib="expmonth" placeholder="MM" style="width:30%;height:40px;border-radius:5px;display:flex;text-align:center;font-size: 14px;transform: scale(1.1);  border: 1px solid #f7ef31;">
+                <input size="4" required type="text" data-paylib="expyear" placeholder="YYYY" style="width:30%;height:40px;border-radius:5px;display:flex;text-align:center;font-size: 14px;transform: scale(1.1);  border: 1px solid #f7ef31;">
+                <input size="3" required type="text" data-paylib="cvv" placeholder="CVV" style="width:30%;height:40px;border-radius:5px;display:flex;text-align:center;font-size: 14px;transform: scale(1.1);  border: 1px solid #f7ef31;">
             </div>
             <div class="input_visa_logo">
                 <img src="{{ url('guest/images/') }}/visa-dark-large.svg" alt="" style="width: 20%;height:auto;">
