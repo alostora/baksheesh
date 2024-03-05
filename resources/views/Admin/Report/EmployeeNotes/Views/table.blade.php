@@ -7,7 +7,7 @@
             @include('Admin/TableFilter/employee_notes_report')
         </div>
 
-        <div class="box-header">
+        <div class="box-header no-print">
             <h3 class="box-title col-md-8">@lang('employee_notes.page_title')</h3>
             <div class="col-md-4">
                 <button class="btn bg-navy margin" style="height:25px;padding:2px;width:70px;" onclick="PrintElem()">
@@ -19,11 +19,11 @@
             <table id="example2" class="table table-bordered table-striped">
                 <thead>
                     <tr>
-                        <th>#</th>
-                        <th>@lang('employee_notes.payer_name')</th>
-                        <th>@lang('employee_notes.client')</th>
-                        <th>@lang('employee_notes.notes')</th>
-                        <th>@lang('employee_notes.created_at')</th>
+                        <th style="background-color: #1fbdd9 !important;">#</th>
+                        <th style="background-color: #1fbdd9 !important;">@lang('employee_notes.payer_name')</th>
+                        <th style="background-color: #1fbdd9 !important;">@lang('employee_notes.client')</th>
+                        <th style="background-color: #1fbdd9 !important;">@lang('employee_notes.notes')</th>
+                        <th style="background-color: #1fbdd9 !important;">@lang('employee_notes.created_at')</th>
                     </tr>
                 </thead>
                 <tbody>

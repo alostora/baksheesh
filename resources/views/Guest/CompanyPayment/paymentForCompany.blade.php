@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ar" dir="rtl">
 
 <head>
     <meta charset="UTF-8">
@@ -17,12 +17,10 @@
     <script src="{{url('AdminDesign/bower_components/jquery/dist/jquery.min.js')}}"></script>
 </head>
 
-<body>
+<body style="text-align: right;">
     <main class="bg">
 
-
         @include('Guest.CompanyPayment.createPaymentForCompany')
-
 
         <script src="{{url('AdminDesign')}}/bower_components/jquery-sparkline/dist/jquery.sparkline.min.js"></script>
         <script src="{{url('AdminDesign')}}/plugins/jvectormap/jquery-jvectormap-1.2.2.min.js"></script>

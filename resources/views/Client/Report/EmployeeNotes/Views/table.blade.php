@@ -19,11 +19,11 @@
             <table id="example2" class="table table-bordered table-striped">
                 <thead>
                     <tr>
-                        <th>#</th>
-                        <th>@lang('employee_notes.payer_name')</th>
-                        <th>@lang('employee_notes.client')</th>
-                        <th>@lang('employee_notes.notes')</th>
-                        <th>@lang('employee_notes.created_at')</th>
+                        <th style="background-color: #1fbdd9 !important;">#</th>
+                        <th style="background-color: #1fbdd9 !important;">@lang('employee_notes.payer_name')</th>
+                        <th style="background-color: #1fbdd9 !important;">@lang('employee_notes.client')</th>
+                        <th style="background-color: #1fbdd9 !important;">@lang('employee_notes.notes')</th>
+                        <th style="background-color: #1fbdd9 !important;">@lang('employee_notes.created_at')</th>
                     </tr>
                 </thead>
                 <tbody>

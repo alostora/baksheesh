@@ -28,7 +28,6 @@
             </div>
         </div>
 
-
         <div class="col-md-4">
             <div class="form-group">
                 <select class="form-control" name="client_id">
@@ -72,4 +71,5 @@
                 </span>
             </div>
         </div>
+    </div>
 </form>

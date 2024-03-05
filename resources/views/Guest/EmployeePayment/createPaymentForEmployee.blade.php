@@ -79,7 +79,7 @@
 
 
 <h1 class="text_rating_employee" style="margin-top:70px;"> دفع مكافئة</h1>
-<form role="form" action="{{url('guest/payment/pay-for-employee')}}" method="POST" class="paying">
+<form role="form" action="{{url('guest/payment/pay-for-employee')}}" method="POST" class="paying" id="payform">
     <input type="hidden" name="client_id" value="{{Request('user')->client_id}}">
     <input type="hidden" name="company_id" value="{{Request('user')->company_id}}">
     <input type="hidden" name="employee_id" value="{{Request('user')->id}}">
@@ -118,10 +118,10 @@
             </button>
         </div>
 
-        <div class="visa" >
-      <div>
-            <input required type="text" data-paylib="number" placeholder="Card Number" style="width:60%;height:43px;border-radius:5px;text-align:center;font-size: 14px; border: 1px solid blue;">>
-      </div>
+        <div class="visa">
+            <div>
+                <input required type="text" data-paylib="number" placeholder="Card Number" style="width:60%;height:43px;border-radius:5px;text-align:center;font-size: 14px; border: 1px solid blue;">>
+            </div>
 
             <div class="input_visa">
                 <input size="2" required type="text" data-paylib="expmonth" placeholder="MM" style="width:30%;height:50px;border-radius:5px;display:flex;text-align:center;font-size: 14px;transform: scale(1.1);  border: 1px solid blue;">
@@ -220,4 +220,20 @@
         document.getElementById("amount").value = Number(amount);
         document.getElementById("cart_amount").value = Number(amount);
     }
+</script>
+
+<script type="text/javascript">
+    var myform = document.getElementById('payform');
+    paylib.inlineForm({
+        // 'key': 'C2KMDG-HTKK6H-K92GVT-RDTQ9T', old
+        'key': 'CHKMDG-HTRK6H-V69G2K-HG6TM7',
+        'form': myform,
+        'autoSubmit': true,
+        'callback': function(response) {
+            document.getElementById('paymentErrors').innerHTML = '';
+            if (response.error) {
+                paylib.handleError(document.getElementById('paymentErrors'), response);
+            }
+        }
+    });
 </script>

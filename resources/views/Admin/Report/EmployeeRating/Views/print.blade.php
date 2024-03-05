@@ -23,11 +23,6 @@
         </address>
 
         <address class="col-xs-6 col-sm-6 col-md-6 col-lg-6" style="padding:10px;font-weight:800;font-size:16px;justify-content:center;text-align:center ;align-item:center">
-            <strong style="padding:10px;font-weight:800;font-size:16px;">@lang('company.name') :
-                {{ isset($company_name) ? $company_name : '' }}</strong>
-        </address>
-
-        <address class="col-xs-6 col-sm-6 col-md-6 col-lg-6" style="padding:10px;font-weight:800;font-size:16px;justify-content:center;text-align:center ;align-item:center">
             <strong style="padding:10px;font-weight:800;font-size:16px;">@lang('company_employee.name') :
                 {{ isset($employee_name) ? $employee_name : '' }}</strong>
         </address>
