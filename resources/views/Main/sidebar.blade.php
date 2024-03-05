@@ -215,6 +215,18 @@
                             <i class="fa fa-solid fa-clipboard"></i>@lang('sidebar.company_notes_report')
                         </a>
                     </li>
+
+                    <li>
+                        <a href="{{url('admin/employee-rating-report')}}">
+                            <i class="fa fa-regular fa-star"></i>@lang('sidebar.employee_rating_report')
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="{{url('admin/employee-notes-report')}}">
+                            <i class="fa fa-solid fa-clipboard"></i>@lang('sidebar.employee_notes_report')
+                        </a>
+                    </li>
                 </ul>
             </li>
 

@@ -19,6 +19,7 @@ class EmployeeNotesReportSearchCollection
         $per_page = SystemDefault::DEFAUL_PAGINATION_COUNT
     ) {
         $data['employee_notes'] = EmployeeNotesReportQueryCollection::searchEmployeeNotes(
+            $company_id,
             $employee_id,
             $query_string,
             $date_from,
@@ -43,8 +44,8 @@ class EmployeeNotesReportSearchCollection
             })
             ->get();
 
-        $data['company_name'] = $company_id && $company_id != -1 ? Company::find('company_id')->name : '';
-        $data['employee_name'] = $employee_id && $employee_id != -1 ? User::find('employee_id')->name : '';
+        $data['company_name'] = $company_id && $company_id != -1 ? Company::find($company_id)->name : '';
+        $data['employee_name'] = $employee_id && $employee_id != -1 ? User::find($employee_id)->name : '';
 
         return $data;
     }
