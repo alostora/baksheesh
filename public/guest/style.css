@@ -244,6 +244,9 @@ textarea:focus {
     margin-top: 50px;
     border: 1px solid grey;
     flex-direction: column;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
 }
 
 .input_visa {
@@ -341,4 +344,15 @@ input:focus {
 .anotherPrice:focus {
     outline: none;
     border-color: #14bbd8;
+}
+
+.message_false {
+    font-size: x-large !important;
+    background-color: rgb(255, 179, 179);
+    border-radius: 8px;
+    margin: 30px;
+    text-align: center;
+    justify-content: center;
+    color: red;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
