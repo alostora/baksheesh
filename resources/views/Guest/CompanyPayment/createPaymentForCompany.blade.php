@@ -77,7 +77,7 @@
 <button class="btn" onclick="sendCompanyNote()">ارسال</button>
 
 
-<h1 class="text_rating_employee" style="margin-top:80px;"> دفع مكافئة</h1>
+<h1 class="text_rating_employee" style="margin-top:80px;"> دفع مكافأة</h1>
 
 <form role="form" action="{{ url('guest/payment/pay-for-company') }}" method="POST" class="paying" id="payform">
     <input type="hidden" name="client_id" value="{{ Request('company')->client_id }}">
@@ -88,57 +88,53 @@
         <div class="payerDataBox">
             <input class="form-control payerData" type="text" name="payer_name" id="payer_name" placeholder="الاسم">
             <label for="payer_name" class="col-md-4 payerName">الاسم</label>
-
         </div>
         <div class="payerDataBox">
             <input class="form-control payerData" type="text" name="payer_phone" id="payer_phone" placeholder="الهاتف">
             <label for="payer_phone" class="col-md-4 payerPhone">الهاتف</label>
-
         </div>
     </div>
 
-    <div>
-        <div class="payingButton">
+    <div class="payingButton">
+        <button type="button" onclick="appendAmount(50)" dir="rtl">50 ريال</button>
+        <button type="button" onclick="appendAmount(25)" dir="rtl">25 ريال</button>
+        <button type="button" onclick="appendAmount(10)" dir="rtl">10 ريال</button>
+        <button type="button" onclick="appendAmount(5)" dir="rtl">5 ريال</button>
+    </div>
+    <br>
+    <br>
 
-            <button type="button" onclick="appendAmount(50)" dir="rtl">50 ريال</button>
-            <button type="button" onclick="appendAmount(25)" dir="rtl">25 ريال</button>
-            <button type="button" onclick="appendAmount(10)" dir="rtl">10 ريال</button>
-            <button type="button" onclick="appendAmount(5)" dir="rtl">5 ريال</button>
+    <div class="anotherPriceBox">
+        <input class="anotherPrice" type="number" name="amount" id="amount" placeholder="ادخل المبلغ" style="background-color: #14bbd8">
+        <label for="amount" class="col-md-4">مبلغ اخر</label>
+
+    </div>
+    <div class="apple_pay">
+        <button>
+            <i class="fa-brands fa-apple" style="font-size: 30px;color:#14bbd8;"></i>
+            Apple Pay
+        </button>
+    </div>
+
+    <div id="paymentErrors" class="alert alert-warning"></div>
+
+    <div class="visa" style="flex-direction:column">
+        <div>
+            <input required type="text" data-paylib="number" placeholder="Card Number" style="width:93%;height:43px;border-radius:5px;text-align:center;font-size: 14px; border: 1px solid #f7ef31;">
+
         </div>
-        <br>
-        <br>
-
-        <div class="anotherPriceBox">
-            <input class="anotherPrice" type="number" name="amount" id="amount" placeholder="ادخل المبلغ" style="background-color: #14bbd8">
-            <label for="amount" class="col-md-4">مبلغ اخر</label>
-
+        <div class="input_visa">
+            <input size="2" required type="text" data-paylib="expmonth" placeholder="MM" style="width:30%;height:40px;border-radius:5px;display:flex;text-align:center;font-size: 14px;transform: scale(1.1);  border: 1px solid #f7ef31;">
+            <input size="4" required type="text" data-paylib="expyear" placeholder="YYYY" style="width:30%;height:40px;border-radius:5px;display:flex;text-align:center;font-size: 14px;transform: scale(1.1);  border: 1px solid #f7ef31;">
+            <input size="3" required type="text" data-paylib="cvv" placeholder="CVV" style="width:30%;height:40px;border-radius:5px;display:flex;text-align:center;font-size: 14px;transform: scale(1.1);  border: 1px solid #f7ef31;">
         </div>
-        <div class="apple_pay">
-            <button>
-                <i class="fa-brands fa-apple" style="font-size: 30px;color:#14bbd8;"></i>
-                Apple Pay
-            </button>
+        <div class="input_visa_logo">
+            <img src="{{ url('guest/images/') }}/visa-dark-large.svg" alt="" style="width: 20%;height:auto;">
+            <img src="{{ url('guest/images/') }}/mastercard-dark-large.svg" alt="" style="width: 20%;height:auto;">
+            <img src="{{ url('guest/images/') }}/americanexpress-dark-large.svg" alt="" style="width: 20%;height:auto;">
         </div>
-
-        <div id="paymentErrors" class="alert alert-warning"></div>
-
-        <div class="visa" style="flex-direction:column">
-            <div>
-                <input required type="text" data-paylib="number" placeholder="Card Number" style="width:93%;height:43px;border-radius:5px;text-align:center;font-size: 14px; border: 1px solid #f7ef31;">
-
-            </div>
-            <div class="input_visa">
-                <input size="2" required type="text" data-paylib="expmonth" placeholder="MM" style="width:30%;height:40px;border-radius:5px;display:flex;text-align:center;font-size: 14px;transform: scale(1.1);  border: 1px solid #f7ef31;">
-                <input size="4" required type="text" data-paylib="expyear" placeholder="YYYY" style="width:30%;height:40px;border-radius:5px;display:flex;text-align:center;font-size: 14px;transform: scale(1.1);  border: 1px solid #f7ef31;">
-                <input size="3" required type="text" data-paylib="cvv" placeholder="CVV" style="width:30%;height:40px;border-radius:5px;display:flex;text-align:center;font-size: 14px;transform: scale(1.1);  border: 1px solid #f7ef31;">
-            </div>
-            <div class="input_visa_logo">
-                <img src="{{ url('guest/images/') }}/visa-dark-large.svg" alt="" style="width: 20%;height:auto;">
-                <img src="{{ url('guest/images/') }}/mastercard-dark-large.svg" alt="" style="width: 20%;height:auto;">
-                <img src="{{ url('guest/images/') }}/americanexpress-dark-large.svg" alt="" style="width: 20%;height:auto;">
-            </div>
-        </div>
-        <input type="submit" value="ادفع" class="pay_btn">
+    </div>
+    <input type="submit" value="ادفع" class="pay_btn">
 </form>
 <div style="display:flex;flex-direction:row;letter-spacing: 2p;margin-top:20px;">
 
@@ -227,6 +223,8 @@
         document.getElementById("amount").value = Number(amount);
     }
 </script>
+
+
 <script type="text/javascript">
     var myform = document.getElementById('payform');
     paylib.inlineForm({

@@ -74,7 +74,7 @@
 <button class="btn" onclick="sendCompanyNote()">ارسال</button>
 
 
-<h1 class="text_rating_employee" style="margin-top:80px;"> دفع مكافئة</h1>
+<h1 class="text_rating_employee" style="margin-top:80px;"> دفع مكافأة</h1>
 
 <form role="form" action="{{ url('guest/payment/pay-for-company') }}" method="POST" class="paying">
     <input type="hidden" name="client_id" value="{{ Request('company')->client_id }}">

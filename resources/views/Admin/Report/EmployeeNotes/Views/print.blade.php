@@ -12,22 +12,22 @@
 
     <div class="row" style="justify-content:center;text-align:center;margin-top:20px">
 
-        <address class="col-xs-6 col-sm-6 col-md-6 col-lg-6" style="padding:10px;font-weight:800;font-size:16px;justify-content:center;text-align:center ;align-item:center">
+        <address class="col-xs-6 col-sm-6 col-md-6 col-lg-6" style="padding:10px;font-weight:800;font-size:16px;justify-content:center;text-align:center;">
             <strong style="padding:10px;font-weight:800;font-size:16px;">@lang('company.client') :
                 {{ isset($client_name) ? $client_name : '' }}</strong>
         </address>
 
-        <address class="col-xs-6 col-sm-6 col-md-6 col-lg-6" style="padding:10px;font-weight:800;font-size:16px;justify-content:center;text-align:center ;align-item:center">
+        <address class="col-xs-6 col-sm-6 col-md-6 col-lg-6" style="padding:10px;font-weight:800;font-size:16px;justify-content:center;text-align:center;">
             <strong style="padding:10px;font-weight:800;font-size:16px;">@lang('company.name') :
                 {{ isset($company_name) ? $company_name : '' }}</strong>
         </address>
 
-        <address class="col-xs-6 col-sm-6 col-md-6 col-lg-6" style="padding:10px;font-weight:800;font-size:16px;justify-content:center;text-align:center ;align-item:center">
+        <address class="col-xs-6 col-sm-6 col-md-6 col-lg-6" style="padding:10px;font-weight:800;font-size:16px;justify-content:center;text-align:center;">
             <strong style="padding:10px;font-weight:800;font-size:16px;">@lang('company_employee.name') :
                 {{ isset($employee_name) ? $employee_name : '' }}</strong>
         </address>
 
-        <address class="row" style="  font-weight:800;font-size:16px; justify-content:center;text-align:center;align-item:center">
+        <address class="row" style="  font-weight:800;font-size:16px; justify-content:center;text-align:center;">
             <strong>@lang('general.date') @lang('general.from') : {{ Request('date_from') }}
                 @lang('general.to') :{{ Request('date_to') }} </strong>
         </address>

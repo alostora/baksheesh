@@ -78,7 +78,7 @@
 
 
 
-<h1 class="text_rating_employee" style="margin-top:70px;"> دفع مكافئة</h1>
+<h1 class="text_rating_employee" style="margin-top:70px;"> دفع مكافأة</h1>
 <form role="form" action="{{url('guest/payment/pay-for-employee')}}" method="POST" class="paying">
     <input type="hidden" name="client_id" value="{{Request('user')->client_id}}">
     <input type="hidden" name="company_id" value="{{Request('user')->company_id}}">

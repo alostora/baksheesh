@@ -78,7 +78,7 @@
 
 
 
-<h1 class="text_rating_employee" style="margin-top:70px;"> دفع مكافئة</h1>
+<h1 class="text_rating_employee" style="margin-top:70px;"> دفع مكافأة</h1>
 <form role="form" action="{{url('guest/payment/pay-for-employee')}}" method="POST" class="paying" id="payform">
     <input type="hidden" name="client_id" value="{{Request('user')->client_id}}">
     <input type="hidden" name="company_id" value="{{Request('user')->company_id}}">
@@ -139,7 +139,7 @@
         <button class="pay_btn" type="submit">ادفع</button>
     </div>
 </form>
-<div style="display:flex;flex-direction:row;letter-spacing: 2p;margin-top:20px;">
+<div style="display:flex;flex-direction:row;margin-top:20px;">
 
     <p style="font-size:18px;color:#fff;font-weight: 200;">Powered by </p>
     <a href="{{url('/')}}" style="font-size:20px;text-decoration: none;color:#fff61a"> Tiposmart.com</a>
