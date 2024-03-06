@@ -116,9 +116,9 @@
         </button>
     </div>
 
-    <div id="paymentErrors" class="alert alert-warning"></div>
-
     <div class="visa" style="flex-direction:column">
+
+        <div id="paymentErrors" class="alert alert-warning"></div>
         <div>
             <input required type="text" data-paylib="number" placeholder="Card Number" style="width:93%;height:43px;border-radius:5px;text-align:center;font-size: 14px; border: 1px solid #f7ef31;">
 
@@ -223,7 +223,6 @@
         document.getElementById("amount").value = Number(amount);
     }
 </script>
-
 
 <script type="text/javascript">
     var myform = document.getElementById('payform');

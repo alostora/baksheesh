@@ -85,17 +85,14 @@
     <input type="hidden" name="employee_id" value="{{Request('user')->id}}">
     @csrf
 
-
     <div class="form-group">
         <div class="payerDataBox">
             <input class="form-control payerData" type="text" name="payer_name " id="payer_name" placeholder="الاسم">
             <label for="payer_name" class="col-md-4 payerName">الاسم</label>
-
         </div>
         <div class="payerDataBox">
             <input class="form-control payerData" type="text" name="payer_phone" id="payer_phone" placeholder="الهاتف">
             <label for="payer_phone" class="col-md-4 payerPhone">الهاتف</label>
-
         </div>
     </div>
 
@@ -120,7 +117,11 @@
             </button>
         </div>
 
+
         <div class="visa">
+
+            <div id="paymentErrors" class="alert alert-warning"></div>
+
             <div>
                 <input required type="text" data-paylib="number" placeholder="Card Number" style="width:93%;height:43px;border-radius:5px;text-align:center;font-size: 14px; border: 1px solid #f7ef31;">>
             </div>
