@@ -113,19 +113,33 @@
         <label for="amount" class="col-md-4">مبلغ اخر</label>
 
     </div>
-    <div id="invoice_details" style="display: none;">
+    <div  id="invoice_details" class="inv_data" style="display: none;">
 
-        <div class="col-sm-12">
-            <label class="col-sm-6">المبلغ</label>
-            <label class="col-sm-6" id="tip_amount"></label>
+        <div dir="rtl" class="inv">
+            <div>
+                <label class="col-sm-6">المبلغ</label>
+            </div>
+            <div>
+                <label style="color:darkgreen; font-size:16px" class="col-sm-6" id="tip_amount"></label>
+            </div>
         </div>
-        <div class="col-sm-12">
-            <label class="col-sm-6">رسوم التحويل (5% + 2 ريال)</label>
-            <label class="col-sm-6" id="transaction_fees"></label>
+        <hr>
+        <div  dir="rtl"class="inv"  >
+            <div>
+                <label class="col-sm-6">رسوم التحويل (5% + 2 ريال)</label>
+            </div>
+            <div>
+                <label style="color:darkgreen; font-size:16px" class="col-sm-6" id="transaction_fees"></label>
+            </div>
         </div>
-        <div class="col-sm-12">
-            <label class="col-sm-6">الاجمالي</label>
-            <label class="col-sm-6" id="total"></label>
+        <hr>
+        <div  dir="rtl" class="inv" >
+            <div>
+                <label class="col-sm-6">الاجمالي</label>
+            </div>
+            <div>
+                <label style="color:darkgreen; font-size:16px" class="col-sm-6" id="total"></label>
+            </div>
         </div>
     </div>
     <div class="apple_pay">
