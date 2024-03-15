@@ -105,9 +105,28 @@
     <br>
 
     <div class="anotherPriceBox">
-        <input class="anotherPrice" type="number" name="amount" id="amount" placeholder="ادخل المبلغ" style="background-color: #14bbd8">
+
+        <input class="anotherPrice" type="hidden" name="amount" id="last_amount">
+
+        <input class="anotherPrice" type="number" id="amount" placeholder="ادخل المبلغ" style="background-color: #14bbd8" onkeyup="appendAmount(this.value)">
+
         <label for="amount" class="col-md-4">مبلغ اخر</label>
 
+    </div>
+    <div id="invoice_details" style="display: none;">
+
+        <div class="col-sm-12">
+            <label class="col-sm-6">المبلغ</label>
+            <label class="col-sm-6" id="tip_amount"></label>
+        </div>
+        <div class="col-sm-12">
+            <label class="col-sm-6">رسوم التحويل (5% + 2 ريال)</label>
+            <label class="col-sm-6" id="transaction_fees"></label>
+        </div>
+        <div class="col-sm-12">
+            <label class="col-sm-6">الاجمالي</label>
+            <label class="col-sm-6" id="total"></label>
+        </div>
     </div>
     <div class="apple_pay">
         <button>
@@ -223,7 +242,22 @@
     }
 
     function appendAmount(amount) {
+
+        var transaction_fees = (Number(amount) * (5 / 100)) + 2;
+
+        var total = Number(amount) + transaction_fees;
+
+        document.getElementById("tip_amount").innerHTML = Number(amount);
+
+        document.getElementById("transaction_fees").innerHTML = Number(transaction_fees);
+
+        document.getElementById("total").innerHTML = Number(total);
+        document.getElementById("last_amount").value = Number(total);
+
         document.getElementById("amount").value = Number(amount);
+
+        document.getElementById("invoice_details").style = "display:block";
+
     }
 </script>
 
