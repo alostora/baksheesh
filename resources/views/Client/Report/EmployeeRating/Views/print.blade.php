@@ -1,4 +1,4 @@
-<section class="invoice">
+<section class="invoice visible-print-inline-block">
     <div class="row" style="text-align: left; padding:10px;">
         <span class="logo-mini"><img src="{{url('AdminDesign')}}/logo_tipo.png" style="width:100px"></span>
     </div>

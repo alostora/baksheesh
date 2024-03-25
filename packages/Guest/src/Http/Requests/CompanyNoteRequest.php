@@ -7,7 +7,7 @@ use App\Models\SystemLookup;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\Rule;
 
-class PayForCompanyRequest extends FormRequest
+class CompanyNoteRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -31,6 +31,8 @@ class PayForCompanyRequest extends FormRequest
 
         return [
 
+            "guest_key" => ["bail", "required"],
+
             "client_id" => [
 
                 "required", "uuid", "string",
@@ -40,7 +42,7 @@ class PayForCompanyRequest extends FormRequest
 
             "company_id" => ["required", "uuid", "string", "exists:companies,id"],
 
-            "amount" => ["bail", "nullable", "numeric", "max:100000"],
+            "notes" => ["bail", "required", "string", "unique:users,phone", "max:255"],
 
             "payer_name" => ["bail", "nullable", "string", "max:255"],
 
@@ -48,7 +50,6 @@ class PayForCompanyRequest extends FormRequest
 
             "payer_phone" => ["bail", "nullable", "string", "unique:users,phone", "max:255"],
 
-            "notes" => ["bail", "nullable", "string", "unique:users,phone", "max:255"],
         ];
     }
 }

@@ -2,12 +2,11 @@
 
 namespace Guest\Http\Requests;
 
-use App\Constants\HasLookupType\UserAccountType;
-use App\Models\SystemLookup;
+use App\Foundations\LookupType\AccountTypeCollection;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\Rule;
 
-class PayForCompanyRequest extends FormRequest
+class EmployeeNoteRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -25,11 +24,13 @@ class PayForCompanyRequest extends FormRequest
     public function rules(): array
     {
 
-        $lookup_account_type_client = SystemLookup::where('type', UserAccountType::LOOKUP_TYPE)
-            ->where('key', UserAccountType::CLIENT['key'])
-            ->first();
+        $lookup_account_type_employee = AccountTypeCollection::employee();
+
+        $lookup_account_type_client = AccountTypeCollection::client();
 
         return [
+
+            "guest_key" => ["bail", "required"],
 
             "client_id" => [
 
@@ -40,7 +41,12 @@ class PayForCompanyRequest extends FormRequest
 
             "company_id" => ["required", "uuid", "string", "exists:companies,id"],
 
-            "amount" => ["bail", "nullable", "numeric", "max:100000"],
+            "employee_id" => [
+
+                "required", "uuid", "string",
+
+                Rule::exists('users', 'id')->where('user_account_type_id', $lookup_account_type_employee->id)
+            ],
 
             "payer_name" => ["bail", "nullable", "string", "max:255"],
 
@@ -48,7 +54,7 @@ class PayForCompanyRequest extends FormRequest
 
             "payer_phone" => ["bail", "nullable", "string", "unique:users,phone", "max:255"],
 
-            "notes" => ["bail", "nullable", "string", "unique:users,phone", "max:255"],
+            "notes" => ["bail", "required", "string", "unique:users,phone", "max:255"],
         ];
     }
 }

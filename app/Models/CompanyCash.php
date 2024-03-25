@@ -28,6 +28,8 @@ class CompanyCash extends Model
 
         'notes',
 
+        'guest_key',
+
     ];
 
     protected function createdAt(): Attribute

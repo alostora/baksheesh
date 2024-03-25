@@ -51,7 +51,8 @@
             <table id="example2" class="table table-bordered table-striped">
                 <thead>
                     <tr>
-                        <th style="background-color: #1fbdd9 !important;">#</th>
+                        <th style="background-color: #1fbdd9 !important;" class="no-print">#</th>
+                        <th style="background-color: #1fbdd9 !important;">@lang('company_rating.payer_name')</th>
                         <th style="background-color: #1fbdd9 !important;">@lang('company_rating.company')</th>
                         <th style="background-color: #1fbdd9 !important;">@lang('company_rating.available_rating')</th>
                         <th style="background-color: #1fbdd9 !important;">@lang('company_rating.rating_value')</th>
@@ -62,7 +63,8 @@
                     @if(!empty($company_ratings))
                     @foreach ($company_ratings as $key=>$company_rating)
                     <tr>
-                        <td> {{$key+1}} </td>
+                        <td class="no-print"> {{$key+1}} </td>
+                        <td> {{$company_rating->payer_name}} <br> {{$company_rating->payer_phone}} </td>
                         <td> {{$company_rating->company ? $company_rating->company->name : ''}} </td>
                         <td> {{$company_rating->companyAvailableRating ? $company_rating->companyAvailableRating->name : ''}} </td>
                         <td>

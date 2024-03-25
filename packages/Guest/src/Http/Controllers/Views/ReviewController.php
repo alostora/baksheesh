@@ -6,8 +6,8 @@ use App\Http\Controllers\Controller;
 use App\Models\Company;
 use App\Models\CompanyCash;
 use App\Models\EmployeeCash;
-use App\Models\SystemLookup;
 use App\Models\User;
+use Guest\Foundations\PaymentCollection;
 use Guest\Http\Requests\PayForCompanyRequest;
 use Guest\Http\Requests\PayForEmployeeRequest;
 use Illuminate\Http\Request;
@@ -17,23 +17,56 @@ class ReviewController extends Controller
 
     public function payForCompany(PayForCompanyRequest $request)
     {
-        CompanyCash::create($request->validated());
 
-        return back();
+        $validated = $request->validated();
+
+        $url = $request->url() . '/' . $validated['company_id'];
+
+        if (isset($validated['amount']) && $validated['amount'] > 0) {
+
+            $response =  PaymentCollection::pay($request, $url);
+
+            if ($response && $response->tran_ref) {
+
+                CompanyCash::create($validated);
+
+                return redirect($response->redirect_url);
+            } else {
+
+                return redirect()->back()->with('warning', 'error!');
+            }
+        }
+
+        return redirect()->back()->with('warning', 'error!');
     }
 
     public function payForEmployee(PayForEmployeeRequest $request)
     {
-        EmployeeCash::create($request->validated());
+        $validated = $request->validated();
 
-        return back();
+        $url = $request->url() . '/' . $validated['employee_id'];
+
+        if (isset($validated['amount']) && $validated['amount'] > 0) {
+
+            $response =  PaymentCollection::pay($request, $url);
+
+            if ($response && $response->tran_ref) {
+
+                EmployeeCash::create($validated);
+
+                return redirect($response->redirect_url);
+            } else {
+                return redirect()->back()->with('warning', 'error!');
+            }
+        }
+
+        return redirect()->back()->with('warning', 'error!');
     }
 
     public function viewPaymentForEmployee(User $user, Request $request)
     {
-        // return $user->employeeTotalRating();
-
         if ($user->stopped_at) {
+
             return abort(404);
         }
 
@@ -49,10 +82,6 @@ class ReviewController extends Controller
 
     public function viewPaymentForCompany(Company $company, Request $request)
     {
-
-        // return $company->companyTotalRating;
-
-
         if ($company->stopped_at) {
             return abort(404);
         }

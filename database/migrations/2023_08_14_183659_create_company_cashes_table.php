@@ -15,6 +15,8 @@ return new class extends Migration
 
             $table->uuid('id')->primary();
 
+            $table->string('guest_key')->nullable();
+
             $table->foreignUuid('client_id')->nullable();
 
             $table->foreignUuid('company_id')->nullable();

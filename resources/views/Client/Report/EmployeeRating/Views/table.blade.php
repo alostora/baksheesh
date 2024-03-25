@@ -52,7 +52,8 @@
             <table id="example2" class="table table-bordered table-striped">
                 <thead>
                     <tr>
-                        <th style="background-color: #1fbdd9 !important;">#</th>
+                        <th style="background-color: #1fbdd9 !important;" class="no-print">#</th>
+                        <th style="background-color: #1fbdd9 !important;">@lang('employee_rating.payer_name')</th>
                         <th style="background-color: #1fbdd9 !important;">@lang('employee_rating.employee')</th>
                         <th style="background-color: #1fbdd9 !important;">@lang('employee_rating.available_rating')</th>
                         <th style="background-color: #1fbdd9 !important;">@lang('employee_rating.rating_value')</th>
@@ -64,6 +65,7 @@
                     @foreach ($employee_ratings as $key => $employee_rating)
                     <tr>
                         <td> {{ $key + 1 }} </td>
+                        <td> {{$employee_rating->payer_name}} <br> {{$employee_rating->payer_phone}} </td>
                         <td> {{ $employee_rating->employee ? $employee_rating->employee->name : '' }} </td>
                         <td> {{ $employee_rating->employeeAvailableRating ? $employee_rating->employeeAvailableRating->name : '' }}
                         </td>
@@ -83,8 +85,6 @@
                     {{ $employee_ratings->render('pagination::bootstrap-4') }}
                 </ul>
             </div>
-
         </div>
     </div>
-
 </section>

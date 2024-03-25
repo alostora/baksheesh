@@ -1,5 +1,3 @@
-<script src="https://secure.clickpay.com.sa/payment/js/paylib.js"></script>
-
 <div class="logo_bg" style="display: none;">
     @if ($company->file)
     <img class="img-logo" src="{{ url('uploads/' . $company->file->new_name) }}" alt="" height="150px;width:150px">
@@ -80,6 +78,34 @@
 <h1 class="text_rating_employee" style="margin-top:80px;"> دفع مكافأة</h1>
 
 <form role="form" action="{{ url('guest/payment/pay-for-company') }}" method="POST" class="paying" id="payform">
+
+
+    @if ($errors->any())
+    <div class="alert alert-warning col-md-6" style="margin-top: 60px;">
+        <ul>
+            @foreach ($errors->all() as $error)
+            <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+    </div>
+    @endif
+
+    @if (session()->has('success'))
+    <div class="alert alert-success col-md-6" style="margin-top: 60px;">
+        <ul>
+            <li>{{ session('success') }}</li>
+        </ul>
+    </div>
+    @endif
+
+    @if (session()->has('error'))
+    <div class="alert alert-success col-md-6" style="margin-top: 60px;">
+        <ul>
+            <li>{{ session('error') }}</li>
+        </ul>
+    </div>
+    @endif
+
     <input type="hidden" name="client_id" value="{{ Request('company')->client_id }}">
     <input type="hidden" name="company_id" value="{{ Request('company')->id }}">
     @csrf
@@ -113,7 +139,7 @@
         <label for="amount" class="col-md-4">مبلغ اخر</label>
 
     </div>
-    <div  id="invoice_details" class="inv_data" style="display: none;">
+    <div id="invoice_details" class="inv_data" style="display: none;">
 
         <div dir="rtl" class="inv">
             <div>
@@ -124,16 +150,16 @@
             </div>
         </div>
         <hr>
-        <div  dir="rtl"class="inv"  >
+        <div dir="rtl" class="inv">
             <div>
-                <label class="col-sm-6">رسوم التحويل (5% + 2 ريال)</label>
+                <label class="col-sm-6">رسوم الخدمة</label>
             </div>
             <div>
                 <label style="color:darkgreen; font-size:16px" class="col-sm-6" id="transaction_fees"></label>
             </div>
         </div>
         <hr>
-        <div  dir="rtl" class="inv" >
+        <div dir="rtl" class="inv">
             <div>
                 <label class="col-sm-6">الاجمالي</label>
             </div>
@@ -142,34 +168,12 @@
             </div>
         </div>
     </div>
-    <div class="apple_pay">
+    <!-- <div class="apple_pay">
         <button>
             <i class="fa-brands fa-apple" style="font-size: 30px;color:#14bbd8;"></i>
             Apple Pay
         </button>
-    </div>
-
-    <div class="visa" style="flex-direction:column">
-
-        <div>
-            <div id="paymentErrors" class="message_false"></div>
-        </div>
-
-        <div>
-            <input required type="text" data-paylib="number" placeholder="Card Number" style="width:93%;height:43px;border-radius:5px;text-align:center;font-size: 14px; border: 1px solid #f7ef31;">
-
-        </div>
-        <div class="input_visa">
-            <input size="2" required type="text" data-paylib="expmonth" placeholder="MM" style="width:30%;height:40px;border-radius:5px;display:flex;text-align:center;font-size: 14px;transform: scale(1.1);  border: 1px solid #f7ef31;">
-            <input size="4" required type="text" data-paylib="expyear" placeholder="YYYY" style="width:30%;height:40px;border-radius:5px;display:flex;text-align:center;font-size: 14px;transform: scale(1.1);  border: 1px solid #f7ef31;">
-            <input size="3" required type="text" data-paylib="cvv" placeholder="CVV" style="width:30%;height:40px;border-radius:5px;display:flex;text-align:center;font-size: 14px;transform: scale(1.1);  border: 1px solid #f7ef31;">
-        </div>
-        <div class="input_visa_logo">
-            <img src="{{ url('guest/images/') }}/visa-dark-large.svg" alt="" style="width: 20%;height:auto;">
-            <img src="{{ url('guest/images/') }}/mastercard-dark-large.svg" alt="" style="width: 20%;height:auto;">
-            <img src="{{ url('guest/images/') }}/americanexpress-dark-large.svg" alt="" style="width: 20%;height:auto;">
-        </div>
-    </div>
+    </div> -->
     <input type="submit" value="ادفع" class="pay_btn">
 </form>
 <div style="display:flex;flex-direction:row;letter-spacing: 2p;margin-top:20px;">
@@ -206,19 +210,12 @@
                 rating_value: value,
                 rating_id: element.name,
                 guest_key: "{{ Request()->session()->get('guest_key') }}",
+                payer_name: document.getElementById('payer_name').value,
+                payer_phone: document.getElementById('payer_phone').value,
             },
             dataType: 'json',
             success: function(response) {
                 console.log(response);
-
-                // if (value == 1) {
-                //     document.getElementById(elementId).src = "{{ url('guest') }}/images/" + "Sad" + ".png";
-                //     document.getElementById(Number(level) + "__" + (Number(value) + 1)).src = "{{ url('guest') }}/images/" + "HappyB" + ".png";
-                // } else {
-                //     document.getElementById(elementId).src = "{{ url('guest') }}/images/" + "Happy" + ".png";
-                //     document.getElementById(Number(level) + "__" + (Number(value) - 1)).src = "{{ url('guest') }}/images/" + "SadB" + ".png";
-                // }
-
             },
             error: function(request, error) {
                 console.log("Request: " + JSON.stringify(request));
@@ -231,7 +228,7 @@
 
         $.ajax({
 
-            url: "{{ url('api/guest/payment/pay-for-company') }}",
+            url: "{{ url('api/guest/payment/company-note') }}",
             type: 'POST',
             data: {
                 client_id: "{{ Request('company')->client_id }}",
@@ -239,6 +236,7 @@
                 notes: document.getElementById('notes').value,
                 payer_name: document.getElementById('payer_name').value,
                 payer_phone: document.getElementById('payer_phone').value,
+                guest_key: "{{ Request()->session()->get('guest_key') }}",
             },
             dataType: 'json',
             success: function(response) {
@@ -273,20 +271,4 @@
         document.getElementById("invoice_details").style = "display:block";
 
     }
-</script>
-
-<script type="text/javascript">
-    var myform = document.getElementById('payform');
-    paylib.inlineForm({
-        // 'key': 'C2KMDG-HTKK6H-K92GVT-RDTQ9T', old
-        'key': 'CHKMDG-HTRK6H-V69G2K-HG6TM7',
-        'form': myform,
-        'autoSubmit': true,
-        'callback': function(response) {
-            document.getElementById('paymentErrors').innerHTML = '';
-            if (response.error) {
-                paylib.handleError(document.getElementById('paymentErrors'), response);
-            }
-        }
-    });
 </script>

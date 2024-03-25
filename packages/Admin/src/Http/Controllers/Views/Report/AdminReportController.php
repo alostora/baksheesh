@@ -69,7 +69,6 @@ class AdminReportController extends Controller
             $request->get('per_page') ? $request->get('per_page') : SystemDefault::DEFAUL_PAGINATION_COUNT
         );
 
-
         return view('Admin/Report/EmployeeWallet/index', $data);
     }
 

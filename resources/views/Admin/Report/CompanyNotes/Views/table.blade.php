@@ -20,19 +20,19 @@
             <table id="example2" class="table table-bordered table-striped">
                 <thead>
                     <tr>
-                        <th>#</th>
-                        <th>@lang('company_notes.payer_name')</th>
-                        <th>@lang('company_notes.client')</th>
-                        <th>@lang('company_notes.notes')</th>
-                        <th>@lang('company_notes.created_at')</th>
+                        <th style="background-color: #1fbdd9 !important;" class="no-print">#</th>
+                        <th style="background-color: #1fbdd9 !important;">@lang('company_notes.payer_name')</th>
+                        <th style="background-color: #1fbdd9 !important;">@lang('company_notes.client')</th>
+                        <th style="background-color: #1fbdd9 !important;">@lang('company_notes.notes')</th>
+                        <th style="background-color: #1fbdd9 !important;">@lang('company_notes.created_at')</th>
                     </tr>
                 </thead>
                 <tbody>
                     @if(!empty($company_notes))
                     @foreach ($company_notes as $key=>$company_note)
                     <tr>
-                        <td> {{$key+1}} </td>
-                        <td> {{$company_note->payer_name}} </td>
+                        <td class="no-print"> {{$key+1}} </td>
+                        <td> {{$company_note->payer_name}} <br> {{$company_note->payer_phone}} </td>
                         <td> {{$company_note->client?$company_note->client->name : ''}} </td>
                         <td> {{$company_note->notes}} </td>
                         <td> {{$company_note->created_at}} </td>

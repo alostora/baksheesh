@@ -34,6 +34,7 @@
                 <thead>
                     <tr>
                         <th style="background-color: #1fbdd9 !important;">#</th>
+                        <th style="background-color: #1fbdd9 !important;">@lang('company_wallet.payer_name')</th>
                         <th style="background-color: #1fbdd9 !important;">@lang('company_wallet.company')</th>
                         <th style="background-color: #1fbdd9 !important;">@lang('company_wallet.amount')</th>
                         <th style="background-color: #1fbdd9 !important;">@lang('company_wallet.created_at')</th>
@@ -44,6 +45,7 @@
                     @foreach ($wallets as $key=>$wallet)
                     <tr>
                         <td> {{$key+1}} </td>
+                        <td> {{$wallet->payer_name}} <br> {{$wallet->payer_phone}} </td>
                         <td> {{$wallet->company ? $wallet->company->name : ''}} </td>
                         <td> {{$wallet->amount}} @lang('general.sar') </td>
                         <td> {{$wallet->created_at}} </td>

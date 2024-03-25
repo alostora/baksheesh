@@ -19,7 +19,7 @@
             <table id="example2" class="table table-bordered table-striped">
                 <thead>
                     <tr>
-                        <th style="background-color: #1fbdd9 !important;">#</th>
+                        <th style="background-color: #1fbdd9 !important;" class="no-print">#</th>
                         <th style="background-color: #1fbdd9 !important;">@lang('employee_notes.payer_name')</th>
                         <th style="background-color: #1fbdd9 !important;">@lang('employee_notes.client')</th>
                         <th style="background-color: #1fbdd9 !important;">@lang('employee_notes.notes')</th>
@@ -30,8 +30,8 @@
                     @if(!empty($employee_notes))
                     @foreach ($employee_notes as $key=>$employee_note)
                     <tr>
-                        <td> {{$key+1}} </td>
-                        <td> {{$employee_note->payer_name}} </td>
+                        <td class="no-print"> {{$key+1}} </td>
+                        <td> {{$employee_note->payer_name}} <br> {{$employee_note->payer_phone}} </td>
                         <td> {{$employee_note->client?$employee_note->client->name : ''}} </td>
                         <td> {{$employee_note->notes}} </td>
                         <td> {{$employee_note->created_at}} </td>

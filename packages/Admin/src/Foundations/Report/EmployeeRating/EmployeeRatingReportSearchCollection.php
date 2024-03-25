@@ -56,18 +56,15 @@ class EmployeeRatingReportSearchCollection
             ->where('stopped_at', null)
             ->get();
 
-        $data['total_bad_count'] = EmployeeRating::where(function ($q) use ($client_id) {
+        $data['total_bad_count'] = EmployeeRating::where('rating_value', 1)
 
-            if ($client_id && $client_id != -1) {
+            ->where(function ($q) use ($client_id, $company_id, $employee_id) {
 
-                $q
-                    ->where('client_id', $client_id);
-            }
-        })
+                if ($client_id && $client_id != -1) {
 
-            ->where('rating_value', 1)
-
-            ->where(function ($q) use ($company_id, $employee_id) {
+                    $q
+                        ->where('client_id', $client_id);
+                }
 
                 if ($company_id && $company_id != -1) {
 
@@ -83,18 +80,15 @@ class EmployeeRatingReportSearchCollection
             })->count();
 
 
-        $data['total_good_count'] = EmployeeRating::where(function ($q) use ($client_id) {
+        $data['total_good_count'] = EmployeeRating::where('rating_value', 2)
 
-            if ($client_id && $client_id != -1) {
+            ->where(function ($q) use ($client_id, $company_id, $employee_id) {
 
-                $q
-                    ->where('client_id', $client_id);
-            }
-        })
+                if ($client_id && $client_id != -1) {
 
-            ->where('rating_value', 2)
-
-            ->where(function ($q) use ($company_id, $employee_id) {
+                    $q
+                        ->where('client_id', $client_id);
+                }
 
                 if ($company_id && $company_id != -1) {
 

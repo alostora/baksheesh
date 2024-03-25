@@ -10,46 +10,69 @@ use App\Models\CompanyRating;
 use App\Models\EmployeeCash;
 use App\Models\EmployeeRating;
 use App\Models\User;
-use Guest\Foundations\PaymentCollection;
+use Guest\Http\Requests\CompanyNoteRequest;
 use Guest\Http\Requests\CompanyRatingRequest;
+use Guest\Http\Requests\EmployeeNoteRequest;
 use Guest\Http\Requests\EmployeeRatingRequest;
-use Guest\Http\Requests\PayForCompanyRequest;
-use Guest\Http\Requests\PayForEmployeeRequest;
 use Guest\Http\Resources\PayForCompanyResource;
 use Guest\Http\Resources\PayForEmployeeResource;
 
 class ReviewController extends Controller
 {
 
-    public function payForCompany(PayForCompanyRequest $request)
+    public function companyNote(CompanyNoteRequest $request)
     {
         $validated = $request->validated();
 
-        if (isset($validated['amount']) && $validated['amount'] != null) {
+        $companyNote = CompanyCash::where([
 
-            PaymentCollection::pay($request);
+            'guest_key' => $validated['guest_key'],
+
+            'client_id' => $validated['client_id'],
+
+            'company_id' => $validated['company_id'],
+
+        ])->first();
+
+        if ($companyNote) {
+
+            $companyNote->update($validated);
+        } else {
+
+            $companyNote = CompanyCash::create($validated);
         }
-
-        $companyCash = CompanyCash::create($validated);
 
         return response()->success(
             trans('payment.payment_created_successfully'),
-            new PayForCompanyResource($companyCash),
+            new PayForCompanyResource($companyNote),
             StatusCode::OK
         );
     }
 
-    public function payForEmployee(PayForEmployeeRequest $request)
+    public function employeeNote(EmployeeNoteRequest $request)
     {
 
         $validated = $request->validated();
 
-        if (isset($validated['amount']) && $validated['amount'] != null) {
+        $employeeCash = EmployeeCash::where([
 
-            PaymentCollection::pay($request);
+            'guest_key' => $validated['guest_key'],
+
+            'client_id' => $validated['client_id'],
+
+            'company_id' => $validated['company_id'],
+
+            'employee_id' => $validated['employee_id'],
+
+        ])->first();
+
+        if ($employeeCash) {
+
+            $employeeCash->update($validated);
+        } else {
+
+            $employeeCash = EmployeeCash::create($validated);
         }
-
-        $employeeCash = EmployeeCash::create($validated);
 
         return response()->success(
             trans('payment.payment_created_successfully'),
@@ -126,11 +149,3 @@ class ReviewController extends Controller
         );
     }
 }
-
-
-/*
-
-
-
-
-*/

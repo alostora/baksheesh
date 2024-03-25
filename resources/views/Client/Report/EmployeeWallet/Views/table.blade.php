@@ -30,7 +30,8 @@
             <table id="example2" class="table table-bordered table-striped">
                 <thead>
                     <tr>
-                        <th style="background-color: #1fbdd9 !important;">#</th>
+                        <th style="background-color: #1fbdd9 !important;" class="no-print">#</th>
+                        <th style="background-color: #1fbdd9 !important;">@lang('employee_wallet.payer_name')</th>
                         <th style="background-color: #1fbdd9 !important;">@lang('employee_wallet.company')</th>
                         <th style="background-color: #1fbdd9 !important;">@lang('employee_wallet.employee')</th>
                         <th style="background-color: #1fbdd9 !important;">@lang('employee_wallet.amount')</th>
@@ -41,7 +42,8 @@
                     @if (!empty($wallets))
                     @foreach ($wallets as $key => $wallet)
                     <tr>
-                        <td> {{ $key + 1 }} </td>
+                        <td class="no-print"> {{ $key + 1 }} </td>
+                        <td> {{ $wallet->payer_name }} <br> {{ $wallet->payer_phone }} </td>
                         <td> {{ $wallet->company ? $wallet->company->name : '' }} </td>
                         <td> {{ $wallet->employee ? $wallet->employee->name : '' }} </td>
                         <td> {{ $wallet->amount }} @lang('general.sar')</td>
@@ -60,4 +62,3 @@
         </div>
     </div>
 </section>
-

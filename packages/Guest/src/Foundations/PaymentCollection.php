@@ -6,39 +6,25 @@ use Illuminate\Support\Facades\Http;
 
 class PaymentCollection
 {
-    public static function pay($request)
+    public static function pay($request, $url)
     {
 
-        $response = Http::accept('application/json')
-            ->withHeaders([
-                'authorization' => 'SGJNLTWBDT-JHKZB6WG29-2NK2WHZZLN',
-                'content-type' => 'application/json',
-            ])->post('https://secure.clickpay.com.sa/payment/request', [
+        $validated = $request->validated();
 
-                'profile_id' => 44217,
-                'tran_type' => 'sale',
-                'tran_class' => 'ecom',
-                'cart_description' => 'Dummy Order 4696563498614784',
-                'cart_id' => '897961dd-d91e-45a9-ac9e-d1b34d49bad9',
-                'cart_currency' => 'SAR',
-                'cart_amount' => $request->amount,
-                'return' => 'none',
-                "callback" => "https://portal.tiposmart.com/",
-                'payment_token' => $request->get('token'),
+        return Http::withHeaders([
+            'Authorization' =>  'SHJNLTWBRR-JHWJZ6BKJ2-6BDNRL29TZ',
+            'Content-Type' => 'application/json'
+        ])->post('https://secure.clickpay.com.sa/payment/request', [
 
-                "customer_details" => [
-                    "name" => "John Smith",
-                    "email" => "jsmith@gmail.com",
-                    "street1" => "404, 11th st, void",
-                    "city" => "Dubai",
-                    "state" => "DU",
-                    "country" => "AE",
-                    "ip" => $request->ip()
-                ]
-            ]);
-
-        $data = json_decode($response->body(), true);
-
-        dd($data);
+            'profile_id' => '44638',
+            'tran_type' => 'sale',
+            'tran_class' => 'ecom',
+            'cart_id' => '4244b9fd-c7e9-4f16-8d3c-4fe7bf6c48ca',
+            'cart_description' => 'New Order',
+            'cart_currency' => 'SAR',
+            'cart_amount' => $validated['amount'],
+            'callback' => $url,
+            'return' => $url,
+        ])->object();
     }
 }
