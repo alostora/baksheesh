@@ -21,7 +21,7 @@ return new class extends Migration
 
             $table->foreignUuid('company_id')->nullable();
 
-            $table->integer('amount')->default(0)->nullable();
+            $table->double('amount')->default(0)->nullable();
 
             $table->string('payer_name')->nullable();
 
