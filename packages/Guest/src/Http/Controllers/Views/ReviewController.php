@@ -22,13 +22,15 @@ class ReviewController extends Controller
 
         $url = $request->url() . '/' . $validated['company_id'];
 
+        // $url = url('guest/pay-success');
+
         if (isset($validated['amount']) && $validated['amount'] > 0) {
 
             $response =  PaymentCollection::pay($request, $url);
 
             if ($response && $response->tran_ref) {
 
-                CompanyCash::create($validated);
+                // CompanyCash::create($validated);
 
                 return redirect($response->redirect_url);
             } else {
@@ -46,13 +48,15 @@ class ReviewController extends Controller
 
         $url = $request->url() . '/' . $validated['employee_id'];
 
+        // $url = url('guest/payment/pay-success');
+
         if (isset($validated['amount']) && $validated['amount'] > 0) {
 
             $response =  PaymentCollection::pay($request, $url);
 
             if ($response && $response->tran_ref) {
 
-                EmployeeCash::create($validated);
+                // EmployeeCash::create($validated);
 
                 return redirect($response->redirect_url);
             } else {
@@ -65,6 +69,8 @@ class ReviewController extends Controller
 
     public function viewPaymentForEmployee(User $user, Request $request)
     {
+        // return view('Guest/successPayment');
+
         if ($user->stopped_at) {
 
             return abort(404);
@@ -82,6 +88,8 @@ class ReviewController extends Controller
 
     public function viewPaymentForCompany(Company $company, Request $request)
     {
+        // return view('Guest/successPayment');
+
         if ($company->stopped_at) {
             return abort(404);
         }
@@ -94,5 +102,12 @@ class ReviewController extends Controller
         $data['company'] = $company;
 
         return view('Guest/CompanyPayment/paymentForCompany', $data);
+    }
+
+    public function viewPaymentSuccessPage(Request $request)
+    {
+
+        return response($request->respStatus);
+        return view('Guest/successPayment');
     }
 }

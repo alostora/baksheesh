@@ -67,38 +67,50 @@
     </div>
 </div>
 
-
 <h1 class="text_rating_employee" id="note_header"> أضف تعليق</h1>
-<div class="text">
-    <textarea name="notes" id="notes" style="text-align: right;padding:50px"></textarea>
-</div>
-<button class="btn " onclick="sendEmployeeNote()">ارسال</button>
+
+<form class="paying">
+    <div class="form-group">
+        <div class="payerDataBox">
+            <input class="form-control payerData" type="text" placeholder="الاسم" onkeyup="appendPayerName(this)">
+            <label for="payer_name" class="col-md-4 payerName">الاسم</label>
+        </div>
+        <div class="payerDataBox">
+            <input class="form-control payerData" type="text" placeholder="الهاتف" onkeyup="appendPayerPhone(this)">
+            <label for="payer_phone" class="col-md-4 payerPhone">الهاتف</label>
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="payerDataBox">
+            <textarea class="form-control payerData" name="notes" id="notes" style="text-align: right;padding:50px"></textarea>
+            <label for="notes" class="col-md-4">التعليق</label>
+        </div>
+    </div>
+
+    <button class="btn" onclick="sendEmployeeNote()" type="button">ارسال</button>
+
+    <br>
+    <span id="noteErrorMsg" style="display:none;">من فضلك ادخل الاسم والجوال</span>
+</form>
+
+
 
 
 <h1 class="text_rating_employee" style="margin-top:70px;"> دفع مكافأة</h1>
+
 <form role="form" action="{{ url('guest/payment/pay-for-employee') }}" method="POST" class="paying" id="payform">
     <input type="hidden" name="client_id" value="{{ Request('user')->client_id }}">
     <input type="hidden" name="company_id" value="{{ Request('user')->company_id }}">
     <input type="hidden" name="employee_id" value="{{ Request('user')->id }}">
+    <input type="hidden" name="payer_name" id="payer_name" placeholder="الاسم" required>
+    <input type="hidden" name="payer_phone" id="payer_phone" placeholder="الهاتف" required>
     @csrf
-
-    <div class="form-group">
-        <div class="payerDataBox">
-            <input class="form-control payerData" type="text" name="payer_name" id="payer_name" placeholder="الاسم">
-            <label for="payer_name" class="col-md-4 payerName">الاسم</label>
-        </div>
-        <div class="payerDataBox">
-            <input class="form-control payerData" type="text" name="payer_phone" id="payer_phone" placeholder="الهاتف">
-            <label for="payer_phone" class="col-md-4 payerPhone">الهاتف</label>
-        </div>
-    </div>
 
     <div>
         <div class="payingButton">
             <button type="button" onclick="appendAmount(50)" dir="rtl">50 ريال</button>
             <button type="button" onclick="appendAmount(25)" dir="rtl">25 ريال</button>
             <button type="button" onclick="appendAmount(10)" dir="rtl">10 ريال</button>
-            <button type="button" onclick="appendAmount(5)" dir="rtl">5 ريال</button>
         </div>
         <br>
         <br>
@@ -110,6 +122,10 @@
             <input class="anotherPrice" type="number" id="amount" placeholder="ادخل المبلغ" style="background-color: #14bbd8" onkeyup="appendAmount(this.value)">
 
             <label for="amount" class="col-md-4">مبلغ اخر</label>
+
+            <br>
+
+            <span id="errorMsg" style="display:none;">لا يمكن اضافة اقل من 10 ريال</span>
 
         </div>
         <div id="invoice_details" class="inv_data" style="display: none;">
@@ -141,19 +157,10 @@
                 </div>
             </div>
         </div>
-        <!--
-        <div class="apple_pay">
-            <button>
-                <i class="fa-brands fa-apple" style="font-size: 30px;color:#14bbd8;"></i>
-                Apple Pay
-            </button>
-        </div> -->
-
-        <button class="pay_btn" type="submit">ادفع</button>
+        <button class="pay_btn" type="submit" id="pay_btn" style="display: none;">ادفع</button>
     </div>
 </form>
 <div style="display:flex;flex-direction:row;margin-top:20px;">
-
     <p style="font-size:18px;color:#fff;font-weight: 200;">Powered by </p>
     <a href="{{ url('/') }}" style="font-size:20px;text-decoration: none;color:#fff61a"> Tiposmart.com</a>
 </div>
@@ -202,6 +209,17 @@
 
     function sendEmployeeNote() {
 
+        let userName = $("#payer_name").val();
+        let userPhone = $("#payer_phone").val();
+
+        if (userName == '' || userPhone == '') {
+
+            $('#noteErrorMsg').show();
+            return false;
+        }
+
+        $('#noteErrorMsg').hide();
+
         $.ajax({
 
             url: "{{ url('api/guest/payment/employee-note') }}",
@@ -229,20 +247,33 @@
 
     function appendAmount(amount) {
 
-        var transaction_fees = (Number(amount) * (5 / 100)) + 2;
+        if (amount < 10) {
+            $('#errorMsg').show();
+            $('#invoice_details').hide();
+            $('#pay_btn').hide();
+            return false;
+        } else {
+            $('#errorMsg').hide();
+            $('#invoice_details').show();
+            $('#pay_btn').show();
+        }
 
+        var transaction_fees = (Number(amount) * (5 / 100)) + 2;
         var total = Number(amount) + transaction_fees;
 
         document.getElementById("tip_amount").innerHTML = Number(amount);
-
         document.getElementById("transaction_fees").innerHTML = Number(transaction_fees);
-
         document.getElementById("total").innerHTML = Number(total);
         document.getElementById("last_amount").value = Number(total);
-
         document.getElementById("amount").value = Number(amount);
 
-        document.getElementById("invoice_details").style = "display:block";
+    }
 
+    function appendPayerName(e) {
+        document.getElementById('payer_name').value = e.value
+    }
+
+    function appendPayerPhone(e) {
+        document.getElementById('payer_phone').value = e.value
     }
 </script>

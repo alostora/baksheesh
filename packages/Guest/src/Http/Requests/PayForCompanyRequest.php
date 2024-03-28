@@ -40,15 +40,13 @@ class PayForCompanyRequest extends FormRequest
 
             "company_id" => ["required", "uuid", "string", "exists:companies,id"],
 
-            "amount" => ["bail", "nullable", "numeric", "max:100000"],
+            "amount" => ["bail", "required", "numeric", "max:100000"],
 
-            "payer_name" => ["bail", "nullable", "string", "max:255"],
+            "payer_name" => ["bail", "required", "string", "max:255"],
 
-            "payer_email" => ["bail", "nullable", "email", "unique:users,email", "max:255"],
+            "payer_phone" => ["bail", "required", "string", "max:255"],
 
-            "payer_phone" => ["bail", "nullable", "string", "unique:users,phone", "max:255"],
-
-            "notes" => ["bail", "nullable", "string", "unique:users,phone", "max:255"],
+            "notes" => ["bail", "nullable", "string", "max:255"],
         ];
     }
 }

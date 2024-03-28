@@ -12,7 +12,10 @@ Route::group([
 
 	Route::post('pay-for-employee', [ReviewController::class, 'payForEmployee']);
 
-	Route::get('pay-for-employee/{user}', [ReviewController::class, 'viewPaymentForEmployee']);
+	Route::any('pay-for-employee/{user}', [ReviewController::class, 'viewPaymentForEmployee']);
 
-	Route::get('pay-for-company/{company}', [ReviewController::class, 'viewPaymentForCompany']);
+	Route::any('pay-for-company/{company}', [ReviewController::class, 'viewPaymentForCompany']);
+
+
+	Route::any('pay-success', [ReviewController::class, 'viewPaymentSuccessPage']);
 });

@@ -34,7 +34,7 @@ return new class extends Migration
 
             'name' => 'root',
 
-            'email' => 'root@root.root',
+            'email' => 'root@root.com',
 
             'password' => 123456,
 
@@ -50,7 +50,7 @@ return new class extends Migration
 
             'name' => 'admin',
 
-            'email' => 'admin@admin.admin',
+            'email' => 'admin@admin.com',
 
             'password' => 123456,
 

@@ -2,9 +2,7 @@
 
 namespace Guest\Http\Requests;
 
-use App\Constants\HasLookupType\UserAccountType;
 use App\Foundations\LookupType\AccountTypeCollection;
-use App\Models\SystemLookup;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\Rule;
 
@@ -48,15 +46,13 @@ class PayForEmployeeRequest extends FormRequest
                 Rule::exists('users', 'id')->where('user_account_type_id', $lookup_account_type_employee->id)
             ],
 
-            "amount" => ["bail", "nullable", "numeric", "max:100000"],
+            "amount" => ["bail", "required", "numeric", "max:100000"],
 
-            "payer_name" => ["bail", "nullable", "string", "max:255"],
+            "payer_name" => ["bail", "required", "string", "max:255"],
 
-            "payer_email" => ["bail", "nullable", "email", "unique:users,email", "max:255"],
+            "payer_phone" => ["bail", "required", "string", "max:255"],
 
-            "payer_phone" => ["bail", "nullable", "string", "unique:users,phone", "max:255"],
-
-            "notes" => ["bail", "nullable", "string", "unique:users,phone", "max:255"],
+            "notes" => ["bail", "nullable", "string", "max:255"],
         ];
     }
 }

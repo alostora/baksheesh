@@ -14,7 +14,6 @@
     </div>
 
     <div class="icons">
-
         @if ($company->companyTotalRating > 0 && $company->companyTotalRating <= 20) <i class="fas fa-regular fa-star" style="font-size:16px;color:#f7ef31; "></i>
             @endif
 
@@ -67,12 +66,31 @@
     </div>
 </div>
 
-
 <h1 class="text_rating_employee" id="note_header"> أضف تعليق</h1>
-<div class="text">
-    <textarea name="notes" id="notes" style="text-align: right;padding:50px"></textarea>
-</div>
-<button class="btn" onclick="sendCompanyNote()">ارسال</button>
+
+<form class="paying">
+    <div class="form-group">
+        <div class="payerDataBox">
+            <input class="form-control payerData" type="text" placeholder="الاسم" onkeyup="appendPayerName(this)">
+            <label for="payer_name" class="col-md-4 payerName">الاسم</label>
+        </div>
+        <div class="payerDataBox">
+            <input class="form-control payerData" type="text" placeholder="الهاتف" onkeyup="appendPayerPhone(this)">
+            <label for="payer_phone" class="col-md-4 payerPhone">الهاتف</label>
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="payerDataBox">
+            <textarea class="form-control payerData" name="notes" id="notes" style="text-align: right;padding:50px"></textarea>
+            <label for="notes" class="col-md-4">التعليق</label>
+        </div>
+    </div>
+
+    <button class="btn" onclick="sendCompanyNote()" type="button">ارسال</button>
+
+    <br>
+    <span id="noteErrorMsg" style="display:none;">من فضلك ادخل الاسم والجوال</span>
+</form>
 
 
 <h1 class="text_rating_employee" style="margin-top:80px;"> دفع مكافأة</h1>
@@ -108,24 +126,14 @@
 
     <input type="hidden" name="client_id" value="{{ Request('company')->client_id }}">
     <input type="hidden" name="company_id" value="{{ Request('company')->id }}">
+    <input type="hidden" name="payer_name" id="payer_name" placeholder="الاسم" required>
+    <input type="hidden" name="payer_phone" id="payer_phone" placeholder="الهاتف" required>
     @csrf
-
-    <div class="form-group">
-        <div class="payerDataBox">
-            <input class="form-control payerData" type="text" name="payer_name" id="payer_name" placeholder="الاسم">
-            <label for="payer_name" class="col-md-4 payerName">الاسم</label>
-        </div>
-        <div class="payerDataBox">
-            <input class="form-control payerData" type="text" name="payer_phone" id="payer_phone" placeholder="الهاتف">
-            <label for="payer_phone" class="col-md-4 payerPhone">الهاتف</label>
-        </div>
-    </div>
 
     <div class="payingButton">
         <button type="button" onclick="appendAmount(50)" dir="rtl">50 ريال</button>
         <button type="button" onclick="appendAmount(25)" dir="rtl">25 ريال</button>
         <button type="button" onclick="appendAmount(10)" dir="rtl">10 ريال</button>
-        <button type="button" onclick="appendAmount(5)" dir="rtl">5 ريال</button>
     </div>
     <br>
     <br>
@@ -134,9 +142,13 @@
 
         <input class="anotherPrice" type="hidden" name="amount" id="last_amount">
 
-        <input class="anotherPrice" type="number" id="amount" placeholder="ادخل المبلغ" style="background-color: #14bbd8" onkeyup="appendAmount(this.value)">
+        <input class="anotherPrice" min="10" type="number" id="amount" placeholder="ادخل المبلغ" style="background-color: #14bbd8" onkeyup="appendAmount(this.value);">
 
         <label for="amount" class="col-md-4">مبلغ اخر</label>
+
+        <br>
+
+        <span id="errorMsg" style="display:none;">لا يمكن اضافة اقل من 10 ريال</span>
 
     </div>
     <div id="invoice_details" class="inv_data" style="display: none;">
@@ -168,14 +180,10 @@
             </div>
         </div>
     </div>
-    <!-- <div class="apple_pay">
-        <button>
-            <i class="fa-brands fa-apple" style="font-size: 30px;color:#14bbd8;"></i>
-            Apple Pay
-        </button>
-    </div> -->
-    <input type="submit" value="ادفع" class="pay_btn">
+
+    <input type="submit" value="ادفع" class="pay_btn" id="pay_btn" style="display: none;">
 </form>
+
 <div style="display:flex;flex-direction:row;letter-spacing: 2p;margin-top:20px;">
 
     <p style="font-size:18px;color:#fff;font-weight: 200;">Powered by </p>
@@ -219,12 +227,21 @@
             },
             error: function(request, error) {
                 console.log("Request: " + JSON.stringify(request));
-
             }
         });
     }
 
     function sendCompanyNote() {
+
+        let userName = $("#payer_name").val();
+        let userPhone = $("#payer_phone").val();
+
+        if (userName == '' || userPhone == '') {
+
+            $('#noteErrorMsg').show();
+            return false;
+        }
+        $('#noteErrorMsg').hide();
 
         $.ajax({
 
@@ -240,35 +257,43 @@
             },
             dataType: 'json',
             success: function(response) {
-
-                // document.getElementById('notes').value = "";
                 document.getElementById('note_header').innerHTML = "تم ارسال التعليق";
-
             },
             error: function(request, error) {
                 console.log("Request: " + JSON.stringify(request));
-
             }
         });
-
     }
 
     function appendAmount(amount) {
 
-        var transaction_fees = (Number(amount) * (5 / 100)) + 2;
+        if (amount < 10) {
+            $('#errorMsg').show();
+            $('#invoice_details').hide();
+            $('#pay_btn').hide();
+            return false;
+        } else {
+            $('#errorMsg').hide();
+            $('#invoice_details').show();
+            $('#pay_btn').show();
+        }
 
+        var transaction_fees = (Number(amount) * (5 / 100)) + 2;
         var total = Number(amount) + transaction_fees;
 
         document.getElementById("tip_amount").innerHTML = Number(amount);
-
         document.getElementById("transaction_fees").innerHTML = Number(transaction_fees);
-
         document.getElementById("total").innerHTML = Number(total);
         document.getElementById("last_amount").value = Number(total);
-
         document.getElementById("amount").value = Number(amount);
 
-        document.getElementById("invoice_details").style = "display:block";
+    }
 
+    function appendPayerName(e) {
+        document.getElementById('payer_name').value = e.value
+    }
+
+    function appendPayerPhone(e) {
+        document.getElementById('payer_phone').value = e.value
     }
 </script>
