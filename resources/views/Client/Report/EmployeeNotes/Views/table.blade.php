@@ -42,7 +42,7 @@
             </table>
             <div class="box-footer clearfix">
                 <ul class="pagination pagination-sm no-margin pull-right">
-                    {{ $employee_notes->appends($_GET)->render('pagination::bootstrap-4') }} }}
+                    {{ $employee_notes->appends($_GET)->render('pagination::bootstrap-4') }}
                 </ul>
             </div>
         </div>
