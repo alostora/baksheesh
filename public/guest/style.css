@@ -165,7 +165,7 @@ textarea:focus {
     text-align: center;
     border: 1px solid grey;
     color: gray;
-    margin-left: 50%;
+margin-right:0;
     margin-top: 20px;
     background-color: #fff61a;
     font-size: medium;
@@ -180,9 +180,9 @@ textarea:focus {
     background: #fff;
     width: 94%;
     padding-top: 20px;
-    padding-left: 15px;
-    padding-right: 15px;
-    padding-bottom: 50px;
+    padding-left: 50px;
+    padding-right: 50px;
+    padding-bottom: 20px;
     height: auto;
     border-radius: 35px;
     margin-top: 10px;
@@ -197,7 +197,7 @@ textarea:focus {
     display: flex;
     justify-content: space-between;
     text-align: center;
-    padding: 10px;
+    
     text-align: center;
 }
 
@@ -316,7 +316,7 @@ input:focus {
 }
 
 .anotherPrice {
-    width: 70%;
+    width: 80%;
     border-radius: 20px;
     min-height: 50px !important;
     text-align: center;
@@ -324,6 +324,10 @@ input:focus {
     font-weight: 800 !important;
     color: rgb(255, 255, 255);
     border: 2px solid #f7e331;
+}
+.payerName{
+    width:20% !important;
+    text-align:right;
 }
 .payerData {
     width: 80%;
@@ -359,7 +363,7 @@ input:focus {
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 .inv_data{
-    padding:30px;
+    padding:0px;
 
 }
 .inv {
