@@ -111,7 +111,7 @@
             </table>
             <div class="box-footer clearfix">
                 <ul class="pagination pagination-sm no-margin pull-right">
-                    {{ $companies->appends($_GET)->render('pagination::bootstrap-4') }} }}
+                    {{ $companies->appends($_GET)->render('pagination::bootstrap-4') }}
                 </ul>
             </div>
         </div>

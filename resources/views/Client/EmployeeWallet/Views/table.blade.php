@@ -50,7 +50,7 @@
 
             <div class="box-footer clearfix">
                 <ul class="pagination pagination-sm no-margin pull-right">
-                    {{ $wallets->appends($_GET)->render('pagination::bootstrap-4') }} }}
+                    {{ $wallets->appends($_GET)->render('pagination::bootstrap-4') }}
                 </ul>
             </div>
 
