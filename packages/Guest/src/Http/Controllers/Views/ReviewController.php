@@ -2,6 +2,8 @@
 
 namespace Guest\Http\Controllers\Views;
 
+use App\Constants\GneralBooleanStatus;
+use App\Constants\PaymentFor;
 use App\Http\Controllers\Controller;
 use App\Models\Company;
 use App\Models\CompanyCash;
@@ -19,8 +21,6 @@ class ReviewController extends Controller
     {
         $validated = $request->validated();
 
-        $url = $request->url() . '/' . $validated['company_id'];
-
         $url = url('guest/payment/pay-success');
 
         if (isset($validated['amount']) && $validated['amount'] > 0) {
@@ -29,7 +29,11 @@ class ReviewController extends Controller
 
             if ($response && $response->tran_ref) {
 
-                // CompanyCash::create($validated);
+                $validated['payment_type'] = PaymentFor::COMPANY['code'];
+
+                $validated['main_url'] = $request->url() . '/' . $validated['company_id'];
+
+                $request->session()->put('validated', $validated);
 
                 return redirect($response->redirect_url);
             } else {
@@ -45,8 +49,6 @@ class ReviewController extends Controller
     {
         $validated = $request->validated();
 
-        $url = $request->url() . '/' . $validated['employee_id'];
-
         $url = url('guest/payment/pay-success');
 
         if (isset($validated['amount']) && $validated['amount'] > 0) {
@@ -55,7 +57,11 @@ class ReviewController extends Controller
 
             if ($response && $response->tran_ref) {
 
-                // EmployeeCash::create($validated);
+                $validated['payment_type'] = PaymentFor::EMPLOYEE['code'];
+
+                $validated['main_url'] = $request->url() . '/' . $validated['employee_id'];;
+
+                $request->session()->put('validated', $validated);
 
                 return redirect($response->redirect_url);
             } else {
@@ -68,7 +74,6 @@ class ReviewController extends Controller
 
     public function viewPaymentForEmployee(User $user, Request $request)
     {
-        // return view('Guest/successPayment');
 
         if ($user->stopped_at) {
 
@@ -87,7 +92,6 @@ class ReviewController extends Controller
 
     public function viewPaymentForCompany(Company $company, Request $request)
     {
-        // return view('Guest/successPayment');
 
         if ($company->stopped_at) {
             return abort(404);
@@ -103,8 +107,30 @@ class ReviewController extends Controller
         return view('Guest/CompanyPayment/paymentForCompany', $data);
     }
 
-    public function viewPaymentSuccessPage()
+    public function viewPaymentSuccessPage(Request $request)
     {
-        return view('Guest/successPayment');
+
+
+        $validated = $request->session()->get('validated');
+
+        $url = isset($validated['main_url']) ? $validated['main_url'] : '';
+
+        if ($request->status == GneralBooleanStatus::SUCCESS['code']) {
+
+            if ($request->session()->has('validated')) {
+
+                if ($validated['payment_type'] == PaymentFor::COMPANY['code']) {
+
+                    CompanyCash::create($validated);
+                } elseif ($validated['payment_type'] == PaymentFor::EMPLOYEE['code']) {
+
+                    EmployeeCash::create($validated);
+                }
+            }
+        }
+
+        $request->session()->forget('validated');
+
+        return view('Guest/successPayment', compact('url'));
     }
 }

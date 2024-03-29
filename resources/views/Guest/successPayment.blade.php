@@ -23,7 +23,16 @@
             <div class="box">
                 <div class="box-header with-border">
                     <div class="box-tools pull-right">
-                        <h1 class="box-title">{{Request('status')}}</h1>
+                        <h1 class="box-title">
+                            {{
+                                \App\Constants\GneralBooleanStatus::SUCCESS['code'] == Request('status') ?
+                                \App\Constants\GneralBooleanStatus::SUCCESS['name'] :
+                                \App\Constants\GneralBooleanStatus::FAILED['name']
+                            }}
+
+                        </h1>
+                        <a href="{{url($url)}}" class="btn btn-primary btn-lg">الرجوع لصفحة التقييم</a>
+
                     </div>
                 </div>
             </div>
