@@ -31,7 +31,8 @@
                             }}
 
                         </h1>
-                        <a href="{{url($url)}}" class="btn btn-primary btn-lg">الرجوع لصفحة التقييم</a>
+                        <div>سيتم الرجوع لصفحة التقييم تلقائيا في خلال 10 ثواني</div>
+                        <div id="timee">0</div>
 
                     </div>
                 </div>
@@ -45,5 +46,19 @@
 <script src="{{url('AdminDesign')}}/plugins/jvectormap/jquery-jvectormap-world-mill-en.js"></script>
 <script src="{{url('AdminDesign')}}/bower_components/jquery-knob/dist/jquery.knob.min.js"></script>
 <script src="{{url('AdminDesign')}}/bower_components/jquery-slimscroll/jquery.slimscroll.min.js"></script>
+
+<script>
+    var counter = 0;
+
+    (function() {
+        setInterval(function() {
+            document.getElementById('timee').innerHTML = counter++;
+
+            if (counter == 10) {
+                location.href = "{{url($url)}}";
+            }
+        }, 1000);
+    })()
+</script>
 
 </html>
