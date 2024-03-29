@@ -17,12 +17,11 @@ class ReviewController extends Controller
 
     public function payForCompany(PayForCompanyRequest $request)
     {
-
         $validated = $request->validated();
 
         $url = $request->url() . '/' . $validated['company_id'];
 
-        // $url = url('guest/pay-success');
+        $url = url('guest/payment/pay-success');
 
         if (isset($validated['amount']) && $validated['amount'] > 0) {
 
@@ -48,7 +47,7 @@ class ReviewController extends Controller
 
         $url = $request->url() . '/' . $validated['employee_id'];
 
-        // $url = url('guest/payment/pay-success');
+        $url = url('guest/payment/pay-success');
 
         if (isset($validated['amount']) && $validated['amount'] > 0) {
 
@@ -104,10 +103,8 @@ class ReviewController extends Controller
         return view('Guest/CompanyPayment/paymentForCompany', $data);
     }
 
-    public function viewPaymentSuccessPage(Request $request)
+    public function viewPaymentSuccessPage()
     {
-
-        return response($request->respStatus);
         return view('Guest/successPayment');
     }
 }

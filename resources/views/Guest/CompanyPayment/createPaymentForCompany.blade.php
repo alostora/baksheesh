@@ -70,15 +70,15 @@
 
 <form class="paying">
     <div class="form-group">
-        <div class="payerDataBox"  style="display:flex ;justify-content:space-between; text-align:center;align-items:center; ">
+        <div class="payerDataBox" style="display:flex ;justify-content:space-between; text-align:center;align-items:center; ">
             <input class="form-control payerData" style="color:  #fff61a;" type="text" placeholder="الاسم" onkeyup="appendPayerName(this)">
             <label for="payer_name" class="col-md-4 payerName">الاسم</label>
         </div>
-        <div class="payerDataBox"  style="display:flex ;justify-content:space-between; text-align:center;align-items:center; ">
+        <div class="payerDataBox" style="display:flex ;justify-content:space-between; text-align:center;align-items:center; ">
             <input class="form-control payerData" style="color:  #fff61a;" type="text" placeholder="الهاتف" onkeyup="appendPayerPhone(this)">
             <label for="payer_phone" class="col-md-4 payerName">الهاتف</label>
         </div>
-        <div class="payerDataBox"  style="display:flex ;justify-content:space-between; text-align:center;align-items:center; ">
+        <div class="payerDataBox" style="display:flex ;justify-content:space-between; text-align:center;align-items:center; ">
             <textarea class="form-control payerData" name="notes" id="notes" style="color:  #fff61a; border-radius: 10px;text-align: right;padding:30px"></textarea>
             <label for="notes" style="margin:0px; padding:0px;" class="col-md-4 payerName">التعليق</label>
         </div>
@@ -86,8 +86,8 @@
     <div class="form-group">
 
     </div>
-    <div class="payerDataBox"  style="display:flex ;justify-content:space-between; text-align:start; ">
-    <button class="btn" onclick="sendCompanyNote()" type="button">ارسال</button>
+    <div class="payerDataBox" style="display:flex ;justify-content:space-between; text-align:start; ">
+        <button class="btn" onclick="sendCompanyNote()" type="button">ارسال</button>
     </div>
     <br>
     <span id="noteErrorMsg" style="display:none;">من فضلك ادخل الاسم والجوال</span>
@@ -142,10 +142,10 @@
     <div class="anotherPriceBox">
 
         <input class="anotherPrice" type="hidden" name="amount" id="last_amount">
-        <div class="payerDataBox"  style="display:flex ;justify-content:space-between; text-align:center;align-items:center; ">
-        <input class="anotherPrice" min="10" type="number" id="amount" placeholder="ادخل المبلغ" style="background-color: #14bbd8 ; color:  #fff61a;" onkeyup="appendAmount(this.value);">
+        <div class="payerDataBox" style="display:flex ;justify-content:space-between; text-align:center;align-items:center; ">
+            <input class="anotherPrice" min="10" type="number" id="amount" placeholder="ادخل المبلغ" style="background-color: #14bbd8 ; color:  #fff61a;" onkeyup="appendAmount(this.value);">
 
-        <label for="amount" class="col-md-4 payerName">مبلغ اخر</label>
+            <label for="amount" class="col-md-4 payerName">مبلغ اخر</label>
         </div>
         <br>
 
@@ -187,7 +187,7 @@
 
 <div style="display:flex;flex-direction:row;letter-spacing: 2p;margin-top:20px;">
 
-    <p style="font-size:18px;color:#fff;font-weight: 200;">Powered by </p>
+    <p style="font-size:18px;color:#fff;font-weight: 200;margin-right:5px">Powered by </p>
     <a href="{{ url('/') }}" style="font-size:20px;text-decoration: none;color:#fff61a"> Tiposmart.com</a>
 </div>
 

@@ -18,12 +18,12 @@
 
 <body class="skin-blue sidebar-mini" style="height: auto; min-height: 100%;">
 
-    <div class="wrapper" style="height: auto; min-height: 100%;text-align:center">
+    <div class="wrapper" style="height: auto; min-height: 100%;text-align:center;margin-top:20%">
         <section class="content">
             <div class="box">
                 <div class="box-header with-border">
                     <div class="box-tools pull-right">
-                        <h1 class="box-title">Title</h1>
+                        <h1 class="box-title">{{Request('status')}}</h1>
                     </div>
                 </div>
             </div>

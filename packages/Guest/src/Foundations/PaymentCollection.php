@@ -23,8 +23,8 @@ class PaymentCollection
             'cart_description' => 'New Order',
             'cart_currency' => 'SAR',
             'cart_amount' => $validated['amount'],
-            // 'callback' => $url,
-            'return' => $url,
+            'callback' => $url . '?status=success',
+            'return' => $url . '?status=failed',
         ])->object();
     }
 }
