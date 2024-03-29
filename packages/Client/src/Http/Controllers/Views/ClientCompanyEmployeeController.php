@@ -86,23 +86,6 @@ class ClientCompanyEmployeeController extends Controller
 
         $data['companies'] = Company::where('client_id', auth()->id())->get();
 
-        $data['employee'] = $user;
-
-        $selected_available_rating_ids = $user->ratingForGuest()->pluck('available_rating_id');
-
-        $data['available_rating'] =
-            $data['selected_available_rating'] = EmployeeAvailableRating::where('stopped_at', null)
-            ->whereIn('id', $selected_available_rating_ids)
-            ->where('client_id', $user->client_id)
-            ->get();
-
-        $data['available_rating'] = EmployeeAvailableRating::where('stopped_at', null)
-            ->where('client_id', $user->client_id)
-            ->get();;
-
-        $data['selected_available_rating'] = EmployeeAvailableRating::whereIn('id', $selected_available_rating_ids)
-            ->get();
-
         $data['countries'] = Country::where('type', CountryType::COUNTRY['code'])
             ->where('stopped_at', null)
             ->get();
@@ -110,6 +93,20 @@ class ClientCompanyEmployeeController extends Controller
         $data['governorates'] = Country::where('country_id', $user->country_id)
             ->where('type', CountryType::GOVERNORATE['code'])
             ->where('stopped_at', null)
+            ->get();
+
+        $data['employee'] = $user;
+
+        $selected_available_rating_ids = $user->ratingForGuest()->pluck('available_rating_id');
+
+        $data['selected_available_rating'] = EmployeeAvailableRating::where('stopped_at', null)
+            ->whereIn('id', $selected_available_rating_ids)
+            ->where('client_id', auth()->id())
+            ->get();
+
+        $data['available_rating'] = EmployeeAvailableRating::where('stopped_at', null)
+            ->whereNotIn('id', $selected_available_rating_ids)
+            ->where('client_id', auth()->id())
             ->get();
 
         return view('Client/CompanyEmployee/edit', $data);

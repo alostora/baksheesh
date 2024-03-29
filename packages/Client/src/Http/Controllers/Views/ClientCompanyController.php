@@ -3,13 +3,11 @@
 namespace Client\Http\Controllers\Views;
 
 use Admin\Http\Resources\Company\CompanyResource;
-use App\Constants\HasLookupType\AvailableCompanyRating;
 use App\Constants\StatusCode;
 use App\Constants\SystemDefault;
 use App\Http\Controllers\Controller;
 use App\Models\Company;
 use App\Models\CompanyAvailableRating;
-use App\Models\SystemLookup;
 use Carbon\Carbon;
 use Client\Foundations\ClientCompany\ClientCompanySearchCollection;
 use Client\Foundations\ClientCompany\CompanyCreateCollection;
@@ -91,9 +89,9 @@ class ClientCompanyController extends Controller
             ->get();
 
         $data['available_rating'] = CompanyAvailableRating::where('stopped_at', null)
+            ->whereNotIn('id', $selected_available_rating_ids)
             ->where('client_id', auth()->id())
             ->get();
-
 
         return view('Client/Company/edit', $data);
     }

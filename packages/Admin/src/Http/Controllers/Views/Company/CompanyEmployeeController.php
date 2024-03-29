@@ -147,6 +147,7 @@ class CompanyEmployeeController extends Controller
             ->get();
 
         $data['available_rating'] = EmployeeAvailableRating::where('stopped_at', null)
+            ->whereNotIn('id', $selected_available_rating_ids)
             ->where('client_id', $user->client_id)
             ->get();
 

@@ -85,7 +85,7 @@
 
             <div class="box-footer clearfix">
                 <ul class="pagination pagination-sm no-margin pull-right">
-                    {{ $governorates->render( "pagination::bootstrap-4") }}
+                    {{ $governorates->appends($_GET)->render('pagination::bootstrap-4') }} }}
                 </ul>
             </div>
 

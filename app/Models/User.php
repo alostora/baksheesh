@@ -211,6 +211,12 @@ class User extends Authenticatable implements MustVerifyEmail
     public function ratingForGuest(): HasMany
     {
         return $this->hasMany(RatingForGuest::class, 'employee_id', 'id')
+
+            ->whereHas('employeeAvailableRating', function ($q) {
+
+                $q
+                    ->where('stopped_at', null);
+            })
             ->where('stopped_at', null);
     }
 

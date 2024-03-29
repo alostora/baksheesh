@@ -89,7 +89,7 @@
 
             <div class="box-footer clearfix">
                 <ul class="pagination pagination-sm no-margin pull-right">
-                    {{ $users->render( "pagination::bootstrap-4") }}
+                    {{ $users->appends($_GET)->render('pagination::bootstrap-4') }} }}
                 </ul>
             </div>
         </div>

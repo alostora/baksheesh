@@ -150,6 +150,7 @@ class CompanyController extends Controller
 
         $data['available_rating'] = CompanyAvailableRating::where('stopped_at', null)
             ->where('client_id', $company->client_id)
+            ->whereNotIn('id', $selected_available_rating_ids)
             ->get();
 
         return view('Admin/Company/edit', $data);

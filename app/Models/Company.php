@@ -82,6 +82,12 @@ class Company extends Model
     public function ratingForGuest(): HasMany
     {
         return $this->hasMany(RatingForGuest::class, 'company_id', 'id')
+
+            ->whereHas('companyAvailableRating', function ($q) {
+
+                $q
+                    ->where('stopped_at', null);
+            })
             ->where('stopped_at', null);
     }
 
