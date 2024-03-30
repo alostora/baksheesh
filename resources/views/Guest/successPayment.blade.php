@@ -27,20 +27,20 @@
             <div class="box">
                 <div class="box-header with-border">
                     <div class="box-tools pull-right">
-                        <h1 class="box-title" style="font-size:40px;color:#fff61a">
+                        <h1 class="box-title" style="font-size:45px;color:#fff61a">
                             {{
                                 \App\Constants\GneralBooleanStatus::SUCCESS['code'] == Request('status') ?
                                 \App\Constants\GneralBooleanStatus::SUCCESS['name'] :
                                 \App\Constants\GneralBooleanStatus::FAILED['name']
-                            }}
+                            }} !!
 
                         </h1>
                         <div>
-                            <h3 style="font-size:18px;color:#fff61a">
+                            <h2 style="font-size:14px;color:#ffffff; font-weight:500">
                             سيتم الرجوع لصفحة التقييم تلقائيا في خلال 10 ثواني
-                        </h3>
+                        </h2>
                         </div>
-                        <div id="timee">0</div>
+                        <div id="timee" style="font-size:35px;color:#ff1a1a; font-weight:500">0</div>
 
                     </div>
                 </div>
