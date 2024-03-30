@@ -11,28 +11,36 @@
     <script src="https://kit.fontawesome.com/1492908104.js" crossorigin="anonymous"></script>
     <script src="https://kit.fontawesome.com/yourcode.js" crossorigin="anonymous"></script>
     <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@200..1000&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@200;300;400;500;700;700;800;900;1000&display=swap" rel="stylesheet">
     <title>Tipo smart</title>
     <script src="{{url('AdminDesign/bower_components/jquery/dist/jquery.min.js')}}"></script>
 </head>
 
-<body class="skin-blue sidebar-mini" style="height: auto; min-height: 100%;">
+<body class="skin-blue sidebar-mini" style="height: 100vh; min-height: 100%;background-color:#14bbd8 ;color:#fff61a; font-family:cairo">
 
-    <div class="wrapper" style="height: auto; min-height: 100%;text-align:center;margin-top:20%">
+    <div class="wrapper" style=" min-height: 100%;display:flex; justify-content:center; align-items:center;text-align:center">
         <section class="content">
             <div class="box">
                 <div class="box-header with-border">
                     <div class="box-tools pull-right">
-                        <h1 class="box-title">
+                        <h1 class="box-title" style="font-size:45px;color:#fff61a">
                             {{
                                 \App\Constants\GneralBooleanStatus::SUCCESS['code'] == Request('status') ?
                                 \App\Constants\GneralBooleanStatus::SUCCESS['name'] :
                                 \App\Constants\GneralBooleanStatus::FAILED['name']
-                            }}
+                            }} !!
 
                         </h1>
-                        <div>سيتم الرجوع لصفحة التقييم تلقائيا في خلال 10 ثواني</div>
-                        <div id="timee">0</div>
+                        <div>
+                            <h2 style="font-size:14px;color:#ffffff; font-weight:500">
+                            سيتم الرجوع لصفحة التقييم تلقائيا في خلال 10 ثواني
+                        </h2>
+                        </div>
+                        <div id="timee" style="font-size:35px;color:#ff1a1a; font-weight:500">0</div>
 
                     </div>
                 </div>
@@ -55,7 +63,7 @@
             document.getElementById('timee').innerHTML = counter++;
 
             if (counter == 10) {
-                location.href = "{{url($url)}}";
+                // location.href = "{{url($url)}}";
             }
         }, 1000);
     })()
