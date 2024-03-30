@@ -21,21 +21,17 @@ class ReviewController extends Controller
     {
         $validated = $request->validated();
 
-        $url = url('guest/payment/pay-success');
+        $validated['payment_type'] = PaymentFor::COMPANY['code'];
+
+        $validated['main_url'] = $request->url() . '/' . $validated['company_id'];
+
+        $url = url('guest/payment/pay-success?validated_data=' . json_encode($validated));
 
         if (isset($validated['amount']) && $validated['amount'] > 0) {
 
             $response =  PaymentCollection::pay($request, $url);
 
             if ($response && $response->tran_ref) {
-
-                $validated['payment_type'] = PaymentFor::COMPANY['code'];
-
-                $validated['main_url'] = $request->url() . '/' . $validated['company_id'];
-
-                $validated['tran_ref'] = $response->tran_ref;
-
-                $request->session()->put('validated', $validated);
 
                 return redirect($response->redirect_url);
             } else {
@@ -51,6 +47,12 @@ class ReviewController extends Controller
     {
         $validated = $request->validated();
 
+        $validated['payment_type'] = PaymentFor::EMPLOYEE['code'];
+
+        $validated['main_url'] = $request->url() . '/' . $validated['employee_id'];
+
+        $url = url('guest/payment/pay-success?validated_data=' . json_encode($validated));
+
         $url = url('guest/payment/pay-success');
 
         if (isset($validated['amount']) && $validated['amount'] > 0) {
@@ -58,14 +60,6 @@ class ReviewController extends Controller
             $response =  PaymentCollection::pay($request, $url);
 
             if ($response && $response->tran_ref) {
-
-                $validated['payment_type'] = PaymentFor::EMPLOYEE['code'];
-
-                $validated['main_url'] = $request->url() . '/' . $validated['employee_id'];
-
-                $validated['tran_ref'] = $response->tran_ref;
-
-                $request->session()->put('validated', $validated);
 
                 return redirect($response->redirect_url);
             } else {
@@ -114,47 +108,40 @@ class ReviewController extends Controller
     public function viewPaymentSuccessPage(Request $request)
     {
 
+        $validated = json_decode($request->validated_data);
 
         $data['status'] = GneralBooleanStatus::FAILED['code'];
 
-        if ($request->session()->has('validated')) {
+        $data['url'] = $validated->main_url;
 
+        $tran_ref = $request->tranRef;
 
-            $validated = $request->session()->get('validated');
-
-            $tran_ref = $validated['tran_ref'];
-
-            // $tran_ref = 'SFT2408607608115';
+        if ($request->respStatus == "A") {
 
             $response =  PaymentCollection::checkPayStatus($tran_ref);
 
-            $data['url'] = $validated['main_url'];
-
             if ($response && $response->payment_result) {
 
-                if ($response->payment_result->response_status == 'A') {
+                $payment['client_id']  = $validated->client_id;
+                $payment['company_id'] = $validated->company_id;
+                $payment['amount']     = $validated->amount;
+                $payment['payer_name'] = $response->customer_details->name;
+                $payment['payer_email'] = $response->customer_details->email;
+                $payment['payer_phone'] = $response->customer_details->phone;
 
-                    $validated['payer_name'] = $response->customer_details->name;
-                    $validated['payer_email'] = $response->customer_details->email;
-                    $validated['payer_phone'] = $response->customer_details->phone;
+                if ($validated->payment_type == PaymentFor::COMPANY['code']) {
 
-                    if ($validated['payment_type'] == PaymentFor::COMPANY['code']) {
+                    CompanyCash::create($payment);
+                } elseif ($validated->payment_type == PaymentFor::EMPLOYEE['code']) {
 
-                        CompanyCash::create($validated);
-                    } elseif ($validated['payment_type'] == PaymentFor::EMPLOYEE['code']) {
+                    $payment['employee_id'] = $validated->employee_id;
 
-                        EmployeeCash::create($validated);
-                    }
-
-                    $data['status'] = GneralBooleanStatus::SUCCESS['code'];
-                } elseif ($response->payment_result->response_status == 'D') {
-
-                    $data['status'] = GneralBooleanStatus::FAILED['code'];
+                    EmployeeCash::create($payment);
                 }
+
+                $data['status'] = GneralBooleanStatus::SUCCESS['code'];
             }
         }
-
-        $request->session()->forget('validated');
 
         return view('Guest/successPayment', $data);
     }
