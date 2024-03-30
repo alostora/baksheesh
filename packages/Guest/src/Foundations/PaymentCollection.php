@@ -24,8 +24,20 @@ class PaymentCollection
             'cart_description' => 'New Order',
             'cart_currency' => 'SAR',
             'cart_amount' => $validated['amount'],
-            'callback' => $url . '?status='. GneralBooleanStatus::SUCCESS['code'],
+            'callback' => $url . '?status=' . GneralBooleanStatus::SUCCESS['code'],
             'return' => $url . '?status=' . GneralBooleanStatus::FAILED['code'],
+        ])->object();
+    }
+
+    public static function checkPayStatus($tran_ref)
+    {
+
+        return Http::withHeaders([
+            'Authorization' =>  'SHJNLTWBRR-JHWJZ6BKJ2-6BDNRL29TZ',
+            'Content-Type' => 'application/json'
+        ])->post('https://secure.clickpay.com.sa/payment/query', [
+            'profile_id' => '44638',
+            'tran_ref' => $tran_ref,
         ])->object();
     }
 }

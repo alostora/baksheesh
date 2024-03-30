@@ -33,6 +33,8 @@ class ReviewController extends Controller
 
                 $validated['main_url'] = $request->url() . '/' . $validated['company_id'];
 
+                $validated['tran_ref'] = $response->tran_ref;
+
                 $request->session()->put('validated', $validated);
 
                 return redirect($response->redirect_url);
@@ -59,7 +61,9 @@ class ReviewController extends Controller
 
                 $validated['payment_type'] = PaymentFor::EMPLOYEE['code'];
 
-                $validated['main_url'] = $request->url() . '/' . $validated['employee_id'];;
+                $validated['main_url'] = $request->url() . '/' . $validated['employee_id'];
+
+                $validated['tran_ref'] = $response->tran_ref;
 
                 $request->session()->put('validated', $validated);
 
@@ -112,6 +116,15 @@ class ReviewController extends Controller
 
 
         $validated = $request->session()->get('validated');
+
+        $tran_ref = isset($validated['tran_ref']) ? $validated['tran_ref'] : 'SFT2408907754834';
+
+
+
+        return  $response =  PaymentCollection::checkPayStatus($tran_ref);
+
+
+
 
         $url = isset($validated['main_url']) ? $validated['main_url'] : '';
 
