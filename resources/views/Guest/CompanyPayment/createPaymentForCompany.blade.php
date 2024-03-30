@@ -75,8 +75,8 @@
             <label for="payer_name" class="col-md-4 payerName">الاسم</label>
         </div>
         <div class="payerDataBox" style="display:flex ;justify-content:space-between; text-align:center;align-items:center; ">
-            <input class="form-control payerData" style="color:  #fff61a;" type="text" placeholder="الهاتف" onkeyup="appendPayerPhone(this)">
-            <label for="payer_phone" class="col-md-4 payerName">الهاتف</label>
+            <input class="form-control payerData" style="color:  #fff61a;" type="text" placeholder="الجوال" onkeyup="appendPayerPhone(this)">
+            <label for="payer_phone" class="col-md-4 payerName">الجوال</label>
         </div>
         <div class="payerDataBox" style="display:flex ;justify-content:space-between; text-align:center;align-items:center; ">
             <textarea class="form-control payerData" name="notes" id="notes" style="color:  #fff61a; border-radius: 10px;text-align: right;padding:30px"></textarea>
@@ -128,7 +128,7 @@
     <input type="hidden" name="client_id" value="{{ Request('company')->client_id }}">
     <input type="hidden" name="company_id" value="{{ Request('company')->id }}">
     <input type="hidden" name="payer_name" id="payer_name" placeholder="الاسم" required>
-    <input type="hidden" name="payer_phone" id="payer_phone" placeholder="الهاتف" required>
+    <input type="hidden" name="payer_phone" id="payer_phone" placeholder="الجوال" required>
     @csrf
 
     <div class="payingButton">
