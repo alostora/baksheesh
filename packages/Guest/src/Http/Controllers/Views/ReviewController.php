@@ -115,35 +115,47 @@ class ReviewController extends Controller
     {
 
 
-        $validated = $request->session()->get('validated');
+        $data['status'] = GneralBooleanStatus::FAILED['code'];
 
-        $tran_ref = isset($validated['tran_ref']) ? $validated['tran_ref'] : 'SFT2408907754834';
-
-
-
-        return  $response =  PaymentCollection::checkPayStatus($tran_ref);
+        if ($request->session()->has('validated')) {
 
 
+            $validated = $request->session()->get('validated');
 
+            $tran_ref = $validated['tran_ref'];
 
-        $url = isset($validated['main_url']) ? $validated['main_url'] : '';
+            // $tran_ref = 'SFT2408607608115';
 
-        if ($request->status == GneralBooleanStatus::SUCCESS['code']) {
+            $response =  PaymentCollection::checkPayStatus($tran_ref);
 
-            if ($request->session()->has('validated')) {
+            $data['url'] = $validated['main_url'];
 
-                if ($validated['payment_type'] == PaymentFor::COMPANY['code']) {
+            if ($response && $response->payment_result) {
 
-                    CompanyCash::create($validated);
-                } elseif ($validated['payment_type'] == PaymentFor::EMPLOYEE['code']) {
+                if ($response->payment_result->response_status == 'A') {
 
-                    EmployeeCash::create($validated);
+                    $validated['payer_name'] = $response->customer_details->name;
+                    $validated['payer_email'] = $response->customer_details->email;
+                    $validated['payer_phone'] = $response->customer_details->phone;
+
+                    if ($validated['payment_type'] == PaymentFor::COMPANY['code']) {
+
+                        CompanyCash::create($validated);
+                    } elseif ($validated['payment_type'] == PaymentFor::EMPLOYEE['code']) {
+
+                        EmployeeCash::create($validated);
+                    }
+
+                    $data['status'] = GneralBooleanStatus::SUCCESS['code'];
+                } elseif ($response->payment_result->response_status == 'D') {
+
+                    $data['status'] = GneralBooleanStatus::FAILED['code'];
                 }
             }
         }
 
         $request->session()->forget('validated');
 
-        return view('Guest/successPayment', compact('url'));
+        return view('Guest/successPayment', $data);
     }
 }

@@ -2,7 +2,6 @@
 
 namespace Guest\Foundations;
 
-use App\Constants\GneralBooleanStatus;
 use Illuminate\Support\Facades\Http;
 
 class PaymentCollection
@@ -24,8 +23,8 @@ class PaymentCollection
             'cart_description' => 'New Order',
             'cart_currency' => 'SAR',
             'cart_amount' => $validated['amount'],
-            'callback' => $url . '?status=' . GneralBooleanStatus::SUCCESS['code'],
-            'return' => $url . '?status=' . GneralBooleanStatus::FAILED['code'],
+            'callback' => $url,
+            'return' => $url,
         ])->object();
     }
 
