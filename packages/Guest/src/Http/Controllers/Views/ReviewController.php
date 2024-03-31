@@ -53,8 +53,6 @@ class ReviewController extends Controller
 
         $url = url('guest/payment/pay-success?validated_data=' . json_encode($validated));
 
-        $url = url('guest/payment/pay-success');
-
         if (isset($validated['amount']) && $validated['amount'] > 0) {
 
             $response =  PaymentCollection::pay($request, $url);
