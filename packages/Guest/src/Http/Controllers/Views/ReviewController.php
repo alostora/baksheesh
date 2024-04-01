@@ -31,7 +31,7 @@ class ReviewController extends Controller
 
             $response =  PaymentCollection::pay($request, $url);
 
-            if ($response && $response->tran_ref) {
+            if ($response && isset($response->tran_ref)) {
 
                 return redirect($response->redirect_url);
             } else {
@@ -57,7 +57,7 @@ class ReviewController extends Controller
 
             $response =  PaymentCollection::pay($request, $url);
 
-            if ($response && $response->tran_ref) {
+            if ($response && isset($response->tran_ref)) {
 
                 return redirect($response->redirect_url);
             } else {
