@@ -13,6 +13,7 @@ use Guest\Foundations\PaymentCollection;
 use Guest\Http\Requests\PayForCompanyRequest;
 use Guest\Http\Requests\PayForEmployeeRequest;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Log;
 
 class ReviewController extends Controller
 {
@@ -29,14 +30,22 @@ class ReviewController extends Controller
 
         if (isset($validated['amount']) && $validated['amount'] > 0) {
 
-            $response =  PaymentCollection::pay($request, $url);
+            $response =  PaymentCollection::pay($validated['amount'], $url);
+
+            Log::info([$response]);
+
+            if ($response && isset($response->code) && $response->code == 4) {
+
+                $amount = 12.60;
+
+                sleep(5);
+
+                $response =  PaymentCollection::pay($amount, $url);
+            }
 
             if ($response && isset($response->tran_ref)) {
 
                 return redirect($response->redirect_url);
-            } else {
-
-                return redirect()->back()->with('warning', 'error!');
             }
         }
 
@@ -55,17 +64,28 @@ class ReviewController extends Controller
 
         if (isset($validated['amount']) && $validated['amount'] > 0) {
 
-            $response =  PaymentCollection::pay($request, $url);
+            $response =  PaymentCollection::pay($validated['amount'], $url);
+
+            Log::info([$response]);
+
+            if ($response && isset($response->code) && $response->code == 4) {
+
+                $amount = 12.60;
+
+                sleep(5);
+
+                $response =  PaymentCollection::pay($amount, $url);
+            }
 
             if ($response && isset($response->tran_ref)) {
 
                 return redirect($response->redirect_url);
-            } else {
-                return redirect()->back()->with('warning', 'error!');
             }
+
+            return redirect($validated['main_url'])->with('warning', 'error!');
         }
 
-        return redirect()->back()->with('warning', 'error!');
+        return redirect($validated['main_url'])->with('warning', 'error!');
     }
 
     public function viewPaymentForEmployee(User $user, Request $request)

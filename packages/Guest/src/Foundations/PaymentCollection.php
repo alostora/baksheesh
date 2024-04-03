@@ -6,10 +6,8 @@ use Illuminate\Support\Facades\Http;
 
 class PaymentCollection
 {
-    public static function pay($request, $url)
+    public static function pay($amount, $url)
     {
-
-        $validated = $request->validated();
 
         return Http::withHeaders([
             'Authorization' =>  'SHJNLTWBRR-JHWJZ6BKJ2-6BDNRL29TZ',
@@ -22,7 +20,7 @@ class PaymentCollection
             'cart_id' => '4244b9fd-c7e9-4f16-8d3c-4fe7bf6c48ca',
             'cart_description' => 'New Order',
             'cart_currency' => 'SAR',
-            'cart_amount' => $validated['amount'],
+            'cart_amount' => $amount,
             'callback' => $url,
             'return' => $url,
         ])->object();

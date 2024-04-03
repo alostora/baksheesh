@@ -181,8 +181,7 @@
             </div>
         </div>
     </div>
-
-    <input type="submit" value="ادفع" class="pay_btn" id="pay_btn" style="display: none;">
+    <button class="pay_btn" type="submit" id="pay_btn" style="display: none;" onclick="disableBtn(this)">ادفع</button>
 </form>
 
 <div style="display:flex;flex-direction:row;letter-spacing: 2p;margin-top:20px;">
@@ -296,5 +295,9 @@
 
     function appendPayerPhone(e) {
         document.getElementById('payer_phone').value = e.value
+    }
+
+    function disableBtn(e) {
+        $('#pay_btn').hide();
     }
 </script>
