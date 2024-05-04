@@ -30,6 +30,7 @@
     </div>
     @endif
 
+    <input type="hidden" name="employee_id" value="{{ Request('user')->id }}">
     <input type="hidden" name="client_id" value="{{ Request('user')->client_id }}">
     <input type="hidden" name="company_id" value="{{ Request('user')->company_id }}">
     <input type="hidden" name="payer_name" id="payer_name" placeholder="الاسم" required>

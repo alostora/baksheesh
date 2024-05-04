@@ -1,5 +1,5 @@
     <div class="logo_bg">
-        <img class="img_logo" src="{{ url('guest/images/logo_tipo.png') }}" alt="logo" />
+        <img class="img_logo" src="{{ url('uploads/' . $company->file->new_name) }}" alt="logo" />
     </div>
     <div class="employee_bg">
         <div class="employee_img">
