@@ -18,7 +18,7 @@
 
         </div>
         <div class="ratting_name">
-            <p style="font-size: medium; font-weight: bold; ">{{ $company_available_rating->companyAvailableRating->name_ar }}</p>
+            <p style="font-size: small; font-weight: bold; ">{{ $company_available_rating->companyAvailableRating->name_ar }}</p>
         </div>
     </div>
     @endforeach

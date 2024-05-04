@@ -1,12 +1,7 @@
-<main class="bg">
     @include('Guest.CompanyPayment.Parts.cardInfo')
     @include('Guest.CompanyPayment.Parts.rating')
     @include('Guest.CompanyPayment.Parts.comment')
     @include('Guest.CompanyPayment.Parts.payment')
-
-</main>
-
-
 
 <script>
     function postRate(element) {
@@ -88,12 +83,12 @@
         if (amount < 10) {
             $('#errorMsg').show();
             $('#invoice_details').hide();
-            $('#pay_btn').hide();
+            $('#pay_btn').prop("disabled", true);
             return false;
         } else {
             $('#errorMsg').hide();
             $('#invoice_details').show();
-            $('#pay_btn').show();
+            $('#pay_btn').removeAttr('disabled');
         }
 
         var transaction_fees = (Number(amount) * (5 / 100)) + 2;
@@ -116,5 +111,6 @@
 
     function disableBtn(e) {
         $('#pay_btn').hide();
+        // $('#pay_btn').prop("disabled", true);
     }
 </script>

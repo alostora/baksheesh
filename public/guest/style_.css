@@ -1,266 +1,279 @@
 @import url("https://fonts.googleapis.com/css2?family=Cairo:wght@200;300;400;500;600;700;800;900;1000&display=swap");
 
 * {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
 html {
-  font-size: 10px;
+    font-size: 10px;
 }
 
 body {
-  font-family: "cairo", "sans-serif";
+    font-family: "cairo", "sans-serif";
 }
 
 .bg {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
-  padding-bottom: 60px;
-  height: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding-bottom: 60px;
+    height: auto;
 }
 
 /* .bg {
 
 } */
 .logo_bg {
-  display: flex;
-  text-align: center;
-  justify-content: center;
-  margin-top: 45px;
-  width: 50%;
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    margin-top: 45px;
+    width: 50%;
 }
 .img_logo {
-  width: 60%;
-  height: auto;
+    width: 60%;
+    height: auto;
 }
 /* employee */
 .employee_bg {
-  background: #f2f0f3;
-  width: 90%;
-  display: flex;
-  height: auto;
-  border-radius: 20px;
-  padding: 10px 20px;
-  margin-top: 40px;
-  justify-content: space-between;
-  align-items: center;
-  text-align: center;
-  box-shadow: inset 0px 0px 5px rgba(0, 0, 0, 0.3);
-  /* box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); */
+    background: #f2f0f3;
+    width: 90%;
+    display: flex;
+    height: auto;
+    border-radius: 20px;
+    padding: 10px 20px;
+    margin-top: 40px;
+    justify-content: space-between;
+    align-items: center;
+    text-align: center;
+    box-shadow: inset 0px 0px 5px rgba(0, 0, 0, 0.3);
+    /* box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); */
 }
 .employee_bg .name {
-  display: flex;
-  flex-direction: column;
-  text-align: end;
-  margin-top: 4px;
+    display: flex;
+    flex-direction: column;
+    text-align: end;
+    margin-top: 4px;
 }
 
 .employee_bg .rate_allRate {
-  display: flex;
-  flex-direction: row;
-  gap: 25px;
-  justify-content: space-between;
-  align-items: center;
-  text-align: center;
+    display: flex;
+    flex-direction: row;
+    gap: 25px;
+    justify-content: space-between;
+    align-items: center;
+    text-align: center;
 }
 /* end employee */
 
 /* rating employee */
 .comp_title {
-  background: #4e5458;
-  color: #fff;
-  width: 110px;
-  height: 30px;
-  display: flex;
+    background: #4e5458;
+    color: #fff;
+    width: 110px;
+    height: 30px;
+    display: flex;
 
-  border-radius: 20px;
-  padding: 10px;
-  margin-top: 50px;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-  box-shadow: inset 0px 0px 5px rgba(0, 0, 0, 0.5);
+    border-radius: 20px;
+    padding: 10px;
+    margin-top: 50px;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    box-shadow: inset 0px 0px 5px rgba(0, 0, 0, 0.5);
 }
 .employee_ratting,
 .addComment {
-  width: 90%;
-  display: flex;
-  flex-direction: column;
-  border-radius: 20px;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-  margin-top: 10px;
+    width: 90%;
+    display: flex;
+    flex-direction: column;
+    border-radius: 20px;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    margin-top: 10px;
 }
 
 .employee_ratting .ratting_row {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  text-align: center;
-  width: 100%;
-  margin-top: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    text-align: center;
+    width: 100%;
+    margin-top: 10px;
 }
 
 .employee_ratting .like_disLike {
-  width: 35%;
-  padding: 0 20px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-  gap: 20%;
+    width: 35%;
+    padding: 0 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    gap: 20%;
 }
 .employee_ratting .like_disLike .like,
 .employee_ratting .like_disLike .disLike {
-  background-color: #fee277;
-  color: #fff;
-  width: 50px;
-  height: 50px;
-  display: flex;
-  border-radius: 50px;
-  padding: 10px;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-  box-shadow: inset 0px 0px 5px rgba(0, 0, 0, 0.171);
-  cursor: pointer;
+    background-color: #fee277;
+    color: #fff;
+    width: 50px;
+    height: 50px;
+    display: flex;
+    border-radius: 50px;
+    padding: 10px;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    box-shadow: inset 0px 0px 5px rgba(0, 0, 0, 0.171);
+    cursor: pointer;
 }
 .employee_ratting .like_disLike .like:hover,
 .employee_ratting .like_disLike .disLike:hover {
-  background-color: #4e5458;
-  box-shadow: inset 0px 0px 5px rgba(0, 0, 0, 0.3), 0 2px 3px 0 rgba(0, 0, 0, 0.2);
+    background-color: #4e5458;
+    box-shadow: inset 0px 0px 5px rgba(0, 0, 0, 0.3),
+        0 2px 3px 0 rgba(0, 0, 0, 0.2);
 }
 
 .employee_ratting .ratting_name {
-  background: #fee277;
-  color: #2a0a0a;
-  width: 50%;
-  height: 50px;
-  display: flex;
-  border-radius: 50px;
-  padding: 10px;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-  box-shadow: inset 0px 0px 5px rgba(0, 0, 0, 0.3), 0 2px 3px 0 rgba(0, 0, 0, 0.2);
-
+    background: #fee277;
+    color: #2a0a0a;
+    width: 50%;
+    height: 50px;
+    display: flex;
+    border-radius: 50px;
+    padding: 10px;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    box-shadow: inset 0px 0px 5px rgba(0, 0, 0, 0.3),
+        0 2px 3px 0 rgba(0, 0, 0, 0.2);
 }
 
 /* comment */
 
 .addComment .comment_row {
-  padding: 25 0px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  text-align: center;
-  width: 90%;
-  margin-top: 20px;
-  gap: 15px;
+    padding: 25 0px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    text-align: center;
+    width: 90%;
+    margin-top: 20px;
+    gap: 15px;
 }
 .input_name {
-  width: 77%;
-  height: 35px;
-  background-color: #f1eff2;
-  box-shadow: inset 0px 0px 5px rgba(0, 0, 0, 0.3);
-  padding: 10px 20px;
-  font-size: 14px;
-  font-weight: 700;
-  font-family: "cairo";
-  border: none;
-  border-radius: 50px;
+    width: 77%;
+    height: 35px;
+    background-color: #f1eff2;
+    box-shadow: inset 0px 0px 5px rgba(0, 0, 0, 0.3);
+    padding: 10px 20px;
+    font-size: 14px;
+    font-weight: 700;
+    font-family: "cairo";
+    border: none;
+    border-radius: 50px;
 }
 
 .label_name {
-  font-size: 12px;
-  font-weight: 800;
+    font-size: 12px;
+    font-weight: 800;
 }
 
 .btn_bg {
-  text-align: start;
+    text-align: start;
 }
 .comment_row .btn {
-  width: 30%;
-  height: 30px;
-  border-radius: 35px;
-  text-align: center;
-  border: 1px solid #2a0a0a;
-  color: #2a0a0a;
-  margin-left: 10px;
-  background-color: #fee277;
-  font-size: small;
-  font-family: cairo;
-  font-weight: 800;
-  cursor: pointer;
-  transition: 0.5s;
+    width: 30%;
+    height: 30px;
+    border-radius: 35px;
+    text-align: center;
+    border: 1px solid #2a0a0a;
+    color: #2a0a0a;
+    margin-left: 10px;
+    background-color: #fee277;
+    font-size: small;
+    font-family: cairo;
+    font-weight: 800;
+    cursor: pointer;
+    transition: 0.5s;
 }
 .paying_bg {
-  width: 75%;
-  height: 50px;
-  background-color: #f1eff2;
-  box-shadow: inset 0px 0px 5px rgba(0, 0, 0, 0.3);
-  padding: 0px 20px;
-  font-size: 14px;
-  font-weight: 800;
-  font-family: "cairo";
-  border: none;
-  border-radius: 50px;
-  margin-top: 25px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  text-align: center;
+    width: 75%;
+    height: 50px;
+    background-color: #f1eff2;
+    box-shadow: inset 0px 0px 5px rgba(0, 0, 0, 0.3);
+    padding: 0px 20px;
+    font-size: 14px;
+    font-weight: 800;
+    font-family: "cairo";
+    border: none;
+    border-radius: 50px;
+    margin-top: 25px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    text-align: center;
 }
 .paying_button {
-  color: #a0a0a0;
-  width: 50px;
-  height: 45px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-  font-size: 18px;
+    color: #a0a0a0;
+    width: 50px;
+    height: 45px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    font-size: 18px;
 }
 .paying_button:hover {
-  background-color: #fee277;
-  color: #2a0a0a;
-  border-radius: 45%;
-  font-size: 20px;
-  cursor: pointer;
+    background-color: #fee277;
+    color: #2a0a0a;
+    border-radius: 45%;
+    font-size: 20px;
+    cursor: pointer;
 }
 
 .another_price {
-  margin-top: 20px;
-  width: 80%;
-  display: flex;
-  justify-content: space-between;
-  text-align: center;
-  align-items: center;
-  padding-left: 60px;
+    margin-top: 20px;
+    width: 80%;
+    display: flex;
+    justify-content: space-between;
+    text-align: center;
+    align-items: center;
+    padding-left: 60px;
 }
 .another_price_input {
-  height: 50px;
-  width: 70%;
-  text-align: center;
-  font-size: 18px;
+    height: 50px;
+    width: 70%;
+    text-align: center;
+    font-size: 18px;
 }
 .pay_btn {
-  width: 30%;
-  height: 50px;
-  border-radius: 40px;
-  text-align: center;
-  border: 1px solid #2a0a0a;
-  color: #2a0a0a;
-  margin-top: 40px;
-  background-color: #fee277;
-  font-size: medium;
-  font-family: cairo;
-  font-weight: 800;
-  cursor: pointer;
-  transition: 0.5s;
+    width: 30%;
+    height: 50px;
+    border-radius: 40px;
+    text-align: center;
+    border: 1px solid #2a0a0a;
+    color: #2a0a0a;
+    margin-top: 40px;
+    background-color: #fee277;
+    font-size: medium;
+    font-family: cairo;
+    font-weight: 800;
+    cursor: pointer;
+    transition: 0.5s;
+}
+
+.inv {
+    flex-direction: row;
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+    align-items: center;
+    text-align: center;
+    font-size: 14px;
+    font-weight: 700;
+    color: grey;
 }

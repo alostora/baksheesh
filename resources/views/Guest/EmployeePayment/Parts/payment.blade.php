@@ -37,13 +37,15 @@
     <input type="hidden" name="payer_phone" id="payer_phone" placeholder="الجوال" required>
     @csrf
 
-    <div class="paying_bg">
-        <div class="paying_button" onclick="appendAmount(10)">10</div>
-        <div class="paying_button" onclick="appendAmount(25)">25</div>
-        <div class="paying_button" onclick="appendAmount(50)">50</div>
-        <div class="paying_button" onclick="appendAmount(75)">75</div>
-        <div class="paying_button" onclick="appendAmount(100)">100</div>
-    </div>
+    <center>
+        <div class="paying_bg">
+            <div class="paying_button" onclick="appendAmount(10)">10</div>
+            <div class="paying_button" onclick="appendAmount(25)">25</div>
+            <div class="paying_button" onclick="appendAmount(50)">50</div>
+            <div class="paying_button" onclick="appendAmount(75)">75</div>
+            <div class="paying_button" onclick="appendAmount(100)">100</div>
+        </div>
+    </center>
 
     <div class="comment_row another_price">
         <input class="anotherPrice" type="hidden" name="amount" id="last_amount">
@@ -85,11 +87,11 @@
         </div>
     </div>
 
-    <button class="pay_btn" type="submit" id="pay_btn" style="display: none;" onclick="disableBtn(this)">دفع</button>
+    <button class="pay_btn" type="submit" id="pay_btn" onclick="disableBtn(this)">دفع</button>
 </form>
 
 <div style="flex-direction:row;letter-spacing: 2p;text-align:center">
 
     <p style="font-size:18px;color:#fff;font-weight: 200;margin-right:5px">Powered by </p>
-    <a href="{{ url('/') }}" style="font-size:20px;text-decoration: none;color:#4e5458"> Tiposmart.com</a>
+    <a href="{{ url('https://tiposmart.com') }}" style="font-size:20px;text-decoration: none;color:#4e5458"> Tiposmart.com</a>
 </div>
