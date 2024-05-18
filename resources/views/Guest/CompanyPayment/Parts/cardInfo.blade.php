@@ -28,7 +28,7 @@
                         اجمالي التقييمات
                     </p>
                     <p style="font-size: 16px; font-weight: 800; color: #2a0a0a">
-                        135
+                        {{$company->ratingForGuest->count()}}
                     </p>
                 </div>
                 <div class="name">
@@ -36,7 +36,7 @@
                         التقييم
                     </p>
                     <p style="font-size: 16px; font-weight: 800; color: #2a0a0a">
-                        @if ($company->companyTotalRating > 0 && $company->companyTotalRating <= 20) 1 @endif @if ($company->companyTotalRating >= 21 && $company->companyTotalRating <= 40) 2 @endif @if ($company->companyTotalRating >= 41 && $company->companyTotalRating <= 60) 3 @endif @if ($company->companyTotalRating >= 61 && $company->companyTotalRating <= 80) 4 @endif @if ($company->companyTotalRating >= 81 && $company->companyTotalRating <= 100) 5 @endif <span style="font-size: 14px; font-weight: 600; color: #9d9b9e"> /5</span>
+                        @if ($company->companyTotalRating <= 0 ) N/A @endif @if ($company->companyTotalRating > 0 && $company->companyTotalRating <= 20) 1 @endif @if ($company->companyTotalRating >= 21 && $company->companyTotalRating <= 40) 2 @endif @if ($company->companyTotalRating >= 41 && $company->companyTotalRating <= 60) 3 @endif @if ($company->companyTotalRating >= 61 && $company->companyTotalRating <= 80) 4 @endif @if ($company->companyTotalRating >= 81 && $company->companyTotalRating <= 100) 5 @endif <span style="font-size: 14px; font-weight: 600; color: #9d9b9e"> /5</span>
                     </p>
                 </div>
             </div>

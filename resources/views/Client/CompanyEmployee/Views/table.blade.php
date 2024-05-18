@@ -81,7 +81,7 @@
                                 </a>
 
                                 <a href="{{url('client/employee-wallets?company_id='.$user->company_id.'&employee_id='.$user->id)}}" class="btn btn-success btn-sm">
-                                    <i class="fa fa-info"></i> @lang('general.wallet') : ( {{$user->employeeCash->sum('amount')}} )
+                                    <i class="fa fa-info"></i> @lang('general.wallet')
                                 </a>
 
                                 <a href="{{url('guest/payment/pay-for-employee/'.$user->id)}}" target="_blank" class="btn btn-success btn-sm">
@@ -123,7 +123,7 @@
 
         var mywindow = window.open(" ", "PRINT");
 
-        mywindow.document.write('<html><head><title>' + userName + '</title>');
+        mywindow.document.write('<html><head><meta charset="utf-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><title>' + userName + '</title>');
         mywindow.document.write('</head><body >');
         mywindow.document.write('<h1>' + userName + '</h1>');
         mywindow.document.write(document.getElementById(userId).innerHTML);
@@ -133,5 +133,8 @@
 
 
         mywindow.print();
+        mywindow.close();
+
+        return true;
     }
 </script>

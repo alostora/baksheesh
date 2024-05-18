@@ -28,7 +28,7 @@
                     اجمالي التقييمات
                 </p>
                 <p style="font-size: 16px; font-weight: 800; color: #2a0a0a">
-                    135
+                    {{$employee->ratingForGuest->count()}}
                 </p>
             </div>
             <div class="name">
@@ -36,7 +36,7 @@
                     التقييم
                 </p>
                 <p style="font-size: 16px; font-weight: 800; color: #2a0a0a">
-                    @if ($employee->employeeTotalRating > 0 && $employee->employeeTotalRating <= 20) 1 @endif @if ($employee->employeeTotalRating >= 21 && $employee->employeeTotalRating <= 40) 2 @endif @if ($employee->employeeTotalRating >= 41 && $employee->employeeTotalRating <= 60) 3 @endif @if ($employee->employeeTotalRating >= 61 && $employee->employeeTotalRating <= 80) 4 @endif @if ($employee->employeeTotalRating >= 81 && $employee->employeeTotalRating <= 100) 5 @endif <span style="font-size: 14px; font-weight: 600; color: #9d9b9e"> /5</span>
+                    @if ($employee->employeeTotalRating <= 0 ) N/A @endif @if ($employee->employeeTotalRating > 0 && $employee->employeeTotalRating <= 20) 1 @endif @if ($employee->employeeTotalRating >= 21 && $employee->employeeTotalRating <= 40) 2 @endif @if ($employee->employeeTotalRating >= 41 && $employee->employeeTotalRating <= 60) 3 @endif @if ($employee->employeeTotalRating >= 61 && $employee->employeeTotalRating <= 80) 4 @endif @if ($employee->employeeTotalRating >= 81 && $employee->employeeTotalRating <= 100) 5 @endif <span style="font-size: 14px; font-weight: 600; color: #9d9b9e"> /5</span>
                 </p>
             </div>
         </div>

@@ -32,6 +32,11 @@ class CompanyCash extends Model
 
     ];
 
+    protected $appends = [
+
+        'net_amount'
+    ];
+
     protected function createdAt(): Attribute
     {
         return Attribute::make(
@@ -47,5 +52,10 @@ class CompanyCash extends Model
     public function company(): BelongsTo
     {
         return $this->belongsTo(Company::class, 'company_id', 'id');
+    }
+
+    public function getNetamountAttribute()
+    {
+        return ($this->amount - 2) / 1.05;
     }
 }

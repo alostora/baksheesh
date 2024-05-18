@@ -80,7 +80,7 @@
                             </a>
 
                             <a href="{{url('client/company-wallets?company_id='.$company->id)}}" class="btn btn-success btn-sm">
-                                <i class="fa fa-info"></i> @lang('general.wallet') : ( {{$company->cash->sum('amount')}} )
+                                <i class="fa fa-info"></i> @lang('general.wallet')
                             </a>
 
                             <a href="{{url('client/client-company-employees/search?company_id='.$company->id)}}" class="btn btn-success btn-sm">
@@ -141,4 +141,3 @@
         mywindow.print();
     }
 </script>
-

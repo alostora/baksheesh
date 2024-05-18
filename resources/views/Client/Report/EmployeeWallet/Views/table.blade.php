@@ -46,7 +46,7 @@
                         <td> {{ $wallet->payer_name }} <br> {{ $wallet->payer_phone }} </td>
                         <td> {{ $wallet->company ? $wallet->company->name : '' }} </td>
                         <td> {{ $wallet->employee ? $wallet->employee->name : '' }} </td>
-                        <td> {{ $wallet->amount }} @lang('general.sar')</td>
+                        <td> {{ $wallet->net_amount }} @lang('general.sar')</td>
                         <td> {{ $wallet->created_at }} </td>
                     </tr>
                     @endforeach

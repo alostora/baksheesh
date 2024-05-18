@@ -34,6 +34,11 @@ class EmployeeCash extends Model
 
     ];
 
+    protected $appends = [
+
+        'net_amount'
+    ];
+
     protected function createdAt(): Attribute
     {
         return Attribute::make(
@@ -54,5 +59,10 @@ class EmployeeCash extends Model
     public function employee(): BelongsTo
     {
         return $this->belongsTo(User::class, 'employee_id', 'id');
+    }
+
+    public function getNetamountAttribute()
+    {
+        return ($this->amount - 2) / 1.05;
     }
 }
