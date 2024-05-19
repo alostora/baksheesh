@@ -11,7 +11,6 @@ use App\Models\CompanyCash;
 use App\Models\EmployeeCash;
 use App\Models\User;
 use Carbon\Carbon;
-use Client\Foundations\Collection;
 
 class DashboardClientCollection
 
@@ -47,24 +46,24 @@ class DashboardClientCollection
     {
         $company_cash = CompanyCash::where('client_id', auth()->id())
             ->whereYear('created_at', Carbon::now()->endOfYear()->year)
-            ->whereMonth('created_at', Carbon::now()->endOfMonth()->month);
+            ->whereMonth('created_at', Carbon::now()->endOfMonth()->month)->get();
 
         $employee_cash = EmployeeCash::where('client_id', auth()->id())
             ->whereYear('created_at', Carbon::now()->endOfYear()->year)
-            ->whereMonth('created_at', Carbon::now()->endOfMonth()->month);
+            ->whereMonth('created_at', Carbon::now()->endOfMonth()->month)->get();
 
-        return Collection::getNetAmount($company_cash) + Collection::getNetAmount($employee_cash);
+        return $company_cash->sum('net_amount') + $employee_cash->sum('net_amount');
     }
 
     public static function yearIncome()
     {
         $company_cash = CompanyCash::where('client_id', auth()->id())
-            ->whereYear('created_at', Carbon::now()->endOfYear()->year);
+            ->whereYear('created_at', Carbon::now()->endOfYear()->year)->get();
 
         $employee_cash = EmployeeCash::where('client_id', auth()->id())
-            ->whereYear('created_at', Carbon::now()->endOfYear()->year);
+            ->whereYear('created_at', Carbon::now()->endOfYear()->year)->get();
 
-        return Collection::getNetAmount($company_cash) + Collection::getNetAmount($employee_cash);
+        return $company_cash->sum('net_amount') + $employee_cash->sum('net_amount');
     }
 
     public static function currentAmount()
@@ -75,9 +74,9 @@ class DashboardClientCollection
             ->where('status', $accepted_status->id)
             ->sum('amount');
 
-        $company_cash = CompanyCash::where('client_id', auth()->id());
-        $employee_cash = EmployeeCash::where('client_id', auth()->id());
+        $company_cash = CompanyCash::where('client_id', auth()->id())->get();
+        $employee_cash = EmployeeCash::where('client_id', auth()->id())->get();
 
-        return (Collection::getNetAmount($company_cash) + Collection::getNetAmount($employee_cash)) - $delivered_withdrawal;
+        return ($company_cash->sum('net_amount') + $employee_cash->sum('net_amount')) - $delivered_withdrawal;
     }
 }

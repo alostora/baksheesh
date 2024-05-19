@@ -135,9 +135,8 @@
         mywindow.document.write(document.getElementById(companyId).innerHTML);
         mywindow.document.write('</body></html>');
 
-        // mywindow.focus(); // necessary for IE >= 10*/
-
-
+        mywindow.focus(); // necessary for IE >= 10*/
         mywindow.print();
+        mywindow.close();
     }
 </script>

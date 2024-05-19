@@ -5,7 +5,6 @@ namespace Client\Foundations\Wallet;
 use App\Models\Company;
 use App\Models\CompanyCash;
 use Carbon\Carbon;
-use Client\Foundations\Collection;
 
 class ClientCompanyWalletQueryCollection
 {
@@ -59,7 +58,6 @@ class ClientCompanyWalletQueryCollection
 
     public static function sumCompanyCashAmount($company_id = -1)
     {
-
         $company_amount = CompanyCash::where('client_id', auth()->id())
 
             ->where('amount', '>', 0)
@@ -71,18 +69,22 @@ class ClientCompanyWalletQueryCollection
                     $q
                         ->where('company_id', $company_id);
                 }
-            });
+            })
 
-        return Collection::getNetAmount($company_amount);
+            ->get();
+
+        return $company_amount->sum('net_amount');
     }
 
     public static function printAllCompaniesAmount()
     {
         $company_amount = CompanyCash::where('client_id', auth()->id())
 
-            ->where('amount', '>', 0);
+            ->where('amount', '>', 0)
 
-        return Collection::getNetAmount($company_amount);
+            ->get();
+
+        return $company_amount->sum('net_amount');
     }
 
     public static function printOneCompanyAmount($company_id)
@@ -99,9 +101,11 @@ class ClientCompanyWalletQueryCollection
                     $q
                         ->where('company_id', $company_id);
                 }
-            });
+            })
 
-        $data['one_company_amount'] = Collection::getNetAmount($one_company_amount);
+            ->get();
+
+        $data['one_company_amount'] = $one_company_amount->sum('net_amount');
 
         return $data;
     }

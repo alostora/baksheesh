@@ -56,6 +56,9 @@ class CompanyCash extends Model
 
     public function getNetamountAttribute()
     {
-        return ($this->amount - 2) / 1.05;
+        if ($this->amount > 0) {
+            return ($this->amount - 2) / 1.05;
+        }
+        return 0;
     }
 }

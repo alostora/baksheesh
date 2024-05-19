@@ -54,6 +54,7 @@
 <script src="{{url('AdminDesign')}}/lte3/plugins/datatables-buttons/js/buttons.colVis.min.js"></script>
 
 <script src="https://kit.fontawesome.com/6f04acab37.js" crossorigin="anonymous"></script>
+
 <script>
     $(function() {
         // $('#example1').DataTable()
@@ -71,9 +72,7 @@
         //Initialize Select2 Elements
         $('.select2').select2()
     })
-</script>
 
-<script>
     $(function() {
         $("#example1").DataTable({
             "responsive": true,
@@ -101,10 +100,7 @@
         //   "responsive": true,
         // });
     });
-</script>
 
-
-<script>
     function PrintElem() {
 
         document.getElementsByClassName("dt-buttons btn-group flex-wrap")[0].style = "display:none"
@@ -112,6 +108,20 @@
         document.getElementsByClassName("dt-buttons btn-group flex-wrap")[0].style = "display:block"
 
     }
+
+    // $(document).ready(function() {
+
+    //     let elements = document.getElementsByClassName('btn btn-secondary buttons-excel buttons-html5');
+
+    //     Array.from(elements).forEach(function(element) {
+
+    //         element.addEventListener('click', function(e) {
+    //             e.preventDefault()
+    //             alert("excel clicked")
+    //             return false;
+    //         });
+    //     });
+    // })
 </script>
 </body>
 

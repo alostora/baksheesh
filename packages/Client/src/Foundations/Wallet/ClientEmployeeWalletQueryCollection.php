@@ -4,7 +4,6 @@ namespace Client\Foundations\Wallet;
 
 use App\Models\EmployeeCash;
 use Carbon\Carbon;
-use Client\Foundations\Collection;
 
 class ClientEmployeeWalletQueryCollection
 {
@@ -85,9 +84,9 @@ class ClientEmployeeWalletQueryCollection
                     $q
                         ->where('employee_id', $employee_id);
                 }
-            });
+            })->get();
 
-        return Collection::getNetAmount($employee_amount);
+        return $employee_amount->sum('net_amount');
     }
 
 
@@ -95,8 +94,10 @@ class ClientEmployeeWalletQueryCollection
     {
         $employee_amount = EmployeeCash::where('client_id', auth()->id())
 
-            ->where('amount', '>', 0);
+            ->where('amount', '>', 0)
 
-        return Collection::getNetAmount($employee_amount);
+            ->get();
+
+        return $employee_amount->sum('net_amount');
     }
 }

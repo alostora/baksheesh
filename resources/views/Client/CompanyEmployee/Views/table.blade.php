@@ -123,15 +123,13 @@
 
         var mywindow = window.open(" ", "PRINT");
 
-        mywindow.document.write('<html><head><meta charset="utf-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><title>' + userName + '</title>');
+        mywindow.document.write('<html><head><title>' + userName + '</title>');
         mywindow.document.write('</head><body >');
         mywindow.document.write('<h1>' + userName + '</h1>');
         mywindow.document.write(document.getElementById(userId).innerHTML);
         mywindow.document.write('</body></html>');
 
-        // mywindow.focus(); // necessary for IE >= 10*/
-
-
+        mywindow.focus(); // necessary for IE >= 10*/
         mywindow.print();
         mywindow.close();
 
