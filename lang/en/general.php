@@ -36,4 +36,6 @@ return [
 
     "period" => "Period",
 
+    "all" => "الكل",
+
 ];

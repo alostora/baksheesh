@@ -109,19 +109,41 @@
 
     }
 
-    // $(document).ready(function() {
+    function requestPerpage(value) {
 
-    //     let elements = document.getElementsByClassName('btn btn-secondary buttons-excel buttons-html5');
+        const url = new URL(location.href);
 
-    //     Array.from(elements).forEach(function(element) {
+        url.searchParams.set('per_page', value);
 
-    //         element.addEventListener('click', function(e) {
-    //             e.preventDefault()
-    //             alert("excel clicked")
-    //             return false;
-    //         });
-    //     });
-    // })
+        location.href = url
+
+        return false;
+    }
+
+    $(document).ready(function() {
+
+        if (document.getElementById("example2_wrapper") != null) {
+
+            children = document.getElementById("example2_wrapper").childNodes
+
+            console.log(children[0].childNodes[0])
+
+            children[0].childNodes[0].innerHTML +=
+
+                `
+                    <div class="col-md-3">
+                        <select class="form-control" onchange='requestPerpage(this.value)'>
+                            <option value="10" {{Request('per_page') && Request('per_page') == 10 ? 'selected' : ''}} >10</option>
+                            <option value="300000000" {{Request('per_page') && Request('per_page') > 100 ? 'selected' : ''}} >@lang('general.all')</option>
+                            <option value="25" {{Request('per_page') && Request('per_page') == 25 ? 'selected' : ''}} >25</option>
+                            <option value="50" {{Request('per_page') && Request('per_page') == 50 ? 'selected' : ''}} >50</option>
+                            <option value="100" {{Request('per_page') && Request('per_page') == 100 ? 'selected' : ''}} >100</option>
+                        </select>
+                    </div>
+                `
+        }
+
+    })
 </script>
 </body>
 
