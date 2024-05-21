@@ -19,55 +19,57 @@ class EmployeeWalletQueryCollection
         $date_to = -1,
         $sort = SystemDefault::DEFAUL_SORT,
     ) {
-        return EmployeeCash::where(function ($q) use ($client_id, $company_id, $employee_id, $date_from, $date_to) {
+        return EmployeeCash::where('amount', '>', 0)
 
-            if ($client_id && $client_id != -1) {
+            ->where(function ($q) use ($client_id, $company_id, $employee_id, $date_from, $date_to) {
 
-                $q
-                    ->where('client_id', $client_id);
-            }
+                if ($client_id && $client_id != -1) {
 
-            if ($company_id && $company_id != -1) {
+                    $q
+                        ->where('client_id', $client_id);
+                }
 
-                $q
-                    ->where('company_id', $company_id);
-            }
+                if ($company_id && $company_id != -1) {
 
-            if ($employee_id && $employee_id != -1) {
+                    $q
+                        ->where('company_id', $company_id);
+                }
 
-                $q
-                    ->where('employee_id', $employee_id);
-            }
+                if ($employee_id && $employee_id != -1) {
 
-            if ($date_from && $date_from != -1 && $date_to && $date_to != -1) {
+                    $q
+                        ->where('employee_id', $employee_id);
+                }
 
-                $q
-                    ->whereBetween('created_at', [
+                if ($date_from && $date_from != -1 && $date_to && $date_to != -1) {
 
-                        Carbon::create($date_from),
+                    $q
+                        ->whereBetween('created_at', [
 
-                        Carbon::create($date_to)->endOfDay()
-                    ]);
-            } else if ($date_from && $date_from != -1) {
+                            Carbon::create($date_from),
 
-                $q
-                    ->whereBetween('created_at', [
+                            Carbon::create($date_to)->endOfDay()
+                        ]);
+                } else if ($date_from && $date_from != -1) {
 
-                        Carbon::create($date_from)->startOfDay(),
+                    $q
+                        ->whereBetween('created_at', [
 
-                        Carbon::create(3000, 01, 01)
-                    ]);
-            } else if ($date_to && $date_to != -1) {
+                            Carbon::create($date_from)->startOfDay(),
 
-                $q
-                    ->whereBetween('created_at', [
+                            Carbon::create(3000, 01, 01)
+                        ]);
+                } else if ($date_to && $date_to != -1) {
 
-                        Carbon::create(1900, 01, 01),
+                    $q
+                        ->whereBetween('created_at', [
 
-                        Carbon::create($date_to)->endOfDay()
-                    ]);
-            }
-        })
+                            Carbon::create(1900, 01, 01),
+
+                            Carbon::create($date_to)->endOfDay()
+                        ]);
+                }
+            })
             ->orderBy('created_at', $sort);
     }
 
