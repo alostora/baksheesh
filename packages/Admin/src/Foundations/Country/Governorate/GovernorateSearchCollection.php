@@ -12,12 +12,14 @@ class GovernorateSearchCollection
         Country $country,
         $query_string = -1,
         $active = -1,
+        $sort = SystemDefault::DEFAUL_SORT,
         $per_page = SystemDefault::DEFAUL_PAGINATION_COUNT
     ) {
         $data['governorates'] = GovernorateQueryCollection::searchCountryGovernorates(
             $country,
             $query_string,
             $active,
+            $sort,
         )->paginate($per_page);
 
         $data['count_active'] = Country::where('type', CountryType::GOVERNORATE['code'])->where('stopped_at', null)->count();
@@ -33,12 +35,14 @@ class GovernorateSearchCollection
         $country_id,
         $query_string = -1,
         $active = -1,
+        $sort = SystemDefault::DEFAUL_SORT,
         $per_page = SystemDefault::DEFAUL_PAGINATION_COUNT
     ) {
         $data['governorates'] = GovernorateQueryCollection::searchAllGovernorates(
             $country_id,
             $query_string,
             $active,
+            $sort,
         )->paginate($per_page);
 
         $data['count_active'] = Country::where('type', CountryType::GOVERNORATE['code'])->where('stopped_at', null)->count();

@@ -3,6 +3,7 @@
 namespace Admin\Foundations\Country\Governorate;
 
 use App\Constants\HasLookupType\CountryType;
+use App\Constants\SystemDefault;
 use App\Models\Country;
 
 class GovernorateQueryCollection
@@ -11,6 +12,7 @@ class GovernorateQueryCollection
         Country $country,
         $query_string = -1,
         $active = -1,
+        $sort = SystemDefault::DEFAUL_SORT,
     ) {
         return Country::where('country_id', $country->id)
 
@@ -44,13 +46,14 @@ class GovernorateQueryCollection
                         ->where('stopped_at', '!=', null);
                 }
             })
-            ->orderBy('created_at', 'DESC');
+            ->orderBy('created_at', $sort);
     }
 
     public static function searchAllGovernorates(
         $country_id,
         $query_string = -1,
         $active = -1,
+        $sort = SystemDefault::DEFAUL_SORT,
     ) {
         return Country::where('type', CountryType::GOVERNORATE['code'])
             ->whereHas('country')
@@ -79,6 +82,6 @@ class GovernorateQueryCollection
                         ->where('stopped_at', '!=', null);
                 }
             })
-            ->orderBy('created_at', 'DESC');
+            ->orderBy('created_at', $sort);
     }
 }

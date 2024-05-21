@@ -2,6 +2,7 @@
 
 namespace Client\Foundations\Report\EmployeeRating;
 
+use App\Constants\SystemDefault;
 use App\Models\EmployeeRating;
 use Carbon\Carbon;
 
@@ -12,7 +13,8 @@ class EmployeeRatingReportQueryCollection
         $employee_id = -1,
         $rating_value = -1,
         $date_from = -1,
-        $date_to = -1
+        $date_to = -1,
+        $sort = SystemDefault::DEFAUL_SORT,
     ) {
         return EmployeeRating::where('client_id', auth()->id())
 
@@ -24,7 +26,7 @@ class EmployeeRatingReportQueryCollection
                     $q
                         ->where('company_id', $company_id);
                 }
-                
+
                 if ($employee_id && $employee_id != -1) {
 
                     $q
@@ -66,6 +68,6 @@ class EmployeeRatingReportQueryCollection
                         ]);
                 }
             })
-            ->orderBy('rating_value', 'DESC');
+            ->orderBy('rating_value', $sort);
     }
 }

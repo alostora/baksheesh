@@ -21,6 +21,7 @@ class CityController extends Controller
         $cities = CitySearchCollection::searchCountryCities(
             $country,
             -1,
+            $request->get('sort') ? $request->get('sort') : SystemDefault::DEFAUL_SORT,
             $request->get('per_page') ?? SystemDefault::DEFAUL_PAGINATION_COUNT
         );
 
@@ -32,17 +33,19 @@ class CityController extends Controller
         $cities = CitySearchCollection::searchCountryCities(
             $country,
             $request->get('query_string') ?? -1,
+            $request->get('sort') ? $request->get('sort') : SystemDefault::DEFAUL_SORT,
             $request->get('per_page') ?? SystemDefault::DEFAUL_PAGINATION_COUNT
         );
 
         return response()->paginated(CityMinifiedResource::collection($cities));
     }
-    
+
     public function searchAll(Request $request)
     {
         $cities = CitySearchCollection::searchAllCities(
             $request->get('country_id') ?? -1,
             $request->get('query_string') ?? -1,
+            $request->get('sort') ? $request->get('sort') : SystemDefault::DEFAUL_SORT,
             $request->get('per_page') ?? SystemDefault::DEFAUL_PAGINATION_COUNT
         );
 

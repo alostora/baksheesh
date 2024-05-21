@@ -5,10 +5,6 @@ namespace Client\Foundations\Wallet;
 use Admin\Foundations\Filter\FilterCollection;
 use Admin\Foundations\Wallet\EmployeeWalletQueryCollection;
 use App\Constants\SystemDefault;
-use App\Foundations\LookupType\AccountTypeCollection;
-use App\Models\Company;
-use App\Models\EmployeeCash;
-use App\Models\User;
 
 class ClientEmployeeWalletSearchCollection
 {
@@ -17,6 +13,7 @@ class ClientEmployeeWalletSearchCollection
         $employee_id = -1,
         $date_from = -1,
         $date_to = -1,
+        $sort = SystemDefault::DEFAUL_SORT,
         $per_page = SystemDefault::DEFAUL_PAGINATION_COUNT
     ) {
         $data['wallets'] = ClientEmployeeWalletQueryCollection::searchAllEmployeeWallets(
@@ -24,6 +21,7 @@ class ClientEmployeeWalletSearchCollection
             $employee_id,
             $date_from,
             $date_to,
+            $sort,
         )->paginate($per_page);
 
         //above table label info

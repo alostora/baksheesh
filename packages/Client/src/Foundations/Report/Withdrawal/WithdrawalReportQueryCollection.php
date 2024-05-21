@@ -2,6 +2,7 @@
 
 namespace Client\Foundations\Report\Withdrawal;
 
+use App\Constants\SystemDefault;
 use App\Models\ClientWithdrawalRequest;
 use Carbon\Carbon;
 
@@ -11,7 +12,8 @@ class WithdrawalReportQueryCollection
         $status = -1,
         $amount = -1,
         $date_from = -1,
-        $date_to = -1
+        $date_to = -1,
+        $sort = SystemDefault::DEFAUL_SORT,
     ) {
 
         return ClientWithdrawalRequest::where('client_id', auth()->id())
@@ -60,6 +62,6 @@ class WithdrawalReportQueryCollection
                         ]);
                 }
             })
-            ->orderBy('created_at', 'DESC');
+            ->orderBy('created_at', $sort);
     }
 }

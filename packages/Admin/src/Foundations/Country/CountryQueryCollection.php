@@ -3,6 +3,7 @@
 namespace Admin\Foundations\Country;
 
 use App\Constants\HasLookupType\CountryType;
+use App\Constants\SystemDefault;
 use App\Models\Country;
 
 class CountryQueryCollection
@@ -10,6 +11,7 @@ class CountryQueryCollection
     public static function searchAllCountries(
         $query_string = -1,
         $active = -1,
+        $sort = SystemDefault::DEFAUL_SORT,
     ) {
         return Country::where('type', CountryType::COUNTRY['code'])
 
@@ -38,6 +40,6 @@ class CountryQueryCollection
                         ->where('stopped_at', '!=', null);
                 }
             })
-            ->orderBy('created_at', 'DESC');
+            ->orderBy('created_at', $sort);
     }
 }

@@ -11,11 +11,13 @@ class ClientSearchCollection
     public static function searchUsers(
         $query_string = -1,
         $active = -1,
+        $sort = SystemDefault::DEFAUL_SORT,
         $per_page = SystemDefault::DEFAUL_PAGINATION_COUNT
     ) {
         $data['users'] = ClientQueryCollection::searchAllUsers(
             $query_string,
             $active,
+            $sort,
         )->paginate($per_page);
 
         $data['count_active'] = User::where('stopped_at', null)

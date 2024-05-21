@@ -2,6 +2,7 @@
 
 namespace Admin\Foundations\Company;
 
+use App\Constants\SystemDefault;
 use App\Models\Company;
 use App\Models\User;
 
@@ -11,6 +12,7 @@ class CompanyQueryCollection
         $client_id = -1,
         $query_string = -1,
         $active = -1,
+        $sort = SystemDefault::DEFAUL_SORT,
     ) {
         return Company::where(function ($q) use ($client_id, $query_string, $active) {
 
@@ -36,13 +38,14 @@ class CompanyQueryCollection
                     ->where('stopped_at', '!=', null);
             }
         })
-            ->orderBy('created_at', 'DESC');
+            ->orderBy('created_at', $sort);
     }
 
     public static function searchAllClientCompanies(
         User $user,
         $query_string = -1,
         $active = -1,
+        $sort = SystemDefault::DEFAUL_SORT,
     ) {
         return Company::where('client_id', $user->id)
 
@@ -64,6 +67,6 @@ class CompanyQueryCollection
                         ->where('stopped_at', '!=', null);
                 }
             })
-            ->orderBy('created_at', 'DESC');
+            ->orderBy('created_at', $sort);
     }
 }

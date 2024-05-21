@@ -21,6 +21,7 @@ class CountryController extends Controller
         $countries = CountrySearchCollection::searchCountries(
             -1,
             -1,
+            $request->get('sort') ? $request->get('sort') : SystemDefault::DEFAUL_SORT,
             $request->get('per_page') ?? 1000
         );
 
@@ -30,7 +31,7 @@ class CountryController extends Controller
             StatusCode::OK
         );
 
-        return response()->paginated(CountryMinifiedResource::collection($countries));
+        // return response()->paginated(CountryMinifiedResource::collection($countries));
     }
 
     public function search(Request $request)
@@ -38,6 +39,7 @@ class CountryController extends Controller
         $countries = CountrySearchCollection::searchCountries(
             $request->get('query_string') ? $request->get('query_string') : -1,
             $request->get('active') ? $request->get('active') : -1,
+            $request->get('sort') ? $request->get('sort') : SystemDefault::DEFAUL_SORT,
             $request->get('per_page') ?? 1000
         );
 
@@ -47,7 +49,7 @@ class CountryController extends Controller
             StatusCode::OK
         );
 
-        return response()->paginated(CountryMinifiedResource::collection($countries));
+        // return response()->paginated(CountryMinifiedResource::collection($countries));
     }
 
     public function show(Country $country)

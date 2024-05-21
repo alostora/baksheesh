@@ -15,6 +15,7 @@ class ClientWithdrawalRequestSearchCollection
         $amount = -1,
         $date_from = -1,
         $date_to = -1,
+        $sort = SystemDefault::DEFAUL_SORT,
         $per_page = SystemDefault::DEFAUL_PAGINATION_COUNT
     ) {
         $data['withdrawalRequests'] = ClientWithdrawalRequestQueryCollection::searchAllClientWithdrawalRequests(
@@ -22,7 +23,8 @@ class ClientWithdrawalRequestSearchCollection
             $status,
             $amount,
             $date_from,
-            $date_to
+            $date_to,
+            $sort
         )->paginate($per_page);
 
         $data['count_all'] = ClientWithdrawalRequest::where('client_id', $user->id)->count();
@@ -46,6 +48,7 @@ class ClientWithdrawalRequestSearchCollection
         $amount = -1,
         $date_from = -1,
         $date_to = -1,
+        $sort = SystemDefault::DEFAUL_SORT,
         $per_page = SystemDefault::DEFAUL_PAGINATION_COUNT
     ) {
         $data['withdrawalRequests'] = ClientWithdrawalRequestQueryCollection::searchAllWithdrawalRequests(
@@ -53,7 +56,8 @@ class ClientWithdrawalRequestSearchCollection
             $status,
             $amount,
             $date_from,
-            $date_to
+            $date_to,
+            $sort,
         )->paginate($per_page);
 
         $data['count_all'] = ClientWithdrawalRequest::where(function ($q) use ($client_id) {

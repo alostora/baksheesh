@@ -24,6 +24,7 @@ class ClientWithdrawalRequestController extends Controller
             -1,
             -1,
             -1,
+            $request->get('sort') ? $request->get('sort') : SystemDefault::DEFAUL_SORT,
             $request->get('per_page') ? $request->get('per_page') : SystemDefault::DEFAUL_PAGINATION_COUNT
         );
 
@@ -37,6 +38,7 @@ class ClientWithdrawalRequestController extends Controller
             $request->get('amount') ? $request->get('amount') : -1,
             $request->get('date_from') ? $request->get('date_from') : -1,
             $request->get('date_to') ? $request->get('date_to') : -1,
+            $request->get('sort') ? $request->get('sort') : SystemDefault::DEFAUL_SORT,
             $request->get('per_page') ? $request->get('per_page') : SystemDefault::DEFAUL_PAGINATION_COUNT
         );
 

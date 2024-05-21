@@ -3,6 +3,7 @@
 namespace Admin\Foundations\Country\Zone;
 
 use App\Constants\HasLookupType\CountryType;
+use App\Constants\SystemDefault;
 use App\Models\Country;
 
 class ZoneQueryCollection
@@ -10,6 +11,7 @@ class ZoneQueryCollection
     public static function searchCountryZones(
         Country $country,
         $query_string = -1,
+        $sort = SystemDefault::DEFAUL_SORT,
     ) {
         return Country::where('city_id', $country->id)
 
@@ -25,12 +27,13 @@ class ZoneQueryCollection
                         ->orWhere('prefix', 'like', '%' . $query_string . '%');
                 }
             })
-            ->orderBy('created_at', 'DESC');
+            ->orderBy('created_at', $sort);
     }
 
     public static function searchAllZones(
         $country_id,
         $query_string = -1,
+        $sort = SystemDefault::DEFAUL_SORT,
     ) {
         return Country::where('type', CountryType::ZONE['code'])
 
@@ -49,6 +52,6 @@ class ZoneQueryCollection
                         ->orWhere('prefix', 'like', '%' . $query_string . '%');
                 }
             })
-            ->orderBy('created_at', 'DESC');
+            ->orderBy('created_at', $sort);
     }
 }

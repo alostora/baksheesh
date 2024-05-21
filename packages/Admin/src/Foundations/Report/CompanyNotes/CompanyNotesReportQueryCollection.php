@@ -2,6 +2,7 @@
 
 namespace Admin\Foundations\Report\CompanyNotes;
 
+use App\Constants\SystemDefault;
 use App\Models\CompanyCash;
 use Carbon\Carbon;
 
@@ -12,7 +13,8 @@ class CompanyNotesReportQueryCollection
         $company_id = -1,
         $query_string = -1,
         $date_from = -1,
-        $date_to = -1
+        $date_to = -1,
+        $sort = SystemDefault::DEFAUL_SORT
     ) {
         return CompanyCash::where(function ($q) use ($client_id, $company_id, $query_string, $date_from, $date_to) {
 
@@ -66,6 +68,6 @@ class CompanyNotesReportQueryCollection
                     ]);
             }
         })
-            ->orderBy('created_at', 'DESC');
+            ->orderBy('created_at', $sort);
     }
 }

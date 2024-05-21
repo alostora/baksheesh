@@ -24,6 +24,7 @@ class ClientController extends Controller
         $data = ClientSearchCollection::searchUsers(
             -1,
             -1,
+            $request->get('sort') ? $request->get('sort') : SystemDefault::DEFAUL_SORT,
             $request->get('per_page') ? $request->get('per_page') : SystemDefault::DEFAUL_PAGINATION_COUNT
         );
 
@@ -35,6 +36,7 @@ class ClientController extends Controller
         $data = ClientSearchCollection::searchUsers(
             $request->get('query_string') ? $request->get('query_string') : -1,
             $request->get('active') ? $request->get('active') : -1,
+            $request->get('sort') ? $request->get('sort') : SystemDefault::DEFAUL_SORT,
             $request->get('per_page') ? $request->get('per_page') : SystemDefault::DEFAUL_PAGINATION_COUNT
         );
 

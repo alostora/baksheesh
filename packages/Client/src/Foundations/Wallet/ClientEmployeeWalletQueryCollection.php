@@ -2,6 +2,7 @@
 
 namespace Client\Foundations\Wallet;
 
+use App\Constants\SystemDefault;
 use App\Models\EmployeeCash;
 use Carbon\Carbon;
 
@@ -12,6 +13,7 @@ class ClientEmployeeWalletQueryCollection
         $employee_id = -1,
         $date_from = -1,
         $date_to = -1,
+        $sort = SystemDefault::DEFAUL_SORT,
     ) {
         return EmployeeCash::where('amount', '>', 0)
 
@@ -61,7 +63,7 @@ class ClientEmployeeWalletQueryCollection
                         ]);
                 }
             })
-            ->orderBy('created_at', 'DESC');
+            ->orderBy('created_at', $sort);
     }
 
     public static function sumEmployeeCashAmount($company_id = -1, $employee_id = -1)

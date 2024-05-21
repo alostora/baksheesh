@@ -22,6 +22,7 @@ class DistrictController extends Controller
         $districts = DistrictSearchCollection::searchCountryDistricts(
             $country,
             -1,
+            $request->get('sort') ? $request->get('sort') : SystemDefault::DEFAUL_SORT,
             $request->get('per_page') ?? SystemDefault::DEFAUL_PAGINATION_COUNT
         );
 
@@ -33,6 +34,7 @@ class DistrictController extends Controller
         $districts = DistrictSearchCollection::searchCountryDistricts(
             $country,
             $request->get('query_string') ?? -1,
+            $request->get('sort') ? $request->get('sort') : SystemDefault::DEFAUL_SORT,
             $request->get('per_page') ?? SystemDefault::DEFAUL_PAGINATION_COUNT
         );
 
@@ -44,6 +46,7 @@ class DistrictController extends Controller
         $districts = DistrictSearchCollection::searchAllDistricts(
             $request->get('country_id') ?? -1,
             $request->get('query_string') ?? -1,
+            $request->get('sort') ? $request->get('sort') : SystemDefault::DEFAUL_SORT,
             $request->get('per_page') ?? SystemDefault::DEFAUL_PAGINATION_COUNT
         );
 

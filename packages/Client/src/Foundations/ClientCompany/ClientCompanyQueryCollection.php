@@ -2,13 +2,15 @@
 
 namespace Client\Foundations\ClientCompany;
 
+use App\Constants\SystemDefault;
 use App\Models\Company;
 
 class ClientCompanyQueryCollection
 {
     public static function searchAllCompanies(
         $query_string = -1,
-        $active = -1
+        $active = -1,
+        $sort = SystemDefault::DEFAUL_SORT
     ) {
         return Company::where('client_id', auth()->id())
 
@@ -31,6 +33,6 @@ class ClientCompanyQueryCollection
                         ->where('stopped_at', '!=', null);
                 }
             })
-            ->orderBy('created_at', 'DESC');
+            ->orderBy('created_at', $sort);
     }
 }

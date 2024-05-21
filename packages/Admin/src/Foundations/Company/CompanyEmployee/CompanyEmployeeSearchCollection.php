@@ -15,6 +15,7 @@ class CompanyEmployeeSearchCollection
         $company_id = -1,
         $query_string = -1,
         $archived = -1,
+        $sort = SystemDefault::DEFAUL_SORT,
         $per_page = SystemDefault::DEFAUL_PAGINATION_COUNT
     ) {
         $data['employees'] = CompanyEmployeeQueryCollection::searchAllCompanyEmployees(
@@ -22,6 +23,7 @@ class CompanyEmployeeSearchCollection
             $company_id,
             $query_string,
             $archived,
+            $sort,
         )->paginate($per_page);
 
         $data['clients'] = FilterCollection::clients();

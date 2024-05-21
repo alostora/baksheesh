@@ -17,6 +17,7 @@ class EmployeeNotesReportSearchCollection
         $query_string = -1,
         $date_from = -1,
         $date_to = -1,
+        $sort = SystemDefault::DEFAUL_SORT,
         $per_page = SystemDefault::DEFAUL_PAGINATION_COUNT
     ) {
         $data['employee_notes'] = EmployeeNotesReportQueryCollection::searchEmployeeNotes(
@@ -25,7 +26,8 @@ class EmployeeNotesReportSearchCollection
             $employee_id,
             $query_string,
             $date_from,
-            $date_to
+            $date_to,
+            $sort
         )->paginate($per_page);
 
         $data['clients'] = User::where('user_account_type_id', AccountTypeCollection::client()->id)

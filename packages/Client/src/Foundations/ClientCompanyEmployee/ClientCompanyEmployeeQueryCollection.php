@@ -2,6 +2,7 @@
 
 namespace Client\Foundations\ClientCompanyEmployee;
 
+use App\Constants\SystemDefault;
 use App\Models\User;
 
 class ClientCompanyEmployeeQueryCollection
@@ -10,6 +11,7 @@ class ClientCompanyEmployeeQueryCollection
         $company_id = -1,
         $query_string = -1,
         $active = -1,
+        $sort = SystemDefault::DEFAUL_SORT,
     ) {
 
         return User::where('client_id', auth()->id())
@@ -38,6 +40,6 @@ class ClientCompanyEmployeeQueryCollection
                         ->where('stopped_at', '!=', null);
                 }
             })
-            ->orderBy('created_at', 'DESC');
+            ->orderBy('created_at', $sort);
     }
 }

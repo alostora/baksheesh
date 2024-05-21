@@ -2,6 +2,7 @@
 
 namespace Client\Foundations\ClientCompany\CompanyAvailableRating;
 
+use App\Constants\SystemDefault;
 use App\Models\CompanyAvailableRating;
 
 class CompanyAvailableRatingQueryCollection
@@ -9,6 +10,7 @@ class CompanyAvailableRatingQueryCollection
     public static function searchAllCompanyAvailableRatings(
         $query_string = -1,
         $active = -1,
+        $sort = SystemDefault::DEFAUL_SORT,
     ) {
 
         return CompanyAvailableRating::where('client_id', auth()->id())
@@ -36,6 +38,6 @@ class CompanyAvailableRatingQueryCollection
                         ->where('stopped_at', '!=', null);
                 }
             })
-            ->orderBy('created_at', 'DESC');
+            ->orderBy('created_at', $sort);
     }
 }

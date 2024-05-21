@@ -13,12 +13,14 @@ class ClientCompanyEmployeeSearchCollection
         $company_id = -1,
         $query_string = -1,
         $active = -1,
+        $sort = SystemDefault::DEFAUL_SORT,
         $per_page = SystemDefault::DEFAUL_PAGINATION_COUNT
     ) {
         $data['employees'] = ClientCompanyEmployeeQueryCollection::searchAllCompanyEmployees(
             $company_id,
             $query_string,
             $active,
+            $sort
         )->paginate($per_page);
 
         $data['companies'] = Company::where('client_id', auth()->id())->get();

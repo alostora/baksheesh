@@ -2,9 +2,8 @@
 
 namespace Admin\Foundations\Company\CompanyEmployee;
 
-use App\Constants\HasLookupType\UserAccountType;
+use App\Constants\SystemDefault;
 use App\Foundations\LookupType\AccountTypeCollection;
-use App\Models\SystemLookup;
 use App\Models\User;
 
 class CompanyEmployeeQueryCollection
@@ -14,11 +13,12 @@ class CompanyEmployeeQueryCollection
         $company_id = -1,
         $query_string = -1,
         $active = -1,
+        $sort = SystemDefault::DEFAUL_SORT,
     ) {
 
         return User::where('user_account_type_id', AccountTypeCollection::employee()->id)
 
-            ->where(function ($q) use ($client_id,$company_id, $query_string, $active) {
+            ->where(function ($q) use ($client_id, $company_id, $query_string, $active) {
 
                 if ($client_id && $client_id != -1) {
 
@@ -48,6 +48,6 @@ class CompanyEmployeeQueryCollection
                         ->where('stopped_at', '!=', null);
                 }
             })
-            ->orderBy('created_at', 'DESC');
+            ->orderBy('created_at', $sort);
     }
 }

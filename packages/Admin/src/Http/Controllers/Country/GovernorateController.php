@@ -23,6 +23,7 @@ class GovernorateController extends Controller
             $country,
             -1,
             -1,
+            $request->get('sort') ? $request->get('sort') : SystemDefault::DEFAUL_SORT,
             $request->get('per_page') ?? 1000
         );
 
@@ -32,7 +33,7 @@ class GovernorateController extends Controller
             StatusCode::OK
         );
 
-        return response()->paginated(GovernorateMinifiedResource::collection($governorates));
+        // return response()->paginated(GovernorateMinifiedResource::collection($governorates));
     }
 
     public function search(Country $country, Request $request)
@@ -41,6 +42,7 @@ class GovernorateController extends Controller
             $country,
             $request->get('query_string') ?? -1,
             $request->get('active') ?? -1,
+            $request->get('sort') ? $request->get('sort') : SystemDefault::DEFAUL_SORT,
             $request->get('per_page') ?? 1000
         );
 
@@ -50,7 +52,7 @@ class GovernorateController extends Controller
             StatusCode::OK
         );
 
-        return response()->paginated(GovernorateMinifiedResource::collection($governorates));
+        // return response()->paginated(GovernorateMinifiedResource::collection($governorates));
     }
 
     public function searchAll(Request $request)
@@ -59,6 +61,7 @@ class GovernorateController extends Controller
             $request->get('country_id') ?? -1,
             $request->get('query_string') ?? -1,
             $request->get('active') ?? -1,
+            $request->get('sort') ? $request->get('sort') : SystemDefault::DEFAUL_SORT,
             $request->get('per_page') ?? 1000
         );
 
@@ -68,7 +71,7 @@ class GovernorateController extends Controller
             StatusCode::OK
         );
 
-        return response()->paginated(GovernorateMinifiedResource::collection($governorates));
+        // return response()->paginated(GovernorateMinifiedResource::collection($governorates));
     }
 
     public function show(Governorate $governorate)

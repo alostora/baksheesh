@@ -2,6 +2,7 @@
 
 namespace Client\Foundations\Report\EmployeeNotes;
 
+use App\Constants\SystemDefault;
 use App\Models\EmployeeCash;
 use Carbon\Carbon;
 
@@ -12,11 +13,12 @@ class EmployeeNotesReportQueryCollection
         $employee_id = -1,
         $query_string = -1,
         $date_from = -1,
-        $date_to = -1
+        $date_to = -1,
+        $sort = SystemDefault::DEFAUL_SORT,
     ) {
         return EmployeeCash::where('client_id', auth()->id())
 
-            ->where(function ($q) use ($company_id,$employee_id,$query_string, $date_from, $date_to) {
+            ->where(function ($q) use ($company_id, $employee_id, $query_string, $date_from, $date_to) {
 
                 if ($company_id && $company_id != -1) {
 
@@ -68,6 +70,6 @@ class EmployeeNotesReportQueryCollection
                         ]);
                 }
             })
-            ->orderBy('created_at', 'DESC');
+            ->orderBy('created_at', $sort);
     }
 }

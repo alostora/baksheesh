@@ -10,11 +10,13 @@ class ZoneSearchCollection
     public static function searchCountryZones(
         Country $country,
         $query_string = -1,
+        $sort = SystemDefault::DEFAUL_SORT,
         $per_page = SystemDefault::DEFAUL_PAGINATION_COUNT
     ) {
         $countries = ZoneQueryCollection::searchCountryZones(
             $country,
-            $query_string
+            $query_string,
+            $sort
         );
 
         return $countries->paginate($per_page);
@@ -23,11 +25,13 @@ class ZoneSearchCollection
     public static function searchAllZones(
         $country_id,
         $query_string = -1,
+        $sort = SystemDefault::DEFAUL_SORT,
         $per_page = SystemDefault::DEFAUL_PAGINATION_COUNT
     ) {
         $countries = ZoneQueryCollection::searchAllZones(
             $country_id,
-            $query_string
+            $query_string,
+            $sort
         );
 
         return $countries->paginate($per_page);

@@ -3,6 +3,7 @@
 namespace Admin\Foundations\Country\City;
 
 use App\Constants\HasLookupType\CountryType;
+use App\Constants\SystemDefault;
 use App\Models\Country;
 
 class CityQueryCollection
@@ -10,6 +11,7 @@ class CityQueryCollection
     public static function searchCountryCities(
         Country $country,
         $query_string = -1,
+        $sort = SystemDefault::DEFAUL_SORT,
     ) {
         return Country::where('governorate_id', $country->id)
 
@@ -25,12 +27,13 @@ class CityQueryCollection
                         ->orWhere('prefix', 'like', '%' . $query_string . '%');
                 }
             })
-            ->orderBy('created_at', 'DESC');
+            ->orderBy('created_at', $sort);
     }
 
     public static function searchAllCities(
         $country_id,
         $query_string = -1,
+        $sort = SystemDefault::DEFAUL_SORT,
     ) {
         return Country::where('type', CountryType::CITY['code'])
 
@@ -49,6 +52,6 @@ class CityQueryCollection
                         ->orWhere('prefix', 'like', '%' . $query_string . '%');
                 }
             })
-            ->orderBy('created_at', 'DESC');
+            ->orderBy('created_at', $sort);
     }
 }

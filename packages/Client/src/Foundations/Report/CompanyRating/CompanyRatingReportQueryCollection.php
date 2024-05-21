@@ -2,6 +2,7 @@
 
 namespace Client\Foundations\Report\CompanyRating;
 
+use App\Constants\SystemDefault;
 use App\Models\CompanyRating;
 use Carbon\Carbon;
 
@@ -11,7 +12,8 @@ class CompanyRatingReportQueryCollection
         $company_id = -1,
         $rating_value = -1,
         $date_from = -1,
-        $date_to = -1
+        $date_to = -1,
+        $sort = SystemDefault::DEFAUL_SORT,
     ) {
         return CompanyRating::where('client_id', auth()->id())
 
@@ -59,6 +61,6 @@ class CompanyRatingReportQueryCollection
                         ]);
                 }
             })
-            ->orderBy('rating_value', 'DESC');
+            ->orderBy('rating_value', $sort);
     }
 }

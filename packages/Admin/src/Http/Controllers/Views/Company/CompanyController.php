@@ -9,14 +9,12 @@ use Admin\Http\Requests\Company\CompanyCreateRequest;
 use Admin\Http\Requests\Company\CompanyUpdateRequest;
 use Admin\Http\Resources\Company\CompanyMinifiedResource;
 use Admin\Http\Resources\Company\CompanyResource;
-use App\Constants\HasLookupType\AvailableCompanyRating;
 use App\Constants\StatusCode;
 use App\Constants\SystemDefault;
 use App\Foundations\LookupType\AccountTypeCollection;
 use App\Http\Controllers\Controller;
 use App\Models\Company;
 use App\Models\CompanyAvailableRating;
-use App\Models\SystemLookup;
 use App\Models\User;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
@@ -31,6 +29,7 @@ class CompanyController extends Controller
             -1,
             -1,
             -1,
+            $request->get('sort') ? $request->get('sort') : SystemDefault::DEFAUL_SORT,
             $request->get('per_page') ? $request->get('per_page') : SystemDefault::DEFAUL_PAGINATION_COUNT
         );
 
@@ -43,6 +42,7 @@ class CompanyController extends Controller
             $request->get('client_id') ? $request->get('client_id') : -1,
             $request->get('query_string') ? $request->get('query_string') : -1,
             $request->get('active') ? $request->get('active') : -1,
+            $request->get('sort') ? $request->get('sort') : SystemDefault::DEFAUL_SORT,
             $request->get('per_page') ? $request->get('per_page') : SystemDefault::DEFAUL_PAGINATION_COUNT
         );
 
@@ -55,6 +55,7 @@ class CompanyController extends Controller
             $user,
             -1,
             -1,
+            $request->get('sort') ? $request->get('sort') : SystemDefault::DEFAUL_SORT,
             $request->get('per_page') ? $request->get('per_page') : SystemDefault::DEFAUL_PAGINATION_COUNT
         );
 
@@ -67,6 +68,7 @@ class CompanyController extends Controller
             $user,
             $request->get('query_string') ? $request->get('query_string') : -1,
             $request->get('active') ? $request->get('active') : -1,
+            $request->get('sort') ? $request->get('sort') : SystemDefault::DEFAUL_SORT,
             $request->get('per_page') ? $request->get('per_page') : SystemDefault::DEFAUL_PAGINATION_COUNT
         );
 
@@ -79,6 +81,7 @@ class CompanyController extends Controller
             $request->get('client_id') ? $request->get('client_id') : -1,
             $request->get('query_string') ? $request->get('query_string') : -1,
             $request->get('active') ? $request->get('active') : -1,
+            $request->get('sort') ? $request->get('sort') : SystemDefault::DEFAUL_SORT,
             $request->get('per_page') ? $request->get('per_page') : SystemDefault::DEFAUL_PAGINATION_COUNT
         );
 

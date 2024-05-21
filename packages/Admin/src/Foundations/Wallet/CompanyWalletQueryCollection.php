@@ -2,6 +2,7 @@
 
 namespace Admin\Foundations\Wallet;
 
+use App\Constants\SystemDefault;
 use App\Foundations\LookupType\AccountTypeCollection;
 use App\Models\Company;
 use App\Models\CompanyCash;
@@ -15,6 +16,7 @@ class CompanyWalletQueryCollection
         $company_id = -1,
         $date_from = -1,
         $date_to = -1,
+        $sort = SystemDefault::DEFAUL_SORT,
     ) {
         return CompanyCash::where('amount', '>', 0)
             ->where(function ($q) use ($client_id, $company_id, $date_from, $date_to) {
@@ -60,7 +62,7 @@ class CompanyWalletQueryCollection
                         ]);
                 }
             })
-            ->orderBy('created_at', 'DESC');
+            ->orderBy('created_at', $sort);
     }
 
     public static function sumCompanyCashAmount($client_id = -1, $company_id = -1)

@@ -38,4 +38,8 @@ return [
 
     "all" => "الكل",
 
+    "ASC" => "ASC",
+
+    "DESC" => "DESC",
+
 ];

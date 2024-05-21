@@ -3,6 +3,7 @@
 namespace Admin\Foundations\Country\District;
 
 use App\Constants\HasLookupType\CountryType;
+use App\Constants\SystemDefault;
 use App\Models\Country;
 
 class DistrictQueryCollection
@@ -10,6 +11,7 @@ class DistrictQueryCollection
     public static function searchCountryDistricts(
         Country $country,
         $query_string = -1,
+        $sort = SystemDefault::DEFAUL_SORT
     ) {
         return Country::where('zone_id', $country->id)
 
@@ -25,14 +27,15 @@ class DistrictQueryCollection
                         ->orWhere('prefix', 'like', '%' . $query_string . '%');
                 }
             })
-            ->orderBy('created_at', 'DESC');
+            ->orderBy('created_at', $sort);
     }
 
-    
+
 
     public static function searchAllDistricts(
         $country_id,
         $query_string = -1,
+        $sort = SystemDefault::DEFAUL_SORT
     ) {
         return Country::where('type', CountryType::DISTRICT['code'])
 
@@ -51,6 +54,6 @@ class DistrictQueryCollection
                         ->orWhere('prefix', 'like', '%' . $query_string . '%');
                 }
             })
-            ->orderBy('created_at', 'DESC');
+            ->orderBy('created_at', $sort);
     }
 }

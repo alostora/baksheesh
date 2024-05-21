@@ -4,7 +4,6 @@ namespace Client\Http\Controllers\Views;
 
 use App\Constants\SystemDefault;
 use App\Http\Controllers\Controller;
-use App\Models\Company;
 use App\Models\CompanyAvailableRating;
 use Carbon\Carbon;
 use Client\Foundations\ClientCompany\CompanyAvailableRating\CompanyAvailableRatingCreateCollection;
@@ -21,6 +20,7 @@ class CompanyAvailableRatingController extends Controller
         $data = CompanyAvailableRatingSearchCollection::searchCompanyAvailableRatings(
             -1,
             -1,
+            $request->get('sort') ? $request->get('sort') : SystemDefault::DEFAUL_SORT,
             $request->get('per_page') ? $request->get('per_page') : SystemDefault::DEFAUL_PAGINATION_COUNT
         );
 
@@ -32,6 +32,7 @@ class CompanyAvailableRatingController extends Controller
         $data = CompanyAvailableRatingSearchCollection::searchCompanyAvailableRatings(
             $request->get('query_string') ? $request->get('query_string') : -1,
             $request->get('active') ? $request->get('active') : -1,
+            $request->get('sort') ? $request->get('sort') : SystemDefault::DEFAUL_SORT,
             $request->get('per_page') ? $request->get('per_page') : SystemDefault::DEFAUL_PAGINATION_COUNT
         );
 

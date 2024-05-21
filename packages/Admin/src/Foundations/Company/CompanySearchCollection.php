@@ -13,12 +13,14 @@ class CompanySearchCollection
         $client_id = -1,
         $query_string = -1,
         $active = -1,
+        $sort = SystemDefault::DEFAUL_SORT,
         $per_page = SystemDefault::DEFAUL_PAGINATION_COUNT
     ) {
         $data['companies'] = CompanyQueryCollection::searchAllCompanies(
             $client_id,
             $query_string,
             $active,
+            $sort,
         )->paginate($per_page);
 
         $data['count_active'] = Company::where('stopped_at', null)->count();
@@ -34,12 +36,14 @@ class CompanySearchCollection
         User $user,
         $query_string = -1,
         $active = -1,
-        $per_page = SystemDefault::DEFAUL_PAGINATION_COUNT
+        $sort = SystemDefault::DEFAUL_SORT,
+        $per_page = SystemDefault::DEFAUL_PAGINATION_COUNT,
     ) {
         $data['companies'] = CompanyQueryCollection::searchAllClientCompanies(
             $user,
             $query_string,
-            $active
+            $active,
+            $sort
         )->paginate($per_page);
 
         $data['count_active'] = Company::where('stopped_at', null)->count();
@@ -52,10 +56,12 @@ class CompanySearchCollection
     }
 
     public static function searchAllCompanies(
-        $client_id = -1
+        $client_id = -1,
+        $sort = SystemDefault::DEFAUL_SORT,
     ) {
         $companies = CompanyQueryCollection::searchAllCompanies(
             $client_id,
+            $sort,
         );
 
         return $companies->get();

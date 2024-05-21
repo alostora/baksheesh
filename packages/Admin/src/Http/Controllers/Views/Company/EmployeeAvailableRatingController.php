@@ -23,6 +23,7 @@ class EmployeeAvailableRatingController extends Controller
             -1,
             -1,
             -1,
+            $request->get('sort') ? $request->get('sort') : SystemDefault::DEFAUL_SORT,
             $request->get('per_page') ? $request->get('per_page') : SystemDefault::DEFAUL_PAGINATION_COUNT
         );
 
@@ -35,6 +36,7 @@ class EmployeeAvailableRatingController extends Controller
             $request->get('client_id') ? $request->get('client_id') : -1,
             $request->get('query_string') ? $request->get('query_string') : -1,
             $request->get('active') ? $request->get('active') : -1,
+            $request->get('sort') ? $request->get('sort') : SystemDefault::DEFAUL_SORT,
             $request->get('per_page') ? $request->get('per_page') : SystemDefault::DEFAUL_PAGINATION_COUNT
         );
 

@@ -14,8 +14,8 @@ use Client\Foundations\ClientCompanyEmployee\ClientCompanyEmployeeCreateCollecti
 use Client\Foundations\ClientCompanyEmployee\ClientCompanyEmployeeSearchCollection;
 use Client\Foundations\ClientCompanyEmployee\ClientCompanyEmployeeUpdateCollection;
 use Client\Http\Requests\ClientCompany\ClientCompanyEmployee\AssignClientCompanyEmployeeCreateRequest;
-use Client\Http\Requests\ClientCompany\ClientCompanyEmployee\ClientCompanyEmployeeCreateRequest;
-use Client\Http\Requests\ClientCompany\ClientCompanyEmployee\ClientCompanyEmployeeUpdateRequest;
+use Client\Http\Requests\ClientCompany\CompanyEmployee\ClientCompanyEmployee\ClientCompanyEmployeeCreateRequest;
+use Client\Http\Requests\ClientCompany\CompanyEmployee\ClientCompanyEmployee\ClientCompanyEmployeeUpdateRequest;
 use Illuminate\Http\Request;
 
 class ClientCompanyEmployeeController extends Controller
@@ -26,6 +26,7 @@ class ClientCompanyEmployeeController extends Controller
             -1,
             -1,
             -1,
+            $request->get('sort') ? $request->get('sort') : SystemDefault::DEFAUL_SORT,
             $request->get('per_page') ? $request->get('per_page') : SystemDefault::DEFAUL_PAGINATION_COUNT
         );
 
@@ -38,6 +39,7 @@ class ClientCompanyEmployeeController extends Controller
             $request->get('company_id') ? $request->get('company_id') : -1,
             $request->get('query_string') ? $request->get('query_string') : -1,
             $request->get('active') ? $request->get('active') : -1,
+            $request->get('sort') ? $request->get('sort') : SystemDefault::DEFAUL_SORT,
             $request->get('per_page') ? $request->get('per_page') : SystemDefault::DEFAUL_PAGINATION_COUNT
         );
 

@@ -3,6 +3,7 @@
 namespace Report\Foundations\Report\Client;
 
 use App\Constants\HasLookupType\UserAccountType;
+use App\Constants\SystemDefault;
 use App\Foundations\LookupType\AccountTypeCollection;
 use App\Models\SystemLookup;
 use App\Models\User;
@@ -12,6 +13,7 @@ class ClientQueryCollection
     public static function searchAllUsers(
         $query_string = -1,
         $active = -1,
+        $sort = SystemDefault::DEFAUL_SORT,
     ) {
 
         $user_account_type = AccountTypeCollection::client();
@@ -36,6 +38,6 @@ class ClientQueryCollection
                         ->where('stopped_at', '!=', null);
                 }
             })
-            ->orderBy('created_at', 'DESC');
+            ->orderBy('created_at', $sort);
     }
 }

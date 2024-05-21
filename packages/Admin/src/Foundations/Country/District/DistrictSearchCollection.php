@@ -10,11 +10,13 @@ class DistrictSearchCollection
     public static function searchCountryDistricts(
         Country $country,
         $query_string = -1,
+        $sort = SystemDefault::DEFAUL_SORT,
         $per_page = SystemDefault::DEFAUL_PAGINATION_COUNT
     ) {
         $countries = DistrictQueryCollection::searchCountryDistricts(
             $country,
-            $query_string
+            $query_string,
+            $sort
         );
 
         return $countries->paginate($per_page);
@@ -23,11 +25,13 @@ class DistrictSearchCollection
     public static function searchAllDistricts(
         $country_id,
         $query_string = -1,
+        $sort = SystemDefault::DEFAUL_SORT,
         $per_page = SystemDefault::DEFAUL_PAGINATION_COUNT
     ) {
         $countries = DistrictQueryCollection::searchAllDistricts(
             $country_id,
-            $query_string
+            $query_string,
+            $sort
         );
 
         return $countries->paginate($per_page);

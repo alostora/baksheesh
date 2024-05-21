@@ -4,10 +4,8 @@ namespace Admin\Http\Controllers\Company;
 
 use Admin\Foundations\Company\CompanyEmployee\AssignCompanyEmployeeCollection;
 use Admin\Foundations\Company\CompanyEmployee\CompanyEmployeeCreateApiCollection;
-use Admin\Foundations\Company\CompanyEmployee\CompanyEmployeeCreateCollection;
 use Admin\Foundations\Company\CompanyEmployee\CompanyEmployeeSearchCollection;
 use Admin\Foundations\Company\CompanyEmployee\CompanyEmployeeUpdateApiCollection;
-use Admin\Foundations\Company\CompanyEmployee\CompanyEmployeeUpdateCollection;
 use Admin\Http\Requests\Company\CompanyEmployee\AssignCompanyEmployeeCreateRequest;
 use Admin\Http\Requests\Company\CompanyEmployee\CompanyEmployeeCreateApiRequest;
 use Admin\Http\Requests\Company\CompanyEmployee\CompanyEmployeeUpdateApiRequest;
@@ -28,6 +26,8 @@ class CompanyEmployeeController extends Controller
             -1,
             -1,
             -1,
+            -1,
+            $request->get('sort') ? $request->get('sort') : SystemDefault::DEFAUL_SORT,
             $request->get('per_page') ? $request->get('per_page') : SystemDefault::DEFAUL_PAGINATION_COUNT
         );
 
@@ -41,6 +41,7 @@ class CompanyEmployeeController extends Controller
             $request->get('company_id') ? $request->get('company_id') : -1,
             $request->get('query_string') ? $request->get('query_string') : -1,
             $request->get('active') ? $request->get('active') : -1,
+            $request->get('sort') ? $request->get('sort') : SystemDefault::DEFAUL_SORT,
             $request->get('per_page') ? $request->get('per_page') : SystemDefault::DEFAUL_PAGINATION_COUNT
         );
 

@@ -14,13 +14,15 @@ class CompanyRatingReportSearchCollection
         $rating_value = -1,
         $date_from = -1,
         $date_to = -1,
+        $sort = SystemDefault::DEFAUL_SORT,
         $per_page = SystemDefault::DEFAUL_PAGINATION_COUNT
     ) {
         $data['company_ratings'] = CompanyRatingReportQueryCollection::searchCompanyRating(
             $company_id,
             $rating_value,
             $date_from,
-            $date_to
+            $date_to,
+            $sort
         )->paginate($per_page);
 
 

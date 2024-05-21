@@ -2,6 +2,7 @@
 
 namespace Admin\Foundations\User;
 
+use App\Constants\SystemDefault;
 use App\Foundations\LookupType\AccountTypeCollection;
 use App\Models\User;
 
@@ -11,6 +12,7 @@ class UserQueryCollection
         $user_account_type_id = -1,
         $query_string = -1,
         $active = -1,
+        $sort = SystemDefault::DEFAUL_SORT,
     ) {
         return User::where(function ($q) use ($user_account_type_id, $query_string, $active) {
 
@@ -42,6 +44,6 @@ class UserQueryCollection
                     ->where('stopped_at', '!=', null);
             }
         })
-            ->orderBy('created_at', 'DESC');
+            ->orderBy('created_at', $sort);
     }
 }

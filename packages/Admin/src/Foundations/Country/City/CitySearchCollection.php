@@ -10,11 +10,13 @@ class CitySearchCollection
     public static function searchCountryCities(
         Country $country,
         $query_string = -1,
+        $sort = SystemDefault::DEFAUL_SORT,
         $per_page = SystemDefault::DEFAUL_PAGINATION_COUNT
     ) {
         $countries = CityQueryCollection::searchCountryCities(
             $country,
-            $query_string
+            $query_string,
+            $sort
         );
 
         return $countries->paginate($per_page);
@@ -23,11 +25,13 @@ class CitySearchCollection
     public static function searchAllCities(
         $country_id,
         $query_string = -1,
+        $sort = SystemDefault::DEFAUL_SORT,
         $per_page = SystemDefault::DEFAUL_PAGINATION_COUNT
     ) {
         $countries = CityQueryCollection::searchAllCities(
             $country_id,
-            $query_string
+            $query_string,
+            $sort,
         );
 
         return $countries->paginate($per_page);

@@ -10,7 +10,7 @@
             <div class="col-md-4">
                 <a href="{{url('client/client-withdrawal-request/create')}}" class="btn bg-olive btn-sm" style="height:25px;padding:2px;width:150px">
                     <i class="fa fa-plus"></i>
-                    <span>@lang('withdrawal.create')</span>
+                    <span>@lang('withdrawal_request.create')</span>
                 </a>
             </div>
         </div>

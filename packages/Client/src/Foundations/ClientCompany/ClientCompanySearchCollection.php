@@ -10,11 +10,13 @@ class ClientCompanySearchCollection
     public static function searchCompanies(
         $query_string = -1,
         $active = -1,
+        $sort = SystemDefault::DEFAUL_SORT,
         $per_page = SystemDefault::DEFAUL_PAGINATION_COUNT
     ) {
         $data['companies'] = ClientCompanyQueryCollection::searchAllCompanies(
             $query_string,
             $active,
+            $sort,
         )->paginate($per_page);
 
         $data['count_active'] = Company::where('client_id', auth()->id())->where('stopped_at', null)->count();

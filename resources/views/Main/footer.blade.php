@@ -120,6 +120,17 @@
         return false;
     }
 
+    function requestSorte(value) {
+
+        const url = new URL(location.href);
+
+        url.searchParams.set('sort', value);
+
+        location.href = url
+
+        return false;
+    }
+
     $(document).ready(function() {
 
         if (document.getElementById("example2_wrapper") != null) {
@@ -138,6 +149,13 @@
                             <option value="25" {{Request('per_page') && Request('per_page') == 25 ? 'selected' : ''}} >25</option>
                             <option value="50" {{Request('per_page') && Request('per_page') == 50 ? 'selected' : ''}} >50</option>
                             <option value="100" {{Request('per_page') && Request('per_page') == 100 ? 'selected' : ''}} >100</option>
+                        </select>
+                    </div>
+
+                    <div class="col-md-3">
+                        <select class="form-control" onchange='requestSorte(this.value)'>
+                        <option value="DESC" {{Request('sort') && Request('sort') == 'DESC' ? 'selected' : ''}} >@lang('general.DESC')</option>
+                            <option value="ASC" {{Request('sort') && Request('sort') == 'ASC' ? 'selected' : ''}} >@lang('general.ASC')</option>
                         </select>
                     </div>
                 `

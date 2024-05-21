@@ -24,6 +24,7 @@ class ClientReportController extends Controller
             $request->get('company_id') ? $request->get('company_id') : -1,
             $request->get('date_from') ? $request->get('date_from') : -1,
             $request->get('date_to') ? $request->get('date_to') : -1,
+            $request->get('sort') ? $request->get('sort') : SystemDefault::DEFAUL_SORT,
             $request->get('per_page') ? $request->get('per_page') : SystemDefault::DEFAUL_PAGINATION_COUNT
         );
 
@@ -37,6 +38,7 @@ class ClientReportController extends Controller
             $request->get('employee_id') ? $request->get('employee_id') : -1,
             $request->get('date_from') ? $request->get('date_from') : -1,
             $request->get('date_to') ? $request->get('date_to') : -1,
+            $request->get('sort') ? $request->get('sort') : SystemDefault::DEFAUL_SORT,
             $request->get('per_page') ? $request->get('per_page') : SystemDefault::DEFAUL_PAGINATION_COUNT
         );
 
@@ -51,6 +53,7 @@ class ClientReportController extends Controller
             $request->get('amount') ? $request->get('amount') : -1,
             $request->get('date_from') ? $request->get('date_from') : -1,
             $request->get('date_to') ? $request->get('date_to') : -1,
+            $request->get('sort') ? $request->get('sort') : SystemDefault::DEFAUL_SORT,
             $request->get('per_page') ? $request->get('per_page') : SystemDefault::DEFAUL_PAGINATION_COUNT
         );
 
@@ -65,6 +68,7 @@ class ClientReportController extends Controller
             $request->get('rating_value') ? $request->get('rating_value') : -1,
             $request->get('date_from') ? $request->get('date_from') : -1,
             $request->get('date_to') ? $request->get('date_to') : -1,
+            $request->get('sort') ? $request->get('sort') : SystemDefault::DEFAUL_SORT,
             $request->get('per_page') ? $request->get('per_page') : SystemDefault::DEFAUL_PAGINATION_COUNT
         );
 
@@ -79,6 +83,7 @@ class ClientReportController extends Controller
             $request->get('query_string') ? $request->get('query_string') : -1,
             $request->get('date_from') ? $request->get('date_from') : -1,
             $request->get('date_to') ? $request->get('date_to') : -1,
+            $request->get('sort') ? $request->get('sort') : SystemDefault::DEFAUL_SORT,
             $request->get('per_page') ? $request->get('per_page') : SystemDefault::DEFAUL_PAGINATION_COUNT
         );
 

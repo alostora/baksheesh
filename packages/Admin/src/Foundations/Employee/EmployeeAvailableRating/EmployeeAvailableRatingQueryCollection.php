@@ -2,6 +2,7 @@
 
 namespace Admin\Foundations\Employee\EmployeeAvailableRating;
 
+use App\Constants\SystemDefault;
 use App\Models\EmployeeAvailableRating;
 
 class EmployeeAvailableRatingQueryCollection
@@ -10,6 +11,7 @@ class EmployeeAvailableRatingQueryCollection
         $client_id,
         $query_string = -1,
         $active = -1,
+        $sort = SystemDefault::DEFAUL_SORT,
     ) {
 
         return EmployeeAvailableRating::where(function ($q) use ($client_id, $query_string, $active) {
@@ -40,6 +42,6 @@ class EmployeeAvailableRatingQueryCollection
                     ->where('stopped_at', '!=', null);
             }
         })
-            ->orderBy('created_at', 'DESC');
+            ->orderBy('created_at', $sort);
     }
 }

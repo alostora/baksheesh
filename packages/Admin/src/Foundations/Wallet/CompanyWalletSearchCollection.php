@@ -12,6 +12,7 @@ class CompanyWalletSearchCollection
         $company_id = -1,
         $date_from = -1,
         $date_to = -1,
+        $sort = SystemDefault::DEFAUL_SORT,
         $per_page = SystemDefault::DEFAUL_PAGINATION_COUNT
     ) {
         $data['wallets'] = CompanyWalletQueryCollection::searchAllCompanyWallets(
@@ -19,6 +20,7 @@ class CompanyWalletSearchCollection
             $company_id,
             $date_from,
             $date_to,
+            $sort,
         )->paginate($per_page);
 
         //above table label info

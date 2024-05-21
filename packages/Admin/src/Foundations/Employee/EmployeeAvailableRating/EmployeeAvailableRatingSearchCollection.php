@@ -13,6 +13,7 @@ class EmployeeAvailableRatingSearchCollection
         $client_id = -1,
         $query_string = -1,
         $archived = -1,
+        $sort = SystemDefault::DEFAUL_SORT,
         $per_page = SystemDefault::DEFAUL_PAGINATION_COUNT
     ) {
 
@@ -20,6 +21,7 @@ class EmployeeAvailableRatingSearchCollection
             $client_id,
             $query_string,
             $archived,
+            $sort
         )->paginate($per_page);
 
 
