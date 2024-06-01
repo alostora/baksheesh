@@ -104,15 +104,16 @@ class Company extends Model
     public function getCompanyTotalRatingAttribute()
     {
 
-        $total_good_percent = 100;
 
-        $all_available_ratings = $this->ratingForGuest()->count();
+        $total_good_percent = 0;
 
+        $all_available_ratings = $this->companyGoodRating()->count() + $this->companyBadRating()->count();
 
         if ($all_available_ratings != 0) {
-            $total_good_percent = ((($this->companyGoodRating()->count() / $all_available_ratings)) * 100) / 5;
+
+            $total_good_percent = ($this->companyGoodRating()->count() / $all_available_ratings) * 100;
         }
 
-        return ceil($total_good_percent);
+        return $total_good_percent;
     }
 }

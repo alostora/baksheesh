@@ -233,15 +233,15 @@ class User extends Authenticatable implements MustVerifyEmail
     public function getEmployeeTotalRatingAttribute()
     {
 
-        $total_good_percent = 100;
+        $total_good_percent = 0;
 
-        $all_available_ratings = $this->ratingForGuest()->count();
+        $all_available_ratings = $this->employeeGoodRating()->count() + $this->employeeBadRating()->count();
 
         if ($all_available_ratings != 0) {
 
-            $total_good_percent = (($this->employeeGoodRating()->count() / $all_available_ratings) * 100) / 5;
+            $total_good_percent = ($this->employeeGoodRating()->count() / $all_available_ratings) * 100;
         }
 
-        return ceil($total_good_percent);
+        return $total_good_percent;
     }
 }

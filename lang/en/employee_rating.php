@@ -38,9 +38,9 @@ return [
 
     'payer_phone' => 'Payer Phone',
 
-    'total_bad_count' => 'Total Bad Count',
+    'total_bad_count' => 'Bad Count',
 
-    'total_good_count' => 'Total Good Count',
+    'total_good_count' => 'Good Count',
     "good" => "Good",
     "bad" => "Bad",
 ];

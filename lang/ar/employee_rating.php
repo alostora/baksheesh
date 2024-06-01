@@ -40,9 +40,9 @@ return [
 
     'payer_phone' => 'هاتف طالب الخدمة',
 
-    'total_bad_count' => 'اجمالي التقييمات السئية',
+    'total_bad_count' => 'التقييمات السئية',
 
-    'total_good_count' => 'اجمالي التقييمات الجيده',
+    'total_good_count' => 'التقييمات الجيده',
     "good" => "جيد",
     "bad" => "سئ",
 ];

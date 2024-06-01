@@ -6,6 +6,18 @@
     <script>
         function postRate(element) {
 
+
+            let userName = $("#payer_name").val();
+            let userPhone = $("#payer_phone").val();
+
+            if (userName == '' || userPhone == '') {
+
+                $('#noteErrorMsg').show();
+                return false;
+            }
+
+            $('#noteErrorMsg').hide();
+
             let elementClass = element.className;
             let elementId = elementClass;
 
