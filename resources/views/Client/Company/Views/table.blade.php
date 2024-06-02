@@ -7,7 +7,8 @@
         <div class="box-header">
             <h3 class="box-title col-md-8">@lang('company.page_title')</h3>
             <div class="col-md-4">
-                <a href="{{url('client/client-company/create')}}" class="btn btn-primary btn-sm" style="height:25px;padding:2px;width:150px">
+                <a href="{{ url('client/client-company/create') }}" class="btn btn-primary btn-sm"
+                    style="height:25px;padding:2px;width:150px">
                     <i class="fa fa-plus"></i>
                     <span>@lang('company.create')</span>
                 </a>
@@ -20,7 +21,7 @@
                     <div class="color-palette-set">
                         <div class="bg-blue disabled color-palette">
                             <span>
-                                @lang('company.active') : {{$count_active + $count_inactive}}
+                                @lang('company.active') : {{ $count_active + $count_inactive }}
                             </span>
                         </div>
                     </div>
@@ -29,7 +30,7 @@
                     <div class="color-palette-set">
                         <div class="bg-green disabled color-palette">
                             <span>
-                                @lang('company.active') : {{$count_active}}
+                                @lang('company.active') : {{ $count_active }}
                             </span>
                         </div>
                     </div>
@@ -38,7 +39,7 @@
                     <div class="color-palette-set">
                         <div class="bg-red disabled color-palette">
                             <span>
-                                @lang('company.inactive') : {{$count_inactive}}
+                                @lang('company.inactive') : {{ $count_inactive }}
                             </span>
                         </div>
                     </div>
@@ -52,62 +53,78 @@
                     <tr>
                         <th>#</th>
                         <th>@lang('company.qr')</th>
+                        <th>@lang('company.employees_qr')</th>
                         <th>@lang('company.file')</th>
                         <th>@lang('company.name')</th>
                         <th>@lang('company.operations')</th>
                     </tr>
                 </thead>
                 <tbody>
-                    @if(!empty($companies))
-                    @foreach ($companies as $key=>$company)
-                    <tr>
-                        <td> {{$key+1}} </td>
-                        <td onclick="PrintQr('{{$company->name}}','{{$company->id}}')">
-                            <div id="{{$company->id}}">
-                                {!! $company->company_qr !!}
-                            </div>
-                        </td>
-                        <td>
-                            @if($company->file)
-                            <img src="{{ url('uploads/'.$company->file->new_name)}}" style="height:50px;width:50px;border-radius:50%">
-                            @endif
-                        </td>
-                        <td> {{$company->name}} </td>
-                        <td>
+                    @if (!empty($companies))
+                        @foreach ($companies as $key => $company)
+                            <tr>
+                                <td> {{ $key + 1 }} </td>
+                                <td onclick="PrintQr('{{ $company->name }}','{{ $company->id }}')">
+                                    <div id="{{ $company->id }}">
+                                        {!! $company->company_qr !!}
+                                    </div>
+                                </td>
 
-                            <a href="{{url('client/company-available-ratings/search?company_id='.$company->id)}}" class="btn btn-warning btn-sm">
-                                <i class="fa fa-star"></i>
-                            </a>
+                                <td onclick="PrintQr('{{ $company->name }}','{{ $company->id }}',true)">
+                                    <div id="employee_{{ $company->id }}">
+                                        {!! $company->company_employees_qr !!}
+                                    </div>
+                                </td>
 
-                            <a href="{{url('client/company-wallets?company_id='.$company->id)}}" class="btn btn-success btn-sm">
-                                <i class="fa fa-info"></i> @lang('general.wallet')
-                            </a>
+                                <td>
+                                    @if ($company->file)
+                                        <img src="{{ url('uploads/' . $company->file->new_name) }}"
+                                            style="height:50px;width:50px;border-radius:50%">
+                                    @endif
+                                </td>
+                                <td> {{ $company->name }} </td>
+                                <td>
 
-                            <a href="{{url('client/client-company-employees/search?company_id='.$company->id)}}" class="btn btn-success btn-sm">
-                                <i class="fa fa-info"></i> @lang('company.employees') : ( {{$company->employees->count()}} )
-                            </a>
+                                    <a href="{{ url('client/company-available-ratings/search?company_id=' . $company->id) }}"
+                                        class="btn btn-warning btn-sm">
+                                        <i class="fa fa-star"></i>
+                                    </a>
 
-                            <a href="{{url('guest/payment/pay-for-company/'.$company->id)}}" target="_blank" class="btn btn-success btn-sm">
-                                <i class="fa fa-link"></i>
-                            </a>
+                                    <a href="{{ url('client/company-wallets?company_id=' . $company->id) }}"
+                                        class="btn btn-success btn-sm">
+                                        <i class="fa fa-info"></i> @lang('general.wallet')
+                                    </a>
 
-                            <a href="{{url('client/client-company/edit/'.$company->id)}}" class="btn btn-success btn-sm">
-                                <i class="fa fa-edit"></i>
-                            </a>
+                                    <a href="{{ url('client/client-company-employees/search?company_id=' . $company->id) }}"
+                                        class="btn btn-success btn-sm">
+                                        <i class="fa fa-info"></i> @lang('company.employees') : (
+                                        {{ $company->employees->count() }} )
+                                    </a>
 
-                            @if($company->stopped_at == null)
-                            <a href="{{url('client/client-company-inactive/'.$company->id)}}" class="btn btn-success btn-sm">
-                                <i class="fa fa-check"></i> @lang('general.current_status') : @lang('general.active')
-                            </a>
-                            @else
+                                    <a href="{{ url('guest/payment/pay-for-company/' . $company->id) }}"
+                                        target="_blank" class="btn btn-success btn-sm">
+                                        <i class="fa fa-link"></i>
+                                    </a>
 
-                            <a href="{{url('client/client-company-active/'.$company->id)}}" class="btn btn-danger btn-sm">
-                                <i class="fa fa-close"></i> @lang('general.current_status') : @lang('general.inactive')
-                            </a>
-                            @endif
-                        </td>
-                    </tr>
-                    @endforeach
+                                    <a href="{{ url('client/client-company/edit/' . $company->id) }}"
+                                        class="btn btn-success btn-sm">
+                                        <i class="fa fa-edit"></i>
+                                    </a>
+
+                                    @if ($company->stopped_at == null)
+                                        <a href="{{ url('client/client-company-inactive/' . $company->id) }}"
+                                            class="btn btn-success btn-sm">
+                                            <i class="fa fa-check"></i> @lang('general.current_status') : @lang('general.active')
+                                        </a>
+                                    @else
+                                        <a href="{{ url('client/client-company-active/' . $company->id) }}"
+                                            class="btn btn-danger btn-sm">
+                                            <i class="fa fa-close"></i> @lang('general.current_status') : @lang('general.inactive')
+                                        </a>
+                                    @endif
+                                </td>
+                            </tr>
+                        @endforeach
                     @endif
                 </tbody>
             </table>
@@ -124,8 +141,13 @@
 </section>
 
 
+
 <script>
-    function PrintQr(companyName, companyId) {
+    function PrintQr(companyName, companyId, is_employee = false) {
+
+        if (is_employee == true) {
+            companyId = "employee_" + companyId;
+        }
 
         var mywindow = window.open(" ", "PRINT");
 
@@ -135,8 +157,10 @@
         mywindow.document.write(document.getElementById(companyId).innerHTML);
         mywindow.document.write('</body></html>');
 
+
         mywindow.focus(); // necessary for IE >= 10*/
         mywindow.print();
         mywindow.close();
+
     }
 </script>

@@ -56,4 +56,6 @@ return [
     "inactive" => "غير نشط",
 
     "again" => "انشاء موظف اخر",
+
+    "payment_page" => "صفحة الدفع",
 ];

@@ -43,12 +43,18 @@ class Company extends Model
 
     protected $appends = [
         'company_qr',
+        'company_employees_qr',
         'company_total_rating',
     ];
 
     public function getCompanyQrAttribute()
     {
         return QrCode::size(100)->generate(url('guest/payment/pay-for-company/' . $this->id));
+    }
+
+    public function getCompanyEmployeesQrAttribute()
+    {
+        return QrCode::size(100)->generate(url('guest/company-employees/search/?company_id=' . $this->id));
     }
 
     public function client(): BelongsTo
@@ -103,8 +109,6 @@ class Company extends Model
 
     public function getCompanyTotalRatingAttribute()
     {
-
-
         $total_good_percent = 0;
 
         $all_available_ratings = $this->companyGoodRating()->count() + $this->companyBadRating()->count();

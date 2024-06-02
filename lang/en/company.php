@@ -44,4 +44,6 @@ return [
     "current_status" => "Current Status",
     "active" => "Active",
     "inactive" => "Inactive",
+
+    "employees_qr" => "Qr Company Employees",
 ];

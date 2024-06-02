@@ -60,4 +60,7 @@ return [
     "active" => "Active",
     "inactive" => "Inactive",
     "again" => "Create Another Employee",
+
+    "payment_page" => "Payment Page",
+
 ];

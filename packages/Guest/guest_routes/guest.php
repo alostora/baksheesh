@@ -1,5 +1,6 @@
 <?php
 
+use Guest\Http\Controllers\Views\CompanyEmployeeController;
 use Guest\Http\Controllers\Views\ReviewController;
 use Illuminate\Support\Facades\Route;
 
@@ -18,3 +19,5 @@ Route::group([
 
     Route::any('pay-success', [ReviewController::class, 'viewPaymentSuccessPage']);
 });
+
+Route::any('company-employees/search', [CompanyEmployeeController::class, 'search'])->middleware('company_id_query_required');

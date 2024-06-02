@@ -44,4 +44,6 @@ return [
     "current_status" => "الحالة الحالية",
     "active" => "نشط",
     "inactive" => "غير نشط",
+
+    "employees_qr" => "Qr موظفون الشركة",
 ];
