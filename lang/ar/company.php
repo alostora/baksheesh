@@ -45,5 +45,5 @@ return [
     "active" => "نشط",
     "inactive" => "غير نشط",
 
-    "employees_qr" => "Qr موظفون الشركة",
+    "employees_qr" => "Qr موظفو الشركة",
 ];

@@ -61,6 +61,6 @@ return [
     "inactive" => "Inactive",
     "again" => "Create Another Employee",
 
-    "payment_page" => "Payment Page",
+    "payment_page" => "Rating Page",
 
 ];

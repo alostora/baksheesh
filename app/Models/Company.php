@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Foundations\Qr\QrCollection;
 use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Concerns\HasUuids;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -49,12 +50,25 @@ class Company extends Model
 
     public function getCompanyQrAttribute()
     {
-        return QrCode::size(100)->generate(url('guest/payment/pay-for-company/' . $this->id));
+        // $company_qr_png = base64_encode(QrCode::size(100)->format('png')->generate(url('guest/payment/pay-for-company/' . $this->id)));
+
+        // return json_encode(QrCollection::createCompanyQr($company_qr_png));
+
+
+        return base64_encode(QrCode::size(100)
+            ->format('png')
+            // ->merge(public_path('user2-160x160.png'), 0.3, true)
+            // ->errorCorrection('H')
+            ->generate(url('guest/payment/pay-for-company/' . $this->id)));
     }
 
     public function getCompanyEmployeesQrAttribute()
     {
-        return QrCode::size(100)->generate(url('guest/company-employees/search/?company_id=' . $this->id));
+        return base64_encode(QrCode::size(100)
+            ->format('png')
+            // ->merge(public_path('user2-160x160.png'), 0.3, true)
+            // ->errorCorrection('H')
+            ->generate(url('guest/company-employees/search/?company_id=' . $this->id)));
     }
 
     public function client(): BelongsTo

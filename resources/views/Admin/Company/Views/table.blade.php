@@ -66,15 +66,41 @@
                                 <td> {{ $key + 1 }} </td>
                                 <td onclick="PrintQr('{{ $company->name }}','{{ $company->id }}')">
                                     <div id="{{ $company->id }}">
+                                        {{-- <div
+                                            style="background-color:red;background-image:url('{{ url('qr.png') }}'); height: 200px;width:200;background-position: center;background-repeat: no-repeat;background-size: cover;text-align:center;padding-top:55px ">
+                                            <img src='data:image/png;base64, {!! $company->company_qr !!}'>
+                                        </div> --}}
 
-                                        {!! $company->company_qr !!}
+                                        <div
+                                            style="background-color:yellow;border-radius:50%;width:230px;height:230px;text-align:center;border: 1px solid blue;padding-top:10px;">
+
+                                            <center>
+                                                <div
+                                                    style="border: 6px solid #000;border-radius:50%;width:200px;height:200px">
+                                                    <span
+                                                        style="font-size:25px;font-weight:bold;display:block;margin-top:5px;margin-bottom:5px">قيمني</span>
+                                                    <img src='data:image/png;base64, {!! $company->company_qr !!}'
+                                                        style="margin-bottom: 1px;">
+
+                                                    <div
+                                                        style="width: 45%;
+                                                        height: 15px;
+                                                        background-color: yellow;
+                                                        border-bottom-left-radius: 50%;
+                                                        border-bottom-right-radius: 50%;
+                                                        border: 4px solid #000;
+                                                        margin-bottom: 5px;;
+                                                        border-top: 0;margin-top: 10px;">
+                                                    </div>
+                                                </div>
+                                            </center>
+                                        </div>
                                     </div>
                                 </td>
 
                                 <td onclick="PrintQr('{{ $company->name }}','{{ $company->id }}',true)">
                                     <div id="employee_{{ $company->id }}">
-
-                                        {!! $company->company_employees_qr !!}
+                                        <img src='data:image/png;base64, {!! $company->company_employees_qr !!}'>
                                     </div>
                                 </td>
                                 <td>

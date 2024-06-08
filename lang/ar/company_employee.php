@@ -57,5 +57,5 @@ return [
 
     "again" => "انشاء موظف اخر",
 
-    "payment_page" => "صفحة الدفع",
+    "payment_page" => "صفحة التقييم",
 ];
