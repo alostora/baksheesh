@@ -76,7 +76,7 @@
 
                                             <center>
                                                 <div
-                                                    style="border: 6px solid #000;border-radius:50%;width:200px;height:200px">
+                                                    style="border: 6px solid #000;  border-radius:50%;width:200px;height:200px">
                                                     <span
                                                         style="font-size:25px;font-weight:bold;display:block;margin-top:5px;margin-bottom:5px">قيمني</span>
                                                     <img src='data:image/png;base64, {!! $company->company_qr !!}'
@@ -84,7 +84,7 @@
 
                                                     <div
                                                         style="width: 45%;
-                                                        height: 15px;
+                                                        height: 10px;
                                                         background-color: yellow;
                                                         border-bottom-left-radius: 50%;
                                                         border-bottom-right-radius: 50%;
