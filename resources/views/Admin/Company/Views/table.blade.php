@@ -66,41 +66,13 @@
                                 <td> {{ $key + 1 }} </td>
                                 <td onclick="PrintQr('{{ $company->name }}','{{ $company->id }}')">
                                     <div id="{{ $company->id }}">
-                                        {{-- <div
-                                            style="background-color:red;background-image:url('{{ url('qr.png') }}'); height: 200px;width:200;background-position: center;background-repeat: no-repeat;background-size: cover;text-align:center;padding-top:55px ">
-                                            <img src='data:image/png;base64, {!! $company->company_qr !!}'>
-                                        </div> --}}
-
-                                        <div
-                                            style="background-color:yellow;border-radius:50%;width:230px;height:230px;text-align:center;border: 1px solid blue;padding-top:10px;">
-
-                                            <center>
-                                                <div
-                                                    style="border: 6px solid #000;  border-radius:50%;width:200px;height:200px">
-                                                    <span
-                                                        style="font-size:25px;font-weight:bold;display:block;margin-top:5px;margin-bottom:5px">قيمني</span>
-                                                    <img src='data:image/png;base64, {!! $company->company_qr !!}'
-                                                        style="margin-bottom: 1px;">
-
-                                                    <div
-                                                        style="width: 45%;
-                                                        height: 10px;
-                                                        background-color: yellow;
-                                                        border-bottom-left-radius: 50%;
-                                                        border-bottom-right-radius: 50%;
-                                                        border: 4px solid #000;
-                                                        margin-bottom: 5px;;
-                                                        border-top: 0;margin-top: 10px;">
-                                                    </div>
-                                                </div>
-                                            </center>
-                                        </div>
+                                        {!! $company->company_qr !!}
                                     </div>
                                 </td>
 
-                                <td onclick="PrintQr('{{ $company->name }}','{{ $company->id }}',true)">
+                                <td onclick="PrintEmployeeQr('{{ $company->name }}','{{ $company->id }}')">
                                     <div id="employee_{{ $company->id }}">
-                                        <img src='data:image/png;base64, {!! $company->company_employees_qr !!}'>
+                                        {!! $company->company_employees_qr !!}
                                     </div>
                                 </td>
                                 <td>
@@ -164,11 +136,7 @@
 
 
 <script>
-    function PrintQr(companyName, companyId, is_employee = false) {
-
-        if (is_employee == true) {
-            companyId = "employee_" + companyId;
-        }
+    function PrintEmployeeQr(companyName, companyId) {
 
         var mywindow = window.open(" ", "PRINT");
 
@@ -183,5 +151,168 @@
         mywindow.print();
         mywindow.close();
 
+    }
+
+
+    function PrintQr(companyName, companyId) {
+
+        var mywindow = window.open(" ", "PRINT");
+
+        mywindow.document.write(
+
+            `<html lang="en">
+                <head>
+                    <style>
+                        * {
+                            margin: 0;
+                            padding: 0;
+                            box-sizing: border-box;
+                        }
+                        html {
+                            font-size: 10px;
+                        }
+                        body {
+                            font-family: "cairo", "sans-serif", "Marhey";
+                            zoom : 105%;
+                        }
+
+                        .smil_bg {
+                            width: 320px;
+                            height: 320px;
+                            border-radius: 50%;
+                            background-color: yellow;
+                            display: flex;
+                            justify-content: center;
+                            text-align: center;
+                            align-items: center;
+                            margin-top:45%;
+                        }
+                        .smiley-face {
+                            width: 300px;
+                            height: 300px;
+                            border-radius: 50%;
+                            background-color: yellow;
+                            position: relative;
+                            border: 6px solid black;
+                        }
+                        .rate_me {
+                            position: absolute;
+                            top: 5%;
+                            left: 40%;
+                            right: -50%;
+                            width: 15%;
+                            height: 15%;
+                            display: flex;
+                            justify-content: center;
+                            text-align: center;
+                            align-items: center;
+                        }
+                        .font-style {
+                            font-family: Marhey ;
+                            font-size: xx-large;
+                            font-style: oblique;
+                            font-weight: 400;
+                        }
+                        .style_font_1{
+                            position: absolute;
+                            top: 9.9%;
+                            right: 29.8%;
+                            width:4%;
+                            height: 11px;
+                            border-radius: 25px;
+                            border: 8.5px solid black;
+                            rotate: -15deg;
+                        }
+                        .style_font_2{
+                            position: absolute;
+                            top: 11.9%;
+                            left: 44%;
+                            width: 5%;
+                            height: 12px;
+                            border-radius: 25px;
+                            border: 8px solid black;
+                            rotate: 15deg;
+                        }
+                        .img{
+                            position: absolute;
+                            width: 50%;
+                            height:50%;
+                            top: 30%;
+                            left: 25%;
+                        }
+                        .mouth {
+                            position: absolute;
+                            top: 60%;
+                            left: 20%;
+                            width: 60%;
+                            height: 30%;
+                            border-radius: 50%;
+                            border-bottom: 8px solid black;
+                        }
+                        .mouth_circle {
+                            position: relative;
+                            top: 80%;
+                            left: 50%;
+                            transform: translate(-50%, -50%);
+                            height: 100px;
+                            width: 75%;
+                            border-radius: 0 0 200px 200px;
+                            border-bottom: 10px solid black;
+                            border-left: 10px solid black;
+                            border-right: 10px solid black;
+                        }
+                        .mouth_left {
+                            position: absolute;
+                            top: 61%;
+                            right: 7.5%;
+                            width: 15%;
+                            height: 1px;
+                            border-radius: 25px;
+                            border: 8px solid black;
+                            rotate: -15deg;
+                        }
+                        .mouth_right {
+                            position: absolute;
+                            top: 61%;
+                            left: 7.5%;
+                            width: 15%;
+                            height: 1px;
+                            border-radius: 25px;
+                            border: 8px solid black;
+                            rotate: 15deg;
+                        }
+                    </style>
+                    <title>Tipo smart</title>
+                </head>
+
+                <body>
+                    <center>
+                        <div class="smil_bg">
+                            <div class="smiley">
+                                <div class="smiley-face">
+                                    <div class="style_font_1"></div>
+                                    <div class="style_font_2"></div>
+                                    <div class="rate_me">
+                                        <h1 class="font-style">قــيــمـنى</h1>
+                                    </div>
+                                    <div class="img">
+                                        ${document.getElementById(companyId).innerHTML}
+                                    </div>
+                                    <div class="mouth_left"></div>
+                                    <div class="mouth_right"></div>
+                                    <div class="mouth_circle"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </center>
+                </body>
+
+            </html>`
+
+        );
+
+        mywindow.focus(); // necessary for IE >= 10*/
+        mywindow.print();
+        mywindow.close();
     }
 </script>

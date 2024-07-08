@@ -50,25 +50,12 @@ class Company extends Model
 
     public function getCompanyQrAttribute()
     {
-        // $company_qr_png = base64_encode(QrCode::size(100)->format('png')->generate(url('guest/payment/pay-for-company/' . $this->id)));
-
-        // return json_encode(QrCollection::createCompanyQr($company_qr_png));
-
-
-        return base64_encode(QrCode::size(100)
-            ->format('png')
-            // ->merge(public_path('user2-160x160.png'), 0.3, true)
-            // ->errorCorrection('H')
-            ->generate(url('guest/payment/pay-for-company/' . $this->id)));
+        return QrCode::size(120)->backgroundColor(255, 255, 0)->generate(url('guest/payment/pay-for-company/' . $this->id));
     }
 
     public function getCompanyEmployeesQrAttribute()
     {
-        return base64_encode(QrCode::size(100)
-            ->format('png')
-            // ->merge(public_path('user2-160x160.png'), 0.3, true)
-            // ->errorCorrection('H')
-            ->generate(url('guest/company-employees/search/?company_id=' . $this->id)));
+        return QrCode::size(120)->backgroundColor(255, 255, 0)->generate(url('guest/company-employees/search/?company_id=' . $this->id));
     }
 
     public function client(): BelongsTo
