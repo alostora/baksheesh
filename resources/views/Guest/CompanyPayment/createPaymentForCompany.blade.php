@@ -12,7 +12,7 @@
             if (userName == '' || userPhone == '') {
 
                 $('#noteErrorMsg').show();
-                return false;
+                {{-- return false; --}}
             }
 
             $('#noteErrorMsg').hide();
@@ -63,7 +63,7 @@
             if (userName == '' || userPhone == '') {
 
                 $('#noteErrorMsg').show();
-                return false;
+                {{-- return false; --}}
             }
             $('#noteErrorMsg').hide();
 
@@ -91,7 +91,7 @@
 
         function appendAmount(amount) {
 
-            if (amount < 10) {
+            if (amount < 25) {
                 $('#errorMsg').show();
                 $('#invoice_details').hide();
                 $('#pay_btn').prop("disabled", true);

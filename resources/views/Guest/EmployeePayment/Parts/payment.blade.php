@@ -39,7 +39,7 @@
 
     <center>
         <div class="paying_bg">
-            <div class="paying_button" onclick="appendAmount(10)">10</div>
+            {{-- <div class="paying_button" onclick="appendAmount(10)">10</div> --}}
             <div class="paying_button" onclick="appendAmount(25)">25</div>
             <div class="paying_button" onclick="appendAmount(50)">50</div>
             <div class="paying_button" onclick="appendAmount(75)">75</div>
@@ -49,12 +49,12 @@
 
     <div class="comment_row another_price">
         <input class="anotherPrice" type="hidden" name="amount" id="last_amount">
-        <input class="input_name another_price_input" min="10" type="number" id="amount" placeholder="ادخل المبلغ" onkeyup="appendAmount(this.value);">
+        <input class="input_name another_price_input" min="25" type="number" id="amount" placeholder="ادخل المبلغ" onkeyup="appendAmount(this.value);">
         <label for="amount" class="label_name">مبلغ اخر</label>
     </div>
 
     <br>
-    <span id="errorMsg" style="display:none;">لا يمكن اضافة اقل من 10 ريال</span>
+    <span id="errorMsg" style="display:none;">لا يمكن اضافة اقل من 25 ريال</span>
 
 
     <div id="invoice_details" class="inv_data" style="display: none;">
