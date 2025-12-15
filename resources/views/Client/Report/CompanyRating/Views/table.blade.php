@@ -54,6 +54,7 @@
                         <th style="background-color: #1fbdd9 !important;" class="no-print">#</th>
                         <th style="background-color: #1fbdd9 !important;">@lang('company_rating.payer_name')</th>
                         <th style="background-color: #1fbdd9 !important;">@lang('company_rating.company')</th>
+                        <th style="background-color: #1fbdd9 !important;">@lang('company_rating.garage_name')</th>
                         <th style="background-color: #1fbdd9 !important;">@lang('company_rating.available_rating')</th>
                         <th style="background-color: #1fbdd9 !important;">@lang('company_rating.rating_value')</th>
                         <th style="background-color: #1fbdd9 !important;">@lang('company_rating.created_at')</th>
@@ -66,11 +67,12 @@
                         <td class="no-print"> {{$key+1}} </td>
                         <td> {{$company_rating->payer_name}} <br> {{$company_rating->payer_phone}} </td>
                         <td> {{$company_rating->company ? $company_rating->company->name : ''}} </td>
+                        <td> {{$company_rating->garage_name}} </td>
                         <td> {{$company_rating->companyAvailableRating ? $company_rating->companyAvailableRating->name : ''}} </td>
                         <td>
                             {!! $company_rating->rating_value === 1 ? '<label class="label label-danger" style="font-size:12px">'.Lang::get("company_rating.bad").'</label>' : '<label class="label label-success" style="font-size:12px">'.Lang::get("company_rating.good").'</label>' !!}
                         </td>
-                        <td> {{$company_rating->created_at}} </td>
+                        <td>{{ \Carbon\Carbon::parse($company_rating->created_at)->format('Y-m-d H:i:s') }}</td>
                     </tr>
                     @endforeach
                     @endif

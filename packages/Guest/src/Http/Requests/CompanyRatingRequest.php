@@ -3,6 +3,7 @@
 namespace Guest\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rules\RequiredIf;
 
 class CompanyRatingRequest extends FormRequest
 {
@@ -31,11 +32,13 @@ class CompanyRatingRequest extends FormRequest
 
             "rating_value" => ["bail", "required", "integer", "min:1", "max:2"],
 
-            "payer_name" => ["bail", "nullable", "string", "max:255"],
+            "garage_name" => ["bail", "nullable", "string", "max:255"],
+
+            "payer_name" => ["bail", "nullable", "string", "max:255", new RequiredIf($this->rating_value < 2)],
 
             "payer_email" => ["bail", "nullable", "email", "unique:users,email", "max:255"],
 
-            "payer_phone" => ["bail", "nullable", "string", "unique:users,phone", "max:255"],
+            "payer_phone" => ["bail", "nullable", "string", "unique:users,phone", "max:255", new RequiredIf($this->rating_value < 2)],
         ];
     }
 }

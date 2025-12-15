@@ -14,6 +14,8 @@ class CompanyRating extends Model
 
     protected $fillable = [
 
+        'garage_name',
+
         'payer_name',
 
         'payer_email',
@@ -29,15 +31,14 @@ class CompanyRating extends Model
         'rating_id',
 
         'rating_value',
-
     ];
 
-    protected function createdAt(): Attribute
+   /*  protected function createdAt(): Attribute
     {
         return Attribute::make(
-            get: fn (string $value) => date('Y-m-d', strtotime($value)),
+            get: fn(string $value) => date('Y-m-d', strtotime($value)),
         );
-    }
+    } */
 
     public function client(): BelongsTo
     {

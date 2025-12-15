@@ -5,35 +5,36 @@
 <form role="form" action="{{ url('guest/payment/pay-for-company') }}" method="POST" class="paying" id="payform">
 
     @if ($errors->any())
-    <div class="alert alert-warning col-md-6" style="margin-top: 60px;">
-        <ul>
-            @foreach ($errors->all() as $error)
-            <li>{{ $error }}</li>
-            @endforeach
-        </ul>
-    </div>
+        <div class="alert alert-warning col-md-6" style="margin-top: 60px;">
+            <ul>
+                @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+        </div>
     @endif
 
     @if (session()->has('success'))
-    <div class="alert alert-success col-md-6" style="margin-top: 60px;">
-        <ul>
-            <li>{{ session('success') }}</li>
-        </ul>
-    </div>
+        <div class="alert alert-success col-md-6" style="margin-top: 60px;">
+            <ul>
+                <li>{{ session('success') }}</li>
+            </ul>
+        </div>
     @endif
 
     @if (session()->has('error'))
-    <div class="alert alert-success col-md-6" style="margin-top: 60px;">
-        <ul>
-            <li>{{ session('error') }}</li>
-        </ul>
-    </div>
+        <div class="alert alert-success col-md-6" style="margin-top: 60px;">
+            <ul>
+                <li>{{ session('error') }}</li>
+            </ul>
+        </div>
     @endif
 
     <input type="hidden" name="client_id" value="{{ Request('company')->client_id }}">
     <input type="hidden" name="company_id" value="{{ Request('company')->id }}">
     <input type="hidden" name="payer_name" id="payer_name" placeholder="الاسم" required>
     <input type="hidden" name="payer_phone" id="payer_phone" placeholder="الجوال" required>
+    <input type="hidden" name="garage_name" id="garage_name" placeholder="اسم الموقف" required>
     @csrf
 
     <center>
@@ -48,7 +49,8 @@
 
     <div class="comment_row another_price">
         <input class="anotherPrice" type="hidden" name="amount" id="last_amount">
-        <input class="input_name another_price_input" min="25" type="number" id="amount" placeholder="ادخل المبلغ" onkeyup="appendAmount(this.value);">
+        <input class="input_name another_price_input" min="25" type="number" id="amount"
+            placeholder="ادخل المبلغ" onkeyup="appendAmount(this.value);">
         <label for="amount" class="label_name">مبلغ اخر</label>
     </div>
 
@@ -92,5 +94,6 @@
 <div style="flex-direction:row;letter-spacing: 2p;text-align:center">
 
     <p style="font-size:18px;color:#fff;font-weight: 200;margin-right:5px">Powered by </p>
-    <a href="{{ url('https://tiposmart.com') }}" style="font-size:20px;text-decoration: none;color:#4e5458"> Tiposmart.com</a>
+    <a href="{{ url('https://tiposmart.com') }}" style="font-size:20px;text-decoration: none;color:#4e5458">
+        Tiposmart.com</a>
 </div>

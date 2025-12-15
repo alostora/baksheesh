@@ -45,4 +45,5 @@ return [
     'total_good_count' => 'التقييمات الجيده',
     "good" => "جيد",
     "bad" => "سئ",
+    "garage_name" => "اسم الموقف",
 ];

@@ -35,7 +35,9 @@ class CompanyNoteRequest extends FormRequest
 
             "client_id" => [
 
-                "required", "uuid", "string",
+                "required",
+                "uuid",
+                "string",
 
                 Rule::exists('users', 'id')->where('user_account_type_id', $lookup_account_type_client->id)
             ],
@@ -43,6 +45,8 @@ class CompanyNoteRequest extends FormRequest
             "company_id" => ["required", "uuid", "string", "exists:companies,id"],
 
             "notes" => ["bail", "required", "string", "unique:users,phone", "max:255"],
+
+            "garage_name" => ["bail", "nullable", "string", "max:255"],
 
             "payer_name" => ["bail", "nullable", "string", "max:255"],
 

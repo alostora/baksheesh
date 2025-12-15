@@ -8,6 +8,7 @@
 
             let userName = $("#payer_name").val();
             let userPhone = $("#payer_phone").val();
+            let garageName = $("#garage_name").val();
 
             if (userName == '' || userPhone == '') {
 
@@ -44,6 +45,7 @@
                     guest_key: "{{ Request()->session()->get('guest_key') }}",
                     payer_name: document.getElementById('payer_name').value,
                     payer_phone: document.getElementById('payer_phone').value,
+                    garage_name: document.getElementById('garage_name').value,
                 },
                 dataType: 'json',
                 success: function(response) {
@@ -51,6 +53,7 @@
                 },
                 error: function(request, error) {
                     console.log("Request: " + JSON.stringify(request));
+                    $('#noteErrorMsg').show();
                 }
             });
         }
@@ -59,6 +62,7 @@
 
             let userName = $("#payer_name").val();
             let userPhone = $("#payer_phone").val();
+            let garageName = $("#garage_name").val();
 
             if (userName == '' || userPhone == '') {
 
@@ -77,6 +81,7 @@
                     notes: document.getElementById('notes').value,
                     payer_name: document.getElementById('payer_name').value,
                     payer_phone: document.getElementById('payer_phone').value,
+                    garage_name: document.getElementById('garage_name').value,
                     guest_key: "{{ Request()->session()->get('guest_key') }}",
                 },
                 dataType: 'json',
@@ -118,6 +123,10 @@
 
         function appendPayerPhone(e) {
             document.getElementById('payer_phone').value = e.value
+        }
+
+        function appendGarageName(e) {
+            document.getElementById('garage_name').value = e.value
         }
 
         function disableBtn(e) {

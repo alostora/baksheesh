@@ -12,6 +12,10 @@
         <label for="amount" class="label_name">الجوال</label>
     </div>
     <div class="comment_row">
+        <input type="text" dir="rtl" class="input_name" onkeyup="appendGarageName(this)">
+        <label for="amount" class="label_name">اسم الموقف</label>
+    </div>
+    <div class="comment_row">
         <textarea class="input_name" dir="rtl" name="notes" id="notes" style="height:100px;border-radius: 20px;width:77%;"></textarea>
         <label for="notes" class="label_name">التعليق</label>
     </div>

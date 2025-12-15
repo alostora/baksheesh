@@ -25,6 +25,8 @@ return new class extends Migration
 
             $table->integer('rating_value')->default(0)->nullable();
 
+            $table->string('garage_name')->nullable();
+
             $table->string('payer_name')->nullable();
 
             $table->string('payer_email')->nullable();
