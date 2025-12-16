@@ -44,7 +44,7 @@ class CompanyNoteRequest extends FormRequest
 
             "company_id" => ["required", "uuid", "string", "exists:companies,id"],
 
-            "notes" => ["bail", "required", "string", "unique:users,phone", "max:255"],
+            "notes" => ["bail", "nullable", "string", "unique:users,phone", "max:255"],
 
             "garage_name" => ["bail", "nullable", "string", "max:255"],
 

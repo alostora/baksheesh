@@ -26,6 +26,12 @@
 
 
             if (value == 1) {
+
+                if (userName == '' || userPhone == '') {
+                    showSimpleModal();
+                    return false;
+                }
+
                 document.getElementById(elementId).src = "{{ url('guest') }}/images/" + "Sad" + ".png";
                 document.getElementById(Number(level) + "__" + (Number(value) + 1)).src = "{{ url('guest') }}/images/" +
                     "HappyB" + ".png";
@@ -50,10 +56,11 @@
                 dataType: 'json',
                 success: function(response) {
                     console.log(response);
+                    closeSimpleModal();
                 },
                 error: function(request, error) {
                     console.log("Request: " + JSON.stringify(request));
-                    $('#noteErrorMsg').show();
+                    showSimpleModal();
                 }
             });
         }

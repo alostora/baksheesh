@@ -18,6 +18,7 @@
     <main class="bg">
 
 
+        @include('Guest.CompanyPayment.Parts.errorMdal')
         @include('Guest.CompanyPayment.createPaymentForCompany')
 
 

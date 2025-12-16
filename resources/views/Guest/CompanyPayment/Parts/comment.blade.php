@@ -4,11 +4,11 @@
 
 <div class="addComment">
     <div class=" comment_row">
-        <input type="text" dir="rtl" class="input_name" onkeyup="appendPayerName(this)">
+        <input type="text" dir="rtl" class="input_name" id="payer_name" onkeyup="appendPayerName(this)">
         <label for="amount" class="label_name">الاسم</label>
     </div>
     <div class="comment_row">
-        <input type="text" dir="rtl" class="input_name" onkeyup="appendPayerPhone(this)">
+        <input type="text" dir="rtl" class="input_name" id="payer_phone" onkeyup="appendPayerPhone(this)">
         <label for="amount" class="label_name">الجوال</label>
     </div>
     <div class="comment_row">

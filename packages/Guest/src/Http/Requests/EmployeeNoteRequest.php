@@ -54,7 +54,7 @@ class EmployeeNoteRequest extends FormRequest
 
             "payer_phone" => ["bail", "nullable", "string", "unique:users,phone", "max:255"],
 
-            "notes" => ["bail", "required", "string", "unique:users,phone", "max:255"],
+            "notes" => ["bail", "nullable", "string", "unique:users,phone", "max:255"],
         ];
     }
 }
