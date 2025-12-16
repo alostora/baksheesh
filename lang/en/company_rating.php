@@ -43,5 +43,5 @@ return [
     'total_good_count' => 'Good Count',
     "good" => "Good",
     "bad" => "Bad",
-    "garage_name" => "Garage Name",
+    "garage_name" => "Site Name",
 ];

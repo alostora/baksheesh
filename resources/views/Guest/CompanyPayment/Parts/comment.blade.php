@@ -16,7 +16,7 @@
         <label for="amount" class="label_name">اسم الموقف</label>
     </div>
     <div class="comment_row">
-        <textarea class="input_name" dir="rtl" name="notes" id="notes" style="height:100px;border-radius: 20px;width:77%;"></textarea>
+        <textarea class="input_name" dir="rtl" name="notes" id="notes" style="height:100px;border-radius: 20px;"></textarea>
         <label for="notes" class="label_name">التعليق</label>
     </div>
 
